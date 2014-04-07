@@ -414,6 +414,8 @@ operator|=
 name|peer
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -702,6 +704,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -819,6 +823,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -908,7 +914,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{                 }
-name|taskRunner
+name|tr
 operator|=
 literal|null
 expr_stmt|;
@@ -1031,6 +1037,8 @@ block|{             }
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.thread.Task#iterate()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -1129,6 +1137,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTransportListener
@@ -1353,6 +1363,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -1374,6 +1386,8 @@ literal|"Unsupported Method"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -1392,6 +1406,8 @@ literal|"Unsupported Method"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -1413,6 +1429,8 @@ literal|"Unsupported Method"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportListener
 name|getTransportListener
@@ -1422,6 +1440,8 @@ return|return
 name|transportListener
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 parameter_list|<
 name|T
@@ -1523,6 +1543,8 @@ operator|+
 name|id
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRemoteAddress
@@ -1598,6 +1620,8 @@ operator|=
 name|asyncQueueDepth
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFaultTolerant
@@ -1607,6 +1631,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDisposed
@@ -1619,6 +1645,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnected
@@ -1632,6 +1660,8 @@ name|get
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reconnect
@@ -1650,6 +1680,8 @@ literal|"Transport reconnect is not supported"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReconnectSupported
@@ -1659,6 +1691,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUpdateURIsSupported
@@ -1668,6 +1702,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateURIs
@@ -1690,6 +1726,8 @@ literal|"URI update feature not supported"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter
