@@ -315,6 +315,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|GroupPrincipal
@@ -326,6 +327,7 @@ argument_list|(
 literal|"guests"
 argument_list|)
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|GroupPrincipal
@@ -337,6 +339,7 @@ argument_list|(
 literal|"users"
 argument_list|)
 decl_stmt|;
+specifier|public
 specifier|static
 specifier|final
 name|GroupPrincipal
@@ -348,6 +351,7 @@ argument_list|(
 literal|"admins"
 argument_list|)
 decl_stmt|;
+specifier|public
 specifier|static
 name|Principal
 name|WILDCARD
@@ -989,6 +993,7 @@ name|adminAccess
 argument_list|)
 return|;
 block|}
+specifier|public
 specifier|static
 class|class
 name|SimpleAuthenticationFactory

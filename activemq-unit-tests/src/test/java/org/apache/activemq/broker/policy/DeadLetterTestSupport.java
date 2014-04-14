@@ -609,7 +609,7 @@ name|void
 name|makeDlqConsumer
 parameter_list|()
 throws|throws
-name|JMSException
+name|Exception
 block|{
 name|dlqDestination
 operator|=
