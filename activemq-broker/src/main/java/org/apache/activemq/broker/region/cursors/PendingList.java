@@ -55,6 +55,20 @@ name|MessageReference
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|MessageId
+import|;
+end_import
+
 begin_interface
 specifier|public
 interface|interface
@@ -144,6 +158,14 @@ name|addAll
 parameter_list|(
 name|PendingList
 name|pendingList
+parameter_list|)
+function_decl|;
+specifier|public
+name|MessageReference
+name|get
+parameter_list|(
+name|MessageId
+name|messageId
 parameter_list|)
 function_decl|;
 block|}
