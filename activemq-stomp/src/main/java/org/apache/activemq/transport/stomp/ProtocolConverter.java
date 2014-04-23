@@ -5526,6 +5526,13 @@ operator|.
 name|AckModeValues
 operator|.
 name|AUTO
+operator|&&
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|AckEntry
