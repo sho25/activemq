@@ -447,14 +447,20 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * We need to override this method      * so that we can unregister the associated      * MBean to avoid a memory leak.      */
+annotation|@
+name|Override
 specifier|public
 name|void
-name|finalize
+name|stop
 parameter_list|()
 throws|throws
-name|Throwable
+name|Exception
 block|{
+name|super
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|view
