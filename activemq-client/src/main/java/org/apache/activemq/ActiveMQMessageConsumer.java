@@ -2354,6 +2354,11 @@ block|{
 try|try
 block|{
 return|return
+name|session
+operator|.
+name|getTransacted
+argument_list|()
+operator|&&
 name|redeliveryPolicy
 operator|!=
 literal|null
@@ -2393,7 +2398,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|ignored
 parameter_list|)
 block|{
