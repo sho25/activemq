@@ -93,16 +93,6 @@ name|TextMessage
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Topic
-import|;
-end_import
-
 begin_comment
 comment|/**  *  */
 end_comment
@@ -118,6 +108,8 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -137,6 +129,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -696,69 +690,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
-comment|/**      * Tests that a durable consumer cannot be created for Individual Ack mode.      *      * @throws JMSException      */
-specifier|public
-name|void
-name|testCreateDurableConsumerFails
-parameter_list|()
-throws|throws
-name|JMSException
-block|{
-name|connection
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|Session
-name|session
-init|=
-name|connection
-operator|.
-name|createSession
-argument_list|(
-literal|false
-argument_list|,
-name|ActiveMQSession
-operator|.
-name|INDIVIDUAL_ACKNOWLEDGE
-argument_list|)
-decl_stmt|;
-name|Topic
-name|dest
-init|=
-name|session
-operator|.
-name|createTopic
-argument_list|(
-name|getName
-argument_list|()
-argument_list|)
-decl_stmt|;
-try|try
-block|{
-name|session
-operator|.
-name|createDurableSubscriber
-argument_list|(
-name|dest
-argument_list|,
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Should not be able to create duable subscriber."
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{         }
 block|}
 specifier|protected
 name|String
