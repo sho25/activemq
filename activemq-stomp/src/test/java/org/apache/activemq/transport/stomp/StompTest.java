@@ -1436,7 +1436,7 @@ name|frame
 operator|=
 literal|"SEND\n"
 operator|+
-literal|"AMQ_SCHEDULED_DELAY:5000\n"
+literal|"AMQ_SCHEDULED_DELAY:2000\n"
 operator|+
 literal|"destination:/queue/"
 operator|+
@@ -1468,7 +1468,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 decl_stmt|;
 name|assertNull
@@ -1485,7 +1485,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2500
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -2259,7 +2259,7 @@ specifier|final
 name|int
 name|done
 init|=
-literal|500
+literal|20
 decl_stmt|;
 name|int
 name|count
@@ -3655,7 +3655,7 @@ name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
 for|for
@@ -4996,7 +4996,9 @@ operator|=
 name|stompConnection
 operator|.
 name|receiveFrame
-argument_list|()
+argument_list|(
+literal|500
+argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
@@ -9577,7 +9579,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}
@@ -14503,7 +14505,7 @@ name|stompConnection
 operator|.
 name|receive
 argument_list|(
-literal|60000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|assertNotNull
