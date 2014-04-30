@@ -875,6 +875,20 @@ name|activemq
 operator|.
 name|store
 operator|.
+name|ListenableFuture
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
 name|MessageRecoveryListener
 import|;
 end_import
@@ -3718,7 +3732,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager Memory Limit ({}) reached on {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
+literal|"Usage Manager Memory Limit ({}) reached on {}, size {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
 argument_list|,
 name|memoryUsage
 operator|.
@@ -3729,6 +3743,14 @@ name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
+argument_list|()
+argument_list|,
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4892,7 +4914,7 @@ operator|.
 name|getConnectionContext
 argument_list|()
 decl_stmt|;
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -4974,6 +4996,17 @@ name|message
 argument_list|,
 name|isOptimizeStorage
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|result
+operator|.
+name|addListener
+argument_list|(
+operator|new
+name|PendingMarshalUsageTracker
+argument_list|(
+name|message
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5093,6 +5126,11 @@ condition|(
 name|result
 operator|!=
 literal|null
+operator|&&
+name|message
+operator|.
+name|isResponseRequired
+argument_list|()
 operator|&&
 operator|!
 name|result

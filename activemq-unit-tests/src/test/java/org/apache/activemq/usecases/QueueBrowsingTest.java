@@ -966,7 +966,7 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|10
+literal|16
 operator|*
 literal|1024
 argument_list|)

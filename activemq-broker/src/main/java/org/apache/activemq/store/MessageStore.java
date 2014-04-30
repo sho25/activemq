@@ -27,18 +27,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Future
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -174,7 +162,7 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -190,7 +178,7 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @param canOptimizeHint - give a hint to the store that the message may be consumed before it hits the disk      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -208,8 +196,8 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
-name|Future
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      * @return a ListenableFuture to track when this is complete      * @throws IOException      * @throws IOException      */
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -224,8 +212,8 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      *  @param canOptimizeHint - give a hint to the store that the message may be consumed before it hits the disk      * @return a Future to track when this is complete      * @throws IOException      * @throws IOException      */
-name|Future
+comment|/**      * Adds a message to the message store      *      * @param context context      * @param message      *  @param canOptimizeHint - give a hint to the store that the message may be consumed before it hits the disk      * @return a ListenableFuture to track when this is complete      * @throws IOException      * @throws IOException      */
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>

@@ -473,7 +473,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -502,7 +502,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -536,7 +536,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -565,7 +565,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>

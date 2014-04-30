@@ -223,6 +223,9 @@ operator|*
 name|producerCount
 argument_list|)
 expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -269,6 +272,9 @@ name|messageCount
 operator|*
 name|producerCount
 argument_list|)
+expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -319,6 +325,9 @@ name|messageCount
 operator|*
 name|producerCount
 argument_list|)
+expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -372,6 +381,9 @@ name|messageCount
 operator|*
 name|producerCount
 argument_list|)
+expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -427,6 +439,9 @@ operator|*
 name|producerCount
 argument_list|)
 expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -474,6 +489,9 @@ name|messageCount
 operator|*
 name|producerCount
 argument_list|)
+expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -537,6 +555,9 @@ operator|*
 name|producerCount
 argument_list|)
 expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -598,6 +619,9 @@ name|messageCount
 operator|*
 name|producerCount
 argument_list|)
+expr_stmt|;
+name|assertDestinationMemoryUsageGoesToZero
+argument_list|()
 expr_stmt|;
 block|}
 specifier|protected

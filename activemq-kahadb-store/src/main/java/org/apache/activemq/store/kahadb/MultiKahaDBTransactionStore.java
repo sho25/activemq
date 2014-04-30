@@ -91,18 +91,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Future
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -569,7 +557,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -605,7 +593,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -801,7 +789,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -840,7 +828,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -2364,7 +2352,7 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -2440,7 +2428,7 @@ argument_list|)
 return|;
 block|}
 block|}
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>

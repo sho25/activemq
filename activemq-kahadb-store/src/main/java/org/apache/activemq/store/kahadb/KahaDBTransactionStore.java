@@ -217,20 +217,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|openwire
-operator|.
-name|OpenWireFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|protobuf
 operator|.
 name|Buffer
@@ -248,6 +234,20 @@ operator|.
 name|store
 operator|.
 name|AbstractMessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|ListenableFuture
 import|;
 end_import
 
@@ -1097,7 +1097,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -1131,7 +1131,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -1312,7 +1312,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -1346,7 +1346,7 @@ block|}
 annotation|@
 name|Override
 specifier|public
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -2459,7 +2459,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
@@ -2606,7 +2606,7 @@ argument_list|)
 return|;
 block|}
 block|}
-name|Future
+name|ListenableFuture
 argument_list|<
 name|Object
 argument_list|>
