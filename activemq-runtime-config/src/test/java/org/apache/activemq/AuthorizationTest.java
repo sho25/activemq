@@ -34,16 +34,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
 import|import static
 name|org
 operator|.
@@ -64,6 +54,16 @@ operator|.
 name|Assert
 operator|.
 name|fail
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -169,6 +169,13 @@ argument_list|(
 literal|"user"
 argument_list|,
 literal|"GUESTS.A"
+argument_list|)
+expr_stmt|;
+name|assertDenied
+argument_list|(
+literal|"user"
+argument_list|,
+literal|">"
 argument_list|)
 expr_stmt|;
 name|assertAllowedTemp
