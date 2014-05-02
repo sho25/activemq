@@ -313,6 +313,12 @@ name|destination
 argument_list|)
 return|;
 block|}
+specifier|public
+specifier|abstract
+name|boolean
+name|isWildcard
+parameter_list|()
+function_decl|;
 block|}
 end_class
 

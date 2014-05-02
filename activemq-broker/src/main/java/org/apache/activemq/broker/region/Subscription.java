@@ -217,6 +217,11 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
+comment|/**      * Returns true if this subscription is a Wildcard subscription.      * @return true if wildcard subscription.      */
+name|boolean
+name|isWildcard
+parameter_list|()
+function_decl|;
 comment|/**      * Is the subscription interested in the message?      * @param node      * @param context      * @return      * @throws IOException      */
 name|boolean
 name|matches

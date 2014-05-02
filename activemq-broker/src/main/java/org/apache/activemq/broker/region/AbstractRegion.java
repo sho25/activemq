@@ -1172,17 +1172,32 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|SecurityException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|sub
+operator|.
+name|isWildcard
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
-literal|"Subscription error for "
+literal|"Subscription denied for "
 operator|+
 name|sub
+operator|+
+literal|" to destination "
+operator|+
+name|dest
+operator|.
+name|getActiveMQDestination
+argument_list|()
 operator|+
 literal|": "
 operator|+
@@ -1190,10 +1205,15 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 block|}
 block|}
@@ -1849,9 +1869,47 @@ name|dest
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
+catch|catch
+parameter_list|(
+name|SecurityException
+name|e
+parameter_list|)
 block|{
-comment|// remove subscriptions added earlier
+if|if
+condition|(
+name|sub
+operator|.
+name|isWildcard
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Subscription denied for "
+operator|+
+name|sub
+operator|+
+literal|" to destination "
+operator|+
+name|dest
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|+
+literal|": "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// remove partial subscriptions
 for|for
 control|(
 name|Destination
@@ -1859,6 +1917,8 @@ name|remove
 range|:
 name|removeList
 control|)
+block|{
+try|try
 block|{
 name|remove
 operator|.
@@ -1874,6 +1934,40 @@ name|getLastDeliveredSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Error unsubscribing "
+operator|+
+name|sub
+operator|+
+literal|" from "
+operator|+
+name|remove
+operator|+
+literal|": "
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 block|}

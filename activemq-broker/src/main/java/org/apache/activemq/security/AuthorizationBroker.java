@@ -406,7 +406,7 @@ operator|=
 name|map
 expr_stmt|;
 block|}
-specifier|public
+specifier|protected
 name|SecurityContext
 name|checkSecurityContext
 parameter_list|(

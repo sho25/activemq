@@ -133,16 +133,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -390,6 +380,16 @@ operator|.
 name|thread
 operator|.
 name|TaskRunnerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
 import|;
 end_import
 
@@ -1369,6 +1369,17 @@ name|Exception
 block|{
 return|return
 literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isWildcard
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 specifier|public
