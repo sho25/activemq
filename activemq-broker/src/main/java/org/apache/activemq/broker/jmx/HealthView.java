@@ -443,7 +443,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Check persistence store directory limits          *          */
+comment|/**          * Check persistence store directory limits          */
 name|BrokerService
 name|brokerService
 init|=
@@ -586,6 +586,10 @@ decl_stmt|;
 if|if
 condition|(
 name|storeSize
+operator|!=
+literal|0
+operator|&&
+name|storeLimit
 operator|!=
 literal|0
 condition|)
@@ -788,6 +792,13 @@ name|getParentFile
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|storeLimit
+operator|!=
+literal|0
+condition|)
+block|{
 name|int
 name|val
 init|=
@@ -835,6 +846,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -973,6 +985,10 @@ decl_stmt|;
 if|if
 condition|(
 name|storeSize
+operator|!=
+literal|0
+operator|&&
+name|storeLimit
 operator|!=
 literal|0
 condition|)

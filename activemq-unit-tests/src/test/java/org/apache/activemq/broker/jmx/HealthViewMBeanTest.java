@@ -217,6 +217,8 @@ name|domain
 init|=
 literal|"org.apache.activemq"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -248,6 +250,8 @@ name|getMBeanServer
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -289,6 +293,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -371,6 +377,13 @@ expr_stmt|;
 name|answer
 operator|.
 name|setUseJmx
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
+name|setSchedulerSupport
 argument_list|(
 literal|true
 argument_list|)
