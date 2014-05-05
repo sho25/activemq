@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link DiscoveryAgent} using<a href="http://www.zeroconf.org/">Zeroconf</a>  * via the<a href="http://jmdns.sf.net/">jmDNS</a> library  *   *   */
+comment|/**  * A {@link DiscoveryAgent} using<a  * href="http://www.zeroconf.org/">Zeroconf</a> via the<a  * href="http://jmdns.sf.net/">jmDNS</a> library  */
 end_comment
 
 begin_class
@@ -282,6 +282,12 @@ name|int
 name|priority
 decl_stmt|;
 specifier|private
+name|String
+name|typeSuffix
+init|=
+name|TYPE_SUFFIX
+decl_stmt|;
+specifier|private
 name|DiscoveryListener
 name|listener
 decl_stmt|;
@@ -308,6 +314,8 @@ argument_list|()
 decl_stmt|;
 comment|// DiscoveryAgent interface
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -351,11 +359,9 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"The type '"
-operator|+
+literal|"The type '{}' should end with '.' to be a valid Rendezvous type"
+argument_list|,
 name|type
-operator|+
-literal|"' should end with '.' to be a valid Rendezvous type"
 argument_list|)
 expr_stmt|;
 name|type
@@ -380,8 +386,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Discovering service of type: "
-operator|+
+literal|"Discovering service of type: {}"
+argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
@@ -415,6 +421,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -477,6 +485,8 @@ operator|new
 name|Thread
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -513,12 +523,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Error closing JmDNS "
-operator|+
+literal|"Error closing JmDNS {}. This exception will be ignored."
+argument_list|,
 name|getLocalhost
 argument_list|()
-operator|+
-literal|". This exception will be ignored."
 argument_list|,
 name|e
 argument_list|)
@@ -545,6 +553,8 @@ literal|null
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|registerService
@@ -564,6 +574,11 @@ name|name
 argument_list|,
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -599,28 +614,17 @@ name|String
 name|name
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"addService with type: "
-operator|+
+literal|"addService with type: {} name: {}"
+argument_list|,
 name|type
-operator|+
-literal|" name: "
-operator|+
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|listener
@@ -664,28 +668,17 @@ name|String
 name|name
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"removeService with type: "
-operator|+
+literal|"removeService with type: {} name: {}"
+argument_list|,
 name|type
-operator|+
-literal|" name: "
-operator|+
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|listener
@@ -706,6 +699,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|serviceAdded
@@ -733,6 +728,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|serviceRemoved
@@ -760,6 +757,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|serviceResolved
@@ -968,32 +967,24 @@ init|=
 name|getType
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Registering service type: "
-operator|+
+literal|"Registering service type: {} name: {} details: {}"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{
 name|type
-operator|+
-literal|" name: "
-operator|+
+block|,
 name|name
-operator|+
-literal|" details: "
-operator|+
+block|,
 name|map
+block|}
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|ServiceInfo
 operator|.
@@ -1064,6 +1055,8 @@ name|getLocalHost
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDiscoveryListener
@@ -1104,10 +1097,42 @@ name|group
 expr_stmt|;
 block|}
 specifier|public
+name|void
+name|setType
+parameter_list|(
+name|String
+name|typeSuffix
+parameter_list|)
+block|{
+name|this
+operator|.
+name|typeSuffix
+operator|=
+name|typeSuffix
+expr_stmt|;
+block|}
+specifier|public
 name|String
 name|getType
 parameter_list|()
 block|{
+if|if
+condition|(
+name|typeSuffix
+operator|==
+literal|null
+operator|||
+name|typeSuffix
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|typeSuffix
+operator|=
+name|TYPE_SUFFIX
+expr_stmt|;
+block|}
 return|return
 literal|"_"
 operator|+
@@ -1115,9 +1140,11 @@ name|group
 operator|+
 literal|"."
 operator|+
-name|TYPE_SUFFIX
+name|typeSuffix
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|serviceFailed
