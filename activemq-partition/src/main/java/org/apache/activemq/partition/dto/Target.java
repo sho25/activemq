@@ -33,18 +33,6 @@ end_import
 
 begin_import
 import|import
-name|scala
-operator|.
-name|actors
-operator|.
-name|threadpool
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -129,6 +117,10 @@ name|ids
 operator|.
 name|addAll
 argument_list|(
+name|java
+operator|.
+name|util
+operator|.
 name|Arrays
 operator|.
 name|asList

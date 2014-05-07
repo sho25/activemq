@@ -85,18 +85,6 @@ end_import
 
 begin_import
 import|import
-name|scala
-operator|.
-name|actors
-operator|.
-name|threadpool
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -354,6 +342,10 @@ name|Boolean
 argument_list|>
 name|booleans
 init|=
+name|java
+operator|.
+name|util
+operator|.
 name|Arrays
 operator|.
 name|asList
