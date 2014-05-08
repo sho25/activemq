@@ -235,7 +235,7 @@ name|region
 operator|.
 name|policy
 operator|.
-name|NoSubscriptionRecoveryPolicy
+name|RetainedMessageSubscriptionRecoveryPolicy
 import|;
 end_import
 
@@ -775,8 +775,10 @@ block|{
 name|subscriptionRecoveryPolicy
 operator|=
 operator|new
-name|NoSubscriptionRecoveryPolicy
-argument_list|()
+name|RetainedMessageSubscriptionRecoveryPolicy
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 name|this
@@ -3569,15 +3571,52 @@ name|void
 name|setSubscriptionRecoveryPolicy
 parameter_list|(
 name|SubscriptionRecoveryPolicy
-name|subscriptionRecoveryPolicy
+name|recoveryPolicy
 parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|subscriptionRecoveryPolicy
+operator|!=
+literal|null
+operator|&&
+name|this
+operator|.
+name|subscriptionRecoveryPolicy
+operator|instanceof
+name|RetainedMessageSubscriptionRecoveryPolicy
+condition|)
+block|{
+comment|// allow users to combine retained message policy with other ActiveMQ policies
+name|RetainedMessageSubscriptionRecoveryPolicy
+name|policy
+init|=
+operator|(
+name|RetainedMessageSubscriptionRecoveryPolicy
+operator|)
+name|this
+operator|.
+name|subscriptionRecoveryPolicy
+decl_stmt|;
+name|policy
+operator|.
+name|setWrapped
+argument_list|(
+name|recoveryPolicy
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|this
 operator|.
 name|subscriptionRecoveryPolicy
 operator|=
-name|subscriptionRecoveryPolicy
+name|recoveryPolicy
 expr_stmt|;
+block|}
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
