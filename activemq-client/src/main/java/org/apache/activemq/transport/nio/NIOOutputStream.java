@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized buffered outputstream for Tcp  */
+comment|/**  * An optimized buffered OutputStream for TCP/IP  */
 end_comment
 
 begin_class
@@ -126,7 +126,7 @@ specifier|final
 name|int
 name|BUFFER_SIZE
 init|=
-literal|8192
+literal|8196
 decl_stmt|;
 specifier|private
 specifier|final
@@ -160,12 +160,12 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|//concurrent reads of this value
+comment|// concurrent reads of this value
 specifier|private
 name|SSLEngine
 name|engine
 decl_stmt|;
-comment|/**      * Constructor      *      * @param out      */
+comment|/**      * Constructor      *      * @param out      *        the channel to write data to.      */
 specifier|public
 name|NIOOutputStream
 parameter_list|(
@@ -181,7 +181,7 @@ name|BUFFER_SIZE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a new buffered output stream to write data to the specified      * underlying output stream with the specified buffer size.      *      * @param out the underlying output stream.      * @param size the buffer size.      * @throws IllegalArgumentException if size<= 0.      */
+comment|/**      * Creates a new buffered output stream to write data to the specified      * underlying output stream with the specified buffer size.      *      * @param out      *        the underlying output stream.      * @param size      *        the buffer size.      *      * @throws IllegalArgumentException if size<= 0.      */
 specifier|public
 name|NIOOutputStream
 parameter_list|(
@@ -231,7 +231,7 @@ name|buffer
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * write a byte on to the stream      *      * @param b - byte to write      * @throws IOException      */
+comment|/**      * write a byte on to the stream      *      * @param b      *        byte to write      *      * @throws IOException if an error occurs while writing the data.      */
 annotation|@
 name|Override
 specifier|public
@@ -271,7 +271,7 @@ operator|)
 name|b
 expr_stmt|;
 block|}
-comment|/**      * write a byte array to the stream      *      * @param b the byte buffer      * @param off the offset into the buffer      * @param len the length of data to write      * @throws IOException      */
+comment|/**      * write a byte array to the stream      *      * @param b      *        the byte buffer      * @param off      *        the offset into the buffer      * @param len      *        the length of data to write      *      * @throws IOException if an error occurs while writing the data.      */
 annotation|@
 name|Override
 specifier|public
@@ -353,7 +353,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * flush the data to the output stream This doesn't call flush on the      * underlying outputstream, because Tcp is particularly efficent at doing      * this itself ....      *      * @throws IOException      */
+comment|/**      * flush the data to the output stream This doesn't call flush on the      * underlying OutputStream, because TCP/IP is particularly efficient at doing      * this itself ....      *      * @throws IOException if an error occurs while writing the data.      */
 annotation|@
 name|Override
 specifier|public
@@ -538,16 +538,15 @@ operator|.
 name|remaining
 argument_list|()
 decl_stmt|;
-name|int
-name|lastRemaining
-init|=
-name|remaining
-operator|-
-literal|1
-decl_stmt|;
 name|long
 name|delay
 init|=
+literal|1
+decl_stmt|;
+name|int
+name|lastWriteSize
+init|=
+operator|-
 literal|1
 decl_stmt|;
 try|try
@@ -566,18 +565,18 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// We may need to do a little bit of sleeping to avoid a busy loop.
-comment|// Slow down if no data was written out..
+comment|// We may need to do a little bit of sleeping to avoid a busy
+comment|// loop. Slow down if no data was written out..
 if|if
 condition|(
-name|remaining
+name|lastWriteSize
 operator|==
-name|lastRemaining
+literal|0
 condition|)
 block|{
 try|try
 block|{
-comment|// Use exponential rollback to increase sleep time.
+comment|// Use exponential growth to increase sleep time.
 name|Thread
 operator|.
 name|sleep
@@ -622,12 +621,10 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-name|lastRemaining
+comment|// Since the write is non-blocking, all the data may not have
+comment|// been written.
+name|lastWriteSize
 operator|=
-name|remaining
-expr_stmt|;
-comment|// Since the write is non-blocking, all the data may not have been
-comment|// written.
 name|out
 operator|.
 name|write
@@ -635,10 +632,10 @@ argument_list|(
 name|plain
 argument_list|)
 expr_stmt|;
-comment|// if the data buffer was larger than the packet buffer we might need to
-comment|// wrap more packets until we reach the end of data, but only when plain
-comment|// has no more space since we are non-blocking and a write might not have
-comment|// written anything.
+comment|// if the data buffer was larger than the packet buffer we might
+comment|// need to wrap more packets until we reach the end of data, but only
+comment|// when plain has no more space since we are non-blocking and a write
+comment|// might not have written anything.
 if|if
 condition|(
 name|engine
@@ -695,7 +692,7 @@ literal|1
 expr_stmt|;
 block|}
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#isWriting()      */
+comment|/*      * (non-Javadoc)      *      * @see org.apache.activemq.transport.tcp.TimeStampStream#isWriting()      */
 annotation|@
 name|Override
 specifier|public
@@ -709,7 +706,7 @@ operator|>
 literal|0
 return|;
 block|}
-comment|/* (non-Javadoc)      * @see org.apache.activemq.transport.tcp.TimeStampStream#getWriteTimestamp()      */
+comment|/*      * (non-Javadoc)      *      * @see      * org.apache.activemq.transport.tcp.TimeStampStream#getWriteTimestamp()      */
 annotation|@
 name|Override
 specifier|public
