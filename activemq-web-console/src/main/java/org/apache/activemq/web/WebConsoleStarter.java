@@ -227,8 +227,22 @@ argument_list|(
 literal|"jetty.port"
 argument_list|)
 decl_stmt|;
+name|String
+name|host
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"jetty.host"
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
+name|host
+operator|!=
+literal|null
+operator|&&
 name|port
 operator|!=
 literal|null
@@ -238,7 +252,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"ActiveMQ WebConsole available at http://localhost:{}/"
+literal|"ActiveMQ WebConsole available at http://{}:{}/"
+argument_list|,
+name|host
 argument_list|,
 name|port
 argument_list|)
