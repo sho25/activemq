@@ -1819,7 +1819,7 @@ name|dispatched
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|recoverRetroactiveMessages
 parameter_list|(

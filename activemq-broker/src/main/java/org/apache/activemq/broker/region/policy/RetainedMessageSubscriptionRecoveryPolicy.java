@@ -174,7 +174,7 @@ specifier|final
 name|String
 name|RETAIN_PROPERTY
 init|=
-literal|"ActiveMQRetain"
+literal|"ActiveMQ.Retain"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -182,7 +182,7 @@ specifier|final
 name|String
 name|RETAINED_PROPERTY
 init|=
-literal|"ActiveMQRetained"
+literal|"ActiveMQ.Retained"
 decl_stmt|;
 specifier|private
 specifier|volatile
