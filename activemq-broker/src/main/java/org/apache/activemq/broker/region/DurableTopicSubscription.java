@@ -937,6 +937,24 @@ name|dispatchPending
 argument_list|()
 expr_stmt|;
 block|}
+comment|// used by RetaineMessageSubscriptionRecoveryPolicy
+specifier|public
+name|boolean
+name|isEmpty
+parameter_list|(
+name|Topic
+name|topic
+parameter_list|)
+block|{
+return|return
+name|pending
+operator|.
+name|isEmpty
+argument_list|(
+name|topic
+argument_list|)
+return|;
+block|}
 specifier|public
 name|void
 name|activate
