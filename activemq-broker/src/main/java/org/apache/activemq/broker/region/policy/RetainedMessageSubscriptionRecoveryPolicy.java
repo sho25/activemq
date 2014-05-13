@@ -300,6 +300,16 @@ operator|.
 name|getMessage
 argument_list|()
 operator|.
+name|removeProperty
+argument_list|(
+name|RETAIN_PROPERTY
+argument_list|)
+expr_stmt|;
+name|retainedMessage
+operator|.
+name|getMessage
+argument_list|()
+operator|.
 name|setProperty
 argument_list|(
 name|RETAINED_PROPERTY
