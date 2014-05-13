@@ -827,16 +827,7 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|pending
-operator|.
-name|isEmpty
-argument_list|(
-name|topic
-argument_list|)
-condition|)
-block|{
+comment|// always use the recovery policy
 name|topic
 operator|.
 name|recoverRetroactiveMessages
@@ -846,7 +837,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 name|this
 operator|.
 name|enqueueCounter
@@ -1142,16 +1132,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// If nothing was in the persistent store, then try to use the
-comment|// recovery policy.
-if|if
-condition|(
-name|pending
-operator|.
-name|isEmpty
-argument_list|()
-condition|)
-block|{
+comment|// always use the recovery policy.
 for|for
 control|(
 name|Destination
@@ -1180,7 +1161,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
