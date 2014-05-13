@@ -827,7 +827,19 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-comment|// always use the recovery policy
+if|if
+condition|(
+name|topic
+operator|.
+name|isAlwaysRetroactive
+argument_list|()
+operator|||
+name|info
+operator|.
+name|isRetroactive
+argument_list|()
+condition|)
+block|{
 name|topic
 operator|.
 name|recoverRetroactiveMessages
@@ -837,6 +849,7 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|enqueueCounter
@@ -1132,7 +1145,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// always use the recovery policy.
+comment|// use recovery policy for retroactive topics and consumers
 for|for
 control|(
 name|Destination
@@ -1152,6 +1165,19 @@ name|Topic
 operator|)
 name|destination
 decl_stmt|;
+if|if
+condition|(
+name|topic
+operator|.
+name|isAlwaysRetroactive
+argument_list|()
+operator|||
+name|info
+operator|.
+name|isRetroactive
+argument_list|()
+condition|)
+block|{
 name|topic
 operator|.
 name|recoverRetroactiveMessages
@@ -1161,6 +1187,7 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
