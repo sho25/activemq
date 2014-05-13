@@ -9066,18 +9066,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// these should not be received
-name|connectionSub
-operator|=
-name|mqttSub
-operator|.
-name|blockingConnection
-argument_list|()
-expr_stmt|;
-name|connectionSub
-operator|.
-name|connect
-argument_list|()
-expr_stmt|;
 name|assertNull
 argument_list|(
 name|connectionSub
