@@ -2443,6 +2443,25 @@ argument_list|,
 name|consumerInfo
 argument_list|)
 decl_stmt|;
+comment|// optimistic add to local maps first to be able to handle commands in onActiveMQCommand
+name|subscriptionsByConsumerId
+operator|.
+name|put
+argument_list|(
+name|id
+argument_list|,
+name|mqttSubscription
+argument_list|)
+expr_stmt|;
+name|mqttSubscriptionByTopic
+operator|.
+name|put
+argument_list|(
+name|topicName
+argument_list|,
+name|mqttSubscription
+argument_list|)
+expr_stmt|;
 specifier|final
 name|byte
 index|[]
@@ -2544,26 +2563,23 @@ name|qos
 index|[
 literal|0
 index|]
-operator|!=
+operator|==
 name|SUBSCRIBE_ERROR
 condition|)
 block|{
+comment|// remove from local maps if subscribe failed
 name|subscriptionsByConsumerId
 operator|.
-name|put
+name|remove
 argument_list|(
 name|id
-argument_list|,
-name|mqttSubscription
 argument_list|)
 expr_stmt|;
 name|mqttSubscriptionByTopic
 operator|.
-name|put
+name|remove
 argument_list|(
 name|topicName
-argument_list|,
-name|mqttSubscription
 argument_list|)
 expr_stmt|;
 block|}
@@ -2735,7 +2751,7 @@ range|:
 name|matchingDestinations
 control|)
 block|{
-comment|// recover retroactive messages for matching subscriptions
+comment|// recover retroactive messages for matching subscription
 for|for
 control|(
 name|Subscription
@@ -2820,6 +2836,7 @@ name|e
 argument_list|)
 throw|;
 block|}
+break|break;
 block|}
 block|}
 block|}
@@ -3031,7 +3048,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Dispatch a ActiveMQ command      */
+comment|/**      * Dispatch an ActiveMQ command      */
 specifier|public
 name|void
 name|onActiveMQCommand
