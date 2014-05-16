@@ -827,29 +827,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|topic
-operator|.
-name|isAlwaysRetroactive
-argument_list|()
-operator|||
-name|info
-operator|.
-name|isRetroactive
-argument_list|()
-condition|)
-block|{
-name|topic
-operator|.
-name|recoverRetroactiveMessages
-argument_list|(
-name|context
-argument_list|,
-name|this
-argument_list|)
-expr_stmt|;
-block|}
 name|this
 operator|.
 name|enqueueCounter
@@ -1163,7 +1140,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|// use recovery policy for retroactive topics and consumers
+block|}
+comment|// use recovery policy every time sub is activated for retroactive topics and consumers
 for|for
 control|(
 name|Destination
@@ -1205,7 +1183,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -1727,7 +1704,7 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-specifier|protected
+specifier|public
 name|void
 name|dispatchPending
 parameter_list|()

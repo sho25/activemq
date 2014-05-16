@@ -3098,7 +3098,8 @@ name|references
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+comment|// made public so it can be used in MQTTProtocolConverter
+specifier|public
 name|void
 name|dispatchPending
 parameter_list|()
