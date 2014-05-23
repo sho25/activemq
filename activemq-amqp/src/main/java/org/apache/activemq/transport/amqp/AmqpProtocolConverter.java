@@ -3285,11 +3285,9 @@ name|session
 operator|.
 name|setIncomingCapacity
 argument_list|(
-name|AmqpWireFormat
+name|Integer
 operator|.
-name|DEFAULT_MAX_FRAME_SIZE
-operator|*
-name|prefetch
+name|MAX_VALUE
 argument_list|)
 expr_stmt|;
 name|session
