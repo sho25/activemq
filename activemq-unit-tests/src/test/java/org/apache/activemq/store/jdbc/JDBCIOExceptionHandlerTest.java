@@ -342,6 +342,13 @@ argument_list|()
 decl_stmt|;
 name|leaseDatabaseLocker
 operator|.
+name|setHandleStartException
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|leaseDatabaseLocker
+operator|.
 name|setLockAcquireSleepInterval
 argument_list|(
 literal|2000l
@@ -580,6 +587,13 @@ operator|new
 name|LeaseDatabaseLocker
 argument_list|()
 decl_stmt|;
+name|leaseDatabaseLocker
+operator|.
+name|setHandleStartException
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|leaseDatabaseLocker
 operator|.
 name|setLockAcquireSleepInterval
