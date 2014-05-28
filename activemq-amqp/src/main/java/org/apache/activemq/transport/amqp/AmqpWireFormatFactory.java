@@ -56,6 +56,8 @@ name|AmqpWireFormatFactory
 implements|implements
 name|WireFormatFactory
 block|{
+annotation|@
+name|Override
 specifier|public
 name|WireFormat
 name|createWireFormat

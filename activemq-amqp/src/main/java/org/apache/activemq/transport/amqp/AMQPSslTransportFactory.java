@@ -293,10 +293,6 @@ name|getNext
 argument_list|()
 expr_stmt|;
 block|}
-comment|// MutexTransport mutex = transport.narrow(MutexTransport.class);
-comment|// if (mutex != null) {
-comment|// mutex.setSyncOnCommand(true);
-comment|// }
 return|return
 name|transport
 return|;
@@ -321,16 +317,6 @@ name|getBrokerContext
 argument_list|()
 expr_stmt|;
 block|}
-comment|// protected Transport createInactivityMonitor(Transport transport,
-comment|// WireFormat format) {
-comment|// AmqpInactivityMonitor monitor = new AmqpInactivityMonitor(transport,
-comment|// format);
-comment|//
-comment|// AmqpTransportFilter filter = transport.narrow(AmqpTransportFilter.class);
-comment|// filter.setInactivityMonitor(monitor);
-comment|//
-comment|// return monitor;
-comment|// }
 annotation|@
 name|Override
 specifier|protected

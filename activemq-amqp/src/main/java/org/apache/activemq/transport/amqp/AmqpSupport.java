@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|ByteBuffer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|fusesource
@@ -29,18 +39,8 @@ name|Buffer
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
-import|;
-end_import
-
 begin_comment
-comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  */
 end_comment
 
 begin_class

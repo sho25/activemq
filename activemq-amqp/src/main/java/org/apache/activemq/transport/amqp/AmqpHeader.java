@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  */
 end_comment
 
 begin_class

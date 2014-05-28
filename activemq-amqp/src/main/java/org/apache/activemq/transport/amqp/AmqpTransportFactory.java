@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -131,26 +151,6 @@ name|WireFormat
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
 comment|/**  * A<a href="http://amqp.org/">AMQP</a> transport factory  */
 end_comment
@@ -170,6 +170,8 @@ name|brokerContext
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getDefaultWireFormatType
@@ -179,6 +181,8 @@ return|return
 literal|"amqp"
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -232,6 +236,8 @@ name|options
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -307,23 +313,10 @@ name|getNext
 argument_list|()
 expr_stmt|;
 block|}
-comment|//        MutexTransport mutex = transport.narrow(MutexTransport.class);
-comment|//        if (mutex != null) {
-comment|//            mutex.setSyncOnCommand(true);
-comment|//        }
 return|return
 name|transport
 return|;
 block|}
-comment|//    @Override
-comment|//    protected Transport createInactivityMonitor(Transport transport, WireFormat format) {
-comment|//        AmqpInactivityMonitor monitor = new AmqpInactivityMonitor(transport, format);
-comment|//
-comment|//        AmqpTransportFilter filter = transport.narrow(AmqpTransportFilter.class);
-comment|//        filter.setInactivityMonitor(monitor);
-comment|//
-comment|//        return monitor;
-comment|//    }
 annotation|@
 name|Override
 specifier|protected

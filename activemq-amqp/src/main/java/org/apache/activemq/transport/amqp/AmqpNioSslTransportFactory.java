@@ -194,6 +194,7 @@ name|AmqpNioSslTransportFactory
 extends|extends
 name|AmqpNioTransportFactory
 block|{
+specifier|protected
 name|SSLContext
 name|context
 decl_stmt|;
@@ -225,6 +226,8 @@ argument_list|,
 name|serverSocketFactory
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createTransport

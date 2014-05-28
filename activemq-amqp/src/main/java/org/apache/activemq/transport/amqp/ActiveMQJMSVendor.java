@@ -298,7 +298,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author<a href="http://hiramchirino.com">Hiram Chirino</a>  */
+comment|/**  */
 end_comment
 
 begin_class
@@ -321,7 +321,7 @@ decl_stmt|;
 specifier|private
 name|ActiveMQJMSVendor
 parameter_list|()
-block|{}
+block|{     }
 annotation|@
 name|Override
 specifier|public

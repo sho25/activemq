@@ -19,6 +19,42 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|cert
+operator|.
+name|X509Certificate
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|locks
+operator|.
+name|ReentrantLock
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -93,22 +129,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|qpid
-operator|.
-name|proton
-operator|.
-name|jms
-operator|.
-name|InboundTransformer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|activemq
 operator|.
 name|transport
@@ -151,6 +171,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|qpid
+operator|.
+name|proton
+operator|.
+name|jms
+operator|.
+name|InboundTransformer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -164,42 +200,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|security
-operator|.
-name|cert
-operator|.
-name|X509Certificate
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|locks
-operator|.
-name|ReentrantLock
 import|;
 end_import
 
@@ -279,7 +279,6 @@ specifier|private
 name|IAmqpProtocolConverter
 name|protocolConverter
 decl_stmt|;
-comment|//    private AmqpInactivityMonitor monitor;
 specifier|private
 name|AmqpWireFormat
 name|wireFormat
@@ -297,6 +296,7 @@ operator|.
 name|TRANSFORMER_NATIVE
 decl_stmt|;
 specifier|private
+specifier|final
 name|ReentrantLock
 name|lock
 init|=
@@ -350,6 +350,8 @@ name|wireFormat
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -445,6 +447,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|sendToActiveMQ
@@ -461,6 +465,8 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -540,6 +546,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|sendToActiveMQ
@@ -575,6 +583,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|sendToAmqp
@@ -627,6 +637,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|X509Certificate
 index|[]
@@ -679,6 +691,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isTrace
@@ -710,14 +724,6 @@ name|updateTracer
 argument_list|()
 expr_stmt|;
 block|}
-comment|//    @Override
-comment|//    public AmqpInactivityMonitor getInactivityMonitor() {
-comment|//        return monitor;
-comment|//    }
-comment|//
-comment|//    public void setInactivityMonitor(AmqpInactivityMonitor monitor) {
-comment|//        this.monitor = monitor;
-comment|//    }
 annotation|@
 name|Override
 specifier|public
@@ -747,6 +753,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getTransformer
@@ -771,6 +779,8 @@ operator|=
 name|transformer
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|IAmqpProtocolConverter
 name|getProtocolConverter
@@ -780,6 +790,8 @@ return|return
 name|protocolConverter
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setProtocolConverter

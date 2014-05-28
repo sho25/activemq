@@ -19,20 +19,6 @@ end_package
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -50,6 +36,20 @@ operator|.
 name|cert
 operator|.
 name|X509Certificate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|Command
 import|;
 end_import
 
@@ -102,7 +102,6 @@ name|IOException
 name|error
 parameter_list|)
 function_decl|;
-comment|//    public AmqpInactivityMonitor getInactivityMonitor();
 specifier|public
 name|AmqpWireFormat
 name|getWireFormat

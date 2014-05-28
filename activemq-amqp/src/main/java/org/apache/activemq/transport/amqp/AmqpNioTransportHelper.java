@@ -19,6 +19,46 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|DataInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|ByteBuffer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -60,46 +100,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|DataInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
 import|;
 end_import
 
@@ -172,6 +172,7 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+specifier|final
 name|TransportSupport
 name|transportSupport
 decl_stmt|;
@@ -208,7 +209,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// Are we waiting for the next Command or building on the current one?  The frame size is in the first 4 bytes.
+comment|// Are we waiting for the next Command or building on the current one?
+comment|// The frame size is in the first 4 bytes.
 if|if
 condition|(
 name|nextFrameSize
@@ -217,8 +219,8 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// We can get small packets that don't give us enough for the frame size
-comment|// so allocate enough for the initial size value and
+comment|// We can get small packets that don't give us enough for the frame
+comment|// size so allocate enough for the initial size value and
 if|if
 condition|(
 name|plain
@@ -300,8 +302,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// Either we are completing a previous read of the next frame size or its
-comment|// fully contained in plain already.
+comment|// Either we are completing a previous read of the next frame
+comment|// size or its fully contained in plain already.
 if|if
 condition|(
 name|currentBuffer
@@ -309,7 +311,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Finish the frame size integer read and get from the current buffer.
+comment|// Finish the frame size integer read and get from the
+comment|// current buffer.
 while|while
 condition|(
 name|currentBuffer
@@ -354,8 +357,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// There are three possibilities when we get here.  We could have a partial frame,
-comment|// a full frame, or more than 1 frame
+comment|// There are three possibilities when we get here. We could have a
+comment|// partial frame, a full frame, or more than 1 frame
 while|while
 condition|(
 literal|true
@@ -392,8 +395,10 @@ argument_list|(
 name|nextFrameSize
 argument_list|)
 expr_stmt|;
-comment|// now we have the data, let's reallocate and try to fill it,  (currentBuffer.putInt() is called      TODO update
-comment|// because we need to put back the 4 bytes we read to determine the size)
+comment|// now we have the data, let's reallocate and try to fill it,
+comment|// (currentBuffer.putInt() is called TODO update
+comment|// because we need to put back the 4 bytes we read to determine the
+comment|// size)
 if|if
 condition|(
 name|currentBuffer
@@ -478,8 +483,9 @@ name|fill
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Either we have enough data for a new command or we have to wait for some more.  If hasRemaining is true,
-comment|// we have not filled the buffer yet, i.e. we haven't received the full frame.
+comment|// Either we have enough data for a new command or we have to wait for some more.
+comment|// If hasRemaining is true, we have not filled the buffer yet, i.e. we haven't
+comment|// received the full frame.
 if|if
 condition|(
 name|currentBuffer

@@ -1345,6 +1345,7 @@ name|AmqpProtocolConverter
 implements|implements
 name|IAmqpProtocolConverter
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -1369,9 +1370,9 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
-specifier|public
 name|byte
 index|[]
 name|EMPTY_BYTE_ARRAY
@@ -1458,11 +1459,13 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|protected
 name|int
 name|prefetch
 init|=
 literal|100
 decl_stmt|;
+specifier|protected
 name|EngineFactory
 name|engineFactory
 init|=
@@ -1470,6 +1473,7 @@ operator|new
 name|EngineFactoryImpl
 argument_list|()
 decl_stmt|;
+specifier|protected
 name|Transport
 name|protonTransport
 init|=
@@ -1478,6 +1482,7 @@ operator|.
 name|createTransport
 argument_list|()
 decl_stmt|;
+specifier|protected
 name|Connection
 name|protonConnection
 init|=
@@ -1486,6 +1491,7 @@ operator|.
 name|createConnection
 argument_list|()
 decl_stmt|;
+specifier|protected
 name|MessageFactory
 name|messageFactory
 init|=
@@ -1494,6 +1500,7 @@ operator|.
 name|loadFactory
 argument_list|()
 decl_stmt|;
+specifier|protected
 name|Collector
 name|eventCollector
 init|=
@@ -1521,11 +1528,15 @@ name|AmqpWireFormat
 operator|.
 name|DEFAULT_MAX_FRAME_SIZE
 decl_stmt|;
-comment|// AMQ-4914 - Setting the max frame size to large stalls out the QPid client on sends or
-comment|//            consume due to no session credit.  Once fixed we should set this value using
-comment|//            the configured maxFrameSize on the URI.
-comment|//int maxFrameSize = transport.getWireFormat().getMaxFrameSize()> Integer.MAX_VALUE ?
-comment|//    Integer.MAX_VALUE : (int) transport.getWireFormat().getMaxFrameSize();
+comment|// AMQ-4914 - Setting the max frame size to large stalls out the QPid
+comment|// client on sends or
+comment|// consume due to no session credit. Once fixed we should set this value
+comment|// using
+comment|// the configured maxFrameSize on the URI.
+comment|// int maxFrameSize = transport.getWireFormat().getMaxFrameSize()>
+comment|// Integer.MAX_VALUE ?
+comment|// Integer.MAX_VALUE : (int)
+comment|// transport.getWireFormat().getMaxFrameSize();
 name|this
 operator|.
 name|protonTransport
@@ -2116,7 +2127,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// We can't really auth at this point since we don't know the client id yet.. :(
+comment|// We can't really auth at this point since we don't
+comment|// know the client id yet.. :(
 name|sasl
 operator|.
 name|done
@@ -2738,7 +2750,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Pass down any unexpected errors. Should this close the connection?
+comment|// Pass down any unexpected errors. Should this close the
+comment|// connection?
 if|if
 condition|(
 name|response
@@ -2895,7 +2908,8 @@ operator|.
 name|DATA_STRUCTURE_TYPE
 condition|)
 block|{
-comment|// Pass down any unexpected async errors. Should this close the connection?
+comment|// Pass down any unexpected async errors. Should this close the
+comment|// connection?
 name|Throwable
 name|exception
 init|=
@@ -3006,12 +3020,12 @@ name|onClose
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{         }
 specifier|public
 name|void
 name|drainCheck
 parameter_list|()
-block|{}
+block|{         }
 specifier|abstract
 name|void
 name|doCommit
@@ -3720,7 +3734,7 @@ name|doCommit
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{         }
 annotation|@
 name|Override
 name|void
@@ -3728,7 +3742,7 @@ name|doRollback
 parameter_list|()
 throws|throws
 name|Exception
-block|{}
+block|{         }
 specifier|abstract
 specifier|protected
 name|void
@@ -3889,7 +3903,8 @@ argument_list|(
 name|producerId
 argument_list|)
 expr_stmt|;
-comment|// Always override the AMQP client's MessageId with our own.  Preserve the
+comment|// Always override the AMQP client's MessageId with our own.
+comment|// Preserve the
 comment|// original in the TextView property for later Ack.
 name|MessageId
 name|messageId
@@ -4035,8 +4050,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Lets handle the case where the expiration was set, but the timestamp
-comment|// was not set by the client. Lets assign the timestamp now, and adjust the
+comment|// Lets handle the case where the expiration was set, but the
+comment|// timestamp
+comment|// was not set by the client. Lets assign the timestamp now, and
+comment|// adjust the
 comment|// expiration.
 if|if
 condition|(
@@ -6072,8 +6089,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Topics can dispatch the same Message to more than one consumer
-comment|// so we must copy to prevent concurrent read / write to the same
+comment|// Topics can dispatch the same Message to more than one
+comment|// consumer
+comment|// so we must copy to prevent concurrent read / write to
+comment|// the same
 comment|// message object.
 if|if
 condition|(
@@ -6363,7 +6382,8 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// we are going to settle, but redeliver.. we we won't yet ack to ActiveMQ
+comment|// we are going to settle, but redeliver.. we we won't yet ack
+comment|// to ActiveMQ
 name|delivery
 operator|.
 name|settle
@@ -6517,7 +6537,8 @@ argument_list|(
 name|localTxId
 argument_list|)
 expr_stmt|;
-comment|// Store the message sent in this TX we might need to re-send on rollback
+comment|// Store the message sent in this TX we might need to
+comment|// re-send on rollback
 name|md
 operator|.
 name|getMessage
