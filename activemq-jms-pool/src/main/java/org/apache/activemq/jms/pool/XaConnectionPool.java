@@ -53,6 +53,26 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|TemporaryQueue
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|TemporaryTopic
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|XAConnection
 import|;
 end_import
@@ -110,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An XA-aware connection pool.  When a session is created and an xa transaction is active,  * the session will automatically be enlisted in the current transaction.  *  * @author gnodet  */
+comment|/**  * An XA-aware connection pool. When a session is created and an xa transaction  * is active, the session will automatically be enlisted in the current  * transaction.  */
 end_comment
 
 begin_class
@@ -211,7 +231,8 @@ condition|(
 name|isXa
 condition|)
 block|{
-comment|// if the xa tx aborts inflight we don't want to auto create a local transaction or auto ack
+comment|// if the xa tx aborts inflight we don't want to auto create a
+comment|// local transaction or auto ack
 name|transacted
 operator|=
 literal|false
@@ -273,6 +294,62 @@ condition|(
 name|isXa
 condition|)
 block|{
+name|session
+operator|.
+name|addSessionEventListener
+argument_list|(
+operator|new
+name|PooledSessionEventListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onTemporaryQueueCreate
+parameter_list|(
+name|TemporaryQueue
+name|tempQueue
+parameter_list|)
+block|{                     }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onTemporaryTopicCreate
+parameter_list|(
+name|TemporaryTopic
+name|tempTopic
+parameter_list|)
+block|{                     }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onSessionClosed
+parameter_list|(
+name|PooledSession
+name|session
+parameter_list|)
+block|{
+name|session
+operator|.
+name|setIgnoreClose
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
+name|setIsXa
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|setIgnoreClose
@@ -464,20 +541,6 @@ name|session
 operator|.
 name|close
 argument_list|()
-expr_stmt|;
-name|session
-operator|.
-name|setIgnoreClose
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|setIsXa
-argument_list|(
-literal|false
-argument_list|)
 expr_stmt|;
 name|decrementReferenceCount
 argument_list|()
