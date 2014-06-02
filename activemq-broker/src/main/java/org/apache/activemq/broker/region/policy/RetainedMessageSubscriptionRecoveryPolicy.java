@@ -706,6 +706,15 @@ operator|=
 name|wrapped
 expr_stmt|;
 block|}
+specifier|public
+name|SubscriptionRecoveryPolicy
+name|getWrapped
+parameter_list|()
+block|{
+return|return
+name|wrapped
+return|;
+block|}
 block|}
 end_class
 
