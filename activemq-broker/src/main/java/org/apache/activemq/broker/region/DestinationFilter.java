@@ -1586,6 +1586,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|public
+name|Destination
+name|getNext
+parameter_list|()
+block|{
+return|return
+name|next
+return|;
+block|}
 block|}
 end_class
 
