@@ -1055,7 +1055,7 @@ name|advisoryConsumer
 operator|.
 name|receive
 argument_list|(
-literal|2000
+literal|5000
 argument_list|)
 decl_stmt|;
 name|assertNotNull

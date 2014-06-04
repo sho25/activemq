@@ -445,6 +445,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|MSG_PROPERTY_DESTINATION
+init|=
+literal|"orignalDestination"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|MSG_PROPERTY_CONSUMER_COUNT
 init|=
 literal|"consumerCount"
