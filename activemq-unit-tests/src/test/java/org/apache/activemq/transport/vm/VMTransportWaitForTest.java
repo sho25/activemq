@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -63,16 +99,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -97,12 +123,20 @@ name|BrokerService
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|VMTransportWaitForTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -140,6 +174,13 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testWaitFor
@@ -179,7 +220,8 @@ name|JMSException
 name|expectedOnNoBrokerAndNoCreate
 parameter_list|)
 block|{         }
-comment|// spawn a thread that will wait for an embedded broker to start via vm://..
+comment|// spawn a thread that will wait for an embedded broker to start via
+comment|// vm://..
 name|Thread
 name|t
 init|=
@@ -187,6 +229,8 @@ operator|new
 name|Thread
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -294,13 +338,6 @@ operator|.
 name|setPersistent
 argument_list|(
 literal|false
-argument_list|)
-expr_stmt|;
-name|broker
-operator|.
-name|addConnector
-argument_list|(
-literal|"tcp://localhost:61616"
 argument_list|)
 expr_stmt|;
 name|broker
