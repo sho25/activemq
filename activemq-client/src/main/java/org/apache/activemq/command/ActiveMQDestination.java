@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller  *  */
+comment|/**  * @openwire:marshaller  */
 end_comment
 
 begin_class
@@ -1204,13 +1204,29 @@ argument_list|()
 expr_stmt|;
 specifier|final
 name|int
-name|len
+name|length
 init|=
 name|physicalName
 operator|.
 name|length
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|physicalName
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Invalid destination name: a non-empty name is required"
+argument_list|)
+throw|;
+block|}
 comment|// options offset
 name|int
 name|p
@@ -1232,7 +1248,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|len
+name|length
 condition|;
 name|i
 operator|++
@@ -1675,6 +1691,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -1732,6 +1750,8 @@ name|physicalName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -1756,6 +1776,8 @@ return|return
 name|hashValue
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1766,6 +1788,8 @@ name|getQualifiedName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeExternal
@@ -1794,6 +1818,8 @@ name|options
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1901,6 +1927,8 @@ return|return
 name|options
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -1910,6 +1938,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|buildFromProperties
@@ -1942,6 +1972,8 @@ name|properties
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|populateProperties

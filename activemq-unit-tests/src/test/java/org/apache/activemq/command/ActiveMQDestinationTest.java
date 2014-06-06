@@ -158,7 +158,7 @@ name|destination
 decl_stmt|;
 specifier|public
 name|void
-name|initCombosForTestDesintaionMarshaling
+name|initCombosForTestDestinationMarshaling
 parameter_list|()
 block|{
 name|addCombinationValues
@@ -234,7 +234,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testDesintaionMarshaling
+name|testDestinationMarshaling
 parameter_list|()
 throws|throws
 name|IOException
@@ -247,7 +247,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|initCombosForTestDesintaionOptions
+name|initCombosForTestDestinationOptions
 parameter_list|()
 block|{
 name|addCombinationValues
@@ -287,7 +287,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testDesintaionOptions
+name|testDestinationOptions
 parameter_list|()
 throws|throws
 name|IOException
@@ -660,6 +660,58 @@ name|suite
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testEmptyQueueName
+parameter_list|()
+block|{
+try|try
+block|{
+operator|new
+name|ActiveMQQueue
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Should have thrown IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{          }
+block|}
+specifier|public
+name|void
+name|testEmptyTopicName
+parameter_list|()
+block|{
+try|try
+block|{
+operator|new
+name|ActiveMQTopic
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Should have thrown IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{          }
 block|}
 block|}
 end_class
