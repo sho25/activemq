@@ -392,6 +392,8 @@ decl_stmt|;
 name|BrokerFactoryHandler
 name|brokerFactoryHandler
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doConnect
@@ -414,6 +416,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doCompositeConnect
@@ -509,9 +513,6 @@ argument_list|)
 decl_stmt|;
 name|host
 operator|=
-operator|(
-name|String
-operator|)
 name|brokerData
 operator|.
 name|getParameters
@@ -595,9 +596,6 @@ expr_stmt|;
 name|String
 name|config
 init|=
-operator|(
-name|String
-operator|)
 name|options
 operator|.
 name|remove
@@ -1159,7 +1157,7 @@ return|return
 name|host
 return|;
 block|}
-comment|/**     * @param registry     * @param brokerName     * @param waitForStart - time in milliseconds to wait for a broker to appear     * @return     */
+comment|/**     * Attempt to find a Broker instance.     *     * @param registry     *        the registry in which to search for the BrokerService instance.     * @param brokerName     *        the name of the Broker that should be located.     * @param waitForStart     *        time in milliseconds to wait for a broker to appear and be started.     *     * @return a BrokerService instance if one is found, or null.     */
 specifier|private
 name|BrokerService
 name|lookupBroker
@@ -1203,7 +1201,7 @@ condition|(
 name|broker
 operator|==
 literal|null
-operator|&&
+operator|||
 name|waitForStart
 operator|>
 literal|0
@@ -1269,7 +1267,7 @@ literal|"waiting for broker named: "
 operator|+
 name|brokerName
 operator|+
-literal|" to start"
+literal|" to enter registry"
 argument_list|)
 expr_stmt|;
 name|registry
@@ -1298,6 +1296,67 @@ argument_list|(
 name|brokerName
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|broker
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|broker
+operator|.
+name|isStarted
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"waiting for broker named: "
+operator|+
+name|brokerName
+operator|+
+literal|" to start"
+argument_list|)
+expr_stmt|;
+name|timeout
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|expiry
+operator|-
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Wait for however long we have left for broker to be started, if
+comment|// it doesn't get started we need to clear broker so it doesn't get
+comment|// returned.  A null return should throw an exception.
+if|if
+condition|(
+operator|!
+name|broker
+operator|.
+name|waitUntilStarted
+argument_list|(
+name|timeout
+argument_list|)
+condition|)
+block|{
+name|broker
+operator|=
+literal|null
+expr_stmt|;
+break|break;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -1305,6 +1364,8 @@ return|return
 name|broker
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind
