@@ -622,6 +622,11 @@ block|}
 else|else
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|brokerOptions
 init|=
 name|IntrospectionSupport
@@ -1257,6 +1262,13 @@ name|currentTimeMillis
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|broker
+operator|==
+literal|null
+condition|)
+block|{
 try|try
 block|{
 name|LOG
@@ -1286,16 +1298,8 @@ parameter_list|(
 name|InterruptedException
 name|ignored
 parameter_list|)
-block|{                     }
-name|broker
-operator|=
-name|registry
-operator|.
-name|lookup
-argument_list|(
-name|brokerName
-argument_list|)
-expr_stmt|;
+block|{                         }
+block|}
 if|if
 condition|(
 name|broker
