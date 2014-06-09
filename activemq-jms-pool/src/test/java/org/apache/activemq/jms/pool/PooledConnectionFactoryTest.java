@@ -18,6 +18,66 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -133,36 +193,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestSuite
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -249,6 +279,16 @@ name|Ignore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Checks the behavior of the PooledConnectionFactory when the maximum amount of  * sessions is being reached.  *  * Older versions simply block in the call to Connection.getSession(), which  * isn't good. An exception being returned is the better option, so JMS clients  * don't block. This test succeeds if an exception is returned and fails if the  * call to getSession() blocks.  */
 end_comment
@@ -257,8 +297,6 @@ begin_class
 specifier|public
 class|class
 name|PooledConnectionFactoryTest
-extends|extends
-name|TestCase
 block|{
 specifier|public
 specifier|final
@@ -275,37 +313,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * Create the test case      *      * @param testName      *            name of the test case      */
-specifier|public
-name|PooledConnectionFactoryTest
-parameter_list|(
-name|String
-name|testName
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|testName
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @return the suite of tests being tested      */
-specifier|public
-specifier|static
+annotation|@
 name|Test
-name|suite
-parameter_list|()
-block|{
-return|return
-operator|new
-name|TestSuite
-argument_list|(
-name|PooledConnectionFactoryTest
-operator|.
-name|class
-argument_list|)
-return|;
-block|}
 specifier|public
 name|void
 name|testClearAllConnections
@@ -510,6 +519,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMaxConnectionsAreCreated
@@ -630,6 +641,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConnectionsAreRotated
@@ -738,6 +751,8 @@ name|current
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConnectionsArePooled
@@ -858,6 +873,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConnectionsArePooledAsyncCreate
@@ -1085,6 +1102,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConcurrentCreateGetsUniqueConnectionCreateOnDemand
@@ -1103,6 +1122,8 @@ name|Ignore
 argument_list|(
 literal|"something up - don't know why the start call to createConnection does not cause close - but that does not fix it either!"
 argument_list|)
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testConcurrentCreateGetsUniqueConnectionCreateOnStart
@@ -1150,6 +1171,11 @@ expr_stmt|;
 name|brokerService
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|brokerService
+operator|.
+name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 try|try
@@ -1336,7 +1362,7 @@ name|executor
 operator|.
 name|awaitTermination
 argument_list|(
-literal|5
+literal|30
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1579,8 +1605,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-comment|// this should raise an exception as we called
-comment|// setMaximumActive(1)
+comment|// this should raise an exception as we called setMaximumActive(1)
 name|two
 operator|=
 name|conn
@@ -1685,22 +1710,26 @@ name|one
 operator|!=
 literal|null
 condition|)
+block|{
 name|one
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|conn
 operator|!=
 literal|null
 condition|)
+block|{
 name|conn
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
