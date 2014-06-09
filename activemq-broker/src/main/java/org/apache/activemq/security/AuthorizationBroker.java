@@ -461,7 +461,9 @@ init|=
 name|this
 operator|.
 name|getDestinationMap
-argument_list|()
+argument_list|(
+name|destination
+argument_list|)
 operator|.
 name|get
 argument_list|(

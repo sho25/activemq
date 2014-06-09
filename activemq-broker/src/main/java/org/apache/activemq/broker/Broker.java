@@ -31,6 +31,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -444,6 +454,20 @@ name|getDestinations
 parameter_list|()
 throws|throws
 name|Exception
+function_decl|;
+comment|/**      * return a reference destination map of a region based on the destination type      * @param destination      * @return      */
+specifier|public
+name|Map
+argument_list|<
+name|ActiveMQDestination
+argument_list|,
+name|Destination
+argument_list|>
+name|getDestinationMap
+parameter_list|(
+name|ActiveMQDestination
+name|destination
+parameter_list|)
 function_decl|;
 comment|/**      * Gets a list of all the prepared xa transactions.      *      * @param context transaction ids      * @return      * @throws Exception TODO      */
 name|TransactionId
