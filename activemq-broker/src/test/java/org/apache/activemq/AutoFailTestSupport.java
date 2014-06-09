@@ -277,6 +277,18 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"org.apache.activemq.AutoFailTestSupport.disableSystemExit"
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
 name|System
 operator|.
 name|exit
@@ -284,6 +296,17 @@ argument_list|(
 name|EXIT_ERROR
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"No system.exit as it kills surefire - forkedProcessTimeoutInSeconds (surefire.timeout) will kick in eventually see pom.xml surefire plugin config"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
