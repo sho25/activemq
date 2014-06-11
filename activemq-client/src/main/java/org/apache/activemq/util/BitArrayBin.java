@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Holder for many bitArrays - used for message audit  *   *   */
+comment|/**  * Holder for many bitArrays - used for message audit  *  *  */
 end_comment
 
 begin_class
@@ -55,6 +55,7 @@ init|=
 literal|1L
 decl_stmt|;
 specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|BitArray
@@ -66,7 +67,7 @@ name|int
 name|maxNumberOfArrays
 decl_stmt|;
 specifier|private
-name|int
+name|long
 name|firstIndex
 init|=
 operator|-
@@ -79,7 +80,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-comment|/**      * Create a BitArrayBin to a certain window size (number of messages to      * keep)      *       * @param windowSize      */
+comment|/**      * Create a BitArrayBin to a certain window size (number of messages to      * keep)      *      * @param windowSize      */
 specifier|public
 name|BitArrayBin
 parameter_list|(
@@ -147,7 +148,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Set a bit      *       * @param index      * @param value      * @return true if set      */
+comment|/**      * Set a bit      *      * @param index      * @param value      * @return true if set      */
 specifier|public
 name|boolean
 name|setBit
@@ -257,7 +258,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Get the boolean value at the index      *       * @param index      * @return true/false      */
+comment|/**      * Get the boolean value at the index      *      * @param index      * @return true/false      */
 specifier|public
 name|boolean
 name|getBit
@@ -329,7 +330,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Get the BitArray for the index      *       * @param index      * @return BitArray      */
+comment|/**      * Get the BitArray for the index      *      * @param index      * @return BitArray      */
 specifier|private
 name|BitArray
 name|getBitArray
@@ -449,7 +450,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Get the index of the bin from the total index      *       * @param index      * @return the index of the bin      */
+comment|/**      * Get the index of the bin from the total index      *      * @param index      * @return the index of the bin      */
 specifier|private
 name|int
 name|getBin
@@ -518,7 +519,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Get the offset into a bin from the total index      *       * @param index      * @return the relative offset into a bin      */
+comment|/**      * Get the offset into a bin from the total index      *      * @param index      * @return the relative offset into a bin      */
 specifier|private
 name|int
 name|getOffset
