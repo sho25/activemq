@@ -53,16 +53,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|JMSException
 import|;
 end_import
@@ -104,16 +94,6 @@ operator|.
 name|jms
 operator|.
 name|TopicConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|XAConnectionFactory
 import|;
 end_import
 
@@ -210,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A pooled connection factory that automatically enlists  * sessions in the current active XA transaction if any.  */
+comment|/**  * A pooled connection factory that automatically enlists sessions in the  * current active XA transaction if any.  */
 end_comment
 
 begin_class
@@ -243,6 +223,15 @@ name|XaPooledConnectionFactory
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|6545688026350913005L
 decl_stmt|;
 specifier|private
 name|TransactionManager
@@ -481,6 +470,9 @@ name|InitialContext
 argument_list|()
 decl_stmt|;
 name|NamingEnumeration
+argument_list|<
+name|Binding
+argument_list|>
 name|bindings
 init|=
 name|ctx
@@ -501,9 +493,6 @@ block|{
 name|Binding
 name|bd
 init|=
-operator|(
-name|Binding
-operator|)
 name|bindings
 operator|.
 name|next
@@ -590,7 +579,7 @@ return|return
 name|tmFromJndi
 return|;
 block|}
-comment|/**      * Allow transaction manager resolution from JNDI (ee deployment)      * @param tmFromJndi      */
+comment|/**      * Allow transaction manager resolution from JNDI (ee deployment)      *      * @param tmFromJndi      */
 specifier|public
 name|void
 name|setTmFromJndi
