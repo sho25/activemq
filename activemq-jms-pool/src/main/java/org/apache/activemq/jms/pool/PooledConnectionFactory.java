@@ -601,7 +601,7 @@ return|return
 name|connectionFactory
 return|;
 block|}
-comment|/**      * Sets the ConnectionFactory used to create new pooled Connections.      *<p/>      * Updates to this value do not affect Connections that were previously created and placed      * into the pool.  In order to allocate new Connections based off this new ConnectionFactory      * it is first necessary to {@link clear} the pooled Connections.      *      * @param toUse      *      The factory to use to create pooled Connections.      */
+comment|/**      * Sets the ConnectionFactory used to create new pooled Connections.      *<p/>      * Updates to this value do not affect Connections that were previously created and placed      * into the pool.  In order to allocate new Connections based off this new ConnectionFactory      * it is first necessary to {@link #clear} the pooled Connections.      *      * @param toUse      *      The factory to use to create pooled Connections.      */
 specifier|public
 name|void
 name|setConnectionFactory
@@ -1148,7 +1148,7 @@ parameter_list|)
 block|{             }
 block|}
 block|}
-comment|/**      * Clears all connections from the pool.  Each connection that is currently in the pool is      * closed and removed from the pool.  A new connection will be created on the next call to      * {@link createConnection}.  Care should be taken when using this method as Connections that      * are in use be client's will be closed.      */
+comment|/**      * Clears all connections from the pool.  Each connection that is currently in the pool is      * closed and removed from the pool.  A new connection will be created on the next call to      * {@link #createConnection}.  Care should be taken when using this method as Connections that      * are in use be client's will be closed.      */
 specifier|public
 name|void
 name|clear
@@ -1225,7 +1225,7 @@ operator|.
 name|blockIfSessionPoolIsFull
 return|;
 block|}
-comment|/**      * Returns the maximum number to pooled Connections that this factory will allow before it      * begins to return connections from the pool on calls to ({@link createConnection}.      *      * @return the maxConnections that will be created for this pool.      */
+comment|/**      * Returns the maximum number to pooled Connections that this factory will allow before it      * begins to return connections from the pool on calls to ({@link #createConnection}.      *      * @return the maxConnections that will be created for this pool.      */
 specifier|public
 name|int
 name|getMaxConnections
@@ -1239,7 +1239,7 @@ name|getMaxIdle
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the maximum number of pooled Connections (defaults to one).  Each call to      * {@link createConnection} will result in a new Connection being create up to the max      * connections value.      *      * @param maxConnections the maxConnections to set      */
+comment|/**      * Sets the maximum number of pooled Connections (defaults to one).  Each call to      * {@link #createConnection} will result in a new Connection being create up to the max      * connections value.      *      * @param maxConnections the maxConnections to set      */
 specifier|public
 name|void
 name|setMaxConnections
