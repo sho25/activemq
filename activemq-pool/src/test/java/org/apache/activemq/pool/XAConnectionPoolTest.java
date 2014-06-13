@@ -257,31 +257,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|ActiveMQXAConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQXASession
 import|;
 end_import
 
@@ -379,7 +355,7 @@ operator|.
 name|setConnectionFactory
 argument_list|(
 operator|new
-name|ActiveMQConnectionFactory
+name|ActiveMQXAConnectionFactory
 argument_list|(
 literal|"vm://test?broker.persistent=false"
 argument_list|)
@@ -673,8 +649,6 @@ operator|instanceof
 name|PooledSession
 argument_list|)
 expr_stmt|;
-comment|//        PooledSession pooledSession = (PooledSession) session;
-comment|//        assertTrue(pooledSession.getInternalSession() instanceof ActiveMQXASession);
 name|TopicPublisher
 name|publisher
 init|=
@@ -1323,7 +1297,7 @@ operator|.
 name|setConnectionFactory
 argument_list|(
 operator|new
-name|ActiveMQConnectionFactory
+name|ActiveMQXAConnectionFactory
 argument_list|(
 literal|"vm://test?broker.persistent=false"
 argument_list|)
@@ -1455,7 +1429,7 @@ operator|.
 name|setConnectionFactory
 argument_list|(
 operator|new
-name|ActiveMQConnectionFactory
+name|ActiveMQXAConnectionFactory
 argument_list|(
 literal|"vm://test?broker.persistent=false"
 argument_list|)
