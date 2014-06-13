@@ -275,16 +275,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -1117,11 +1107,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"something up - don't know why the start call to createConnection does not cause close - but that does not fix it either!"
-argument_list|)
 annotation|@
 name|Test
 specifier|public
