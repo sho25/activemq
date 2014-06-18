@@ -2988,6 +2988,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|command
+operator|.
+name|isMessage
+argument_list|()
+operator|&&
 name|timeout
 operator|>
 literal|0
