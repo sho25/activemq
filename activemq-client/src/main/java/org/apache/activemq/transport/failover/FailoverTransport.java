@@ -969,6 +969,12 @@ specifier|private
 name|String
 name|nestedExtraQueryOptions
 decl_stmt|;
+specifier|private
+name|boolean
+name|shuttingDown
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|FailoverTransport
 parameter_list|()
@@ -1470,6 +1476,15 @@ init|)
 block|{
 if|if
 condition|(
+name|shuttingDown
+condition|)
+block|{
+comment|// shutdown info sent and remote socket closed and we see that before a local close
+comment|// let the close do the work
+return|return;
+block|}
+if|if
+condition|(
 name|LOG
 operator|.
 name|isTraceEnabled
@@ -1536,7 +1551,7 @@ literal|"Transport ("
 operator|+
 name|transport
 operator|+
-literal|") failed, reason:  "
+literal|") failed"
 operator|+
 operator|(
 name|reconnectOk
@@ -3282,6 +3297,19 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|command
+operator|.
+name|isShutdownInfo
+argument_list|()
+condition|)
+block|{
+name|shuttingDown
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
