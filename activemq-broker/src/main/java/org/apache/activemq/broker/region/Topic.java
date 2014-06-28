@@ -3061,7 +3061,7 @@ condition|)
 block|{
 name|scheduler
 operator|.
-name|schedualPeriodically
+name|executePeriodically
 argument_list|(
 name|expireMessagesTask
 argument_list|,
