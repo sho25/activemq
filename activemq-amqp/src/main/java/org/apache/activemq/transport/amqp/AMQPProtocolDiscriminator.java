@@ -190,7 +190,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-specifier|static
 specifier|final
 specifier|private
 name|ArrayList
