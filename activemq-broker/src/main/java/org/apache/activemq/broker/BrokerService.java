@@ -1498,6 +1498,14 @@ literal|1024
 operator|*
 literal|32
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|DEFAULT_START_TIMEOUT
+init|=
+literal|600000L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -1588,7 +1596,7 @@ specifier|private
 name|long
 name|waitForSlaveTimeout
 init|=
-literal|600000L
+name|DEFAULT_START_TIMEOUT
 decl_stmt|;
 specifier|private
 name|boolean
@@ -2119,10 +2127,6 @@ init|=
 name|OpenWireFormat
 operator|.
 name|DEFAULT_VERSION
-decl_stmt|;
-specifier|private
-name|String
-name|configurationUrl
 decl_stmt|;
 static|static
 block|{
@@ -4693,9 +4697,7 @@ block|{
 return|return
 name|waitUntilStarted
 argument_list|(
-name|Long
-operator|.
-name|MAX_VALUE
+name|DEFAULT_START_TIMEOUT
 argument_list|)
 return|;
 block|}
