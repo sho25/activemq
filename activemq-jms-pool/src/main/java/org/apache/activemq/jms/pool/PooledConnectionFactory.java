@@ -1166,6 +1166,9 @@ block|{
 comment|// warm the pool by creating a connection during startup
 name|createConnection
 argument_list|()
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
