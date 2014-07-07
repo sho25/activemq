@@ -17,6 +17,10 @@ name|scheduler
 package|;
 end_package
 
+begin_comment
+comment|/**  * Interface for a scheduled Job object.  *  * Each Job is identified by a unique Job Id which can be used to reference the Job  * in the Job Scheduler store for updates or removal.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
@@ -78,10 +82,16 @@ name|String
 name|getStartTime
 parameter_list|()
 function_decl|;
-comment|/**      * Get the time the job is next due to execute       * @return the date time      */
+comment|/**      * Get the time the job is next due to execute      * @return the date time      */
 specifier|public
 name|String
 name|getNextExecutionTime
+parameter_list|()
+function_decl|;
+comment|/**      * Gets the total number of times this job has executed.      *      * @returns the number of times this job has been executed.      */
+specifier|public
+name|int
+name|getExecutionCount
 parameter_list|()
 function_decl|;
 block|}

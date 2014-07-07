@@ -79,6 +79,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|scheduler
+operator|.
+name|JobSchedulerStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -142,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *  *   */
+comment|/**  * Adapter to the actual persistence mechanism used with ActiveMQ  *  *  */
 end_comment
 
 begin_interface
@@ -152,7 +168,7 @@ name|PersistenceAdapter
 extends|extends
 name|Service
 block|{
-comment|/**      * Returns a set of all the {@link org.apache.activemq.command.ActiveMQDestination}      * objects that the persistence store is aware exist.      *      * @return active destinations      */
+comment|/**      * Returns a set of all the      * {@link org.apache.activemq.command.ActiveMQDestination} objects that the      * persistence store is aware exist.      *      * @return active destinations      */
 name|Set
 argument_list|<
 name|ActiveMQDestination
@@ -160,7 +176,7 @@ argument_list|>
 name|getDestinations
 parameter_list|()
 function_decl|;
-comment|/**      * Factory method to create a new queue message store with the given destination name      * @param destination      * @return the message store      * @throws IOException       */
+comment|/**      * Factory method to create a new queue message store with the given      * destination name      *      * @param destination      * @return the message store      * @throws IOException      */
 name|MessageStore
 name|createQueueMessageStore
 parameter_list|(
@@ -170,7 +186,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Factory method to create a new topic message store with the given destination name      * @param destination       * @return the topic message store      * @throws IOException       */
+comment|/**      * Factory method to create a new topic message store with the given      * destination name      *      * @param destination      * @return the topic message store      * @throws IOException      */
 name|TopicMessageStore
 name|createTopicMessageStore
 parameter_list|(
@@ -180,7 +196,16 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Cleanup method to remove any state associated with the given destination.      * This method does not stop the message store (it might not be cached).      * @param destination Destination to forget      */
+comment|/**      * Creates and returns a new Job Scheduler store instance.      *      * @return a new JobSchedulerStore instance if this Persistence adapter provides its own.      *      * @throws IOException If an error occurs while creating the new JobSchedulerStore.      * @throws UnsupportedOperationException If this adapter does not provide its own      *                                       scheduler store implementation.      */
+name|JobSchedulerStore
+name|createJobSchedulerStore
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|UnsupportedOperationException
+function_decl|;
+comment|/**      * Cleanup method to remove any state associated with the given destination.      * This method does not stop the message store (it might not be cached).      *      * @param destination      *            Destination to forget      */
 name|void
 name|removeQueueMessageStore
 parameter_list|(
@@ -188,7 +213,7 @@ name|ActiveMQQueue
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * Cleanup method to remove any state associated with the given destination      * This method does not stop the message store (it might not be cached).      * @param destination Destination to forget      */
+comment|/**      * Cleanup method to remove any state associated with the given destination      * This method does not stop the message store (it might not be cached).      *      * @param destination      *            Destination to forget      */
 name|void
 name|removeTopicMessageStore
 parameter_list|(
@@ -196,14 +221,14 @@ name|ActiveMQTopic
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * Factory method to create a new persistent prepared transaction store for XA recovery      * @return transaction store      * @throws IOException       */
+comment|/**      * Factory method to create a new persistent prepared transaction store for      * XA recovery      *      * @return transaction store      * @throws IOException      */
 name|TransactionStore
 name|createTransactionStore
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * This method starts a transaction on the persistent storage - which is nothing to      * do with JMS or XA transactions - its purely a mechanism to perform multiple writes      * to a persistent store in 1 transaction as a performance optimization.      *<p/>      * Typically one transaction will require one disk synchronization point and so for      * real high performance its usually faster to perform many writes within the same      * transaction to minimize latency caused by disk synchronization. This is especially      * true when using tools like Berkeley Db or embedded JDBC servers.      * @param context       * @throws IOException       */
+comment|/**      * This method starts a transaction on the persistent storage - which is      * nothing to do with JMS or XA transactions - its purely a mechanism to      * perform multiple writes to a persistent store in 1 transaction as a      * performance optimization.      *<p/>      * Typically one transaction will require one disk synchronization point and      * so for real high performance its usually faster to perform many writes      * within the same transaction to minimize latency caused by disk      * synchronization. This is especially true when using tools like Berkeley      * Db or embedded JDBC servers.      *      * @param context      * @throws IOException      */
 name|void
 name|beginTransaction
 parameter_list|(
@@ -213,7 +238,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Commit a persistence transaction      * @param context       * @throws IOException       *      * @see PersistenceAdapter#beginTransaction(ConnectionContext context)      */
+comment|/**      * Commit a persistence transaction      *      * @param context      * @throws IOException      *      * @see PersistenceAdapter#beginTransaction(ConnectionContext context)      */
 name|void
 name|commitTransaction
 parameter_list|(
@@ -223,7 +248,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Rollback a persistence transaction      * @param context       * @throws IOException       *      * @see PersistenceAdapter#beginTransaction(ConnectionContext context)      */
+comment|/**      * Rollback a persistence transaction      *      * @param context      * @throws IOException      *      * @see PersistenceAdapter#beginTransaction(ConnectionContext context)      */
 name|void
 name|rollbackTransaction
 parameter_list|(
@@ -233,21 +258,21 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      *       * @return last broker sequence      * @throws IOException      */
+comment|/**      *      * @return last broker sequence      * @throws IOException      */
 name|long
 name|getLastMessageBrokerSequenceId
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Delete's all the messages in the persistent store.      *       * @throws IOException      */
+comment|/**      * Delete's all the messages in the persistent store.      *      * @throws IOException      */
 name|void
 name|deleteAllMessages
 parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * @param usageManager The UsageManager that is controlling the broker's memory usage.      */
+comment|/**      * @param usageManager      *            The UsageManager that is controlling the broker's memory      *            usage.      */
 name|void
 name|setUsageManager
 parameter_list|(
@@ -255,7 +280,7 @@ name|SystemUsage
 name|usageManager
 parameter_list|)
 function_decl|;
-comment|/**      * Set the name of the broker using the adapter      * @param brokerName      */
+comment|/**      * Set the name of the broker using the adapter      *      * @param brokerName      */
 name|void
 name|setBrokerName
 parameter_list|(
@@ -263,7 +288,7 @@ name|String
 name|brokerName
 parameter_list|)
 function_decl|;
-comment|/**      * Set the directory where any data files should be created      * @param dir      */
+comment|/**      * Set the directory where any data files should be created      *      * @param dir      */
 name|void
 name|setDirectory
 parameter_list|(
@@ -276,7 +301,7 @@ name|File
 name|getDirectory
 parameter_list|()
 function_decl|;
-comment|/**      * checkpoint any      * @param sync       * @throws IOException       *      */
+comment|/**      * checkpoint any      *      * @param sync      * @throws IOException      *      */
 name|void
 name|checkpoint
 parameter_list|(
@@ -286,12 +311,12 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * A hint to return the size of the store on disk      * @return disk space used in bytes of 0 if not implemented      */
+comment|/**      * A hint to return the size of the store on disk      *      * @return disk space used in bytes of 0 if not implemented      */
 name|long
 name|size
 parameter_list|()
 function_decl|;
-comment|/**      * return the last stored producer sequenceId for this producer Id      * used to suppress duplicate sends on failover reconnect at the transport      * when a reconnect occurs      * @param id the producerId to find a sequenceId for      * @return the last stored sequence id or -1 if no suppression needed      */
+comment|/**      * return the last stored producer sequenceId for this producer Id used to      * suppress duplicate sends on failover reconnect at the transport when a      * reconnect occurs      *      * @param id      *            the producerId to find a sequenceId for      * @return the last stored sequence id or -1 if no suppression needed      */
 name|long
 name|getLastProducerSequenceId
 parameter_list|(

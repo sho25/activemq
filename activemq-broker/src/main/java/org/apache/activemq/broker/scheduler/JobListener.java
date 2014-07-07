@@ -31,12 +31,16 @@ name|ByteSequence
 import|;
 end_import
 
+begin_comment
+comment|/**  * Job event listener interface. Provides event points for Job related events  * such as job ready events.  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|JobListener
 block|{
-comment|/**      * A Job that has been scheduled is now ready       * @param id      * @param job      */
+comment|/**      * A Job that has been scheduled is now ready to be fired.  The Job is passed      * in its raw byte form and must be un-marshaled before being delivered.      *      * @param jobId      *        The unique Job Id of the Job that is ready to fire.      * @param job      *        The job that is now ready, delivered in byte form.      */
 specifier|public
 name|void
 name|scheduledJob

@@ -67,27 +67,27 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a Job listener      *      * @param l      * @throws Exception      */
+comment|/**      * Add a Job listener which will receive events related to scheduled jobs.      *      * @param listener      *      The job listener to add.      *      * @throws Exception      */
 name|void
 name|addListener
 parameter_list|(
 name|JobListener
-name|l
+name|listener
 parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove a JobListener      *      * @param l      * @throws Exception      */
+comment|/**      * remove a JobListener that was previously registered.  If the given listener is not in      * the registry this method has no effect.      *      * @param listener      *      The listener that should be removed from the listener registry.      *      * @throws Exception      */
 name|void
 name|removeListener
 parameter_list|(
 name|JobListener
-name|l
+name|listener
 parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param delay      *            the time in milliseconds before the job will be run      * @throws Exception      */
+comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param delay      *            the time in milliseconds before the job will be run      *      * @throws Exception if an error occurs while scheduling the Job.      */
 name|void
 name|schedule
 parameter_list|(
@@ -103,7 +103,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param cronEntry      *            - cron entry      * @throws Exception      */
+comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param cronEntry      *            The cron entry to use to schedule this job.      *      * @throws Exception if an error occurs while scheduling the Job.      */
 name|void
 name|schedule
 parameter_list|(
@@ -119,7 +119,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param cronEntry      *            - cron entry      * @param delay      *            time in ms to wait before scheduling      * @param period      *            the time in milliseconds between successive executions of the Job      * @param repeat      *            the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
+comment|/**      * Add a job to be scheduled      *      * @param jobId      *            a unique identifier for the job      * @param payload      *            the message to be sent when the job is scheduled      * @param cronEntry      *            cron entry      * @param delay      *            time in ms to wait before scheduling      * @param period      *            the time in milliseconds between successive executions of the Job      * @param repeat      *            the number of times to execute the job - less than 0 will be repeated forever      * @throws Exception      */
 name|void
 name|schedule
 parameter_list|(
@@ -144,7 +144,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove all jobs scheduled to run at this time      *      * @param time      * @throws Exception      */
+comment|/**      * remove all jobs scheduled to run at this time      *      * @param time      *      The UTC time to use to remove a batch of scheduled Jobs.      *      * @throws Exception      */
 name|void
 name|remove
 parameter_list|(
@@ -154,7 +154,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove a job with the matching jobId      *      * @param jobId      * @throws Exception      */
+comment|/**      * remove a job with the matching jobId      *      * @param jobId      *      The unique Job Id to search for and remove from the scheduled set of jobs.      *      * @throws Exception if an error occurs while removing the Job.      */
 name|void
 name|remove
 parameter_list|(

@@ -34,7 +34,9 @@ specifier|public
 interface|interface
 name|JobSchedulerViewMBean
 block|{
-comment|/**      * remove all jobs scheduled to run at this time      * @param time      * @throws Exception      */
+comment|/**      * Remove all jobs scheduled to run at this time.  If there are no jobs scheduled      * at the given time this methods returns without making any modifications to the      * scheduler store.      *      * @param time      *        the string formated time that should be used to remove jobs.      *      * @throws Exception if an error occurs while performing the remove.      *      * @deprecated use removeAllJobsAtScheduledTime instead as it is more explicit about what      *             the method is actually doing.      */
+annotation|@
+name|Deprecated
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -56,7 +58,29 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove a job with the matching jobId      * @param jobId      * @throws Exception      */
+comment|/**      * Remove all jobs scheduled to run at this time.  If there are no jobs scheduled      * at the given time this methods returns without making any modifications to the      * scheduler store.      *      * @param time      *        the string formated time that should be used to remove jobs.      *      * @throws Exception if an error occurs while performing the remove.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"remove jobs with matching execution time"
+argument_list|)
+specifier|public
+specifier|abstract
+name|void
+name|removeAllJobsAtScheduledTime
+parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"time: yyyy-MM-dd hh:mm:ss"
+argument_list|)
+name|String
+name|time
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Remove a job with the matching jobId.  If the method does not find a matching job      * then it returns without throwing an error or making any modifications to the job      * scheduler store.      *      * @param jobId      *        the Job Id to remove from the scheduler store.      *      * @throws Exception if an error occurs while attempting to remove the Job.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -78,7 +102,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove all the Jobs from the scheduler      * @throws Exception      */
+comment|/**      * Remove all the Jobs from the scheduler,      *      * @throws Exception if an error occurs while purging the store.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -92,7 +116,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove all the Jobs from the scheduler that are due between the start and finish times      * @param start time       * @param finish time      * @throws Exception      */
+comment|/**      * Remove all the Jobs from the scheduler that are due between the start and finish times.      *      * @param start      *        the starting time to remove jobs from.      * @param finish      *        the finish time for the remove operation.      *      * @throws Exception if an error occurs while attempting to remove the jobs.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -122,7 +146,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get the next time jobs will be fired      * @return the time in milliseconds      * @throws Exception       */
+comment|/**      * Get the next time jobs will be fired from this scheduler store.      *      * @return the time in milliseconds of the next job to execute.      *      * @throws Exception if an error occurs while accessing the store.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -136,7 +160,29 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get all the jobs scheduled to run next      * @return a list of jobs that will be scheduled next      * @throws Exception      */
+comment|/**      * Gets the number of times a scheduled Job has been executed.      *      * @return the total number of time a scheduled job has executed.      *      * @throws Exception if an error occurs while querying for the Job.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"get the next time a job is due to be scheduled "
+argument_list|)
+specifier|public
+specifier|abstract
+name|int
+name|getExecutionCount
+parameter_list|(
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"jobId"
+argument_list|)
+name|String
+name|jobId
+parameter_list|)
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Get all the jobs scheduled to run next.      *      * @return a list of jobs that will be scheduled next      *      * @throws Exception if an error occurs while reading the scheduler store.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -150,7 +196,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get all the outstanding Jobs      * @return a  table of all jobs      * @throws Exception       */
+comment|/**      * Get all the outstanding Jobs that are scheduled in this scheduler store.      *      * @return a table of all jobs in this scheduler store.      *      * @throws Exception if an error occurs while reading the store.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -164,7 +210,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Get all outstanding jobs due to run between start and finish      * @param start      * @param finish      * @return a table of jobs in the range      * @throws Exception       */
+comment|/**      * Get all outstanding jobs due to run between start and finish time range.      *      * @param start      *        the starting time range to query the store for jobs.      * @param finish      *        the ending time of this query for scheduled jobs.      *      * @return a table of jobs in the range given.      *      * @throws Exception if an error occurs while querying the scheduler store.      */
 annotation|@
 name|MBeanInfo
 argument_list|(

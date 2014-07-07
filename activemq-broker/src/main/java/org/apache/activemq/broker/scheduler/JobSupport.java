@@ -47,6 +47,10 @@ name|Date
 import|;
 end_import
 
+begin_comment
+comment|/**  * A class to provide common Job Scheduler related methods.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

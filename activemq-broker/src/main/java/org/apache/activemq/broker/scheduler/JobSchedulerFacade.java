@@ -51,6 +51,10 @@ name|ByteSequence
 import|;
 end_import
 
+begin_comment
+comment|/**  * A wrapper for instances of the JobScheduler interface that ensures that methods  * provides safe and sane return values and can deal with null values being passed  * in etc.  Provides a measure of safety when using unknown implementations of the  * JobSchedulerStore which might not always do the right thing.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

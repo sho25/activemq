@@ -101,6 +101,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|scheduler
+operator|.
+name|JobSchedulerStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -254,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @org.apache.xbean.XBean  *   */
+comment|/**  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -320,6 +336,8 @@ specifier|private
 name|boolean
 name|useExternalMessageReferences
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -438,6 +456,8 @@ name|MemoryPersistenceAdapter
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -504,6 +524,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -571,6 +593,8 @@ name|rc
 return|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -588,6 +612,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -604,6 +630,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -631,6 +659,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -639,6 +669,8 @@ name|ConnectionContext
 name|context
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -647,6 +679,8 @@ name|ConnectionContext
 name|context
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -655,6 +689,8 @@ name|ConnectionContext
 name|context
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -662,6 +698,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -669,6 +707,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -680,6 +720,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -892,6 +934,8 @@ literal|null
 return|;
 block|}
 comment|/**      * @param usageManager The UsageManager that is controlling the broker's      *                memory usage.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -900,6 +944,8 @@ name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -909,6 +955,8 @@ return|return
 literal|"MemoryPersistenceAdapter"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -917,6 +965,8 @@ name|String
 name|brokerName
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDirectory
@@ -925,6 +975,8 @@ name|File
 name|dir
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|File
 name|getDirectory
@@ -934,6 +986,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -944,6 +998,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -973,6 +1029,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
@@ -986,6 +1044,24 @@ return|return
 operator|-
 literal|1
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|JobSchedulerStore
+name|createJobSchedulerStore
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|UnsupportedOperationException
+block|{
+comment|// We could eventuall implement an in memory scheduler.
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 block|}
 end_class

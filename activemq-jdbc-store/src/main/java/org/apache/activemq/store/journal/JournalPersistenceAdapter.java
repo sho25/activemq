@@ -321,6 +321,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|scheduler
+operator|.
+name|JobSchedulerStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -778,7 +794,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * An implementation of {@link PersistenceAdapter} designed for use with a  * {@link Journal} and then check pointing asynchronously on a timeout with some  * other long term persistent storage.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -981,7 +997,7 @@ decl_stmt|;
 specifier|public
 name|JournalPersistenceAdapter
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 name|JournalPersistenceAdapter
 parameter_list|(
@@ -1075,6 +1091,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1120,6 +1138,8 @@ block|}
 return|;
 block|}
 comment|/**      * @param usageManager The UsageManager that is controlling the      *                destination's memory usage.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -1142,6 +1162,8 @@ name|usageManager
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -1233,6 +1255,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -1296,6 +1320,8 @@ return|return
 name|store
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -1360,6 +1386,8 @@ name|store
 return|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -1377,6 +1405,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -1393,6 +1423,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -1404,6 +1436,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -1418,6 +1452,8 @@ name|getLastMessageBrokerSequenceId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -1436,6 +1472,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -1454,6 +1492,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -1472,6 +1512,8 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1523,6 +1565,8 @@ operator|new
 name|Task
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -1564,6 +1608,8 @@ operator|new
 name|ThreadFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Thread
 name|newThread
@@ -1675,6 +1721,8 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1832,7 +1880,9 @@ return|;
 block|}
 comment|// Implementation methods
 comment|// -------------------------------------------------------------------------
-comment|/**      * The Journal give us a call back so that we can move old data out of the      * journal. Taking a checkpoint does this for us.      *       * @see org.apache.activemq.journal.JournalEventListener#overflowNotification(org.apache.activemq.journal.RecordLocation)      */
+comment|/**      * The Journal give us a call back so that we can move old data out of the      * journal. Taking a checkpoint does this for us.      *      * @see org.apache.activemq.journal.JournalEventListener#overflowNotification(org.apache.activemq.journal.RecordLocation)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|overflowNotification
@@ -1849,7 +1899,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *       */
+comment|/**      * When we checkpoint we move all the journalled data to long term storage.      *      */
 specifier|public
 name|void
 name|checkpoint
@@ -1968,6 +2018,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -1984,7 +2036,7 @@ name|sync
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This does the actual checkpoint.      *       * @return      */
+comment|/**      * This does the actual checkpoint.      *      * @return      */
 specifier|public
 name|boolean
 name|doCheckpoint
@@ -2139,6 +2191,8 @@ name|RecordLocation
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|RecordLocation
 name|call
@@ -2243,6 +2297,8 @@ name|RecordLocation
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|RecordLocation
 name|call
@@ -2585,7 +2641,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *       * @throws IOException      * @throws IOException      * @throws InvalidRecordLocationException      * @throws IllegalStateException      */
+comment|/**      * Move all the messages that were in the journal into long term storage. We      * just replay and do a checkpoint.      *      * @throws IOException      * @throws IOException      * @throws InvalidRecordLocationException      * @throws IllegalStateException      */
 specifier|private
 name|void
 name|recover
@@ -3480,6 +3536,8 @@ name|sync
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onUsageChanged
@@ -3550,6 +3608,8 @@ return|return
 name|transactionStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -3836,6 +3896,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -3867,6 +3929,8 @@ operator|+
 literal|")"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDirectory
@@ -3882,6 +3946,8 @@ operator|=
 name|dir
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|File
 name|getDirectory
@@ -3891,6 +3957,8 @@ return|return
 name|directory
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -3900,6 +3968,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -3941,6 +4011,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
@@ -3952,6 +4024,24 @@ block|{
 return|return
 operator|-
 literal|1
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|JobSchedulerStore
+name|createJobSchedulerStore
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|UnsupportedOperationException
+block|{
+return|return
+name|longTermPersistence
+operator|.
+name|createJobSchedulerStore
+argument_list|()
 return|;
 block|}
 block|}

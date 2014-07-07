@@ -179,6 +179,13 @@ argument_list|)
 expr_stmt|;
 name|broker
 operator|.
+name|setDataDirectory
+argument_list|(
+literal|"target"
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|setSchedulerDirectoryFile
 argument_list|(
 name|schedulerDirectory

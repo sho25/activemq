@@ -83,7 +83,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|Set
+name|Map
+operator|.
+name|Entry
 import|;
 end_import
 
@@ -93,9 +95,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-operator|.
-name|Entry
+name|Set
 import|;
 end_import
 
@@ -138,6 +138,22 @@ operator|.
 name|broker
 operator|.
 name|ConnectionContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|scheduler
+operator|.
+name|JobSchedulerStore
 import|;
 end_import
 
@@ -485,6 +501,26 @@ name|kahadb
 operator|.
 name|data
 operator|.
+name|KahaDestination
+operator|.
+name|DestinationType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|data
+operator|.
 name|KahaLocation
 import|;
 end_import
@@ -555,11 +591,31 @@ name|store
 operator|.
 name|kahadb
 operator|.
-name|data
+name|disk
 operator|.
-name|KahaDestination
+name|journal
 operator|.
-name|DestinationType
+name|Location
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|disk
+operator|.
+name|page
+operator|.
+name|Transaction
 import|;
 end_import
 
@@ -619,46 +675,6 @@ name|WireFormat
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadb
-operator|.
-name|disk
-operator|.
-name|journal
-operator|.
-name|Location
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadb
-operator|.
-name|disk
-operator|.
-name|page
-operator|.
-name|Transaction
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -683,6 +699,8 @@ specifier|private
 name|BrokerService
 name|brokerService
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerName
@@ -691,6 +709,8 @@ name|String
 name|brokerName
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUsageManager
@@ -699,6 +719,8 @@ name|SystemUsage
 name|usageManager
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|TransactionStore
 name|createTransactionStore
@@ -711,6 +733,8 @@ operator|new
 name|TransactionStore
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commit
@@ -762,6 +786,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|prepare
@@ -778,6 +804,8 @@ name|txid
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollback
@@ -794,6 +822,8 @@ name|txid
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -1025,6 +1055,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1032,6 +1064,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1085,6 +1119,8 @@ return|return
 name|destination
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessage
@@ -1143,6 +1179,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeMessage
@@ -1194,6 +1232,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeAllMessages
@@ -1224,6 +1264,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -1273,6 +1315,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|ByteSequence
 name|execute
@@ -1365,6 +1409,8 @@ return|return
 name|msg
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageCount
@@ -1396,6 +1442,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Integer
 name|execute
@@ -1469,6 +1517,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -1501,6 +1551,8 @@ name|Exception
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1595,6 +1647,8 @@ name|cursorPos
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverNextMessages
@@ -1631,6 +1685,8 @@ name|Exception
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1760,6 +1816,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching
@@ -1821,6 +1879,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Long
 name|execute
@@ -1922,6 +1982,8 @@ name|destination
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -1992,6 +2054,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -2097,6 +2161,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteSubscription
@@ -2142,6 +2208,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 index|[]
@@ -2185,6 +2253,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2310,6 +2380,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 name|lookupSubscription
@@ -2358,6 +2430,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 name|execute
@@ -2430,6 +2504,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageCount
@@ -2478,6 +2554,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Integer
 name|execute
@@ -2582,6 +2660,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverSubscription
@@ -2631,6 +2711,8 @@ name|Exception
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2740,6 +2822,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverNextMessages
@@ -2793,6 +2877,8 @@ name|Exception
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -2966,6 +3052,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching
@@ -3011,6 +3099,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3080,6 +3170,8 @@ operator|+
 name|subscriptionName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageStore
 name|createQueueMessageStore
@@ -3098,6 +3190,8 @@ name|destination
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TopicMessageStore
 name|createTopicMessageStore
@@ -3117,6 +3211,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Cleanup method to remove any state associated with the given destination.      * This method does not stop the message store (it might not be cached).      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueMessageStore
@@ -3126,6 +3222,8 @@ name|destination
 parameter_list|)
 block|{     }
 comment|/**      * Cleanup method to remove any state associated with the given destination      * This method does not stop the message store (it might not be cached).      *      * @param destination Destination to forget      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicMessageStore
@@ -3134,6 +3232,8 @@ name|ActiveMQTopic
 name|destination
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteAllMessages
@@ -3141,6 +3241,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -3186,6 +3288,8 @@ name|IOException
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -3274,6 +3378,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastMessageBrokerSequenceId
@@ -3285,6 +3391,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|size
@@ -3327,6 +3435,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beginTransaction
@@ -3345,6 +3455,8 @@ literal|"Not yet implemented."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commitTransaction
@@ -3363,6 +3475,8 @@ literal|"Not yet implemented."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollbackTransaction
@@ -3381,6 +3495,8 @@ literal|"Not yet implemented."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkpoint
@@ -3661,6 +3777,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getLastProducerSequenceId
@@ -3723,6 +3841,23 @@ operator|.
 name|load
 argument_list|()
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|JobSchedulerStore
+name|createJobSchedulerStore
+parameter_list|()
+throws|throws
+name|IOException
+throws|,
+name|UnsupportedOperationException
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|()
+throw|;
 block|}
 block|}
 end_class
