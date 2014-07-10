@@ -61,7 +61,9 @@ name|nio
 operator|.
 name|channels
 operator|.
-name|SocketChannel
+name|spi
+operator|.
+name|AbstractSelectableChannel
 import|;
 end_import
 
@@ -98,7 +100,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author chirino  */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -126,6 +128,7 @@ name|SelectionKey
 name|key
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|closed
 init|=
@@ -141,8 +144,8 @@ name|SelectorWorker
 name|worker
 parameter_list|,
 specifier|final
-name|SocketChannel
-name|socketChannel
+name|AbstractSelectableChannel
+name|selectable
 parameter_list|,
 name|Listener
 name|listener
@@ -170,6 +173,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -183,7 +188,7 @@ name|this
 operator|.
 name|key
 operator|=
-name|socketChannel
+name|selectable
 operator|.
 name|register
 argument_list|(
@@ -242,6 +247,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -281,6 +288,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -312,7 +321,6 @@ name|void
 name|close
 parameter_list|()
 block|{
-comment|// guard against multiple closes.
 if|if
 condition|(
 name|closed
@@ -333,6 +341,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

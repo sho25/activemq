@@ -35,7 +35,9 @@ name|nio
 operator|.
 name|channels
 operator|.
-name|SocketChannel
+name|spi
+operator|.
+name|AbstractSelectableChannel
 import|;
 end_import
 
@@ -312,8 +314,8 @@ specifier|synchronized
 name|SelectorSelection
 name|register
 parameter_list|(
-name|SocketChannel
-name|socketChannel
+name|AbstractSelectableChannel
+name|selectableChannel
 parameter_list|,
 name|Listener
 name|listener
@@ -381,7 +383,7 @@ name|SelectorSelection
 argument_list|(
 name|worker
 argument_list|,
-name|socketChannel
+name|selectableChannel
 argument_list|,
 name|listener
 argument_list|)
@@ -414,7 +416,7 @@ name|SelectorSelection
 argument_list|(
 name|worker
 argument_list|,
-name|socketChannel
+name|selectableChannel
 argument_list|,
 name|listener
 argument_list|)
