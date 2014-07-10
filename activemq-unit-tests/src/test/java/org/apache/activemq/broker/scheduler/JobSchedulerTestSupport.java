@@ -348,6 +348,15 @@ literal|false
 return|;
 block|}
 specifier|protected
+name|boolean
+name|isPersistent
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+specifier|protected
 name|JobSchedulerViewMBean
 name|getJobSchedulerMBean
 parameter_list|()
@@ -453,7 +462,8 @@ name|answer
 operator|.
 name|setPersistent
 argument_list|(
-literal|true
+name|isPersistent
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|answer

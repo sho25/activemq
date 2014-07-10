@@ -683,9 +683,16 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Next Scheduled Time: {}"
+literal|"Next Scheduled Time: {} should be after: {}"
 argument_list|,
 name|next
+argument_list|,
+name|JobSupport
+operator|.
+name|getDateTime
+argument_list|(
+name|before
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertTrue
