@@ -886,7 +886,7 @@ init|=
 operator|new
 name|ObjectName
 argument_list|(
-literal|"org.apache.activemq:type=Broker,brokerName=localhost,transactionType=RecoveredXaTransaction,Xid="
+literal|"org.apache.activemq:type=Broker,brokerName=localhost,transactionType=RecoveredXaTransaction,xid="
 operator|+
 name|JMXSupport
 operator|.

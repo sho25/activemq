@@ -660,7 +660,7 @@ name|objectNameStr
 operator|+=
 literal|","
 operator|+
-literal|"Xid="
+literal|"xid="
 operator|+
 name|JMXSupport
 operator|.
@@ -703,7 +703,7 @@ name|objectNameStr
 operator|+=
 literal|","
 operator|+
-literal|"Service=Log4JConfiguration"
+literal|"service=Log4JConfiguration"
 expr_stmt|;
 return|return
 operator|new
@@ -736,13 +736,13 @@ name|objectNameStr
 operator|+=
 literal|","
 operator|+
-literal|"Service=PersistenceAdapter"
+literal|"service=PersistenceAdapter"
 expr_stmt|;
 name|objectNameStr
 operator|+=
 literal|","
 operator|+
-literal|"InstanceName="
+literal|"instanceName="
 operator|+
 name|JMXSupport
 operator|.
@@ -806,7 +806,7 @@ name|brokerObjectName
 decl_stmt|;
 name|objectNameStr
 operator|+=
-literal|",Service=SlowConsumerStrategy,InstanceName="
+literal|",service=SlowConsumerStrategy,instanceName="
 operator|+
 name|JMXSupport
 operator|.
@@ -1329,7 +1329,7 @@ literal|",connector="
 operator|+
 name|type
 operator|+
-literal|",JmsConnectors="
+literal|",jmsConnectors="
 operator|+
 name|JMXSupport
 operator|.
