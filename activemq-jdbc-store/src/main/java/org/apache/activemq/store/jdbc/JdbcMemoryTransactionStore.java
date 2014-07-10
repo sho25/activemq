@@ -631,9 +631,6 @@ operator|.
 name|onAdd
 argument_list|(
 name|message
-operator|.
-name|getMessageId
-argument_list|()
 argument_list|,
 operator|(
 name|Long
@@ -1081,9 +1078,6 @@ operator|.
 name|onAdd
 argument_list|(
 name|message
-operator|.
-name|getMessageId
-argument_list|()
 argument_list|,
 operator|(
 operator|(

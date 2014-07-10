@@ -6666,7 +6666,10 @@ name|ActiveMQDestination
 name|destination
 parameter_list|,
 name|long
-name|nextSeq
+name|maxSeq
+parameter_list|,
+name|long
+name|lastRecoveredSeq
 parameter_list|,
 name|long
 name|priority
@@ -6780,7 +6783,16 @@ name|setLong
 argument_list|(
 literal|2
 argument_list|,
-name|nextSeq
+name|lastRecoveredSeq
+argument_list|)
+expr_stmt|;
+name|s
+operator|.
+name|setLong
+argument_list|(
+literal|3
+argument_list|,
+name|maxSeq
 argument_list|)
 expr_stmt|;
 if|if
@@ -6792,7 +6804,7 @@ name|s
 operator|.
 name|setLong
 argument_list|(
-literal|3
+literal|4
 argument_list|,
 name|priority
 argument_list|)
@@ -6801,7 +6813,7 @@ name|s
 operator|.
 name|setLong
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|priority
 argument_list|)

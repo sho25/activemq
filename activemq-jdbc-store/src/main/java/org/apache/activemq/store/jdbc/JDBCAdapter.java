@@ -625,6 +625,9 @@ name|ActiveMQDestination
 name|destination
 parameter_list|,
 name|long
+name|maxSeq
+parameter_list|,
+name|long
 name|nextSeq
 parameter_list|,
 name|long

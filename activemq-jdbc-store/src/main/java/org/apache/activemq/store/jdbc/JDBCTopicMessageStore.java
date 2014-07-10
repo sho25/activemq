@@ -1957,8 +1957,8 @@ specifier|protected
 name|void
 name|onAdd
 parameter_list|(
-name|MessageId
-name|messageId
+name|Message
+name|message
 parameter_list|,
 name|long
 name|sequenceId
@@ -2003,7 +2003,10 @@ name|sequenceIdCache
 operator|.
 name|put
 argument_list|(
-name|messageId
+name|message
+operator|.
+name|getMessageId
+argument_list|()
 argument_list|,
 operator|new
 name|long

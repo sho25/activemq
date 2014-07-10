@@ -1813,7 +1813,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" WHERE CONTAINER=? AND ID> ? AND XID IS NULL ORDER BY ID"
+literal|" WHERE CONTAINER=? AND ID> ? AND ID< ? AND XID IS NULL ORDER BY ID"
 expr_stmt|;
 block|}
 return|return
@@ -1844,7 +1844,7 @@ literal|" WHERE CONTAINER=?"
 operator|+
 literal|" AND XID IS NULL"
 operator|+
-literal|" AND ((ID> ? AND PRIORITY = ?) OR PRIORITY< ?)"
+literal|" AND ((ID> ? AND ID< ? AND PRIORITY = ?) OR PRIORITY< ?)"
 operator|+
 literal|" ORDER BY PRIORITY DESC, ID"
 expr_stmt|;
