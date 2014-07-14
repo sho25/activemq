@@ -2977,6 +2977,15 @@ expr_stmt|;
 comment|// Convert to non-ranged.
 name|ack
 operator|.
+name|setMessageCount
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+comment|// always use node messageId so we can access entry/data Location
+name|ack
+operator|.
 name|setFirstMessageId
 argument_list|(
 name|node
@@ -2995,14 +3004,6 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|ack
-operator|.
-name|setMessageCount
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|ack
 return|;
