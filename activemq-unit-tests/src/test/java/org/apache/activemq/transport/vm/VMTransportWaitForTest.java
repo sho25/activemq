@@ -323,7 +323,9 @@ name|t
 init|=
 operator|new
 name|Thread
-argument_list|()
+argument_list|(
+literal|"ClientConnectionThread"
+argument_list|)
 block|{
 annotation|@
 name|Override
@@ -449,11 +451,11 @@ name|gotConnection
 operator|.
 name|await
 argument_list|(
-literal|400
+literal|5
 argument_list|,
 name|TimeUnit
 operator|.
-name|MILLISECONDS
+name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;

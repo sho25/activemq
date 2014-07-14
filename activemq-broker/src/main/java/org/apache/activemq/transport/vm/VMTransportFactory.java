@@ -1292,6 +1292,15 @@ argument_list|(
 name|timeout
 argument_list|)
 expr_stmt|;
+name|broker
+operator|=
+name|registry
+operator|.
+name|lookup
+argument_list|(
+name|brokerName
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
