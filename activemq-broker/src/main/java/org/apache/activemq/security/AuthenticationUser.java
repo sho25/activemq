@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A helper object used to configure simple authentiaction plugin  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * A helper object used to configure simple authentication plugin  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
