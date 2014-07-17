@@ -5374,7 +5374,7 @@ end_expr_stmt
 begin_expr_stmt
 name|assertTrue
 argument_list|(
-literal|"tx committed trough failover"
+literal|"tx committed through failover"
 argument_list|,
 name|commitDoneLatch
 operator|.
@@ -5462,7 +5462,7 @@ else|else
 block|{
 name|assertNull
 argument_list|(
-literal|"should be nothing left for consumer as recieve should have committed"
+literal|"should be nothing left for consumer as receive should have committed"
 argument_list|,
 name|msg
 argument_list|)
@@ -7126,7 +7126,7 @@ end_function
 begin_function
 specifier|public
 name|void
-name|testPoisonOnDeliveryWhilePending
+name|testReDeliveryWhilePending
 parameter_list|()
 throws|throws
 name|Exception
@@ -7135,7 +7135,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"testPoisonOnDeliveryWhilePending()"
+literal|"testReDeliveryWhilePending()"
 argument_list|)
 expr_stmt|;
 name|broker
@@ -7334,8 +7334,7 @@ name|Exception
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// commit may fail if other consumer gets the message on restart, it will be seen as a duplicate on the connection
-comment|// but with no transaction and it pending on another consumer it will be poison
+comment|// commit may fail if other consumer gets the message on restart
 name|Executors
 operator|.
 name|newSingleThreadExecutor
@@ -7393,18 +7392,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|assertNull
-argument_list|(
-literal|"consumer2 not get a message while pending to 1 or consumed by 1"
-argument_list|,
-name|consumer2
-operator|.
-name|receive
-argument_list|(
-literal|2000
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"commit completed "
@@ -7421,8 +7408,8 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// either message consumed or sent to dlq via poison on redelivery to wrong consumer
-comment|// message should not be available again in any event
+comment|// either message redelivered in existing tx or consumed by consumer2
+comment|// should not be available again in any event
 name|assertNull
 argument_list|(
 literal|"consumer should not get rolled back on non redelivered message or duplicate"
@@ -7444,11 +7431,60 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// commit succeeded, message was redelivered to the correct consumer after restart so commit was fine
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"commit succeeded, message was redelivered to the correct consumer after restart so commit was fine"
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+literal|"consumer2 not get a second message consumed by 1"
+argument_list|,
+name|consumer2
+operator|.
+name|receive
+argument_list|(
+literal|2000
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
-comment|// message should be in dlq
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"commit failed, consumer2 should get it"
+argument_list|,
+name|exceptions
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"consumer2 got message"
+argument_list|,
+name|consumer2
+operator|.
+name|receive
+argument_list|(
+literal|2000
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|consumerSession
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+comment|// no message should be in dlq
 name|MessageConsumer
 name|dlqConsumer
 init|=
@@ -7464,42 +7500,17 @@ literal|"ActiveMQ.DLQ"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|TextMessage
-name|dlqMessage
-init|=
-operator|(
-name|TextMessage
-operator|)
+name|assertNull
+argument_list|(
+literal|"nothing in the dlq"
+argument_list|,
 name|dlqConsumer
 operator|.
 name|receive
 argument_list|(
 literal|5000
 argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"found message in dlq"
-argument_list|,
-name|dlqMessage
 argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text matches"
-argument_list|,
-literal|"Test message"
-argument_list|,
-name|dlqMessage
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|consumerSession
-operator|.
-name|commit
-argument_list|()
 expr_stmt|;
 block|}
 name|connection

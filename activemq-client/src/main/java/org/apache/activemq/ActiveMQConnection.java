@@ -9138,6 +9138,18 @@ operator|.
 name|executor
 return|;
 block|}
+specifier|protected
+name|CopyOnWriteArrayList
+argument_list|<
+name|ActiveMQSession
+argument_list|>
+name|getSessions
+parameter_list|()
+block|{
+return|return
+name|sessions
+return|;
+block|}
 comment|/**      * @return the checkForDuplicates      */
 specifier|public
 name|boolean
