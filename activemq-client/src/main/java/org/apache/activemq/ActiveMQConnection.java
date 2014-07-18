@@ -9081,8 +9081,6 @@ try|try
 block|{
 name|result
 operator|=
-name|scheduler
-operator|=
 operator|new
 name|Scheduler
 argument_list|(
@@ -9099,10 +9097,14 @@ operator|+
 literal|"] Scheduler"
 argument_list|)
 expr_stmt|;
-name|scheduler
+name|result
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+name|scheduler
+operator|=
+name|result
 expr_stmt|;
 block|}
 catch|catch
