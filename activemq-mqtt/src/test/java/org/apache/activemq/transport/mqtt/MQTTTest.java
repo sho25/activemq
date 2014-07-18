@@ -3709,7 +3709,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3785,7 +3785,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3850,7 +3850,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
@@ -3964,7 +3964,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4057,7 +4057,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
