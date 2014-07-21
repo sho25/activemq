@@ -611,7 +611,7 @@ name|gcWithNetworkConsumers
 decl_stmt|;
 specifier|private
 name|long
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 init|=
 name|BaseDestination
 operator|.
@@ -1139,9 +1139,9 @@ argument_list|)
 expr_stmt|;
 name|destination
 operator|.
-name|setInactiveTimoutBeforeGC
+name|setInactiveTimeoutBeforeGC
 argument_list|(
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3233,17 +3233,22 @@ operator|=
 name|gcInactiveDestinations
 expr_stmt|;
 block|}
+comment|/**      * @return the amount of time spent inactive before GC of the destination kicks in.      *      * @deprecated use getInactiveTimeoutBeforeGC instead.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|long
 name|getInactiveTimoutBeforeGC
 parameter_list|()
 block|{
 return|return
-name|this
-operator|.
-name|inactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
+argument_list|()
 return|;
 block|}
+comment|/**      * Sets the amount of time a destination is inactive before it is marked for GC      *      * @param inactiveTimoutBeforeGC      *        time in milliseconds to configure as the inactive timeout.      *      * @deprecated use getInactiveTimeoutBeforeGC instead.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setInactiveTimoutBeforeGC
@@ -3252,11 +3257,38 @@ name|long
 name|inactiveTimoutBeforeGC
 parameter_list|)
 block|{
+name|setInactiveTimeoutBeforeGC
+argument_list|(
+name|inactiveTimoutBeforeGC
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @return the amount of time spent inactive before GC of the destination kicks in.      */
+specifier|public
+name|long
+name|getInactiveTimeoutBeforeGC
+parameter_list|()
+block|{
+return|return
 name|this
 operator|.
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
+return|;
+block|}
+comment|/**      * Sets the amount of time a destination is inactive before it is marked for GC      *      * @param inactiveTimoutBeforeGC      *        time in milliseconds to configure as the inactive timeout.      */
+specifier|public
+name|void
+name|setInactiveTimeoutBeforeGC
+parameter_list|(
+name|long
+name|inactiveTimeoutBeforeGC
+parameter_list|)
+block|{
+name|this
+operator|.
+name|inactiveTimeoutBeforeGC
 operator|=
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 expr_stmt|;
 block|}
 specifier|public

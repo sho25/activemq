@@ -376,7 +376,7 @@ throws|throws
 name|IOException
 function_decl|;
 name|long
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 parameter_list|()
 function_decl|;
 name|void
@@ -398,6 +398,8 @@ name|ActiveMQDestination
 name|getActiveMQDestination
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
 name|MemoryUsage
 name|getMemoryUsage
 parameter_list|()
@@ -555,6 +557,8 @@ name|boolean
 name|useCache
 parameter_list|)
 function_decl|;
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMinimumMessageSize

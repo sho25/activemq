@@ -33,16 +33,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -244,20 +234,6 @@ operator|.
 name|command
 operator|.
 name|ProducerInfo
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|TransactionId
 import|;
 end_import
 
@@ -632,7 +608,7 @@ name|prioritizedMessages
 decl_stmt|;
 specifier|private
 name|long
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 init|=
 name|DEFAULT_INACTIVE_TIMEOUT_BEFORE_GC
 decl_stmt|;
@@ -841,6 +817,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return the producerFlowControl      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isProducerFlowControl
@@ -851,6 +829,8 @@ name|producerFlowControl
 return|;
 block|}
 comment|/**      * @param producerFlowControl the producerFlowControl to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setProducerFlowControl
@@ -866,6 +846,8 @@ operator|=
 name|producerFlowControl
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAlwaysRetroactive
@@ -875,6 +857,8 @@ return|return
 name|alwaysRetroactive
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAlwaysRetroactive
@@ -891,6 +875,8 @@ name|alwaysRetroactive
 expr_stmt|;
 block|}
 comment|/**      * Set's the interval at which warnings about producers being blocked by      * resource usage will be triggered. Values of 0 or less will disable      * warnings      *      * @param blockedProducerWarningInterval the interval at which warning about      *            blocked producers will be triggered.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBlockedProducerWarningInterval
@@ -907,6 +893,8 @@ name|blockedProducerWarningInterval
 expr_stmt|;
 block|}
 comment|/**      *      * @return the interval at which warning about blocked producers will be      *         triggered.      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getBlockedProducerWarningInterval
@@ -917,6 +905,8 @@ name|blockedProducerWarningInterval
 return|;
 block|}
 comment|/**      * @return the maxProducersToAudit      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxProducersToAudit
@@ -927,6 +917,8 @@ name|maxProducersToAudit
 return|;
 block|}
 comment|/**      * @param maxProducersToAudit the maxProducersToAudit to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -943,6 +935,8 @@ name|maxProducersToAudit
 expr_stmt|;
 block|}
 comment|/**      * @return the maxAuditDepth      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxAuditDepth
@@ -953,6 +947,8 @@ name|maxAuditDepth
 return|;
 block|}
 comment|/**      * @param maxAuditDepth the maxAuditDepth to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -969,6 +965,8 @@ name|maxAuditDepth
 expr_stmt|;
 block|}
 comment|/**      * @return the enableAudit      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEnableAudit
@@ -979,6 +977,8 @@ name|enableAudit
 return|;
 block|}
 comment|/**      * @param enableAudit the enableAudit to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setEnableAudit
@@ -994,6 +994,8 @@ operator|=
 name|enableAudit
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addProducer
@@ -1022,6 +1024,8 @@ operator|=
 literal|0l
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeProducer
@@ -1044,6 +1048,8 @@ name|decrement
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -1072,6 +1078,8 @@ operator|=
 literal|0l
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -1097,6 +1105,8 @@ name|decrement
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|MemoryUsage
@@ -1107,6 +1117,8 @@ return|return
 name|memoryUsage
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsage
@@ -1122,6 +1134,8 @@ operator|=
 name|memoryUsage
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|DestinationStatistics
 name|getDestinationStatistics
@@ -1131,6 +1145,8 @@ return|return
 name|destinationStatistics
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getActiveMQDestination
@@ -1140,6 +1156,8 @@ return|return
 name|destination
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|String
@@ -1154,6 +1172,8 @@ name|getPhysicalName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|MessageStore
@@ -1164,6 +1184,8 @@ return|return
 name|store
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isActive
@@ -1223,6 +1245,8 @@ return|return
 name|isActive
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxPageSize
@@ -1232,6 +1256,8 @@ return|return
 name|maxPageSize
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxPageSize
@@ -1247,6 +1273,8 @@ operator|=
 name|maxPageSize
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxBrowsePageSize
@@ -1267,6 +1295,8 @@ name|getMaxPageSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxBrowsePageSize
@@ -1332,6 +1362,8 @@ return|return
 name|expireMessagesPeriod
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUseCache
@@ -1341,6 +1373,8 @@ return|return
 name|useCache
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseCache
@@ -1356,6 +1390,8 @@ operator|=
 name|useCache
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMinimumMessageSize
@@ -1365,6 +1401,8 @@ return|return
 name|minimumMessageSize
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMinimumMessageSize
@@ -1380,6 +1418,8 @@ operator|=
 name|minimumMessageSize
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLazyDispatch
@@ -1389,6 +1429,8 @@ return|return
 name|lazyDispatch
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLazyDispatch
@@ -1597,6 +1639,8 @@ name|sendAdvisoryIfNoConsumers
 expr_stmt|;
 block|}
 comment|/**      * @return the dead letter strategy      */
+annotation|@
+name|Override
 specifier|public
 name|DeadLetterStrategy
 name|getDeadLetterStrategy
@@ -1622,6 +1666,8 @@ operator|=
 name|deadLetterStrategy
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCursorMemoryHighWaterMark
@@ -1633,6 +1679,8 @@ operator|.
 name|cursorMemoryHighWaterMark
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCursorMemoryHighWaterMark
@@ -1649,6 +1697,8 @@ name|cursorMemoryHighWaterMark
 expr_stmt|;
 block|}
 comment|/**      * called when message is consumed      *      * @param context      * @param messageReference      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageConsumed
@@ -1677,6 +1727,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Called when message is delivered to the broker      *      * @param context      * @param messageReference      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDelivered
@@ -1705,6 +1757,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Called when a message is discarded - e.g. running low on memory This will      * happen only if the policy is enabled - e.g. non durable topics      *      * @param context      * @param messageReference      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|messageDiscarded
@@ -1738,6 +1792,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Called when there is a slow consumer      *      * @param context      * @param subs      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|slowConsumer
@@ -1785,6 +1841,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Called to notify a producer is too fast      *      * @param context      * @param producerInfo      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|fastProducer
@@ -1816,6 +1874,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Called when a Usage reaches a limit      *      * @param context      * @param usage      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|isFull
@@ -1848,6 +1908,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|dispose
@@ -1909,6 +1971,8 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDisposed
@@ -2148,6 +2212,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification
@@ -2523,6 +2589,8 @@ operator|=
 name|slowConsumerStrategy
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SlowConsumerStrategy
 name|getSlowConsumerStrategy
@@ -2534,6 +2602,8 @@ operator|.
 name|slowConsumerStrategy
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPrioritizedMessages
@@ -2575,32 +2645,34 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return the inactiveTimoutBeforeGC      */
+comment|/**      * @return the inactiveTimeoutBeforeGC      */
+annotation|@
+name|Override
 specifier|public
 name|long
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 return|;
 block|}
-comment|/**      * @param inactiveTimoutBeforeGC the inactiveTimoutBeforeGC to set      */
+comment|/**      * @param inactiveTimeoutBeforeGC the inactiveTimeoutBeforeGC to set      */
 specifier|public
 name|void
-name|setInactiveTimoutBeforeGC
+name|setInactiveTimeoutBeforeGC
 parameter_list|(
 name|long
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 parameter_list|)
 block|{
 name|this
 operator|.
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 operator|=
-name|inactiveTimoutBeforeGC
+name|inactiveTimeoutBeforeGC
 expr_stmt|;
 block|}
 comment|/**      * @return the gcIfInactive      */
@@ -2656,6 +2728,8 @@ return|return
 name|gcWithNetworkConsumers
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|markForGC
@@ -2689,7 +2763,7 @@ argument_list|()
 operator|==
 literal|0
 operator|&&
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 argument_list|()
 operator|>
 literal|0l
@@ -2703,6 +2777,8 @@ name|timeStamp
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|canGC
@@ -2738,7 +2814,7 @@ operator|.
 name|lastActiveTime
 operator|)
 operator|>=
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 argument_list|()
 condition|)
 block|{
@@ -2778,6 +2854,8 @@ operator|.
 name|reduceMemoryFootprint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDoOptimzeMessageStorage
@@ -2787,6 +2865,8 @@ return|return
 name|doOptimzeMessageStorage
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDoOptimzeMessageStorage
@@ -2826,6 +2906,8 @@ operator|=
 name|optimizeMessageStoreInFlightLimit
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|abstract
 name|List
@@ -3008,6 +3090,8 @@ return|return
 name|ack
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDLQ
@@ -3026,6 +3110,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|duplicateFromStore

@@ -439,13 +439,13 @@ annotation|@
 name|Override
 specifier|public
 name|long
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 parameter_list|()
 block|{
 return|return
 name|next
 operator|.
-name|getInactiveTimoutBeforeGC
+name|getInactiveTimeoutBeforeGC
 argument_list|()
 return|;
 block|}
