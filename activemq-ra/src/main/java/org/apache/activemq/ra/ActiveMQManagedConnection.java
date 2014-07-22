@@ -895,6 +895,8 @@ operator|new
 name|ManagedConnectionProxy
 argument_list|(
 name|this
+argument_list|,
+name|info
 argument_list|)
 decl_stmt|;
 name|proxyConnections

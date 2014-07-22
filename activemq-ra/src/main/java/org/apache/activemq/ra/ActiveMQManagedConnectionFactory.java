@@ -276,7 +276,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"copying standard ResourceAdapter configuration properties"
+name|this
+operator|+
+literal|", copying standard ResourceAdapter configuration properties"
 argument_list|)
 expr_stmt|;
 block|}
@@ -360,6 +362,23 @@ argument_list|(
 name|baseInfo
 operator|.
 name|getUseInboundSession
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|getUseSessionArgs
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|setUseSessionArgs
+argument_list|(
+name|baseInfo
+operator|.
+name|isUseSessionArgs
 argument_list|()
 argument_list|)
 expr_stmt|;

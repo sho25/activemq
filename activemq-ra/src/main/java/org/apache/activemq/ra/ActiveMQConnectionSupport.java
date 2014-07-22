@@ -250,6 +250,26 @@ name|info
 operator|=
 name|connectionRequestInfo
 expr_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|this
+operator|+
+literal|", setting [info] to: "
+operator|+
+name|info
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|boolean
@@ -389,7 +409,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"setting [clientid] to: "
+name|this
+operator|+
+literal|", setting [clientid] to: "
 operator|+
 name|clientid
 argument_list|)
@@ -440,7 +462,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"setting [password] property"
+name|this
+operator|+
+literal|", setting [password] property"
 argument_list|)
 expr_stmt|;
 block|}
@@ -486,7 +510,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"setting [serverUrl] to: "
+name|this
+operator|+
+literal|", setting [serverUrl] to: "
 operator|+
 name|url
 argument_list|)
@@ -1154,6 +1180,67 @@ operator|.
 name|setUseInboundSession
 argument_list|(
 name|useInboundSession
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isUseSessionArgs
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|isUseSessionArgs
+argument_list|()
+return|;
+block|}
+specifier|public
+name|Boolean
+name|getUseSessionArgs
+parameter_list|()
+block|{
+return|return
+name|info
+operator|.
+name|getUseSessionArgs
+argument_list|()
+return|;
+block|}
+comment|/**      * if true, calls to managed connection factory.connection.createSession will      * respect the passed in args. When false (default) the args are ignored b/c      * the container will do transaction demarcation via xa or local transaction rar      * contracts.      * This option is useful when a managed connection is used in plain jms mode      * and a jms transacted session session is required.      * @param useSessionArgs      */
+specifier|public
+name|void
+name|setUseSessionArgs
+parameter_list|(
+name|Boolean
+name|useSessionArgs
+parameter_list|)
+block|{
+if|if
+condition|(
+name|log
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+name|this
+operator|+
+literal|", setting [useSessionArgs] to: "
+operator|+
+name|useSessionArgs
+argument_list|)
+expr_stmt|;
+block|}
+name|info
+operator|.
+name|setUseSessionArgs
+argument_list|(
+name|useSessionArgs
 argument_list|)
 expr_stmt|;
 block|}
