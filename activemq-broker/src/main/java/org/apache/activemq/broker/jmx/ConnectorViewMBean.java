@@ -75,7 +75,7 @@ name|void
 name|disableStatistics
 parameter_list|()
 function_decl|;
-comment|/**      * Returns true if statistics is enabled      *       * @return true if statistics is enabled      */
+comment|/**      * Returns true if statistics is enabled      *      * @return true if statistics is enabled      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -83,6 +83,56 @@ literal|"Statistics gathering enabled"
 argument_list|)
 name|boolean
 name|isStatisticsEnabled
+parameter_list|()
+function_decl|;
+comment|/**      * Returns true if link stealing is enabled on this Connector      *      * @returns true if link stealing is enabled.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Link Stealing enabled"
+argument_list|)
+name|boolean
+name|isAllowLinkStealingEnabled
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if update client connections when brokers leave/join a cluster      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Update client URL's when brokers leave/join a custer enabled"
+argument_list|)
+name|boolean
+name|isUpdateClusterClients
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if clients should be re-balanced across the cluster      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Rebalance clients across the broker cluster enabled"
+argument_list|)
+name|boolean
+name|isRebalanceClusterClients
+parameter_list|()
+function_decl|;
+comment|/**      * @return true if clients should be updated when      * a broker is removed from a broker      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Update clients when a broker is removed from a network enabled."
+argument_list|)
+name|boolean
+name|isUpdateClusterClientsOnRemove
+parameter_list|()
+function_decl|;
+comment|/**      * @return The comma separated string of regex patterns to match      * broker names for cluster client updates      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Comma separated list of regex patterns to match broker names for cluster client updates."
+argument_list|)
+name|String
+name|getUpdateClusterFilter
 parameter_list|()
 function_decl|;
 block|}

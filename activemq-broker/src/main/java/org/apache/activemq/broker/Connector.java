@@ -111,6 +111,11 @@ name|boolean
 name|isAllowLinkStealing
 parameter_list|()
 function_decl|;
+comment|/**      * @return The comma separated string of regex patterns to match       * broker names for cluster client updates      */
+name|String
+name|getUpdateClusterFilter
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

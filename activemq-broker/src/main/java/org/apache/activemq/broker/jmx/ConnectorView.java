@@ -71,6 +71,8 @@ operator|=
 name|connector
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -97,6 +99,8 @@ name|getBrokerName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -136,6 +140,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Resets the statistics      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetStatistics
@@ -151,6 +157,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * enable statistics gathering      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|enableStatistics
@@ -168,6 +176,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * disable statistics gathering      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|disableStatistics
@@ -184,7 +194,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns true if statistics is enabled      *       * @return true if statistics is enabled      */
+comment|/**      * Returns true if statistics is enabled      *      * @return true if statistics is enabled      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isStatisticsEnabled
@@ -201,6 +213,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns the number of current connections      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|connectionCount
@@ -210,6 +224,90 @@ return|return
 name|connector
 operator|.
 name|connectionCount
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns true if updating cluster client URL is enabled      *      * @return true if update cluster client URL is enabled      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isUpdateClusterClients
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connector
+operator|.
+name|isUpdateClusterClientsOnRemove
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns true if rebalancing cluster clients is enabled      *      * @return true if rebalance cluster clients is enabled      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isRebalanceClusterClients
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connector
+operator|.
+name|isRebalanceClusterClients
+argument_list|()
+return|;
+block|}
+comment|/**      * Returns true if updating cluster client URL when brokers are removed is      * enabled      *      * @return true if update cluster client URL when brokers are removed is      *         enabled      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isUpdateClusterClientsOnRemove
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connector
+operator|.
+name|isUpdateClusterClientsOnRemove
+argument_list|()
+return|;
+block|}
+comment|/**      * @return The comma separated string of regex patterns to match broker      *         names for cluster client updates      */
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getUpdateClusterFilter
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connector
+operator|.
+name|getUpdateClusterFilter
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isAllowLinkStealingEnabled
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|connector
+operator|.
+name|isAllowLinkStealing
 argument_list|()
 return|;
 block|}
