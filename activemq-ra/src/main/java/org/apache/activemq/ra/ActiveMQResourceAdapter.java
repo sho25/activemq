@@ -1667,16 +1667,13 @@ parameter_list|(
 name|JMSException
 name|ignored
 parameter_list|)
-block|{                                  }
-finally|finally
-block|{
+block|{}
+block|}
 name|setConnection
 argument_list|(
 name|original
 argument_list|)
 expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 block|}

@@ -2848,9 +2848,6 @@ name|this
 operator|.
 name|getConnection
 argument_list|()
-operator|.
-name|getTransport
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|xaException
@@ -3572,6 +3569,10 @@ operator|+
 literal|"transactionId="
 operator|+
 name|transactionId
+operator|+
+literal|",connection="
+operator|+
+name|connection
 operator|+
 literal|'}'
 return|;
