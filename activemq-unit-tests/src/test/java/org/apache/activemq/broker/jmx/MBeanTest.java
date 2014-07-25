@@ -1060,6 +1060,18 @@ name|isCacheEnabled
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"no forwards"
+argument_list|,
+literal|0
+argument_list|,
+name|queueNew
+operator|.
+name|getForwardCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

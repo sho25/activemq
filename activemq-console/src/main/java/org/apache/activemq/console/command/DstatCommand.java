@@ -405,6 +405,8 @@ literal|"Enqueue #"
 argument_list|,
 literal|"Dequeue #"
 argument_list|,
+literal|"Forward #"
+argument_list|,
 literal|"Memory %"
 argument_list|)
 argument_list|)
@@ -510,6 +512,11 @@ argument_list|()
 argument_list|,
 name|queueView
 operator|.
+name|getForwardCount
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
 name|getMemoryPercentUsage
 argument_list|()
 argument_list|)
@@ -591,6 +598,8 @@ argument_list|,
 literal|"Enqueue #"
 argument_list|,
 literal|"Dequeue #"
+argument_list|,
+literal|"Forward #"
 argument_list|,
 literal|"Memory %"
 argument_list|)
@@ -704,6 +713,11 @@ argument_list|,
 name|queueView
 operator|.
 name|getDequeueCount
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
+name|getForwardCount
 argument_list|()
 argument_list|,
 name|queueView
@@ -801,6 +815,8 @@ argument_list|,
 literal|"Enqueue #"
 argument_list|,
 literal|"Dequeue #"
+argument_list|,
+literal|"Forward #"
 argument_list|,
 literal|"Memory %"
 argument_list|)
@@ -903,6 +919,11 @@ argument_list|,
 name|topicView
 operator|.
 name|getDequeueCount
+argument_list|()
+argument_list|,
+name|topicView
+operator|.
+name|getForwardCount
 argument_list|()
 argument_list|,
 name|topicView

@@ -168,6 +168,16 @@ name|long
 name|getDequeueCount
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the number of messages that have been acknowledged by network subscriptions from the      * destination.      *      * @return The number of messages that have been acknowledged by network subscriptions from the      *         destination.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Number of messages that have been forwarded (to a networked broker) from the destination."
+argument_list|)
+name|long
+name|getForwardCount
+parameter_list|()
+function_decl|;
 comment|/**      * Returns the number of messages that have been dispatched but not      * acknowledged      *      * @return The number of messages that have been dispatched but not      * acknowledged      */
 annotation|@
 name|MBeanInfo
