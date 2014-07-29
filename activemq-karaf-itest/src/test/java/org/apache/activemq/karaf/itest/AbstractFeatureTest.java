@@ -1339,7 +1339,7 @@ name|File
 argument_list|(
 name|basedir
 operator|+
-literal|"/src/test/resources/org/apache/activemq/karaf/itest/config.properties"
+literal|"/target/classes/org/apache/activemq/karaf/itest/config.properties"
 argument_list|)
 argument_list|)
 block|,
