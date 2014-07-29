@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a virtual queue which forwards to a number of other destinations.  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Represents a virtual queue which forwards to a number of other destinations.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -74,6 +74,8 @@ name|CompositeQueue
 extends|extends
 name|CompositeDestination
 block|{
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getVirtualDestination
@@ -86,6 +88,21 @@ argument_list|(
 name|getName
 argument_list|()
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Destination
+name|interceptMappedDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{
+comment|// nothing to do for mapped destinations
+return|return
+name|destination
 return|;
 block|}
 block|}

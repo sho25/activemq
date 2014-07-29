@@ -27,6 +27,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -48,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a virtual topic which forwards to a number of other destinations.  *   * @org.apache.xbean.XBean  *   *   */
+comment|/**  * Represents a virtual topic which forwards to a number of other destinations.  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class
@@ -58,6 +74,8 @@ name|CompositeTopic
 extends|extends
 name|CompositeDestination
 block|{
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getVirtualDestination
@@ -70,6 +88,47 @@ argument_list|(
 name|getName
 argument_list|()
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Destination
+name|interceptMappedDestination
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|isForwardOnly
+argument_list|()
+operator|&&
+name|destination
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|isQueue
+argument_list|()
+condition|)
+block|{
+comment|// recover retroactive messages in mapped Queue
+return|return
+operator|new
+name|MappedQueueFilter
+argument_list|(
+name|getVirtualDestination
+argument_list|()
+argument_list|,
+name|destination
+argument_list|)
+return|;
+block|}
+return|return
+name|destination
 return|;
 block|}
 block|}

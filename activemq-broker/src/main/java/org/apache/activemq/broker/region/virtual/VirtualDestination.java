@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents some kind of virtual destination.  *   *   */
+comment|/**  * Represents some kind of virtual destination.  */
 end_comment
 
 begin_interface
@@ -82,8 +82,23 @@ name|getVirtualDestination
 parameter_list|()
 function_decl|;
 comment|/**      * Creates a virtual destination from the physical destination      */
+annotation|@
+name|Override
 name|Destination
 name|intercept
+parameter_list|(
+name|Destination
+name|destination
+parameter_list|)
+function_decl|;
+comment|/**      * Returns mapped destination(s)      */
+name|ActiveMQDestination
+name|getMappedDestinations
+parameter_list|()
+function_decl|;
+comment|/**      * Creates a mapped destination      */
+name|Destination
+name|interceptMappedDestination
 parameter_list|(
 name|Destination
 name|destination
