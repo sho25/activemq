@@ -293,24 +293,34 @@ name|COUNT_BASED_SENDING
 argument_list|)
 condition|)
 block|{
-name|sendCountBasedMessages
-argument_list|(
+name|long
+name|sendCount
+init|=
 name|client
 operator|.
 name|getSendCount
 argument_list|()
+decl_stmt|;
+name|sendCountBasedMessages
+argument_list|(
+name|sendCount
 argument_list|)
 expr_stmt|;
 comment|// Send messages for a specific duration
 block|}
 else|else
 block|{
-name|sendTimeBasedMessages
-argument_list|(
+name|long
+name|sendDuration
+init|=
 name|client
 operator|.
 name|getSendDuration
 argument_list|()
+decl_stmt|;
+name|sendTimeBasedMessages
+argument_list|(
+name|sendDuration
 argument_list|)
 expr_stmt|;
 block|}
@@ -721,6 +731,13 @@ block|}
 block|}
 finally|finally
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished sending"
+argument_list|)
+expr_stmt|;
 name|getConnection
 argument_list|()
 operator|.
@@ -1089,6 +1106,13 @@ block|}
 block|}
 finally|finally
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Finished sending"
+argument_list|)
+expr_stmt|;
 name|getConnection
 argument_list|()
 operator|.
@@ -1477,6 +1501,8 @@ return|return
 name|jmsTextMessage
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JmsClientProperties
 name|getClient
@@ -1486,6 +1512,8 @@ return|return
 name|client
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setClient
@@ -1727,6 +1755,11 @@ name|tmp
 argument_list|)
 expr_stmt|;
 block|}
+name|br
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|jmsTextMessage
 operator|=
 name|getSession

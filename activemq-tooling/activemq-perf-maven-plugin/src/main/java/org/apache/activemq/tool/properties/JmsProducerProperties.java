@@ -203,6 +203,11 @@ name|headerMap
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -377,7 +382,7 @@ name|sendDelay
 return|;
 block|}
 comment|/* Operations for supporting message headers */
-comment|/**      * Method for setting a message header.       * @param encodedHeader - the header is encoded as a string using this syntax:      * encodedHeader = [headerkey '=' headervalue ':' ]*      * E.g. an encodedHeader could read "JMSType=car", or      * "JMSType=car:MyHeader=MyValue"      *      * That implies neither the header key nor the value       * can contain any of the characters ':' and '='.      */
+comment|/**      * Method for setting a message header.      * @param encodedHeader - the header is encoded as a string using this syntax:      * encodedHeader = [headerkey '=' headervalue ':' ]*      * E.g. an encodedHeader could read "JMSType=car", or      * "JMSType=car:MyHeader=MyValue"      *      * That implies neither the header key nor the value      * can contain any of the characters ':' and '='.      */
 specifier|public
 name|void
 name|setHeader

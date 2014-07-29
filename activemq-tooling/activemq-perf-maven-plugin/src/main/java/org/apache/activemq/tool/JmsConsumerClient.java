@@ -404,11 +404,6 @@ argument_list|()
 operator|+
 name|duration
 decl_stmt|;
-name|int
-name|counter
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 name|System
@@ -427,9 +422,6 @@ argument_list|()
 expr_stmt|;
 name|incThroughput
 argument_list|()
-expr_stmt|;
-name|counter
-operator|++
 expr_stmt|;
 name|sleep
 argument_list|()
@@ -641,6 +633,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -823,6 +817,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1280,6 +1276,8 @@ return|return
 name|jmsConsumer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|JmsClientProperties
 name|getClient
@@ -1289,6 +1287,8 @@ return|return
 name|client
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setClient
@@ -1305,7 +1305,7 @@ operator|)
 name|clientProps
 expr_stmt|;
 block|}
-comment|/**      * A way to throttle the consumer. Time to sleep is       * configured via recvDelay property.       */
+comment|/**      * A way to throttle the consumer. Time to sleep is      * configured via recvDelay property.      */
 specifier|protected
 name|void
 name|sleep

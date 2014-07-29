@@ -174,6 +174,9 @@ init|=
 name|obj
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|targetClass
 init|=
 name|obj
@@ -424,6 +427,9 @@ argument_list|)
 throw|;
 block|}
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|paramType
 init|=
 name|setterMethod
@@ -826,6 +832,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Object
+argument_list|>
 name|i
 init|=
 name|props
