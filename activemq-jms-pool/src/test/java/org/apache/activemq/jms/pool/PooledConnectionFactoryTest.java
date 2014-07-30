@@ -369,7 +369,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://broker1?marshal=false&broker.persistent=false"
+literal|"vm://broker1?marshal=false&broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 name|PooledConnectionFactory
@@ -575,7 +575,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://broker1?marshal=false&broker.persistent=false"
+literal|"vm://broker1?marshal=false&broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 name|PooledConnectionFactory
@@ -697,7 +697,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://broker1?marshal=false&broker.persistent=false"
+literal|"vm://broker1?marshal=false&broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 name|PooledConnectionFactory
@@ -930,7 +930,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://broker1?marshal=false&broker.persistent=false"
+literal|"vm://broker1?marshal=false&broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -1193,6 +1193,13 @@ decl_stmt|;
 name|brokerService
 operator|.
 name|setPersistent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|setUseJmx
 argument_list|(
 literal|false
 argument_list|)
