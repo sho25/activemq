@@ -1191,7 +1191,7 @@ specifier|private
 specifier|final
 name|ConcurrentHashMap
 argument_list|<
-name|UTF8Buffer
+name|String
 argument_list|,
 name|MQTTSubscription
 argument_list|>
@@ -1200,7 +1200,7 @@ init|=
 operator|new
 name|ConcurrentHashMap
 argument_list|<
-name|UTF8Buffer
+name|String
 argument_list|,
 name|MQTTSubscription
 argument_list|>
@@ -1210,7 +1210,7 @@ specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|UTF8Buffer
+name|String
 argument_list|,
 name|ActiveMQTopic
 argument_list|>
@@ -1219,7 +1219,7 @@ init|=
 operator|new
 name|LRUCache
 argument_list|<
-name|UTF8Buffer
+name|String
 argument_list|,
 name|ActiveMQTopic
 argument_list|>
@@ -1233,7 +1233,7 @@ name|Map
 argument_list|<
 name|Destination
 argument_list|,
-name|UTF8Buffer
+name|String
 argument_list|>
 name|mqttTopicMap
 init|=
@@ -1242,7 +1242,7 @@ name|LRUCache
 argument_list|<
 name|Destination
 argument_list|,
-name|UTF8Buffer
+name|String
 argument_list|>
 argument_list|(
 name|DEFAULT_CACHE_SIZE
@@ -2929,12 +2929,15 @@ throws|throws
 name|MQTTProtocolException
 block|{
 specifier|final
-name|UTF8Buffer
+name|String
 name|topicName
 init|=
 name|topic
 operator|.
 name|name
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -2955,9 +2958,6 @@ argument_list|(
 name|convertMQTTToActiveMQ
 argument_list|(
 name|topicName
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3117,9 +3117,6 @@ operator|+
 literal|":"
 operator|+
 name|topicName
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3287,7 +3284,7 @@ specifier|private
 name|void
 name|resendRetainedMessages
 parameter_list|(
-name|UTF8Buffer
+name|String
 name|topicName
 parameter_list|,
 name|ActiveMQDestination
@@ -3612,6 +3609,9 @@ block|{
 name|onUnSubscribe
 argument_list|(
 name|topic
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3645,7 +3645,7 @@ block|}
 name|void
 name|onUnSubscribe
 parameter_list|(
-name|UTF8Buffer
+name|String
 name|topicName
 parameter_list|)
 block|{
@@ -3741,9 +3741,6 @@ argument_list|(
 name|convertMQTTToActiveMQ
 argument_list|(
 name|topicName
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4573,6 +4570,9 @@ name|command
 operator|.
 name|topicName
 argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|topic
 argument_list|)
@@ -4717,7 +4717,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-name|UTF8Buffer
+name|String
 name|topicName
 decl_stmt|;
 synchronized|synchronized
@@ -4746,9 +4746,6 @@ condition|)
 block|{
 name|topicName
 operator|=
-operator|new
-name|UTF8Buffer
-argument_list|(
 name|convertActiveMQToMQTT
 argument_list|(
 name|message
@@ -4758,7 +4755,6 @@ argument_list|()
 operator|.
 name|getPhysicalName
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|mqttTopicMap
@@ -4779,7 +4775,11 @@ name|result
 operator|.
 name|topicName
 argument_list|(
+operator|new
+name|UTF8Buffer
+argument_list|(
 name|topicName
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6049,7 +6049,7 @@ return|return
 name|activeMQSubscriptionPrefetch
 return|;
 block|}
-comment|/**      * set the default prefetch size when mapping the MQTT subscription to an ActiveMQ one      * The default = 1      * @param activeMQSubscriptionPrefetch set the prefetch for the corresponding ActiveMQ subscription      */
+comment|/**      * set the default prefetch size when mapping the MQTT subscription to an ActiveMQ one      * The default = 1      *      * @param activeMQSubscriptionPrefetch      *        set the prefetch for the corresponding ActiveMQ subscription      */
 specifier|public
 name|void
 name|setActiveMQSubscriptionPrefetch
