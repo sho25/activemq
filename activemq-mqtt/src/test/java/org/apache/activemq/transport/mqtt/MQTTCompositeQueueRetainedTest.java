@@ -1062,7 +1062,7 @@ name|queueConsumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1138,7 +1138,7 @@ name|topicConsumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1164,7 +1164,7 @@ name|queueConsumer2
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|)
 argument_list|)
 expr_stmt|;
