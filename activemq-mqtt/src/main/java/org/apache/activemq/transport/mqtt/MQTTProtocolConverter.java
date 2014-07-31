@@ -1489,7 +1489,8 @@ literal|"$"
 argument_list|)
 condition|)
 block|{
-comment|// We don't allow users to send to $ prefixed topics to avoid failing MQTT 3.1.1 spec requirements
+comment|// We don't allow users to send to $ prefixed topics to avoid failing MQTT 3.1.1
+comment|// specification requirements
 if|if
 condition|(
 name|handler
@@ -3001,7 +3002,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// duplicate SUBSCRIBE packet, find all matching topics and resend retained messages
+comment|// duplicate SUBSCRIBE packet, find all matching topics and re-send retained messages
 name|resendRetainedMessages
 argument_list|(
 name|topicName
@@ -3021,11 +3022,6 @@ name|ordinal
 argument_list|()
 return|;
 block|}
-name|onUnSubscribe
-argument_list|(
-name|topicName
-argument_list|)
-expr_stmt|;
 block|}
 name|ConsumerId
 name|id
