@@ -3609,7 +3609,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"TopicA"
+name|TOPICA
 block|}
 argument_list|)
 expr_stmt|;
@@ -3682,7 +3682,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"TopicA"
+name|TOPICA
 block|}
 argument_list|)
 expr_stmt|;
@@ -3881,7 +3881,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"TopicA"
+name|TOPICA
 block|}
 argument_list|)
 expr_stmt|;
