@@ -152,6 +152,7 @@ comment|/**  * Keeps track of the MQTT client subscription so that acking is cor
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|MQTTSubscription
 block|{
@@ -166,8 +167,9 @@ name|ConsumerInfo
 name|consumerInfo
 decl_stmt|;
 specifier|private
-name|ActiveMQDestination
-name|destination
+specifier|final
+name|String
+name|topicName
 decl_stmt|;
 specifier|private
 specifier|final
@@ -179,6 +181,9 @@ name|MQTTSubscription
 parameter_list|(
 name|MQTTProtocolConverter
 name|protocolConverter
+parameter_list|,
+name|String
+name|topicName
 parameter_list|,
 name|QoS
 name|qos
@@ -205,7 +210,15 @@ name|qos
 operator|=
 name|qos
 expr_stmt|;
+name|this
+operator|.
+name|topicName
+operator|=
+name|topicName
+expr_stmt|;
 block|}
+comment|/**      * Create a {@link MessageAck} that will acknowledge the given {@link MessageDispatch}.      *      * @param md      *        the {@link MessageDispatch} to acknowledge.      *      * @return a new {@link MessageAck} command to acknowledge the message.      */
+specifier|public
 name|MessageAck
 name|createMessageAck
 parameter_list|(
@@ -227,6 +240,8 @@ literal|1
 argument_list|)
 return|;
 block|}
+comment|/**      * Creates a PUBLISH command that can be sent to a remote client from an      * incoming {@link ActiveMQMessage} instance.      *      * @param message      *        the message to convert to a PUBLISH command.      *      * @return a new PUBLISH command that is populated from the {@link ActiveMQMessage}.      *      * @throws DataFormatException      * @throws IOException      * @throws JMSException      */
+specifier|public
 name|PUBLISH
 name|createPublish
 parameter_list|(
@@ -320,6 +335,7 @@ return|return
 name|publish
 return|;
 block|}
+comment|/**      * Given a PUBLISH command determine if it will expect an ACK based on the      * QoS of the Publish command and the QoS of this subscription.      *      * @param publish      *        The publish command to inspect.      *      * @return true if the client will expect an PUBACK for this PUBLISH.      */
 specifier|public
 name|boolean
 name|expectAck
@@ -369,6 +385,32 @@ name|AT_MOST_ONCE
 argument_list|)
 return|;
 block|}
+comment|/**      * @returns the original topic name value the client used when subscribing.      */
+specifier|public
+name|String
+name|getTopicName
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|topicName
+return|;
+block|}
+comment|/**      * The real {@link ActiveMQDestination} that this subscription is assigned.      *      * @return the real {@link ActiveMQDestination} assigned to this subscription.      */
+specifier|public
+name|ActiveMQDestination
+name|getDestination
+parameter_list|()
+block|{
+return|return
+name|consumerInfo
+operator|.
+name|getDestination
+argument_list|()
+return|;
+block|}
+comment|/**      * Gets the {@link ConsumerInfo} that describes the subscription sent to ActiveMQ.      *      * @return the {@link ConsumerInfo} used to create this subscription.      */
 specifier|public
 name|ConsumerInfo
 name|getConsumerInfo
@@ -378,6 +420,7 @@ return|return
 name|consumerInfo
 return|;
 block|}
+comment|/**      * @return the assigned QoS value for this subscription.      */
 specifier|public
 name|QoS
 name|qos

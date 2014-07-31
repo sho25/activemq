@@ -46,6 +46,7 @@ comment|/**  * Interface used by the MQTTProtocolConverter for callbacks.  */
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|ResponseHandler
 block|{
