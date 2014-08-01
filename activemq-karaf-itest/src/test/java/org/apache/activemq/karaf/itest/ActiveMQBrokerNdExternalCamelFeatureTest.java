@@ -149,11 +149,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|openengsb
+name|ops4j
 operator|.
-name|labs
+name|pax
 operator|.
-name|paxexam
+name|exam
 operator|.
 name|karaf
 operator|.
@@ -161,7 +161,7 @@ name|options
 operator|.
 name|KarafDistributionOption
 operator|.
-name|replaceConfigurationFile
+name|features
 import|;
 end_import
 
@@ -175,9 +175,13 @@ name|pax
 operator|.
 name|exam
 operator|.
-name|CoreOptions
+name|karaf
 operator|.
-name|scanFeatures
+name|options
+operator|.
+name|KarafDistributionOption
+operator|.
+name|replaceConfigurationFile
 import|;
 end_import
 
@@ -237,7 +241,7 @@ name|configureBrokerStart
 argument_list|(
 name|append
 argument_list|(
-name|scanFeatures
+name|features
 argument_list|(
 name|getCamelFeatureUrl
 argument_list|(

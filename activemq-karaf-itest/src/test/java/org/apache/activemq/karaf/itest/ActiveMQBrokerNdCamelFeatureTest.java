@@ -89,8 +89,6 @@ name|pax
 operator|.
 name|exam
 operator|.
-name|junit
-operator|.
 name|Configuration
 import|;
 end_import
@@ -107,7 +105,7 @@ name|exam
 operator|.
 name|junit
 operator|.
-name|JUnit4TestRunner
+name|PaxExam
 import|;
 end_import
 
@@ -145,9 +143,13 @@ name|pax
 operator|.
 name|exam
 operator|.
-name|CoreOptions
+name|karaf
 operator|.
-name|scanFeatures
+name|options
+operator|.
+name|KarafDistributionOption
+operator|.
+name|features
 import|;
 end_import
 
@@ -155,7 +157,7 @@ begin_class
 annotation|@
 name|RunWith
 argument_list|(
-name|JUnit4TestRunner
+name|PaxExam
 operator|.
 name|class
 argument_list|)
@@ -190,7 +192,7 @@ name|configureBrokerStart
 argument_list|(
 name|append
 argument_list|(
-name|scanFeatures
+name|features
 argument_list|(
 name|getCamelFeatureUrl
 argument_list|(

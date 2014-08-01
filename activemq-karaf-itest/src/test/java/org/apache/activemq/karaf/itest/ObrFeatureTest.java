@@ -113,11 +113,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|openengsb
+name|ops4j
 operator|.
-name|labs
+name|pax
 operator|.
-name|paxexam
+name|exam
 operator|.
 name|karaf
 operator|.
