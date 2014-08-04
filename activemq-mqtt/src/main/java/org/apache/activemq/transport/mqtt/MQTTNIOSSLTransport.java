@@ -126,6 +126,7 @@ name|MQTTNIOSSLTransport
 extends|extends
 name|NIOSSLTransport
 block|{
+specifier|private
 name|MQTTCodec
 name|codec
 decl_stmt|;
