@@ -579,22 +579,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|server
-operator|!=
-literal|null
-condition|)
-block|{
-name|setAllowLinkStealing
-argument_list|(
-name|server
-operator|.
-name|isAllowLinkStealing
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * @return Returns the connections.      */
 specifier|public
@@ -2484,7 +2468,10 @@ name|isAllowLinkStealing
 parameter_list|()
 block|{
 return|return
-name|allowLinkStealing
+name|server
+operator|.
+name|isAllowLinkStealing
+argument_list|()
 return|;
 block|}
 specifier|public
