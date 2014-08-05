@@ -386,10 +386,8 @@ name|Destination
 index|[]
 name|dest
 init|=
-name|createDestination
+name|createDestinations
 argument_list|(
-name|destIndex
-argument_list|,
 name|destCount
 argument_list|)
 decl_stmt|;
@@ -772,10 +770,8 @@ name|Destination
 index|[]
 name|dest
 init|=
-name|createDestination
+name|createDestinations
 argument_list|(
-name|destIndex
-argument_list|,
 name|destCount
 argument_list|)
 decl_stmt|;
