@@ -126,8 +126,9 @@ import|;
 end_import
 
 begin_class
+specifier|public
 class|class
-name|FuseMQQTTClientProvider
+name|FuseMQTTClientProvider
 implements|implements
 name|MQTTClientProvider
 block|{

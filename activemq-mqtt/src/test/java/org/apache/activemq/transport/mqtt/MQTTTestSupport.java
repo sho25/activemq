@@ -1714,7 +1714,7 @@ parameter_list|()
 block|{
 return|return
 operator|new
-name|FuseMQQTTClientProvider
+name|FuseMQTTClientProvider
 argument_list|()
 return|;
 block|}
