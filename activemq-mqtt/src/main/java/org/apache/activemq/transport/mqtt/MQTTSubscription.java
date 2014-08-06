@@ -423,11 +423,33 @@ block|}
 comment|/**      * @return the assigned QoS value for this subscription.      */
 specifier|public
 name|QoS
-name|qos
+name|getQoS
 parameter_list|()
 block|{
 return|return
 name|qos
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"MQTT Sub: topic["
+operator|+
+name|topicName
+operator|+
+literal|"] -> ["
+operator|+
+name|consumerInfo
+operator|.
+name|getDestination
+argument_list|()
+operator|+
+literal|"]"
 return|;
 block|}
 block|}

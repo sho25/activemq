@@ -33,16 +33,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|Socket
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URI
 import|;
 end_import
@@ -79,15 +69,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|net
 operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|BrokerContext
+name|ServerSocketFactory
 import|;
 end_import
 
@@ -207,16 +193,6 @@ name|WireFormat
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ServerSocketFactory
-import|;
-end_import
-
 begin_comment
 comment|/**  * A<a href="http://mqtt.org/">MQTT</a> transport factory  */
 end_comment
@@ -236,6 +212,8 @@ name|brokerService
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getDefaultWireFormatType
@@ -245,6 +223,8 @@ return|return
 literal|"mqtt"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|TcpTransportServer
 name|createTcpTransportServer
@@ -284,6 +264,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -337,6 +319,8 @@ name|options
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService

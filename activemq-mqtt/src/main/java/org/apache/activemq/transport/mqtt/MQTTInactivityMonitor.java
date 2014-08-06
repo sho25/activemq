@@ -417,9 +417,12 @@ argument_list|(
 name|currentCounter
 argument_list|)
 decl_stmt|;
-comment|// for the PINGREQ/RESP frames, the currentCounter will be different from previousCounter, and that
-comment|// should be sufficient to indicate the connection is still alive. If there were random data, or something
-comment|// outside the scope of the spec, the wire format unrmarshalling would fail, so we don't need to handle
+comment|// for the PINGREQ/RESP frames, the currentCounter will be different
+comment|// from previousCounter, and that
+comment|// should be sufficient to indicate the connection is still alive.
+comment|// If there were random data, or something
+comment|// outside the scope of the spec, the wire format unrmarshalling
+comment|// would fail, so we don't need to handle
 comment|// PINGREQ/RESP explicitly here
 if|if
 condition|(
@@ -549,26 +552,6 @@ block|}
 block|}
 block|}
 decl_stmt|;
-specifier|private
-name|boolean
-name|allowReadCheck
-parameter_list|(
-name|long
-name|elapsed
-parameter_list|)
-block|{
-return|return
-name|elapsed
-operator|>
-operator|(
-name|readGraceTime
-operator|*
-literal|9
-operator|/
-literal|10
-operator|)
-return|;
-block|}
 specifier|public
 name|MQTTInactivityMonitor
 parameter_list|(

@@ -117,20 +117,6 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
 name|BrokerService
 import|;
 end_import
@@ -272,6 +258,8 @@ name|brokerService
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getDefaultWireFormatType
@@ -281,6 +269,8 @@ return|return
 literal|"mqtt"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|TcpTransportServer
 name|createTcpTransportServer
@@ -309,6 +299,8 @@ argument_list|,
 name|serverSocketFactory
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createTransport
@@ -345,6 +337,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|TcpTransport
 name|createTcpTransport
@@ -448,6 +442,8 @@ name|transport
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"rawtypes"
@@ -500,6 +496,8 @@ name|options
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
@@ -515,6 +513,8 @@ operator|=
 name|brokerService
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createInactivityMonitor
