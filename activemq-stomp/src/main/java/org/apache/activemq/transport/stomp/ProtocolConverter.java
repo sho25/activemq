@@ -1492,6 +1492,8 @@ argument_list|(
 name|header
 argument_list|,
 literal|null
+argument_list|,
+literal|false
 argument_list|)
 return|;
 block|}
@@ -1504,6 +1506,9 @@ name|header
 parameter_list|,
 name|ActiveMQDestination
 name|destination
+parameter_list|,
+name|boolean
+name|advisory
 parameter_list|)
 block|{
 name|FrameTranslator
@@ -1541,12 +1546,16 @@ name|destination
 operator|!=
 literal|null
 operator|&&
+operator|(
+name|advisory
+operator|||
 name|AdvisorySupport
 operator|.
 name|isAdvisoryTopic
 argument_list|(
 name|destination
 argument_list|)
+operator|)
 condition|)
 block|{
 name|translator
@@ -1590,7 +1599,7 @@ return|return
 name|translator
 return|;
 block|}
-comment|/**      * Convert a stomp command      *      * @param command      */
+comment|/**      * Convert a STOMP command      *      * @param command      */
 specifier|public
 name|void
 name|onStompCommand
@@ -5749,7 +5758,9 @@ return|;
 block|}
 else|else
 block|{
-return|return
+name|FrameTranslator
+name|translator
+init|=
 name|findTranslator
 argument_list|(
 name|message
@@ -5767,7 +5778,15 @@ name|message
 operator|.
 name|getDestination
 argument_list|()
+argument_list|,
+name|message
+operator|.
+name|isAdvisory
+argument_list|()
 argument_list|)
+decl_stmt|;
+return|return
+name|translator
 operator|.
 name|convertMessage
 argument_list|(

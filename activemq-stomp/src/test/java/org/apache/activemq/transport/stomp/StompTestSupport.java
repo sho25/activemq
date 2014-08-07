@@ -831,6 +831,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|addAdditionalPlugins
+argument_list|(
+name|plugins
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -958,6 +963,19 @@ name|jobStore
 argument_list|)
 expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|addAdditionalPlugins
+parameter_list|(
+name|List
+argument_list|<
+name|BrokerPlugin
+argument_list|>
+name|plugins
+parameter_list|)
+throws|throws
+name|Exception
+block|{     }
 specifier|protected
 name|BrokerPlugin
 name|configureAuthentication

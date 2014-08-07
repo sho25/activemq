@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementations of this interface are used to map back and forth from Stomp  * to ActiveMQ. There are several standard mappings which are semantically the  * same, the inner class, Helper, provides functions to copy those properties  * from one to the other  */
+comment|/**  * Implementations of this interface are used to map back and forth from STOMP  * to ActiveMQ. There are several standard mappings which are semantically the  * same, the inner class, Helper, provides functions to copy those properties  * from one to the other  */
 end_comment
 
 begin_interface
@@ -951,7 +951,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Stomp specific headers
+comment|// STOMP specific headers
 name|headers
 operator|.
 name|remove
