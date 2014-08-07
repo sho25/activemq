@@ -2187,24 +2187,21 @@ block|{
 name|XAException
 name|e
 init|=
-operator|new
-name|XAException
+name|XATransaction
+operator|.
+name|newXAException
 argument_list|(
 literal|"Transaction '"
 operator|+
 name|xid
 operator|+
 literal|"' has not been started."
-argument_list|)
-decl_stmt|;
-name|e
-operator|.
-name|errorCode
-operator|=
+argument_list|,
 name|XAException
 operator|.
 name|XAER_NOTA
-expr_stmt|;
+argument_list|)
+decl_stmt|;
 throw|throw
 name|e
 throw|;

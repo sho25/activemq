@@ -2811,17 +2811,17 @@ argument_list|,
 name|expected
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
-literal|"not zero"
+literal|"no tx"
+argument_list|,
+name|XAException
+operator|.
+name|XAER_NOTA
 argument_list|,
 name|expected
 operator|.
 name|errorCode
-operator|!=
-name|XAResource
-operator|.
-name|XA_OK
 argument_list|)
 expr_stmt|;
 block|}
