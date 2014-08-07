@@ -241,6 +241,16 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// only log if not stopped
+if|if
+condition|(
+operator|!
+name|stopped
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -252,17 +262,26 @@ operator|+
 literal|" on IOException: "
 operator|+
 name|error
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// log stacktrace at debug level
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Expiring connection on IOException"
+literal|"Expiring connection "
+operator|+
+name|connection
+operator|+
+literal|" on IOException: "
 argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
