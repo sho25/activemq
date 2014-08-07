@@ -170,22 +170,36 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// also check group class of temp destination ACL
+comment|// use the group class of the<authorizationMap> entry if this temp
+comment|// destination entry has no group class specified.
 if|if
 condition|(
 name|getTempDestinationAuthorizationEntry
 argument_list|()
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|getTempDestinationAuthorizationEntry
 argument_list|()
 operator|.
 name|getGroupClass
 argument_list|()
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+name|getTempDestinationAuthorizationEntry
+argument_list|()
+operator|.
+name|setGroupClass
+argument_list|(
+name|groupClass
+argument_list|)
+expr_stmt|;
+block|}
 name|getTempDestinationAuthorizationEntry
 argument_list|()
 operator|.

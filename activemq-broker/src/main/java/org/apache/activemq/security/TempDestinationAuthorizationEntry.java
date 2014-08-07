@@ -33,9 +33,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// we don't need to check if destination is specified since
-comment|// the TempDestinationAuthorizationEntry should map to all temp
-comment|// destinations
 if|if
 condition|(
 name|adminRoles
