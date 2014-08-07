@@ -313,7 +313,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -323,7 +325,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -362,7 +366,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -372,7 +378,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -423,7 +431,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -433,7 +443,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -484,7 +496,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
@@ -494,7 +508,9 @@ argument_list|,
 operator|new
 name|Object
 index|[]
-block|{}
+block|{
+literal|null
+block|}
 argument_list|)
 expr_stmt|;
 name|addCombinationValues
