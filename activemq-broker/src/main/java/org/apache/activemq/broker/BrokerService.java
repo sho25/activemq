@@ -11219,13 +11219,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|connector
-operator|.
-name|setBrokerService
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|al
 operator|.
 name|add
@@ -11673,7 +11666,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|protected
+specifier|public
 name|TransportConnector
 name|startTransportConnector
 parameter_list|(
@@ -11683,6 +11676,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|connector
+operator|.
+name|setBrokerService
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|connector
 operator|.
 name|setTaskRunnerFactory

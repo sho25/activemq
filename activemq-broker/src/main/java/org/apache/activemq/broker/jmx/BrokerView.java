@@ -1460,10 +1460,12 @@ name|discoveryAddress
 argument_list|)
 throw|;
 block|}
-name|connector
+name|brokerService
 operator|.
-name|start
-argument_list|()
+name|startTransportConnector
+argument_list|(
+name|connector
+argument_list|)
 expr_stmt|;
 return|return
 name|connector
