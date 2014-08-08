@@ -6453,7 +6453,7 @@ block|}
 name|int
 name|messagesInQueue
 init|=
-literal|0
+name|alreadyPagedIn
 decl_stmt|;
 name|messagesLock
 operator|.
@@ -6466,7 +6466,7 @@ expr_stmt|;
 try|try
 block|{
 name|messagesInQueue
-operator|=
+operator|+=
 name|messages
 operator|.
 name|size
