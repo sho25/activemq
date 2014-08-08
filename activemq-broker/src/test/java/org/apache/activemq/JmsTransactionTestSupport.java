@@ -240,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -330,6 +330,7 @@ name|broker
 decl_stmt|;
 comment|// for message listener test
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Message
@@ -346,6 +347,7 @@ name|MESSAGE_COUNT
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Message
@@ -386,7 +388,9 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see junit.framework.TestCase#setUp()      */
+comment|/*      * (non-Javadoc)      *      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -519,7 +523,9 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see junit.framework.TestCase#tearDown()      */
+comment|/*      * (non-Javadoc)      *      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -534,6 +540,8 @@ argument_list|(
 literal|"Closing down connection"
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|session
 operator|.
 name|close
@@ -552,6 +560,23 @@ name|connection
 operator|=
 literal|null
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Caught exception while closing resources."
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
 name|broker
 operator|.
 name|stop
@@ -566,6 +591,23 @@ name|broker
 operator|=
 literal|null
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Caught exception while shutting down the Broker"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
@@ -580,7 +622,7 @@ name|JmsResourceProvider
 name|getJmsResourceProvider
 parameter_list|()
 function_decl|;
-comment|/**      * Sends a batch of messages and validates that the messages are received.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the messages are received.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceiveTransactedBatches
@@ -743,7 +785,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendRollback
@@ -1288,7 +1330,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the message sent before      * session close is not consumed.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the message sent before      * session close is not consumed.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendSessionAndConnectionClose
@@ -1499,7 +1541,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveRollback
@@ -1738,7 +1780,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenRollback
@@ -2014,7 +2056,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceiveWithPrefetchOne
@@ -2155,7 +2197,7 @@ name|commitTx
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Perform the test that validates if the rollbacked message was redelivered      * multiple times.      *       * @throws Exception      */
+comment|/**      * Perform the test that validates if the rollbacked message was redelivered      * multiple times.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenRollbackManyTimes
@@ -2183,7 +2225,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed. This test differs by setting the message prefetch to one.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed. This test differs by setting the message prefetch to one.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendRollbackWithPrefetchOfOne
@@ -2198,7 +2240,7 @@ name|testSendRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and and validates that the rollbacked message      * was redelivered. This test differs by setting the message prefetch to      * one.      *       * @throws Exception      */
+comment|/**      * Sends a batch of messages and and validates that the rollbacked message      * was redelivered. This test differs by setting the message prefetch to      * one.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveRollbackWithPrefetchOfOne
@@ -2213,7 +2255,7 @@ name|testReceiveRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Tests if the messages can still be received if the consumer is closed      * (session is not closed).      *       * @throws Exception see http://jira.codehaus.org/browse/AMQ-143      */
+comment|/**      * Tests if the messages can still be received if the consumer is closed      * (session is not closed).      *      * @throws Exception see http://jira.codehaus.org/browse/AMQ-143      */
 specifier|public
 name|void
 name|testCloseConsumerBeforeCommit
@@ -2702,7 +2744,7 @@ return|return
 name|body
 return|;
 block|}
-comment|/**      * Recreates the connection.      *       * @throws JMSException      */
+comment|/**      * Recreates the connection.      *      * @throws JMSException      */
 specifier|protected
 name|void
 name|reconnect
@@ -2746,7 +2788,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Recreates the connection.      *       * @throws JMSException      */
+comment|/**      * Recreates the connection.      *      * @throws JMSException      */
 specifier|protected
 name|void
 name|reconnectSession
@@ -2968,6 +3010,8 @@ name|reconnect
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
