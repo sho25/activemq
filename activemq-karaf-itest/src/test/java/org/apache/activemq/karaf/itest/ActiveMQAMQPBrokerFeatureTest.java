@@ -360,6 +360,17 @@ return|return
 name|connection
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testTemporaryDestinations
+parameter_list|()
+throws|throws
+name|Throwable
+block|{
+comment|// ignore until we have temporary destination are working in amqp
+block|}
 block|}
 end_class
 
