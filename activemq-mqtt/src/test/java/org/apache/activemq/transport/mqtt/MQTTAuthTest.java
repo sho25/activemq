@@ -445,7 +445,7 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|MQTTAuthTests
+name|MQTTAuthTest
 extends|extends
 name|MQTTAuthTestSupport
 block|{
@@ -459,7 +459,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|MQTTAuthTests
+name|MQTTAuthTest
 operator|.
 name|class
 argument_list|)
@@ -469,7 +469,7 @@ name|Parameters
 argument_list|(
 name|name
 operator|=
-literal|"{index}: scheme({0})"
+literal|"{0}"
 argument_list|)
 specifier|public
 specifier|static
@@ -519,7 +519,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
-name|MQTTAuthTests
+name|MQTTAuthTest
 parameter_list|(
 name|String
 name|connectorScheme
