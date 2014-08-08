@@ -2328,6 +2328,7 @@ block|{
 name|fireBridgeFailed
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 block|}
 catch|catch
@@ -2362,6 +2363,7 @@ block|{
 name|fireBridgeFailed
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 comment|// Before we try and build the bridge lets check if we are in a loop
 comment|// and if so just stop now before registering anything.
