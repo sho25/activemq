@@ -776,6 +776,19 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|// if autoCommit used do not call commit
+if|if
+condition|(
+operator|!
+name|c
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getAutoCommit
+argument_list|()
+condition|)
+block|{
 name|c
 operator|.
 name|getConnection
@@ -784,6 +797,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -955,6 +969,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// if autoCommit used do not call commit
+if|if
+condition|(
+operator|!
+name|c
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getAutoCommit
+argument_list|()
+condition|)
+block|{
 name|c
 operator|.
 name|getConnection
@@ -963,6 +990,7 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
