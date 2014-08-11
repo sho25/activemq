@@ -41,6 +41,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ConsumerId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|transport
 operator|.
 name|mqtt
@@ -103,6 +117,20 @@ name|fusesource
 operator|.
 name|mqtt
 operator|.
+name|client
+operator|.
+name|Topic
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|fusesource
+operator|.
+name|mqtt
+operator|.
 name|codec
 operator|.
 name|CONNECT
@@ -140,6 +168,17 @@ parameter_list|)
 throws|throws
 name|MQTTProtocolException
 function_decl|;
+comment|/**      * Called for each Topic that a client requests to subscribe to.  The strategy needs      * check each Topic for duplicate subscription requests and change of QoS state.      *      * @param topic      *        the MQTT Topic instance being subscribed to.      *      * @return the assigned QoS value given to the new subscription.      *      * @throws MQTTProtocolException if an error occurs while processing the subscribe actions.      */
+specifier|public
+name|byte
+name|onSubscribe
+parameter_list|(
+name|Topic
+name|topic
+parameter_list|)
+throws|throws
+name|MQTTProtocolException
+function_decl|;
 comment|/**      * Called when a new Subscription is being requested.  This method allows the      * strategy to create a specific type of subscription for the client such as      * mapping topic subscriptions to Queues etc.      *      * @param topicName      *        the requested Topic name to subscribe to.      * @param requestedQoS      *        the QoS level that the client has requested for this subscription.      *      * @return the assigned QoS value given to the new subscription      *      * @throws MQTTProtocolException if an error occurs while processing the subscribe actions.      */
 specifier|public
 name|byte
@@ -165,13 +204,13 @@ parameter_list|)
 throws|throws
 name|MQTTProtocolException
 function_decl|;
-comment|/**      * Called when a client requests an un-subscribe a previous subscription.      *      * @param subscription      *        the {@link MQTTSubscription} that is being removed.      *      * @throws MQTTProtocolException if an error occurs during the un-subscribe processing.      */
+comment|/**      * Called when a client requests an un-subscribe a previous subscription.      *      * @param topicName      *        the name of the Topic the client wishes to unsubscribe from.      *      * @throws MQTTProtocolException if an error occurs during the un-subscribe processing.      */
 specifier|public
 name|void
 name|onUnSubscribe
 parameter_list|(
-name|MQTTSubscription
-name|subscription
+name|String
+name|topicName
 parameter_list|)
 throws|throws
 name|MQTTProtocolException
@@ -217,6 +256,15 @@ specifier|public
 name|MQTTProtocolConverter
 name|getProtocolConverter
 parameter_list|()
+function_decl|;
+comment|/**      * Lookup an {@link MQTTSubscription} instance based on known {@link ConsumerId} value.      *      * @param consumer      *        the consumer ID to lookup.      *      * @return the {@link MQTTSubscription} for the consumer or null if no subscription exists.      */
+specifier|public
+name|MQTTSubscription
+name|getSubscription
+parameter_list|(
+name|ConsumerId
+name|consumer
+parameter_list|)
 function_decl|;
 block|}
 end_interface
