@@ -71,7 +71,7 @@ name|Exception
 block|{
 name|protocolConfig
 operator|=
-literal|"transport.subscriptionStrategyName=mqtt-virtual-topic-subscriptions"
+literal|"transport.subscriptionStrategy=mqtt-virtual-topic-subscriptions"
 expr_stmt|;
 name|super
 operator|.

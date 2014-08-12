@@ -1137,7 +1137,7 @@ name|activeMQSubscriptionPrefetch
 init|=
 literal|1
 decl_stmt|;
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1266,7 +1266,7 @@ operator|!
 name|getPublishDollarTopics
 argument_list|()
 operator|&&
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|isControlTopic
@@ -2272,7 +2272,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|onConnect
@@ -2398,7 +2398,7 @@ index|[
 name|i
 index|]
 operator|=
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|onSubscribe
@@ -2538,7 +2538,7 @@ control|)
 block|{
 try|try
 block|{
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|onUnSubscribe
@@ -2712,7 +2712,7 @@ decl_stmt|;
 name|MQTTSubscription
 name|sub
 init|=
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|getSubscription
@@ -3364,7 +3364,7 @@ try|try
 block|{
 name|destination
 operator|=
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|onSend
@@ -3573,7 +3573,7 @@ block|{
 name|String
 name|amqTopicName
 init|=
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 argument_list|()
 operator|.
 name|onSend
@@ -4744,7 +4744,7 @@ return|;
 block|}
 specifier|public
 name|String
-name|getSubscriptionStrategyName
+name|getSubscriptionStrategy
 parameter_list|()
 block|{
 return|return
@@ -4753,7 +4753,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|setSubscriptionStrategyName
+name|setSubscriptionStrategy
 parameter_list|(
 name|String
 name|name
@@ -4817,7 +4817,7 @@ return|;
 block|}
 specifier|protected
 name|MQTTSubscriptionStrategy
-name|getSubscriptionStrategy
+name|findSubscriptionStrategy
 parameter_list|()
 throws|throws
 name|IOException

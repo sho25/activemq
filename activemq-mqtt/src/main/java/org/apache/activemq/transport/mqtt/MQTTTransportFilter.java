@@ -1276,7 +1276,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|String
-name|getSubscriptionStrategyName
+name|getSubscriptionStrategy
 parameter_list|()
 block|{
 return|return
@@ -1286,7 +1286,7 @@ literal|null
 condition|?
 name|protocolConverter
 operator|.
-name|getSubscriptionStrategyName
+name|getSubscriptionStrategy
 argument_list|()
 else|:
 literal|"default"
@@ -1294,7 +1294,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|setSubscriptionStrategyName
+name|setSubscriptionStrategy
 parameter_list|(
 name|String
 name|name
@@ -1302,7 +1302,7 @@ parameter_list|)
 block|{
 name|protocolConverter
 operator|.
-name|setSubscriptionStrategyName
+name|setSubscriptionStrategy
 argument_list|(
 name|name
 argument_list|)
