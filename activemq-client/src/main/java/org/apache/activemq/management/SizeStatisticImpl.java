@@ -112,6 +112,8 @@ name|description
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -220,7 +222,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return the maximum time of any step      */
+comment|/**      * @return the maximum size of any step      */
 specifier|public
 name|long
 name|getMaxSize
@@ -230,7 +232,7 @@ return|return
 name|maxSize
 return|;
 block|}
-comment|/**      * @return the minimum time of any step      */
+comment|/**      * @return the minimum size of any step      */
 specifier|public
 specifier|synchronized
 name|long
@@ -241,7 +243,7 @@ return|return
 name|minSize
 return|;
 block|}
-comment|/**      * @return the total time of all the steps added together      */
+comment|/**      * @return the total size of all the steps added together      */
 specifier|public
 specifier|synchronized
 name|long
@@ -252,7 +254,7 @@ return|return
 name|totalSize
 return|;
 block|}
-comment|/**      * @return the average time calculated by dividing the      *         total time by the number of counts      */
+comment|/**      * @return the average size calculated by dividing the total size by the      *         number of counts      */
 specifier|public
 specifier|synchronized
 name|double
@@ -281,7 +283,7 @@ operator|/
 name|count
 return|;
 block|}
-comment|/**      * @return the average time calculated by dividing the      *         total time by the number of counts but excluding the      *         minimum and maximum times.      */
+comment|/**      * @return the average size calculated by dividing the total size by the      *         number of counts but excluding the minimum and maximum sizes.      */
 specifier|public
 specifier|synchronized
 name|double
@@ -352,7 +354,7 @@ operator|/
 name|averageSize
 return|;
 block|}
-comment|/**      * @return the average number of steps per second excluding the min& max values      */
+comment|/**      * @return the average number of steps per second excluding the min& max      *         values      */
 specifier|public
 name|double
 name|getAveragePerSecondExcludingMinMax
@@ -410,6 +412,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 specifier|synchronized
 name|void
