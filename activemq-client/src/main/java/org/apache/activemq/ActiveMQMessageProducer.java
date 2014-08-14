@@ -462,8 +462,7 @@ argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-comment|// Enable producer window flow control if protocol> 3 and the window
-comment|// size> 0
+comment|// Enable producer window flow control if protocol>= 3 and the window size> 0
 if|if
 condition|(
 name|session
