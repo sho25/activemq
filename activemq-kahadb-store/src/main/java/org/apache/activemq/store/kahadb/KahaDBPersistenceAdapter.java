@@ -1369,6 +1369,40 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return the currently configured location of the KahaDB index files.      */
+specifier|public
+name|File
+name|getIndexDirectory
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|letter
+operator|.
+name|getIndexDirectory
+argument_list|()
+return|;
+block|}
+comment|/**      * Sets the directory where KahaDB index files should be written.      *      * @param indexDirectory      *        the directory where the KahaDB store index files should be written.      */
+specifier|public
+name|void
+name|setIndexDirectory
+parameter_list|(
+name|File
+name|indexDirectory
+parameter_list|)
+block|{
+name|this
+operator|.
+name|letter
+operator|.
+name|setIndexDirectory
+argument_list|(
+name|indexDirectory
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Get the enableJournalDiskSyncs      *      * @return the enableJournalDiskSyncs      */
 specifier|public
 name|boolean
