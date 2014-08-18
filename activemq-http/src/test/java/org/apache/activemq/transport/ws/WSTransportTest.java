@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -356,18 +368,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -751,9 +751,26 @@ comment|// Some tests explicitly disconnect from stomp so can ignore
 block|}
 finally|finally
 block|{
+try|try
+block|{
 name|stopBroker
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error on Broker stop."
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|driver
@@ -761,11 +778,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|driver
 operator|.
 name|quit
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{}
 name|driver
 operator|=
 literal|null
@@ -778,11 +804,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|server
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{}
 block|}
 block|}
 block|}
@@ -1288,6 +1323,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
