@@ -1224,6 +1224,17 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|lv
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 return|return
 name|Boolean
 operator|.
