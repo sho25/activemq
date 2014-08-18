@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * Factory for WebSocket (ws) transport  *  */
+comment|/**  * Factory for WebSocket (ws) transport  */
 end_comment
 
 begin_class
@@ -148,6 +148,8 @@ name|WSTransportFactory
 extends|extends
 name|TransportFactory
 block|{
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind
@@ -210,6 +212,15 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+name|IntrospectionSupport
+operator|.
+name|setProperties
+argument_list|(
+name|result
+argument_list|,
+name|transportOptions
+argument_list|)
+expr_stmt|;
 name|result
 operator|.
 name|setTransportOption
