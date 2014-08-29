@@ -3350,7 +3350,7 @@ name|Long
 operator|)
 name|messageId
 operator|.
-name|getEntryLocator
+name|getFutureOrSequenceLong
 argument_list|()
 decl_stmt|;
 name|getAdapter
@@ -3443,7 +3443,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|getEntryLocator
+name|getFutureOrSequenceLong
 argument_list|()
 argument_list|,
 literal|null

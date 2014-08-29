@@ -671,6 +671,24 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|registerIndexListener
+parameter_list|(
+name|IndexListener
+name|indexListener
+parameter_list|)
+block|{
+name|delegate
+operator|.
+name|registerIndexListener
+argument_list|(
+name|indexListener
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

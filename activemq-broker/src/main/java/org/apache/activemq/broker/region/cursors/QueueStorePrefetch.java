@@ -413,6 +413,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"{}  setBatch {} loc: {}"
+argument_list|,
+name|this
+argument_list|,
+name|messageId
+argument_list|,
+name|messageId
+operator|.
+name|getEntryLocator
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|setBatch

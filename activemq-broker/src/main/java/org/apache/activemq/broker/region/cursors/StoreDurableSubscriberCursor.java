@@ -866,7 +866,7 @@ annotation|@
 name|Override
 specifier|public
 specifier|synchronized
-name|void
+name|boolean
 name|addMessageLast
 parameter_list|(
 name|MessageReference
@@ -1033,6 +1033,9 @@ block|}
 block|}
 block|}
 block|}
+return|return
+literal|true
+return|;
 block|}
 annotation|@
 name|Override

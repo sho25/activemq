@@ -1080,7 +1080,7 @@ annotation|@
 name|Override
 specifier|public
 specifier|synchronized
-name|void
+name|boolean
 name|addMessageLast
 parameter_list|(
 name|MessageReference
@@ -1089,13 +1089,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+return|return
 name|tryAddMessageLast
 argument_list|(
 name|node
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 annotation|@
 name|Override

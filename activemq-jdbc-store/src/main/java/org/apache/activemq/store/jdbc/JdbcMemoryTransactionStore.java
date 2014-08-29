@@ -640,7 +640,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|getEntryLocator
+name|getFutureOrSequenceLong
 argument_list|()
 argument_list|,
 name|message
@@ -990,7 +990,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|setEntryLocator
+name|setFutureOrSequenceLong
 argument_list|(
 name|id
 argument_list|)
@@ -1088,7 +1088,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|getEntryLocator
+name|getFutureOrSequenceLong
 argument_list|()
 operator|)
 operator|.
@@ -1171,7 +1171,7 @@ operator|.
 name|getMessageId
 argument_list|()
 operator|.
-name|setEntryLocator
+name|setFutureOrSequenceLong
 argument_list|(
 name|id
 argument_list|)

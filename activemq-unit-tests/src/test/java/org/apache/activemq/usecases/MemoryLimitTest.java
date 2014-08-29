@@ -820,7 +820,9 @@ init|=
 name|consumer
 operator|.
 name|receive
-argument_list|()
+argument_list|(
+literal|5000
+argument_list|)
 decl_stmt|;
 name|msg
 operator|.
@@ -873,7 +875,7 @@ operator|.
 name|getPercentUsage
 argument_list|()
 operator|>=
-literal|478
+literal|470
 return|;
 block|}
 block|}
@@ -908,7 +910,7 @@ operator|.
 name|getPercentUsage
 argument_list|()
 operator|>=
-literal|478
+literal|470
 argument_list|)
 expr_stmt|;
 comment|// let's make sure we can consume all messages

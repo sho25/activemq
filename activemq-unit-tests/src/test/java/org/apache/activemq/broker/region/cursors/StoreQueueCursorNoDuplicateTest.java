@@ -411,6 +411,13 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|queueMessageStore
+operator|.
+name|registerIndexListener
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|QueueStorePrefetch
 name|underTest
 init|=

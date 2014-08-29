@@ -210,8 +210,8 @@ name|void
 name|release
 parameter_list|()
 function_decl|;
-comment|/**      * add message to await dispatch      *       * @param node      * @throws IOException      * @throws Exception      */
-name|void
+comment|/**      * add message to await dispatch      *       * @param node      * @return boolean true if successful, false if cursor traps a duplicate      * @throws IOException      * @throws Exception      */
+name|boolean
 name|addMessageLast
 parameter_list|(
 name|MessageReference

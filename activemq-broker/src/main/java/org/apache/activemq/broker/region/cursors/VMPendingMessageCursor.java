@@ -382,7 +382,7 @@ block|}
 comment|/**      * add message to await dispatch      *       * @param node      */
 specifier|public
 specifier|synchronized
-name|void
+name|boolean
 name|addMessageLast
 parameter_list|(
 name|MessageReference
@@ -401,8 +401,11 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
-comment|/**      * add message to await dispatch      *       * @param position      * @param node      */
+comment|/**      * add message to await dispatch      *       * @param node      */
 specifier|public
 specifier|synchronized
 name|void

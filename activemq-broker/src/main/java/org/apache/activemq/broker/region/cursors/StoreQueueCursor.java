@@ -421,7 +421,7 @@ expr_stmt|;
 block|}
 specifier|public
 specifier|synchronized
-name|void
+name|boolean
 name|addMessageLast
 parameter_list|(
 name|MessageReference
@@ -430,6 +430,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|boolean
+name|result
+init|=
+literal|true
+decl_stmt|;
 if|if
 condition|(
 name|node
@@ -479,6 +484,8 @@ name|isPersistent
 argument_list|()
 condition|)
 block|{
+name|result
+operator|=
 name|persistent
 operator|.
 name|addMessageLast
@@ -488,6 +495,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+name|result
+return|;
 block|}
 specifier|public
 specifier|synchronized

@@ -402,7 +402,7 @@ throws|throws
 name|Exception
 block|{     }
 specifier|public
-name|void
+name|boolean
 name|addMessageLast
 parameter_list|(
 name|MessageReference
@@ -410,7 +410,11 @@ name|node
 parameter_list|)
 throws|throws
 name|Exception
-block|{     }
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|public
 name|boolean
 name|tryAddMessageLast
@@ -424,13 +428,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+return|return
 name|addMessageLast
 argument_list|(
 name|node
 argument_list|)
-expr_stmt|;
-return|return
-literal|true
 return|;
 block|}
 specifier|public

@@ -2538,7 +2538,9 @@ throw|throw
 operator|new
 name|SQLException
 argument_list|(
-literal|"Failed to remove message"
+literal|"Failed to remove message seq: "
+operator|+
+name|seq
 argument_list|)
 throw|;
 block|}
@@ -5905,12 +5907,7 @@ name|batchStatements
 expr_stmt|;
 comment|// The next lines are deprecated and should be removed in a future release
 comment|// and is here in case someone created their own
-name|this
-operator|.
-name|batchStatments
-operator|=
-name|batchStatements
-expr_stmt|;
+comment|// this.batchStatments = batchStatements;
 block|}
 comment|// Note - remove batchStatment in future distributions.  Here for backward compatibility
 comment|/**      * @return true if batchStements      */
@@ -7240,24 +7237,16 @@ name|printQuery
 argument_list|(
 name|c
 argument_list|,
-literal|"Select * from ACTIVEMQ_MSGS ORDER BY ID"
+literal|"SELECT COUNT(*) from ACTIVEMQ_MSGS"
 argument_list|,
 name|System
 operator|.
 name|out
 argument_list|)
 expr_stmt|;
-name|printQuery
-argument_list|(
-name|c
-argument_list|,
-literal|"Select * from ACTIVEMQ_ACKS"
-argument_list|,
-name|System
-operator|.
-name|out
-argument_list|)
-expr_stmt|;
+comment|//printQuery(c, "SELECT COUNT(*) from ACTIVEMQ_ACKS", System.out);
+comment|//printQuery(c, "Select * from ACTIVEMQ_MSGS ORDER BY ID", System.out);
+comment|//printQuery(c, "Select * from ACTIVEMQ_ACKS", System.out);
 block|}
 specifier|public
 specifier|static
