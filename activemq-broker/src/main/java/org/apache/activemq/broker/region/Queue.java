@@ -4509,6 +4509,15 @@ name|messageContext
 operator|=
 name|messageContext
 expr_stmt|;
+name|this
+operator|.
+name|messageContext
+operator|.
+name|message
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override

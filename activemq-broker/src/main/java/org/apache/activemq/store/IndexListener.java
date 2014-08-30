@@ -57,14 +57,17 @@ class|class
 name|MessageContext
 block|{
 specifier|public
+specifier|final
 name|Message
 name|message
 decl_stmt|;
 specifier|public
+specifier|final
 name|ConnectionContext
 name|context
 decl_stmt|;
 specifier|public
+specifier|final
 name|Runnable
 name|onCompletion
 decl_stmt|;
