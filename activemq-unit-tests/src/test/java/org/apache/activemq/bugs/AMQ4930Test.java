@@ -816,6 +816,18 @@ name|freeMemory
 argument_list|()
 operator|/
 literal|1024
+operator|+
+literal|">= "
+operator|+
+operator|(
+name|free
+operator|-
+operator|(
+name|free
+operator|*
+literal|0.2
+operator|)
+operator|)
 argument_list|,
 name|Runtime
 operator|.
@@ -833,7 +845,7 @@ operator|-
 operator|(
 name|free
 operator|*
-literal|0.1
+literal|0.2
 operator|)
 operator|)
 argument_list|)
