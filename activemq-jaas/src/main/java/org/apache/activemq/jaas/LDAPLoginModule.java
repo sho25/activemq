@@ -1201,7 +1201,10 @@ operator|new
 name|String
 index|[]
 block|{
+name|doRFC2254Encoding
+argument_list|(
 name|username
+argument_list|)
 block|}
 argument_list|)
 decl_stmt|;
@@ -1992,7 +1995,10 @@ argument_list|(
 name|dn
 argument_list|)
 block|,
+name|doRFC2254Encoding
+argument_list|(
 name|username
+argument_list|)
 block|}
 argument_list|)
 decl_stmt|;
@@ -2840,6 +2846,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|NamingException
+argument_list|(
+literal|"Empty username is not allowed"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|isLoginPropertySet
@@ -2862,6 +2878,16 @@ name|CONNECTION_PASSWORD
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|NamingException
+argument_list|(
+literal|"Empty password is not allowed"
+argument_list|)
+throw|;
 block|}
 name|env
 operator|.
@@ -3024,6 +3050,7 @@ argument_list|()
 operator|==
 name|propertyName
 operator|&&
+operator|(
 name|config
 index|[
 name|i
@@ -3033,6 +3060,21 @@ name|getPropertyValue
 argument_list|()
 operator|!=
 literal|null
+operator|&&
+operator|!
+literal|""
+operator|.
+name|equals
+argument_list|(
+name|config
+index|[
+name|i
+index|]
+operator|.
+name|getPropertyValue
+argument_list|()
+argument_list|)
+operator|)
 condition|)
 return|return
 literal|true

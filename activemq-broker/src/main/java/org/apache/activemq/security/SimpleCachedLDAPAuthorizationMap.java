@@ -777,7 +777,7 @@ condition|(
 name|connectionUsername
 operator|!=
 literal|null
-operator|||
+operator|&&
 operator|!
 literal|""
 operator|.
@@ -799,12 +799,22 @@ name|connectionUsername
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|NamingException
+argument_list|(
+literal|"Empty username is not allowed"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|connectionPassword
 operator|!=
 literal|null
-operator|||
+operator|&&
 operator|!
 literal|""
 operator|.
@@ -825,6 +835,16 @@ argument_list|,
 name|connectionPassword
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|NamingException
+argument_list|(
+literal|"Empty password is not allowed"
+argument_list|)
+throw|;
 block|}
 name|env
 operator|.
