@@ -284,11 +284,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Until https://issues.apache.org/jira/browse/PROTON-588 and https://issues.apache.org/jira/browse/QPID-5792 are fixed"
-argument_list|)
 specifier|public
 class|class
 name|JmsClientRequestResponseTest
