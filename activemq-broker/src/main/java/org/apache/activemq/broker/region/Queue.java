@@ -6345,6 +6345,15 @@ name|ref
 operator|.
 name|isExpired
 argument_list|()
+operator|&&
+operator|(
+name|ref
+operator|.
+name|getLockOwner
+argument_list|()
+operator|==
+literal|null
+operator|)
 condition|)
 block|{
 name|toExpire

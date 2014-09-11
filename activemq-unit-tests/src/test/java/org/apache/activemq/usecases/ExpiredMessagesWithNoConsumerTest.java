@@ -1595,7 +1595,7 @@ specifier|final
 name|long
 name|queuePrefetch
 init|=
-literal|600
+literal|5
 decl_stmt|;
 name|ActiveMQConnectionFactory
 name|factory
@@ -1656,7 +1656,7 @@ specifier|final
 name|long
 name|sendCount
 init|=
-literal|1500
+literal|10
 decl_stmt|;
 specifier|final
 name|CountDownLatch
@@ -2005,7 +2005,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Not all sent have expired "
+literal|"all non inflight have expired "
 argument_list|,
 name|Wait
 operator|.
@@ -2026,8 +2026,65 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"enqueue="
+operator|+
+name|view
+operator|.
+name|getEnqueueCount
+argument_list|()
+operator|+
+literal|", dequeue="
+operator|+
+name|view
+operator|.
+name|getDequeueCount
+argument_list|()
+operator|+
+literal|", inflight="
+operator|+
+name|view
+operator|.
+name|getInFlightCount
+argument_list|()
+operator|+
+literal|", expired= "
+operator|+
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+operator|+
+literal|", size= "
+operator|+
+name|view
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
-name|sendCount
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+operator|>
+literal|0
+operator|&&
+operator|(
+name|view
+operator|.
+name|getEnqueueCount
+argument_list|()
+operator|-
+name|view
+operator|.
+name|getInFlightCount
+argument_list|()
+operator|)
 operator|==
 name|view
 operator|.
@@ -2706,7 +2763,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"All have not sent have expired "
+literal|"all non inflight have expired "
 argument_list|,
 name|Wait
 operator|.
@@ -2727,8 +2784,65 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"enqueue="
+operator|+
+name|view
+operator|.
+name|getEnqueueCount
+argument_list|()
+operator|+
+literal|", dequeue="
+operator|+
+name|view
+operator|.
+name|getDequeueCount
+argument_list|()
+operator|+
+literal|", inflight="
+operator|+
+name|view
+operator|.
+name|getInFlightCount
+argument_list|()
+operator|+
+literal|", expired= "
+operator|+
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+operator|+
+literal|", size= "
+operator|+
+name|view
+operator|.
+name|getQueueSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
-name|sendCount
+name|view
+operator|.
+name|getExpiredCount
+argument_list|()
+operator|>
+literal|0
+operator|&&
+operator|(
+name|view
+operator|.
+name|getEnqueueCount
+argument_list|()
+operator|-
+name|view
+operator|.
+name|getInFlightCount
+argument_list|()
+operator|)
 operator|==
 name|view
 operator|.

@@ -1385,7 +1385,7 @@ operator|.
 name|getMemoryUsage
 argument_list|()
 operator|.
-name|getPercentUsage
+name|getUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
