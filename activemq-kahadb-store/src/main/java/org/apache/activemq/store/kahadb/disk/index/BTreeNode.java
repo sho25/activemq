@@ -564,17 +564,6 @@ name|endKey
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Stopping iterator on reaching: "
-operator|+
-name|endKey
-argument_list|)
-expr_stmt|;
 break|break;
 block|}
 name|nextEntry
