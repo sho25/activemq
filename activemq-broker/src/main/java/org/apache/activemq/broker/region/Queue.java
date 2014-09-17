@@ -6581,6 +6581,19 @@ name|list
 init|=
 literal|null
 decl_stmt|;
+name|long
+name|originalMessageCount
+init|=
+name|this
+operator|.
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+decl_stmt|;
 do|do
 block|{
 name|doPageIn
@@ -6703,13 +6716,15 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"{} after purge complete, message count stats report: {}"
+literal|"{} after purge of {} messages, message count stats report: {}"
 argument_list|,
 name|getActiveMQDestination
 argument_list|()
 operator|.
 name|getQualifiedName
 argument_list|()
+argument_list|,
+name|originalMessageCount
 argument_list|,
 name|this
 operator|.
@@ -6720,6 +6735,24 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"{} purged of {} messages"
+argument_list|,
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+argument_list|,
+name|originalMessageCount
 argument_list|)
 expr_stmt|;
 block|}
