@@ -224,7 +224,8 @@ argument_list|()
 expr_stmt|;
 name|locked
 operator|=
-literal|true
+name|keepAlive
+argument_list|()
 expr_stmt|;
 break|break;
 block|}
