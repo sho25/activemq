@@ -43,6 +43,22 @@ name|console
 operator|.
 name|command
 operator|.
+name|AbstractJmxCommand
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|console
+operator|.
+name|command
+operator|.
 name|Command
 import|;
 end_import
@@ -197,6 +213,13 @@ name|context2
 argument_list|)
 expr_stmt|;
 comment|// must be added first
+if|if
+condition|(
+name|command
+operator|instanceof
+name|AbstractJmxCommand
+condition|)
+block|{
 name|arguments
 operator|.
 name|add
@@ -206,6 +229,7 @@ argument_list|,
 literal|"--jmxlocal"
 argument_list|)
 expr_stmt|;
+block|}
 name|currentCommand
 operator|.
 name|execute

@@ -339,6 +339,23 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"JMS_BODY_FIELD:JMSText = "
+operator|+
+name|nameAndPayload
+argument_list|,
+name|executeCommand
+argument_list|(
+literal|"activemq:browse --amqurl tcp://localhost:61616 --user karaf --password karaf -Vbody "
+operator|+
+name|nameAndPayload
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"got our message"
 argument_list|,
 name|nameAndPayload
