@@ -2330,7 +2330,13 @@ literal|null
 condition|)
 block|{
 name|fireBridgeFailed
-argument_list|()
+argument_list|(
+operator|new
+name|Throwable
+argument_list|(
+literal|"remoteBrokerInfo is null"
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return;
 block|}
@@ -2365,7 +2371,13 @@ literal|null
 condition|)
 block|{
 name|fireBridgeFailed
-argument_list|()
+argument_list|(
+operator|new
+name|Throwable
+argument_list|(
+literal|"localBrokerInfo is null"
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return;
 block|}
@@ -3732,7 +3744,9 @@ block|}
 argument_list|)
 expr_stmt|;
 name|fireBridgeFailed
-argument_list|()
+argument_list|(
+name|error
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -5372,7 +5386,9 @@ block|}
 argument_list|)
 expr_stmt|;
 name|fireBridgeFailed
-argument_list|()
+argument_list|(
+name|error
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -8554,8 +8570,24 @@ block|}
 specifier|private
 name|void
 name|fireBridgeFailed
-parameter_list|()
+parameter_list|(
+name|Throwable
+name|reason
+parameter_list|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"fire bridge failed, listener: {}"
+argument_list|,
+name|this
+operator|.
+name|networkBridgeListener
+argument_list|,
+name|reason
+argument_list|)
+expr_stmt|;
 name|NetworkBridgeListener
 name|l
 init|=
@@ -9018,6 +9050,7 @@ name|AtomicBoolean
 name|disposed
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|BrokerInfo
 name|info
 init|=
