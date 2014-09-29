@@ -955,11 +955,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|producer
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{             }
 block|}
 if|if
 condition|(

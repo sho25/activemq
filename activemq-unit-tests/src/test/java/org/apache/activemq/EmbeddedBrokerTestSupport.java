@@ -224,11 +224,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|broker
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{             }
 block|}
 block|}
 comment|/**      * Factory method to create a new {@link JmsTemplate}      *      * @return a newly created JmsTemplate      */
