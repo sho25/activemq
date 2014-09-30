@@ -2208,6 +2208,9 @@ case|:
 case|case
 name|LINK_REMOTE_CLOSE
 case|:
+case|case
+name|LINK_REMOTE_DETACH
+case|:
 name|processLinkEvent
 argument_list|(
 name|event
