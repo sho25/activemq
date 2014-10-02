@@ -807,6 +807,22 @@ operator|=
 name|protocolConverter
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|setPrefetch
+parameter_list|(
+name|int
+name|prefetch
+parameter_list|)
+block|{
+name|protocolConverter
+operator|.
+name|setPrefetch
+argument_list|(
+name|prefetch
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
