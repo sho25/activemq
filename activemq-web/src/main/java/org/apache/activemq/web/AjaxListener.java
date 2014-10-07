@@ -280,12 +280,6 @@ name|continuation
 operator|.
 name|isResumed
 argument_list|()
-operator|&&
-operator|!
-name|continuation
-operator|.
-name|isInitial
-argument_list|()
 condition|)
 block|{
 name|LOG
