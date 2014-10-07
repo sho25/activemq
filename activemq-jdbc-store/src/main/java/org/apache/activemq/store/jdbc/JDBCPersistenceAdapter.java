@@ -3841,6 +3841,9 @@ name|long
 index|[]
 name|getStoreSequenceIdForMessageId
 parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
 name|MessageId
 name|messageId
 parameter_list|,
@@ -3872,7 +3875,9 @@ name|TransactionContext
 name|c
 init|=
 name|getTransactionContext
-argument_list|()
+argument_list|(
+name|context
+argument_list|)
 decl_stmt|;
 try|try
 block|{

@@ -1580,6 +1580,8 @@ name|persistenceAdapter
 operator|.
 name|getStoreSequenceIdForMessageId
 argument_list|(
+name|context
+argument_list|,
 name|ack
 operator|.
 name|getLastMessageId
@@ -1668,9 +1670,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//if (context != null&& context.getXid() != null) {
-comment|//    ack.getLastMessageId().setEntryLocator(seq);
-comment|//}
 block|}
 specifier|public
 name|void
@@ -2351,6 +2350,8 @@ name|persistenceAdapter
 operator|.
 name|getStoreSequenceIdForMessageId
 argument_list|(
+literal|null
+argument_list|,
 name|messageId
 argument_list|,
 name|destination
