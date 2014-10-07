@@ -150,6 +150,13 @@ operator|.
 name|getImplementationVersion
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|version
+operator|!=
+literal|null
+condition|)
+block|{
 name|Pattern
 name|pattern
 init|=
@@ -206,6 +213,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
