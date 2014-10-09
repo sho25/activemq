@@ -1862,6 +1862,24 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"{} fillBatch"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|batchResetNeeded
 condition|)
 block|{
