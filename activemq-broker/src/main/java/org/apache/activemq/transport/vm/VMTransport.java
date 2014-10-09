@@ -844,6 +844,11 @@ literal|false
 argument_list|,
 literal|true
 argument_list|)
+operator|&&
+name|started
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 name|TaskRunner
