@@ -16,18 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -187,42 +175,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|policy
-operator|.
-name|PolicyEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|policy
-operator|.
-name|PolicyMap
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|command
 operator|.
 name|ActiveMQQueue
@@ -276,6 +228,18 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -617,6 +581,26 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Mem usage after producer done: "
+operator|+
+name|broker
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|getPercentUsage
+argument_list|()
+operator|+
+literal|"%"
+argument_list|)
+expr_stmt|;
 comment|// Browse the queue.
 name|Connection
 name|connection
@@ -741,6 +725,26 @@ name|connection
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Mem usage after browser closed: "
+operator|+
+name|broker
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|getPercentUsage
+argument_list|()
+operator|+
+literal|"%"
+argument_list|)
 expr_stmt|;
 comment|// The number of messages browsed should be equal to the number of messages sent.
 name|assertEquals

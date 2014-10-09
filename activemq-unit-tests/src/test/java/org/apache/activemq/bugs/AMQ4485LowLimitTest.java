@@ -808,7 +808,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-comment|//broker.getSystemUsage().setSendFailIfNoSpace(true);
 name|broker
 operator|.
 name|getSystemUsage
@@ -2774,7 +2773,6 @@ argument_list|(
 literal|"IN"
 argument_list|)
 decl_stmt|;
-comment|//LOG.info("Send to: " + ((ActiveMQConnection) queueConnection).getBrokerName() + ", " + val + ", dest:" + compositeQ);
 name|Message
 name|textMessage
 init|=

@@ -417,11 +417,16 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"{}  setBatch {} loc: {}"
+literal|"{}  setBatch {} seq: {}, loc: {}"
 argument_list|,
 name|this
 argument_list|,
 name|messageId
+argument_list|,
+name|messageId
+operator|.
+name|getFutureOrSequenceLong
+argument_list|()
 argument_list|,
 name|messageId
 operator|.

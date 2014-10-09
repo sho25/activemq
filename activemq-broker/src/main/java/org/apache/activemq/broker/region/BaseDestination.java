@@ -424,7 +424,7 @@ specifier|final
 name|int
 name|MAX_AUDIT_DEPTH
 init|=
-literal|2048
+literal|10000
 decl_stmt|;
 specifier|protected
 specifier|final
