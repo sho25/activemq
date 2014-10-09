@@ -1706,9 +1706,11 @@ condition|)
 block|{
 name|clientIdSet
 operator|.
-name|remove
+name|put
 argument_list|(
 name|clientId
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 if|if
@@ -1779,7 +1781,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Not Connection for {}"
+literal|"No Connection found for {}"
 argument_list|,
 name|oldContext
 argument_list|)
