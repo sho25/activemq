@@ -1151,7 +1151,7 @@ name|assertEquals
 argument_list|(
 name|maxPageSize
 operator|+
-literal|2
+literal|1
 argument_list|,
 name|received
 argument_list|)
