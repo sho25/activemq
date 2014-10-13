@@ -28,6 +28,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1147,13 +1159,13 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-name|maxPageSize
-operator|+
-literal|1
+literal|"got at least maxPageSize"
 argument_list|,
 name|received
+operator|>=
+name|maxPageSize
 argument_list|)
 expr_stmt|;
 block|}

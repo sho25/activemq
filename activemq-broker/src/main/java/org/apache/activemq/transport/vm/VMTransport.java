@@ -844,11 +844,6 @@ literal|false
 argument_list|,
 literal|true
 argument_list|)
-operator|&&
-name|started
-operator|.
-name|get
-argument_list|()
 condition|)
 block|{
 name|TaskRunner
@@ -924,6 +919,15 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|peer
+operator|.
+name|transportListener
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// let the peer know that we are disconnecting after attempting
 comment|// to cleanly shutdown the async tasks so that this is the last
 comment|// command it see's.
@@ -946,7 +950,7 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{             }
+block|{                 }
 comment|// let any requests pending a response see an exception
 try|try
 block|{
@@ -973,7 +977,8 @@ parameter_list|(
 name|Exception
 name|ignore
 parameter_list|)
-block|{             }
+block|{                 }
+block|}
 comment|// shutdown task runner factory
 if|if
 condition|(
