@@ -2799,8 +2799,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Pass down any unexpected errors. Should this close the
-comment|// connection?
+comment|// Pass down any unexpected errors. Should this close the connection?
 if|if
 condition|(
 name|response
@@ -2957,8 +2956,7 @@ operator|.
 name|DATA_STRUCTURE_TYPE
 condition|)
 block|{
-comment|// Pass down any unexpected async errors. Should this close the
-comment|// connection?
+comment|// Pass down any unexpected async errors. Should this close the connection?
 name|Throwable
 name|exception
 init|=
@@ -4095,9 +4093,8 @@ argument_list|(
 name|producerId
 argument_list|)
 expr_stmt|;
-comment|// Always override the AMQP client's MessageId with our own.
-comment|// Preserve the
-comment|// original in the TextView property for later Ack.
+comment|// Always override the AMQP client's MessageId with our own.  Preserve
+comment|// the original in the TextView property for later Ack.
 name|MessageId
 name|messageId
 init|=
@@ -4243,11 +4240,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Lets handle the case where the expiration was set, but the
-comment|// timestamp
-comment|// was not set by the client. Lets assign the timestamp now, and
-comment|// adjust the
-comment|// expiration.
+comment|// Lets handle the case where the expiration was set, but the timestamp
+comment|// was not set by the client. Lets assign the timestamp now, and adjust
+comment|// the expiration.
 if|if
 condition|(
 name|message
@@ -5372,12 +5367,21 @@ name|anonymous
 init|=
 literal|false
 decl_stmt|;
-if|if
-condition|(
+name|String
+name|targetNodeName
+init|=
 name|target
 operator|.
 name|getAddress
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|targetNodeName
+operator|!=
+literal|null
+operator|&&
+name|targetNodeName
 operator|.
 name|equals
 argument_list|(
@@ -6403,10 +6407,8 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Topics can dispatch the same Message to more than one
-comment|// consumer
-comment|// so we must copy to prevent concurrent read / write to
-comment|// the same
+comment|// Topics can dispatch the same Message to more than one consumer
+comment|// so we must copy to prevent concurrent read / write to the same
 comment|// message object.
 if|if
 condition|(
