@@ -413,6 +413,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -434,6 +442,7 @@ name|getEntryLocator
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|store
 operator|.
 name|setBatch
@@ -494,6 +503,24 @@ argument_list|()
 expr_stmt|;
 comment|// without the index lock
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|super
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|",store="
+operator|+
+name|store
+return|;
 block|}
 block|}
 end_class

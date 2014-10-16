@@ -10792,7 +10792,7 @@ block|}
 comment|// /////////////////////////////////////////////////////////////////
 comment|// StoredDestination related implementation methods.
 comment|// /////////////////////////////////////////////////////////////////
-specifier|private
+specifier|protected
 specifier|final
 name|HashMap
 argument_list|<
@@ -11333,6 +11333,36 @@ argument_list|(
 name|seq
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"nextSeq:"
+operator|+
+name|orderIndex
+operator|.
+name|nextMessageId
+operator|+
+literal|",lastRet:"
+operator|+
+name|orderIndex
+operator|.
+name|cursor
+operator|+
+literal|",pending:"
+operator|+
+name|orderIndex
+operator|.
+name|pendingAdditions
+operator|.
+name|size
+argument_list|()
+return|;
 block|}
 block|}
 specifier|protected
@@ -14574,7 +14604,7 @@ return|return
 literal|0
 return|;
 block|}
-specifier|private
+specifier|protected
 name|String
 name|key
 parameter_list|(

@@ -689,6 +689,20 @@ name|indexListener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|delegate
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
