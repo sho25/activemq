@@ -332,7 +332,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|5
+literal|1
 operator|*
 literal|60
 operator|*
