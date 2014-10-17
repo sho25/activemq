@@ -578,7 +578,6 @@ name|portBase
 init|=
 literal|61600
 decl_stmt|;
-specifier|final
 name|int
 name|numBrokers
 init|=
