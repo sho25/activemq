@@ -1685,35 +1685,6 @@ name|candidate
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-comment|// out of sequence, revert to sync state
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"{} cursor order out of sync at seq {}, audit must suppress potential replay of {} messages from the store"
-argument_list|,
-name|this
-argument_list|,
-name|next
-argument_list|,
-name|pendingCachedIds
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 block|}
 name|it
 operator|.
