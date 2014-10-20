@@ -1674,21 +1674,25 @@ literal|"No clientID specified for connection request"
 argument_list|)
 throw|;
 block|}
+name|ConnectionContext
+name|oldContext
+init|=
+literal|null
+decl_stmt|;
 synchronized|synchronized
 init|(
 name|clientIdSet
 init|)
 block|{
-name|ConnectionContext
 name|oldContext
-init|=
+operator|=
 name|clientIdSet
 operator|.
 name|get
 argument_list|(
 name|clientId
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|oldContext
@@ -1713,6 +1717,55 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|InvalidClientIDException
+argument_list|(
+literal|"Broker: "
+operator|+
+name|getBrokerName
+argument_list|()
+operator|+
+literal|" - Client: "
+operator|+
+name|clientId
+operator|+
+literal|" already connected from "
+operator|+
+name|oldContext
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getRemoteAddress
+argument_list|()
+argument_list|)
+throw|;
+block|}
+block|}
+else|else
+block|{
+name|clientIdSet
+operator|.
+name|put
+argument_list|(
+name|clientId
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|oldContext
+operator|!=
+literal|null
+condition|)
+block|{
 if|if
 condition|(
 name|oldContext
@@ -1788,47 +1841,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|InvalidClientIDException
-argument_list|(
-literal|"Broker: "
-operator|+
-name|getBrokerName
-argument_list|()
-operator|+
-literal|" - Client: "
-operator|+
-name|clientId
-operator|+
-literal|" already connected from "
-operator|+
-name|oldContext
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|getRemoteAddress
-argument_list|()
-argument_list|)
-throw|;
-block|}
-block|}
-else|else
-block|{
-name|clientIdSet
-operator|.
-name|put
-argument_list|(
-name|clientId
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 name|connections
 operator|.
 name|add
@@ -1896,8 +1908,7 @@ argument_list|(
 name|clientId
 argument_list|)
 decl_stmt|;
-comment|// we may be removing the duplicate connection, not the first
-comment|// connection to be created
+comment|// we may be removing the duplicate connection, not the first connection to be created
 comment|// so lets check that their connection IDs are the same
 if|if
 condition|(
