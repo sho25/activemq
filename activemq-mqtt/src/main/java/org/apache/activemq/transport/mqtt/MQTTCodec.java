@@ -381,17 +381,12 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
-name|i
-operator|++
-operator|<
 name|readSize
+operator|--
+operator|>
+literal|0
 condition|)
 block|{
 name|byte
@@ -425,7 +420,7 @@ if|if
 condition|(
 name|readSize
 operator|>
-literal|1
+literal|0
 condition|)
 block|{
 name|currentParser
@@ -435,8 +430,6 @@ argument_list|(
 name|data
 argument_list|,
 name|readSize
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -745,7 +738,7 @@ name|readSize
 operator|=
 name|readSize
 operator|-
-name|payLoadRead
+name|length
 expr_stmt|;
 if|if
 condition|(
