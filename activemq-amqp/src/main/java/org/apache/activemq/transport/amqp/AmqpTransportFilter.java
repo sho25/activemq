@@ -823,6 +823,22 @@ name|prefetch
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|setProducerCredit
+parameter_list|(
+name|int
+name|producerCredit
+parameter_list|)
+block|{
+name|protocolConverter
+operator|.
+name|setProducerCredit
+argument_list|(
+name|producerCredit
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

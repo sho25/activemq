@@ -86,6 +86,13 @@ name|int
 name|prefetch
 parameter_list|)
 function_decl|;
+name|void
+name|setProducerCredit
+parameter_list|(
+name|int
+name|producerCredit
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
