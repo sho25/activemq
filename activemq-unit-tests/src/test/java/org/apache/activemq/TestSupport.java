@@ -1011,6 +1011,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|static
 name|PersistenceAdapter
 name|setPersistenceAdapter
 parameter_list|(

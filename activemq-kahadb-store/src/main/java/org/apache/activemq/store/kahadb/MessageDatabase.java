@@ -16358,6 +16358,7 @@ name|MessageKeys
 argument_list|>
 name|highPriorityIndex
 decl_stmt|;
+specifier|final
 name|MessageOrderCursor
 name|cursor
 init|=
@@ -16998,10 +16999,7 @@ condition|(
 name|highPriorityIndex
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|highPriorityIndex
 operator|.
 name|containsKey
@@ -17053,22 +17051,8 @@ name|longValue
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 else|else
 block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"setBatch: sequence "
-operator|+
-name|sequence
-operator|+
-literal|" not found in orderindex:"
-operator|+
-name|this
-argument_list|)
-expr_stmt|;
 name|lastDefaultKey
 operator|=
 name|sequence

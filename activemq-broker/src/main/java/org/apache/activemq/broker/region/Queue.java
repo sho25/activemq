@@ -6528,7 +6528,7 @@ expr_stmt|;
 block|}
 name|messagesLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -6617,7 +6617,7 @@ finally|finally
 block|{
 name|messagesLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
