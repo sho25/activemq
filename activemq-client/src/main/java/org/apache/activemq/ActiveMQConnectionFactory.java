@@ -1114,6 +1114,12 @@ name|rmIdFromConnectionId
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+name|boolean
+name|consumerExpiryCheckEnabled
+init|=
+literal|true
+decl_stmt|;
 comment|// /////////////////////////////////////////////
 comment|//
 comment|// ConnectionFactory, QueueConnectionFactory, TopicConnectionFactory Methods
@@ -2002,6 +2008,14 @@ operator|.
 name|setRmIdFromConnectionId
 argument_list|(
 name|isRmIdFromConnectionId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setConsumerExpiryCheckEnabled
+argument_list|(
+name|isConsumerExpiryCheckEnabled
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3587,6 +3601,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"consumerExpiryCheckEnabled"
+argument_list|,
+name|Boolean
+operator|.
+name|toString
+argument_list|(
+name|isConsumerExpiryCheckEnabled
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|boolean
@@ -4403,6 +4432,32 @@ operator|.
 name|rmIdFromConnectionId
 operator|=
 name|rmIdFromConnectionId
+expr_stmt|;
+block|}
+comment|/**      * @return true if MessageConsumer instance will check for expired messages before dispatch.      */
+specifier|public
+name|boolean
+name|isConsumerExpiryCheckEnabled
+parameter_list|()
+block|{
+return|return
+name|consumerExpiryCheckEnabled
+return|;
+block|}
+comment|/**      * Controls whether message expiration checking is done in each MessageConsumer      * prior to dispatching a message.  Disabling this check can lead to consumption      * of expired messages.      *      * @param consumerExpiryCheckEnabled      *        controls whether expiration checking is done prior to dispatch.      */
+specifier|public
+name|void
+name|setConsumerExpiryCheckEnabled
+parameter_list|(
+name|boolean
+name|consumerExpiryCheckEnabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumerExpiryCheckEnabled
+operator|=
+name|consumerExpiryCheckEnabled
 expr_stmt|;
 block|}
 block|}

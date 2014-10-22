@@ -1402,6 +1402,12 @@ init|=
 literal|false
 decl_stmt|;
 specifier|private
+name|boolean
+name|consumerExpiryCheckEnabled
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 specifier|final
 name|Transport
 name|transport
@@ -9512,6 +9518,32 @@ operator|.
 name|optimizedAckScheduledAckInterval
 operator|=
 name|optimizedAckScheduledAckInterval
+expr_stmt|;
+block|}
+comment|/**      * @return true if MessageConsumer instance will check for expired messages before dispatch.      */
+specifier|public
+name|boolean
+name|isConsumerExpiryCheckEnabled
+parameter_list|()
+block|{
+return|return
+name|consumerExpiryCheckEnabled
+return|;
+block|}
+comment|/**      * Controls whether message expiration checking is done in each MessageConsumer      * prior to dispatching a message.  Disabling this check can lead to consumption      * of expired messages.      *      * @param consumerExpiryCheckEnabled      *        controls whether expiration checking is done prior to dispatch.      */
+specifier|public
+name|void
+name|setConsumerExpiryCheckEnabled
+parameter_list|(
+name|boolean
+name|consumerExpiryCheckEnabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumerExpiryCheckEnabled
+operator|=
+name|consumerExpiryCheckEnabled
 expr_stmt|;
 block|}
 block|}
