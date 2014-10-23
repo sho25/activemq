@@ -5347,9 +5347,12 @@ literal|"%, size="
 operator|+
 name|size
 operator|+
-literal|", in flight groups="
+literal|", pending="
 operator|+
-name|messageGroupOwners
+name|indexOrderedCursorUpdates
+operator|.
+name|size
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -9830,10 +9833,7 @@ operator|new
 name|Object
 index|[]
 block|{
-name|destination
-operator|.
-name|getPhysicalName
-argument_list|()
+name|this
 block|,
 name|toPageIn
 block|,
