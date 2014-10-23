@@ -73,16 +73,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Set
 import|;
 end_import
@@ -477,7 +467,7 @@ name|audit
 decl_stmt|;
 specifier|protected
 specifier|final
-name|List
+name|LinkedList
 argument_list|<
 name|Long
 argument_list|>
@@ -832,7 +822,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// message added to db
+comment|// jdbc close or jms commit - while futureOrSequenceLong==null ordered
+comment|// work will remain pending on the Queue
 name|message
 operator|.
 name|getMessageId
@@ -2103,6 +2094,34 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+name|this
+operator|+
+literal|" recoverNext lastRecovered:"
+operator|+
+name|lastRecoveredSequenceId
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|", minPending:"
+operator|+
+name|minPendingSequeunceId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|adapter
 operator|.
 name|doRecoverNextMessages
@@ -2296,10 +2315,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-name|destination
-operator|.
-name|getPhysicalName
-argument_list|()
+name|this
 operator|+
 literal|" resetBatching, existing last recovered seqId: "
 operator|+
@@ -2416,10 +2432,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-name|destination
-operator|.
-name|getPhysicalName
-argument_list|()
+name|this
 operator|+
 literal|" setBatch: new sequenceId: "
 operator|+
@@ -2453,6 +2466,27 @@ argument_list|(
 name|prioritizedMessages
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|destination
+operator|.
+name|getPhysicalName
+argument_list|()
+operator|+
+literal|",pendingSize:"
+operator|+
+name|pendingAdditions
+operator|.
+name|size
+argument_list|()
+return|;
 block|}
 block|}
 end_class
