@@ -63,7 +63,7 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|BrokerContext
+name|BrokerService
 import|;
 end_import
 
@@ -313,8 +313,8 @@ parameter_list|,
 name|WireFormat
 name|wireFormat
 parameter_list|,
-name|BrokerContext
-name|brokerContext
+name|BrokerService
+name|brokerService
 parameter_list|)
 block|{
 name|super
@@ -330,6 +330,8 @@ operator|new
 name|AMQPProtocolDiscriminator
 argument_list|(
 name|this
+argument_list|,
+name|brokerService
 argument_list|)
 expr_stmt|;
 if|if
