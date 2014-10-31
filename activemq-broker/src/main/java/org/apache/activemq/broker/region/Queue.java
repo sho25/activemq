@@ -10301,6 +10301,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|redeliveredWaitingDispatch
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|pagedInPendingDispatch
 operator|.
@@ -10318,8 +10326,7 @@ name|pagedInPendingDispatch
 argument_list|)
 expr_stmt|;
 block|}
-comment|// and now see if we can dispatch the new stuff.. and append to
-comment|// the pending
+comment|// and now see if we can dispatch the new stuff.. and append to the pending
 comment|// list anything that does not actually get dispatched.
 if|if
 condition|(
@@ -10387,6 +10394,7 @@ name|doWakeUp
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

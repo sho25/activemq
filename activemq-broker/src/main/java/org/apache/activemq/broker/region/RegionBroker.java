@@ -3713,17 +3713,21 @@ name|IOException
 name|error
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|error
+name|RuntimeException
+name|runtimeException
+init|=
+operator|new
+name|RuntimeException
 argument_list|(
-literal|"Failed to persist JMSRedeliveryFlag on {} in {}"
-argument_list|,
+literal|"Failed to persist JMSRedeliveryFlag on "
+operator|+
 name|message
 operator|.
 name|getMessageId
 argument_list|()
-argument_list|,
+operator|+
+literal|" in "
+operator|+
 name|message
 operator|.
 name|getDestination
@@ -3731,7 +3735,22 @@ argument_list|()
 argument_list|,
 name|error
 argument_list|)
+decl_stmt|;
+name|LOG
+operator|.
+name|warn
+argument_list|(
+name|runtimeException
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|,
+name|runtimeException
+argument_list|)
 expr_stmt|;
+throw|throw
+name|runtimeException
+throw|;
 block|}
 finally|finally
 block|{
