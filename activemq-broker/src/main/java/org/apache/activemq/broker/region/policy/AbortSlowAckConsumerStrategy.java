@@ -45,7 +45,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|LinkedList
+name|List
 import|;
 end_import
 
@@ -55,7 +55,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Map
 import|;
 end_import
 
@@ -68,6 +68,18 @@ operator|.
 name|Map
 operator|.
 name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
 import|;
 end_import
 
@@ -179,15 +191,19 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|Destination
 argument_list|>
 name|destinations
 init|=
 operator|new
-name|LinkedList
+name|ConcurrentHashMap
 argument_list|<
+name|String
+argument_list|,
 name|Destination
 argument_list|>
 argument_list|()
@@ -354,6 +370,9 @@ name|Destination
 name|destination
 range|:
 name|destinations
+operator|.
+name|values
+argument_list|()
 control|)
 block|{
 if|if
@@ -392,13 +411,25 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Clean up an disposed destinations to save space.
+for|for
+control|(
+name|Destination
+name|destination
+range|:
+name|disposed
+control|)
+block|{
 name|destinations
 operator|.
-name|removeAll
+name|remove
 argument_list|(
-name|disposed
+name|destination
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|abortAllQualifiedSlowConsumers
 argument_list|()
 expr_stmt|;
@@ -854,8 +885,13 @@ name|this
 operator|.
 name|destinations
 operator|.
-name|add
+name|put
 argument_list|(
+name|destination
+operator|.
+name|getName
+argument_list|()
+argument_list|,
 name|destination
 argument_list|)
 expr_stmt|;
