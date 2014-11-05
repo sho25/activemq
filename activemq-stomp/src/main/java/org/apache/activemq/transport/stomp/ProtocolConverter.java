@@ -2539,7 +2539,7 @@ name|this
 operator|.
 name|pedingAcks
 operator|.
-name|get
+name|remove
 argument_list|(
 name|ackId
 argument_list|)
@@ -2901,7 +2901,7 @@ name|this
 operator|.
 name|pedingAcks
 operator|.
-name|get
+name|remove
 argument_list|(
 name|ackId
 argument_list|)
@@ -3339,6 +3339,11 @@ name|activemqTx
 argument_list|)
 expr_stmt|;
 block|}
+name|pedingAcks
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|TransactionInfo
 name|tx
 init|=
@@ -3502,6 +3507,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+name|pedingAcks
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|TransactionInfo
 name|tx
 init|=
