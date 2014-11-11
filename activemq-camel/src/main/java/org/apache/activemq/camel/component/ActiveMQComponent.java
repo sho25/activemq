@@ -57,18 +57,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|EnhancedConnection
 import|;
 end_import
@@ -270,7 +258,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The<a href="http://activemq.apache.org/camel/activemq.html">ActiveMQ Component</a>  *  *   */
+comment|/**  * The<a href="http://activemq.apache.org/camel/activemq.html">ActiveMQ Component</a>  */
 end_comment
 
 begin_class
@@ -433,6 +421,9 @@ name|configuration
 parameter_list|)
 block|{
 name|super
+argument_list|()
+expr_stmt|;
+name|setConfiguration
 argument_list|(
 name|configuration
 argument_list|)
