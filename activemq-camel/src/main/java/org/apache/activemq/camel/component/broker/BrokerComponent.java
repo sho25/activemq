@@ -189,6 +189,10 @@ name|removeStartingCharacters
 import|;
 end_import
 
+begin_comment
+comment|/**  * The<a href="http://activemq.apache.org/broker-camel-component.html">Broker Camel component</a> allows to use Camel  * routing to move messages through the broker.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
