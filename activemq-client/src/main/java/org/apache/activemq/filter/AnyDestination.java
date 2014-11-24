@@ -76,7 +76,7 @@ expr_stmt|;
 comment|// ensure we are small when it comes to comparison in DestinationMap
 name|physicalName
 operator|=
-literal|"0"
+literal|"!0"
 expr_stmt|;
 block|}
 annotation|@
