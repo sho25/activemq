@@ -4567,7 +4567,7 @@ condition|(
 name|enableRecoveryFile
 condition|)
 block|{
-name|writeFile
+name|recoveryFile
 operator|.
 name|sync
 argument_list|()
