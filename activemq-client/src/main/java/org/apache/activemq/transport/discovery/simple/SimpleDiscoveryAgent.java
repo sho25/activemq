@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered  * services.  *   *   */
+comment|/**  * A simple DiscoveryAgent that allows static configuration of the discovered  * services.  *  *  */
 end_comment
 
 begin_class
@@ -258,6 +258,7 @@ name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|failed
 init|=
@@ -347,6 +348,8 @@ literal|"]"
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDiscoveryListener
@@ -362,6 +365,8 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|registerService
@@ -372,6 +377,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -430,6 +437,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -444,11 +453,19 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|taskRunner
+operator|!=
+literal|null
+condition|)
+block|{
 name|taskRunner
 operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
+block|}
 comment|// TODO: Should we not remove the services on the listener?
 synchronized|synchronized
 init|(
@@ -563,6 +580,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|serviceFailed
@@ -611,6 +630,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
