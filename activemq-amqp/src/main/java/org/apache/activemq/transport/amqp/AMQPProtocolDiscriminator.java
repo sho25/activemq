@@ -76,13 +76,13 @@ name|AMQPProtocolDiscriminator
 implements|implements
 name|IAmqpProtocolConverter
 block|{
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int
 name|DEFAULT_PREFETCH
 init|=
-literal|100
+literal|1000
 decl_stmt|;
 specifier|private
 specifier|final
@@ -98,7 +98,7 @@ specifier|private
 name|int
 name|prefetch
 init|=
-name|DEFAULT_PREFETCH
+literal|0
 decl_stmt|;
 specifier|private
 name|int
