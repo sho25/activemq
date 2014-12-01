@@ -402,6 +402,14 @@ specifier|public
 class|class
 name|AmqpTestSupport
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MESSAGE_NUMBER
+init|=
+literal|"MessageNumber"
+decl_stmt|;
 annotation|@
 name|Rule
 specifier|public
@@ -1454,10 +1462,10 @@ control|(
 name|int
 name|i
 init|=
-literal|0
+literal|1
 init|;
 name|i
-operator|<
+operator|<=
 name|count
 condition|;
 name|i
@@ -1478,6 +1486,15 @@ name|setText
 argument_list|(
 literal|"TextMessage: "
 operator|+
+name|i
+argument_list|)
+expr_stmt|;
+name|message
+operator|.
+name|setIntProperty
+argument_list|(
+name|MESSAGE_NUMBER
+argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
