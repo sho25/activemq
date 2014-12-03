@@ -779,7 +779,7 @@ init|=
 operator|new
 name|IOException
 argument_list|(
-literal|"Unexpected error occured: "
+literal|"Unexpected error occurred: "
 operator|+
 name|e
 argument_list|)
