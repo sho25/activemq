@@ -355,7 +355,6 @@ name|SimpleAuthenticationPlugin
 argument_list|(
 operator|new
 name|ArrayList
-argument_list|<>
 argument_list|()
 argument_list|)
 block|}
