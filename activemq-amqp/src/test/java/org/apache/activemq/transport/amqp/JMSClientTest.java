@@ -131,6 +131,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|Destination
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|ExceptionListener
 import|;
 end_import
@@ -332,16 +342,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -4572,14 +4572,29 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//This makes sure the connection is completely up and connected
+comment|// This makes sure the connection is completely up and connected
+name|Destination
+name|destination
+init|=
 name|s
 operator|.
 name|createTemporaryQueue
 argument_list|()
+decl_stmt|;
+name|MessageProducer
+name|producer
+init|=
+name|s
 operator|.
-name|delete
-argument_list|()
+name|createProducer
+argument_list|(
+name|destination
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|producer
+argument_list|)
 expr_stmt|;
 name|stopBroker
 argument_list|()
@@ -5535,12 +5550,6 @@ name|ex
 parameter_list|)
 block|{         }
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Requires version 0.30 or higher to work."
-argument_list|)
-comment|// TODO
 annotation|@
 name|Test
 argument_list|(
