@@ -2482,7 +2482,7 @@ name|credit
 init|=
 name|link
 operator|.
-name|getRemoteCredit
+name|getCredit
 argument_list|()
 decl_stmt|;
 if|if
@@ -8408,15 +8408,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// set default value for now and change to the consumer's preference
+comment|// set zero value for now and change to the consumer's preference
 comment|// on the first flow packet
 name|consumerInfo
 operator|.
 name|setPrefetchSize
 argument_list|(
-name|AMQPProtocolDiscriminator
-operator|.
-name|DEFAULT_PREFETCH
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
