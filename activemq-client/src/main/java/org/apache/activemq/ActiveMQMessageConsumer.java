@@ -1536,6 +1536,13 @@ operator|||
 name|this
 operator|.
 name|nonBlockingRedelivery
+operator|||
+name|session
+operator|.
+name|connection
+operator|.
+name|isMessagePrioritySupported
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
