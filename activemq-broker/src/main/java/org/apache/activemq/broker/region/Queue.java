@@ -1701,7 +1701,7 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|getLastDeliveredSequenceId
+name|getAssignedGroupCount
 argument_list|()
 decl_stmt|;
 name|long
@@ -1712,7 +1712,7 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|getLastDeliveredSequenceId
+name|getAssignedGroupCount
 argument_list|()
 decl_stmt|;
 name|val
@@ -2640,6 +2640,8 @@ operator|.
 name|getQualifiedName
 argument_list|()
 block|,
+name|sub
+block|,
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -2975,7 +2977,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"{} remove sub: {}, lastDeliveredSeqId: {}, dequeues: {}, dispatched: {}, inflight: {}"
+literal|"{} remove sub: {}, lastDeliveredSeqId: {}, dequeues: {}, dispatched: {}, inflight: {}, groups: {}"
 argument_list|,
 operator|new
 name|Object
@@ -3016,6 +3018,14 @@ name|getInflight
 argument_list|()
 operator|.
 name|getCount
+argument_list|()
+block|,
+name|sub
+operator|.
+name|getConsumerInfo
+argument_list|()
+operator|.
+name|getAssignedGroupCount
 argument_list|()
 block|}
 argument_list|)
@@ -10341,6 +10351,7 @@ name|pagedInPendingDispatch
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// and now see if we can dispatch the new stuff.. and append to the pending
 comment|// list anything that does not actually get dispatched.
 if|if
@@ -10358,6 +10369,11 @@ condition|)
 block|{
 if|if
 condition|(
+name|redeliveredWaitingDispatch
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
 name|pagedInPendingDispatch
 operator|.
 name|isEmpty
@@ -10412,7 +10428,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
 finally|finally
 block|{
 name|pagedInPendingDispatchLock
@@ -10454,7 +10469,7 @@ name|consumers
 decl_stmt|;
 name|consumersLock
 operator|.
-name|writeLock
+name|readLock
 argument_list|()
 operator|.
 name|lock
@@ -10495,7 +10510,7 @@ finally|finally
 block|{
 name|consumersLock
 operator|.
-name|writeLock
+name|readLock
 argument_list|()
 operator|.
 name|unlock
@@ -10952,18 +10967,8 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|setLastDeliveredSequenceId
-argument_list|(
-name|subscription
-operator|.
-name|getConsumerInfo
+name|decrementAssignedGroupCount
 argument_list|()
-operator|.
-name|getLastDeliveredSequenceId
-argument_list|()
-operator|-
-literal|1
-argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -11035,18 +11040,8 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|setLastDeliveredSequenceId
-argument_list|(
-name|subs
-operator|.
-name|getConsumerInfo
+name|incrementAssignedGroupCount
 argument_list|()
-operator|.
-name|getLastDeliveredSequenceId
-argument_list|()
-operator|+
-literal|1
-argument_list|)
 expr_stmt|;
 block|}
 specifier|protected

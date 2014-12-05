@@ -212,11 +212,15 @@ decl_stmt|;
 comment|// the original consumerId
 comment|// not marshalled, populated from RemoveInfo, the last message delivered, used
 comment|// to suppress redelivery on prefetched messages after close
-comment|// overload; also used at runtime to track assignment of message groups
 specifier|private
 specifier|transient
 name|long
 name|lastDeliveredSequenceId
+decl_stmt|;
+specifier|private
+specifier|transient
+name|long
+name|assignedGroupCount
 decl_stmt|;
 comment|// originated from a
 comment|// network connection
@@ -1335,6 +1339,37 @@ parameter_list|()
 block|{
 return|return
 name|lastDeliveredSequenceId
+return|;
+block|}
+specifier|public
+name|void
+name|incrementAssignedGroupCount
+parameter_list|()
+block|{
+name|this
+operator|.
+name|assignedGroupCount
+operator|++
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|decrementAssignedGroupCount
+parameter_list|()
+block|{
+name|this
+operator|.
+name|assignedGroupCount
+operator|--
+expr_stmt|;
+block|}
+specifier|public
+name|long
+name|getAssignedGroupCount
+parameter_list|()
+block|{
+return|return
+name|assignedGroupCount
 return|;
 block|}
 block|}
