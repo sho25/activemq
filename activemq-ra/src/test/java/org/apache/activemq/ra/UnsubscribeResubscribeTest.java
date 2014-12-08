@@ -146,7 +146,7 @@ specifier|final
 name|String
 name|DEFAULT_HOST
 init|=
-literal|"vm://localhost"
+literal|"vm://localhost?broker.persistent=false"
 decl_stmt|;
 specifier|private
 name|ConnectionManagerAdapter
