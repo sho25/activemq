@@ -241,6 +241,8 @@ literal|"CloseConnection timed out"
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
 name|executor
 operator|.
 name|shutdownNow
@@ -251,6 +253,7 @@ operator|.
 name|tearDown
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 class|class

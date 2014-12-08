@@ -1250,10 +1250,12 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-literal|"startBroker timed out"
+literal|"stopBroker timed out"
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
 name|executor
 operator|.
 name|shutdownNow
@@ -1271,9 +1273,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"HUNG THREADS in setUp"
+literal|"HUNG THREADS in tearDown"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
