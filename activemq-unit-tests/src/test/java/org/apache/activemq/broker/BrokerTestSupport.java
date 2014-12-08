@@ -515,7 +515,7 @@ specifier|protected
 name|RegionBroker
 name|regionBroker
 decl_stmt|;
-specifier|protected
+specifier|public
 name|BrokerService
 name|broker
 decl_stmt|;
@@ -535,7 +535,7 @@ specifier|protected
 name|int
 name|tempDestGenerator
 decl_stmt|;
-specifier|protected
+specifier|public
 name|PersistenceAdapter
 name|persistenceAdapter
 decl_stmt|;
