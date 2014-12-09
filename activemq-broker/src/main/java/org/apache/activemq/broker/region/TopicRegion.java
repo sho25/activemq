@@ -854,8 +854,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// throw this exception only if link stealing is off
 if|if
 condition|(
+operator|!
+name|context
+operator|.
+name|isAllowLinkStealing
+argument_list|()
+operator|&&
 name|sub
 operator|.
 name|isActive
@@ -1019,6 +1026,49 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// set the info and context to the new ones.
+comment|// this is set in the activate() call below, but
+comment|// that call is a NOP if it is already active.
+comment|// hence need to set here and deactivate it first
+if|if
+condition|(
+operator|(
+name|sub
+operator|.
+name|context
+operator|!=
+name|context
+operator|)
+operator|||
+operator|(
+name|sub
+operator|.
+name|info
+operator|!=
+name|info
+operator|)
+condition|)
+block|{
+name|sub
+operator|.
+name|info
+operator|=
+name|info
+expr_stmt|;
+name|sub
+operator|.
+name|context
+operator|=
+name|context
+expr_stmt|;
+name|sub
+operator|.
+name|deactivate
+argument_list|(
+name|keepDurableSubsActive
+argument_list|)
+expr_stmt|;
+block|}
 name|subscriptions
 operator|.
 name|put
@@ -1176,6 +1226,18 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// deactivate only if given context is same
+comment|// as what is in the sub. otherwise, during linksteal
+comment|// sub will get new context, but will be removed here
+if|if
+condition|(
+name|sub
+operator|.
+name|getContext
+argument_list|()
+operator|==
+name|context
+condition|)
 name|sub
 operator|.
 name|deactivate
