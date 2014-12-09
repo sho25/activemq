@@ -733,7 +733,11 @@ block|}
 block|}
 annotation|@
 name|Test
-comment|// (timeout=30000)
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
 specifier|public
 name|void
 name|testAnonymousProducerConsume
@@ -752,30 +756,171 @@ name|createConnection
 argument_list|()
 expr_stmt|;
 block|{
-comment|//            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-comment|//            Queue queue1 = session.createQueue(getDestinationName() + "1");
-comment|//            Queue queue2 = session.createQueue(getDestinationName() + "2");
-comment|//            MessageProducer p = session.createProducer(null);
-comment|//
-comment|//            TextMessage message = session.createTextMessage();
-comment|//            message.setText("hello");
-comment|//            p.send(queue1, message);
-comment|//            p.send(queue2, message);
-comment|//
-comment|//            {
-comment|//                MessageConsumer consumer = session.createConsumer(queue1);
-comment|//                Message msg = consumer.receive(TestConfig.TIMEOUT);
-comment|//                assertNotNull(msg);
-comment|//                assertTrue(msg instanceof TextMessage);
-comment|//                consumer.close();
-comment|//            }
-comment|//            {
-comment|//                MessageConsumer consumer = session.createConsumer(queue2);
-comment|//                Message msg = consumer.receive(TestConfig.TIMEOUT);
-comment|//                assertNotNull(msg);
-comment|//                assertTrue(msg instanceof TextMessage);
-comment|//                consumer.close();
-comment|//            }
+name|Session
+name|session
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+decl_stmt|;
+name|Queue
+name|queue1
+init|=
+name|session
+operator|.
+name|createQueue
+argument_list|(
+name|getDestinationName
+argument_list|()
+operator|+
+literal|"1"
+argument_list|)
+decl_stmt|;
+name|Queue
+name|queue2
+init|=
+name|session
+operator|.
+name|createQueue
+argument_list|(
+name|getDestinationName
+argument_list|()
+operator|+
+literal|"2"
+argument_list|)
+decl_stmt|;
+name|MessageProducer
+name|p
+init|=
+name|session
+operator|.
+name|createProducer
+argument_list|(
+literal|null
+argument_list|)
+decl_stmt|;
+name|TextMessage
+name|message
+init|=
+name|session
+operator|.
+name|createTextMessage
+argument_list|()
+decl_stmt|;
+name|message
+operator|.
+name|setText
+argument_list|(
+literal|"hello"
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|send
+argument_list|(
+name|queue1
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+name|p
+operator|.
+name|send
+argument_list|(
+name|queue2
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+block|{
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue1
+argument_list|)
+decl_stmt|;
+name|Message
+name|msg
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+name|TestConfig
+operator|.
+name|TIMEOUT
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|msg
+operator|instanceof
+name|TextMessage
+argument_list|)
+expr_stmt|;
+name|consumer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|{
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue2
+argument_list|)
+decl_stmt|;
+name|Message
+name|msg
+init|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+name|TestConfig
+operator|.
+name|TIMEOUT
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|msg
+operator|instanceof
+name|TextMessage
+argument_list|)
+expr_stmt|;
+name|consumer
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
