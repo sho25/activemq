@@ -5299,40 +5299,6 @@ name|String
 name|toString
 parameter_list|()
 block|{
-name|int
-name|size
-init|=
-literal|0
-decl_stmt|;
-name|messagesLock
-operator|.
-name|readLock
-argument_list|()
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
-name|size
-operator|=
-name|messages
-operator|.
-name|size
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|messagesLock
-operator|.
-name|readLock
-argument_list|()
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
 return|return
 name|destination
 operator|.
@@ -5355,7 +5321,13 @@ argument_list|()
 operator|+
 literal|"%, size="
 operator|+
-name|size
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
 operator|+
 literal|", pending="
 operator|+
@@ -9043,13 +9015,6 @@ argument_list|,
 name|ack
 argument_list|)
 expr_stmt|;
-name|reference
-operator|.
-name|setAcked
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 comment|// This sends the ack the the journal..
 if|if
 condition|(
@@ -9248,6 +9213,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|// after successful store update
+name|reference
+operator|.
+name|setAcked
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
