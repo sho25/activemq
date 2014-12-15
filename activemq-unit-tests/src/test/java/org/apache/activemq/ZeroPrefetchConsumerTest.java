@@ -1044,6 +1044,12 @@ name|createSession
 argument_list|(
 name|transacted
 argument_list|,
+name|transacted
+condition|?
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+else|:
 name|Session
 operator|.
 name|AUTO_ACKNOWLEDGE
@@ -1367,7 +1373,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Now using other consumer
-comment|// this call should return the next message (Msg5) still left on the queue
+comment|// this call should return the next message still left on the queue
 name|answer
 operator|=
 operator|(
@@ -1393,8 +1399,7 @@ literal|"Msg6"
 argument_list|)
 expr_stmt|;
 comment|// read one more message without commit
-comment|// Now using other consumer
-comment|// this call should return the next message (Msg5) still left on the queue
+comment|// this call should return the next message still left on the queue
 name|answer
 operator|=
 operator|(
@@ -1500,6 +1505,31 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|testManyMessageConsumerWithTxSendPrioritySupport
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+operator|(
+operator|(
+name|ActiveMQConnection
+operator|)
+name|connection
+operator|)
+operator|.
+name|setMessagePrioritySupported
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|doTestManyMessageConsumerWithSend
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|testManyMessageConsumerWithSendNoTransaction
 parameter_list|()
 throws|throws
@@ -1530,6 +1560,12 @@ name|createSession
 argument_list|(
 name|transacted
 argument_list|,
+name|transacted
+condition|?
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+else|:
 name|Session
 operator|.
 name|AUTO_ACKNOWLEDGE
