@@ -509,6 +509,8 @@ operator|new
 name|Date
 argument_list|(
 name|now
+operator|+
+name|lockAcquireSleepInterval
 argument_list|)
 operator|+
 literal|" on dataSource: "

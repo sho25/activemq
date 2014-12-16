@@ -636,6 +636,8 @@ name|lockerB
 operator|.
 name|getLockAcquireSleepInterval
 argument_list|()
+operator|/
+literal|2
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -733,6 +735,11 @@ operator|.
 name|getConnection
 argument_list|()
 decl_stmt|;
+name|printLockTable
+argument_list|(
+name|connection
+argument_list|)
+expr_stmt|;
 name|PreparedStatement
 name|statement
 init|=
