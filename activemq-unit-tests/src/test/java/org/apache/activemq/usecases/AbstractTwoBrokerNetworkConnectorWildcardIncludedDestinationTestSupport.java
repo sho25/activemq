@@ -550,7 +550,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 expr_stmt|;
 name|sendMessages
@@ -581,7 +581,7 @@ name|msgs
 operator|.
 name|setMaximumDuration
 argument_list|(
-literal|1000
+literal|10000
 argument_list|)
 expr_stmt|;
 name|msgs
@@ -610,7 +610,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|500
+literal|1000
 argument_list|)
 expr_stmt|;
 block|}
