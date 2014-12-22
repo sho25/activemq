@@ -556,8 +556,6 @@ name|messages
 operator|*
 literal|3
 operator|)
-operator|-
-literal|1
 argument_list|)
 decl_stmt|;
 name|openConsumer
@@ -679,8 +677,6 @@ operator|new
 name|CountDownLatch
 argument_list|(
 name|messages
-operator|-
-literal|1
 argument_list|)
 decl_stmt|;
 name|consumerConnection
