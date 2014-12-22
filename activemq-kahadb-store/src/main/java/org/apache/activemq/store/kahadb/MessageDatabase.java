@@ -6212,6 +6212,11 @@ name|checkpointThread
 operator|.
 name|isAlive
 argument_list|()
+operator|&&
+name|opened
+operator|.
+name|get
+argument_list|()
 condition|)
 block|{
 name|startCheckpoint
