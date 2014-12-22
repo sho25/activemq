@@ -63,11 +63,9 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|store
+name|util
 operator|.
-name|jdbc
-operator|.
-name|JDBCIOExceptionHandler
+name|LeaseLockerIOExceptionHandler
 import|;
 end_import
 
@@ -131,11 +129,11 @@ name|brokerService
 parameter_list|)
 block|{
 comment|// master and slave survive db restart and retain master/slave status
-name|JDBCIOExceptionHandler
+name|LeaseLockerIOExceptionHandler
 name|stopConnectors
 init|=
 operator|new
-name|JDBCIOExceptionHandler
+name|LeaseLockerIOExceptionHandler
 argument_list|()
 decl_stmt|;
 name|brokerService

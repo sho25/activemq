@@ -93,7 +93,13 @@ begin_comment
 comment|/**  * @org.apache.xbean.XBean  */
 end_comment
 
+begin_comment
+comment|/*  * @deprecated Use more general {@link org.apache.activemq.util.LeaseLockerIOExceptionHandler} instead  */
+end_comment
+
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|JDBCIOExceptionHandler
