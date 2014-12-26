@@ -273,7 +273,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|2
+literal|3
 operator|*
 literal|60
 operator|*
@@ -302,7 +302,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|2
+literal|3
 operator|*
 literal|60
 operator|*
@@ -511,6 +511,8 @@ name|socket
 operator|.
 name|setSoTimeout
 argument_list|(
+literal|2
+operator|*
 literal|60
 operator|*
 literal|1000
