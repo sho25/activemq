@@ -600,7 +600,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|10000
+literal|20000
 argument_list|)
 expr_stmt|;
 block|}
@@ -661,7 +661,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|10000
+literal|20000
 argument_list|)
 expr_stmt|;
 block|}
@@ -739,7 +739,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|10000
+literal|20000
 argument_list|)
 expr_stmt|;
 block|}
@@ -1075,6 +1075,10 @@ name|length
 return|;
 block|}
 block|}
+argument_list|,
+literal|120
+operator|*
+literal|1000
 argument_list|)
 expr_stmt|;
 name|LOG
