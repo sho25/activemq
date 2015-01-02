@@ -111,7 +111,8 @@ return|return;
 block|}
 name|this
 operator|.
-name|brokerManager
+name|useBrokerManager
+argument_list|()
 operator|.
 name|stop
 argument_list|()
