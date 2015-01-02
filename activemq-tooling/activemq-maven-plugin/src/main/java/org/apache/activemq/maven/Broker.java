@@ -17,16 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Properties
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -66,6 +56,10 @@ operator|.
 name|MojoExecutionException
 import|;
 end_import
+
+begin_comment
+comment|/**  * Singleton facade between Maven and one ActiveMQ broker.  */
+end_comment
 
 begin_class
 specifier|public
@@ -400,6 +394,34 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Return the broker service created.      */
+specifier|public
+specifier|static
+name|BrokerService
+name|getBroker
+parameter_list|()
+block|{
+return|return
+name|broker
+return|;
+block|}
+comment|/**      * Override the default creation of the broker service.  Primarily added for testing purposes.      *      * @param broker      */
+specifier|public
+specifier|static
+name|void
+name|setBroker
+parameter_list|(
+name|BrokerService
+name|broker
+parameter_list|)
+block|{
+name|Broker
+operator|.
+name|broker
+operator|=
+name|broker
+expr_stmt|;
 block|}
 block|}
 end_class

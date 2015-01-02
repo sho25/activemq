@@ -62,15 +62,8 @@ name|XBEAN_FILE
 init|=
 literal|"xbean:file:"
 decl_stmt|;
-specifier|private
-name|XBeanFileResolver
-parameter_list|()
-block|{
-comment|// Utility class, should not be instantiated.
-block|}
 comment|/**      * Check if the provided path is an URL to a XBean file (xbean:file:<path/to/file>)      */
 specifier|public
-specifier|static
 name|boolean
 name|isXBeanFile
 parameter_list|(
@@ -90,7 +83,6 @@ return|;
 block|}
 comment|/**      * Convert provided path into a URL-style absolute path. See also:      * http://maven.apache.org/plugin-developers/common-bugs.html# Converting_between_URLs_and_Filesystem_Paths      */
 specifier|public
-specifier|static
 name|String
 name|toUrlCompliantAbsolutePath
 parameter_list|(
@@ -128,7 +120,6 @@ argument_list|)
 return|;
 block|}
 specifier|private
-specifier|static
 name|String
 name|extractFilePath
 parameter_list|(
@@ -155,7 +146,6 @@ argument_list|)
 return|;
 block|}
 specifier|private
-specifier|static
 name|int
 name|getIndexFilePath
 parameter_list|(
@@ -179,7 +169,6 @@ argument_list|()
 return|;
 block|}
 specifier|private
-specifier|static
 name|String
 name|toAbsolutePath
 parameter_list|(
@@ -233,7 +222,6 @@ throw|;
 block|}
 block|}
 specifier|private
-specifier|static
 name|String
 name|toFilePath
 parameter_list|(
@@ -263,7 +251,6 @@ name|filePath
 return|;
 block|}
 specifier|private
-specifier|static
 name|String
 name|removePrependingSlash
 parameter_list|(
@@ -287,7 +274,6 @@ argument_list|)
 return|;
 block|}
 specifier|private
-specifier|static
 name|boolean
 name|underWindows
 parameter_list|()

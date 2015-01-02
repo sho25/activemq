@@ -83,6 +83,13 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|XBeanFileResolver
+name|xBeanFileResolver
+init|=
+operator|new
+name|XBeanFileResolver
+argument_list|()
+decl_stmt|;
 name|String
 name|currentDirectory
 init|=
@@ -109,7 +116,7 @@ decl_stmt|;
 name|String
 name|actualUrl
 init|=
-name|XBeanFileResolver
+name|xBeanFileResolver
 operator|.
 name|toUrlCompliantAbsolutePath
 argument_list|(
