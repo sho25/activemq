@@ -1251,6 +1251,13 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
+name|setZkSessionTimeout
+argument_list|(
+literal|"15s"
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|setZkAddress
 argument_list|(
 literal|"localhost:"
