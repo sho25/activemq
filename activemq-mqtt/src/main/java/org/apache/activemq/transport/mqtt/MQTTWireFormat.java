@@ -171,12 +171,21 @@ literal|1024
 operator|*
 literal|256
 decl_stmt|;
+specifier|static
+specifier|final
+name|long
+name|DEFAULT_CONNECTION_TIMEOUT
+init|=
+literal|30000L
+decl_stmt|;
 specifier|private
 name|int
 name|version
 init|=
 literal|1
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|ByteSequence
 name|marshal
@@ -222,6 +231,8 @@ name|toByteSequence
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|unmarshal
@@ -257,6 +268,8 @@ name|dis
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|marshal
@@ -384,6 +397,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|unmarshal
@@ -537,6 +552,8 @@ literal|null
 return|;
 block|}
 comment|/**      * @param the version of the wire format      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setVersion
@@ -553,6 +570,8 @@ name|version
 expr_stmt|;
 block|}
 comment|/**      * @return the version of the wire format      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getVersion

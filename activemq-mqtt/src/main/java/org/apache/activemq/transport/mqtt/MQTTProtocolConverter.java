@@ -4162,6 +4162,12 @@ condition|)
 block|{
 return|return;
 block|}
+comment|// Client has sent a valid CONNECT frame, we can stop the connect checker.
+name|monitor
+operator|.
+name|stopConnectChecker
+argument_list|()
+expr_stmt|;
 name|long
 name|keepAliveMS
 init|=
@@ -4236,7 +4242,7 @@ argument_list|)
 expr_stmt|;
 name|monitor
 operator|.
-name|startMonitorThread
+name|startReadChecker
 argument_list|()
 expr_stmt|;
 name|LOG
