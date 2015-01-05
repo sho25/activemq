@@ -78,7 +78,7 @@ argument_list|(
 literal|"The ZooKeeper session timeout."
 argument_list|)
 name|String
-name|getZkSessionTmeout
+name|getZkSessionTimeout
 parameter_list|()
 function_decl|;
 annotation|@

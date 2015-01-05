@@ -2708,7 +2708,7 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
-name|setZkSessionTmeout
+name|setZkSessionTimeout
 argument_list|(
 literal|"15s"
 argument_list|)
