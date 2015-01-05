@@ -436,7 +436,6 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-block|}
 name|FileUtils
 operator|.
 name|deleteDirectory
@@ -447,6 +446,7 @@ name|directory
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
