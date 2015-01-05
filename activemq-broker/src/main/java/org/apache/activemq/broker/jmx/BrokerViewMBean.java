@@ -100,6 +100,16 @@ name|String
 name|getUptime
 parameter_list|()
 function_decl|;
+comment|/**      * @return Uptime of the broker in milliseconds.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Uptime of the broker in milliseconds."
+argument_list|)
+name|long
+name|getUptimeMillis
+parameter_list|()
+function_decl|;
 comment|/**      * @return The current number of active connections on this Broker.      */
 name|int
 name|getCurrentConnectionsCount
