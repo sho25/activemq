@@ -2696,6 +2696,13 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
+name|setSync
+argument_list|(
+literal|"quorum_disk"
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|setZkAddress
 argument_list|(
 literal|"localhost:"

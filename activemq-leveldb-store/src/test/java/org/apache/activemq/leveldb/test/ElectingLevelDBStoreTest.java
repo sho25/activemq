@@ -1251,6 +1251,13 @@ argument_list|)
 expr_stmt|;
 name|store
 operator|.
+name|setSync
+argument_list|(
+literal|"quorum_disk"
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|setZkSessionTimeout
 argument_list|(
 literal|"15s"
