@@ -475,6 +475,12 @@ argument_list|(
 literal|"*** testAjaxClientReceivesMessagesWhichAreSentToQueueWhileClientIsPolling ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 name|HttpClient
 name|httpClient
 init|=
@@ -522,7 +528,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -589,7 +599,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -633,7 +647,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -709,7 +727,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -809,6 +831,12 @@ argument_list|(
 literal|"*** testAjaxClientReceivesMessagesWhichAreSentToTopicWhileClientIsPolling ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 name|HttpClient
 name|httpClient
 init|=
@@ -856,7 +884,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -923,7 +955,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -967,7 +1003,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -1043,7 +1083,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -1143,6 +1187,12 @@ argument_list|(
 literal|"*** testAjaxClientReceivesMessagesWhichAreQueuedBeforeClientSubscribes ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 comment|// send messages to queue://test
 name|producer
 operator|.
@@ -1227,7 +1277,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -1294,7 +1348,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -1384,6 +1442,12 @@ argument_list|(
 literal|"*** testStompMessagesAreRecievedByAjaxClient ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 name|HttpClient
 name|httpClient
 init|=
@@ -1431,7 +1495,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -1498,7 +1566,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -1721,7 +1793,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -1826,6 +1902,12 @@ argument_list|(
 literal|"*** testAjaxMessagesAreReceivedByStompClient ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 name|HttpClient
 name|httpClient
 init|=
@@ -1865,7 +1947,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -2051,6 +2137,12 @@ argument_list|(
 literal|"*** testAjaxClientMayUseSelectors ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 comment|// send 2 messages to the same queue w/ different 'filter' values.
 name|Message
 name|msg
@@ -2150,7 +2242,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -2227,7 +2323,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -2305,6 +2405,12 @@ argument_list|(
 literal|"*** testMultipleAjaxClientsMayExistInTheSameSession ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 comment|// send messages to queues testA and testB.
 name|MessageProducer
 name|producerA
@@ -2431,7 +2537,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -2496,7 +2606,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -2563,7 +2677,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000&clientId=clientA"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000&clientId=clientA"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -2647,7 +2765,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000&clientId=clientB"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000&clientId=clientB"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -2740,6 +2862,12 @@ argument_list|(
 literal|"*** testAjaxClientReceivesMessagesForMultipleTopics ***"
 argument_list|)
 expr_stmt|;
+name|int
+name|port
+init|=
+name|getPort
+argument_list|()
+decl_stmt|;
 name|HttpClient
 name|httpClient
 init|=
@@ -2786,7 +2914,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -2851,7 +2983,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -2919,7 +3055,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
@@ -2963,7 +3103,11 @@ name|contentExchange
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq"
 argument_list|)
 expr_stmt|;
 name|contentExchange
@@ -3041,7 +3185,11 @@ name|poll
 operator|.
 name|setURL
 argument_list|(
-literal|"http://localhost:8080/amq?timeout=5000"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/amq?timeout=5000"
 argument_list|)
 expr_stmt|;
 name|poll
