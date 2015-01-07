@@ -438,7 +438,7 @@ argument_list|()
 expr_stmt|;
 name|FileUtils
 operator|.
-name|deleteDirectory
+name|deleteQuietly
 argument_list|(
 name|store
 operator|.
