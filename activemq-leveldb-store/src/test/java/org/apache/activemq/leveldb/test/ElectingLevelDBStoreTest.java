@@ -531,7 +531,7 @@ specifier|final
 name|int
 name|TOTAL
 init|=
-literal|2
+literal|500
 decl_stmt|;
 for|for
 control|(
@@ -548,7 +548,24 @@ name|i
 operator|++
 control|)
 block|{
-comment|//if (i % ((int) (TOTAL * 0.10)) == 0) {
+if|if
+condition|(
+name|i
+operator|%
+operator|(
+call|(
+name|int
+call|)
+argument_list|(
+name|TOTAL
+operator|*
+literal|0.10
+argument_list|)
+operator|)
+operator|==
+literal|0
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
@@ -566,16 +583,31 @@ operator|+
 literal|"% done"
 argument_list|)
 expr_stmt|;
-comment|//}
+block|}
 if|if
 condition|(
 name|i
 operator|==
-literal|1
+literal|250
 condition|)
 block|{
-comment|//LOG.info("Checking master state");
-comment|//assertEquals(expected_list, getMessages(ms));
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Checking master state"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|expected_list
+argument_list|,
+name|getMessages
+argument_list|(
+name|ms
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// mid way, lets kill the master..
 name|LOG
 operator|.
@@ -793,7 +825,17 @@ name|messagesInStore
 argument_list|)
 expr_stmt|;
 block|}
-comment|//@Test(timeout = 1000 * 60 * 10)
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|1000
+operator|*
+literal|60
+operator|*
+literal|10
+argument_list|)
 specifier|public
 name|void
 name|testZooKeeperServerFailure
