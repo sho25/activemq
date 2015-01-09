@@ -43,6 +43,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|concurrent
 operator|.
 name|TimeUnit
@@ -1547,6 +1557,23 @@ name|getConsumerCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Subs: "
+operator|+
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|view
+operator|.
+name|getSubscriptions
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|expectedCount
@@ -1663,7 +1690,12 @@ name|broker
 operator|+
 literal|" : "
 operator|+
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|subs
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
