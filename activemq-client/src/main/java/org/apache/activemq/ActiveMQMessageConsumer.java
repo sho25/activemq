@@ -805,6 +805,9 @@ decl_stmt|;
 specifier|private
 name|long
 name|lastDeliveredSequenceId
+init|=
+operator|-
+literal|1
 decl_stmt|;
 specifier|private
 name|IOException

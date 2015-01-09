@@ -1066,6 +1066,11 @@ operator|.
 name|deactivate
 argument_list|(
 name|keepDurableSubsActive
+argument_list|,
+name|info
+operator|.
+name|getLastDeliveredSequenceId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1243,6 +1248,11 @@ operator|.
 name|deactivate
 argument_list|(
 name|keepDurableSubsActive
+argument_list|,
+name|info
+operator|.
+name|getLastDeliveredSequenceId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -1228,6 +1228,9 @@ name|deactivate
 parameter_list|(
 name|boolean
 name|keepDurableSubsActive
+parameter_list|,
+name|long
+name|lastDeliveredSequenceId
 parameter_list|)
 throws|throws
 name|Exception
@@ -1387,6 +1390,29 @@ name|dispatched
 control|)
 block|{
 comment|// Mark the dispatched messages as redelivered for next time.
+if|if
+condition|(
+name|lastDeliveredSequenceId
+operator|==
+literal|0
+operator|||
+operator|(
+name|lastDeliveredSequenceId
+operator|>
+literal|0
+operator|&&
+name|node
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|getBrokerSequenceId
+argument_list|()
+operator|<=
+name|lastDeliveredSequenceId
+operator|)
+condition|)
+block|{
 name|Integer
 name|count
 init|=
@@ -1449,6 +1475,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

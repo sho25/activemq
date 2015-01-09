@@ -3237,7 +3237,7 @@ comment|// locate last redelivered in unconsumed list (list in delivery rather t
 if|if
 condition|(
 name|lastDeiveredSequenceId
-operator|!=
+operator|>
 literal|0
 condition|)
 block|{
@@ -3272,7 +3272,7 @@ literal|true
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|error
 argument_list|(
 literal|"found lastDeliveredSeqID: {}, message reference: {}"
 argument_list|,
