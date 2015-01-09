@@ -392,6 +392,11 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Tries to replicate the problem reported at:      * https://issues.apache.org/jira/browse/AMQ-4837      */
 annotation|@
+name|Ignore
+argument_list|(
+literal|"https://issues.apache.org/jira/browse/AMQ-5512"
+argument_list|)
+annotation|@
 name|Test
 argument_list|(
 name|timeout
@@ -416,6 +421,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tries to replicate the problem reported at:      * https://issues.apache.org/jira/browse/AMQ-4837      */
+annotation|@
+name|Ignore
+argument_list|(
+literal|"https://issues.apache.org/jira/browse/AMQ-5512"
+argument_list|)
 annotation|@
 name|Test
 argument_list|(
