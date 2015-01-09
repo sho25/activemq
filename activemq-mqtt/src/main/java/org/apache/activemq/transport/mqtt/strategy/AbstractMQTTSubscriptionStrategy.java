@@ -798,7 +798,6 @@ argument_list|()
 decl_stmt|;
 comment|// use actual client id used to create connection to lookup connection
 comment|// context
-specifier|final
 name|String
 name|connectionInfoClientId
 init|=
@@ -807,6 +806,30 @@ operator|.
 name|getClientId
 argument_list|()
 decl_stmt|;
+comment|// for zero-byte client ids we used connection id
+if|if
+condition|(
+name|connectionInfoClientId
+operator|==
+literal|null
+operator|||
+name|connectionInfoClientId
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|connectionInfoClientId
+operator|=
+name|protocol
+operator|.
+name|getConnectionId
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
 specifier|final
 name|ConnectionContext
 name|connectionContext
