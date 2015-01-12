@@ -35,11 +35,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|mortbay
+name|slf4j
 operator|.
-name|log
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|Log
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -843,7 +851,7 @@ literal|5000
 argument_list|)
 expr_stmt|;
 comment|// We stop broker A.
-name|Log
+name|logger
 operator|.
 name|info
 argument_list|(

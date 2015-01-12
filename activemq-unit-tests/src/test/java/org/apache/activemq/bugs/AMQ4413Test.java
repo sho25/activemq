@@ -225,18 +225,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|mortbay
-operator|.
-name|log
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -952,7 +940,7 @@ operator|!=
 name|seq
 condition|)
 block|{
-name|Log
+name|LOG
 operator|.
 name|info
 argument_list|(

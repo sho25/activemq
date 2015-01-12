@@ -9363,9 +9363,6 @@ argument_list|(
 literal|"Transport Connector could not be registered in JMX: "
 operator|+
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|,
 name|e
 argument_list|)
