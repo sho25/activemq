@@ -3272,7 +3272,7 @@ literal|true
 expr_stmt|;
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"found lastDeliveredSeqID: {}, message reference: {}"
 argument_list|,
