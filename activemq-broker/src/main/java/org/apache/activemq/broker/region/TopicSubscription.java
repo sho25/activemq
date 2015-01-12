@@ -760,6 +760,11 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|matchedListMutex
+init|)
+block|{
 if|if
 condition|(
 operator|!
@@ -867,11 +872,6 @@ while|while
 condition|(
 name|active
 condition|)
-block|{
-synchronized|synchronized
-init|(
-name|matchedListMutex
-init|)
 block|{
 while|while
 condition|(
@@ -990,13 +990,6 @@ block|{
 break|break;
 block|}
 block|}
-block|}
-synchronized|synchronized
-init|(
-name|matchedListMutex
-init|)
-block|{
-comment|// NOTE - be careful about the slaveBroker!
 if|if
 condition|(
 name|maximumPendingMessages
@@ -1223,10 +1216,10 @@ break|break;
 block|}
 block|}
 block|}
-block|}
 name|dispatchMatched
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

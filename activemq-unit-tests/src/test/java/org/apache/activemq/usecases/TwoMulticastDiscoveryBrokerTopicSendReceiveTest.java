@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  reproduced: https://issues.apache.org/jira/browse/AMQ-4107  */
 end_comment
 
 begin_class
