@@ -267,6 +267,10 @@ name|assertTrue
 import|;
 end_import
 
+begin_comment
+comment|// https://issues.apache.org/jira/browse/AMQ-4262
+end_comment
+
 begin_class
 specifier|public
 class|class
