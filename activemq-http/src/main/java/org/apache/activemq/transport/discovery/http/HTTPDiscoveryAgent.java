@@ -953,6 +953,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|scanner
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 return|return
 name|rc
 return|;

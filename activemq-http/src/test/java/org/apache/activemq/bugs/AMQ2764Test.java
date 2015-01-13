@@ -797,14 +797,11 @@ name|i
 operator|++
 control|)
 block|{
-name|String
-name|messageId
-init|=
 name|sendMessage
 argument_list|(
 name|connectionFactory
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Message
 name|message
 init|=

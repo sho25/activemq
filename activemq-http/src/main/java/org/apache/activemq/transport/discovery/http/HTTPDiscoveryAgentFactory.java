@@ -143,6 +143,11 @@ block|{
 try|try
 block|{
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|options
 init|=
 name|URISupport
