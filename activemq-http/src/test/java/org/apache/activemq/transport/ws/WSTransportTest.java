@@ -601,7 +601,9 @@ name|Connector
 name|connector
 init|=
 name|createJettyConnector
-argument_list|()
+argument_list|(
+name|server
+argument_list|)
 decl_stmt|;
 name|connector
 operator|.
@@ -748,7 +750,10 @@ block|}
 specifier|protected
 name|Connector
 name|createJettyConnector
-parameter_list|()
+parameter_list|(
+name|Server
+name|server
+parameter_list|)
 block|{
 name|SelectChannelConnector
 name|connector

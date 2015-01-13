@@ -271,7 +271,9 @@ operator|=
 name|socketConnectorFactory
 operator|.
 name|createConnector
-argument_list|()
+argument_list|(
+name|server
+argument_list|)
 expr_stmt|;
 block|}
 name|URI
