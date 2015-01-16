@@ -905,12 +905,16 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// we are okay with the size without decimals so cast to long
 name|statsMessage
 operator|.
-name|setDouble
+name|setLong
 argument_list|(
 literal|"averageMessageSize"
 argument_list|,
+operator|(
+name|long
+operator|)
 name|stats
 operator|.
 name|getMessageSize
@@ -1305,12 +1309,16 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// we are okay with the size without decimals so cast to long
 name|statsMessage
 operator|.
-name|setDouble
+name|setLong
 argument_list|(
 literal|"averageMessageSize"
 argument_list|,
+operator|(
+name|long
+operator|)
 name|stats
 operator|.
 name|getMessageSize
