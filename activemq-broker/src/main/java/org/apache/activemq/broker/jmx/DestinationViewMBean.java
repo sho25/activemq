@@ -580,7 +580,7 @@ name|MBeanInfo
 argument_list|(
 literal|"Average message size on this destination"
 argument_list|)
-name|double
+name|long
 name|getAverageMessageSize
 parameter_list|()
 function_decl|;
