@@ -222,7 +222,7 @@ literal|"obr"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// can't see where these deps die in a pax-web container - vanilla distro unpack can install war feature ok
+comment|// can't see where these deps die in a paxexam container - vanilla distro unpack can install war feature ok
 name|options
 operator|=
 name|append
@@ -299,6 +299,41 @@ throws|throws
 name|Throwable
 block|{
 comment|// note xbean deps manually installed above, should not be needed
+name|withinReason
+argument_list|(
+operator|new
+name|Callable
+argument_list|<
+name|Boolean
+argument_list|>
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Boolean
+name|call
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertTrue
+argument_list|(
+literal|"xbean finder bundle installed"
+argument_list|,
+name|verifyBundleInstalled
+argument_list|(
+literal|"org.apache.xbean.finder"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|installAndAssertFeature
 argument_list|(
 literal|"war"
