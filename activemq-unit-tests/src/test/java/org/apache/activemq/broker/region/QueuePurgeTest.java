@@ -393,7 +393,7 @@ specifier|final
 name|int
 name|NUM_TO_SEND
 init|=
-literal|40000
+literal|20000
 decl_stmt|;
 specifier|private
 specifier|final
@@ -876,13 +876,13 @@ argument_list|()
 expr_stmt|;
 specifier|final
 name|int
-name|exprityPeriod
+name|expiryPeriod
 init|=
-literal|1000
+literal|500
 decl_stmt|;
 name|applyExpiryDuration
 argument_list|(
-name|exprityPeriod
+name|expiryPeriod
 argument_list|)
 expr_stmt|;
 name|createProducerAndSendMessages
@@ -907,7 +907,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|10000
+literal|5000
 argument_list|)
 expr_stmt|;
 name|assertEquals
