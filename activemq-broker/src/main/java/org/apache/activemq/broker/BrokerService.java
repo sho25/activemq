@@ -8422,7 +8422,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Memory Usage for the Broker ("
 operator|+
@@ -8817,7 +8817,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Temporary Store limit is "
 operator|+
