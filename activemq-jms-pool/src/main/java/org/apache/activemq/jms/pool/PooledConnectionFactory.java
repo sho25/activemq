@@ -275,6 +275,12 @@ name|useAnonymousProducers
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|boolean
+name|reconnectOnException
+init|=
+literal|true
+decl_stmt|;
 comment|// Temporary value used to always fetch the result of makeObject.
 specifier|private
 specifier|final
@@ -490,6 +496,14 @@ operator|.
 name|setUseAnonymousProducers
 argument_list|(
 name|isUseAnonymousProducers
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setReconnectOnException
+argument_list|(
+name|isReconnectOnException
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1582,6 +1596,32 @@ operator|=
 name|blockIfSessionPoolIsFullTimeout
 expr_stmt|;
 block|}
+comment|/**      * @return true if the underlying connection will be renewed on JMSException, false otherwise      */
+specifier|public
+name|boolean
+name|isReconnectOnException
+parameter_list|()
+block|{
+return|return
+name|reconnectOnException
+return|;
+block|}
+comment|/**      * Controls weather the underlying connection should be reset (and renewed) on JMSException      *      * @param reconnectOnException      *          Boolean value that configures whether reconnect on exception should happen      */
+specifier|public
+name|void
+name|setReconnectOnException
+parameter_list|(
+name|boolean
+name|reconnectOnException
+parameter_list|)
+block|{
+name|this
+operator|.
+name|reconnectOnException
+operator|=
+name|reconnectOnException
+expr_stmt|;
+block|}
 comment|/**      * Called by any superclass that implements a JNDIReferencable or similar that needs to collect      * the properties of this class for storage etc.      *      * This method should be updated any time there is a new property added.      *      * @param props      *        a properties object that should be filled in with this objects property values.      */
 specifier|protected
 name|void
@@ -1707,6 +1747,21 @@ operator|.
 name|toString
 argument_list|(
 name|getBlockIfSessionPoolIsFullTimeout
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|props
+operator|.
+name|setProperty
+argument_list|(
+literal|"reconnectOnException"
+argument_list|,
+name|Boolean
+operator|.
+name|toString
+argument_list|(
+name|isReconnectOnException
 argument_list|()
 argument_list|)
 argument_list|)
