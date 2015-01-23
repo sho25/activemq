@@ -9069,6 +9069,22 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|isClosing
+argument_list|()
+operator|||
+name|isClosed
+argument_list|()
+condition|)
+block|{
+comment|// without lock contention report the closing state
+throw|throw
+operator|new
+name|ConnectionClosedException
+argument_list|()
+throw|;
+block|}
 synchronized|synchronized
 init|(
 name|this
