@@ -276,6 +276,16 @@ argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
+name|map
+operator|.
+name|put
+argument_list|(
+literal|"create"
+argument_list|,
+literal|"false"
+argument_list|)
+expr_stmt|;
+comment|// we don't want a vm connect during shutdown to trigger a broker create
 name|uri
 operator|=
 name|URISupport
