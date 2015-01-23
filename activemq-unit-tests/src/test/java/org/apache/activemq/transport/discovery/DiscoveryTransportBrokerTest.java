@@ -763,10 +763,12 @@ init|=
 operator|new
 name|URI
 argument_list|(
-literal|"discovery:"
+literal|"discovery:("
 operator|+
 name|getDiscoveryUri
 argument_list|()
+operator|+
+literal|")?startupMaxReconnectAttempts=5"
 argument_list|)
 decl_stmt|;
 name|Transport

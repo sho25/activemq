@@ -388,7 +388,7 @@ literal|"discovery:(multicast://239.255.2.3:6155?group="
 operator|+
 name|group
 operator|+
-literal|")?closeAsync=false"
+literal|")?closeAsync=false&startupMaxReconnectAttempts=5"
 argument_list|)
 decl_stmt|;
 name|LOG
