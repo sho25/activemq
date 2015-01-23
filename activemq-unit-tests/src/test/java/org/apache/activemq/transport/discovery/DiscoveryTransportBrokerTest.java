@@ -768,7 +768,7 @@ operator|+
 name|getDiscoveryUri
 argument_list|()
 operator|+
-literal|")?startupMaxReconnectAttempts=5"
+literal|")?startupMaxReconnectAttempts=10&initialReconnectDelay=1000"
 argument_list|)
 decl_stmt|;
 name|Transport
