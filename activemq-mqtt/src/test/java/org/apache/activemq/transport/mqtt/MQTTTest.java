@@ -1038,6 +1038,17 @@ operator|/
 literal|2
 condition|)
 block|{
+name|latch
+operator|.
+name|await
+argument_list|(
+literal|20
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+expr_stmt|;
 name|subscriptionProvider
 operator|.
 name|unsubscribe

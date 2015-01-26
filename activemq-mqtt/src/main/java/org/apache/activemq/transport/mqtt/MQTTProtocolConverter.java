@@ -1143,6 +1143,7 @@ specifier|private
 name|int
 name|activeMQSubscriptionPrefetch
 init|=
+operator|-
 literal|1
 decl_stmt|;
 specifier|private
