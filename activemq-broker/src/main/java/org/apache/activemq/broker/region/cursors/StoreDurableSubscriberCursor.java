@@ -1561,9 +1561,9 @@ control|)
 block|{
 name|cursor
 operator|.
-name|setMaxAuditDepth
+name|setMaxProducersToAudit
 argument_list|(
-name|maxAuditDepth
+name|maxProducersToAudit
 argument_list|)
 expr_stmt|;
 block|}
