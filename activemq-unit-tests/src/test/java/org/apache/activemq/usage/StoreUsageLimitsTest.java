@@ -114,7 +114,7 @@ specifier|final
 name|String
 name|limitsLogLevel
 init|=
-literal|"error"
+literal|"warn"
 decl_stmt|;
 annotation|@
 name|Override
