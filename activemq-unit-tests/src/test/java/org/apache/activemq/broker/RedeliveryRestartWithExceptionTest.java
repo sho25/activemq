@@ -1323,7 +1323,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"re delivery flag"
+literal|"re delivery flag on:"
+operator|+
+name|i
 argument_list|,
 literal|true
 argument_list|,
@@ -1335,7 +1337,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"redelivery count survives reconnect"
+literal|"redelivery count survives reconnect for:"
+operator|+
+name|i
 argument_list|,
 name|msg
 operator|.
