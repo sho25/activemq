@@ -314,6 +314,11 @@ argument_list|)
 expr_stmt|;
 name|installAndAssertFeature
 argument_list|(
+literal|"camel"
+argument_list|)
+expr_stmt|;
+name|installAndAssertFeature
+argument_list|(
 literal|"activemq-camel"
 argument_list|)
 expr_stmt|;

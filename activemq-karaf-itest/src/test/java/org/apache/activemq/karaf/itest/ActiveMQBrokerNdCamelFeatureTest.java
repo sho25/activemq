@@ -273,11 +273,6 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"java.lang.IllegalArgumentException: BundleContext must be specified - needs investigation"
-argument_list|)
-annotation|@
 name|Test
 argument_list|(
 name|timeout
