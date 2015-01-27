@@ -3681,11 +3681,6 @@ name|message
 operator|.
 name|isRedelivered
 argument_list|()
-operator|&&
-name|message
-operator|.
-name|isPersistent
-argument_list|()
 condition|)
 block|{
 specifier|final
@@ -3703,6 +3698,14 @@ name|incrementRedeliveryCounter
 argument_list|()
 expr_stmt|;
 try|try
+block|{
+if|if
+condition|(
+name|message
+operator|.
+name|isPersistent
+argument_list|()
+condition|)
 block|{
 operator|(
 operator|(
@@ -3722,6 +3725,7 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+block|}
 name|messageDispatch
 operator|.
 name|setTransmitCallback
