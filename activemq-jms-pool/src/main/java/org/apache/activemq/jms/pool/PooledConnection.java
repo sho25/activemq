@@ -95,6 +95,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|IllegalStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|JMSException
 import|;
 end_import
@@ -196,16 +206,6 @@ operator|.
 name|jms
 operator|.
 name|TopicSession
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|IllegalStateException
 import|;
 end_import
 
@@ -765,9 +765,7 @@ name|JMSException
 block|{
 name|PooledSession
 name|result
-decl_stmt|;
-name|result
-operator|=
+init|=
 operator|(
 name|PooledSession
 operator|)
@@ -779,7 +777,7 @@ name|transacted
 argument_list|,
 name|ackMode
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Store the session so we can close the sessions that this PooledConnection
 comment|// created in order to ensure that consumers etc are closed per the JMS contract.
 name|loanedSessions
