@@ -694,7 +694,7 @@ block|{
 name|BytesMessage
 name|bytesMessage
 init|=
-name|sess
+name|session
 operator|.
 name|createBytesMessage
 argument_list|()
@@ -1070,7 +1070,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|sess
+name|session
 operator|.
 name|createTextMessage
 argument_list|(
@@ -1121,7 +1121,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|sess
+name|session
 operator|.
 name|createTextMessage
 argument_list|(

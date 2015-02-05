@@ -725,7 +725,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|sess
+name|session
 operator|.
 name|createTextMessage
 argument_list|(
