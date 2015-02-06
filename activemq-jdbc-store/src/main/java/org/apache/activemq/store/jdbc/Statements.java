@@ -2165,7 +2165,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" SET XID = NULL WHERE ID = ?"
+literal|" SET XID = NULL, ID = ? WHERE ID = ?"
 expr_stmt|;
 block|}
 return|return

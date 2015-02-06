@@ -6474,6 +6474,9 @@ name|TransactionContext
 name|c
 parameter_list|,
 name|long
+name|preparedSequence
+parameter_list|,
+name|long
 name|sequence
 parameter_list|)
 throws|throws
@@ -6520,6 +6523,15 @@ argument_list|(
 literal|1
 argument_list|,
 name|sequence
+argument_list|)
+expr_stmt|;
+name|s
+operator|.
+name|setLong
+argument_list|(
+literal|2
+argument_list|,
+name|preparedSequence
 argument_list|)
 expr_stmt|;
 if|if

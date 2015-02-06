@@ -773,7 +773,10 @@ name|TransactionContext
 name|c
 parameter_list|,
 name|long
-name|storeSequenceIdForMessageId
+name|preparedSequence
+parameter_list|,
+name|long
+name|sequence
 parameter_list|)
 throws|throws
 name|SQLException

@@ -492,6 +492,15 @@ operator|=
 name|indexListener
 expr_stmt|;
 block|}
+specifier|public
+name|IndexListener
+name|getIndexListener
+parameter_list|()
+block|{
+return|return
+name|indexListener
+return|;
+block|}
 static|static
 block|{
 name|FUTURE

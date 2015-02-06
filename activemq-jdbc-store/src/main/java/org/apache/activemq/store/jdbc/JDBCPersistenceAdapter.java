@@ -3323,6 +3323,9 @@ name|context
 parameter_list|,
 name|MessageId
 name|messageId
+parameter_list|,
+name|long
+name|preparedSequenceId
 parameter_list|)
 throws|throws
 name|IOException
@@ -3345,7 +3348,7 @@ name|Long
 operator|)
 name|messageId
 operator|.
-name|getFutureOrSequenceLong
+name|getEntryLocator
 argument_list|()
 decl_stmt|;
 name|getAdapter
@@ -3354,6 +3357,8 @@ operator|.
 name|doCommitAddOp
 argument_list|(
 name|c
+argument_list|,
+name|preparedSequenceId
 argument_list|,
 name|sequence
 argument_list|)
