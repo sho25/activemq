@@ -1082,6 +1082,16 @@ argument_list|(
 name|adapter
 argument_list|)
 expr_stmt|;
+name|adapter
+operator|.
+name|setDirectory
+argument_list|(
+name|broker
+operator|.
+name|getBrokerDataDirectory
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|adapter
 return|;

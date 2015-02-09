@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|PrintWriter
 import|;
 end_import
@@ -85,16 +95,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -116,6 +116,20 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOHelper
 import|;
 end_import
 
@@ -165,6 +179,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -181,6 +215,30 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test to see if the JDBCExceptionIOHandler will restart the transport connectors correctly after  * the underlying DB has been stopped and restarted  *  * see AMQ-4575  */
 end_comment
@@ -189,8 +247,6 @@ begin_class
 specifier|public
 class|class
 name|JDBCIOExceptionHandlerTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -235,6 +291,35 @@ specifier|private
 name|BrokerService
 name|broker
 decl_stmt|;
+annotation|@
+name|Before
+specifier|public
+name|void
+name|dbHomeSysProp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"derby.system.home"
+argument_list|,
+operator|new
+name|File
+argument_list|(
+name|IOHelper
+operator|.
+name|getDefaultDataDirectory
+argument_list|()
+argument_list|)
+operator|.
+name|getCanonicalPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -445,6 +530,8 @@ name|broker
 return|;
 block|}
 comment|/*      * run test without JMX enabled      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRecoverWithOutJMX
@@ -459,6 +546,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*      * run test with JMX enabled      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRecoverWithJMX
@@ -472,6 +561,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSlaveStoppedLease
@@ -485,6 +576,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSlaveStoppedDefault
