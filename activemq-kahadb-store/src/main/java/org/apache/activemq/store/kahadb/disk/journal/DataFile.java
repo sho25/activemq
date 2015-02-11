@@ -43,16 +43,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|RandomAccessFile
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -169,9 +159,6 @@ name|file
 parameter_list|,
 name|int
 name|number
-parameter_list|,
-name|int
-name|preferedSize
 parameter_list|)
 block|{
 name|this

@@ -290,8 +290,6 @@ argument_list|(
 name|file
 argument_list|,
 name|num
-argument_list|,
-name|preferedFileLength
 argument_list|)
 decl_stmt|;
 name|fileMap

@@ -106,7 +106,7 @@ specifier|private
 name|boolean
 name|disposed
 decl_stmt|;
-comment|/**      * Construct a Store reader      *      * @param fileId      * @throws IOException      */
+comment|/**      * Construct a Store reader      *      * @throws IOException      */
 specifier|public
 name|DataFileAccessor
 parameter_list|(

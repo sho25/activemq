@@ -69,9 +69,6 @@ name|file
 parameter_list|,
 name|int
 name|number
-parameter_list|,
-name|int
-name|preferedSize
 parameter_list|)
 block|{
 name|super
@@ -79,8 +76,6 @@ argument_list|(
 name|file
 argument_list|,
 name|number
-argument_list|,
-name|preferedSize
 argument_list|)
 expr_stmt|;
 block|}

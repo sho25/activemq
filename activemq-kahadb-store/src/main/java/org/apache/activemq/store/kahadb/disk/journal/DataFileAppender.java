@@ -963,7 +963,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Async Writter Thread Shutdown"
+literal|"Async Writer Thread Shutdown"
 argument_list|)
 throw|;
 block|}
@@ -1066,7 +1066,14 @@ name|file
 operator|.
 name|getLength
 argument_list|()
-operator|>
+operator|+
+name|write
+operator|.
+name|location
+operator|.
+name|getSize
+argument_list|()
+operator|>=
 name|journal
 operator|.
 name|getMaxFileLength
@@ -1156,7 +1163,7 @@ name|logger
 operator|.
 name|info
 argument_list|(
-literal|"Watiting for write to finish with full batch... millis: "
+literal|"Waiting for write to finish with full batch... millis: "
 operator|+
 operator|(
 name|System
@@ -1192,7 +1199,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Async Writter Thread Shutdown"
+literal|"Async Writer Thread Shutdown"
 argument_list|)
 throw|;
 block|}
@@ -1341,6 +1348,18 @@ index|[
 name|maxStat
 index|]
 decl_stmt|;
+specifier|final
+name|byte
+index|[]
+name|end
+init|=
+operator|new
+name|byte
+index|[]
+block|{
+literal|0
+block|}
+decl_stmt|;
 comment|/**      * The async processing loop that writes to the data files and does the      * force calls. Since the file sync() call is the slowest of all the      * operations, this algorithm tries to 'batch' or group together several      * file sync() requests into a single file sync() call. The batching is      * accomplished attaching the same CountDownLatch instance to every force      * request in a group.      */
 specifier|protected
 name|void
@@ -1441,16 +1460,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|file
-operator|.
-name|setLength
-argument_list|(
-name|dataFile
-operator|.
-name|getLength
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|dataFile
 operator|.
 name|closeRandomAccessFile
@@ -1472,28 +1481,25 @@ operator|.
 name|openRandomAccessFile
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
+comment|// pre allocate on first open
 name|file
 operator|.
-name|length
-argument_list|()
-operator|<
-name|journal
-operator|.
-name|preferedFileLength
-condition|)
-block|{
-name|file
-operator|.
-name|setLength
+name|seek
 argument_list|(
 name|journal
 operator|.
-name|preferedFileLength
+name|maxFileLength
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
-block|}
+name|file
+operator|.
+name|write
+argument_list|(
+name|end
+argument_list|)
+expr_stmt|;
 block|}
 name|Journal
 operator|.
@@ -1640,6 +1646,21 @@ name|getNext
 argument_list|()
 expr_stmt|;
 block|}
+comment|// append 'unset' next batch (5 bytes) so read can always find eof
+name|buff
+operator|.
+name|writeInt
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|buff
+operator|.
+name|writeByte
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 name|ByteSequence
 name|sequence
 init|=
@@ -1679,6 +1700,8 @@ operator|-
 name|Journal
 operator|.
 name|BATCH_CONTROL_RECORD_SIZE
+operator|-
+literal|5
 argument_list|)
 expr_stmt|;
 if|if
@@ -1722,6 +1745,8 @@ operator|-
 name|Journal
 operator|.
 name|BATCH_CONTROL_RECORD_SIZE
+operator|-
+literal|5
 argument_list|)
 expr_stmt|;
 name|buff
