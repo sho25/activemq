@@ -425,7 +425,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhostTwo?broker.persistent=false"
 argument_list|)
 decl_stmt|;
 name|Connection
