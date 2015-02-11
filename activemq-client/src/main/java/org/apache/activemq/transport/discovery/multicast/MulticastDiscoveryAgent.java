@@ -1566,6 +1566,8 @@ operator|.
 name|nextElement
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|ni
@@ -1634,6 +1636,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|SocketException
+name|ignored
+parameter_list|)
+block|{}
 block|}
 return|return
 name|possibles
