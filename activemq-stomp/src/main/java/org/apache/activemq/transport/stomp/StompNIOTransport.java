@@ -252,7 +252,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  *  *  */
+comment|/**  * An implementation of the {@link Transport} interface for using Stomp over NIO  */
 end_comment
 
 begin_class
@@ -329,6 +329,8 @@ name|socket
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|initializeStreams
@@ -368,6 +370,8 @@ operator|.
 name|Listener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSelect
@@ -380,6 +384,8 @@ name|serviceRead
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onError
@@ -597,6 +603,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -622,6 +630,8 @@ name|enable
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop

@@ -591,6 +591,35 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Sets the maximum number of bytes that the data portion of a STOMP frame is allowed to      * be, any incoming STOMP frame with a data section larger than this value will receive      * an error response.      *      * @param maxDataLength      *        size in bytes of the maximum data portion of a STOMP frame.      */
+specifier|public
+name|void
+name|setMaxDataLength
+parameter_list|(
+name|int
+name|maxDataLength
+parameter_list|)
+block|{
+name|wireFormat
+operator|.
+name|setMaxDataLength
+argument_list|(
+name|maxDataLength
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|int
+name|getMaxDataLength
+parameter_list|()
+block|{
+return|return
+name|wireFormat
+operator|.
+name|getMaxDataLength
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
