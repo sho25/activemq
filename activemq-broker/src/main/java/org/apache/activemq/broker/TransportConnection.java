@@ -1889,16 +1889,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-operator|(
-name|e
-operator|instanceof
-name|TransportDisposedIOException
-operator|)
-condition|)
-block|{
-if|if
-condition|(
 name|TRANSPORTLOG
 operator|.
 name|isDebugEnabled
@@ -1945,7 +1935,6 @@ operator|+
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|stopAsync
 argument_list|()

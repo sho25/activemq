@@ -928,7 +928,30 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// let any requests pending a response see an exception and shutdown
+comment|// let the peer know that we are disconnecting after attempting
+comment|// to cleanly shutdown the async tasks so that this is the last
+comment|// command it see's.
+try|try
+block|{
+name|peer
+operator|.
+name|transportListener
+operator|.
+name|onCommand
+argument_list|(
+operator|new
+name|ShutdownInfo
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{                 }
+comment|// let any requests pending a response see an exception
 try|try
 block|{
 name|peer
