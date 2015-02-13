@@ -882,8 +882,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-comment|// Allow pending deliveries to finish up, but don't wait
-comment|// forever in case of an stalled onCommand.
+comment|// don't wait for completion
 if|if
 condition|(
 name|tr
@@ -897,14 +896,7 @@ name|tr
 operator|.
 name|shutdown
 argument_list|(
-name|TimeUnit
-operator|.
-name|SECONDS
-operator|.
-name|toMillis
-argument_list|(
 literal|1
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
