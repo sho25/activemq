@@ -876,6 +876,9 @@ literal|"?transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
+operator|+
+name|getAdditionalConfig
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|port
@@ -917,6 +920,9 @@ operator|+
 literal|"?transport.transformer="
 operator|+
 name|getAmqpTransformer
+argument_list|()
+operator|+
+name|getAdditionalConfig
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -960,6 +966,9 @@ literal|"?transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
+operator|+
+name|getAdditionalConfig
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|nioPort
@@ -1001,6 +1010,9 @@ operator|+
 literal|"?transport.transformer="
 operator|+
 name|getAmqpTransformer
+argument_list|()
+operator|+
+name|getAdditionalConfig
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1077,6 +1089,15 @@ parameter_list|()
 block|{
 return|return
 literal|"jms"
+return|;
+block|}
+specifier|protected
+name|String
+name|getAdditionalConfig
+parameter_list|()
+block|{
+return|return
+literal|""
 return|;
 block|}
 specifier|public

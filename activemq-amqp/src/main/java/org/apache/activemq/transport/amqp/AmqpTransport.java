@@ -142,6 +142,19 @@ name|IAmqpProtocolConverter
 name|protocolConverter
 parameter_list|)
 function_decl|;
+specifier|public
+name|void
+name|setInactivityMonitor
+parameter_list|(
+name|AmqpInactivityMonitor
+name|monitor
+parameter_list|)
+function_decl|;
+specifier|public
+name|AmqpInactivityMonitor
+name|getInactivityMonitor
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
