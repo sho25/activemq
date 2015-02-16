@@ -436,7 +436,7 @@ name|broker
 operator|.
 name|setUseJmx
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|broker
