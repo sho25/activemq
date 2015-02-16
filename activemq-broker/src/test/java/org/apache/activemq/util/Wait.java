@@ -45,7 +45,7 @@ decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
-name|int
+name|long
 name|SLEEP_MILLIS
 init|=
 literal|1000
@@ -122,7 +122,7 @@ name|long
 name|duration
 parameter_list|,
 specifier|final
-name|int
+name|long
 name|sleepMillis
 parameter_list|)
 throws|throws

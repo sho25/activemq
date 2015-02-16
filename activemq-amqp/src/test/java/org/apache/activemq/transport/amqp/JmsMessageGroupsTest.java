@@ -197,7 +197,7 @@ specifier|final
 name|int
 name|RECEIVE_TIMEOUT
 init|=
-literal|5000
+literal|3000
 decl_stmt|;
 specifier|private
 specifier|static
@@ -212,9 +212,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|60
-operator|*
-literal|1000
+literal|60000
 argument_list|)
 specifier|public
 name|void
@@ -348,7 +346,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Read message #{}: type = {}"
 argument_list|,
@@ -385,7 +383,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Message assigned JMSXGroupID := {}"
 argument_list|,
@@ -394,7 +392,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Message assigned JMSXGroupSeq := {}"
 argument_list|,

@@ -203,16 +203,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -265,9 +255,7 @@ specifier|final
 name|Integer
 name|ITERATIONS
 init|=
-literal|1
-operator|*
-literal|1000
+literal|500
 decl_stmt|;
 specifier|private
 specifier|static
@@ -277,7 +265,9 @@ name|CONSUMER_COUNT
 init|=
 literal|4
 decl_stmt|;
-comment|// At least 2 consumers are required to reproduce the original issue
+comment|// At least 2 consumers are
+comment|// required to reproduce
+comment|// the original issue
 specifier|public
 specifier|static
 specifier|final
@@ -311,32 +301,11 @@ name|CONSUMER_COUNT
 argument_list|)
 decl_stmt|;
 annotation|@
-name|Override
-annotation|@
-name|Before
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
 name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|1
-operator|*
-literal|60
-operator|*
-literal|1000
+literal|60000
 argument_list|)
 specifier|public
 name|void
@@ -345,7 +314,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ConnectionFactory
+name|ConnectionFactoryImpl
 name|connectionFactory
 init|=
 operator|new
@@ -360,6 +329,13 @@ argument_list|,
 literal|"admin"
 argument_list|)
 decl_stmt|;
+name|connectionFactory
+operator|.
+name|setSyncPublish
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|Connection
 name|connection
 init|=
@@ -621,7 +597,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"Sending message ["
 operator|+
@@ -885,9 +861,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|5
-operator|*
-literal|1000
+literal|2000
 argument_list|)
 decl_stmt|;
 if|if
@@ -993,7 +967,7 @@ return|;
 block|}
 name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
 literal|"consumer {} expected {} got message [{}]"
 argument_list|,
@@ -1007,7 +981,6 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO make debug
 name|messagesReceived
 operator|.
 name|countDown

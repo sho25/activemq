@@ -386,7 +386,7 @@ init|;
 name|i
 operator|<=
 operator|(
-literal|16
+literal|8
 operator|*
 literal|1024
 operator|)

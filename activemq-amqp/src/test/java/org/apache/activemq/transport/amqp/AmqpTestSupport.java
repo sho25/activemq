@@ -537,6 +537,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"========== start "
+operator|+
+name|getTestName
+argument_list|()
+operator|+
+literal|" =========="
+argument_list|)
+expr_stmt|;
 name|exceptions
 operator|.
 name|clear
@@ -653,6 +665,13 @@ argument_list|)
 expr_stmt|;
 name|brokerService
 operator|.
+name|setSchedulerSupport
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
 name|setAdvisorySupport
 argument_list|(
 literal|false
@@ -670,6 +689,16 @@ operator|.
 name|setUseJmx
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateMBeanServer
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|SSLContext
@@ -1217,6 +1246,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"========== tearDown "
+operator|+
+name|getTestName
+argument_list|()
+operator|+
+literal|" =========="
+argument_list|)
+expr_stmt|;
 name|ExecutorService
 name|executor
 init|=
@@ -1535,6 +1576,18 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getTestName
+parameter_list|()
+block|{
+return|return
+name|name
+operator|.
+name|getMethodName
+argument_list|()
+return|;
 block|}
 specifier|protected
 name|BrokerViewMBean

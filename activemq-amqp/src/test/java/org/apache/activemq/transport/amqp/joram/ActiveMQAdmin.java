@@ -522,7 +522,9 @@ argument_list|(
 operator|new
 name|URI
 argument_list|(
-literal|"broker://()/localhost?persistent=false"
+literal|"broker://()/localhost"
+operator|+
+literal|"?persistent=false&useJmx=false&advisorySupport=false&schedulerSupport=false"
 argument_list|)
 argument_list|)
 return|;
