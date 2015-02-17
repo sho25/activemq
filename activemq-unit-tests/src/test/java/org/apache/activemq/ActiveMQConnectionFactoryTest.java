@@ -210,7 +210,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?jms.clientIDPrefix=Cheese"
+literal|"vm://localhost?jms.clientIDPrefix=Cheese&broker.persistent=false"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -274,6 +274,31 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"=========== Start test "
+operator|+
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setUp
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
 name|tearDown
 parameter_list|()
 throws|throws
@@ -309,6 +334,16 @@ name|Throwable
 name|ignore
 parameter_list|)
 block|{         }
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"=========== Finished test "
+operator|+
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -435,7 +470,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?jms.redeliveryPolicy.maximumRedeliveries=2"
+literal|"vm://localhost?broker.persistent=false&broker.useJmx=false&jms.redeliveryPolicy.maximumRedeliveries=2"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -547,7 +582,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://myBroker2?broker.persistent=false"
+literal|"vm://myBroker2?broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 comment|// Make sure the broker is not created until the connection is
@@ -630,7 +665,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 name|connection
@@ -715,6 +750,13 @@ expr_stmt|;
 name|broker
 operator|.
 name|setPersistent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setUseJmx
 argument_list|(
 literal|false
 argument_list|)
@@ -1207,6 +1249,20 @@ expr_stmt|;
 name|broker
 operator|.
 name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setAdvisorySupport
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setSchedulerSupport
 argument_list|(
 literal|false
 argument_list|)
