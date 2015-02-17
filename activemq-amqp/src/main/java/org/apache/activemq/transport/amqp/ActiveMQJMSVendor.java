@@ -287,19 +287,17 @@ name|org
 operator|.
 name|apache
 operator|.
-name|qpid
+name|activemq
 operator|.
-name|proton
+name|transport
 operator|.
-name|jms
+name|amqp
+operator|.
+name|message
 operator|.
 name|JMSVendor
 import|;
 end_import
-
-begin_comment
-comment|/**  */
-end_comment
 
 begin_class
 specifier|public
