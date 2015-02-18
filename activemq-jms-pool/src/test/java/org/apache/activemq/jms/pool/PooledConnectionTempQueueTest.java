@@ -165,6 +165,8 @@ begin_class
 specifier|public
 class|class
 name|PooledConnectionTempQueueTest
+extends|extends
+name|JmsPoolTestSupport
 block|{
 specifier|private
 specifier|final
@@ -190,6 +192,11 @@ literal|"queue1"
 decl_stmt|;
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testTempQueueIssue
@@ -205,7 +212,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&broker.useJmx=false"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -416,7 +423,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+literal|3000
 argument_list|)
 expr_stmt|;
 name|MessageConsumer
@@ -437,16 +444,13 @@ operator|.
 name|receive
 argument_list|()
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
+literal|"Reply message: {}"
+argument_list|,
 name|replyMsg
-operator|.
-name|getJMSCorrelationID
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|consumer
@@ -541,11 +545,9 @@ operator|.
 name|getJMSMessageID
 argument_list|()
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Received message "
 operator|+
@@ -587,11 +589,9 @@ name|getJMSReplyTo
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
 literal|"Sending reply to "
 operator|+

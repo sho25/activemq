@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -109,36 +121,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestSuite
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -161,8 +143,18 @@ name|Logger
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
-comment|/**  * Checks the behavior of the PooledConnectionFactory when the maximum amount of sessions is being reached  * (maximumActive). When using setBlockIfSessionPoolIsFull(true) on the ConnectionFactory, further requests for sessions  * should block. If it does not block, its a bug.  *  * @author: tmielke  */
+comment|/**  * Checks the behavior of the PooledConnectionFactory when the maximum amount of sessions is being reached  * (maximumActive). When using setBlockIfSessionPoolIsFull(true) on the ConnectionFactory, further requests for sessions  * should block. If it does not block, its a bug.  */
 end_comment
 
 begin_class
@@ -170,7 +162,7 @@ specifier|public
 class|class
 name|PooledConnectionFactoryMaximumActiveTest
 extends|extends
-name|TestCase
+name|JmsPoolTestSupport
 block|{
 specifier|public
 specifier|final
@@ -220,20 +212,6 @@ name|Session
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Create the test case      *      * @param testName      *            name of the test case      */
-specifier|public
-name|PooledConnectionFactoryMaximumActiveTest
-parameter_list|(
-name|String
-name|testName
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|testName
-argument_list|)
-expr_stmt|;
-block|}
 specifier|public
 specifier|static
 name|void
@@ -256,24 +234,14 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return the suite of tests being tested      */
-specifier|public
-specifier|static
+comment|/**      * Tests the behavior of the sessionPool of the PooledConnectionFactory when maximum number of sessions are reached.      * This test uses maximumActive=1. When creating two threads that both try to create a JMS session from the same JMS      * connection, the thread that is second to call createSession() should block (as only 1 session is allowed) until      * the session is returned to pool. If it does not block, its a bug.      */
+annotation|@
 name|Test
-name|suite
-parameter_list|()
-block|{
-return|return
-operator|new
-name|TestSuite
 argument_list|(
-name|PooledConnectionFactoryMaximumActiveTest
-operator|.
-name|class
+name|timeout
+operator|=
+literal|60000
 argument_list|)
-return|;
-block|}
-comment|/**      * Tests the behavior of the sessionPool of the PooledConnectionFactory when maximum number of sessions are reached.      * This test uses maximumActive=1. When creating two threads that both try to create a JMS session from the same JMS      * connection, the thread that is second to call createSession() should block (as only 1 session is allowed) until      * the session is returned to pool. If it does not block, its a bug.      *      */
 specifier|public
 name|void
 name|testApp
@@ -288,7 +256,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://broker1?marshal=false&broker.persistent=false"
+literal|"vm://broker1?marshal=false&broker.useJmx=false&broker.persistent=false"
 argument_list|)
 decl_stmt|;
 name|PooledConnectionFactory
@@ -354,7 +322,6 @@ name|TestRunner2
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Thread.sleep(100);
 name|Future
 argument_list|<
 name|Boolean
@@ -408,10 +375,7 @@ name|shutdownNow
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-end_class
-
-begin_class
+specifier|static
 class|class
 name|TestRunner2
 implements|implements
@@ -424,7 +388,7 @@ specifier|public
 specifier|final
 specifier|static
 name|Logger
-name|LOG
+name|TASK_LOG
 init|=
 name|Logger
 operator|.
@@ -435,7 +399,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * @return true if test succeeded, false otherwise      */
+comment|/**          * @return true if test succeeded, false otherwise          */
 annotation|@
 name|Override
 specifier|public
@@ -460,7 +424,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|LOG
+name|TASK_LOG
 operator|.
 name|error
 argument_list|(
@@ -490,7 +454,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-name|LOG
+name|TASK_LOG
 operator|.
 name|info
 argument_list|(
@@ -524,7 +488,7 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|LOG
+name|TASK_LOG
 operator|.
 name|error
 argument_list|(
@@ -564,7 +528,7 @@ name|JMSException
 name|e
 parameter_list|)
 block|{
-name|LOG
+name|TASK_LOG
 operator|.
 name|error
 argument_list|(
@@ -584,6 +548,7 @@ argument_list|(
 literal|true
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 end_class

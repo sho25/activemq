@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -49,16 +61,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -66,6 +68,16 @@ operator|.
 name|activemq
 operator|.
 name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -98,12 +110,12 @@ specifier|public
 class|class
 name|PooledConnectionTest
 extends|extends
-name|TestCase
+name|JmsPoolTestSupport
 block|{
 specifier|private
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -114,41 +126,14 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-annotation|@
-name|Override
-specifier|public
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"setUp() called."
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"tearDown() called."
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * AMQ-3752:      * Tests how the ActiveMQConnection reacts to repeated calls to      * setClientID().      *      * @throws Exception      */
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testRepeatedSetClientIDCalls
@@ -156,7 +141,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -217,7 +202,7 @@ name|IllegalStateException
 name|ise
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -283,7 +268,7 @@ name|IllegalStateException
 name|ise
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -341,7 +326,7 @@ name|IllegalStateException
 name|ise
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -359,7 +344,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -386,7 +371,7 @@ argument_list|(
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&broker.useJmx=false&broker.schedulerSupport=false"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -397,7 +382,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
