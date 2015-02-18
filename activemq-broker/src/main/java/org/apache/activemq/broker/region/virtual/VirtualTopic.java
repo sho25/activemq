@@ -454,16 +454,6 @@ name|destination
 operator|.
 name|isPattern
 argument_list|()
-operator|&&
-name|broker
-operator|.
-name|getDestinations
-argument_list|(
-name|destination
-argument_list|)
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|DestinationFilter
