@@ -245,7 +245,7 @@ literal|"File "
 operator|+
 name|file
 operator|+
-literal|" allready exists, will not benchmark."
+literal|" already exists, will not benchmark."
 argument_list|)
 expr_stmt|;
 block|}
@@ -924,7 +924,6 @@ argument_list|,
 literal|"rw"
 argument_list|)
 decl_stmt|;
-comment|//        RandomAccessFile raf = new RandomAccessFile(file, "rw");
 name|preallocateDataFile
 argument_list|(
 name|raf
@@ -1185,7 +1184,8 @@ argument_list|()
 operator|.
 name|force
 argument_list|(
-literal|false
+operator|!
+name|SKIP_METADATA_UPDATE
 argument_list|)
 expr_stmt|;
 name|ioCount
@@ -1444,20 +1444,6 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Using a template file: "
-operator|+
-name|tmpFile
-operator|.
-name|getAbsolutePath
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|RandomAccessFile
 name|templateFile
 init|=
