@@ -696,7 +696,7 @@ operator|.
 name|getManagementContext
 argument_list|()
 operator|.
-name|setCreateMBeanServer
+name|setCreateConnector
 argument_list|(
 literal|false
 argument_list|)
