@@ -402,6 +402,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|brokerService
+operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 specifier|final
 name|CompositeTopic
 name|compositeTopic

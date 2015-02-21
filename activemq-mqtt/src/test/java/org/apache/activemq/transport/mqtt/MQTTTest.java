@@ -649,7 +649,7 @@ specifier|final
 name|int
 name|NUM_MESSAGES
 init|=
-literal|250
+literal|200
 decl_stmt|;
 annotation|@
 name|Test
@@ -1297,7 +1297,7 @@ name|provider
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -2717,7 +2717,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5
+literal|2
 argument_list|,
 name|TimeUnit
 operator|.
@@ -4750,7 +4750,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client received:\n"
 operator|+
@@ -4824,7 +4824,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client sent:\n"
 operator|+
@@ -4978,7 +4978,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|,
 name|TimeUnit
 operator|.
@@ -5047,7 +5047,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|,
 name|TimeUnit
 operator|.
@@ -5313,7 +5313,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client received:\n"
 operator|+
@@ -5387,7 +5387,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client sent:\n"
 operator|+
@@ -5516,7 +5516,23 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|5000
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|5
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|100
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -5576,7 +5592,23 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|5000
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|5
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|100
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -5787,7 +5819,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client received:\n"
 operator|+
@@ -5824,7 +5856,7 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"PUBLISH "
 operator|+
@@ -5899,7 +5931,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client sent:\n"
 operator|+
@@ -6298,7 +6330,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client received:\n"
 operator|+
@@ -6410,7 +6442,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client sent:\n"
 operator|+
@@ -6753,6 +6785,8 @@ operator|.
 name|connect
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -6780,6 +6814,25 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|100
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -6882,6 +6935,8 @@ operator|.
 name|connect
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -6909,6 +6964,25 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|100
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|connection
@@ -6968,34 +7042,9 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|2000
-argument_list|)
-expr_stmt|;
-name|connection
-operator|.
-name|subscribe
-argument_list|(
-operator|new
-name|Topic
-index|[]
-block|{
-operator|new
-name|Topic
-argument_list|(
-literal|"TopicA"
-argument_list|,
-name|QoS
-operator|.
-name|AT_LEAST_ONCE
-argument_list|)
-block|}
-argument_list|)
-expr_stmt|;
 comment|//TODO fix audit problem for retained messages
+comment|//Thread.sleep(2000);
+comment|//connection.subscribe(new Topic[]{new Topic("TopicA", QoS.AT_LEAST_ONCE)});
 comment|//message = connection.receive(3, TimeUnit.SECONDS);
 comment|//assertNotNull(message);
 block|}
@@ -7200,7 +7249,7 @@ name|clean
 operator|.
 name|receive
 argument_list|(
-literal|10000
+literal|2000
 argument_list|,
 name|TimeUnit
 operator|.
@@ -8153,7 +8202,7 @@ name|connection
 operator|.
 name|receive
 argument_list|(
-literal|10
+literal|3
 argument_list|,
 name|TimeUnit
 operator|.
@@ -8445,6 +8494,24 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|100
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8480,6 +8547,24 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|100
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8802,6 +8887,24 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|200
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8850,6 +8953,24 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|30
+argument_list|)
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+operator|.
+name|toMillis
+argument_list|(
+literal|200
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -10264,7 +10385,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|500
 argument_list|)
 expr_stmt|;
 block|}
@@ -10291,7 +10412,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|500
 argument_list|)
 expr_stmt|;
 block|}
@@ -10596,7 +10717,7 @@ name|connectionSub
 operator|.
 name|receive
 argument_list|(
-literal|5
+literal|2
 argument_list|,
 name|TimeUnit
 operator|.

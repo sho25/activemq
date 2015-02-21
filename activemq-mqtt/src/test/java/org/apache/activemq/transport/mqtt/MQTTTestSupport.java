@@ -998,6 +998,23 @@ argument_list|)
 expr_stmt|;
 name|brokerService
 operator|.
+name|setUseJmx
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateConnector
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
 name|setSchedulerSupport
 argument_list|(
 name|isSchedulerSupportEnabled
@@ -2021,7 +2038,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client Received:\n"
 operator|+
@@ -2041,7 +2058,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Client Sent:\n"
 operator|+
@@ -2065,7 +2082,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 name|String
 operator|.

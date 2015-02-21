@@ -317,7 +317,7 @@ specifier|final
 name|int
 name|ITERATIONS
 init|=
-literal|1000
+literal|500
 decl_stmt|;
 annotation|@
 name|Before
