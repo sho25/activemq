@@ -292,7 +292,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases used to test the JMS message consumer.  *  *  */
+comment|/**  * Test cases used to test the JMS message consumer.  */
 end_comment
 
 begin_class
@@ -654,11 +654,11 @@ name|done2
 operator|.
 name|await
 argument_list|(
-literal|1
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MILLISECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -684,11 +684,11 @@ name|done2
 operator|.
 name|await
 argument_list|(
-literal|1
+literal|500
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MILLISECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1018,11 +1018,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// await possible exceptions
-name|Thread
+name|executor
 operator|.
-name|sleep
+name|shutdown
+argument_list|()
+expr_stmt|;
+name|executor
+operator|.
+name|awaitTermination
 argument_list|(
-literal|1000
+literal|1
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
 argument_list|)
 expr_stmt|;
 name|assertTrue
@@ -4676,7 +4685,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4701,7 +4710,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5254,7 +5263,7 @@ name|producer
 operator|.
 name|setTimeToLive
 argument_list|(
-literal|1000
+literal|500
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -5303,7 +5312,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 name|producer
