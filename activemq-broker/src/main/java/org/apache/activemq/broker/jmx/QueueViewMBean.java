@@ -504,6 +504,33 @@ name|void
 name|removeAllMessageGroups
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"pause dispatch to consumers"
+argument_list|)
+name|void
+name|pause
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"resume dispatch to consumers if paused"
+argument_list|)
+name|void
+name|resume
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Dispatch to consumers is paused"
+argument_list|)
+name|boolean
+name|isPaused
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
