@@ -14,6 +14,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -163,11 +187,53 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TestName
 import|;
 end_import
 
@@ -175,8 +241,6 @@ begin_class
 specifier|public
 class|class
 name|JmsConsumerResetActiveListenerTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|Connection
@@ -186,7 +250,20 @@ specifier|private
 name|ActiveMQConnectionFactory
 name|factory
 decl_stmt|;
-specifier|protected
+annotation|@
+name|Rule
+specifier|public
+specifier|final
+name|TestName
+name|name
+init|=
+operator|new
+name|TestName
+argument_list|()
+decl_stmt|;
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -198,7 +275,7 @@ operator|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&broker.useJmx=false"
 argument_list|)
 expr_stmt|;
 name|connection
@@ -209,7 +286,9 @@ name|createConnection
 argument_list|()
 expr_stmt|;
 block|}
-specifier|protected
+annotation|@
+name|After
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -234,7 +313,14 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-comment|/**      * verify the (undefined by spec) behaviour of setting a listener while receiving a message.      *       * @throws Exception      */
+comment|/**      * verify the (undefined by spec) behaviour of setting a listener while receiving a message.      *      * @throws Exception      */
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSetListenerFromListener
@@ -265,7 +351,9 @@ name|createQueue
 argument_list|(
 literal|"Queue-"
 operator|+
-name|getName
+name|name
+operator|.
+name|getMethodName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -322,6 +410,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -538,6 +628,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * and a listener on a new consumer, just in case.       *      * @throws Exception      */
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testNewConsumerSetListenerFromListener
@@ -570,7 +667,9 @@ name|createQueue
 argument_list|(
 literal|"Queue-"
 operator|+
-name|getName
+name|name
+operator|.
+name|getMethodName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -627,6 +726,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage

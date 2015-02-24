@@ -14,6 +14,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -85,11 +109,15 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|TestCase
+name|activemq
+operator|.
+name|broker
+operator|.
+name|BrokerService
 import|;
 end_import
 
@@ -107,12 +135,40 @@ name|ActiveMQQueue
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|ExclusiveConsumerTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -120,50 +176,87 @@ specifier|final
 name|String
 name|VM_BROKER_URL
 init|=
-literal|"vm://localhost?broker.persistent=false&broker.useJmx=true"
+literal|"vm://localhost"
 decl_stmt|;
+specifier|private
+name|BrokerService
+name|brokerService
+decl_stmt|;
+annotation|@
+name|Before
 specifier|public
-name|ExclusiveConsumerTest
-parameter_list|(
-name|String
-name|name
-parameter_list|)
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|Exception
 block|{
-name|super
+name|brokerService
+operator|=
+operator|new
+name|BrokerService
+argument_list|()
+expr_stmt|;
+name|brokerService
+operator|.
+name|setPersistent
 argument_list|(
-name|name
+literal|false
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|protected
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
+name|brokerService
 operator|.
-name|setUp
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|setSchedulerSupport
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|setAdvisorySupport
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|start
 argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Override
-specifier|protected
+name|After
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
+if|if
+condition|(
+name|brokerService
+operator|!=
+literal|null
+condition|)
+block|{
+name|brokerService
 operator|.
-name|tearDown
+name|stop
 argument_list|()
 expr_stmt|;
+name|brokerService
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|Connection
@@ -208,6 +301,13 @@ return|return
 name|conn
 return|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testExclusiveConsumerSelectedCreatedFirst
@@ -405,6 +505,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testExclusiveConsumerSelectedCreatedAfter
@@ -600,6 +707,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testFailoverToAnotherExclusiveConsumerCreatedFirst
@@ -691,8 +805,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024
-comment|// bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -815,8 +928,7 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer
-comment|// takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
 name|exclusiveConsumer1
 operator|.
 name|close
@@ -876,6 +988,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testFailoverToAnotherExclusiveConsumerCreatedAfter
@@ -967,8 +1086,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024
-comment|// bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -1091,8 +1209,7 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer
-comment|// takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
 name|exclusiveConsumer1
 operator|.
 name|close
@@ -1152,6 +1269,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testFailoverToNonExclusiveConsumer
@@ -1225,8 +1349,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024
-comment|// bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -1329,8 +1452,7 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer
-comment|// takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
 name|exclusiveConsumer
 operator|.
 name|close
@@ -1373,6 +1495,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testFallbackToExclusiveConsumer
@@ -1446,8 +1575,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 expr_stmt|;
-comment|// This creates the exclusive consumer first which avoids AMQ-1024
-comment|// bug.
+comment|// This creates the exclusive consumer first which avoids AMQ-1024 bug.
 name|ActiveMQQueue
 name|exclusiveQueue
 init|=
@@ -1550,8 +1678,7 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Close the exclusive consumer to verify the non-exclusive consumer
-comment|// takes over
+comment|// Close the exclusive consumer to verify the non-exclusive consumer takes over
 name|exclusiveConsumer
 operator|.
 name|close
@@ -1575,8 +1702,7 @@ literal|100
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Create exclusive consumer to determine if it will start receiving
-comment|// the messages.
+comment|// Create exclusive consumer to determine if it will start receiving the messages.
 name|exclusiveConsumer
 operator|=
 name|exclusiveSession
