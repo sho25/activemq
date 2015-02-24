@@ -2640,6 +2640,9 @@ block|{
 return|return
 name|destination
 operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
 name|isDLQ
 argument_list|()
 return|;

@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Queue
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -211,6 +221,14 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+name|verifyIsDlq
+argument_list|(
+operator|(
+name|Queue
+operator|)
+name|dlqDestination
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int

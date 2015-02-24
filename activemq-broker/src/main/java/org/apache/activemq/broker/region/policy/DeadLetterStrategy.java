@@ -121,14 +121,6 @@ name|boolean
 name|processNonPersistent
 parameter_list|)
 function_decl|;
-specifier|public
-name|boolean
-name|isDLQ
-parameter_list|(
-name|ActiveMQDestination
-name|destination
-parameter_list|)
-function_decl|;
 comment|/**      * Allows for a Message that was already processed by a DLQ to be rolled back in case      * of a move or a retry of that message, otherwise the Message would be considered a      * duplicate if this strategy is doing Message Auditing.      *      * @param message      */
 specifier|public
 name|void

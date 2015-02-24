@@ -733,11 +733,6 @@ name|void
 name|clearPendingMessages
 parameter_list|()
 function_decl|;
-specifier|public
-name|boolean
-name|isDLQ
-parameter_list|()
-function_decl|;
 name|void
 name|duplicateFromStore
 parameter_list|(
