@@ -130,6 +130,20 @@ name|Message
 name|message
 parameter_list|)
 function_decl|;
+comment|/**      * The expiration value to use on messages sent to the DLQ, default 0      * @return expiration in milli seconds      */
+specifier|public
+name|void
+name|setExpiration
+parameter_list|(
+name|long
+name|expiration
+parameter_list|)
+function_decl|;
+specifier|public
+name|long
+name|getExpiration
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

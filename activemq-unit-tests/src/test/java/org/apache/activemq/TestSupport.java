@@ -323,6 +323,20 @@ name|MemoryPersistenceAdapter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|JMXSupport
+import|;
+end_import
+
 begin_comment
 comment|/**  * Useful base class for unit test cases  *  *  */
 end_comment
@@ -1058,7 +1072,12 @@ name|ObjectName
 argument_list|(
 literal|"org.apache.activemq:type=Broker,brokerName=localhost,destinationType=Queue,destinationName="
 operator|+
+name|JMXSupport
+operator|.
+name|encodeObjectNamePart
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|QueueViewMBean

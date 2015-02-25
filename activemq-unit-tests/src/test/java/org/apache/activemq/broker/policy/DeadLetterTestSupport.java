@@ -378,7 +378,7 @@ name|Session
 operator|.
 name|CLIENT_ACKNOWLEDGE
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Destination
 name|destination
 decl_stmt|;
