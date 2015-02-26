@@ -76,26 +76,6 @@ decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
-name|int
-name|getBrokerPort
-parameter_list|()
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"JMSClientNioPlusSslTest.getBrokerPort returning nioPlusSslPort {}"
-argument_list|,
-name|amqpNioPlusSslPort
-argument_list|)
-expr_stmt|;
-return|return
-name|amqpNioPlusSslPort
-return|;
-block|}
-annotation|@
-name|Override
-specifier|protected
 name|URI
 name|getBrokerURI
 parameter_list|()
