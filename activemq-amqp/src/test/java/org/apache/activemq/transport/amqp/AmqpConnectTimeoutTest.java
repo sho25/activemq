@@ -653,7 +653,7 @@ name|port
 operator|=
 name|this
 operator|.
-name|port
+name|amqpPort
 expr_stmt|;
 break|break;
 case|case
@@ -663,7 +663,7 @@ name|port
 operator|=
 name|this
 operator|.
-name|sslPort
+name|amqpSslPort
 expr_stmt|;
 break|break;
 case|case
@@ -673,7 +673,7 @@ name|port
 operator|=
 name|this
 operator|.
-name|nioPort
+name|amqpNioPort
 expr_stmt|;
 break|break;
 case|case
@@ -683,7 +683,7 @@ name|port
 operator|=
 name|this
 operator|.
-name|nioPlusSslPort
+name|amqpNioPlusSslPort
 expr_stmt|;
 break|break;
 default|default:

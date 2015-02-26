@@ -367,7 +367,7 @@ expr_stmt|;
 comment|// Test TCP
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|port
+name|amqpPort
 argument_list|,
 name|header
 argument_list|,
@@ -377,7 +377,7 @@ expr_stmt|;
 comment|// Test SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|sslPort
+name|amqpSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -387,7 +387,7 @@ expr_stmt|;
 comment|// Test NIO
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPort
+name|amqpNioPort
 argument_list|,
 name|header
 argument_list|,
@@ -397,7 +397,7 @@ expr_stmt|;
 comment|// Test NIO+SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPlusSslPort
+name|amqpNioPlusSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -450,7 +450,7 @@ expr_stmt|;
 comment|// Test TCP
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|port
+name|amqpPort
 argument_list|,
 name|header
 argument_list|,
@@ -460,7 +460,7 @@ expr_stmt|;
 comment|// Test SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|sslPort
+name|amqpSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -470,7 +470,7 @@ expr_stmt|;
 comment|// Test NIO
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPort
+name|amqpNioPort
 argument_list|,
 name|header
 argument_list|,
@@ -480,7 +480,7 @@ expr_stmt|;
 comment|// Test NIO+SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPlusSslPort
+name|amqpNioPlusSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -533,7 +533,7 @@ expr_stmt|;
 comment|// Test TCP
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|port
+name|amqpPort
 argument_list|,
 name|header
 argument_list|,
@@ -543,7 +543,7 @@ expr_stmt|;
 comment|// Test SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|sslPort
+name|amqpSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -553,7 +553,7 @@ expr_stmt|;
 comment|// Test NIO
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPort
+name|amqpNioPort
 argument_list|,
 name|header
 argument_list|,
@@ -563,7 +563,7 @@ expr_stmt|;
 comment|// Test NIO+SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPlusSslPort
+name|amqpNioPlusSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -616,7 +616,7 @@ expr_stmt|;
 comment|// Test TCP
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|port
+name|amqpPort
 argument_list|,
 name|header
 argument_list|,
@@ -626,7 +626,7 @@ expr_stmt|;
 comment|// Test SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|sslPort
+name|amqpSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -636,7 +636,7 @@ expr_stmt|;
 comment|// Test NIO
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPort
+name|amqpNioPort
 argument_list|,
 name|header
 argument_list|,
@@ -646,7 +646,7 @@ expr_stmt|;
 comment|// Test NIO+SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPlusSslPort
+name|amqpNioPlusSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -705,7 +705,7 @@ decl_stmt|;
 comment|// Test TCP
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|port
+name|amqpPort
 argument_list|,
 name|header
 argument_list|,
@@ -715,7 +715,7 @@ expr_stmt|;
 comment|// Test SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|sslPort
+name|amqpSslPort
 argument_list|,
 name|header
 argument_list|,
@@ -725,7 +725,7 @@ expr_stmt|;
 comment|// Test NIO
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPort
+name|amqpNioPort
 argument_list|,
 name|header
 argument_list|,
@@ -735,7 +735,7 @@ expr_stmt|;
 comment|// Test NIO+SSL
 name|doTestInvalidHeaderProcessing
 argument_list|(
-name|nioPlusSslPort
+name|amqpNioPlusSslPort
 argument_list|,
 name|header
 argument_list|,

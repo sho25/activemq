@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URI
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|slf4j
@@ -76,11 +86,22 @@ name|debug
 argument_list|(
 literal|"JMSClientNioTest.getBrokerPort returning nioPort {}"
 argument_list|,
-name|nioPort
+name|amqpNioPort
 argument_list|)
 expr_stmt|;
 return|return
-name|nioPort
+name|amqpNioPort
+return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|URI
+name|getBrokerURI
+parameter_list|()
+block|{
+return|return
+name|amqpNioURI
 return|;
 block|}
 annotation|@
