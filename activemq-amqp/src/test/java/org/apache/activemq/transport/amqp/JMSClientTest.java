@@ -5210,7 +5210,7 @@ literal|1000
 argument_list|)
 specifier|public
 name|void
-name|simpleDurableTopicTest
+name|testDurableTopicStateAfterSubscriberClosed
 parameter_list|()
 throws|throws
 name|Exception
@@ -5281,7 +5281,8 @@ name|INSTANCE
 operator|.
 name|createTopicConnection
 argument_list|(
-name|amqpURI
+name|getBrokerURI
+argument_list|()
 argument_list|,
 literal|"admin"
 argument_list|,
