@@ -1115,8 +1115,6 @@ name|LevelDB
 block|,
 name|KahaDB
 block|,
-name|AMQ
-block|,
 name|JDBC
 block|,
 name|MEM
