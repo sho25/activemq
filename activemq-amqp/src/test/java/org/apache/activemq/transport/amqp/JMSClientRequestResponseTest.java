@@ -248,7 +248,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|JmsClientRequestResponseTest
+name|JMSClientRequestResponseTest
 extends|extends
 name|AmqpTestSupport
 implements|implements
@@ -264,7 +264,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|JmsClientRequestResponseTest
+name|JMSClientRequestResponseTest
 operator|.
 name|class
 argument_list|)
@@ -812,7 +812,7 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.

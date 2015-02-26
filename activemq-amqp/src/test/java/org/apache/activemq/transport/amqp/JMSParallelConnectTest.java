@@ -211,7 +211,7 @@ block|{
 name|Connection
 name|connection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
@@ -339,7 +339,7 @@ block|{
 name|Connection
 name|connection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
@@ -467,7 +467,7 @@ block|{
 name|Connection
 name|connection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
@@ -595,7 +595,7 @@ block|{
 name|Connection
 name|connection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.

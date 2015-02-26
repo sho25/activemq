@@ -146,7 +146,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|JmsMessageGroupsTest
+name|JMSMessageGroupsTest
 extends|extends
 name|JMSClientTestSupport
 block|{
@@ -160,7 +160,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|JmsMessageGroupsTest
+name|JMSMessageGroupsTest
 operator|.
 name|class
 argument_list|)

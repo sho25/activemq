@@ -448,7 +448,7 @@ block|{
 name|Connection
 name|connection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
@@ -894,7 +894,7 @@ try|try
 block|{
 name|connection
 operator|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.

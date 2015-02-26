@@ -316,7 +316,7 @@ comment|// send "text message" with AMQP JMS API
 name|Connection
 name|amqpConnection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
@@ -586,7 +586,7 @@ comment|// send "text message" with AMQP JMS API
 name|Connection
 name|amqpConnection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
@@ -876,7 +876,7 @@ comment|// send "text message" with AMQP JMS API
 name|Connection
 name|amqpConnection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.

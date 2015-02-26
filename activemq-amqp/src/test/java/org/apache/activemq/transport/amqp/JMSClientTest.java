@@ -5275,7 +5275,7 @@ expr_stmt|;
 name|TopicConnection
 name|subscriberConnection
 init|=
-name|JmsClientContext
+name|JMSClientContext
 operator|.
 name|INSTANCE
 operator|.
