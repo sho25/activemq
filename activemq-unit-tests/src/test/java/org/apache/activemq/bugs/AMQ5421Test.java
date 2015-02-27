@@ -450,6 +450,13 @@ argument_list|)
 expr_stmt|;
 name|brokerService
 operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
 name|setDestinationPolicy
 argument_list|(
 name|pMap

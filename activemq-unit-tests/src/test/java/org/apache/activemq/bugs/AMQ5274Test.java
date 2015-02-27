@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -269,35 +293,12 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
 name|AMQ5274Test
 block|{
+specifier|private
 specifier|static
 name|Logger
 name|LOG
@@ -311,12 +312,16 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 name|String
 name|activemqURL
 decl_stmt|;
+specifier|private
 name|BrokerService
 name|brokerService
 decl_stmt|;
+specifier|private
+specifier|final
 name|ActiveMQQueue
 name|dest
 init|=
@@ -344,6 +349,16 @@ expr_stmt|;
 name|brokerService
 operator|.
 name|setPersistent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateConnector
 argument_list|(
 literal|false
 argument_list|)
