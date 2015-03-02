@@ -2588,12 +2588,16 @@ argument_list|()
 return|;
 block|}
 specifier|public
-specifier|synchronized
 name|void
 name|close
 parameter_list|()
 throws|throws
 name|IOException
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
 block|{
 if|if
 condition|(
@@ -2625,11 +2629,18 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+comment|// the appender can be calling back to to the journal blocking a close AMQ-5620
 name|appender
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|fileMap
 operator|.
 name|clear
@@ -2656,6 +2667,7 @@ name|started
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 specifier|synchronized
