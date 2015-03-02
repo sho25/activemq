@@ -270,7 +270,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|SimpleAuthenticationPluginTest
+name|SecurityJMXTest
 operator|.
 name|class
 argument_list|)

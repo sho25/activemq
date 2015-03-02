@@ -1411,9 +1411,11 @@ block|}
 block|}
 name|destinationMap
 operator|.
-name|removeAll
+name|remove
 argument_list|(
 name|destination
+argument_list|,
+name|dest
 argument_list|)
 expr_stmt|;
 name|dispose
