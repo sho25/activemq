@@ -3633,6 +3633,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|this
 operator|.
 name|version
@@ -3641,7 +3642,7 @@ name|equals
 argument_list|(
 name|Stomp
 operator|.
-name|V1_1
+name|V1_0
 argument_list|)
 operator|&&
 name|subscriptionId
@@ -4419,6 +4420,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|this
 operator|.
 name|version
@@ -4427,7 +4429,7 @@ name|equals
 argument_list|(
 name|Stomp
 operator|.
-name|V1_1
+name|V1_0
 argument_list|)
 operator|&&
 name|subscriptionId
@@ -4483,6 +4485,7 @@ name|durable
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|this
 operator|.
 name|version
@@ -4491,7 +4494,7 @@ name|equals
 argument_list|(
 name|Stomp
 operator|.
-name|V1_1
+name|V1_0
 argument_list|)
 condition|)
 block|{
