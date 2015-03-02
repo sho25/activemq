@@ -101,6 +101,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|JMSSecurityException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Message
 import|;
 end_import
@@ -387,6 +397,20 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|JMSSecurityException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to authenticate connection with no user / password."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
@@ -519,6 +543,20 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|JMSSecurityException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to authenticate connection with no user / password."
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|JMSException
 name|e
 parameter_list|)
@@ -646,6 +684,20 @@ expr_stmt|;
 name|fail
 argument_list|(
 literal|"Expected JMSException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSSecurityException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to authenticate connection with no user / password."
 argument_list|)
 expr_stmt|;
 block|}
