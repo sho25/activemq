@@ -89,10 +89,9 @@ name|TextMessage
 import|;
 end_import
 
-begin_class
-specifier|abstract
+begin_interface
 specifier|public
-class|class
+interface|interface
 name|JMSVendor
 block|{
 specifier|public
@@ -143,8 +142,6 @@ name|String
 name|value
 parameter_list|)
 function_decl|;
-annotation|@
-name|Deprecated
 specifier|public
 name|Destination
 name|createDestination
@@ -152,42 +149,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-specifier|public
-parameter_list|<
-name|T
-extends|extends
-name|Destination
-parameter_list|>
-name|T
-name|createDestination
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|Class
-argument_list|<
-name|T
-argument_list|>
-name|kind
-parameter_list|)
-block|{
-return|return
-name|kind
-operator|.
-name|cast
-argument_list|(
-name|createDestination
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
-return|;
-block|}
+function_decl|;
 specifier|public
 specifier|abstract
 name|void
@@ -234,7 +196,7 @@ name|destination
 parameter_list|)
 function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 
