@@ -1131,6 +1131,7 @@ name|NullPointerException
 argument_list|()
 throw|;
 block|}
+elseif|else
 if|if
 condition|(
 name|value
@@ -1156,7 +1157,7 @@ throw|throw
 operator|new
 name|MessageFormatException
 argument_list|(
-literal|" cannot read a short from "
+literal|" cannot read a char from "
 operator|+
 name|value
 operator|.
