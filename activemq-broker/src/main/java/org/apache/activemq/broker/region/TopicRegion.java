@@ -782,6 +782,25 @@ name|isDurable
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|broker
+operator|.
+name|getBrokerService
+argument_list|()
+operator|.
+name|isRejectDurableConsumers
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Durable Consumers are not allowed"
+argument_list|)
+throw|;
+block|}
 name|ActiveMQDestination
 name|destination
 init|=
