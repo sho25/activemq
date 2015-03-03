@@ -1658,6 +1658,7 @@ return|return
 literal|0
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|value
@@ -1677,6 +1678,7 @@ name|doubleValue
 argument_list|()
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|value
@@ -1696,6 +1698,7 @@ name|floatValue
 argument_list|()
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|value
@@ -1704,7 +1707,7 @@ name|UTF8Buffer
 condition|)
 block|{
 return|return
-name|Float
+name|Double
 operator|.
 name|valueOf
 argument_list|(
@@ -1714,10 +1717,11 @@ name|toString
 argument_list|()
 argument_list|)
 operator|.
-name|floatValue
+name|doubleValue
 argument_list|()
 return|;
 block|}
+elseif|else
 if|if
 condition|(
 name|value
@@ -1726,7 +1730,7 @@ name|String
 condition|)
 block|{
 return|return
-name|Float
+name|Double
 operator|.
 name|valueOf
 argument_list|(
@@ -1736,7 +1740,7 @@ name|toString
 argument_list|()
 argument_list|)
 operator|.
-name|floatValue
+name|doubleValue
 argument_list|()
 return|;
 block|}
@@ -1746,7 +1750,7 @@ throw|throw
 operator|new
 name|MessageFormatException
 argument_list|(
-literal|" cannot read a double from "
+literal|"Cannot read a double from "
 operator|+
 name|value
 operator|.
