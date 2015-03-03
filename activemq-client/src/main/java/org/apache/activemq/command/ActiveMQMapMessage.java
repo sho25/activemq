@@ -1852,6 +1852,17 @@ decl_stmt|;
 if|if
 condition|(
 name|value
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
+name|value
 operator|instanceof
 name|byte
 index|[]
