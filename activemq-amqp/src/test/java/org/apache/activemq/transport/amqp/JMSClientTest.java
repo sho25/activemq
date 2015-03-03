@@ -6313,11 +6313,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"Broker cannot currently tell if it should delete a temp destination"
-argument_list|)
-annotation|@
 name|Test
 argument_list|(
 name|timeout
@@ -6554,7 +6549,7 @@ block|}
 annotation|@
 name|Ignore
 argument_list|(
-literal|"Broker cannot currently tell if it should delete a temp destination"
+literal|"Legacy QPid client does not support creation of TemporaryTopics correctly"
 argument_list|)
 annotation|@
 name|Test
