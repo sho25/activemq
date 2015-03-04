@@ -99,10 +99,13 @@ end_import
 
 begin_class
 specifier|public
+specifier|abstract
 class|class
 name|AbstractAuthenticationBroker
 extends|extends
 name|BrokerFilter
+implements|implements
+name|AuthenticationBroker
 block|{
 specifier|protected
 specifier|final
@@ -242,7 +245,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Previously logged in users may no longer have the same access anymore.      * Refresh all the logged into users.      */
 specifier|public
 name|void
 name|refresh
