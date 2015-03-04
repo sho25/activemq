@@ -5069,7 +5069,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to add Connection {}"
+literal|"Failed to add Connection {} due to {}"
 argument_list|,
 name|info
 operator|.
