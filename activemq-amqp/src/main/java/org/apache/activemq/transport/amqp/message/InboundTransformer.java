@@ -850,9 +850,6 @@ operator|.
 name|equals
 argument_list|(
 name|key
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|&&
 name|entry
@@ -863,6 +860,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Legacy annotation, JMSType value will be replaced by Subject further down if also present.
 name|jms
 operator|.
 name|setJMSType
@@ -877,8 +875,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
 name|setProperty
 argument_list|(
 name|jms
@@ -895,7 +891,6 @@ name|getValue
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|final
@@ -1183,12 +1178,8 @@ condition|)
 block|{
 name|jms
 operator|.
-name|setStringProperty
+name|setJMSType
 argument_list|(
-name|prefixVendor
-operator|+
-literal|"Subject"
-argument_list|,
 name|properties
 operator|.
 name|getSubject

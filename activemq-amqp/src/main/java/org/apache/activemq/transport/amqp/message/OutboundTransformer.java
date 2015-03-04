@@ -72,9 +72,6 @@ name|String
 name|prefixMessageAnnotationsKey
 decl_stmt|;
 name|String
-name|subjectKey
-decl_stmt|;
-name|String
 name|contentTypeKey
 decl_stmt|;
 name|String
@@ -170,12 +167,6 @@ operator|=
 name|prefixVendor
 operator|+
 name|prefixMessageAnnotations
-expr_stmt|;
-name|subjectKey
-operator|=
-name|prefixVendor
-operator|+
-literal|"Subject"
 expr_stmt|;
 name|contentTypeKey
 operator|=
