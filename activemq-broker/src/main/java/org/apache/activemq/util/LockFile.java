@@ -123,6 +123,11 @@ specifier|final
 name|boolean
 name|deleteOnUnlock
 decl_stmt|;
+specifier|private
+specifier|volatile
+name|boolean
+name|locked
+decl_stmt|;
 specifier|public
 name|LockFile
 parameter_list|(
@@ -343,6 +348,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|locked
+operator|=
+literal|true
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -474,6 +483,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|locked
+operator|&&
 name|deleteOnUnlock
 condition|)
 block|{
@@ -544,7 +555,10 @@ name|boolean
 name|keepAlive
 parameter_list|()
 block|{
-return|return
+name|locked
+operator|=
+name|locked
+operator|&&
 name|lock
 operator|!=
 literal|null
@@ -558,6 +572,9 @@ name|file
 operator|.
 name|exists
 argument_list|()
+expr_stmt|;
+return|return
+name|locked
 return|;
 block|}
 block|}
