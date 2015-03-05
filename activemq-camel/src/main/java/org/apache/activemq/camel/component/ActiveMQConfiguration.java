@@ -91,7 +91,7 @@ name|jms
 operator|.
 name|connection
 operator|.
-name|SingleConnectionFactory
+name|JmsTransactionManager
 import|;
 end_import
 
@@ -105,7 +105,7 @@ name|jms
 operator|.
 name|connection
 operator|.
-name|JmsTransactionManager
+name|SingleConnectionFactory
 import|;
 end_import
 
@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -266,7 +266,7 @@ operator|=
 name|password
 expr_stmt|;
 block|}
-comment|/**      * Enables or disables whether a Spring {@link SingleConnectionFactory} will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is true so that a single connection is used by default.      *      * @param useSingleConnection      */
+comment|/**      * Enables or disables whether a Spring {@link SingleConnectionFactory} will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is false and a pooled connection is used by default.      *      * @param useSingleConnection      */
 specifier|public
 name|void
 name|setUseSingleConnection
@@ -291,7 +291,7 @@ return|return
 name|usePooledConnection
 return|;
 block|}
-comment|/**      * Enables or disables whether a PooledConnectionFactory will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is false by default as it requires an extra dependency on commons-pool.      */
+comment|/**      * Enables or disables whether a PooledConnectionFactory will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is true. Note that this requires an extra dependency on commons-pool.      */
 specifier|public
 name|void
 name|setUsePooledConnection
@@ -308,6 +308,8 @@ name|usePooledConnection
 expr_stmt|;
 block|}
 comment|/**      * Factory method to create a default transaction manager if one is not specified      */
+annotation|@
+name|Override
 specifier|protected
 name|PlatformTransactionManager
 name|createTransactionManager
