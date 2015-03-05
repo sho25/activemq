@@ -1284,13 +1284,6 @@ name|RecoverableRandomAccessFile
 name|file
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Preallocate journal file with sparse file"
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|file
@@ -1338,13 +1331,6 @@ name|RecoverableRandomAccessFile
 name|file
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Preallocate journal file with zeros"
-argument_list|)
-expr_stmt|;
 name|ByteBuffer
 name|buffer
 init|=
@@ -1443,13 +1429,6 @@ name|RecoverableRandomAccessFile
 name|file
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Preallocate journal file with kernel file copying"
-argument_list|)
-expr_stmt|;
 comment|// create a template file that will be used to pre-allocate the journal files
 name|File
 name|templateFile
