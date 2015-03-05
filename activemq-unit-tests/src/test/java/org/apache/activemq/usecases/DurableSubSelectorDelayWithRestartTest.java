@@ -560,7 +560,7 @@ argument_list|()
 operator|.
 name|size
 argument_list|()
-operator|<
+operator|<=
 literal|4
 return|;
 block|}
