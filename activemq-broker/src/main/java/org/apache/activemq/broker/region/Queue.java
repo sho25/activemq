@@ -2523,7 +2523,7 @@ operator|.
 name|getMessages
 argument_list|()
 operator|.
-name|setCount
+name|add
 argument_list|(
 name|messageCount
 argument_list|)
