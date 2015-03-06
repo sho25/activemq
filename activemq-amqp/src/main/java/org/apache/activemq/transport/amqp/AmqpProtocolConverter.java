@@ -10042,7 +10042,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invliad Filter Ids array passed: "
+literal|"Invalid Filter Ids array passed: "
 operator|+
 name|filterIds
 argument_list|)
@@ -10095,12 +10095,7 @@ decl_stmt|;
 name|Object
 name|descriptor
 init|=
-operator|(
-operator|(
-name|DescribedType
-operator|)
-name|value
-operator|)
+name|describedType
 operator|.
 name|getDescriptor
 argument_list|()
