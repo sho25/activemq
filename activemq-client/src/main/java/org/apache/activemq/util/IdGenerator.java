@@ -245,7 +245,7 @@ block|{
 if|if
 condition|(
 name|hostName
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
