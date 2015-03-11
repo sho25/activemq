@@ -33,7 +33,23 @@ name|UriParam
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|camel
+operator|.
+name|spi
+operator|.
+name|UriParams
+import|;
+end_import
+
 begin_class
+annotation|@
+name|UriParams
 specifier|public
 class|class
 name|BrokerConfiguration
@@ -55,6 +71,7 @@ return|return
 name|brokerName
 return|;
 block|}
+comment|/**      * Name of the broker      */
 specifier|public
 name|void
 name|setBrokerName
