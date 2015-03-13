@@ -6034,7 +6034,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"bridging ({} -> {}), consumer: {}, destinaition: {}, brokerPath: {}, message: {}"
+literal|"bridging ({} -> {}), consumer: {}, destination: {}, brokerPath: {}, message: {}"
 argument_list|,
 operator|new
 name|Object
