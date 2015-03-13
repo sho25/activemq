@@ -80,13 +80,6 @@ name|updateTracer
 parameter_list|()
 function_decl|;
 name|void
-name|setPrefetch
-parameter_list|(
-name|int
-name|prefetch
-parameter_list|)
-function_decl|;
-name|void
 name|setProducerCredit
 parameter_list|(
 name|int

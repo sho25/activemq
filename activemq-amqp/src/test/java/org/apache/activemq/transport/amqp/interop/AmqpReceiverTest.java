@@ -863,11 +863,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"Fails due to issues with accept and no credit"
-argument_list|)
-annotation|@
 name|Test
 argument_list|(
 name|timeout
