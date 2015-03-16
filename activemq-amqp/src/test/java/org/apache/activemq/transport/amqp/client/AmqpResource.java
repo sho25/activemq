@@ -84,6 +84,14 @@ name|AsyncResult
 name|request
 parameter_list|)
 function_decl|;
+comment|/**      * Perform all work needed to detach this resource and store the request      * until such time as the remote peer indicates the resource has been detached.      *      * @param request      *        The initiating request that triggered this detach call.      */
+name|void
+name|detach
+parameter_list|(
+name|AsyncResult
+name|request
+parameter_list|)
+function_decl|;
 comment|/**      * @return if the resource has moved to the closed state on the remote.      */
 name|boolean
 name|isClosed

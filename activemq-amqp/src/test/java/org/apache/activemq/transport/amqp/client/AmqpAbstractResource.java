@@ -287,6 +287,82 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|detach
+parameter_list|(
+name|AsyncResult
+name|request
+parameter_list|)
+block|{
+comment|// If already closed signal success or else the caller might never get notified.
+if|if
+condition|(
+name|getEndpoint
+argument_list|()
+operator|.
+name|getLocalState
+argument_list|()
+operator|==
+name|EndpointState
+operator|.
+name|CLOSED
+operator|||
+name|getEndpoint
+argument_list|()
+operator|.
+name|getRemoteState
+argument_list|()
+operator|==
+name|EndpointState
+operator|.
+name|CLOSED
+condition|)
+block|{
+if|if
+condition|(
+name|getEndpoint
+argument_list|()
+operator|.
+name|getLocalState
+argument_list|()
+operator|!=
+name|EndpointState
+operator|.
+name|CLOSED
+condition|)
+block|{
+name|doDetach
+argument_list|()
+expr_stmt|;
+name|getEndpoint
+argument_list|()
+operator|.
+name|free
+argument_list|()
+expr_stmt|;
+block|}
+name|request
+operator|.
+name|onSuccess
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|closeRequest
+operator|=
+name|request
+expr_stmt|;
+name|doDetach
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
 name|close
 parameter_list|(
 name|AsyncResult
@@ -330,20 +406,6 @@ operator|.
 name|CLOSED
 condition|)
 block|{
-comment|// Remote already closed this resource, close locally and free.
-if|if
-condition|(
-name|getEndpoint
-argument_list|()
-operator|.
-name|getLocalState
-argument_list|()
-operator|!=
-name|EndpointState
-operator|.
-name|CLOSED
-condition|)
-block|{
 name|doClose
 argument_list|()
 expr_stmt|;
@@ -354,14 +416,14 @@ name|free
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 name|request
 operator|.
 name|onSuccess
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
+else|else
+block|{
 name|this
 operator|.
 name|closeRequest
@@ -371,6 +433,25 @@ expr_stmt|;
 name|doClose
 argument_list|()
 expr_stmt|;
+block|}
+comment|//        // If already closed signal success or else the caller might never get notified.
+comment|//        if (getEndpoint().getLocalState() == EndpointState.CLOSED ||
+comment|//            getEndpoint().getRemoteState() == EndpointState.CLOSED) {
+comment|//
+comment|//            if (getEndpoint().getLocalState() != EndpointState.CLOSED) {
+comment|//                // Remote already closed this resource, close locally and free.
+comment|//                if (getEndpoint().getLocalState() != EndpointState.CLOSED) {
+comment|//                    doClose();
+comment|//                    getEndpoint().free();
+comment|//                }
+comment|//            }
+comment|//
+comment|//            request.onSuccess();
+comment|//            return;
+comment|//        }
+comment|//
+comment|//        this.closeRequest = request;
+comment|//        doClose();
 block|}
 annotation|@
 name|Override
@@ -1055,6 +1136,20 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * Perform the detach operation on the managed endpoint.      *      * By default this method throws an UnsupportedOperationException, a subclass      * must implement this and do a detach if its resource supports that.      */
+specifier|protected
+name|void
+name|doDetach
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"Endpoint cannot be detached."
+argument_list|)
+throw|;
 block|}
 comment|/**      * Complete the open operation on the managed endpoint. A subclass may      * override this method to provide additional verification actions or configuration      * updates.      */
 specifier|protected
