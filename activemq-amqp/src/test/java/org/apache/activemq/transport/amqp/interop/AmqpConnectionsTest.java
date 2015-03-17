@@ -157,7 +157,7 @@ name|amqp
 operator|.
 name|client
 operator|.
-name|AmqpStateInspector
+name|AmqpValidator
 import|;
 end_import
 
@@ -385,7 +385,7 @@ operator|.
 name|setStateInspector
 argument_list|(
 operator|new
-name|AmqpStateInspector
+name|AmqpValidator
 argument_list|()
 block|{
 annotation|@
@@ -498,6 +498,14 @@ operator|.
 name|getCurrentConnectionsCount
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|getStateInspector
+argument_list|()
+operator|.
+name|assertValid
+argument_list|()
 expr_stmt|;
 name|connection
 operator|.
@@ -720,7 +728,7 @@ operator|.
 name|setStateInspector
 argument_list|(
 operator|new
-name|AmqpStateInspector
+name|AmqpValidator
 argument_list|()
 block|{
 annotation|@
@@ -843,7 +851,7 @@ operator|.
 name|getStateInspector
 argument_list|()
 operator|.
-name|assertIfStateChecksFailed
+name|assertValid
 argument_list|()
 expr_stmt|;
 name|assertEquals

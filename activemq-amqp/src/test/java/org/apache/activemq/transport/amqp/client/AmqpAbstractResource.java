@@ -194,12 +194,8 @@ name|AsyncResult
 name|closeRequest
 decl_stmt|;
 specifier|private
-name|AmqpStateInspector
+name|AmqpValidator
 name|amqpStateInspector
-init|=
-operator|new
-name|AmqpStateInspector
-argument_list|()
 decl_stmt|;
 specifier|private
 name|E
@@ -687,7 +683,7 @@ name|endpoint
 expr_stmt|;
 block|}
 specifier|public
-name|AmqpStateInspector
+name|AmqpValidator
 name|getStateInspector
 parameter_list|()
 block|{
@@ -699,7 +695,7 @@ specifier|public
 name|void
 name|setStateInspector
 parameter_list|(
-name|AmqpStateInspector
+name|AmqpValidator
 name|stateInspector
 parameter_list|)
 block|{
@@ -713,7 +709,7 @@ block|{
 name|stateInspector
 operator|=
 operator|new
-name|AmqpStateInspector
+name|AmqpValidator
 argument_list|()
 expr_stmt|;
 block|}

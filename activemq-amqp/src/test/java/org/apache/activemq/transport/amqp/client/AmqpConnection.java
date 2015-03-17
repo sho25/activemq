@@ -1279,6 +1279,14 @@ argument_list|)
 expr_stmt|;
 name|session
 operator|.
+name|setStateInspector
+argument_list|(
+name|getStateInspector
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|session
+operator|.
 name|open
 argument_list|(
 name|request

@@ -47,7 +47,23 @@ name|proton
 operator|.
 name|engine
 operator|.
-name|Link
+name|Receiver
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|qpid
+operator|.
+name|proton
+operator|.
+name|engine
+operator|.
+name|Sender
 import|;
 end_import
 
@@ -74,7 +90,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|AmqpStateInspector
+name|AmqpValidator
 block|{
 specifier|private
 name|boolean
@@ -106,8 +122,16 @@ specifier|public
 name|void
 name|inspectOpenedResource
 parameter_list|(
-name|Link
-name|link
+name|Sender
+name|sender
+parameter_list|)
+block|{      }
+specifier|public
+name|void
+name|inspectOpenedResource
+parameter_list|(
+name|Receiver
+name|receiver
 parameter_list|)
 block|{      }
 specifier|public
@@ -130,16 +154,32 @@ specifier|public
 name|void
 name|inspectClosedResource
 parameter_list|(
-name|Link
-name|link
+name|Sender
+name|sender
+parameter_list|)
+block|{      }
+specifier|public
+name|void
+name|inspectClosedResource
+parameter_list|(
+name|Receiver
+name|receiver
 parameter_list|)
 block|{      }
 specifier|public
 name|void
 name|inspectDetachedResource
 parameter_list|(
-name|Link
-name|link
+name|Sender
+name|sender
+parameter_list|)
+block|{      }
+specifier|public
+name|void
+name|inspectDetachedResource
+parameter_list|(
+name|Receiver
+name|receiver
 parameter_list|)
 block|{      }
 specifier|public
@@ -217,7 +257,7 @@ block|}
 block|}
 specifier|public
 name|void
-name|assertIfStateChecksFailed
+name|assertValid
 parameter_list|()
 block|{
 if|if

@@ -514,9 +514,12 @@ name|Source
 name|getSource
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
+comment|// TODO Figure out a simple way to wrap the odd Source types in Proton-J
 return|return
-literal|null
+name|link
+operator|.
+name|getSource
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -526,9 +529,12 @@ name|Target
 name|getTarget
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
+comment|// TODO Figure out a simple way to wrap the odd Source types in Proton-J
 return|return
-literal|null
+name|link
+operator|.
+name|getTarget
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -574,9 +580,12 @@ name|Source
 name|getRemoteSource
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
+comment|// TODO Figure out a simple way to wrap the odd Source types in Proton-J
 return|return
-literal|null
+name|link
+operator|.
+name|getSource
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -586,9 +595,12 @@ name|Target
 name|getRemoteTarget
 parameter_list|()
 block|{
-comment|// TODO Auto-generated method stub
+comment|// TODO Figure out a simple way to wrap the odd Target types in Proton-J
 return|return
-literal|null
+name|link
+operator|.
+name|getTarget
+argument_list|()
 return|;
 block|}
 annotation|@

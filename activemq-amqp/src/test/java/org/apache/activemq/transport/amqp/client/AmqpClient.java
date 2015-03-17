@@ -155,11 +155,11 @@ name|URI
 name|remoteURI
 decl_stmt|;
 specifier|private
-name|AmqpStateInspector
+name|AmqpValidator
 name|stateInspector
 init|=
 operator|new
-name|AmqpStateInspector
+name|AmqpValidator
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -498,7 +498,7 @@ return|;
 block|}
 comment|/**      * @return the currently set state inspector used to check state after various events.      */
 specifier|public
-name|AmqpStateInspector
+name|AmqpValidator
 name|getStateInspector
 parameter_list|()
 block|{
@@ -511,7 +511,7 @@ specifier|public
 name|void
 name|setStateInspector
 parameter_list|(
-name|AmqpStateInspector
+name|AmqpValidator
 name|stateInspector
 parameter_list|)
 block|{
@@ -525,7 +525,7 @@ block|{
 name|stateInspector
 operator|=
 operator|new
-name|AmqpStateInspector
+name|AmqpValidator
 argument_list|()
 expr_stmt|;
 block|}
