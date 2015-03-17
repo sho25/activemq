@@ -509,7 +509,7 @@ block|}
 comment|/**      * Sets the state inspector used to check that the AMQP resource is valid after      * specific lifecycle events such as open and close.      *      * @param stateInspector      *        the new state inspector to use.      */
 specifier|public
 name|void
-name|setStateInspector
+name|setValidator
 parameter_list|(
 name|AmqpValidator
 name|stateInspector

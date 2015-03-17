@@ -382,7 +382,7 @@ argument_list|)
 expr_stmt|;
 name|client
 operator|.
-name|setStateInspector
+name|setValidator
 argument_list|(
 operator|new
 name|AmqpValidator

@@ -584,7 +584,7 @@ comment|// TODO Figure out a simple way to wrap the odd Source types in Proton-J
 return|return
 name|link
 operator|.
-name|getSource
+name|getRemoteSource
 argument_list|()
 return|;
 block|}
@@ -599,7 +599,7 @@ comment|// TODO Figure out a simple way to wrap the odd Target types in Proton-J
 return|return
 name|link
 operator|.
-name|getTarget
+name|getRemoteTarget
 argument_list|()
 return|;
 block|}
