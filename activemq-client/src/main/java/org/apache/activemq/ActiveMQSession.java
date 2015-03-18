@@ -3124,14 +3124,6 @@ literal|"here"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|md
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|onMessageRolledBack
-argument_list|()
-expr_stmt|;
 comment|// ensure we don't filter this as a duplicate
 name|connection
 operator|.
@@ -3254,7 +3246,7 @@ operator|.
 name|NO_MAXIMUM_REDELIVERIES
 operator|&&
 name|redeliveryCounter
-operator|>
+operator|>=
 name|redeliveryPolicy
 operator|.
 name|getMaximumRedeliveries
@@ -3422,6 +3414,14 @@ name|redeliveryDelay
 argument_list|)
 expr_stmt|;
 block|}
+name|md
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|onMessageRolledBack
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
