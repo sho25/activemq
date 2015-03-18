@@ -311,6 +311,20 @@ argument_list|(
 literal|"copy"
 argument_list|)
 decl_stmt|;
+comment|// Lifetime policy symbols
+specifier|public
+specifier|static
+specifier|final
+name|Symbol
+name|DYNAMIC_NODE_LIFETIME_POLICY
+init|=
+name|Symbol
+operator|.
+name|valueOf
+argument_list|(
+literal|"lifetime-policy"
+argument_list|)
+decl_stmt|;
 comment|/**      * Search for a given Symbol in a given array of Symbol object.      *      * @param symbols      *        the set of Symbols to search.      * @param key      *        the value to try and find in the Symbol array.      *      * @return true if the key is found in the given Symbol array.      */
 specifier|public
 specifier|static

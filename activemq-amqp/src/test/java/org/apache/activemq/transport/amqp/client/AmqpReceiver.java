@@ -611,6 +611,11 @@ name|String
 name|receiverId
 decl_stmt|;
 specifier|private
+specifier|final
+name|Source
+name|userSpecifiedSource
+decl_stmt|;
+specifier|private
 name|String
 name|subscriptionName
 decl_stmt|;
@@ -625,10 +630,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|noLocal
-decl_stmt|;
-specifier|private
-name|Source
-name|userSpecifiedSource
 decl_stmt|;
 comment|/**      * Create a new receiver instance.      *      * @param session      * 		  The parent session that created the receiver.      * @param address      *        The address that this receiver should listen on.      * @param receiverId      *        The unique ID assigned to this receiver.      */
 specifier|public
@@ -664,6 +665,12 @@ literal|"Address cannot be empty."
 argument_list|)
 throw|;
 block|}
+name|this
+operator|.
+name|userSpecifiedSource
+operator|=
+literal|null
+expr_stmt|;
 name|this
 operator|.
 name|session
@@ -1676,7 +1683,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|userSpecifiedSource
+name|source
 operator|==
 literal|null
 operator|&&
