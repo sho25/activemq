@@ -644,6 +644,26 @@ name|String
 name|receiverId
 parameter_list|)
 block|{
+if|if
+condition|(
+name|address
+operator|!=
+literal|null
+operator|&&
+name|address
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Address cannot be empty."
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|session
@@ -1658,6 +1678,10 @@ if|if
 condition|(
 name|userSpecifiedSource
 operator|==
+literal|null
+operator|&&
+name|address
+operator|!=
 literal|null
 condition|)
 block|{

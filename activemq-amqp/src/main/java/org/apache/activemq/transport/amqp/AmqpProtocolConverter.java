@@ -9010,6 +9010,13 @@ operator|.
 name|NEVER
 argument_list|)
 expr_stmt|;
+name|source
+operator|.
+name|setDistributionMode
+argument_list|(
+name|COPY
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
