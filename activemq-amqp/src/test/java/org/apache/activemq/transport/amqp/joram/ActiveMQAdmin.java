@@ -131,16 +131,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jms
-operator|.
-name|ConnectionFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|naming
 operator|.
 name|Context
@@ -217,13 +207,9 @@ name|apache
 operator|.
 name|qpid
 operator|.
-name|amqp_1_0
-operator|.
 name|jms
 operator|.
-name|impl
-operator|.
-name|ConnectionFactoryImpl
+name|JmsConnectionFactory
 import|;
 end_import
 
@@ -235,13 +221,9 @@ name|apache
 operator|.
 name|qpid
 operator|.
-name|amqp_1_0
-operator|.
 name|jms
 operator|.
-name|impl
-operator|.
-name|QueueImpl
+name|JmsQueue
 import|;
 end_import
 
@@ -253,13 +235,9 @@ name|apache
 operator|.
 name|qpid
 operator|.
-name|amqp_1_0
-operator|.
 name|jms
 operator|.
-name|impl
-operator|.
-name|TopicImpl
+name|JmsTopic
 import|;
 end_import
 
@@ -716,10 +694,8 @@ argument_list|(
 name|name
 argument_list|,
 operator|new
-name|QueueImpl
+name|JmsQueue
 argument_list|(
-literal|"queue://"
-operator|+
 name|name
 argument_list|)
 argument_list|)
@@ -759,10 +735,8 @@ argument_list|(
 name|name
 argument_list|,
 operator|new
-name|TopicImpl
+name|JmsTopic
 argument_list|(
-literal|"topic://"
-operator|+
 name|name
 argument_list|)
 argument_list|)
@@ -793,7 +767,6 @@ name|String
 name|name
 parameter_list|)
 block|{
-comment|// BrokerTestSupport.delete_queue((Broker)base.broker, name);
 try|try
 block|{
 name|context
@@ -867,19 +840,15 @@ block|{
 try|try
 block|{
 specifier|final
-name|ConnectionFactory
+name|JmsConnectionFactory
 name|factory
 init|=
 operator|new
-name|ConnectionFactoryImpl
+name|JmsConnectionFactory
 argument_list|(
-literal|"localhost"
-argument_list|,
+literal|"amqp://localhost:"
+operator|+
 name|port
-argument_list|,
-literal|null
-argument_list|,
-literal|null
 argument_list|)
 decl_stmt|;
 name|context
