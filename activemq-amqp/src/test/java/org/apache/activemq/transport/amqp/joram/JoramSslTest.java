@@ -167,6 +167,24 @@ name|jms
 operator|.
 name|conform
 operator|.
+name|connection
+operator|.
+name|TopicConnectionTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|objectweb
+operator|.
+name|jtests
+operator|.
+name|jms
+operator|.
+name|conform
+operator|.
 name|message
 operator|.
 name|MessageBodyTest
@@ -411,7 +429,7 @@ name|conform
 operator|.
 name|session
 operator|.
-name|UnifiedSessionTest
+name|TopicSessionTest
 import|;
 end_import
 
@@ -467,7 +485,10 @@ operator|.
 name|SuiteClasses
 argument_list|(
 block|{
-comment|//    TopicSessionTest.class,    // Hangs, see https://issues.apache.org/jira/browse/PROTON-154
+name|TopicSessionTest
+operator|.
+name|class
+block|,
 name|MessageHeaderTest
 operator|.
 name|class
@@ -480,16 +501,14 @@ name|MessageTypeTest
 operator|.
 name|class
 block|,
-name|UnifiedSessionTest
-operator|.
-name|class
-block|,
-comment|// https://issues.apache.org/jira/browse/AMQ-4375
 name|TemporaryTopicTest
 operator|.
 name|class
 block|,
-comment|//,TopicConnectionTest.class    // https://issues.apache.org/jira/browse/AMQ-4654
+name|TopicConnectionTest
+operator|.
+name|class
+block|,
 name|SelectorSyntaxTest
 operator|.
 name|class
