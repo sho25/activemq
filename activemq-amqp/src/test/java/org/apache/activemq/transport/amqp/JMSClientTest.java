@@ -6823,11 +6823,6 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"Legacy QPid client does not support creation of TemporaryTopics correctly"
-argument_list|)
-annotation|@
 name|Test
 argument_list|(
 name|timeout
