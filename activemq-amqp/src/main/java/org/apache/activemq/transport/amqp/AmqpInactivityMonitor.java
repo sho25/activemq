@@ -266,7 +266,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|protocolConverter
 decl_stmt|;
 specifier|private
@@ -506,7 +506,7 @@ specifier|public
 name|void
 name|setProtocolConverter
 parameter_list|(
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|protocolConverter
 parameter_list|)
 block|{
@@ -518,7 +518,7 @@ name|protocolConverter
 expr_stmt|;
 block|}
 specifier|public
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|getProtocolConverter
 parameter_list|()
 block|{
@@ -526,6 +526,7 @@ return|return
 name|protocolConverter
 return|;
 block|}
+specifier|public
 specifier|synchronized
 name|void
 name|startConnectChecker
@@ -618,6 +619,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|public
 specifier|synchronized
 name|void
 name|stopConnectChecker

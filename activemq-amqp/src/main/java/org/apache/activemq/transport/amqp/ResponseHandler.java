@@ -42,17 +42,19 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface used by the AMQPProtocolConverter for callbacks.  */
+comment|/**  * Interface used by the AmqpProtocolConverter for callbacks from the broker.  */
 end_comment
 
 begin_interface
+specifier|public
 interface|interface
 name|ResponseHandler
 block|{
+comment|/**      * Called when the Broker has handled a previously issued request and      * has a response ready.      *      * @param converter      *        the protocol converter that is awaiting the response.      * @param response      *        the response from the broker.      *      * @throws IOException if an error occurs while processing the response.      */
 name|void
 name|onResponse
 parameter_list|(
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|converter
 parameter_list|,
 name|Response

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  */
+comment|/**  * Represents the AMQP protocol handshake packet that is sent during the  * initial exchange with a remote peer.  */
 end_comment
 
 begin_class

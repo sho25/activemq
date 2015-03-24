@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Creates WireFormat objects that marshalls the<a href="http://stomp.codehaus.org/">Stomp</a> protocol.  */
+comment|/**  * Creates the default AMQP WireFormat object used to configure the protocol support.  */
 end_comment
 
 begin_class

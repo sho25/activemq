@@ -144,7 +144,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|AMQPSslTransportFactory
+name|AmqpSslTransportFactory
 extends|extends
 name|SslTransportFactory
 implements|implements

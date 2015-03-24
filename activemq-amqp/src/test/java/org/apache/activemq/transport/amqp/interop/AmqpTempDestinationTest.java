@@ -33,7 +33,7 @@ name|amqp
 operator|.
 name|AmqpSupport
 operator|.
-name|DYNAMIC_NODE_LIFETIME_POLICY
+name|LIFETIME_POLICY
 import|;
 end_import
 
@@ -1070,7 +1070,7 @@ name|dynamicNodeProperties
 operator|.
 name|put
 argument_list|(
-name|DYNAMIC_NODE_LIFETIME_POLICY
+name|LIFETIME_POLICY
 argument_list|,
 name|DeleteOnClose
 operator|.
@@ -1176,7 +1176,7 @@ name|dynamicNodeProperties
 operator|.
 name|put
 argument_list|(
-name|DYNAMIC_NODE_LIFETIME_POLICY
+name|LIFETIME_POLICY
 argument_list|,
 name|DeleteOnClose
 operator|.

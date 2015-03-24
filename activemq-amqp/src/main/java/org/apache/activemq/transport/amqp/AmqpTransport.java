@@ -130,7 +130,7 @@ name|isTrace
 parameter_list|()
 function_decl|;
 specifier|public
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|getProtocolConverter
 parameter_list|()
 function_decl|;
@@ -138,7 +138,7 @@ specifier|public
 name|void
 name|setProtocolConverter
 parameter_list|(
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|protocolConverter
 parameter_list|)
 function_decl|;

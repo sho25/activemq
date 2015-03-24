@@ -65,6 +65,24 @@ name|Command
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|protocol
+operator|.
+name|AmqpConnection
+import|;
+end_import
+
 begin_comment
 comment|/**  * Used to assign the best implementation of a AmqpProtocolConverter to the  * AmqpTransport based on the AmqpHeader that the client sends us.  */
 end_comment
@@ -72,9 +90,9 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|AMQPProtocolDiscriminator
+name|AmqpProtocolDiscriminator
 implements|implements
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 block|{
 specifier|public
 specifier|static
@@ -94,12 +112,6 @@ specifier|final
 name|BrokerService
 name|brokerService
 decl_stmt|;
-specifier|private
-name|int
-name|producerCredit
-init|=
-name|DEFAULT_PREFETCH
-decl_stmt|;
 interface|interface
 name|Discriminator
 block|{
@@ -110,7 +122,7 @@ name|AmqpHeader
 name|header
 parameter_list|)
 function_decl|;
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|create
 parameter_list|(
 name|AmqpTransport
@@ -150,7 +162,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|create
 parameter_list|(
 name|AmqpTransport
@@ -162,7 +174,7 @@ parameter_list|)
 block|{
 return|return
 operator|new
-name|AmqpProtocolConverter
+name|AmqpConnection
 argument_list|(
 name|transport
 argument_list|,
@@ -247,7 +259,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
-name|AMQPProtocolDiscriminator
+name|AmqpProtocolDiscriminator
 parameter_list|(
 name|AmqpTransport
 name|transport
@@ -348,7 +360,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|IAmqpProtocolConverter
+name|AmqpProtocolConverter
 name|next
 init|=
 name|match
@@ -360,13 +372,6 @@ argument_list|,
 name|brokerService
 argument_list|)
 decl_stmt|;
-name|next
-operator|.
-name|setProducerCredit
-argument_list|(
-name|producerCredit
-argument_list|)
-expr_stmt|;
 name|transport
 operator|.
 name|setProtocolConverter
@@ -449,23 +454,6 @@ name|void
 name|updateTracer
 parameter_list|()
 block|{     }
-annotation|@
-name|Override
-specifier|public
-name|void
-name|setProducerCredit
-parameter_list|(
-name|int
-name|producerCredit
-parameter_list|)
-block|{
-name|this
-operator|.
-name|producerCredit
-operator|=
-name|producerCredit
-expr_stmt|;
-block|}
 block|}
 end_class
 
