@@ -27,18 +27,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Future
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -584,6 +572,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|delegate
+operator|.
 name|asyncAddTopicMessage
 argument_list|(
 name|context
