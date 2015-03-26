@@ -873,9 +873,9 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-name|remaining
-argument_list|,
 literal|0
+argument_list|,
+name|remaining
 argument_list|)
 expr_stmt|;
 name|consumer
@@ -985,9 +985,9 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-name|remaining
-argument_list|,
 literal|3
+argument_list|,
+name|remaining
 argument_list|)
 expr_stmt|;
 name|consumer
@@ -1105,9 +1105,9 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-name|remaining
-argument_list|,
 literal|2
+argument_list|,
+name|remaining
 argument_list|)
 expr_stmt|;
 name|consumer
