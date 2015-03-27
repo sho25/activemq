@@ -616,6 +616,7 @@ parameter_list|(
 name|ConnectionContext
 name|context
 parameter_list|,
+specifier|final
 name|MessagePull
 name|pull
 parameter_list|)
@@ -635,8 +636,13 @@ condition|)
 block|{
 name|prefetchExtension
 operator|.
-name|incrementAndGet
+name|set
+argument_list|(
+name|pull
+operator|.
+name|getQuantity
 argument_list|()
+argument_list|)
 expr_stmt|;
 specifier|final
 name|long
@@ -673,6 +679,11 @@ condition|(
 name|dispatchCounterBeforePull
 operator|==
 name|dispatchCounter
+operator|||
+name|pull
+operator|.
+name|isAlwaysSignalDone
+argument_list|()
 condition|)
 block|{
 comment|// immediate timeout used by receiveNoWait()
@@ -687,7 +698,14 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// Send a NULL message.
+comment|// Null message indicates the pull is done or did not have pending.
+name|prefetchExtension
+operator|.
+name|set
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 name|QueueMessageReference
@@ -727,6 +745,11 @@ block|{
 name|pullTimeout
 argument_list|(
 name|dispatchCounterBeforePull
+argument_list|,
+name|pull
+operator|.
+name|isAlwaysSignalDone
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -753,6 +776,9 @@ name|pullTimeout
 parameter_list|(
 name|long
 name|dispatchCounterBeforePull
+parameter_list|,
+name|boolean
+name|alwaysSignalDone
 parameter_list|)
 block|{
 synchronized|synchronized
@@ -765,10 +791,19 @@ condition|(
 name|dispatchCounterBeforePull
 operator|==
 name|dispatchCounter
+operator|||
+name|alwaysSignalDone
 condition|)
 block|{
 try|try
 block|{
+name|prefetchExtension
+operator|.
+name|set
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 name|QueueMessageReference
@@ -794,6 +829,16 @@ operator|.
 name|serviceException
 argument_list|(
 name|e
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|prefetchExtension
+operator|.
+name|set
+argument_list|(
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -1102,11 +1147,6 @@ argument_list|)
 expr_stmt|;
 comment|// Acknowledge all dispatched messages up till the message id of
 comment|// the acknowledgment.
-name|int
-name|index
-init|=
-literal|0
-decl_stmt|;
 name|boolean
 name|inAckRange
 init|=
@@ -1222,9 +1262,6 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-name|index
-operator|++
-expr_stmt|;
 name|acknowledge
 argument_list|(
 name|context

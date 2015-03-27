@@ -95,6 +95,24 @@ name|qpid
 operator|.
 name|proton
 operator|.
+name|amqp
+operator|.
+name|messaging
+operator|.
+name|Header
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|qpid
+operator|.
+name|proton
+operator|.
 name|codec
 operator|.
 name|CompositeWritableBuffer
@@ -421,6 +439,26 @@ block|}
 comment|// Update the DeliveryCount header...
 comment|// The AMQP delivery-count field only includes prior failed delivery attempts,
 comment|// whereas JMSXDeliveryCount includes the first/current delivery attempt. Subtract 1.
+if|if
+condition|(
+name|amqp
+operator|.
+name|getHeader
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|amqp
+operator|.
+name|setHeader
+argument_list|(
+operator|new
+name|Header
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|amqp
 operator|.
 name|getHeader

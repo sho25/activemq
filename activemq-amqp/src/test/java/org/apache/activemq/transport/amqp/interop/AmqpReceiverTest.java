@@ -423,16 +423,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -2122,11 +2112,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Test fails currently due to improper implementation of drain."
-argument_list|)
+comment|//@Ignore("Test fails currently due to improper implementation of drain.")
 annotation|@
 name|Test
 argument_list|(
