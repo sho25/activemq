@@ -191,16 +191,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -216,11 +206,6 @@ name|AmqpSendReceiveTest
 extends|extends
 name|AmqpClientTestSupport
 block|{
-annotation|@
-name|Ignore
-argument_list|(
-literal|"Test fails when JMS transformer is in play"
-argument_list|)
 annotation|@
 name|Test
 argument_list|(
@@ -441,7 +426,7 @@ control|)
 block|{
 name|received
 operator|=
-name|receiver1
+name|receiver2
 operator|.
 name|receive
 argument_list|(
