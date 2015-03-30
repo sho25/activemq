@@ -219,7 +219,29 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Rule
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|rules
+operator|.
+name|TestName
 import|;
 end_import
 
@@ -248,6 +270,16 @@ specifier|public
 class|class
 name|JMSClientSimpleAuthTest
 block|{
+annotation|@
+name|Rule
+specifier|public
+name|TestName
+name|name
+init|=
+operator|new
+name|TestName
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -275,6 +307,10 @@ name|BrokerService
 name|brokerService
 decl_stmt|;
 specifier|private
+name|Connection
+name|connection
+decl_stmt|;
+specifier|private
 name|URI
 name|amqpURI
 decl_stmt|;
@@ -287,6 +323,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"========== starting: "
+operator|+
+name|getTestName
+argument_list|()
+operator|+
+literal|" =========="
+argument_list|)
+expr_stmt|;
 name|startBroker
 argument_list|()
 expr_stmt|;
@@ -300,6 +348,32 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|connection
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{}
+name|connection
+operator|=
+literal|null
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|brokerService
@@ -317,6 +391,30 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"========== finished: "
+operator|+
+name|getTestName
+argument_list|()
+operator|+
+literal|" =========="
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getTestName
+parameter_list|()
+block|{
+return|return
+name|name
+operator|.
+name|getMethodName
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Test
@@ -334,9 +432,8 @@ name|Exception
 block|{
 try|try
 block|{
-name|Connection
 name|connection
-init|=
+operator|=
 name|JMSClientContext
 operator|.
 name|INSTANCE
@@ -349,7 +446,7 @@ literal|""
 argument_list|,
 literal|""
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|connection
 operator|.
 name|start
@@ -392,9 +489,8 @@ name|Exception
 block|{
 try|try
 block|{
-name|Connection
 name|connection
-init|=
+operator|=
 name|JMSClientContext
 operator|.
 name|INSTANCE
@@ -407,7 +503,7 @@ literal|"nosuchuser"
 argument_list|,
 literal|"blah"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|connection
 operator|.
 name|start
@@ -429,7 +525,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to authenticate connection with no user / password."
+literal|"Failed to authenticate connection with unknown user ID"
 argument_list|)
 expr_stmt|;
 block|}
@@ -450,9 +546,8 @@ name|Exception
 block|{
 try|try
 block|{
-name|Connection
 name|connection
-init|=
+operator|=
 name|JMSClientContext
 operator|.
 name|INSTANCE
@@ -465,7 +560,7 @@ literal|"user"
 argument_list|,
 literal|"wrongPassword"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|connection
 operator|.
 name|start
@@ -487,7 +582,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to authenticate connection with no user / password."
+literal|"Failed to authenticate connection with incorrect password."
 argument_list|)
 expr_stmt|;
 block|}
@@ -564,7 +659,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to authenticate connection with no user / password."
+literal|"Failed to authenticate connection with incorrect password."
 argument_list|)
 expr_stmt|;
 block|}
@@ -600,9 +695,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Connection
 name|connection
-init|=
+operator|=
 name|JMSClientContext
 operator|.
 name|INSTANCE
@@ -615,7 +709,7 @@ literal|"user"
 argument_list|,
 literal|"userPassword"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Session
 name|session
 init|=
@@ -768,9 +862,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|Connection
 name|connection
-init|=
+operator|=
 name|JMSClientContext
 operator|.
 name|INSTANCE
@@ -783,7 +876,7 @@ literal|"user"
 argument_list|,
 literal|"userPassword"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Session
 name|session
 init|=
@@ -841,11 +934,6 @@ name|AUTO_ACKNOWLEDGE
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -861,9 +949,8 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-name|Connection
 name|connection
-init|=
+operator|=
 name|JMSClientContext
 operator|.
 name|INSTANCE
@@ -876,7 +963,7 @@ literal|"user"
 argument_list|,
 literal|"userPassword"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|Session
 name|session
 init|=
@@ -933,11 +1020,6 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|session
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
