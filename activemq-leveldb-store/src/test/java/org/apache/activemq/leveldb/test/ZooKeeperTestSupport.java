@@ -71,7 +71,7 @@ name|zookeeper
 operator|.
 name|server
 operator|.
-name|NIOServerCnxnFactory
+name|TestServerCnxnFactory
 import|;
 end_import
 
@@ -167,7 +167,7 @@ class|class
 name|ZooKeeperTestSupport
 block|{
 specifier|protected
-name|NIOServerCnxnFactory
+name|TestServerCnxnFactory
 name|connector
 decl_stmt|;
 specifier|static
@@ -256,7 +256,7 @@ expr_stmt|;
 name|connector
 operator|=
 operator|new
-name|NIOServerCnxnFactory
+name|TestServerCnxnFactory
 argument_list|()
 expr_stmt|;
 name|connector
