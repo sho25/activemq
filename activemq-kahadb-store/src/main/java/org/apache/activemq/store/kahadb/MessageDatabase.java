@@ -3942,7 +3942,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Recovering from the journal ..."
+literal|"Recovering from the journal @"
+operator|+
+name|recoveryPosition
 argument_list|)
 expr_stmt|;
 while|while
