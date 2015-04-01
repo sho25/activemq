@@ -200,6 +200,7 @@ name|BrokerService
 name|brokerService
 decl_stmt|;
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|ActiveMQDestination
@@ -759,7 +760,7 @@ if|if
 condition|(
 name|destination
 operator|.
-name|isTopic
+name|isQueue
 argument_list|()
 operator|&&
 name|destination
