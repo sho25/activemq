@@ -194,9 +194,9 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"ANONYMOUS"
-block|,
 literal|"PLAIN"
+block|,
+literal|"ANONYMOUS"
 block|}
 decl_stmt|;
 specifier|private
