@@ -684,7 +684,7 @@ if|if
 condition|(
 name|data
 operator|.
-name|startsWith
+name|equals
 argument_list|(
 literal|"\n"
 argument_list|)
@@ -698,6 +698,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
 name|protocolConverter
 operator|.
 name|onStompCommand
@@ -722,6 +724,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
