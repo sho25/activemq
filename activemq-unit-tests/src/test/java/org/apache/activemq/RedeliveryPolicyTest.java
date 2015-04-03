@@ -439,7 +439,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|500
+literal|1000
 argument_list|,
 name|delay
 argument_list|)
@@ -455,7 +455,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|500
+literal|1000
 argument_list|,
 name|delay
 argument_list|)
@@ -471,7 +471,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|500
+literal|1000
 argument_list|,
 name|delay
 argument_list|)

@@ -2707,6 +2707,13 @@ argument_list|(
 name|initialRedeliveryDelay
 argument_list|)
 expr_stmt|;
+name|redeliveryPolicy
+operator|.
+name|setRedeliveryDelay
+argument_list|(
+name|initialRedeliveryDelay
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      *       */
 specifier|public

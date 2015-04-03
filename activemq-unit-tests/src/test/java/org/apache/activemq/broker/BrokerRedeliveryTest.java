@@ -519,7 +519,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"has expiryDelay specified"
+literal|"has expiryDelay specified - iteration:"
+operator|+
+name|i
 argument_list|,
 name|i
 operator|==
