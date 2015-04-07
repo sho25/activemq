@@ -1028,7 +1028,7 @@ throw|throw
 operator|new
 name|ResourceException
 argument_list|(
-literal|"Could cleanup the ActiveMQ connection: "
+literal|"Could not cleanup the ActiveMQ connection: "
 operator|+
 name|e
 argument_list|,
