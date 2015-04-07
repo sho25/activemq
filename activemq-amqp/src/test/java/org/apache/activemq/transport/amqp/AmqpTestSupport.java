@@ -693,6 +693,11 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|performAdditionalConfiguration
+argument_list|(
+name|brokerService
+argument_list|)
+expr_stmt|;
 name|SSLContext
 name|ctx
 init|=
@@ -888,6 +893,16 @@ name|addTranportConnectors
 argument_list|()
 expr_stmt|;
 block|}
+specifier|protected
+name|void
+name|performAdditionalConfiguration
+parameter_list|(
+name|BrokerService
+name|brokerService
+parameter_list|)
+throws|throws
+name|Exception
+block|{      }
 specifier|protected
 name|void
 name|addTranportConnectors

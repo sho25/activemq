@@ -2112,7 +2112,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//@Ignore("Test fails currently due to improper implementation of drain.")
 annotation|@
 name|Test
 argument_list|(

@@ -182,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @openwire:marshaller code="1"  *   */
+comment|/**  * @openwire:marshaller code="1"  *  */
 end_comment
 
 begin_class
@@ -277,6 +277,8 @@ specifier|transient
 name|Endpoint
 name|to
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -286,6 +288,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isWireFormatInfo
@@ -295,6 +299,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -382,6 +388,8 @@ name|marshalledProperties
 expr_stmt|;
 block|}
 comment|/**      * The endpoint within the transport where this message came from.      */
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getFrom
@@ -391,6 +399,8 @@ return|return
 name|from
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setFrom
@@ -407,6 +417,8 @@ name|from
 expr_stmt|;
 block|}
 comment|/**      * The endpoint within the transport where this message is going to - null      * means all endpoints.      */
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getTo
@@ -416,6 +428,8 @@ return|return
 name|to
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTo
@@ -658,6 +672,8 @@ name|MAX_PROPERTY_SIZE
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeMarshall
@@ -719,6 +735,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterMarshall
@@ -729,6 +747,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeUnmarshall
@@ -739,6 +759,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterUnmarshall
@@ -769,6 +791,8 @@ name|MAGIC
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setResponseRequired
@@ -1032,9 +1056,6 @@ literal|null
 return|;
 block|}
 return|return
-operator|(
-name|String
-operator|)
 name|buff
 operator|.
 name|toString
@@ -1273,6 +1294,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -1430,6 +1453,8 @@ comment|//
 comment|// This are not implemented.
 comment|//
 comment|// /////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCommandId
@@ -1438,6 +1463,8 @@ name|int
 name|value
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCommandId
@@ -1447,6 +1474,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponseRequired
@@ -1456,6 +1485,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponse
@@ -1465,6 +1496,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBrokerInfo
@@ -1474,6 +1507,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatch
@@ -1483,6 +1518,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessage
@@ -1492,6 +1529,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageAck
@@ -1501,6 +1540,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatchNotification
@@ -1510,6 +1551,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isShutdownInfo
@@ -1519,9 +1562,22 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnectionControl
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isConsumerControl
 parameter_list|()
 block|{
 return|return

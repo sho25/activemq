@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Command Pattern so that we can send and receive commands on the different  * transports  *   *   */
+comment|/**  * The Command Pattern so that we can send and receive commands on the different  * transports  */
 end_comment
 
 begin_interface
@@ -97,6 +97,10 @@ parameter_list|()
 function_decl|;
 name|boolean
 name|isConnectionControl
+parameter_list|()
+function_decl|;
+name|boolean
+name|isConsumerControl
 parameter_list|()
 function_decl|;
 name|Response

@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to start and stop transports as well as terminating clients.  *   * @openwire:marshaller code="17"  *   */
+comment|/**  * Used to start and stop transports as well as terminating clients.  *  * @openwire:marshaller code="17"  *  */
 end_comment
 
 begin_class
@@ -103,6 +103,8 @@ operator|=
 name|destination
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -112,6 +114,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -131,6 +135,17 @@ name|this
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isConsumerControl
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * @openwire:property version=1      * @return Returns the close.      */
 specifier|public
 name|boolean
@@ -141,7 +156,7 @@ return|return
 name|close
 return|;
 block|}
-comment|/**      * @param close The close to set.      */
+comment|/**      * @param close      *        The new value to assign the close state flag.      */
 specifier|public
 name|void
 name|setClose
@@ -167,7 +182,7 @@ return|return
 name|consumerId
 return|;
 block|}
-comment|/**      * @param consumerId The consumerId to set.      */
+comment|/**      * @param consumerId      *        The consumerId to set.      */
 specifier|public
 name|void
 name|setConsumerId
@@ -193,7 +208,7 @@ return|return
 name|prefetch
 return|;
 block|}
-comment|/**      * @param prefetch The prefetch to set.      */
+comment|/**      * @param prefetch      *        The prefetch to set.      */
 specifier|public
 name|void
 name|setPrefetch
@@ -221,7 +236,7 @@ operator|.
 name|flush
 return|;
 block|}
-comment|/**      * @param flush the flush to set      */
+comment|/**      * @param flush      *        The flush value to set on this command.      */
 specifier|public
 name|void
 name|setFlush
@@ -249,7 +264,7 @@ operator|.
 name|start
 return|;
 block|}
-comment|/**      * @param start the start to set      */
+comment|/**      * @param start      *        The start value to set on this command.      */
 specifier|public
 name|void
 name|setStart
@@ -277,7 +292,7 @@ operator|.
 name|stop
 return|;
 block|}
-comment|/**      * @param stop the stop to set      */
+comment|/**      * @param stop      *        the stop value to set on this Command.      */
 specifier|public
 name|void
 name|setStop

@@ -408,9 +408,8 @@ operator|=
 name|headers
 expr_stmt|;
 block|}
-comment|//
-comment|// Methods in the Command interface
-comment|//
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCommandId
@@ -420,6 +419,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getFrom
@@ -429,6 +430,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getTo
@@ -438,6 +441,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBrokerInfo
@@ -447,6 +452,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessage
@@ -456,6 +463,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageAck
@@ -465,6 +474,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatch
@@ -474,6 +485,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatchNotification
@@ -483,6 +496,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponse
@@ -492,6 +507,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponseRequired
@@ -501,6 +518,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isShutdownInfo
@@ -510,6 +529,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnectionControl
@@ -519,6 +540,19 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isConsumerControl
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isWireFormatInfo
@@ -528,6 +562,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCommandId
@@ -536,6 +572,8 @@ name|int
 name|value
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setFrom
@@ -544,6 +582,8 @@ name|Endpoint
 name|from
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setResponseRequired
@@ -552,6 +592,8 @@ name|boolean
 name|responseRequired
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTo
@@ -560,6 +602,8 @@ name|Endpoint
 name|to
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -574,6 +618,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -583,6 +629,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -592,6 +640,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

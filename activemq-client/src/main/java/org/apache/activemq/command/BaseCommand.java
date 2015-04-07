@@ -40,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @openwire:marshaller  *   */
+comment|/**  *  * @openwire:marshaller  *  */
 end_comment
 
 begin_class
@@ -91,6 +91,8 @@ name|responseRequired
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCommandId
@@ -100,6 +102,8 @@ return|return
 name|commandId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCommandId
@@ -116,6 +120,8 @@ name|commandId
 expr_stmt|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponseRequired
@@ -125,6 +131,8 @@ return|return
 name|responseRequired
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setResponseRequired
@@ -182,6 +190,8 @@ name|overrideFields
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isWireFormatInfo
@@ -191,6 +201,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBrokerInfo
@@ -200,6 +212,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponse
@@ -209,6 +223,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatch
@@ -218,6 +234,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessage
@@ -227,6 +245,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -236,6 +256,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageAck
@@ -245,6 +267,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatchNotification
@@ -254,6 +278,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isShutdownInfo
@@ -263,6 +289,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnectionControl
@@ -272,7 +300,20 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isConsumerControl
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 comment|/**      * The endpoint within the transport where this message came from.      */
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getFrom
@@ -282,6 +323,8 @@ return|return
 name|from
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setFrom
@@ -297,7 +340,9 @@ operator|=
 name|from
 expr_stmt|;
 block|}
-comment|/**      * The endpoint within the transport where this message is going to - null means all endpoints.      */
+comment|/**      * The endpoint within the transport where this message is going to - null      * means all endpoints.      */
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getTo
@@ -307,6 +352,8 @@ return|return
 name|to
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTo

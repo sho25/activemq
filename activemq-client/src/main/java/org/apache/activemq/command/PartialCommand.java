@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a partial command; a large command that has been split up into  * pieces.  *   * @openwire:marshaller code="60"  *   */
+comment|/**  * Represents a partial command; a large command that has been split up into  * pieces.  *  * @openwire:marshaller code="60"  *  */
 end_comment
 
 begin_class
@@ -73,6 +73,8 @@ specifier|public
 name|PartialCommand
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -83,6 +85,8 @@ name|DATA_STRUCTURE_TYPE
 return|;
 block|}
 comment|/**      * @openwire:property version=1      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getCommandId
@@ -92,6 +96,8 @@ return|return
 name|commandId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setCommandId
@@ -107,7 +113,7 @@ operator|=
 name|commandId
 expr_stmt|;
 block|}
-comment|/**      * The data for this part of the command      *       * @openwire:property version=1 mandatory=true      */
+comment|/**      * The data for this part of the command      *      * @openwire:property version=1 mandatory=true      */
 specifier|public
 name|byte
 index|[]
@@ -134,6 +140,8 @@ operator|=
 name|data
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getFrom
@@ -143,6 +151,8 @@ return|return
 name|from
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setFrom
@@ -158,6 +168,8 @@ operator|=
 name|from
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Endpoint
 name|getTo
@@ -167,6 +179,8 @@ return|return
 name|to
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTo
@@ -182,6 +196,8 @@ operator|=
 name|to
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -202,6 +218,8 @@ name|this
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponseRequired
@@ -211,6 +229,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isResponse
@@ -220,6 +240,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBrokerInfo
@@ -229,6 +251,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatch
@@ -238,6 +262,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessage
@@ -247,6 +273,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageAck
@@ -256,6 +284,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMessageDispatchNotification
@@ -265,6 +295,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isShutdownInfo
@@ -274,6 +306,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnectionControl
@@ -283,6 +317,19 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isConsumerControl
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setResponseRequired
@@ -291,6 +338,8 @@ name|boolean
 name|responseRequired
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isWireFormatInfo
@@ -300,6 +349,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -309,6 +360,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
