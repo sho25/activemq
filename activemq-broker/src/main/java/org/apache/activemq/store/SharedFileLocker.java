@@ -17,6 +17,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -74,26 +94,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -195,6 +195,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// Print a warning only once
+name|boolean
+name|warned
+init|=
+literal|false
+decl_stmt|;
 name|boolean
 name|locked
 init|=
@@ -227,6 +233,15 @@ operator|=
 name|keepAlive
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"locked "
+operator|+
+name|locked
+argument_list|)
+expr_stmt|;
 break|break;
 block|}
 catch|catch
@@ -235,9 +250,31 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|warned
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
+argument_list|(
+literal|"Database "
+operator|+
+name|lockFileName
+operator|+
+literal|" is locked by another server. This broker is now in slave mode waiting a lock to be acquired"
+argument_list|)
+expr_stmt|;
+name|warned
+operator|=
+literal|true
+expr_stmt|;
+block|}
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"Database "
 operator|+
