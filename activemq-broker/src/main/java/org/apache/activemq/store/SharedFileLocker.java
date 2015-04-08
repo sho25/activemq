@@ -233,15 +233,6 @@ operator|=
 name|keepAlive
 argument_list|()
 expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"locked "
-operator|+
-name|locked
-argument_list|)
-expr_stmt|;
 break|break;
 block|}
 catch|catch
