@@ -179,7 +179,7 @@ name|LockFile
 argument_list|(
 name|lockFileName
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 if|if
