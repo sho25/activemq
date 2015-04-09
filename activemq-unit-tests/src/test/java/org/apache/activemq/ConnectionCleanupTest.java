@@ -71,7 +71,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"vm://localhost"
+literal|"vm://localhost?broker.persistent=false"
 argument_list|)
 decl_stmt|;
 name|connection
@@ -134,7 +134,11 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-comment|// fail("Should have received JMSException");
+name|fail
+argument_list|(
+literal|"Should have received JMSException"
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -144,8 +148,10 @@ parameter_list|)
 block|{         }
 name|connection
 operator|.
-name|cleanup
-argument_list|()
+name|doCleanup
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|connection
 operator|.
@@ -174,7 +180,116 @@ argument_list|(
 literal|"test"
 argument_list|)
 expr_stmt|;
-comment|// fail("Should have received JMSException");
+name|fail
+argument_list|(
+literal|"Should have received JMSException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{         }
+block|}
+specifier|public
+name|void
+name|testChangeClientIDDenied
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+name|connection
+operator|.
+name|setClientID
+argument_list|(
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|connection
+operator|.
+name|setClientID
+argument_list|(
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Should have received JMSException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{         }
+name|connection
+operator|.
+name|cleanup
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+name|connection
+operator|.
+name|setClientID
+argument_list|(
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Should have received JMSException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|e
+parameter_list|)
+block|{         }
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|false
+argument_list|,
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|connection
+operator|.
+name|setClientID
+argument_list|(
+literal|"test"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Should have received JMSException"
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
