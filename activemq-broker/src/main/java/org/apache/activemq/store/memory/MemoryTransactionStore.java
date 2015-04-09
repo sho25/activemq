@@ -790,6 +790,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -822,6 +824,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -853,6 +857,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -892,6 +898,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -1019,6 +1027,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -1051,6 +1061,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -1082,6 +1094,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -1121,6 +1135,8 @@ name|this
 operator|.
 name|addMessage
 argument_list|(
+name|context
+argument_list|,
 name|getDelegate
 argument_list|()
 argument_list|,
@@ -1630,6 +1646,10 @@ name|void
 name|addMessage
 parameter_list|(
 specifier|final
+name|ConnectionContext
+name|context
+parameter_list|,
+specifier|final
 name|MessageStore
 name|destination
 parameter_list|,
@@ -1748,7 +1768,7 @@ name|destination
 operator|.
 name|addMessage
 argument_list|(
-literal|null
+name|context
 argument_list|,
 name|message
 argument_list|)
