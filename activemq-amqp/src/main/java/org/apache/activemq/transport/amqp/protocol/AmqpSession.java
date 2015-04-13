@@ -669,7 +669,7 @@ parameter_list|()
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Session {} opened"
 argument_list|,
@@ -723,7 +723,7 @@ parameter_list|()
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Session {} closed"
 argument_list|,
@@ -935,6 +935,23 @@ argument_list|,
 name|producerInfo
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"opening new receiver {} on link: {}"
+argument_list|,
+name|producerInfo
+operator|.
+name|getProducerId
+argument_list|()
+argument_list|,
+name|protonReceiver
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|Target
@@ -1306,6 +1323,23 @@ argument_list|,
 name|consumerInfo
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"opening new sender {} on link: {}"
+argument_list|,
+name|consumerInfo
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|,
+name|protonSender
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 specifier|final
