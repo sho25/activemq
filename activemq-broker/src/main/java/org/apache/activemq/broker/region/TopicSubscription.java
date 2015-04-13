@@ -553,6 +553,12 @@ name|active
 init|=
 literal|false
 decl_stmt|;
+specifier|protected
+name|boolean
+name|discarding
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|TopicSubscription
 parameter_list|(
@@ -765,6 +771,14 @@ init|(
 name|matchedListMutex
 init|)
 block|{
+comment|// if this subscriber is already discarding a message, we don't want to add
+comment|// any more messages to it as those messages can only be advisories generated in the process,
+comment|// which can trigger the recursive call loop
+if|if
+condition|(
+name|discarding
+condition|)
+return|return;
 if|if
 condition|(
 operator|!
@@ -3057,6 +3071,12 @@ name|MessageReference
 name|message
 parameter_list|)
 block|{
+name|discarding
+operator|=
+literal|true
+expr_stmt|;
+try|try
+block|{
 name|message
 operator|.
 name|decrementReferenceCount
@@ -3159,6 +3179,14 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|discarding
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
