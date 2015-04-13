@@ -3772,12 +3772,11 @@ operator|.
 name|getDestination
 argument_list|()
 decl_stmt|;
+comment|// Do not check for null here as it would cause the count of max producers to exclude
+comment|// anonymous producers.  The isAdvisoryTopic method checks for null so it is safe to
+comment|// call it from here with a null Destination value.
 if|if
 condition|(
-name|destination
-operator|!=
-literal|null
-operator|&&
 operator|!
 name|AdvisorySupport
 operator|.

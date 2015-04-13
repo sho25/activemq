@@ -2471,6 +2471,28 @@ name|JMSException
 name|expected
 parameter_list|)
 block|{             }
+comment|// Tests the anonymous producer case also counts.
+try|try
+block|{
+name|session
+operator|.
+name|createProducer
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Should have got an exception on exceeding MAX_PRODUCERS"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|expected
+parameter_list|)
+block|{             }
 try|try
 block|{
 for|for
