@@ -1815,6 +1815,8 @@ parameter_list|,
 name|String
 name|user
 parameter_list|,
+annotation|@
+name|Sensitive
 name|String
 name|password
 parameter_list|)
@@ -1856,6 +1858,8 @@ parameter_list|,
 name|String
 name|userName
 parameter_list|,
+annotation|@
+name|Sensitive
 name|String
 name|password
 parameter_list|)
