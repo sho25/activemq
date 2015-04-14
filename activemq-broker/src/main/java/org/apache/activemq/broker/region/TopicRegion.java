@@ -1342,7 +1342,14 @@ throw|throw
 operator|new
 name|InvalidDestinationException
 argument_list|(
-literal|"No durable subscription exists for: "
+literal|"No durable subscription exists for clientID: "
+operator|+
+name|info
+operator|.
+name|getClientId
+argument_list|()
+operator|+
+literal|" and subscriptionName: "
 operator|+
 name|info
 operator|.
@@ -2146,7 +2153,19 @@ throw|throw
 operator|new
 name|JMSException
 argument_list|(
-literal|"That durable subscription is already active."
+literal|"Durable subscription is already active for clientID: "
+operator|+
+name|context
+operator|.
+name|getClientId
+argument_list|()
+operator|+
+literal|" and subscriptionName: "
+operator|+
+name|info
+operator|.
+name|getSubscriptionName
+argument_list|()
 argument_list|)
 throw|;
 block|}
