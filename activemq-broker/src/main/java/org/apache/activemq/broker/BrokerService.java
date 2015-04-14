@@ -1921,10 +1921,6 @@ literal|1
 argument_list|)
 decl_stmt|;
 specifier|private
-name|boolean
-name|supportFailOver
-decl_stmt|;
-specifier|private
 name|Broker
 name|regionBroker
 decl_stmt|;
@@ -7593,34 +7589,6 @@ operator|=
 name|LOCAL_HOST_NAME
 expr_stmt|;
 block|}
-block|}
-comment|/**      * @return the supportFailOver      */
-specifier|public
-name|boolean
-name|isSupportFailOver
-parameter_list|()
-block|{
-return|return
-name|this
-operator|.
-name|supportFailOver
-return|;
-block|}
-comment|/**      * @param supportFailOver      *            the supportFailOver to set      */
-specifier|public
-name|void
-name|setSupportFailOver
-parameter_list|(
-name|boolean
-name|supportFailOver
-parameter_list|)
-block|{
-name|this
-operator|.
-name|supportFailOver
-operator|=
-name|supportFailOver
-expr_stmt|;
 block|}
 comment|/**      * Looks up and lazily creates if necessary the destination for the given      * JMS name      */
 specifier|public

@@ -2256,12 +2256,6 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|getBrokerService
-argument_list|()
-operator|.
-name|isSupportFailOver
-argument_list|()
-operator|&&
 name|audit
 operator|==
 literal|null
