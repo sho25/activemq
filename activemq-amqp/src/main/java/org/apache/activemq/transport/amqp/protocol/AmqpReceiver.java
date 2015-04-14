@@ -1365,12 +1365,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|delivery
 operator|.
 name|settle
 argument_list|()
 expr_stmt|;
-block|}
 name|session
 operator|.
 name|pumpProtonToSocket
@@ -1439,6 +1439,11 @@ name|pumpProtonToSocket
 argument_list|()
 expr_stmt|;
 block|}
+name|delivery
+operator|.
+name|settle
+argument_list|()
+expr_stmt|;
 name|sendToActiveMQ
 argument_list|(
 name|message

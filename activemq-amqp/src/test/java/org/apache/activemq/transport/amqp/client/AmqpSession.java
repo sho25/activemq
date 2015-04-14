@@ -219,7 +219,7 @@ operator|=
 name|sessionId
 expr_stmt|;
 block|}
-comment|/**      * Create a sender instance using the given address      *      * @param address      * 	      the address to which the sender will produce its messages.      *      * @return a newly created sender that is ready for use.      *      * @throws Exception if an error occurs while creating the sender.      */
+comment|/**      * Create a sender instance using the given address      *      * @param address      *        the address to which the sender will produce its messages.      *      * @return a newly created sender that is ready for use.      *      * @throws Exception if an error occurs while creating the sender.      */
 specifier|public
 name|AmqpSender
 name|createSender
@@ -227,6 +227,30 @@ parameter_list|(
 specifier|final
 name|String
 name|address
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+return|return
+name|createSender
+argument_list|(
+name|address
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
+comment|/**      * Create a sender instance using the given address      *      * @param address      * 	      the address to which the sender will produce its messages.      * @param presettle      *        controls if the created sender produces message that have already been marked settled.      *      * @return a newly created sender that is ready for use.      *      * @throws Exception if an error occurs while creating the sender.      */
+specifier|public
+name|AmqpSender
+name|createSender
+parameter_list|(
+specifier|final
+name|String
+name|address
+parameter_list|,
+name|boolean
+name|presettle
 parameter_list|)
 throws|throws
 name|Exception
@@ -251,6 +275,13 @@ name|getNextSenderId
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|sender
+operator|.
+name|setPresettle
+argument_list|(
+name|presettle
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ClientFuture
 name|request
