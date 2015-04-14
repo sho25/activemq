@@ -323,7 +323,7 @@ name|apache
 operator|.
 name|commons
 operator|.
-name|pool
+name|pool2
 operator|.
 name|KeyedObjectPool
 import|;

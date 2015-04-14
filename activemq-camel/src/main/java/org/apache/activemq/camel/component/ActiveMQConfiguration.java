@@ -291,7 +291,7 @@ return|return
 name|usePooledConnection
 return|;
 block|}
-comment|/**      * Enables or disables whether a PooledConnectionFactory will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is true. Note that this requires an extra dependency on commons-pool.      */
+comment|/**      * Enables or disables whether a PooledConnectionFactory will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is true. Note that this requires an extra dependency on commons-pool2.      */
 specifier|public
 name|void
 name|setUsePooledConnection
@@ -505,7 +505,7 @@ name|ActiveMQConnectionFactory
 name|connectionFactory
 parameter_list|)
 block|{
-comment|// lets not use classes directly to avoid a runtime dependency on commons-pool
+comment|// lets not use classes directly to avoid a runtime dependency on commons-pool2
 comment|// for folks not using this option
 try|try
 block|{
