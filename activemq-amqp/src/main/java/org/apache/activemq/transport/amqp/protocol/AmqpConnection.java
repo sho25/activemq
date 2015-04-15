@@ -2491,8 +2491,6 @@ argument_list|(
 operator|new
 name|ShutdownInfo
 argument_list|()
-argument_list|,
-literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -3795,6 +3793,14 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|// Must ensure that the broker removes Connection resources.
+name|sendToActiveMQ
+argument_list|(
+operator|new
+name|ShutdownInfo
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|amqpTransport
 operator|.
 name|stop
