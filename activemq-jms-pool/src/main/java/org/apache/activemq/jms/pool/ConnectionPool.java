@@ -1113,7 +1113,7 @@ name|this
 operator|.
 name|sessionPool
 operator|.
-name|getMaxTotal
+name|getMaxTotalPerKey
 argument_list|()
 return|;
 block|}
@@ -1129,7 +1129,7 @@ name|this
 operator|.
 name|sessionPool
 operator|.
-name|setMaxTotal
+name|setMaxTotalPerKey
 argument_list|(
 name|maximumActiveSessionPerConnection
 argument_list|)
