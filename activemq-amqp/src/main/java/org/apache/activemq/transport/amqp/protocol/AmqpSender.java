@@ -2160,9 +2160,15 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
-literal|"End of browse signals endpoint drained."
+literal|"Sender:[{}] browse done."
+argument_list|,
+name|getEndpoint
+argument_list|()
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// It's the end of browse signal in response to a MessagePull

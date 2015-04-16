@@ -1268,7 +1268,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Sending more credit ({}) to producer: {}"
 argument_list|,
@@ -1401,7 +1401,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|trace
+name|debug
 argument_list|(
 literal|"Sending more credit ({}) to producer: {}"
 argument_list|,
