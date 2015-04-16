@@ -175,6 +175,22 @@ name|broker
 operator|.
 name|region
 operator|.
+name|DestinationFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
 name|Queue
 import|;
 end_import
@@ -194,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link BrokerFacade} which uses a local in JVM broker  *   *   */
+comment|/**  * An implementation of {@link BrokerFacade} which uses a local in JVM broker  */
 end_comment
 
 begin_class
@@ -205,6 +221,7 @@ extends|extends
 name|BrokerFacadeSupport
 block|{
 specifier|private
+specifier|final
 name|BrokerService
 name|brokerService
 decl_stmt|;
@@ -231,6 +248,8 @@ return|return
 name|brokerService
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getBrokerName
@@ -259,6 +278,8 @@ name|getBroker
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ManagementContext
 name|getManagementContext
@@ -271,6 +292,8 @@ name|getManagementContext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|BrokerViewMBean
 name|getBrokerAdmin
@@ -318,6 +341,8 @@ name|getBroker
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|purgeQueue
@@ -329,6 +354,9 @@ throws|throws
 name|Exception
 block|{
 name|Set
+argument_list|<
+name|Destination
+argument_list|>
 name|destinations
 init|=
 name|getManagedBroker
@@ -345,6 +373,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Destination
+argument_list|>
 name|i
 init|=
 name|destinations
@@ -362,13 +393,13 @@ block|{
 name|Destination
 name|dest
 init|=
-operator|(
-name|Destination
-operator|)
+name|unwrap
+argument_list|(
 name|i
 operator|.
 name|next
 argument_list|()
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -392,6 +423,40 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|private
+name|Destination
+name|unwrap
+parameter_list|(
+name|Destination
+name|dest
+parameter_list|)
+block|{
+if|if
+condition|(
+name|dest
+operator|instanceof
+name|DestinationFilter
+condition|)
+block|{
+return|return
+name|unwrap
+argument_list|(
+operator|(
+operator|(
+name|DestinationFilter
+operator|)
+name|dest
+operator|)
+operator|.
+name|getNext
+argument_list|()
+argument_list|)
+return|;
+block|}
+return|return
+name|dest
+return|;
 block|}
 annotation|@
 name|Override
