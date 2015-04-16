@@ -567,6 +567,24 @@ literal|"Frame size exceeded max frame length."
 argument_list|)
 throw|;
 block|}
+elseif|else
+if|if
+condition|(
+name|size
+operator|<=
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|AmqpProtocolException
+argument_list|(
+literal|"Frame size value was invalid: "
+operator|+
+name|size
+argument_list|)
+throw|;
+block|}
 name|Buffer
 name|frame
 init|=

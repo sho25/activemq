@@ -2882,6 +2882,47 @@ operator|!
 name|closing
 condition|)
 block|{
+try|try
+block|{
+name|closing
+operator|=
+literal|true
+expr_stmt|;
+comment|// Attempt to inform the other end that we are going to close
+comment|// so that the client doesn't wait around forever.
+name|protonConnection
+operator|.
+name|setCondition
+argument_list|(
+operator|new
+name|ErrorCondition
+argument_list|(
+name|AmqpError
+operator|.
+name|DECODE_ERROR
+argument_list|,
+name|error
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|protonConnection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|pumpProtonToSocket
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignore
+parameter_list|)
+block|{             }
 name|amqpTransport
 operator|.
 name|sendToActiveMQ
