@@ -2102,9 +2102,7 @@ name|send
 argument_list|(
 name|message
 argument_list|,
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
+name|deliveryMode
 argument_list|,
 literal|7
 argument_list|,
@@ -2132,9 +2130,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|Session
-operator|.
-name|AUTO_ACKNOWLEDGE
+name|deliveryMode
 argument_list|,
 name|message
 operator|.
