@@ -1264,6 +1264,19 @@ argument_list|,
 name|throwable
 argument_list|)
 expr_stmt|;
+comment|// version 3.1 don't supports silent fail
+comment|// version 3.1.1 send "error" qos
+if|if
+condition|(
+name|protocol
+operator|.
+name|version
+operator|==
+name|protocol
+operator|.
+name|V3_1_1
+condition|)
+block|{
 name|qos
 index|[
 literal|0
@@ -1271,6 +1284,23 @@ index|]
 operator|=
 name|SUBSCRIBE_ERROR
 expr_stmt|;
+block|}
+else|else
+block|{
+name|qos
+index|[
+literal|0
+index|]
+operator|=
+operator|(
+name|byte
+operator|)
+name|qoS
+operator|.
+name|ordinal
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
