@@ -63,6 +63,26 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -158,6 +178,21 @@ specifier|public
 class|class
 name|PreallocationJournalTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|PreallocationJournalTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -359,6 +394,29 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"file size:"
+operator|+
+name|journalLog
+operator|+
+literal|", chan.size "
+operator|+
+name|channel
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|", jfileSize.length: "
+operator|+
+name|journalLog
+operator|.
+name|length
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|Journal
 operator|.
@@ -426,11 +484,9 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"File size: "
 operator|+

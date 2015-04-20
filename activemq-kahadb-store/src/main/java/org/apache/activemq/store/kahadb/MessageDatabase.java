@@ -3998,6 +3998,17 @@ name|isIgnoreMissingJournalfiles
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to recover data at position:"
+operator|+
+name|recoveryPosition
+argument_list|,
+name|failedRecovery
+argument_list|)
+expr_stmt|;
 comment|// track this dud location
 name|journal
 operator|.

@@ -1481,7 +1481,18 @@ operator|.
 name|openRandomAccessFile
 argument_list|()
 expr_stmt|;
-comment|// pre allocate on first open
+comment|// pre allocate on first open of new file (length==0)
+comment|// note dataFile.length cannot be used because it is updated in enqueue
+if|if
+condition|(
+name|file
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0l
+condition|)
+block|{
 name|journal
 operator|.
 name|preallocateEntireJournalDataFile
@@ -1489,6 +1500,7 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|Journal
 operator|.
