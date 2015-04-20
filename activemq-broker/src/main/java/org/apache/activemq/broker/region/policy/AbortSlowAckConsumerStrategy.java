@@ -222,12 +222,6 @@ name|ignoreIdleConsumers
 init|=
 literal|true
 decl_stmt|;
-specifier|private
-name|boolean
-name|ignoreNetworkConsumers
-init|=
-literal|true
-decl_stmt|;
 specifier|public
 name|AbortSlowAckConsumerStrategy
 parameter_list|()
@@ -946,32 +940,6 @@ operator|.
 name|ignoreIdleConsumers
 operator|=
 name|ignoreIdleConsumers
-expr_stmt|;
-block|}
-comment|/**      * Returns whether the strategy is configured to ignore subscriptions that are from a network      * connection.      *      * @return true if the strategy will ignore network connection subscriptions when looking      *         for slow consumers.      */
-specifier|public
-name|boolean
-name|isIgnoreNetworkSubscriptions
-parameter_list|()
-block|{
-return|return
-name|ignoreNetworkConsumers
-return|;
-block|}
-comment|/**      * Sets whether the strategy is configured to ignore consumers that are part of a network      * connection to another broker.      *      * When configured to not ignore idle consumers this strategy acts not only on consumers      * that are actually slow but also on any consumer that has not received any messages for      * the maxTimeSinceLastAck.  This allows for a way to evict idle consumers while also      * aborting slow consumers however for a network subscription this can create a lot of      * unnecessary churn and if the abort connection option is also enabled this can result      * in the entire network connection being torn down and rebuilt for no reason.      *      * @param ignoreNetworkConsumers      *      Should this strategy ignore subscriptions made by a network connector.      */
-specifier|public
-name|void
-name|setIgnoreNetworkConsumers
-parameter_list|(
-name|boolean
-name|ignoreNetworkConsumers
-parameter_list|)
-block|{
-name|this
-operator|.
-name|ignoreNetworkConsumers
-operator|=
-name|ignoreNetworkConsumers
 expr_stmt|;
 block|}
 block|}
