@@ -729,7 +729,7 @@ if|if
 condition|(
 name|transformer
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|InboundTransformer
 operator|.
@@ -753,7 +753,7 @@ if|if
 condition|(
 name|transformer
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|InboundTransformer
 operator|.
@@ -777,7 +777,7 @@ if|if
 condition|(
 name|transformer
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|InboundTransformer
 operator|.
