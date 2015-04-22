@@ -703,10 +703,6 @@ name|boolean
 name|presettle
 decl_stmt|;
 specifier|private
-name|boolean
-name|closed
-decl_stmt|;
-specifier|private
 name|int
 name|currentCredit
 decl_stmt|;
@@ -787,12 +783,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|closed
+name|isClosed
+argument_list|()
 condition|)
 block|{
 name|session
 operator|.
-name|regosterSender
+name|registerSender
 argument_list|(
 name|getConsumerId
 argument_list|()
@@ -963,6 +960,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|unregisterSender
@@ -971,7 +969,6 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|super
 operator|.
@@ -1941,7 +1938,8 @@ block|{
 while|while
 condition|(
 operator|!
-name|closed
+name|isClosed
+argument_list|()
 condition|)
 block|{
 while|while

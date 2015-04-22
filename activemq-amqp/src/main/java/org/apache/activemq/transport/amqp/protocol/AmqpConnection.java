@@ -3263,7 +3263,7 @@ block|}
 block|}
 comment|//----- Utility methods for connection resources to use ------------------//
 name|void
-name|regosterSender
+name|registerSender
 parameter_list|(
 name|ConsumerId
 name|consumerId
@@ -3283,7 +3283,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|void
-name|unregosterSender
+name|unregisterSender
 parameter_list|(
 name|ConsumerId
 name|consumerId

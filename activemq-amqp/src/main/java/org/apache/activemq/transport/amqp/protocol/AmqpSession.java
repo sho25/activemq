@@ -2147,7 +2147,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|regosterSender
+name|registerSender
 parameter_list|(
 name|ConsumerId
 name|consumerId
@@ -2167,7 +2167,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|regosterSender
+name|registerSender
 argument_list|(
 name|consumerId
 argument_list|,
@@ -2192,7 +2192,7 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
-name|unregosterSender
+name|unregisterSender
 argument_list|(
 name|consumerId
 argument_list|)
