@@ -1151,6 +1151,9 @@ decl_stmt|;
 specifier|private
 name|long
 name|lastDeliveredSequenceId
+init|=
+operator|-
+literal|2
 decl_stmt|;
 comment|/**      * Construct the Session      *      * @param connection      * @param sessionId      * @param acknowledgeMode n.b if transacted - the acknowledgeMode ==      *                Session.SESSION_TRANSACTED      * @param asyncDispatch      * @param sessionAsyncDispatch      * @throws JMSException on internal error      */
 specifier|protected
@@ -2727,6 +2730,7 @@ name|md
 init|=
 name|messageDispatch
 decl_stmt|;
+specifier|final
 name|ActiveMQMessage
 name|message
 init|=
@@ -2935,6 +2939,16 @@ argument_list|(
 name|getNextDeliveryId
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|lastDeliveredSequenceId
+operator|=
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|getBrokerSequenceId
+argument_list|()
 expr_stmt|;
 specifier|final
 name|MessageAck

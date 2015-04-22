@@ -651,6 +651,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|RemoveInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|Response
 import|;
 end_import
@@ -2809,7 +2823,7 @@ name|Subscription
 name|sub
 parameter_list|,
 name|long
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 parameter_list|)
 throws|throws
 name|Exception
@@ -2822,7 +2836,7 @@ name|context
 argument_list|,
 name|sub
 argument_list|,
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 argument_list|)
 expr_stmt|;
 comment|// synchronize with dispatch method so that no new messages are sent
@@ -2855,7 +2869,7 @@ argument_list|()
 block|,
 name|sub
 block|,
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 block|,
 name|getDestinationStatistics
 argument_list|()
@@ -3100,9 +3114,11 @@ decl_stmt|;
 comment|// locate last redelivered in unconsumed list (list in delivery rather than seq order)
 if|if
 condition|(
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 operator|>
-literal|0
+name|RemoveInfo
+operator|.
+name|LAST_DELIVERED_UNSET
 condition|)
 block|{
 for|for
@@ -3123,7 +3139,7 @@ operator|.
 name|getBrokerSequenceId
 argument_list|()
 operator|==
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 condition|)
 block|{
 name|lastDeliveredRef
@@ -3140,7 +3156,7 @@ name|debug
 argument_list|(
 literal|"found lastDeliveredSeqID: {}, message reference: {}"
 argument_list|,
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 argument_list|,
 name|ref
 operator|.
@@ -3199,9 +3215,11 @@ expr_stmt|;
 comment|// have no delivery information
 if|if
 condition|(
-name|lastDeiveredSequenceId
+name|lastDeliveredSequenceId
 operator|==
-literal|0
+name|RemoveInfo
+operator|.
+name|LAST_DELIVERED_UNKNOWN
 condition|)
 block|{
 name|qmr
@@ -4544,6 +4562,17 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|setBrokerSequenceId
+argument_list|(
+name|getDestinationSequenceId
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|store
@@ -4558,17 +4587,6 @@ condition|)
 block|{
 try|try
 block|{
-name|message
-operator|.
-name|getMessageId
-argument_list|()
-operator|.
-name|setBrokerSequenceId
-argument_list|(
-name|getDestinationSequenceId
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|messages

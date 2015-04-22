@@ -216,6 +216,10 @@ specifier|private
 specifier|transient
 name|long
 name|lastDeliveredSequenceId
+init|=
+name|RemoveInfo
+operator|.
+name|LAST_DELIVERED_UNSET
 decl_stmt|;
 specifier|private
 specifier|transient

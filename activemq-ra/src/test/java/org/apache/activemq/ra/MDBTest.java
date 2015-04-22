@@ -1787,6 +1787,20 @@ name|ERROR
 argument_list|)
 condition|)
 block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Event :"
+operator|+
+name|event
+operator|.
+name|getRenderedMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|errorMessage
 operator|.
 name|set
@@ -2106,7 +2120,7 @@ name|advisory
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|4000
 argument_list|)
 decl_stmt|;
 if|if
@@ -2219,7 +2233,12 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"correct message"
+literal|"correct message: "
+operator|+
+name|errorMessage
+operator|.
+name|get
+argument_list|()
 argument_list|,
 name|errorMessage
 operator|.

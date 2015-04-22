@@ -2695,7 +2695,8 @@ block|}
 name|long
 name|lastDeliveredSequenceId
 init|=
-literal|0
+operator|-
+literal|1
 decl_stmt|;
 for|for
 control|(
@@ -2816,10 +2817,7 @@ try|try
 block|{
 name|doSyncSendPacket
 argument_list|(
-name|info
-operator|.
-name|createRemoveCommand
-argument_list|()
+name|removeCommand
 argument_list|,
 name|closeTimeout
 argument_list|)
