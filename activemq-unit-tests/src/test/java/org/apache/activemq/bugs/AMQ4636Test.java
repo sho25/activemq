@@ -492,8 +492,6 @@ name|waitUntilStopped
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-block|{
 if|if
 condition|(
 name|embeddedDataSource
@@ -501,34 +499,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// ref http://svn.apache.org/viewvc/db/derby/code/trunk/java/testing/org/apache/derbyTesting/junit/JDBCDataSource.java?view=markup
-name|embeddedDataSource
+name|DataSourceServiceSupport
 operator|.
-name|setShutdownDatabase
+name|shutdownDefaultDataSource
 argument_list|(
-literal|"shutdown"
-argument_list|)
-expr_stmt|;
 name|embeddedDataSource
-operator|.
-name|getConnection
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ignored
-parameter_list|)
-block|{         }
-finally|finally
-block|{
-name|embeddedDataSource
-operator|.
-name|setShutdownDatabase
-argument_list|(
-literal|null
 argument_list|)
 expr_stmt|;
 block|}

@@ -1750,6 +1750,12 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|closeDataSource
+argument_list|(
+name|getDataSource
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -2019,18 +2025,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-else|else
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Using a separate dataSource for locking: "
-operator|+
-name|lockDataSource
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|lockDataSource
 return|;
@@ -2048,6 +2042,15 @@ operator|.
 name|lockDataSource
 operator|=
 name|dataSource
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Using a separate dataSource for locking: "
+operator|+
+name|lockDataSource
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

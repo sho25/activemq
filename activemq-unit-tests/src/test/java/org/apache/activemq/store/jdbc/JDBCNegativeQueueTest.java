@@ -167,13 +167,6 @@ operator|new
 name|JDBCPersistenceAdapter
 argument_list|()
 decl_stmt|;
-name|jdbc
-operator|.
-name|setDataSource
-argument_list|(
-name|dataSource
-argument_list|)
-expr_stmt|;
 name|answer
 operator|.
 name|setPersistenceAdapter

@@ -3595,7 +3595,7 @@ specifier|final
 name|int
 name|backlog
 init|=
-literal|180000
+literal|18000
 decl_stmt|;
 name|ActiveMQQueue
 name|queue

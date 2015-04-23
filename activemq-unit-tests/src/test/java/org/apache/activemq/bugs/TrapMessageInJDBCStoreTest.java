@@ -445,13 +445,6 @@ name|getDefaultDataDirectory
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|embeddedDataSource
-operator|.
-name|setCreateDatabase
-argument_list|(
-literal|"create"
-argument_list|)
-expr_stmt|;
 comment|//wire in a TestTransactionContext (wrapper to TransactionContext) that has an executeBatch()
 comment|// method that can be configured to throw a SQL exception on demand
 name|jdbc

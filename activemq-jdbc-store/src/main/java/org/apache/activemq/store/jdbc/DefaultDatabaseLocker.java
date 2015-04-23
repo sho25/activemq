@@ -590,7 +590,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
 literal|"Exception while rollbacking the connection on shutdown. This exception is ignored."
 argument_list|,
