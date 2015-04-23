@@ -828,10 +828,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|safeCloseConnection
+argument_list|(
 name|connection
-operator|.
-name|close
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|restartBroker
 argument_list|()
@@ -1256,10 +1256,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|safeCloseConnection
+argument_list|(
 name|connection
-operator|.
-name|close
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|connection
 operator|=
