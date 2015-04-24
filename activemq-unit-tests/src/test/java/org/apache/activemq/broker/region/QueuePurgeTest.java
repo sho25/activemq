@@ -683,9 +683,9 @@ name|activemq
 operator|.
 name|broker
 operator|.
-name|region
+name|jmx
 operator|.
-name|Queue
+name|QueueView
 operator|.
 name|class
 argument_list|)
@@ -744,7 +744,7 @@ name|message
 operator|.
 name|contains
 argument_list|(
-literal|"purged of "
+literal|"purge of "
 operator|+
 name|NUM_TO_SEND
 operator|+

@@ -6679,24 +6679,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"{} purged of {} messages"
-argument_list|,
-name|getActiveMQDestination
-argument_list|()
-operator|.
-name|getQualifiedName
-argument_list|()
-argument_list|,
-name|originalMessageCount
-argument_list|)
-expr_stmt|;
-block|}
 name|gc
 argument_list|()
 expr_stmt|;
