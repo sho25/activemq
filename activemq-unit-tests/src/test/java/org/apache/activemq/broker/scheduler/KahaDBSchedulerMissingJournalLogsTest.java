@@ -647,6 +647,11 @@ block|{
 name|createBroker
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"Should not start when logs are missing."
