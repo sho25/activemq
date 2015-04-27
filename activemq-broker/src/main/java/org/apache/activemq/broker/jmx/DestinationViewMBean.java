@@ -228,6 +228,16 @@ name|long
 name|getQueueSize
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the memory size of all messages in this destination's store       *      * @return Returns the memory size of all messages in this destination's store       */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The memory size of all messages in this destination's store."
+argument_list|)
+name|long
+name|getStoreMessageSize
+parameter_list|()
+function_decl|;
 comment|/**      * @return An array of all the messages in the destination's queue.      */
 annotation|@
 name|MBeanInfo
