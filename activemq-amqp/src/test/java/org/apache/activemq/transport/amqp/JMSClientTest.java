@@ -2864,7 +2864,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Caught exception on receive: {}"
+literal|"Caught exception on consumer create: {}"
 argument_list|,
 name|ex
 argument_list|)
@@ -3374,7 +3374,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Caught exception on receive(1000): {}"
+literal|"Caught exception on receive(): {}"
 argument_list|,
 name|ex
 argument_list|)
