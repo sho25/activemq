@@ -294,6 +294,14 @@ argument_list|(
 name|dataSource
 argument_list|)
 expr_stmt|;
+name|createdDefaultDataSource
+operator|=
+name|this
+operator|.
+name|dataSource
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 specifier|public
