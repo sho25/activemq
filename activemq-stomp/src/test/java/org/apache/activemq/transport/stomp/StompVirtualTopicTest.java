@@ -127,6 +127,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
@@ -307,7 +319,7 @@ specifier|final
 name|int
 name|NUM_MSGS
 init|=
-literal|100000
+literal|30000
 decl_stmt|;
 specifier|private
 name|String
@@ -509,7 +521,7 @@ name|entry
 operator|.
 name|setMemoryLimit
 argument_list|(
-literal|10485760
+literal|262144
 argument_list|)
 expr_stmt|;
 name|entry
@@ -556,7 +568,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|60000
+literal|90000
 argument_list|)
 specifier|public
 name|void
@@ -590,6 +602,36 @@ argument_list|(
 name|consumerWorker
 argument_list|)
 decl_stmt|;
+name|StringBuilder
+name|payload
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|128
+condition|;
+operator|++
+name|i
+control|)
+block|{
+name|payload
+operator|.
+name|append
+argument_list|(
+literal|'*'
+argument_list|)
+expr_stmt|;
+block|}
 name|consumer
 operator|.
 name|start
@@ -674,7 +716,12 @@ operator|+
 literal|1
 operator|)
 operator|+
-literal|"}"
+literal|"} "
+operator|+
+name|payload
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -772,11 +819,13 @@ operator|.
 name|disconnect
 argument_list|()
 expr_stmt|;
-name|Thread
+name|TimeUnit
+operator|.
+name|MILLISECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|100
 argument_list|)
 expr_stmt|;
 name|stompConnection
@@ -828,7 +877,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Allow Consumer thread to indicate the test has failed.      * JUnits Assert.fail() does not work in threads spawned.      */
+comment|/*      * Allow Consumer thread to indicate the test has failed. JUnits      * Assert.fail() does not work in threads spawned.      */
 specifier|protected
 name|void
 name|setFail
@@ -1352,11 +1401,13 @@ operator|.
 name|disconnect
 argument_list|()
 expr_stmt|;
-name|Thread
+name|TimeUnit
+operator|.
+name|MILLISECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|1000
+literal|100
 argument_list|)
 expr_stmt|;
 name|stompConnection
