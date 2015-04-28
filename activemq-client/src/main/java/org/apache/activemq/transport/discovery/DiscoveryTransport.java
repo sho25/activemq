@@ -61,6 +61,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -164,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A {@link ReliableTransportChannel} which uses a {@link DiscoveryAgent} to  * discover remote broker instances and dynamically connect to them.  *   *   */
+comment|/**  * A {@link ReliableTransportChannel} which uses a {@link DiscoveryAgent} to  * discover remote broker instances and dynamically connect to them.  *  *  */
 end_comment
 
 begin_class
@@ -202,7 +214,7 @@ name|discoveryAgent
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -326,6 +338,8 @@ name|throwFirstException
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onServiceAdd
@@ -433,6 +447,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onServiceRemove

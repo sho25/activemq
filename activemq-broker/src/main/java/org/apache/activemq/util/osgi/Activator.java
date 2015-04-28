@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -51,9 +61,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|net
 operator|.
-name|BufferedReader
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
 import|;
 end_import
 
@@ -83,16 +103,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|concurrent
 operator|.
 name|ConcurrentHashMap
@@ -108,16 +118,6 @@ operator|.
 name|concurrent
 operator|.
 name|ConcurrentMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
 import|;
 end_import
 
@@ -211,26 +211,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|slf4j
-operator|.
-name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|slf4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|osgi
 operator|.
 name|framework
@@ -287,6 +267,26 @@ name|SynchronousBundleListener
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * An OSGi bundle activator for ActiveMQ which adapts the {@link org.apache.activemq.util.FactoryFinder}  * to the OSGi environment.  *  */
 end_comment
@@ -319,7 +319,7 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -362,6 +362,8 @@ decl_stmt|;
 comment|// ================================================================
 comment|// BundleActivator interface impl
 comment|// ================================================================
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -468,6 +470,8 @@ literal|"activated"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -530,6 +534,8 @@ block|}
 comment|// ================================================================
 comment|// SynchronousBundleListener interface impl
 comment|// ================================================================
+annotation|@
+name|Override
 specifier|public
 name|void
 name|bundleChanged
@@ -707,6 +713,8 @@ block|}
 comment|// ================================================================
 comment|// ObjectFactory interface impl
 comment|// ================================================================
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|create

@@ -33,7 +33,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentHashMap
+name|ConcurrentMap
 import|;
 end_import
 
@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to hold context information needed to process requests sent to a broker.  *   *   */
+comment|/**  * Used to hold context information needed to process requests sent to a broker.  *  *  */
 end_comment
 
 begin_class
@@ -237,7 +237,7 @@ name|Transaction
 name|transaction
 decl_stmt|;
 specifier|private
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|TransactionId
 argument_list|,
@@ -774,7 +774,7 @@ name|inRecoveryMode
 expr_stmt|;
 block|}
 specifier|public
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|TransactionId
 argument_list|,
@@ -791,7 +791,7 @@ specifier|public
 name|void
 name|setTransactions
 parameter_list|(
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|TransactionId
 argument_list|,

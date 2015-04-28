@@ -81,6 +81,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -298,7 +310,7 @@ decl_stmt|;
 name|MemoryTransactionStore
 name|transactionStore
 decl_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,
@@ -315,7 +327,7 @@ name|TopicMessageStore
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,

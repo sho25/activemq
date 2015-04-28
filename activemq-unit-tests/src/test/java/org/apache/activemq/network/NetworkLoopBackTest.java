@@ -218,10 +218,13 @@ name|networkConnector
 operator|.
 name|bridges
 operator|.
-name|elements
+name|values
 argument_list|()
 operator|.
-name|nextElement
+name|iterator
+argument_list|()
+operator|.
+name|next
 argument_list|()
 decl_stmt|;
 name|assertTrue

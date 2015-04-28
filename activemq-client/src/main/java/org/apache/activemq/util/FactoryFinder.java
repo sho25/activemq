@@ -67,8 +67,20 @@ name|ConcurrentHashMap
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -81,7 +93,7 @@ specifier|public
 interface|interface
 name|ObjectFactory
 block|{
-comment|/**          * @param path the full service path           * @return          */
+comment|/**          * @param path the full service path          * @return          */
 specifier|public
 name|Object
 name|create
@@ -108,7 +120,7 @@ implements|implements
 name|ObjectFactory
 block|{
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -125,6 +137,8 @@ name|Class
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|create

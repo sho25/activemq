@@ -61,6 +61,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ExecutorService
 import|;
 end_import
@@ -195,7 +207,7 @@ literal|5000
 decl_stmt|;
 specifier|private
 specifier|static
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|Integer
 argument_list|,

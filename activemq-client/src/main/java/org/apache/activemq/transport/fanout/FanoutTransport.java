@@ -87,6 +87,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicInteger
@@ -380,7 +392,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Transport that fans out a connection to multiple brokers.  *   *   */
+comment|/**  * A Transport that fans out a connection to multiple brokers.  *  *  */
 end_comment
 
 begin_class
@@ -437,7 +449,7 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|Integer
 argument_list|,
@@ -880,6 +892,8 @@ operator|new
 name|Task
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|iterate
@@ -1391,6 +1405,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1471,6 +1487,8 @@ literal|true
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1710,6 +1728,8 @@ operator|=
 name|maxReconnectAttempts
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -2113,6 +2133,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -2134,6 +2156,8 @@ literal|"Unsupported Method"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -2152,6 +2176,8 @@ literal|"Unsupported Method"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -2209,6 +2235,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportListener
 name|getTransportListener
@@ -2218,6 +2246,8 @@ return|return
 name|transportListener
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTransportListener
@@ -2233,6 +2263,8 @@ operator|=
 name|commandListener
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 parameter_list|<
 name|T
@@ -2422,6 +2454,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -2545,6 +2579,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -2660,6 +2696,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reconnect
@@ -2683,6 +2721,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReconnectSupported
@@ -2692,6 +2732,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUpdateURIsSupported
@@ -2701,6 +2743,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateURIs
@@ -2723,6 +2767,8 @@ name|uris
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRemoteAddress
@@ -2782,6 +2828,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFaultTolerant
@@ -2815,6 +2863,8 @@ operator|=
 name|fanOutQueues
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDisposed
@@ -2824,6 +2874,8 @@ return|return
 name|disposed
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnected
@@ -2833,6 +2885,8 @@ return|return
 name|connected
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter

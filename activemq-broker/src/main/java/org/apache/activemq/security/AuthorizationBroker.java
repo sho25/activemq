@@ -270,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Verifies if a authenticated user can do an operation against the broker using  * an authorization map.  *   *   */
+comment|/**  * Verifies if a authenticated user can do an operation against the broker using  * an authorization map.  *  *  */
 end_comment
 
 begin_class
@@ -1148,7 +1148,7 @@ operator|.
 name|getAuthorizedWriteDests
 argument_list|()
 operator|.
-name|contains
+name|containsValue
 argument_list|(
 name|messageSend
 operator|.
@@ -1266,6 +1266,8 @@ expr_stmt|;
 block|}
 comment|// SecurityAdminMBean interface
 comment|// -------------------------------------------------------------------------
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addQueueRole
@@ -1294,6 +1296,8 @@ name|role
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addTopicRole
@@ -1322,6 +1326,8 @@ name|role
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeQueueRole
@@ -1350,6 +1356,8 @@ name|role
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeTopicRole
@@ -1414,6 +1422,8 @@ name|String
 name|role
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addRole
@@ -1422,6 +1432,8 @@ name|String
 name|role
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addUserRole
@@ -1433,6 +1445,8 @@ name|String
 name|role
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeRole
@@ -1441,6 +1455,8 @@ name|String
 name|role
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUserRole

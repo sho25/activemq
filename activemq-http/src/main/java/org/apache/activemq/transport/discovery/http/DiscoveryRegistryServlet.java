@@ -73,6 +73,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|servlet
@@ -177,11 +189,11 @@ operator|*
 literal|60
 decl_stmt|;
 comment|// 1 hour.
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -195,7 +207,7 @@ name|ConcurrentHashMap
 argument_list|<
 name|String
 argument_list|,
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -252,7 +264,7 @@ operator|+
 name|service
 argument_list|)
 expr_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -279,7 +291,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -291,7 +303,7 @@ name|String
 name|group
 parameter_list|)
 block|{
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -408,7 +420,7 @@ operator|+
 name|group
 argument_list|)
 expr_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
@@ -613,7 +625,7 @@ operator|+
 name|service
 argument_list|)
 expr_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,

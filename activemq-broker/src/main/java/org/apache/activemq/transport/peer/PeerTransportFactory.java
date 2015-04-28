@@ -81,6 +81,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -245,7 +257,7 @@ block|{
 specifier|public
 specifier|static
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 name|BROKERS
 init|=
 operator|new
@@ -255,7 +267,7 @@ decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 name|CONNECTORS
 init|=
 operator|new
@@ -265,7 +277,7 @@ decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 name|SERVERS
 init|=
 operator|new
@@ -284,6 +296,8 @@ argument_list|(
 literal|"peer-"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doConnect
@@ -311,6 +325,8 @@ name|location
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doCompositeConnect
@@ -485,6 +501,8 @@ operator|new
 name|VMTransportFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doConnect
@@ -505,6 +523,8 @@ argument_list|)
 return|;
 block|}
 empty_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doCompositeConnect
@@ -535,6 +555,8 @@ operator|new
 name|BrokerFactoryHandler
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|BrokerService
 name|createBroker
@@ -627,6 +649,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind

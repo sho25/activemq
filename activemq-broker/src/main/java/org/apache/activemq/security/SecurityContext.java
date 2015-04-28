@@ -79,6 +79,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -124,6 +136,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -146,7 +160,7 @@ name|String
 name|userName
 decl_stmt|;
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,
@@ -164,7 +178,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,
@@ -308,7 +322,7 @@ name|userName
 return|;
 block|}
 specifier|public
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,
@@ -322,7 +336,7 @@ name|authorizedReadDests
 return|;
 block|}
 specifier|public
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,

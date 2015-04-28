@@ -95,6 +95,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|locks
 operator|.
 name|ReentrantReadWriteLock
@@ -635,7 +647,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ConnectionId
 argument_list|,
@@ -682,7 +694,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ProducerId
 argument_list|,
@@ -701,7 +713,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQDestination
 argument_list|,
@@ -720,7 +732,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|BrokerInfo
 argument_list|,

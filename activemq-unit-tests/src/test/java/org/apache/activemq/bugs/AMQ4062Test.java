@@ -77,7 +77,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentHashMap
+name|ConcurrentMap
 import|;
 end_import
 
@@ -431,7 +431,7 @@ name|PolicyEntry
 name|policy
 decl_stmt|;
 specifier|private
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|SubscriptionKey
 argument_list|,
@@ -948,7 +948,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 specifier|private
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|SubscriptionKey
 argument_list|,
@@ -1014,7 +1014,7 @@ expr_stmt|;
 name|durableSubscriptions
 operator|=
 operator|(
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|SubscriptionKey
 argument_list|,
@@ -1036,7 +1036,7 @@ specifier|private
 name|ConsumerInfo
 name|getConsumerInfo
 parameter_list|(
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|SubscriptionKey
 argument_list|,

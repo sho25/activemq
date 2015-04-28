@@ -69,6 +69,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -116,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to find a LogWriter implementation, and returning  * a LogWriter object, taking as argument the name of a log writer.  * The mapping between the log writer names and the classes  * implementing LogWriter is specified by the files in the  * resources/META-INF/services/org/apache/activemq/transport/logwriters  * directory.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   */
+comment|/**  * Class used to find a LogWriter implementation, and returning  * a LogWriter object, taking as argument the name of a log writer.  * The mapping between the log writer names and the classes  * implementing LogWriter is specified by the files in the  * resources/META-INF/services/org/apache/activemq/transport/logwriters  * directory.  *  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *  */
 end_comment
 
 begin_class
@@ -146,14 +158,14 @@ name|path
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 name|classMap
 init|=
 operator|new
 name|ConcurrentHashMap
 argument_list|()
 decl_stmt|;
-comment|/**      * Builds a LogWriterFinder that will look for the mappings between      * LogWriter names and classes in the directory "path".      * @param path The directory where the files that map log writer names to      * LogWriter classes are.       */
+comment|/**      * Builds a LogWriterFinder that will look for the mappings between      * LogWriter names and classes in the directory "path".      * @param path The directory where the files that map log writer names to      * LogWriter classes are.      */
 specifier|public
 name|LogWriterFinder
 parameter_list|(

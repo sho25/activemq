@@ -109,6 +109,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|ExecutionException
 import|;
 end_import
@@ -484,7 +496,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|Object
 argument_list|,
@@ -1457,6 +1469,8 @@ block|}
 return|;
 block|}
 comment|/**      * @throws IOException      * @see org.apache.activemq.store.TransactionStore#prepare(TransactionId)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|prepare
@@ -1598,6 +1612,8 @@ return|return
 name|tx
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commit
@@ -1910,6 +1926,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @throws IOException      * @see org.apache.activemq.store.TransactionStore#rollback(TransactionId)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollback
@@ -2030,6 +2048,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -2037,6 +2057,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -2044,6 +2066,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -3109,6 +3133,8 @@ argument_list|(
 name|context
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageAck
 name|getMessageAck
@@ -3118,6 +3144,8 @@ return|return
 name|ack
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Future
 argument_list|<

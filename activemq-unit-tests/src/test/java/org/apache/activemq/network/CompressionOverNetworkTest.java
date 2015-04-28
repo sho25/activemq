@@ -89,7 +89,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ConcurrentHashMap
+name|ConcurrentMap
 import|;
 end_import
 
@@ -1632,7 +1632,7 @@ index|[
 literal|0
 index|]
 decl_stmt|;
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ConsumerId
 argument_list|,

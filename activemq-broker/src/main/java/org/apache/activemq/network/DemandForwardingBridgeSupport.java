@@ -117,6 +117,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CountDownLatch
 import|;
 end_import
@@ -1253,7 +1265,7 @@ name|durableDestinations
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ConsumerId
 argument_list|,
@@ -1272,7 +1284,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ConsumerId
 argument_list|,
@@ -8936,7 +8948,7 @@ name|createdByDuplex
 return|;
 block|}
 specifier|public
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ConsumerId
 argument_list|,

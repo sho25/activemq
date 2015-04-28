@@ -93,6 +93,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|CopyOnWriteArrayList
 import|;
 end_import
@@ -1180,7 +1192,7 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ActiveMQTempDestination
 argument_list|,
@@ -1487,7 +1499,7 @@ decl_stmt|;
 comment|// Maps ConsumerIds to ActiveMQConsumer objects
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ConsumerId
 argument_list|,
@@ -1506,7 +1518,7 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|ProducerId
 argument_list|,
@@ -7164,7 +7176,7 @@ return|return
 operator|!
 name|activeTempDestinations
 operator|.
-name|contains
+name|containsValue
 argument_list|(
 name|dest
 argument_list|)
@@ -8557,7 +8569,7 @@ return|return;
 block|}
 name|Iterator
 argument_list|<
-name|ConcurrentHashMap
+name|ConcurrentMap
 operator|.
 name|Entry
 argument_list|<
@@ -8586,7 +8598,7 @@ name|hasNext
 argument_list|()
 condition|)
 block|{
-name|ConcurrentHashMap
+name|ConcurrentMap
 operator|.
 name|Entry
 argument_list|<

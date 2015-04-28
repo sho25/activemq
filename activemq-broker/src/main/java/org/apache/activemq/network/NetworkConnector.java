@@ -89,6 +89,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
@@ -339,7 +351,7 @@ name|ConnectionFilter
 name|connectionFilter
 decl_stmt|;
 specifier|protected
-name|ConcurrentHashMap
+name|ConcurrentMap
 argument_list|<
 name|URI
 argument_list|,
