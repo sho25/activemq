@@ -333,6 +333,16 @@ argument_list|(
 name|e
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|persistenceAdapter
+operator|.
+name|getBrokerService
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|persistenceAdapter
 operator|.
 name|getBrokerService
@@ -343,6 +353,7 @@ argument_list|(
 name|ioe
 argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 name|ioe
 throw|;
