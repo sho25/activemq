@@ -362,19 +362,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-specifier|public
-specifier|abstract
-name|void
-name|sendToStomp
-parameter_list|(
-name|StompFrame
-name|command
-parameter_list|)
-throws|throws
-name|IOException
-function_decl|;
-annotation|@
-name|Override
 specifier|protected
 name|void
 name|doStop
@@ -388,6 +375,9 @@ block|{
 name|stompInactivityMonitor
 operator|.
 name|stop
+argument_list|()
+expr_stmt|;
+name|handleStopped
 argument_list|()
 expr_stmt|;
 block|}
@@ -414,6 +404,29 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//----- Abstract methods for subclasses to implement ---------------------//
+annotation|@
+name|Override
+specifier|public
+specifier|abstract
+name|void
+name|sendToStomp
+parameter_list|(
+name|StompFrame
+name|command
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * Called when the transport is stopping to allow the dervied classes      * a chance to close WebSocket resources.      *      * @throws IOException if an error occurs during the stop.      */
+specifier|public
+specifier|abstract
+name|void
+name|handleStopped
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 comment|//----- Accessor methods -------------------------------------------------//
 annotation|@
 name|Override
