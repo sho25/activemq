@@ -171,6 +171,22 @@ name|Session
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|qpid
+operator|.
+name|proton
+operator|.
+name|engine
+operator|.
+name|Transport
+import|;
+end_import
+
 begin_comment
 comment|/**  * Unmodifiable Connection wrapper used to prevent test code from accidentally  * modifying Connection state.  */
 end_comment
@@ -659,6 +675,34 @@ argument_list|(
 literal|"Cannot alter the Connection"
 argument_list|)
 throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|Transport
+name|getTransport
+parameter_list|()
+block|{
+return|return
+name|connection
+operator|.
+name|getTransport
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getContainer
+parameter_list|()
+block|{
+return|return
+name|connection
+operator|.
+name|getContainer
+argument_list|()
+return|;
 block|}
 block|}
 end_class
