@@ -259,6 +259,17 @@ argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"ActiveMQ Jolokia REST API available at http://{}:{}/api/jolokia/"
+argument_list|,
+name|host
+argument_list|,
+name|port
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|LOG
