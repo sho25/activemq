@@ -147,6 +147,11 @@ operator|*
 literal|8
 index|]
 decl_stmt|;
+specifier|protected
+specifier|final
+name|int
+name|configuredCredit
+decl_stmt|;
 comment|/**      * Handle create of new AMQP Receiver instance.      *      * @param session      *        the AmqpSession that servers as the parent of this Link.      * @param endpoint      *        the Receiver endpoint being managed by this class.      */
 specifier|public
 name|AmqpAbstractReceiver
@@ -165,6 +170,18 @@ argument_list|,
 name|endpoint
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|configuredCredit
+operator|=
+name|session
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|getConfiguredReceiverCredit
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -182,6 +199,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+comment|/**      * Returns the amount of receiver credit that has been configured for this AMQP      * transport.  If no value was configured on the TransportConnector URI then a      * sensible default is used.      *      * @return the configured receiver credit to grant.      */
+specifier|public
+name|int
+name|getConfiguredReceiverCredit
+parameter_list|()
+block|{
+return|return
+name|configuredCredit
+return|;
+block|}
 comment|/**      * Provide the receiver endpoint with the given amount of credits.      *      * @param credits      *        the credit value to pass on to the wrapped Receiver.      */
 specifier|public
 name|void

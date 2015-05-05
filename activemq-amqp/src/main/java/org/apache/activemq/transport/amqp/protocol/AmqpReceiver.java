@@ -540,11 +540,6 @@ name|producerInfo
 decl_stmt|;
 specifier|private
 specifier|final
-name|int
-name|configuredCredit
-decl_stmt|;
-specifier|private
-specifier|final
 name|LongSequenceGenerator
 name|messageIdGenerator
 init|=
@@ -582,18 +577,6 @@ operator|.
 name|producerInfo
 operator|=
 name|producerInfo
-expr_stmt|;
-name|this
-operator|.
-name|configuredCredit
-operator|=
-name|session
-operator|.
-name|getConnection
-argument_list|()
-operator|.
-name|getConfiguredReceiverCredit
-argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -689,16 +672,6 @@ name|getDestination
 argument_list|()
 operator|==
 literal|null
-return|;
-block|}
-comment|/**      * Returns the amount of receiver credit that has been configured for this AMQP      * transport.  If no value was configured on the TransportConnector URI then a      * sensible default is used.      *      * @return the configured receiver credit to grant.      */
-specifier|public
-name|int
-name|getConfiguredReceiverCredit
-parameter_list|()
-block|{
-return|return
-name|configuredCredit
 return|;
 block|}
 comment|//----- Internal Implementation ------------------------------------------//
