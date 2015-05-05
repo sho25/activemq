@@ -155,6 +155,16 @@ name|AmqpInactivityMonitor
 name|getInactivityMonitor
 parameter_list|()
 function_decl|;
+specifier|public
+name|boolean
+name|isUseInactivityMonitor
+parameter_list|()
+function_decl|;
+specifier|public
+name|long
+name|keepAlive
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

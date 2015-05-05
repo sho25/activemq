@@ -26,11 +26,11 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|AmqpClientListener
+name|AmqpConnectionListener
 block|{
 comment|/**      * Indicates some error has occurred during client operations.      *      * @param ex      *        The error that triggered this event.      */
 name|void
-name|onClientException
+name|onException
 parameter_list|(
 name|Throwable
 name|ex

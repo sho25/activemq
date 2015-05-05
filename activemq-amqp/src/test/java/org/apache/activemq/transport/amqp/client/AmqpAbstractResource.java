@@ -430,24 +430,6 @@ name|doClose
 argument_list|()
 expr_stmt|;
 block|}
-comment|//        // If already closed signal success or else the caller might never get notified.
-comment|//        if (getEndpoint().getLocalState() == EndpointState.CLOSED ||
-comment|//            getEndpoint().getRemoteState() == EndpointState.CLOSED) {
-comment|//
-comment|//            if (getEndpoint().getLocalState() != EndpointState.CLOSED) {
-comment|//                // Remote already closed this resource, close locally and free.
-comment|//                if (getEndpoint().getLocalState() != EndpointState.CLOSED) {
-comment|//                    doClose();
-comment|//                    getEndpoint().free();
-comment|//                }
-comment|//            }
-comment|//
-comment|//            request.onSuccess();
-comment|//            return;
-comment|//        }
-comment|//
-comment|//        this.closeRequest = request;
-comment|//        doClose();
 block|}
 annotation|@
 name|Override

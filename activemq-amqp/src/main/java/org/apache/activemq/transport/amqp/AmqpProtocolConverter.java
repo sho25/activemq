@@ -83,6 +83,13 @@ name|void
 name|updateTracer
 parameter_list|()
 function_decl|;
+comment|/**      * Perform any keep alive processing for the connection such as sending      * empty frames or closing connections due to remote end being inactive      * for to long.      *      * @returns the amount of milliseconds to wait before performaing another check.      *      * @throws IOException if an error occurs on writing heatbeats to the wire.      */
+name|long
+name|keepAlive
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
 block|}
 end_interface
 
