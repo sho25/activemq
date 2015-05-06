@@ -257,6 +257,7 @@ operator|*
 literal|1000
 decl_stmt|;
 specifier|private
+specifier|final
 name|AtomicBoolean
 name|handlingException
 init|=
@@ -266,6 +267,8 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|handle
@@ -374,6 +377,13 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|cause
+operator|instanceof
+name|SQLException
+condition|)
+block|{
 name|String
 name|message
 init|=
@@ -384,10 +394,18 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|cause
-operator|instanceof
-name|SQLException
-operator|&&
+name|message
+operator|==
+literal|null
+condition|)
+block|{
+name|message
+operator|=
+literal|""
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|message
 operator|.
 name|contains
@@ -408,6 +426,7 @@ name|cause
 argument_list|)
 expr_stmt|;
 return|return;
+block|}
 block|}
 name|cause
 operator|=
@@ -456,6 +475,8 @@ argument_list|(
 literal|"IOExceptionHandler: stop transports"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -512,6 +533,8 @@ argument_list|(
 literal|"IOExceptionHandler: restart transports"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -791,6 +814,8 @@ operator|+
 name|broker
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -852,6 +877,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBrokerService
