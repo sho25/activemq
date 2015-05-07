@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -147,16 +183,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -275,12 +301,40 @@ name|ActiveMQMessage
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|AdvisoryTempDestinationTests
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 specifier|static
@@ -289,6 +343,14 @@ name|int
 name|MESSAGE_COUNT
 init|=
 literal|2000
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|int
+name|EXPIRE_MESSAGE_PERIOD
+init|=
+literal|10000
 decl_stmt|;
 specifier|protected
 name|BrokerService
@@ -310,6 +372,13 @@ specifier|protected
 name|int
 name|topicCount
 decl_stmt|;
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testNoSlowConsumerAdvisory
@@ -475,6 +544,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSlowConsumerAdvisory
@@ -624,6 +700,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMessageDeliveryAdvisory
@@ -691,7 +774,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -744,6 +827,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testTempMessageConsumedAdvisory
@@ -806,7 +896,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -915,6 +1005,13 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMessageExpiredAdvisory
@@ -988,7 +1085,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -1055,7 +1152,7 @@ name|advisoryConsumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+name|EXPIRE_MESSAGE_PERIOD
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1065,8 +1162,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Override
-specifier|protected
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -1104,26 +1201,16 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
-name|Override
-specifier|protected
+name|After
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
 name|connection
 operator|.
 name|close
@@ -1333,6 +1420,13 @@ operator|new
 name|PolicyEntry
 argument_list|()
 decl_stmt|;
+name|policy
+operator|.
+name|setExpireMessagesPeriod
+argument_list|(
+name|EXPIRE_MESSAGE_PERIOD
+argument_list|)
+expr_stmt|;
 name|policy
 operator|.
 name|setAdvisoryForFastProducers

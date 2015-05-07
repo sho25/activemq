@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -117,16 +153,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -189,7 +215,43 @@ name|region
 operator|.
 name|policy
 operator|.
-name|*
+name|ConstantPendingMessageLimitStrategy
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|PolicyEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|policy
+operator|.
+name|PolicyMap
 import|;
 end_import
 
@@ -225,13 +287,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|junit
 operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQTopic
+name|After
 import|;
 end_import
 
@@ -239,26 +297,40 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|junit
 operator|.
-name|activemq
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|util
+name|junit
 operator|.
-name|Wait
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  * Test for advisory messages sent under the right circumstances.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
 name|AdvisoryTests
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 specifier|static
@@ -288,6 +360,20 @@ specifier|protected
 name|int
 name|topicCount
 decl_stmt|;
+specifier|protected
+specifier|final
+name|int
+name|EXPIRE_MESSAGE_PERIOD
+init|=
+literal|10000
+decl_stmt|;
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testNoSlowConsumerAdvisory
@@ -459,6 +545,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSlowConsumerAdvisory
@@ -614,6 +707,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMessageDeliveryAdvisory
@@ -687,7 +787,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -740,6 +840,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMessageConsumedAdvisory
@@ -808,7 +915,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -917,6 +1024,13 @@ name|id
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMessageExpiredAdvisory
@@ -990,7 +1104,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -1057,7 +1171,7 @@ name|advisoryConsumer
 operator|.
 name|receive
 argument_list|(
-literal|2000
+name|EXPIRE_MESSAGE_PERIOD
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -1066,6 +1180,13 @@ name|msg
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMessageDLQd
@@ -1152,16 +1273,13 @@ name|i
 operator|++
 control|)
 block|{
-name|MessageConsumer
-name|advisoryConsumer
-init|=
 name|s
 operator|.
 name|createConsumer
 argument_list|(
 name|advisoryTopic
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 name|MessageProducer
 name|producer
@@ -1211,9 +1329,18 @@ expr_stmt|;
 block|}
 comment|// we should get here without StackOverflow
 block|}
+annotation|@
+name|Ignore
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
-name|xtestMessageDiscardedAdvisory
+name|testMessageDiscardedAdvisory
 parameter_list|()
 throws|throws
 name|Exception
@@ -1284,7 +1411,7 @@ argument_list|(
 name|advisoryTopic
 argument_list|)
 decl_stmt|;
-comment|//start throwing messages at the consumer
+comment|// start throwing messages at the consumer
 name|MessageProducer
 name|producer
 init|=
@@ -1357,8 +1484,8 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Override
-specifier|protected
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -1396,14 +1523,9 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 block|}
 annotation|@
-name|Override
+name|After
 specifier|protected
 name|void
 name|tearDown
@@ -1411,11 +1533,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
 name|connection
 operator|.
 name|close
@@ -1509,6 +1626,13 @@ operator|new
 name|PolicyEntry
 argument_list|()
 decl_stmt|;
+name|policy
+operator|.
+name|setExpireMessagesPeriod
+argument_list|(
+name|EXPIRE_MESSAGE_PERIOD
+argument_list|)
+expr_stmt|;
 name|policy
 operator|.
 name|setAdvisoryForFastProducers
