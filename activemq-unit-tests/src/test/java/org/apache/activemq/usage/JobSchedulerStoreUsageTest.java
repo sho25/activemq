@@ -177,6 +177,18 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotEquals
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -298,7 +310,7 @@ return|;
 block|}
 specifier|public
 name|void
-name|testJmx
+name|testBlockAndChangeViaJmxReleases
 parameter_list|()
 throws|throws
 name|Exception
@@ -450,18 +462,52 @@ name|getJobSchedulerStoreLimit
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// wait for the producer to block
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-name|WAIT_TIME_MILLS
-operator|/
-literal|2
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Usage exhausted"
+argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"scheduler store usage %"
+operator|+
+name|broker
+operator|.
+name|getAdminView
+argument_list|()
+operator|.
+name|getJobSchedulerStorePercentUsage
+argument_list|()
+operator|+
+literal|" producerSent count:"
+operator|+
+name|producer
+operator|.
+name|getSentCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
 name|broker
 operator|.
 name|getAdminView
@@ -471,6 +517,47 @@ name|getJobSchedulerStorePercentUsage
 argument_list|()
 operator|>
 literal|100
+return|;
+block|}
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"scheduler store usage %"
+operator|+
+name|broker
+operator|.
+name|getAdminView
+argument_list|()
+operator|.
+name|getJobSchedulerStorePercentUsage
+argument_list|()
+operator|+
+literal|" producerSent count:"
+operator|+
+name|producer
+operator|.
+name|getSentCount
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertNotEquals
+argument_list|(
+literal|"Producer has not sent all messages"
+argument_list|,
+name|producer
+operator|.
+name|getMessageCount
+argument_list|()
+argument_list|,
+name|producer
+operator|.
+name|getSentCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|broker
@@ -487,11 +574,26 @@ operator|*
 literal|33
 argument_list|)
 expr_stmt|;
-name|Thread
+name|LOG
 operator|.
-name|sleep
+name|info
 argument_list|(
-name|WAIT_TIME_MILLS
+literal|"scheduler store usage %"
+operator|+
+name|broker
+operator|.
+name|getAdminView
+argument_list|()
+operator|.
+name|getJobSchedulerStorePercentUsage
+argument_list|()
+operator|+
+literal|" producerSent count:"
+operator|+
+name|producer
+operator|.
+name|getSentCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|Wait
@@ -526,15 +628,11 @@ argument_list|()
 return|;
 block|}
 block|}
-argument_list|,
-name|WAIT_TIME_MILLS
-operator|*
-literal|2
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Producer didn't send all messages"
+literal|"Producer sent all messages"
 argument_list|,
 name|producer
 operator|.
@@ -544,21 +642,6 @@ argument_list|,
 name|producer
 operator|.
 name|getSentCount
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Final scheduler usage: {}"
-argument_list|,
-name|broker
-operator|.
-name|getAdminView
-argument_list|()
-operator|.
-name|getJobSchedulerStorePercentUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
