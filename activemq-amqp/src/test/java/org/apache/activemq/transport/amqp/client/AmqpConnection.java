@@ -1054,6 +1054,27 @@ operator|.
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getEndpoint
+argument_list|()
+operator|.
+name|getRemoteState
+argument_list|()
+operator|!=
+name|EndpointState
+operator|.
+name|ACTIVE
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Failed to connect after configured timeout."
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 block|}
