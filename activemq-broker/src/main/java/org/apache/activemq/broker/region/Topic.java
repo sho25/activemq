@@ -3071,6 +3071,15 @@ name|getExpireMessagesPeriod
 argument_list|()
 operator|>
 literal|0
+operator|&&
+operator|!
+name|AdvisorySupport
+operator|.
+name|isAdvisoryTopic
+argument_list|(
+name|getActiveMQDestination
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|scheduler
