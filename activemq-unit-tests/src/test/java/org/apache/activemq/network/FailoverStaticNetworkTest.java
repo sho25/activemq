@@ -261,6 +261,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|AutoFailTestSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|BrokerService
@@ -2042,7 +2054,7 @@ argument_list|()
 operator|+
 literal|":"
 operator|+
-literal|"BrokerName="
+literal|"brokerName="
 operator|+
 name|JMXSupport
 operator|.
@@ -2211,7 +2223,7 @@ argument_list|()
 operator|+
 literal|":"
 operator|+
-literal|"BrokerName="
+literal|"brokerName="
 operator|+
 name|JMXSupport
 operator|.
@@ -2331,7 +2343,7 @@ argument_list|()
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"BrokerName"
+literal|"brokerName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2360,7 +2372,7 @@ argument_list|()
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"BrokerName"
+literal|"brokerName"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2566,7 +2578,7 @@ argument_list|()
 operator|.
 name|getKeyProperty
 argument_list|(
-literal|"BrokerName"
+literal|"brokerName"
 argument_list|)
 operator|+
 literal|", received: "
@@ -2583,6 +2595,20 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|gotMessage
+condition|)
+block|{
+name|AutoFailTestSupport
+operator|.
+name|dumpAllThreads
+argument_list|(
+literal|"noMessage"
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|consConn
