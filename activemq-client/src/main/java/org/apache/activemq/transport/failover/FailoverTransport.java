@@ -617,10 +617,6 @@ name|boolean
 name|disposed
 decl_stmt|;
 specifier|private
-name|boolean
-name|connected
-decl_stmt|;
-specifier|private
 specifier|final
 name|CopyOnWriteArrayList
 argument_list|<
@@ -750,10 +746,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|started
-decl_stmt|;
-specifier|private
-name|boolean
-name|initialized
 decl_stmt|;
 specifier|private
 name|long
@@ -1304,17 +1296,6 @@ block|}
 block|}
 if|if
 condition|(
-operator|!
-name|initialized
-condition|)
-block|{
-name|initialized
-operator|=
-literal|true
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|command
 operator|.
 name|isConnectionControl
@@ -1469,11 +1450,6 @@ parameter_list|)
 throws|throws
 name|InterruptedException
 block|{
-synchronized|synchronized
-init|(
-name|reconnectMutex
-init|)
-block|{
 if|if
 condition|(
 name|shuttingDown
@@ -1505,6 +1481,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+comment|// could be blocked in write with the reconnectMutex held, but still needs to be whacked
 name|Transport
 name|transport
 init|=
@@ -1527,6 +1504,26 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+block|}
+synchronized|synchronized
+init|(
+name|reconnectMutex
+init|)
+block|{
+if|if
+condition|(
+name|transport
+operator|!=
+literal|null
+operator|&&
+name|connectedTransport
+operator|.
+name|get
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
 name|boolean
 name|reconnectOk
 init|=
@@ -1549,7 +1546,7 @@ name|warn
 argument_list|(
 literal|"Transport ("
 operator|+
-name|transport
+name|connectedTransportURI
 operator|+
 literal|") failed"
 operator|+
@@ -1566,10 +1563,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-name|initialized
-operator|=
-literal|false
-expr_stmt|;
 name|failedConnectTransportURI
 operator|=
 name|connectedTransportURI
@@ -1577,10 +1570,6 @@ expr_stmt|;
 name|connectedTransportURI
 operator|=
 literal|null
-expr_stmt|;
-name|connected
-operator|=
-literal|false
 expr_stmt|;
 name|connectedToPriority
 operator|=
@@ -2116,10 +2105,6 @@ expr_stmt|;
 name|disposed
 operator|=
 literal|true
-expr_stmt|;
-name|connected
-operator|=
-literal|false
 expr_stmt|;
 if|if
 condition|(
@@ -5088,10 +5073,6 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
-name|connected
-operator|=
-literal|true
-expr_stmt|;
 return|return
 literal|false
 return|;
@@ -5986,7 +5967,12 @@ name|isConnected
 parameter_list|()
 block|{
 return|return
-name|connected
+name|connectedTransport
+operator|.
+name|get
+argument_list|()
+operator|!=
+literal|null
 return|;
 block|}
 annotation|@
