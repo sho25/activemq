@@ -1830,7 +1830,25 @@ decl_stmt|;
 name|transportConnection
 operator|.
 name|stopAsync
+argument_list|(
+operator|new
+name|IOException
+argument_list|(
+literal|"Stealing link for clientId "
+operator|+
+name|clientId
+operator|+
+literal|" From Connection "
+operator|+
+name|oldContext
+operator|.
+name|getConnection
 argument_list|()
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 else|else

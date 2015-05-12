@@ -1233,14 +1233,14 @@ specifier|protected
 specifier|final
 name|AtomicReference
 argument_list|<
-name|IOException
+name|Throwable
 argument_list|>
 name|transportException
 init|=
 operator|new
 name|AtomicReference
 argument_list|<
-name|IOException
+name|Throwable
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1463,12 +1463,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|duplexNetworkConnectorId
-decl_stmt|;
-specifier|private
-name|Throwable
-name|stopError
-init|=
-literal|null
 decl_stmt|;
 comment|/**      * @param taskRunnerFactory - can be null if you want direct dispatch to the transport      *                          else commands are sent async.      * @param stopTaskRunnerFactory - can<b>not</b> be null, used for stopping this connection.      */
 specifier|public
@@ -1951,7 +1945,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|stopAsync
-argument_list|()
+argument_list|(
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2162,11 +2158,12 @@ name|ce
 argument_list|)
 expr_stmt|;
 comment|// Record the error that caused the transport to stop
-name|this
+name|transportException
 operator|.
-name|stopError
-operator|=
+name|set
+argument_list|(
 name|e
+argument_list|)
 expr_stmt|;
 comment|// Wait a little bit to try to get the output buffer to flush
 comment|// the exception notification to the client.
@@ -2344,9 +2341,10 @@ operator|=
 operator|new
 name|ExceptionResponse
 argument_list|(
-name|this
+name|transportException
 operator|.
-name|stopError
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -5357,7 +5355,10 @@ operator|.
 name|getInfo
 argument_list|()
 argument_list|,
-literal|null
+name|transportException
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -6214,9 +6215,12 @@ name|pendingStop
 operator|=
 literal|true
 expr_stmt|;
-name|stopError
-operator|=
+name|transportException
+operator|.
+name|set
+argument_list|(
 name|cause
+argument_list|)
 expr_stmt|;
 block|}
 try|try
@@ -6291,6 +6295,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|public
+name|void
+name|stopAsync
+parameter_list|(
+name|Throwable
+name|cause
+parameter_list|)
+block|{
+name|transportException
+operator|.
+name|set
+argument_list|(
+name|cause
+argument_list|)
+expr_stmt|;
+name|stopAsync
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|void
