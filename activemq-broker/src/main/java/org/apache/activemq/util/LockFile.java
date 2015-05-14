@@ -380,6 +380,16 @@ literal|null
 condition|)
 block|{
 comment|//Set lastModified only if we are able to successfully obtain the lock.
+name|readFile
+operator|.
+name|getChannel
+argument_list|()
+operator|.
+name|force
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|lastModified
 operator|=
 name|file
