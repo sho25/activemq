@@ -112,6 +112,7 @@ specifier|final
 name|EmbeddedDataSource
 name|delegate
 decl_stmt|;
+specifier|public
 name|SyncCreateDataSource
 parameter_list|(
 name|EmbeddedDataSource
@@ -266,6 +267,7 @@ return|return
 literal|false
 return|;
 block|}
+specifier|public
 name|EmbeddedDataSource
 name|getDelegate
 parameter_list|()
