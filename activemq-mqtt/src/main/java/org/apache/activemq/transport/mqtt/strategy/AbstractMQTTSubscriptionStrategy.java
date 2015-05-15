@@ -1284,7 +1284,7 @@ name|protocol
 operator|.
 name|version
 operator|==
-name|protocol
+name|MQTTProtocolConverter
 operator|.
 name|V3_1_1
 condition|)

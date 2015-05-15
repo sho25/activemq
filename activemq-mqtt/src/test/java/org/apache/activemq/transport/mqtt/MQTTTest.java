@@ -10138,10 +10138,7 @@ operator|.
 name|disconnect
 argument_list|()
 expr_stmt|;
-name|stopBroker
-argument_list|()
-expr_stmt|;
-name|startBroker
+name|restartBroker
 argument_list|()
 expr_stmt|;
 name|MQTT
