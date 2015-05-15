@@ -95,16 +95,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Calendar
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Date
 import|;
 end_import
@@ -146,7 +136,7 @@ name|lock
 decl_stmt|;
 specifier|private
 name|RandomAccessFile
-name|readFile
+name|randomAccessLockFile
 decl_stmt|;
 specifier|private
 name|int
@@ -292,7 +282,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|readFile
+name|randomAccessLockFile
 operator|=
 operator|new
 name|RandomAccessFile
@@ -311,7 +301,7 @@ try|try
 block|{
 name|lock
 operator|=
-name|readFile
+name|randomAccessLockFile
 operator|.
 name|getChannel
 argument_list|()
@@ -326,7 +316,7 @@ name|max
 argument_list|(
 literal|1
 argument_list|,
-name|readFile
+name|randomAccessLockFile
 operator|.
 name|getChannel
 argument_list|()
@@ -379,8 +369,18 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//Set lastModified only if we are able to successfully obtain the lock.
-name|readFile
+comment|//track lastModified only if we are able to successfully obtain the lock.
+name|randomAccessLockFile
+operator|.
+name|writeLong
+argument_list|(
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|randomAccessLockFile
 operator|.
 name|getChannel
 argument_list|()
@@ -592,14 +592,14 @@ block|{
 comment|// close the file.
 if|if
 condition|(
-name|readFile
+name|randomAccessLockFile
 operator|!=
 literal|null
 condition|)
 block|{
 try|try
 block|{
-name|readFile
+name|randomAccessLockFile
 operator|.
 name|close
 argument_list|()
@@ -611,7 +611,7 @@ name|Throwable
 name|ignore
 parameter_list|)
 block|{             }
-name|readFile
+name|randomAccessLockFile
 operator|=
 literal|null
 expr_stmt|;
