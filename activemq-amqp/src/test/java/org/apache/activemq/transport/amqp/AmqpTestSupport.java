@@ -680,7 +680,8 @@ name|brokerService
 operator|.
 name|setUseJmx
 argument_list|(
-literal|true
+name|isUseJmx
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|brokerService
@@ -1175,6 +1176,15 @@ parameter_list|()
 block|{
 return|return
 literal|false
+return|;
+block|}
+specifier|protected
+name|boolean
+name|isUseJmx
+parameter_list|()
+block|{
+return|return
+literal|true
 return|;
 block|}
 specifier|protected
