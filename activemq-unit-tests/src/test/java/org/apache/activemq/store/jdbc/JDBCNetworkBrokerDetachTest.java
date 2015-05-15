@@ -104,11 +104,6 @@ name|getBrokerName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|jdbc
-operator|.
-name|deleteAllMessages
-argument_list|()
-expr_stmt|;
 name|broker
 operator|.
 name|setPersistenceAdapter
