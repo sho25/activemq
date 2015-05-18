@@ -317,6 +317,8 @@ name|socket
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|initializeStreams
@@ -356,6 +358,8 @@ operator|.
 name|Listener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSelect
@@ -376,6 +380,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onError
@@ -444,8 +450,6 @@ operator|*
 literal|1024
 argument_list|)
 decl_stmt|;
-name|this
-operator|.
 name|dataOut
 operator|=
 operator|new
@@ -454,8 +458,6 @@ argument_list|(
 name|outPutStream
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|buffOut
 operator|=
 name|outPutStream
@@ -466,6 +468,12 @@ operator|new
 name|MQTTCodec
 argument_list|(
 name|this
+argument_list|,
+operator|(
+name|MQTTWireFormat
+operator|)
+name|getWireFormat
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -594,6 +602,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -619,6 +629,8 @@ name|enable
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop

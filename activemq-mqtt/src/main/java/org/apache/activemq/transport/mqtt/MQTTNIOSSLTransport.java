@@ -197,6 +197,12 @@ operator|new
 name|MQTTCodec
 argument_list|(
 name|this
+argument_list|,
+operator|(
+name|MQTTWireFormat
+operator|)
+name|getWireFormat
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|super

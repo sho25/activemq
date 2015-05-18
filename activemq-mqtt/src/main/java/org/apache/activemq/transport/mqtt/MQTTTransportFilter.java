@@ -1402,6 +1402,36 @@ name|activeMQSubscriptionPrefetch
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * @return the maximum number of bytes a single MQTT message frame is allowed to be.      */
+specifier|public
+name|int
+name|getMaxFrameSize
+parameter_list|()
+block|{
+return|return
+name|wireFormat
+operator|.
+name|getMaxFrameSize
+argument_list|()
+return|;
+block|}
+comment|/**      * Sets the maximum frame size for an incoming MQTT frame.  The protocl limit is      * 256 megabytes and this value cannot be set higher.      *      * @param maxFrameSize      *        the maximum allowed frame size for a single MQTT frame.      */
+specifier|public
+name|void
+name|setMaxFrameSize
+parameter_list|(
+name|int
+name|maxFrameSize
+parameter_list|)
+block|{
+name|wireFormat
+operator|.
+name|setMaxFrameSize
+argument_list|(
+name|maxFrameSize
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
