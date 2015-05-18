@@ -1738,6 +1738,19 @@ name|getClientId
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the configured max frame size allowed for incoming messages.      */
+specifier|public
+name|long
+name|getMaxFrameSize
+parameter_list|()
+block|{
+return|return
+name|amqpWireFormat
+operator|.
+name|getMaxFrameSize
+argument_list|()
+return|;
+block|}
 comment|//----- Proton Event handling and IO support -----------------------------//
 name|void
 name|pumpProtonToSocket
@@ -4090,11 +4103,6 @@ name|Throwable
 name|exception
 parameter_list|)
 block|{
-name|exception
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -4104,6 +4112,24 @@ argument_list|,
 name|exception
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|exception
+operator|instanceof
+name|AmqpProtocolException
+condition|)
+block|{
+name|onAMQPException
+argument_list|(
+operator|(
+name|IOException
+operator|)
+name|exception
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 try|try
 block|{
 comment|// Must ensure that the broker removes Connection resources.
@@ -4135,6 +4161,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|//----- Internal implementation ------------------------------------------//

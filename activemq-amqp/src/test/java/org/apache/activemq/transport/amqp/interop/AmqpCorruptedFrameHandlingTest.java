@@ -150,7 +150,7 @@ name|getAdditionalConfig
 parameter_list|()
 block|{
 return|return
-literal|"?transport.wireFormat.maxFrameSize=65535"
+literal|"?transport.maxFrameSize=65535&transport.wireFormat.idleTimeout=5000"
 return|;
 block|}
 annotation|@

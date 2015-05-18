@@ -2226,6 +2226,18 @@ return|return
 name|protonSession
 return|;
 block|}
+specifier|public
+name|long
+name|getMaxFrameSize
+parameter_list|()
+block|{
+return|return
+name|connection
+operator|.
+name|getMaxFrameSize
+argument_list|()
+return|;
+block|}
 comment|//----- Internal Implementation ------------------------------------------//
 specifier|private
 name|ConsumerId
