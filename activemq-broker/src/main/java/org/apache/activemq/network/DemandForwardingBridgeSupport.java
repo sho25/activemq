@@ -6368,11 +6368,16 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"{} Shutting down"
+literal|"{} Shutting down {}"
 argument_list|,
 name|configuration
 operator|.
 name|getBrokerName
+argument_list|()
+argument_list|,
+name|configuration
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;

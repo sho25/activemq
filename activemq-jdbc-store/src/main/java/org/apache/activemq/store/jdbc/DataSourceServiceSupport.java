@@ -380,6 +380,23 @@ argument_list|(
 literal|"create"
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|ds
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SQLException
+name|ignored
+parameter_list|)
+block|{         }
 return|return
 name|ds
 return|;
@@ -402,6 +419,13 @@ name|EmbeddedDataSource
 operator|)
 name|dataSource
 decl_stmt|;
+name|ds
+operator|.
+name|setCreateDatabase
+argument_list|(
+literal|"shutdown"
+argument_list|)
+expr_stmt|;
 name|ds
 operator|.
 name|setShutdownDatabase

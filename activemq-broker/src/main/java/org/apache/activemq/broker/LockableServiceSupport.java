@@ -480,6 +480,10 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|locker
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 name|ThreadPoolUtils
