@@ -62,6 +62,20 @@ name|FailoverComplexClusterTest
 extends|extends
 name|FailoverClusterTestSupport
 block|{
+specifier|protected
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|FailoverComplexClusterTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -915,6 +929,13 @@ block|{
 name|assertClientsConnectedToThreeBrokers
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Stopping BrokerC in prep for restart"
+argument_list|)
+expr_stmt|;
 name|getBroker
 argument_list|(
 name|BROKER_C_NAME
@@ -945,6 +966,13 @@ argument_list|)
 expr_stmt|;
 name|assertClientsConnectedToTwoBrokers
 argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Recreating BrokerC after stop"
+argument_list|)
 expr_stmt|;
 name|createBrokerC
 argument_list|(
