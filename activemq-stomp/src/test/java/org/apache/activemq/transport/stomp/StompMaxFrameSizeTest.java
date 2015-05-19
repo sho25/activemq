@@ -211,7 +211,7 @@ block|,
 name|FRAME_MAX_LESS_THAN_ACTION_MAX
 block|}
 empty_stmt|;
-comment|//set max data size higher than max frame size so that max frame size gets tested
+comment|// set max data size higher than max frame size so that max frame size gets tested
 specifier|private
 specifier|static
 specifier|final
@@ -223,14 +223,12 @@ operator|*
 literal|1024
 decl_stmt|;
 specifier|private
-name|StompConnection
-name|connection
-decl_stmt|;
-specifier|private
+specifier|final
 name|TestType
 name|testType
 decl_stmt|;
 specifier|private
+specifier|final
 name|int
 name|maxFrameSize
 decl_stmt|;
@@ -257,7 +255,7 @@ name|Object
 index|[]
 index|[]
 block|{
-comment|//The maximum size exceeds the default max header size of 10 * 1024
+comment|// The maximum size exceeds the default max header size of 10 * 1024
 block|{
 name|TestType
 operator|.
@@ -268,7 +266,7 @@ operator|*
 literal|1024
 block|}
 block|,
-comment|//The maximum size is less than the default max header size of 10 * 1024
+comment|// The maximum size is less than the default max header size of 10 * 1024
 block|{
 name|TestType
 operator|.
@@ -279,7 +277,7 @@ operator|*
 literal|1024
 block|}
 block|,
-comment|//The maximum size is less than the default max action size of 1024
+comment|// The maximum size is less than the default max action size of 1024
 block|{
 name|TestType
 operator|.
@@ -380,43 +378,6 @@ expr_stmt|;
 name|super
 operator|.
 name|setUp
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-if|if
-condition|(
-name|connection
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-name|connection
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{}
-block|}
-name|super
-operator|.
-name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
