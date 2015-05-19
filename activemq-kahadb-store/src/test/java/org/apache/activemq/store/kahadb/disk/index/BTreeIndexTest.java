@@ -1764,7 +1764,7 @@ specifier|final
 name|int
 name|count
 init|=
-literal|50000
+literal|1000
 decl_stmt|;
 name|String
 name|payload
