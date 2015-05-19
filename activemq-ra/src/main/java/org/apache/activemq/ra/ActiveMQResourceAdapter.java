@@ -629,6 +629,8 @@ name|createConnectionFactory
 argument_list|(
 name|getInfo
 argument_list|()
+argument_list|,
+name|activationSpec
 argument_list|)
 expr_stmt|;
 block|}

@@ -341,6 +341,26 @@ name|boolean
 name|isUseJndi
 parameter_list|()
 function_decl|;
+name|String
+name|getTrustStore
+parameter_list|()
+function_decl|;
+name|String
+name|getTrustStorePassword
+parameter_list|()
+function_decl|;
+name|String
+name|getKeyStore
+parameter_list|()
+function_decl|;
+name|String
+name|getKeyStorePassword
+parameter_list|()
+function_decl|;
+name|String
+name|getKeyStoreKeyPassword
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
