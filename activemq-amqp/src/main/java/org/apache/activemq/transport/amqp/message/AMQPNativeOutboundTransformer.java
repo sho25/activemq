@@ -204,14 +204,7 @@ condition|(
 name|msg
 operator|==
 literal|null
-condition|)
-block|{
-return|return
-literal|null
-return|;
-block|}
-if|if
-condition|(
+operator|||
 operator|!
 operator|(
 name|msg
