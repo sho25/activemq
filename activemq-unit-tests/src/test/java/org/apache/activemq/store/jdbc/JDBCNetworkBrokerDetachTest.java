@@ -104,6 +104,15 @@ name|getBrokerName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|dataSource
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+comment|// ensure derby for brokerName is initialized
 name|broker
 operator|.
 name|setPersistenceAdapter
