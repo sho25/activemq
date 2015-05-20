@@ -338,6 +338,7 @@ name|id
 decl_stmt|;
 comment|// Implementation
 specifier|private
+specifier|volatile
 name|LinkedBlockingQueue
 argument_list|<
 name|Object
@@ -345,10 +346,12 @@ argument_list|>
 name|messageQueue
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|TaskRunnerFactory
 name|taskRunnerFactory
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|TaskRunner
 name|taskRunner
 decl_stmt|;
