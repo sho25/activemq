@@ -233,9 +233,12 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 name|BrokerService
 name|brokerService
 decl_stmt|;
+specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|Throwable

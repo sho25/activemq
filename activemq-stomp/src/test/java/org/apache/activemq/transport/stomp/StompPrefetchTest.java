@@ -322,6 +322,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stompConnect
+argument_list|()
+expr_stmt|;
 name|stompConnection
 operator|.
 name|connect
@@ -374,6 +377,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stompConnect
+argument_list|()
+expr_stmt|;
 name|stompConnection
 operator|.
 name|connect
@@ -516,6 +522,9 @@ argument_list|,
 literal|"1.1"
 argument_list|)
 expr_stmt|;
+name|stompConnect
+argument_list|()
+expr_stmt|;
 name|stompConnection
 operator|.
 name|connect
@@ -568,6 +577,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|stompConnect
+argument_list|()
+expr_stmt|;
 name|stompConnection
 operator|.
 name|connect
