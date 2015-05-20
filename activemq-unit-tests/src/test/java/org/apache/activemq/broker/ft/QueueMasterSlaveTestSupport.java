@@ -183,6 +183,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|xbean
 operator|.
 name|BrokerFactoryBean
@@ -720,6 +734,13 @@ name|isSlave
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Sending post failover message to VT"
+argument_list|)
+expr_stmt|;
 specifier|final
 name|String
 name|text
@@ -744,6 +765,7 @@ name|text
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// dest must survive failover - consumer created after send
 name|qConsumer
 operator|=
 name|session
@@ -768,7 +790,7 @@ name|qConsumer
 operator|.
 name|receive
 argument_list|(
-literal|20000
+literal|10000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -803,6 +825,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+specifier|final
 name|MessageConsumer
 name|advConsumer
 init|=
@@ -816,16 +839,29 @@ name|getMasterBrokerAdvisoryTopic
 argument_list|()
 argument_list|)
 decl_stmt|;
+specifier|final
 name|Message
+index|[]
 name|advisoryMessage
 init|=
+operator|new
+name|Message
+index|[
+literal|1
+index|]
+decl_stmt|;
+name|advisoryMessage
+index|[
+literal|0
+index|]
+operator|=
 name|advConsumer
 operator|.
 name|receive
 argument_list|(
 literal|5000
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -833,6 +869,9 @@ argument_list|(
 literal|"received "
 operator|+
 name|advisoryMessage
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -840,6 +879,9 @@ argument_list|(
 literal|"Didn't received advisory"
 argument_list|,
 name|advisoryMessage
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|master
@@ -870,13 +912,47 @@ argument_list|(
 literal|"slave started"
 argument_list|)
 expr_stmt|;
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|advisoryMessage
+index|[
+literal|0
+index|]
 operator|=
 name|advConsumer
 operator|.
 name|receive
 argument_list|(
-literal|20000
+literal|500
+argument_list|)
+expr_stmt|;
+return|return
+name|advisoryMessage
+index|[
+literal|0
+index|]
+operator|!=
+literal|null
+return|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -886,6 +962,9 @@ argument_list|(
 literal|"received "
 operator|+
 name|advisoryMessage
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|assertNotNull
@@ -893,6 +972,9 @@ argument_list|(
 literal|"Didn't received advisory"
 argument_list|,
 name|advisoryMessage
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 block|}
