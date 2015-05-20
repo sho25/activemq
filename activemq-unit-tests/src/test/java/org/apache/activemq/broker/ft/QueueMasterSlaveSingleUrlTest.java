@@ -124,7 +124,7 @@ literal|"failover://("
 operator|+
 name|brokerUrl
 operator|+
-literal|")?randomize=false"
+literal|")?randomize=false&useExponentialBackOff=false"
 decl_stmt|;
 annotation|@
 name|Override
@@ -347,34 +347,6 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-block|}
-comment|// The @Ignore is just here for documentation, since this is a JUnit3 test
-comment|// I added the sleep because without it the two other test cases fail.  I haven't looked into it, but
-comment|// my guess whatever setUp does isn't really finished when the teardown runs.
-annotation|@
-name|Ignore
-argument_list|(
-literal|"See https://issues.apache.org/jira/browse/AMQ-5164"
-argument_list|)
-annotation|@
-name|Override
-specifier|public
-name|void
-name|testAdvisory
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|5
-operator|*
-literal|1000
-argument_list|)
-expr_stmt|;
-comment|//super.testAdvisory();
 block|}
 block|}
 end_class
