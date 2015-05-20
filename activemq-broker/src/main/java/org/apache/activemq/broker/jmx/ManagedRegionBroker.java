@@ -2557,7 +2557,7 @@ name|inactiveName
 init|=
 name|subscriptionKeys
 operator|.
-name|get
+name|remove
 argument_list|(
 name|subscriptionKey
 argument_list|)
