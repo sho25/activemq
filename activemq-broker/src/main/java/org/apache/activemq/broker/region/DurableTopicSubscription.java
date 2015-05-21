@@ -839,14 +839,19 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-name|this
+name|getSubscriptionStatistics
+argument_list|()
 operator|.
-name|enqueueCounter
-operator|+=
+name|getEnqueues
+argument_list|()
+operator|.
+name|add
+argument_list|(
 name|pending
 operator|.
 name|size
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -873,10 +878,14 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|this
+name|getSubscriptionStatistics
+argument_list|()
 operator|.
-name|enqueueCounter
-operator|+=
+name|getEnqueues
+argument_list|()
+operator|.
+name|add
+argument_list|(
 name|store
 operator|.
 name|getMessageCount
@@ -890,6 +899,7 @@ name|subscriptionKey
 operator|.
 name|getSubscriptionName
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1974,7 +1984,14 @@ argument_list|()
 operator|+
 literal|", total="
 operator|+
-name|enqueueCounter
+name|getSubscriptionStatistics
+argument_list|()
+operator|.
+name|getEnqueues
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
 operator|+
 literal|", pending="
 operator|+
@@ -1983,7 +2000,14 @@ argument_list|()
 operator|+
 literal|", dispatched="
 operator|+
-name|dispatchCounter
+name|getSubscriptionStatistics
+argument_list|()
+operator|.
+name|getDispatched
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
 operator|+
 literal|", inflight="
 operator|+
