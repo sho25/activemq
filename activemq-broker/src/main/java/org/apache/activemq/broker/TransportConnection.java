@@ -2462,7 +2462,12 @@ name|SERVICELOG
 operator|.
 name|warn
 argument_list|(
-literal|"Security Error occurred: {}"
+literal|"Security Error occurred on connection to: {}, {}"
+argument_list|,
+name|transport
+operator|.
+name|getRemoteAddress
+argument_list|()
 argument_list|,
 name|e
 operator|.
