@@ -1162,6 +1162,11 @@ if|if
 condition|(
 name|isClosed
 argument_list|()
+operator|||
+name|connection
+operator|.
+name|isClosed
+argument_list|()
 condition|)
 block|{
 throw|throw
