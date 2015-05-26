@@ -403,6 +403,11 @@ name|getTransportListener
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|stompInactivityMonitor
+operator|.
+name|startConnectCheckTask
+argument_list|()
+expr_stmt|;
 block|}
 comment|//----- Abstract methods for subclasses to implement ---------------------//
 annotation|@

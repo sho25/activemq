@@ -282,6 +282,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"========== Starting test: {} =========="
+argument_list|,
+name|name
+operator|.
+name|getMethodName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|broker
 operator|=
 name|createBroker
@@ -319,6 +331,18 @@ literal|"Error on Broker stop."
 argument_list|)
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"========== Finished test: {} =========="
+argument_list|,
+name|name
+operator|.
+name|getMethodName
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|String
