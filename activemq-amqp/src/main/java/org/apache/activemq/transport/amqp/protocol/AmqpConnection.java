@@ -455,6 +455,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|ConsumerInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|DestinationInfo
 import|;
 end_import
@@ -3582,7 +3596,7 @@ name|consumerId
 argument_list|)
 expr_stmt|;
 block|}
-name|ActiveMQDestination
+name|ConsumerInfo
 name|lookupSubscription
 parameter_list|(
 name|String
@@ -3591,7 +3605,7 @@ parameter_list|)
 throws|throws
 name|AmqpProtocolException
 block|{
-name|ActiveMQDestination
+name|ConsumerInfo
 name|result
 init|=
 literal|null
@@ -3684,7 +3698,7 @@ name|result
 operator|=
 name|subscription
 operator|.
-name|getActiveMQDestination
+name|getConsumerInfo
 argument_list|()
 expr_stmt|;
 block|}
