@@ -1786,7 +1786,7 @@ return|return;
 block|}
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Starting connection check task for: {}"
 argument_list|,
@@ -1895,7 +1895,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"Stopping connection check task for: {}"
 argument_list|,
