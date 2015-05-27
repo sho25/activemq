@@ -3684,7 +3684,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Recovering from the journal ..."
+literal|"Recovering from the scheduled job journal @"
+operator|+
+name|recoveryPosition
 argument_list|)
 expr_stmt|;
 while|while
@@ -3693,6 +3695,8 @@ name|recoveryPosition
 operator|!=
 literal|null
 condition|)
+block|{
+try|try
 block|{
 name|JournalCommand
 argument_list|<
@@ -3724,6 +3728,54 @@ expr_stmt|;
 name|redoCounter
 operator|++
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|failedRecovery
+parameter_list|)
+block|{
+if|if
+condition|(
+name|isIgnoreMissingJournalfiles
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to recover data at position:"
+operator|+
+name|recoveryPosition
+argument_list|,
+name|failedRecovery
+argument_list|)
+expr_stmt|;
+comment|// track this dud location
+name|journal
+operator|.
+name|corruptRecoveryLocation
+argument_list|(
+name|recoveryPosition
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Failed to recover data at position:"
+operator|+
+name|recoveryPosition
+argument_list|,
+name|failedRecovery
+argument_list|)
+throw|;
+block|}
+block|}
 name|recoveryPosition
 operator|=
 name|journal
