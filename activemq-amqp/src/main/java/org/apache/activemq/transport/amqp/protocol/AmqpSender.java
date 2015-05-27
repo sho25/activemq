@@ -2180,6 +2180,10 @@ name|draining
 operator|=
 literal|false
 expr_stmt|;
+name|currentCredit
+operator|=
+literal|0
+expr_stmt|;
 block|}
 else|else
 block|{
