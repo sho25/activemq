@@ -317,6 +317,10 @@ name|long
 name|getDequeueCounter
 parameter_list|()
 function_decl|;
+name|SubscriptionStatistics
+name|getSubscriptionStatistics
+parameter_list|()
+function_decl|;
 comment|/**      * @return the JMS selector on the current subscription      */
 name|String
 name|getSelector
