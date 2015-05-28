@@ -73,6 +73,20 @@ name|activemq
 operator|.
 name|transport
 operator|.
+name|Transport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
 name|TransportAcceptListener
 import|;
 end_import
@@ -137,7 +151,7 @@ name|websocket
 operator|.
 name|servlet
 operator|.
-name|WebSocketServlet
+name|WebSocketCreator
 import|;
 end_import
 
@@ -153,7 +167,7 @@ name|websocket
 operator|.
 name|servlet
 operator|.
-name|WebSocketCreator
+name|WebSocketServlet
 import|;
 end_import
 
@@ -197,6 +211,8 @@ specifier|private
 name|TransportAcceptListener
 name|listener
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -238,6 +254,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doGet
@@ -269,6 +287,8 @@ name|response
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|configure
@@ -320,6 +340,13 @@ operator|new
 name|MQTTSocket
 argument_list|()
 expr_stmt|;
+name|resp
+operator|.
+name|setAcceptedSubProtocol
+argument_list|(
+literal|"mqtt"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -329,7 +356,24 @@ operator|new
 name|StompSocket
 argument_list|()
 expr_stmt|;
+name|resp
+operator|.
+name|setAcceptedSubProtocol
+argument_list|(
+literal|"stomp"
+argument_list|)
+expr_stmt|;
 block|}
+name|listener
+operator|.
+name|onAccept
+argument_list|(
+operator|(
+name|Transport
+operator|)
+name|socket
+argument_list|)
+expr_stmt|;
 return|return
 name|socket
 return|;

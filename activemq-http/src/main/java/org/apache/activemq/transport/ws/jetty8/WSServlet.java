@@ -143,6 +143,8 @@ specifier|private
 name|TransportAcceptListener
 name|listener
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -184,6 +186,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doGet
