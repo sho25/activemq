@@ -565,7 +565,7 @@ block|}
 block|}
 block|}
 comment|/**      * @return Returns the doHandleReplyTo.      */
-specifier|protected
+specifier|public
 name|boolean
 name|isDoHandleReplyTo
 parameter_list|()
@@ -575,7 +575,7 @@ name|doHandleReplyTo
 return|;
 block|}
 comment|/**      * @param doHandleReplyTo The doHandleReplyTo to set.      */
-specifier|protected
+specifier|public
 name|void
 name|setDoHandleReplyTo
 parameter_list|(
