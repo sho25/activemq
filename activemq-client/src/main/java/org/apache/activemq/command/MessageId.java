@@ -809,6 +809,24 @@ operator|=
 name|plistLocator
 expr_stmt|;
 block|}
+specifier|private
+name|Object
+name|readResolve
+parameter_list|()
+block|{
+name|dataLocator
+operator|=
+operator|new
+name|AtomicReference
+argument_list|<
+name|Object
+argument_list|>
+argument_list|()
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
 block|}
 end_class
 
