@@ -437,11 +437,11 @@ name|getAdditionalConfig
 parameter_list|()
 block|{
 return|return
-literal|"&transport.wireFormat.maxAmqpFrameSize="
+literal|"&wireFormat.maxAmqpFrameSize="
 operator|+
 name|maxAmqpFrameSize
 operator|+
-literal|"&transport.maxFrameSize="
+literal|"&wireFormat.maxFrameSize="
 operator|+
 name|maxFrameSize
 return|;

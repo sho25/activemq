@@ -242,7 +242,7 @@ name|MAX_HEADERS
 init|=
 literal|1000
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int

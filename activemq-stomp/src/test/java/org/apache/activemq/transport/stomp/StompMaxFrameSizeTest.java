@@ -339,11 +339,11 @@ name|getAdditionalConfig
 parameter_list|()
 block|{
 return|return
-literal|"?transport.maxDataLength="
+literal|"?wireFormat.maxDataLength="
 operator|+
 name|MAX_DATA_SIZE
 operator|+
-literal|"&transport.maxFrameSize="
+literal|"&wireFormat.maxFrameSize="
 operator|+
 name|maxFrameSize
 return|;

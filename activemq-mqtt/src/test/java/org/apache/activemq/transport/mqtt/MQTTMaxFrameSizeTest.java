@@ -294,7 +294,7 @@ name|getProtocolConfig
 parameter_list|()
 block|{
 return|return
-literal|"?transport.maxFrameSize="
+literal|"?wireFormat.maxFrameSize="
 operator|+
 name|maxFrameSize
 return|;

@@ -538,7 +538,7 @@ specifier|final
 name|long
 name|DEFAULT_CONNECT_TIMEOUT
 init|=
-literal|15000
+literal|515000
 decl_stmt|;
 specifier|public
 specifier|static
