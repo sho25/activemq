@@ -139,20 +139,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|command
-operator|.
-name|Command
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|openwire
 operator|.
 name|OpenWireFormat
@@ -232,7 +218,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *   *   */
+comment|/**  * An implementation of the {@link Transport} interface using raw tcp/ip  *  *  */
 end_comment
 
 begin_class
@@ -315,6 +301,8 @@ name|socket
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|initializeStreams
@@ -354,6 +342,8 @@ operator|.
 name|Listener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onSelect
@@ -366,6 +356,8 @@ name|serviceRead
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onError
@@ -522,6 +514,12 @@ condition|)
 block|{
 break|break;
 block|}
+name|this
+operator|.
+name|receiveCounter
+operator|+=
+name|readSize
+expr_stmt|;
 if|if
 condition|(
 name|currentBuffer
@@ -688,9 +686,6 @@ argument_list|)
 decl_stmt|;
 name|doConsume
 argument_list|(
-operator|(
-name|Command
-operator|)
 name|command
 argument_list|)
 expr_stmt|;
@@ -748,6 +743,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -773,6 +770,8 @@ name|enable
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
