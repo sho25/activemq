@@ -974,10 +974,15 @@ name|restoredSubs
 operator|.
 name|add
 argument_list|(
+name|MQTTProtocolSupport
+operator|.
+name|convertMQTTToActiveMQ
+argument_list|(
 name|split
 index|[
 literal|1
 index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
