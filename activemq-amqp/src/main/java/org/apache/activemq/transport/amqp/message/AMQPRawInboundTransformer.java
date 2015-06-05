@@ -35,6 +35,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Message
 import|;
 end_import
@@ -122,11 +132,15 @@ name|getLength
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// We cannot decode the message headers to check so err on the side of caution
+comment|// and mark all messages as persistent.
 name|rc
 operator|.
 name|setJMSDeliveryMode
 argument_list|(
-name|defaultDeliveryMode
+name|DeliveryMode
+operator|.
+name|PERSISTENT
 argument_list|)
 expr_stmt|;
 name|rc

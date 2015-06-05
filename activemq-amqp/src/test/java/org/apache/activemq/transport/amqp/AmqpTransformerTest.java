@@ -101,6 +101,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|DeliveryMode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Message
 import|;
 end_import
@@ -521,7 +531,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+name|DeliveryMode
+operator|.
+name|PERSISTENT
 argument_list|,
 name|message
 operator|.
@@ -807,7 +819,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+name|DeliveryMode
+operator|.
+name|PERSISTENT
 argument_list|,
 name|message
 operator|.
@@ -815,8 +829,7 @@ name|getJMSDeliveryMode
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// should not equal 7 (should equal the default) because "raw" does not map
-comment|// headers
+comment|// should not equal 7 (should equal the default) because "raw" does not map headers
 name|assertEquals
 argument_list|(
 literal|4
@@ -1074,7 +1087,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+name|DeliveryMode
+operator|.
+name|PERSISTENT
 argument_list|,
 name|message
 operator|.

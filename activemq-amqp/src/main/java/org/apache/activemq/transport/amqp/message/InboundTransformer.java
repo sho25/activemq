@@ -363,9 +363,9 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Message
+name|DeliveryMode
 operator|.
-name|DEFAULT_DELIVERY_MODE
+name|NON_PERSISTENT
 decl_stmt|;
 name|int
 name|defaultPriority
