@@ -1233,12 +1233,12 @@ name|countBeforeFull
 parameter_list|()
 block|{
 return|return
-name|getDispatchedQueueSize
-argument_list|()
-operator|-
 name|info
 operator|.
 name|getPrefetchSize
+argument_list|()
+operator|-
+name|getDispatchedQueueSize
 argument_list|()
 return|;
 block|}
