@@ -631,6 +631,13 @@ name|doOptimzeMessageStorage
 init|=
 literal|true
 decl_stmt|;
+specifier|private
+name|int
+name|maxDestinations
+init|=
+operator|-
+literal|1
+decl_stmt|;
 comment|/*      * percentage of in-flight messages above which optimize message store is disabled      */
 specifier|private
 name|int
@@ -3434,6 +3441,31 @@ block|{
 return|return
 name|persistJMSRedelivered
 return|;
+block|}
+specifier|public
+name|int
+name|getMaxDestinations
+parameter_list|()
+block|{
+return|return
+name|maxDestinations
+return|;
+block|}
+comment|/**      * Sets the maximum number of destinations that can be created      *      * @param maxDestinations      *            maximum number of destinations      */
+specifier|public
+name|void
+name|setMaxDestinations
+parameter_list|(
+name|int
+name|maxDestinations
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxDestinations
+operator|=
+name|maxDestinations
+expr_stmt|;
 block|}
 block|}
 end_class
