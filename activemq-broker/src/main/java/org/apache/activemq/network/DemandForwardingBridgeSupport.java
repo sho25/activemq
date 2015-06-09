@@ -2983,6 +2983,20 @@ condition|)
 block|{
 comment|// separate in-bound channel for forwards so we don't
 comment|// contend with out-bound dispatch on same connection
+name|remoteBrokerInfo
+operator|.
+name|setNetworkConnection
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|duplexInboundLocalBroker
+operator|.
+name|oneway
+argument_list|(
+name|remoteBrokerInfo
+argument_list|)
+expr_stmt|;
 name|ConnectionInfo
 name|duplexLocalConnectionInfo
 init|=
