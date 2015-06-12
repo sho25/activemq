@@ -230,7 +230,7 @@ name|Symbol
 operator|.
 name|valueOf
 argument_list|(
-literal|"apache.org:selector-filter:string"
+literal|"apache.org:no-local-filter:list"
 argument_list|)
 decl_stmt|;
 specifier|public
