@@ -223,7 +223,7 @@ operator|.
 name|getLockKeepAlivePeriod
 argument_list|()
 operator|+
-literal|", which renews the lease, is less than lockAcquireSleepInterval: "
+literal|", which renews the lease, is greater than lockAcquireSleepInterval: "
 operator|+
 name|lockAcquireSleepInterval
 operator|+
