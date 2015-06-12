@@ -993,6 +993,16 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|Object
+name|REDELIVERY_GUARD
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+specifier|private
 specifier|final
 name|ThreadPoolExecutor
 name|connectionExecutor
@@ -2966,6 +2976,22 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+specifier|final
+name|AtomicBoolean
+name|afterDeliveryError
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+comment|/*             * The redelivery guard is to allow the endpoint lifecycle to complete before the messsage is dispatched.             * We dont want the after deliver being called after the redeliver as it may cause some weird stuff.             * */
+synchronized|synchronized
+init|(
+name|REDELIVERY_GUARD
+init|)
+block|{
 try|try
 block|{
 name|ack
@@ -3388,14 +3414,14 @@ name|redeliveryDelay
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*                                     * If we are a non blocking delivery then we need to stop the executor to avoid more                                     * messages being delivered, once the message is redelivered we can restart it.                                     * */
 if|if
 condition|(
+operator|!
 name|connection
 operator|.
 name|isNonBlockingRedelivery
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 name|LOG
@@ -3429,6 +3455,13 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|/*                                             * wait for the first delivery to be complete, i.e. after delivery has been called.                                             * */
+synchronized|synchronized
+init|(
+name|REDELIVERY_GUARD
+init|)
+block|{
+comment|/*                                                 * If its non blocking then we can just dispatch in a new session.                                                 * */
 if|if
 condition|(
 name|connection
@@ -3455,13 +3488,33 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|LOG
+comment|/*                                                     * If there has been an error thrown during afterDelivery then the                                                     * endpoint will be marked as dead so redelivery will fail (and eventually                                                     * the session marked as stale), in this case we can only call dispatch                                                     * which will create a new session with a new endpoint.                                                     * */
+if|if
+condition|(
+name|afterDeliveryError
 operator|.
-name|debug
+name|get
+argument_list|()
+condition|)
+block|{
+operator|(
+operator|(
+name|ActiveMQDispatcher
+operator|)
+name|md
+operator|.
+name|getConsumer
+argument_list|()
+operator|)
+operator|.
+name|dispatch
 argument_list|(
-literal|"Session released, issuing re-delivery..."
+name|md
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 name|executor
 operator|.
 name|executeFirst
@@ -3474,6 +3527,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -3589,6 +3644,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|deliveryListener
 operator|.
 name|afterDelivery
@@ -3599,6 +3656,35 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unable to call after delivery"
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+name|afterDeliveryError
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+throw|throw
+name|t
+throw|;
+block|}
+block|}
+block|}
+comment|/*             * this can be outside the try/catch as if an exception is thrown then this session will be marked as stale anyway.             * It also needs to be outside the redelivery guard.             * */
 try|try
 block|{
 name|executor
@@ -6072,7 +6158,9 @@ operator|.
 name|get
 argument_list|()
 operator|+
-literal|"}"
+literal|"} "
+operator|+
+name|sendMutex
 return|;
 block|}
 specifier|public
