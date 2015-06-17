@@ -643,6 +643,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|networkedBroker
+operator|!=
+literal|null
+condition|)
+block|{
 name|networkedBroker
 operator|.
 name|stop
@@ -653,6 +660,14 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|broker
+operator|!=
+literal|null
+condition|)
+block|{
 name|broker
 operator|.
 name|stop
@@ -663,6 +678,7 @@ operator|.
 name|waitUntilStopped
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
