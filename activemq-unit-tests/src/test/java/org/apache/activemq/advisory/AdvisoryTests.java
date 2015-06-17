@@ -52,6 +52,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -980,6 +992,30 @@ operator|.
 name|getDataStructure
 argument_list|()
 decl_stmt|;
+comment|//This should always be tcp:// because that is the transport that is used to connect even though
+comment|//the nio transport is the first one in the list
+name|assertTrue
+argument_list|(
+operator|(
+operator|(
+name|String
+operator|)
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_ORIGIN_BROKER_URL
+argument_list|)
+operator|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"tcp://"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
 comment|//when includeBodyForAdvisory is true
 name|assertIncludeBodyForAdvisory
@@ -1171,6 +1207,30 @@ argument_list|,
 name|id
 argument_list|)
 expr_stmt|;
+comment|//This should always be tcp:// because that is the transport that is used to connect even though
+comment|//the nio transport is the first one in the list
+name|assertTrue
+argument_list|(
+operator|(
+operator|(
+name|String
+operator|)
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_ORIGIN_BROKER_URL
+argument_list|)
+operator|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"tcp://"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
 comment|//when includeBodyForAdvisory is true
 name|assertIncludeBodyForAdvisory
@@ -1353,6 +1413,19 @@ operator|.
 name|getDataStructure
 argument_list|()
 decl_stmt|;
+comment|//This should be set
+name|assertNotNull
+argument_list|(
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_ORIGIN_BROKER_URL
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
 comment|//when includeBodyForAdvisory is true
 name|assertIncludeBodyForAdvisory
@@ -1571,6 +1644,19 @@ operator|.
 name|getDataStructure
 argument_list|()
 decl_stmt|;
+comment|//This should be set
+name|assertNotNull
+argument_list|(
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_ORIGIN_BROKER_URL
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//Add assertion to make sure body is included for DLQ advisory topics
 comment|//when includeBodyForAdvisory is true
 name|assertIncludeBodyForAdvisory
@@ -1763,6 +1849,19 @@ operator|.
 name|getDataStructure
 argument_list|()
 decl_stmt|;
+comment|//This should be set
+name|assertNotNull
+argument_list|(
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_ORIGIN_BROKER_URL
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
 comment|//when includeBodyForAdvisory is true
 name|assertIncludeBodyForAdvisory
@@ -2017,6 +2116,13 @@ operator|.
 name|setDestinationPolicy
 argument_list|(
 name|pMap
+argument_list|)
+expr_stmt|;
+name|answer
+operator|.
+name|addConnector
+argument_list|(
+literal|"nio://localhost:0"
 argument_list|)
 expr_stmt|;
 name|answer
