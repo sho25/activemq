@@ -495,16 +495,17 @@ argument_list|()
 decl_stmt|;
 name|policyEntry
 operator|.
-name|setProducerFlowControl
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|policyEntry
-operator|.
 name|setExpireMessagesPeriod
 argument_list|(
 literal|0
+argument_list|)
+expr_stmt|;
+comment|// when this fires it will consume 2*pageSize mem which will throw the test
+name|policyEntry
+operator|.
+name|setProducerFlowControl
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|policyMap
