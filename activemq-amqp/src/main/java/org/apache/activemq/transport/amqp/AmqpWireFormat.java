@@ -297,7 +297,7 @@ name|transformer
 init|=
 name|InboundTransformer
 operator|.
-name|TRANSFORMER_NATIVE
+name|TRANSFORMER_JMS
 decl_stmt|;
 specifier|private
 name|boolean
