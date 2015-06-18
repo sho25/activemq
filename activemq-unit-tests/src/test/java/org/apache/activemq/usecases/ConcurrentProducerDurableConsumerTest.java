@@ -493,6 +493,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|runners
+operator|.
+name|Parameterized
+operator|.
+name|Parameters
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -610,9 +624,12 @@ name|PersistenceAdapterChoice
 name|persistenceAdapterChoice
 decl_stmt|;
 annotation|@
-name|Parameterized
-operator|.
 name|Parameters
+argument_list|(
+name|name
+operator|=
+literal|"{0}"
+argument_list|)
 specifier|public
 specifier|static
 name|Collection
@@ -1184,8 +1201,6 @@ name|maxReceiptTime
 argument_list|)
 expr_stmt|;
 block|}
-comment|//assertTrue("max (" + statsWithActive[0] + ") within reasonable multiplier of ave (" + statsWithActive[1] + ")",
-comment|//        statsWithActive[0]< 5 * statsWithActive[1]);
 comment|// compare no active to active
 name|LOG
 operator|.
@@ -2380,22 +2395,6 @@ argument_list|(
 name|policyMap
 argument_list|)
 expr_stmt|;
-comment|//        if (false) {
-comment|//            // external mysql works a lot faster
-comment|//            //
-comment|//            JDBCPersistenceAdapter jdbc = new JDBCPersistenceAdapter();
-comment|//            BasicDataSource ds = new BasicDataSource();
-comment|//            com.mysql.jdbc.Driver d = new com.mysql.jdbc.Driver();
-comment|//            ds.setDriverClassName("com.mysql.jdbc.Driver");
-comment|//            ds.setUrl("jdbc:mysql://localhost/activemq?relaxAutoCommit=true");
-comment|//            ds.setMaxActive(200);
-comment|//            ds.setUsername("root");
-comment|//            ds.setPassword("");
-comment|//            ds.setPoolPreparedStatements(true);
-comment|//            jdbc.setDataSource(ds);
-comment|//            brokerService.setPersistenceAdapter(jdbc);
-comment|/* add mysql bits to the pom in the testing dependencies<dependency><groupId>mysql</groupId><artifactId>mysql-connector-java</artifactId><version>5.1.10</version><scope>test</scope></dependency><dependency><groupId>commons-dbcp</groupId><artifactId>commons-dbcp</artifactId><version>1.2.2</version><scope>test</scope></dependency>              */
-comment|//        } else {
 name|setPersistenceAdapter
 argument_list|(
 name|brokerService
@@ -2403,7 +2402,6 @@ argument_list|,
 name|persistenceAdapterChoice
 argument_list|)
 expr_stmt|;
-comment|//        }
 return|return
 name|brokerService
 return|;
@@ -2603,7 +2601,7 @@ parameter_list|(
 name|JMSException
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 if|if
 condition|(
 operator|!

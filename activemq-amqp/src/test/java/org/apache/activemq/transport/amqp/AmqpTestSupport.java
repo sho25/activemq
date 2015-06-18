@@ -683,7 +683,7 @@ name|brokerService
 operator|.
 name|setStoreOpenWireVersion
 argument_list|(
-name|getstoreOpenWireVersion
+name|getStoreOpenWireVersion
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1215,13 +1215,13 @@ return|;
 block|}
 specifier|protected
 name|int
-name|getstoreOpenWireVersion
+name|getStoreOpenWireVersion
 parameter_list|()
 block|{
 return|return
 name|OpenWireFormat
 operator|.
-name|DEFAULT_VERSION
+name|DEFAULT_WIRE_VERSION
 return|;
 block|}
 specifier|protected

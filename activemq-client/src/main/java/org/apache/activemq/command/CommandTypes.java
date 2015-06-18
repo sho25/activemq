@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Holds the command id constants used by the command objects.  *   *   */
+comment|/**  * Holds the command id constants used by the command objects.  *  *  */
 end_comment
 
 begin_interface
@@ -28,7 +28,7 @@ comment|// What is the latest version of the openwire protocol
 name|byte
 name|PROTOCOL_VERSION
 init|=
-literal|10
+literal|11
 decl_stmt|;
 comment|// What is the latest version of the openwire protocol used in the stores
 name|byte
