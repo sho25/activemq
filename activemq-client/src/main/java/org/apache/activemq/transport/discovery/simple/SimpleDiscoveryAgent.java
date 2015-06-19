@@ -603,6 +603,11 @@ name|devent
 decl_stmt|;
 if|if
 condition|(
+name|running
+operator|.
+name|get
+argument_list|()
+operator|&&
 name|sevent
 operator|.
 name|failed
