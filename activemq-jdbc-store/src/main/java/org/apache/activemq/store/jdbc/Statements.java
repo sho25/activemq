@@ -962,6 +962,19 @@ name|findAllMessageIdsStatement
 return|;
 block|}
 specifier|public
+name|void
+name|setFindAllMessageIdsStatement
+parameter_list|(
+name|String
+name|val
+parameter_list|)
+block|{
+name|findAllMessageIdsStatement
+operator|=
+name|val
+expr_stmt|;
+block|}
+specifier|public
 name|String
 name|getFindLastSequenceIdInMsgsStatement
 parameter_list|()
@@ -1294,43 +1307,6 @@ expr_stmt|;
 block|}
 return|return
 name|findDurableSubMessagesByPriorityStatement
-return|;
-block|}
-specifier|public
-name|String
-name|findAllDurableSubMessagesStatement
-parameter_list|()
-block|{
-if|if
-condition|(
-name|findAllDurableSubMessagesStatement
-operator|==
-literal|null
-condition|)
-block|{
-name|findAllDurableSubMessagesStatement
-operator|=
-literal|"SELECT M.ID, M.MSG FROM "
-operator|+
-name|getFullMessageTableName
-argument_list|()
-operator|+
-literal|" M, "
-operator|+
-name|getFullAckTableName
-argument_list|()
-operator|+
-literal|" D "
-operator|+
-literal|" WHERE D.CONTAINER=? AND D.CLIENT_ID=? AND D.SUB_NAME=?"
-operator|+
-literal|" AND M.CONTAINER=D.CONTAINER AND M.ID> D.LAST_ACKED_ID"
-operator|+
-literal|" ORDER BY M.ID"
-expr_stmt|;
-block|}
-return|return
-name|findAllDurableSubMessagesStatement
 return|;
 block|}
 specifier|public
@@ -1844,7 +1820,7 @@ literal|" WHERE CONTAINER=?"
 operator|+
 literal|" AND XID IS NULL"
 operator|+
-literal|" AND ((ID> ? AND ID< ? AND PRIORITY = ?) OR PRIORITY< ?)"
+literal|" AND ((ID> ? AND ID< ? AND PRIORITY>= ?) OR PRIORITY< ?)"
 operator|+
 literal|" ORDER BY PRIORITY DESC, ID"
 expr_stmt|;
@@ -1852,6 +1828,19 @@ block|}
 return|return
 name|findNextMessagesByPriorityStatement
 return|;
+block|}
+specifier|public
+name|void
+name|setFindNextMessagesByPriorityStatement
+parameter_list|(
+name|String
+name|val
+parameter_list|)
+block|{
+name|findNextMessagesByPriorityStatement
+operator|=
+name|val
+expr_stmt|;
 block|}
 comment|/**      * @return the lastAckedDurableSubscriberMessageStatement      */
 specifier|public
