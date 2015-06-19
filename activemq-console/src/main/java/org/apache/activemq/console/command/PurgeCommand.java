@@ -21,16 +21,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -71,36 +61,6 @@ begin_import
 import|import
 name|javax
 operator|.
-name|jms
-operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Message
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|MBeanServerConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
 name|management
 operator|.
 name|MBeanServerInvocationHandler
@@ -129,30 +89,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|openmbean
-operator|.
-name|CompositeData
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|remote
-operator|.
-name|JMXConnector
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -164,36 +100,6 @@ operator|.
 name|jmx
 operator|.
 name|QueueViewMBean
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|console
-operator|.
-name|util
-operator|.
-name|AmqMessagesUtil
 import|;
 end_import
 
@@ -240,6 +146,8 @@ block|,
 literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matched by the query similar to"
 block|,
 literal|"                                  the messages selector format."
+block|,
+literal|"    --reset                       After the purge operation, reset the destination statistics."
 block|,
 literal|"    --jmxurl<url>                Set the JMX URL to connect to."
 block|,
@@ -314,6 +222,10 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
+specifier|private
+name|boolean
+name|resetStatistics
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -336,7 +248,9 @@ return|return
 literal|"Delete selected destination's messages that matches the message selector"
 return|;
 block|}
-comment|/**      * Execute the purge command, which allows you to purge the messages in a      * given JMS destination      *       * @param tokens - command arguments      * @throws Exception      */
+comment|/**      * Execute the purge command, which allows you to purge the messages in a      * given JMS destination      *      * @param tokens - command arguments      * @throws Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|runTask
@@ -460,9 +374,6 @@ block|{
 name|QueueViewMBean
 name|proxy
 init|=
-operator|(
-name|QueueViewMBean
-operator|)
 name|MBeanServerInvocationHandler
 operator|.
 name|newProxyInstance
@@ -556,6 +467,17 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|resetStatistics
+condition|)
+block|{
+name|proxy
+operator|.
+name|resetStatistics
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -588,7 +510,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Purge all the messages in the queue      *       * @param queue - ObjectName of the queue to purge      * @throws Exception      */
+comment|/**      * Purge all the messages in the queue      *      * @param queue - ObjectName of the queue to purge      * @throws Exception      */
 specifier|public
 name|void
 name|purgeQueue
@@ -633,8 +555,36 @@ index|[]
 block|{}
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|resetStatistics
+condition|)
+block|{
+name|createJmxConnection
+argument_list|()
+operator|.
+name|invoke
+argument_list|(
+name|queue
+argument_list|,
+literal|"resetStatistics"
+argument_list|,
+operator|new
+name|Object
+index|[]
+block|{}
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{}
+argument_list|)
+expr_stmt|;
 block|}
-comment|/**      * Handle the --msgsel, --xmsgsel.      *       * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+block|}
+comment|/**      * Handle the --msgsel, --xmsgsel.      *      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|handleOption
@@ -671,17 +621,12 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -708,9 +653,6 @@ init|=
 operator|new
 name|StringTokenizer
 argument_list|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -762,17 +704,12 @@ operator|.
 name|isEmpty
 argument_list|()
 operator|||
-operator|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|startsWith
 argument_list|(
@@ -799,9 +736,6 @@ init|=
 operator|new
 name|StringTokenizer
 argument_list|(
-operator|(
-name|String
-operator|)
 name|tokens
 operator|.
 name|remove
@@ -832,6 +766,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|token
+operator|.
+name|startsWith
+argument_list|(
+literal|"--reset"
+argument_list|)
+condition|)
+block|{
+name|resetStatistics
+operator|=
+literal|true
+expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Let super class handle unknown option
@@ -846,7 +796,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Converts the message selector as provided on command line      * argument to activem-admin into an SQL-92 conform string.       * E.g.      *   "JMSMessageID='*:10',JMSPriority>5"      * gets converted into       *   "(JMSMessageID='%:10') AND (JMSPriority>5)"      *       * @param tokens - List of message selector query parameters       * @return SQL-92 string of that query.       */
+comment|/**      * Converts the message selector as provided on command line      * argument to activem-admin into an SQL-92 conform string.      * E.g.      *   "JMSMessageID='*:10',JMSPriority>5"      * gets converted into      *   "(JMSMessageID='%:10') AND (JMSPriority>5)"      *      * @param tokens - List of message selector query parameters      * @return SQL-92 string of that query.      */
 specifier|public
 name|String
 name|convertToSQL92
@@ -943,6 +893,8 @@ name|selector
 return|;
 block|}
 comment|/**      * Print the help messages for the browse command      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|printHelp
