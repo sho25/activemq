@@ -3679,7 +3679,11 @@ literal|true
 argument_list|)
 expr_stmt|;
 throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
 name|t
+argument_list|)
 throw|;
 block|}
 block|}
