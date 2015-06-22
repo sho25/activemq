@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A LoginModule allowing for SSL certificate based authentication based on  * Distinguished Names (DN) stored in text files. The DNs are parsed using a  * Properties class where each line is<user_name>=<user_DN>. This class also  * uses a group definition file where each line is<group_name>=<user_name_1>,<user_name_2>,etc.  * The user and group files' locations must be specified in the  * org.apache.activemq.jaas.textfiledn.user and  * org.apache.activemq.jaas.textfiledn.user properties respectively. NOTE: This  * class will re-read user and group files for every authentication (i.e it does  * live updates of allowed groups and users).  *   * @author sepandm@gmail.com (Sepand)  */
+comment|/**  * A LoginModule allowing for SSL certificate based authentication based on  * Distinguished Names (DN) stored in text files. The DNs are parsed using a  * Properties class where each line is<user_name>=<user_DN>. This class also  * uses a group definition file where each line is<group_name>=<user_name_1>,<user_name_2>,etc.  * The user and group files' locations must be specified in the  * org.apache.activemq.jaas.textfiledn.user and  * org.apache.activemq.jaas.textfiledn.user properties respectively. NOTE: This  * class will re-read user and group files for every authentication (i.e it does  * live updates of allowed groups and users).  *  * @author sepandm@gmail.com (Sepand)  */
 end_comment
 
 begin_class
@@ -278,7 +278,7 @@ operator|+
 literal|""
 expr_stmt|;
 block|}
-comment|/**      * Overriding to allow DN authorization based on DNs specified in text      * files.      *       * @param certs The certificate the incoming connection provided.      * @return The user's authenticated name or null if unable to authenticate      *         the user.      * @throws LoginException Thrown if unable to find user file or connection      *                 certificate.      */
+comment|/**      * Overriding to allow DN authorization based on DNs specified in text      * files.      *      * @param certs The certificate the incoming connection provided.      * @return The user's authenticated name or null if unable to authenticate      *         the user.      * @throws LoginException Thrown if unable to find user file or connection      *                 certificate.      */
 annotation|@
 name|Override
 specifier|protected
@@ -327,7 +327,7 @@ name|Properties
 argument_list|()
 decl_stmt|;
 try|try
-block|{
+init|(
 name|java
 operator|.
 name|io
@@ -344,18 +344,14 @@ name|FileInputStream
 argument_list|(
 name|usersFile
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|users
 operator|.
 name|load
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -454,7 +450,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Overriding to allow for group discovery based on text files.      *       * @param username The name of the user being examined. This is the same      *                name returned by getUserNameForCertificates.      * @return A Set of name Strings for groups this user belongs to.      * @throws LoginException Thrown if unable to find group definition file.      */
+comment|/**      * Overriding to allow for group discovery based on text files.      *      * @param username The name of the user being examined. This is the same      *                name returned by getUserNameForCertificates.      * @return A Set of name Strings for groups this user belongs to.      * @throws LoginException Thrown if unable to find group definition file.      */
 annotation|@
 name|Override
 specifier|protected

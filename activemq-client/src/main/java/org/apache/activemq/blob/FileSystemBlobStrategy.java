@@ -163,7 +163,7 @@ name|createRootFolder
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Create the root folder if not exist       *       * @throws MalformedURLException      * @throws URISyntaxException      */
+comment|/**      * Create the root folder if not exist      *      * @throws MalformedURLException      * @throws URISyntaxException      */
 specifier|protected
 name|void
 name|createRootFolder
@@ -245,18 +245,27 @@ name|JMSException
 throws|,
 name|IOException
 block|{
-return|return
-name|uploadStream
-argument_list|(
-name|message
-argument_list|,
+try|try
+init|(
+name|FileInputStream
+name|fis
+init|=
 operator|new
 name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
+init|)
+block|{
+return|return
+name|uploadStream
+argument_list|(
+name|message
+argument_list|,
+name|fis
 argument_list|)
 return|;
+block|}
 block|}
 comment|/*      * (non-Javadoc)      * @see org.apache.activemq.blob.BlobUploadStrategy#uploadStream(org.apache.activemq.command.ActiveMQBlobMessage, java.io.InputStream)      */
 specifier|public
@@ -282,6 +291,8 @@ argument_list|(
 name|message
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|FileOutputStream
 name|out
 init|=
@@ -290,7 +301,8 @@ name|FileOutputStream
 argument_list|(
 name|f
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|byte
 index|[]
 name|buffer
@@ -348,16 +360,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-name|out
-operator|.
-name|flush
-argument_list|()
-expr_stmt|;
-name|out
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 comment|// File.toURL() is deprecated
 return|return
 name|f
@@ -442,7 +445,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Return the {@link File} for the {@link ActiveMQBlobMessage}.       *       * @param message      * @return file      * @throws JMSException      * @throws IOException       */
+comment|/**      * Return the {@link File} for the {@link ActiveMQBlobMessage}.      *      * @param message      * @return file      * @throws JMSException      * @throws IOException      */
 specifier|protected
 name|File
 name|getFile

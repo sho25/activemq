@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the  * setBinaryStream()/getBinaryStream() operations.  *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li>Axion</li>  *</ul>  *   * @org.apache.xbean.XBean element="streamJDBCAdapter"  *   *   */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the  * setBinaryStream()/getBinaryStream() operations.  *  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li>Axion</li>  *</ul>  *  * @org.apache.xbean.XBean element="streamJDBCAdapter"  *  *  */
 end_comment
 
 begin_class
@@ -122,7 +122,7 @@ throws|throws
 name|SQLException
 block|{
 try|try
-block|{
+init|(
 name|InputStream
 name|is
 init|=
@@ -132,10 +132,10 @@ name|getBinaryStream
 argument_list|(
 name|index
 argument_list|)
-decl_stmt|;
+init|;
 name|ByteArrayOutputStream
 name|os
-init|=
+operator|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|(
@@ -143,7 +143,8 @@ literal|1024
 operator|*
 literal|4
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|int
 name|ch
 decl_stmt|;
@@ -169,16 +170,6 @@ name|ch
 argument_list|)
 expr_stmt|;
 block|}
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|os
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|os
 operator|.
