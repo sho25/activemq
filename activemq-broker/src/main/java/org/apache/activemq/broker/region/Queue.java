@@ -4585,6 +4585,16 @@ name|isPersistent
 argument_list|()
 condition|)
 block|{
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|setFutureOrSequenceLong
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 if|if
