@@ -2779,6 +2779,16 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|earlyAck
+operator|.
+name|setFirstMessageId
+argument_list|(
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
