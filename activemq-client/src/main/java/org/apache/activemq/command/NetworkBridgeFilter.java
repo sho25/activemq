@@ -453,7 +453,7 @@ operator|.
 name|isNetworkSubscription
 argument_list|()
 operator|&&
-name|advisoryIsInterpretedByNetworkBridge
+name|isAdvisoryInterpretedByNetworkBridge
 argument_list|(
 name|message
 argument_list|)
@@ -627,9 +627,10 @@ return|return
 literal|true
 return|;
 block|}
-specifier|private
+specifier|public
+specifier|static
 name|boolean
-name|advisoryIsInterpretedByNetworkBridge
+name|isAdvisoryInterpretedByNetworkBridge
 parameter_list|(
 name|Message
 name|message
