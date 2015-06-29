@@ -467,14 +467,6 @@ name|AtomicBoolean
 argument_list|()
 decl_stmt|;
 specifier|private
-name|long
-name|connectAttemptTimeout
-init|=
-name|MQTTWireFormat
-operator|.
-name|DEFAULT_CONNECTION_TIMEOUT
-decl_stmt|;
-specifier|private
 name|boolean
 name|trace
 decl_stmt|;
@@ -1288,7 +1280,10 @@ name|getConnectAttemptTimeout
 parameter_list|()
 block|{
 return|return
-name|connectAttemptTimeout
+name|wireFormat
+operator|.
+name|getConnectAttemptTimeout
+argument_list|()
 return|;
 block|}
 comment|/**      * Sets the timeout value used to fail a connection if no CONNECT frame is read      * in the given interval.      *      * @param connectTimeout      *        the connection frame received timeout value.      */
@@ -1302,9 +1297,10 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|connectAttemptTimeout
-operator|=
+name|setConnectAttemptTimeout
+argument_list|(
 name|connectTimeout
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
