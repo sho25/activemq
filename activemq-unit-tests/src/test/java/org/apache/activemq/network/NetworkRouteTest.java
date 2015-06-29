@@ -1510,6 +1510,16 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
+name|msgDispatch
+operator|.
+name|setDestination
+argument_list|(
+name|msg
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ConsumerInfo
 name|path1
 init|=
