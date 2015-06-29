@@ -105,35 +105,6 @@ specifier|private
 name|NetworkBridgeFactory
 parameter_list|()
 block|{     }
-comment|/**      * Create a network bridge      *       * @param config      * @param localTransport      * @param remoteTransport      * @return the NetworkBridge      */
-specifier|public
-specifier|static
-name|DemandForwardingBridge
-name|createBridge
-parameter_list|(
-name|NetworkBridgeConfiguration
-name|config
-parameter_list|,
-name|Transport
-name|localTransport
-parameter_list|,
-name|Transport
-name|remoteTransport
-parameter_list|)
-block|{
-return|return
-name|createBridge
-argument_list|(
-name|config
-argument_list|,
-name|localTransport
-argument_list|,
-name|remoteTransport
-argument_list|,
-literal|null
-argument_list|)
-return|;
-block|}
 comment|/**      * create a network bridge      *       * @param configuration      * @param localTransport      * @param remoteTransport      * @param listener      * @return the NetworkBridge      */
 specifier|public
 specifier|static
@@ -258,15 +229,6 @@ name|uri
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|map
-operator|.
-name|put
-argument_list|(
-literal|"network"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
 name|map
 operator|.
 name|put

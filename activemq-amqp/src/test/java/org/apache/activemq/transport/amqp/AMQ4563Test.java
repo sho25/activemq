@@ -232,7 +232,7 @@ specifier|final
 name|String
 name|KAHADB_DIRECTORY
 init|=
-literal|"target/activemq-data/kahadb-amq4563"
+literal|"./target/activemq-data/kahadb-amq4563"
 decl_stmt|;
 annotation|@
 name|Test
@@ -1343,7 +1343,7 @@ annotation|@
 name|Override
 specifier|protected
 name|int
-name|getstoreOpenWireVersion
+name|getStoreOpenWireVersion
 parameter_list|()
 block|{
 return|return

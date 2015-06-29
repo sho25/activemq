@@ -967,7 +967,7 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|//Account for virtual destinations
+comment|// Account for virtual destinations
 if|if
 condition|(
 name|dest
@@ -1932,6 +1932,16 @@ operator|.
 name|setConsumerId
 argument_list|(
 name|createConsumerId
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|rc
+operator|.
+name|setNoLocal
+argument_list|(
+name|info
+operator|.
+name|isNoLocal
 argument_list|()
 argument_list|)
 expr_stmt|;

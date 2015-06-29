@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to represent a durable subscription.  *   * @openwire:marshaller code="55"  *   */
+comment|/**  * Used to represent a durable subscription.  *  * @openwire:marshaller code="55"  *  */
 end_comment
 
 begin_class
@@ -70,6 +70,10 @@ specifier|protected
 name|String
 name|selector
 decl_stmt|;
+specifier|protected
+name|boolean
+name|noLocal
+decl_stmt|;
 specifier|public
 name|SubscriptionInfo
 parameter_list|()
@@ -97,6 +101,8 @@ operator|=
 name|subscriptionName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -131,7 +137,7 @@ operator|=
 name|clientId
 expr_stmt|;
 block|}
-comment|/**      * This is the a resolved destination that the subscription is receiving      * messages from. This will never be a pattern or a composite destination.      *       * @openwire:property version=1 cache=true      */
+comment|/**      * This is the a resolved destination that the subscription is receiving      * messages from. This will never be a pattern or a composite destination.      *      * @openwire:property version=1 cache=true      */
 specifier|public
 name|ActiveMQDestination
 name|getDestination
@@ -231,6 +237,8 @@ operator|=
 name|subscriptionName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -398,7 +406,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * The destination the client originally subscribed to.. This may not match      * the {@see getDestination} method if the subscribed destination uses      * patterns or composites.      *       * If the subscribed destinationis not set, this just ruturns the      * desitination.      *       * @openwire:property version=3      */
+comment|/**      * The destination the client originally subscribed to.. This may not match      * the {@see getDestination} method if the subscribed destination uses      * patterns or composites.      *      * If the subscribed destinationis not set, this just ruturns the      * desitination.      *      * @openwire:property version=3      */
 specifier|public
 name|ActiveMQDestination
 name|getSubscribedDestination
@@ -433,6 +441,31 @@ operator|.
 name|subscribedDestination
 operator|=
 name|subscribedDestination
+expr_stmt|;
+block|}
+comment|/**      * @openwire:property version=11      */
+specifier|public
+name|boolean
+name|isNoLocal
+parameter_list|()
+block|{
+return|return
+name|noLocal
+return|;
+block|}
+specifier|public
+name|void
+name|setNoLocal
+parameter_list|(
+name|boolean
+name|noLocal
+parameter_list|)
+block|{
+name|this
+operator|.
+name|noLocal
+operator|=
+name|noLocal
 expr_stmt|;
 block|}
 block|}

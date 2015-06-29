@@ -556,18 +556,17 @@ specifier|final
 name|int
 name|SIZE
 init|=
-literal|6
+literal|10
 operator|*
 literal|1024
-operator|*
-literal|5
 decl_stmt|;
 specifier|final
 name|int
 name|MSG_COUNT
 init|=
-literal|60000
+literal|30000
 decl_stmt|;
+comment|// very slow consuming 60k messages of size 30k
 specifier|final
 name|CountDownLatch
 name|done

@@ -73,6 +73,22 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|transport
+operator|.
+name|vm
+operator|.
+name|VMTransport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|InetAddressUtil
@@ -193,6 +209,20 @@ operator|.
 name|getScheme
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+literal|"vm"
+operator|.
+name|equals
+argument_list|(
+name|scheme
+argument_list|)
+condition|)
+block|{
+return|return
+name|connectorURI
+return|;
+block|}
 name|String
 name|userInfo
 init|=
@@ -545,7 +575,7 @@ return|return
 name|publishedHostStrategy
 return|;
 block|}
-comment|/**      * @param publishedHostStrategy the publishedHostStrategy to set      */
+comment|/**      * @param strategy the publishedHostStrategy to set      */
 specifier|public
 name|void
 name|setPublishedHostStrategy
@@ -561,7 +591,7 @@ operator|=
 name|strategy
 expr_stmt|;
 block|}
-comment|/**      * @param publishedHostStrategy the publishedHostStrategy to set      */
+comment|/**      * @param strategy the publishedHostStrategy to set      */
 specifier|public
 name|void
 name|setPublishedHostStrategy

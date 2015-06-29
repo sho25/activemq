@@ -1976,7 +1976,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|5
+literal|10
 operator|*
 literal|60
 operator|*
@@ -2068,7 +2068,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|5
+literal|10
 operator|*
 literal|60
 operator|*
@@ -2150,7 +2150,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|5
+literal|10
 operator|*
 literal|60
 operator|*
@@ -2176,7 +2176,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|5
+literal|10
 operator|*
 literal|60
 operator|*
@@ -2209,7 +2209,7 @@ name|Exception
 block|{
 name|numtoSend
 operator|=
-literal|10000
+literal|5000
 expr_stmt|;
 name|sleepBetweenSend
 operator|=
@@ -2763,7 +2763,7 @@ literal|1000
 operator|*
 literal|60
 operator|*
-literal|4
+literal|10
 decl_stmt|;
 while|while
 condition|(
@@ -2800,7 +2800,9 @@ name|join
 argument_list|(
 literal|1000
 operator|*
-literal|30
+literal|60
+operator|*
+literal|10
 argument_list|)
 expr_stmt|;
 if|if

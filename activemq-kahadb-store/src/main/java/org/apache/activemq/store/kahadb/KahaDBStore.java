@@ -2419,7 +2419,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// allow concurrent dispatch by setting entry locator,
 name|indexListener
 operator|.
 name|onAdd

@@ -429,7 +429,6 @@ name|e
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
 literal|1
 return|;
 block|}
