@@ -134,6 +134,7 @@ comment|/**  * Implements web socket and mediates between servlet and the broker
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|StompSocket
 extends|extends
@@ -160,6 +161,19 @@ specifier|private
 name|Session
 name|session
 decl_stmt|;
+specifier|public
+name|StompSocket
+parameter_list|(
+name|String
+name|remoteAddress
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|remoteAddress
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
