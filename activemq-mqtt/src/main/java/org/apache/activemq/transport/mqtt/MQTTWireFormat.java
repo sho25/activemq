@@ -190,6 +190,14 @@ name|maxFrameSize
 init|=
 name|MAX_MESSAGE_LENGTH
 decl_stmt|;
+specifier|private
+name|long
+name|connectAttemptTimeout
+init|=
+name|MQTTWireFormat
+operator|.
+name|DEFAULT_CONNECTION_TIMEOUT
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -621,6 +629,32 @@ name|MAX_MESSAGE_LENGTH
 argument_list|,
 name|maxFrameSize
 argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @return the timeout value used to fail a connection if no CONNECT frame read.      */
+specifier|public
+name|long
+name|getConnectAttemptTimeout
+parameter_list|()
+block|{
+return|return
+name|connectAttemptTimeout
+return|;
+block|}
+comment|/**      * Sets the timeout value used to fail a connection if no CONNECT frame is read      * in the given interval.      *      * @param connectTimeout      *        the connection frame received timeout value.      */
+specifier|public
+name|void
+name|setConnectAttemptTimeout
+parameter_list|(
+name|long
+name|connectTimeout
+parameter_list|)
+block|{
+name|this
+operator|.
+name|connectAttemptTimeout
+operator|=
+name|connectTimeout
 expr_stmt|;
 block|}
 block|}

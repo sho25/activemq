@@ -1025,6 +1025,7 @@ return|return
 name|protocolConverter
 return|;
 block|}
+specifier|public
 specifier|synchronized
 name|void
 name|startConnectChecker
