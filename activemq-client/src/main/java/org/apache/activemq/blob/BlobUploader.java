@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A helper class to represent a required upload of a BLOB to some remote URL  *   *   */
+comment|/**  * A helper class to represent a required upload of a BLOB to some remote URL  *  *  */
 end_comment
 
 begin_class

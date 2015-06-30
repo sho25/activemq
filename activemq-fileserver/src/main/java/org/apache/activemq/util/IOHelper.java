@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -459,6 +459,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
 name|byte
 index|[]
 name|buffer
@@ -507,6 +509,9 @@ name|buffer
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
 name|in
 operator|.
 name|close
@@ -517,6 +522,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 static|static
 block|{

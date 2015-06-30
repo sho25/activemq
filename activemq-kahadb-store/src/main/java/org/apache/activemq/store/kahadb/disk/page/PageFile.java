@@ -1012,6 +1012,8 @@ index|[
 name|length
 index|]
 expr_stmt|;
+try|try
+init|(
 name|RandomAccessFile
 name|file
 init|=
@@ -1022,7 +1024,8 @@ name|tmpFile
 argument_list|,
 literal|"r"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|file
 operator|.
 name|seek
@@ -1037,11 +1040,7 @@ argument_list|(
 name|diskBound
 argument_list|)
 expr_stmt|;
-name|file
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 name|diskBoundLocation
 operator|=
 operator|-

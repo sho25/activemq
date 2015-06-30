@@ -2252,21 +2252,16 @@ name|LOCAL_HOST_NAME
 operator|=
 name|localHostName
 expr_stmt|;
-name|InputStream
-name|in
-init|=
-literal|null
-decl_stmt|;
 name|String
 name|version
 init|=
 literal|null
 decl_stmt|;
-if|if
-condition|(
-operator|(
+try|try
+init|(
+name|InputStream
 name|in
-operator|=
+init|=
 name|BrokerService
 operator|.
 name|class
@@ -2275,25 +2270,27 @@ name|getResourceAsStream
 argument_list|(
 literal|"/org/apache/activemq/version.txt"
 argument_list|)
-operator|)
+init|)
+block|{
+if|if
+condition|(
+name|in
 operator|!=
 literal|null
 condition|)
 block|{
-name|BufferedReader
-name|reader
+try|try
+init|(
+name|InputStreamReader
+name|isr
 init|=
-operator|new
-name|BufferedReader
-argument_list|(
 operator|new
 name|InputStreamReader
 argument_list|(
 name|in
 argument_list|)
-argument_list|)
-decl_stmt|;
-try|try
+init|;                     BufferedReader reader = new BufferedReader(isr)
+block|)
 block|{
 name|version
 operator|=
@@ -2303,18 +2300,32 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
-name|Exception
-name|e
+name|IOException
+name|ie
 parameter_list|)
-block|{             }
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Error reading broker version "
+argument_list|,
+name|ie
+argument_list|)
+expr_stmt|;
 block|}
 name|BROKER_VERSION
 operator|=
 name|version
 expr_stmt|;
 block|}
+end_class
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -2331,6 +2342,9 @@ operator|+
 literal|"]"
 return|;
 block|}
+end_function
+
+begin_function
 specifier|private
 name|String
 name|getBrokerVersion
@@ -2359,7 +2373,13 @@ return|return
 name|version
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -2381,7 +2401,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new transport connector for the given bind address      *      * @return the newly created and added transport connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -2402,7 +2428,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new transport connector for the given TransportServer transport      *      * @return the newly created and added transport connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -2424,7 +2456,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new transport connector      *      * @return the transport connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|TransportConnector
 name|addConnector
@@ -2446,7 +2484,13 @@ return|return
 name|connector
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Stops and removes a transport connector from the broker.      *      * @param connector      * @return true if the connector has been previously added to the broker      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|removeConnector
@@ -2482,7 +2526,13 @@ return|return
 name|rc
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new network connector using the given discovery address      *      * @return the newly created and added network connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -2504,7 +2554,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new proxy connector using the given bind address      *      * @return the newly created and added network connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -2526,7 +2582,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new network connector using the given discovery address      *      * @return the newly created and added network connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -2553,7 +2615,13 @@ name|connector
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new proxy connector using the given bind address      *      * @return the newly created and added network connector      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -2596,7 +2664,13 @@ name|connector
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new network connector to connect this broker to a federated      * network      */
+end_comment
+
+begin_function
 specifier|public
 name|NetworkConnector
 name|addNetworkConnector
@@ -2724,7 +2798,13 @@ return|return
 name|connector
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Removes the given network connector without stopping it. The caller      * should call {@link NetworkConnector#stop()} to close the connector      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|removeNetworkConnector
@@ -2758,6 +2838,9 @@ return|return
 name|answer
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|ProxyConnector
 name|addProxyConnector
@@ -2804,6 +2887,9 @@ return|return
 name|connector
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|JmsConnector
 name|addJmsConnector
@@ -2844,6 +2930,9 @@ return|return
 name|connector
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|JmsConnector
 name|removeJmsConnector
@@ -2870,6 +2959,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|masterFailed
@@ -2948,6 +3040,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|String
 name|getUptime
@@ -2979,6 +3074,9 @@ name|delta
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|long
 name|getUptimeMillis
@@ -3009,6 +3107,9 @@ name|getTime
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isStarted
@@ -3028,7 +3129,13 @@ operator|==
 literal|0
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Forces a start of the broker.      * By default a BrokerService instance that was      * previously stopped using BrokerService.stop() cannot be restarted      * using BrokerService.start().      * This method enforces a restart.      * It is not recommended to force a restart of the broker and will not work      * for most but some very trivial broker configurations.      * For restarting a broker instance we recommend to first call stop() on      * the old instance and then recreate a new BrokerService instance.      *      * @param force - if true enforces a restart.      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|start
@@ -3061,8 +3168,17 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|// Service interface
+end_comment
+
+begin_comment
 comment|// -------------------------------------------------------------------------
+end_comment
+
+begin_function
 specifier|protected
 name|boolean
 name|shouldAutostart
@@ -3072,7 +3188,13 @@ return|return
 literal|true
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to autoStart, done to prevent backwards incompatible signature change      */
+end_comment
+
+begin_function
 annotation|@
 name|PostConstruct
 specifier|private
@@ -3101,7 +3223,13 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      *      * @throws Exception      * @org. apache.xbean.InitMethod      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|autoStart
@@ -3120,6 +3248,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -3376,6 +3507,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|startPersistenceAdapter
@@ -3456,6 +3590,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|doStartPersistenceAdapter
@@ -3561,6 +3698,9 @@ throw|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|startBroker
@@ -3641,6 +3781,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|void
 name|doStartBroker
@@ -3868,7 +4011,13 @@ name|nowMasterBroker
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * JSR-250 callback wrapper; converts checked exceptions to runtime exceptions      *      * delegates to stop, done to prevent backwards incompatible signature change      */
+end_comment
+
+begin_function
 annotation|@
 name|PreDestroy
 specifier|private
@@ -3895,7 +4044,13 @@ argument_list|()
 throw|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      *      * @throws Exception      * @org.apache .xbean.DestroyMethod      */
+end_comment
+
+begin_function
 annotation|@
 name|Override
 specifier|public
@@ -4356,6 +4511,9 @@ name|throwFirstException
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|checkQueueSize
@@ -4486,7 +4644,13 @@ operator|==
 literal|0
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * This method (both connectorName and queueName are using regex to match)      * 1. stop the connector (supposed the user input the connector which the      * clients connect to) 2. to check whether there is any pending message on      * the queues defined by queueName 3. supposedly, after stop the connector,      * client should failover to other broker and pending messages should be      * forwarded. if no pending messages, the method finally call stop to stop      * the broker.      *      * @param connectorName      * @param queueName      * @param timeout      * @param pollInterval      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|stopGracefully
@@ -4705,7 +4869,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * A helper method to block the caller thread until the broker has been      * stopped      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|waitUntilStopped
@@ -4741,6 +4911,9 @@ comment|// ignore
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isStopped
@@ -4753,7 +4926,13 @@ name|get
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * A helper method to block the caller thread until the broker has fully started      * @return boolean true if wait succeeded false if broker was not started or was stopped      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|waitUntilStarted
@@ -4766,7 +4945,13 @@ name|DEFAULT_START_TIMEOUT
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * A helper method to block the caller thread until the broker has fully started      *      * @param timeout      *        the amount of time to wait before giving up and returning false.      *      * @return boolean true if wait succeeded false if broker was not started or was stopped      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|waitUntilStarted
@@ -4859,9 +5044,21 @@ return|return
 name|waitSucceeded
 return|;
 block|}
+end_function
+
+begin_comment
 comment|// Properties
+end_comment
+
+begin_comment
 comment|// -------------------------------------------------------------------------
+end_comment
+
+begin_comment
 comment|/**      * Returns the message broker      */
+end_comment
+
+begin_function
 specifier|public
 name|Broker
 name|getBroker
@@ -4886,7 +5083,13 @@ return|return
 name|broker
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Returns the administration view of the broker; used to create and destroy      * resources such as queues and topics. Note this method returns null if JMX      * is disabled.      */
+end_comment
+
+begin_function
 specifier|public
 name|BrokerView
 name|getAdminView
@@ -4910,6 +5113,9 @@ return|return
 name|adminView
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setAdminView
@@ -4925,6 +5131,9 @@ operator|=
 name|adminView
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|String
 name|getBrokerName
@@ -4934,7 +5143,13 @@ return|return
 name|brokerName
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the name of this broker; which must be unique in the network      *      * @param brokerName      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setBrokerName
@@ -5003,6 +5218,9 @@ name|trim
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|PersistenceAdapterFactory
 name|getPersistenceFactory
@@ -5012,6 +5230,9 @@ return|return
 name|persistenceFactory
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|File
 name|getDataDirectoryFile
@@ -5040,6 +5261,9 @@ return|return
 name|dataDirectoryFile
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|File
 name|getBrokerDataDirectory
@@ -5062,7 +5286,13 @@ name|brokerDir
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *      * @param dataDirectory      *            the directory to store data files      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setDataDirectory
@@ -5081,7 +5311,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the directory in which the data files will be stored by default for      * the JDBC and Journal persistence adaptors.      *      * @param dataDirectoryFile      *            the directory to store data files      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setDataDirectoryFile
@@ -5097,7 +5333,13 @@ operator|=
 name|dataDirectoryFile
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the tmpDataDirectory      */
+end_comment
+
+begin_function
 specifier|public
 name|File
 name|getTmpDataDirectory
@@ -5126,7 +5368,13 @@ return|return
 name|tmpDataDirectory
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param tmpDataDirectory      *            the tmpDataDirectory to set      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setTmpDataDirectory
@@ -5142,6 +5390,9 @@ operator|=
 name|tmpDataDirectory
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setPersistenceFactory
@@ -5157,6 +5408,9 @@ operator|=
 name|persistenceFactory
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setDestinationFactory
@@ -5172,6 +5426,9 @@ operator|=
 name|destinationFactory
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isPersistent
@@ -5181,7 +5438,13 @@ return|return
 name|persistent
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not persistence is enabled or disabled.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setPersistent
@@ -5197,6 +5460,9 @@ operator|=
 name|persistent
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isPopulateJMSXUserID
@@ -5206,7 +5472,13 @@ return|return
 name|populateJMSXUserID
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not the broker should populate the JMSXUserID header.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setPopulateJMSXUserID
@@ -5222,6 +5494,9 @@ operator|=
 name|populateJMSXUserID
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|SystemUsage
 name|getSystemUsage
@@ -5372,6 +5647,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSystemUsage
@@ -5434,7 +5712,13 @@ name|systemUsage
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the consumerUsageManager      * @throws IOException      */
+end_comment
+
+begin_function
 specifier|public
 name|SystemUsage
 name|getConsumerSystemUsage
@@ -5511,7 +5795,13 @@ operator|.
 name|consumerSystemUsaage
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param consumerSystemUsaage      *            the storeSystemUsage to set      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setConsumerSystemUsage
@@ -5551,7 +5841,13 @@ name|consumerSystemUsaage
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the producerUsageManager      * @throws IOException      */
+end_comment
+
+begin_function
 specifier|public
 name|SystemUsage
 name|getProducerSystemUsage
@@ -5618,7 +5914,13 @@ return|return
 name|producerSystemUsage
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param producerUsageManager      *            the producerUsageManager to set      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setProducerSystemUsage
@@ -5658,6 +5960,9 @@ name|producerSystemUsage
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|PersistenceAdapter
 name|getPersistenceAdapter
@@ -5696,7 +6001,13 @@ return|return
 name|persistenceAdapter
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the persistence adaptor implementation to use for this broker      *      * @throws IOException      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setPersistenceAdapter
@@ -5755,6 +6066,9 @@ name|persistenceAdapter
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|TaskRunnerFactory
 name|getTaskRunnerFactory
@@ -5816,6 +6130,9 @@ operator|.
 name|taskRunnerFactory
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setTaskRunnerFactory
@@ -5831,6 +6148,9 @@ operator|=
 name|taskRunnerFactory
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|TaskRunnerFactory
 name|getPersistenceTaskRunnerFactory
@@ -5865,6 +6185,9 @@ return|return
 name|persistenceTaskRunnerFactory
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setPersistenceTaskRunnerFactory
@@ -5880,6 +6203,9 @@ operator|=
 name|persistenceTaskRunnerFactory
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseJmx
@@ -5889,6 +6215,9 @@ return|return
 name|useJmx
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isEnableStatistics
@@ -5898,7 +6227,13 @@ return|return
 name|enableStatistics
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not the Broker's services enable statistics or not.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setEnableStatistics
@@ -5914,7 +6249,13 @@ operator|=
 name|enableStatistics
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not the Broker's services should be exposed into JMX or      * not.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setUseJmx
@@ -5930,6 +6271,9 @@ operator|=
 name|useJmx
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|ObjectName
 name|getBrokerObjectName
@@ -5954,7 +6298,13 @@ return|return
 name|brokerObjectName
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the JMX ObjectName for this broker      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setBrokerObjectName
@@ -5970,6 +6320,9 @@ operator|=
 name|brokerObjectName
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|ManagementContext
 name|getManagementContext
@@ -5993,6 +6346,9 @@ return|return
 name|managementContext
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setManagementContext
@@ -6008,6 +6364,9 @@ operator|=
 name|managementContext
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|NetworkConnector
 name|getNetworkConnectorByName
@@ -6046,6 +6405,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|String
 index|[]
@@ -6056,6 +6418,9 @@ return|return
 name|networkConnectorURIs
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setNetworkConnectorURIs
@@ -6072,6 +6437,9 @@ operator|=
 name|networkConnectorURIs
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|TransportConnector
 name|getConnectorByName
@@ -6110,6 +6478,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|Map
 argument_list|<
@@ -6220,6 +6591,9 @@ return|return
 name|answer
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|ProducerBrokerExchange
 name|getProducerBrokerExchange
@@ -6278,6 +6652,9 @@ return|return
 name|result
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|String
 index|[]
@@ -6288,6 +6665,9 @@ return|return
 name|transportConnectorURIs
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setTransportConnectorURIs
@@ -6304,7 +6684,13 @@ operator|=
 name|transportConnectorURIs
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return Returns the jmsBridgeConnectors.      */
+end_comment
+
+begin_function
 specifier|public
 name|JmsConnector
 index|[]
@@ -6315,7 +6701,13 @@ return|return
 name|jmsBridgeConnectors
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param jmsConnectors      *            The jmsBridgeConnectors to set.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setJmsBridgeConnectors
@@ -6332,6 +6724,9 @@ operator|=
 name|jmsConnectors
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|Service
 index|[]
@@ -6351,7 +6746,13 @@ index|]
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the services associated with this broker.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setServices
@@ -6407,7 +6808,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Adds a new service so that it will be started as part of the broker      * lifecycle      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|addService
@@ -6424,6 +6831,9 @@ name|service
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|removeService
@@ -6440,6 +6850,9 @@ name|service
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseLoggingForShutdownErrors
@@ -6449,7 +6862,13 @@ return|return
 name|useLoggingForShutdownErrors
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not we should use commons-logging when reporting errors      * when shutting down the broker      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setUseLoggingForShutdownErrors
@@ -6465,6 +6884,9 @@ operator|=
 name|useLoggingForShutdownErrors
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseShutdownHook
@@ -6474,7 +6896,13 @@ return|return
 name|useShutdownHook
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not we should use a shutdown handler to close down the      * broker cleanly if the JVM is terminated. It is recommended you leave this      * enabled.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setUseShutdownHook
@@ -6490,6 +6918,9 @@ operator|=
 name|useShutdownHook
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isAdvisorySupport
@@ -6499,7 +6930,13 @@ return|return
 name|advisorySupport
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Allows the support of advisory messages to be disabled for performance      * reasons.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setAdvisorySupport
@@ -6515,6 +6952,9 @@ operator|=
 name|advisorySupport
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|List
 argument_list|<
@@ -6534,7 +6974,13 @@ name|transportConnectors
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the transport connectors which this broker will listen on for new      * clients      *      * @org.apache.xbean.Property      *                            nestedType="org.apache.activemq.broker.TransportConnector"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setTransportConnectors
@@ -6563,6 +7009,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|TransportConnector
 name|getTransportConnectorByName
@@ -6601,6 +7050,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|TransportConnector
 name|getTransportConnectorByScheme
@@ -6642,6 +7094,9 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|List
 argument_list|<
@@ -6661,6 +7116,9 @@ name|networkConnectors
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|List
 argument_list|<
@@ -6680,7 +7138,13 @@ name|proxyConnectors
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      *      * @org.apache.xbean.Property      *                            nestedType="org.apache.activemq.network.NetworkConnector"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setNetworkConnectors
@@ -6712,7 +7176,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the network connectors which this broker will use to connect to      * other brokers in a federated network      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setProxyConnectors
@@ -6744,6 +7214,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|PolicyMap
 name|getDestinationPolicy
@@ -6753,7 +7226,13 @@ return|return
 name|destinationPolicy
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the destination specific policies available either for exact      * destinations or for wildcard areas of destinations.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setDestinationPolicy
@@ -6769,6 +7248,9 @@ operator|=
 name|policyMap
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|BrokerPlugin
 index|[]
@@ -6779,7 +7261,13 @@ return|return
 name|plugins
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets a number of broker plugins to install such as for security      * authentication or authorization      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setPlugins
@@ -6796,6 +7284,9 @@ operator|=
 name|plugins
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|MessageAuthorizationPolicy
 name|getMessageAuthorizationPolicy
@@ -6805,7 +7296,13 @@ return|return
 name|messageAuthorizationPolicy
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the policy used to decide if the current connection is authorized to      * consume a given message      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setMessageAuthorizationPolicy
@@ -6821,7 +7318,13 @@ operator|=
 name|messageAuthorizationPolicy
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Delete all messages from the persistent store      *      * @throws IOException      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|deleteAllMessages
@@ -6836,6 +7339,9 @@ name|deleteAllMessages
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isDeleteAllMessagesOnStartup
@@ -6845,7 +7351,13 @@ return|return
 name|deleteAllMessagesOnStartup
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not all messages are deleted on startup - mostly only      * useful for testing.      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setDeleteAllMessagesOnStartup
@@ -6861,6 +7373,9 @@ operator|=
 name|deletePersistentMessagesOnStartup
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|URI
 name|getVmConnectorURI
@@ -6918,6 +7433,9 @@ return|return
 name|vmConnectorURI
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setVmConnectorURI
@@ -6933,6 +7451,9 @@ operator|=
 name|vmConnectorURI
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|String
 name|getDefaultSocketURIString
@@ -7060,7 +7581,13 @@ return|return
 literal|null
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return Returns the shutdownOnMasterFailure.      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isShutdownOnMasterFailure
@@ -7070,7 +7597,13 @@ return|return
 name|shutdownOnMasterFailure
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param shutdownOnMasterFailure      *            The shutdownOnMasterFailure to set.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setShutdownOnMasterFailure
@@ -7086,6 +7619,9 @@ operator|=
 name|shutdownOnMasterFailure
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isKeepDurableSubsActive
@@ -7095,6 +7631,9 @@ return|return
 name|keepDurableSubsActive
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setKeepDurableSubsActive
@@ -7110,6 +7649,9 @@ operator|=
 name|keepDurableSubsActive
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseVirtualTopics
@@ -7119,7 +7661,13 @@ return|return
 name|useVirtualTopics
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not<a      * href="http://activemq.apache.org/virtual-destinations.html">Virtual      * Topics</a> should be supported by default if they have not been      * explicitly configured.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setUseVirtualTopics
@@ -7135,6 +7683,9 @@ operator|=
 name|useVirtualTopics
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|DestinationInterceptor
 index|[]
@@ -7145,6 +7696,9 @@ return|return
 name|destinationInterceptors
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseMirroredQueues
@@ -7154,7 +7708,13 @@ return|return
 name|useMirroredQueues
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether or not<a      * href="http://activemq.apache.org/mirrored-queues.html">Mirrored      * Queues</a> should be supported by default if they have not been      * explicitly configured.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setUseMirroredQueues
@@ -7170,7 +7730,13 @@ operator|=
 name|useMirroredQueues
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the destination interceptors to use      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setDestinationInterceptors
@@ -7187,6 +7753,9 @@ operator|=
 name|destinationInterceptors
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|ActiveMQDestination
 index|[]
@@ -7197,7 +7766,13 @@ return|return
 name|destinations
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets the destinations which should be loaded/created on startup      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setDestinations
@@ -7214,7 +7789,13 @@ operator|=
 name|destinations
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the tempDataStore      */
+end_comment
+
+begin_function
 specifier|public
 specifier|synchronized
 name|PListStore
@@ -7475,7 +8056,13 @@ return|return
 name|tempDataStore
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param tempDataStore      *            the tempDataStore to set      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setTempDataStore
@@ -7539,6 +8126,9 @@ name|exception
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getPersistenceThreadPriority
@@ -7548,6 +8138,9 @@ return|return
 name|persistenceThreadPriority
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setPersistenceThreadPriority
@@ -7563,7 +8156,13 @@ operator|=
 name|persistenceThreadPriority
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the useLocalHostBrokerName      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isUseLocalHostBrokerName
@@ -7575,7 +8174,13 @@ operator|.
 name|useLocalHostBrokerName
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param useLocalHostBrokerName      *            the useLocalHostBrokerName to set      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setUseLocalHostBrokerName
@@ -7615,7 +8220,13 @@ name|LOCAL_HOST_NAME
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Looks up and lazily creates if necessary the destination for the given      * JMS name      */
+end_comment
+
+begin_function
 specifier|public
 name|Destination
 name|getDestination
@@ -7641,6 +8252,9 @@ literal|false
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|removeDestination
@@ -7665,6 +8279,9 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getProducerSystemUsagePortion
@@ -7674,6 +8291,9 @@ return|return
 name|producerSystemUsagePortion
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setProducerSystemUsagePortion
@@ -7689,6 +8309,9 @@ operator|=
 name|producerSystemUsagePortion
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getConsumerSystemUsagePortion
@@ -7698,6 +8321,9 @@ return|return
 name|consumerSystemUsagePortion
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setConsumerSystemUsagePortion
@@ -7713,6 +8339,9 @@ operator|=
 name|consumerSystemUsagePortion
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isSplitSystemUsageForProducersConsumers
@@ -7722,6 +8351,9 @@ return|return
 name|splitSystemUsageForProducersConsumers
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSplitSystemUsageForProducersConsumers
@@ -7737,6 +8369,9 @@ operator|=
 name|splitSystemUsageForProducersConsumers
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isMonitorConnectionSplits
@@ -7746,6 +8381,9 @@ return|return
 name|monitorConnectionSplits
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setMonitorConnectionSplits
@@ -7761,6 +8399,9 @@ operator|=
 name|monitorConnectionSplits
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getTaskRunnerPriority
@@ -7770,6 +8411,9 @@ return|return
 name|taskRunnerPriority
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setTaskRunnerPriority
@@ -7785,6 +8429,9 @@ operator|=
 name|taskRunnerPriority
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isDedicatedTaskRunner
@@ -7794,6 +8441,9 @@ return|return
 name|dedicatedTaskRunner
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setDedicatedTaskRunner
@@ -7809,6 +8459,9 @@ operator|=
 name|dedicatedTaskRunner
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isCacheTempDestinations
@@ -7818,6 +8471,9 @@ return|return
 name|cacheTempDestinations
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setCacheTempDestinations
@@ -7833,6 +8489,9 @@ operator|=
 name|cacheTempDestinations
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getTimeBeforePurgeTempDestinations
@@ -7842,6 +8501,9 @@ return|return
 name|timeBeforePurgeTempDestinations
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setTimeBeforePurgeTempDestinations
@@ -7857,6 +8519,9 @@ operator|=
 name|timeBeforePurgeTempDestinations
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseTempMirroredQueues
@@ -7866,6 +8531,9 @@ return|return
 name|useTempMirroredQueues
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setUseTempMirroredQueues
@@ -7881,6 +8549,9 @@ operator|=
 name|useTempMirroredQueues
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 specifier|synchronized
 name|JobSchedulerStore
@@ -8148,6 +8819,9 @@ return|return
 name|jobSchedulerStore
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setJobSchedulerStore
@@ -8168,10 +8842,25 @@ name|jobSchedulerStore
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|//
+end_comment
+
+begin_comment
 comment|// Implementation methods
+end_comment
+
+begin_comment
 comment|// -------------------------------------------------------------------------
+end_comment
+
+begin_comment
 comment|/**      * Handles any lazy-creation helper properties which are added to make      * things easier to configure inside environments such as Spring      *      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|processHelperProperties
@@ -8292,7 +8981,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Check that the store usage limit is not greater than max usable      * space and adjust if it is      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|checkStoreUsageLimits
@@ -8571,7 +9266,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Check that temporary usage limit is not greater than max usable      * space and adjust if it is      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|checkTmpStoreUsageLimits
@@ -8815,7 +9516,13 @@ block|}
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Schedules a periodic task based on schedulePeriodForDiskLimitCheck to      * update store and temporary store limits if the amount of available space      * plus current store size is less than the existin configured limit      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|scheduleDiskUsageLimitsCheck
@@ -8914,6 +9621,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|checkSystemUsageLimits
@@ -9185,6 +9895,9 @@ block|}
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|stopAllConnectors
@@ -9360,6 +10073,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|TransportConnector
 name|registerConnectorMBean
@@ -9437,6 +10153,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|unregisterConnectorMBean
@@ -9496,6 +10215,9 @@ throw|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|PersistenceAdapter
 name|registerPersistenceAdapterMBean
@@ -9510,6 +10232,9 @@ return|return
 name|adaptor
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|unregisterPersistenceAdapterMBean
@@ -9527,6 +10252,9 @@ argument_list|()
 condition|)
 block|{}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|ObjectName
 name|createConnectorObjectName
@@ -9554,6 +10282,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|registerNetworkConnectorMBean
@@ -9626,6 +10357,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|ObjectName
 name|createNetworkConnectorObjectName
@@ -9653,6 +10387,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|ObjectName
 name|createDuplexNetworkConnectorObjectName
@@ -9677,6 +10414,9 @@ name|transport
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|unregisterNetworkConnectorMBean
@@ -9735,6 +10475,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|registerProxyConnectorMBean
@@ -9810,6 +10553,9 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|registerJmsConnectorMBean
@@ -9885,7 +10631,13 @@ argument_list|)
 throw|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Factory method to create a new broker      *      * @throws Exception      * @throws      * @throws      */
+end_comment
+
+begin_function
 specifier|protected
 name|Broker
 name|createBroker
@@ -10003,7 +10755,13 @@ return|return
 name|broker
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Factory method to create the core region broker onto which interceptors      * are added      *      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|protected
 name|Broker
 name|createRegionBroker
@@ -10067,6 +10825,9 @@ name|destinationInterceptor
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|Broker
 name|createRegionBroker
@@ -10234,7 +10995,13 @@ return|return
 name|regionBroker
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Create the default destination interceptor      */
+end_comment
+
+begin_function
 specifier|protected
 name|DestinationInterceptor
 index|[]
@@ -10349,7 +11116,13 @@ return|return
 name|array
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Strategy method to add interceptors to the broker      *      * @throws IOException      */
+end_comment
+
+begin_function
 specifier|protected
 name|Broker
 name|addInterceptors
@@ -10656,6 +11429,9 @@ return|return
 name|broker
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|PersistenceAdapter
 name|createPersistenceAdapter
@@ -10767,6 +11543,9 @@ argument_list|()
 return|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|ObjectName
 name|createBrokerObjectName
@@ -10790,6 +11569,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|TransportConnector
 name|createTransportConnector
@@ -10820,7 +11602,13 @@ name|transport
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Extracts the port from the options      */
+end_comment
+
+begin_function
 specifier|protected
 name|Object
 name|getPort
@@ -10869,6 +11657,9 @@ return|return
 name|port
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|addShutdownHook
@@ -10912,6 +11703,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|removeShutdownHook
@@ -10955,7 +11749,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets hooks to be executed when broker shut down      *      * @org.apache.xbean.Property      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setShutdownHooks
@@ -10984,7 +11784,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Causes a clean shutdown of the container when the VM is being shut down      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|containerShutdown
@@ -11077,6 +11883,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|logError
@@ -11118,7 +11927,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Starts any configured destinations on startup      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|startDestinations
@@ -11189,7 +12004,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Returns the broker's administration connection context used for      * configuring the broker at startup      */
+end_comment
+
+begin_function
 specifier|public
 name|ConnectionContext
 name|getAdminConnectionContext
@@ -11207,6 +12028,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|startManagementContext
@@ -11257,7 +12081,13 @@ name|objectName
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Start all transport and network connections, proxies and bridges      *      * @throws Exception      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|startAllConnectors
@@ -11757,6 +12587,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|TransportConnector
 name|startTransportConnector
@@ -11836,7 +12669,13 @@ return|return
 name|connector
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Perform any custom dependency injection      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|configureServices
@@ -11861,7 +12700,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_comment
 comment|/**      * Perform any custom dependency injection      */
+end_comment
+
+begin_function
 specifier|protected
 name|void
 name|configureService
@@ -11894,6 +12739,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|handleIOException
@@ -11930,6 +12778,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|protected
 name|void
 name|startVirtualConsumerDestinations
@@ -12004,6 +12855,9 @@ block|}
 block|}
 block|}
 block|}
+end_function
+
+begin_function
 specifier|private
 name|DestinationFilter
 name|getVirtualTopicConsumerDestinationFilter
@@ -12142,6 +12996,9 @@ return|return
 name|virtualConsumerDestinationFilter
 return|;
 block|}
+end_function
+
+begin_function
 specifier|protected
 specifier|synchronized
 name|ThreadPoolExecutor
@@ -12347,6 +13204,9 @@ operator|.
 name|executor
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 specifier|synchronized
 name|Scheduler
@@ -12410,6 +13270,9 @@ operator|.
 name|scheduler
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|Broker
 name|getRegionBroker
@@ -12419,6 +13282,9 @@ return|return
 name|regionBroker
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setRegionBroker
@@ -12434,6 +13300,9 @@ operator|=
 name|regionBroker
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|addShutdownHook
@@ -12456,6 +13325,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|removeShutdownHook
@@ -12478,6 +13350,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isSystemExitOnShutdown
@@ -12487,7 +13362,13 @@ return|return
 name|systemExitOnShutdown
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setSystemExitOnShutdown
@@ -12503,6 +13384,9 @@ operator|=
 name|systemExitOnShutdown
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getSystemExitOnShutdownExitCode
@@ -12512,6 +13396,9 @@ return|return
 name|systemExitOnShutdownExitCode
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSystemExitOnShutdownExitCode
@@ -12527,6 +13414,9 @@ operator|=
 name|systemExitOnShutdownExitCode
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|SslContext
 name|getSslContext
@@ -12536,6 +13426,9 @@ return|return
 name|sslContext
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSslContext
@@ -12551,6 +13444,9 @@ operator|=
 name|sslContext
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isShutdownOnSlaveFailure
@@ -12560,7 +13456,13 @@ return|return
 name|shutdownOnSlaveFailure
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setShutdownOnSlaveFailure
@@ -12576,6 +13478,9 @@ operator|=
 name|shutdownOnSlaveFailure
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isWaitForSlave
@@ -12585,7 +13490,13 @@ return|return
 name|waitForSlave
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setWaitForSlave
@@ -12601,6 +13512,9 @@ operator|=
 name|waitForSlave
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|long
 name|getWaitForSlaveTimeout
@@ -12612,6 +13526,9 @@ operator|.
 name|waitForSlaveTimeout
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setWaitForSlaveTimeout
@@ -12627,7 +13544,13 @@ operator|=
 name|waitForSlaveTimeout
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Get the passiveSlave      * @return the passiveSlave      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isPassiveSlave
@@ -12639,7 +13562,13 @@ operator|.
 name|passiveSlave
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Set the passiveSlave      * @param passiveSlave the passiveSlave to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setPassiveSlave
@@ -12655,7 +13584,13 @@ operator|=
 name|passiveSlave
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * override the Default IOException handler, called when persistence adapter      * has experiences File or JDBC I/O Exceptions      *      * @param ioExceptionHandler      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setIoExceptionHandler
@@ -12676,6 +13611,9 @@ operator|=
 name|ioExceptionHandler
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|IOExceptionHandler
 name|getIoExceptionHandler
@@ -12685,7 +13623,13 @@ return|return
 name|ioExceptionHandler
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the schedulerSupport      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isSchedulerSupport
@@ -12697,7 +13641,13 @@ operator|.
 name|schedulerSupport
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param schedulerSupport the schedulerSupport to set      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.BooleanEditor"      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setSchedulerSupport
@@ -12713,7 +13663,13 @@ operator|=
 name|schedulerSupport
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the schedulerDirectory      */
+end_comment
+
+begin_function
 specifier|public
 name|File
 name|getSchedulerDirectoryFile
@@ -12746,7 +13702,13 @@ return|return
 name|schedulerDirectoryFile
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @param schedulerDirectory the schedulerDirectory to set      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setSchedulerDirectoryFile
@@ -12762,6 +13724,9 @@ operator|=
 name|schedulerDirectory
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSchedulerDirectory
@@ -12780,6 +13745,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getSchedulePeriodForDestinationPurge
@@ -12791,6 +13759,9 @@ operator|.
 name|schedulePeriodForDestinationPurge
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSchedulePeriodForDestinationPurge
@@ -12806,6 +13777,9 @@ operator|=
 name|schedulePeriodForDestinationPurge
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setSchedulePeriodForDiskUsageCheck
@@ -12821,6 +13795,9 @@ operator|=
 name|schedulePeriodForDiskUsageCheck
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getMaxPurgedDestinationsPerSweep
@@ -12832,6 +13809,9 @@ operator|.
 name|maxPurgedDestinationsPerSweep
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setMaxPurgedDestinationsPerSweep
@@ -12847,6 +13827,9 @@ operator|=
 name|maxPurgedDestinationsPerSweep
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|BrokerContext
 name|getBrokerContext
@@ -12856,6 +13839,9 @@ return|return
 name|brokerContext
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setBrokerContext
@@ -12871,6 +13857,9 @@ operator|=
 name|brokerContext
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setBrokerId
@@ -12890,6 +13879,9 @@ name|brokerId
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isUseAuthenticatedPrincipalForJMSXUserID
@@ -12899,6 +13891,9 @@ return|return
 name|useAuthenticatedPrincipalForJMSXUserID
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setUseAuthenticatedPrincipalForJMSXUserID
@@ -12914,7 +13909,13 @@ operator|=
 name|useAuthenticatedPrincipalForJMSXUserID
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Should MBeans that support showing the Authenticated User Name information have this      * value filled in or not.      *      * @return true if user names should be exposed in MBeans      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isPopulateUserNameInMBeans
@@ -12926,7 +13927,13 @@ operator|.
 name|populateUserNameInMBeans
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets whether Authenticated User Name information is shown in MBeans that support this field.      * @param value if MBeans should expose user name information.      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setPopulateUserNameInMBeans
@@ -12942,7 +13949,13 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Gets the time in Milliseconds that an invocation of an MBean method will wait before      * failing.  The default value is to wait forever (zero).      *      * @return timeout in milliseconds before MBean calls fail, (default is 0 or no timeout).      */
+end_comment
+
+begin_function
 specifier|public
 name|long
 name|getMbeanInvocationTimeout
@@ -12952,7 +13965,13 @@ return|return
 name|mbeanInvocationTimeout
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Gets the time in Milliseconds that an invocation of an MBean method will wait before      * failing. The default value is to wait forever (zero).      *      * @param mbeanInvocationTimeout      *      timeout in milliseconds before MBean calls fail, (default is 0 or no timeout).      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setMbeanInvocationTimeout
@@ -12968,6 +13987,9 @@ operator|=
 name|mbeanInvocationTimeout
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isNetworkConnectorStartAsync
@@ -12977,6 +13999,9 @@ return|return
 name|networkConnectorStartAsync
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setNetworkConnectorStartAsync
@@ -12992,6 +14017,9 @@ operator|=
 name|networkConnectorStartAsync
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isAllowTempAutoCreationOnSend
@@ -13001,7 +14029,13 @@ return|return
 name|allowTempAutoCreationOnSend
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * enable if temp destinations need to be propagated through a network when      * advisorySupport==false. This is used in conjunction with the policy      * gcInactiveDestinations for matching temps so they can get removed      * when inactive      *      * @param allowTempAutoCreationOnSend      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setAllowTempAutoCreationOnSend
@@ -13017,6 +14051,9 @@ operator|=
 name|allowTempAutoCreationOnSend
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|long
 name|getOfflineDurableSubscriberTimeout
@@ -13026,6 +14063,9 @@ return|return
 name|offlineDurableSubscriberTimeout
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setOfflineDurableSubscriberTimeout
@@ -13041,6 +14081,9 @@ operator|=
 name|offlineDurableSubscriberTimeout
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|long
 name|getOfflineDurableSubscriberTaskSchedule
@@ -13050,6 +14093,9 @@ return|return
 name|offlineDurableSubscriberTaskSchedule
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setOfflineDurableSubscriberTaskSchedule
@@ -13065,6 +14111,9 @@ operator|=
 name|offlineDurableSubscriberTaskSchedule
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|shouldRecordVirtualDestination
@@ -13091,6 +14140,9 @@ name|destination
 argument_list|)
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|Throwable
 name|getStartException
@@ -13100,6 +14152,9 @@ return|return
 name|startException
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isStartAsync
@@ -13109,6 +14164,9 @@ return|return
 name|startAsync
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setStartAsync
@@ -13124,6 +14182,9 @@ operator|=
 name|startAsync
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isSlave
@@ -13135,6 +14196,9 @@ operator|.
 name|slave
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isStopping
@@ -13149,7 +14213,13 @@ name|get
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return true if the broker allowed to restart on shutdown.      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isRestartAllowed
@@ -13159,7 +14229,13 @@ return|return
 name|restartAllowed
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Sets if the broker allowed to restart on shutdown.      * @return      */
+end_comment
+
+begin_function
 specifier|public
 name|void
 name|setRestartAllowed
@@ -13175,7 +14251,13 @@ operator|=
 name|restartAllowed
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * A lifecycle manager of the BrokerService should      * inspect this property after a broker shutdown has occurred      * to find out if the broker needs to be re-created and started      * again.      *      * @return true if the broker wants to be restarted after it shuts down.      */
+end_comment
+
+begin_function
 specifier|public
 name|boolean
 name|isRestartRequested
@@ -13185,6 +14267,9 @@ return|return
 name|restartRequested
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|requestRestart
@@ -13197,6 +14282,9 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|int
 name|getStoreOpenWireVersion
@@ -13206,6 +14294,9 @@ return|return
 name|storeOpenWireVersion
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setStoreOpenWireVersion
@@ -13221,7 +14312,13 @@ operator|=
 name|storeOpenWireVersion
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the current number of connections on this Broker.      */
+end_comment
+
+begin_function
 specifier|public
 name|int
 name|getCurrentConnections
@@ -13236,7 +14333,13 @@ name|get
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * @return the total number of connections this broker has handled since startup.      */
+end_comment
+
+begin_function
 specifier|public
 name|long
 name|getTotalConnections
@@ -13251,6 +14354,9 @@ name|get
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|incrementCurrentConnections
@@ -13264,6 +14370,9 @@ name|incrementAndGet
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|decrementCurrentConnections
@@ -13277,6 +14386,9 @@ name|decrementAndGet
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|incrementTotalConnections
@@ -13290,6 +14402,9 @@ name|incrementAndGet
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|boolean
 name|isRejectDurableConsumers
@@ -13299,6 +14414,9 @@ return|return
 name|rejectDurableConsumers
 return|;
 block|}
+end_function
+
+begin_function
 specifier|public
 name|void
 name|setRejectDurableConsumers
@@ -13314,8 +14432,8 @@ operator|=
 name|rejectDurableConsumers
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+unit|}
 end_unit
 

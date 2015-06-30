@@ -178,7 +178,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the getBlob()/setBlob()  * operations. This is a little more involved since to insert a blob you have  * to:  *   * 1: insert empty blob. 2: select the blob 3: finally update the blob with data  * value.  *   * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="blobJDBCAdapter"  *   *   */
+comment|/**  * This JDBCAdapter inserts and extracts BLOB data using the getBlob()/setBlob()  * operations. This is a little more involved since to insert a blob you have  * to:  *  * 1: insert empty blob. 2: select the blob 3: finally update the blob with data  * value.  *  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *  * @org.apache.xbean.XBean element="blobJDBCAdapter"  *  *  */
 end_comment
 
 begin_class
@@ -739,6 +739,8 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|is
 init|=
@@ -746,10 +748,10 @@ name|blob
 operator|.
 name|getBinaryStream
 argument_list|()
-decl_stmt|;
+init|;
 name|ByteArrayOutputStream
 name|os
-init|=
+operator|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|(
@@ -761,7 +763,8 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|int
 name|ch
 decl_stmt|;
@@ -787,22 +790,13 @@ name|ch
 argument_list|)
 expr_stmt|;
 block|}
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|os
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 return|return
 name|os
 operator|.
 name|toByteArray
 argument_list|()
 return|;
+block|}
 block|}
 finally|finally
 block|{
