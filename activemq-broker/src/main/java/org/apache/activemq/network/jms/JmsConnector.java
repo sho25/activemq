@@ -18,6 +18,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|network
+operator|.
+name|jms
+operator|.
+name|ReconnectionPolicy
+operator|.
+name|INFINITE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -427,7 +445,7 @@ argument_list|()
 decl_stmt|;
 specifier|protected
 name|ThreadPoolExecutor
-name|connectionSerivce
+name|connectionService
 decl_stmt|;
 specifier|private
 specifier|final
@@ -697,7 +715,7 @@ name|getReplyToDestinationCacheSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|connectionSerivce
+name|connectionService
 operator|=
 name|createExecutor
 argument_list|()
@@ -864,10 +882,10 @@ name|ThreadPoolUtils
 operator|.
 name|shutdown
 argument_list|(
-name|connectionSerivce
+name|connectionService
 argument_list|)
 expr_stmt|;
-name|connectionSerivce
+name|connectionService
 operator|=
 literal|null
 expr_stmt|;
@@ -1672,7 +1690,7 @@ block|}
 comment|// We got here first and cleared the connection, now we queue a reconnect.
 name|this
 operator|.
-name|connectionSerivce
+name|connectionService
 operator|.
 name|execute
 argument_list|(
@@ -1760,7 +1778,7 @@ block|}
 comment|// We got here first and cleared the connection, now we queue a reconnect.
 name|this
 operator|.
-name|connectionSerivce
+name|connectionService
 operator|.
 name|execute
 argument_list|(
@@ -1812,7 +1830,7 @@ parameter_list|()
 block|{
 name|this
 operator|.
-name|connectionSerivce
+name|connectionService
 operator|.
 name|execute
 argument_list|(
@@ -1863,7 +1881,7 @@ parameter_list|()
 block|{
 name|this
 operator|.
-name|connectionSerivce
+name|connectionService
 operator|.
 name|execute
 argument_list|(
@@ -1917,6 +1935,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|ThreadPoolExecutor
+name|connectionService
+init|=
+name|this
+operator|.
+name|connectionService
+decl_stmt|;
 name|int
 name|attempt
 init|=
@@ -2004,7 +2029,7 @@ block|{                 }
 block|}
 if|if
 condition|(
-name|connectionSerivce
+name|connectionService
 operator|.
 name|isTerminating
 argument_list|()
@@ -2126,15 +2151,21 @@ block|}
 block|}
 do|while
 condition|(
+operator|(
 name|maxRetries
-operator|<
+operator|==
+name|INFINITE
+operator|||
+name|maxRetries
+operator|>
 operator|++
 name|attempt
+operator|)
 operator|&&
 operator|!
-name|connectionSerivce
+name|connectionService
 operator|.
-name|isTerminating
+name|isShutdown
 argument_list|()
 condition|)
 do|;
