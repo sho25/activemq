@@ -226,6 +226,7 @@ implements|,
 name|BrokerServiceAware
 block|{
 specifier|protected
+specifier|volatile
 name|MQTTProtocolConverter
 name|protocolConverter
 init|=
@@ -522,6 +523,18 @@ operator|==
 literal|null
 condition|)
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+if|if
+condition|(
+name|protocolConverter
+operator|==
+literal|null
+condition|)
+block|{
 name|protocolConverter
 operator|=
 operator|new
@@ -532,6 +545,8 @@ argument_list|,
 name|brokerService
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 return|return
 name|protocolConverter
