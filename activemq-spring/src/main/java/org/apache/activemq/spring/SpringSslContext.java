@@ -391,6 +391,11 @@ argument_list|(
 name|trustStoreAlgorithm
 argument_list|)
 decl_stmt|;
+name|boolean
+name|initialized
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|crlPath
@@ -473,6 +478,10 @@ name|pkixParams
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|initialized
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -488,7 +497,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
+if|if
+condition|(
+operator|!
+name|initialized
+condition|)
 block|{
 name|tmf
 operator|.
