@@ -156,7 +156,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|AMQ6000Test
+name|AMQ5822Test
 block|{
 specifier|private
 specifier|static
@@ -168,7 +168,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|AMQ6000Test
+name|AMQ5822Test
 operator|.
 name|class
 argument_list|)
