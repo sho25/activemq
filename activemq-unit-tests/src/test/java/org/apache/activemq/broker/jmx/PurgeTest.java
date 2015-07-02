@@ -498,6 +498,21 @@ argument_list|,
 name|messageCount
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Browse size"
+argument_list|,
+name|messageCount
+argument_list|,
+name|proxy
+operator|.
+name|browseMessages
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|proxy
 operator|.
 name|purge
