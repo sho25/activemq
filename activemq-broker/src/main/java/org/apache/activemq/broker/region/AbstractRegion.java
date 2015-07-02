@@ -131,6 +131,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|DestinationDoesNotExistException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|advisory
 operator|.
 name|AdvisorySupport
@@ -162,18 +174,6 @@ operator|.
 name|broker
 operator|.
 name|ConsumerBrokerExchange
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|DestinationDoesNotExistException
 import|;
 end_import
 
@@ -697,6 +697,8 @@ operator|=
 name|destinationFactory
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|void
@@ -850,6 +852,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -972,6 +976,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|addDestination
@@ -1472,11 +1478,28 @@ condition|)
 block|{
 try|try
 block|{
+name|ConnectionContext
+name|originalContext
+init|=
+name|sub
+operator|.
+name|getContext
+argument_list|()
+operator|!=
+literal|null
+condition|?
+name|sub
+operator|.
+name|getContext
+argument_list|()
+else|:
+name|context
+decl_stmt|;
 name|dest
 operator|.
 name|addSubscription
 argument_list|(
-name|context
+name|originalContext
 argument_list|,
 name|sub
 argument_list|)
@@ -1540,6 +1563,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeDestination
@@ -1803,6 +1828,8 @@ block|}
 block|}
 comment|/**      * Provide an exact or wildcard lookup of destinations in the region      *      * @return a set of matching destination objects.      */
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
@@ -1849,6 +1876,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Map
 argument_list|<
@@ -1863,6 +1892,8 @@ return|return
 name|destinations
 return|;
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2394,6 +2425,8 @@ name|inactiveDests
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
@@ -2585,6 +2618,8 @@ name|destroy
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeSubscription
@@ -2606,6 +2641,8 @@ literal|"Invalid operation."
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -2713,6 +2750,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -2829,6 +2868,8 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|messagePull
@@ -3036,6 +3077,8 @@ return|return
 name|dest
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processDispatchNotification
@@ -3199,6 +3242,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
@@ -3326,6 +3371,8 @@ name|autoCreateDestinations
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
@@ -3399,6 +3446,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Removes a Producer.      *      * @param context      *            the environment the operation is being executed under.      * @throws Exception      *             TODO      */
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -3505,6 +3554,8 @@ name|dest
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processConsumerControl
@@ -3671,6 +3722,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reapplyInterceptor
