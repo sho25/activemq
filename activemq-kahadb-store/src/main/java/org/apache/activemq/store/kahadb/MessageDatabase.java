@@ -1985,12 +1985,6 @@ argument_list|()
 decl_stmt|;
 specifier|private
 name|boolean
-name|rewriteOnRedelivery
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-name|boolean
 name|archiveCorruptedIndex
 init|=
 literal|false
@@ -7053,11 +7047,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
 specifier|protected
 name|void
 name|process
@@ -13420,6 +13409,18 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
+else|else
+block|{
+name|current
+operator|=
+name|Long
+operator|.
+name|valueOf
+argument_list|(
+literal|0L
+argument_list|)
+expr_stmt|;
+block|}
 name|rc
 operator|.
 name|messageReferences
@@ -13931,6 +13932,16 @@ argument_list|(
 name|ackPosition
 argument_list|)
 decl_stmt|;
+comment|// There might not be a reference if the ackLocation was the last
+comment|// one which is a placeholder for the next incoming message and
+comment|// no value was added to the message references table.
+if|if
+condition|(
+name|count
+operator|!=
+literal|null
+condition|)
+block|{
 name|count
 operator|=
 name|count
@@ -13951,6 +13962,7 @@ argument_list|,
 name|count
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// on a new message add, all existing subs are interested in this message

@@ -335,7 +335,7 @@ name|mqtt
 operator|.
 name|setClientId
 argument_list|(
-name|getName
+name|getTestName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -485,7 +485,7 @@ name|mqtt
 operator|.
 name|setClientId
 argument_list|(
-name|getName
+name|getTestName
 argument_list|()
 argument_list|)
 expr_stmt|;

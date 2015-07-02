@@ -355,7 +355,7 @@ name|connection
 init|=
 name|createClient
 argument_list|(
-name|getName
+name|getTestName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -447,7 +447,7 @@ name|connection
 operator|=
 name|createClient
 argument_list|(
-name|getName
+name|getTestName
 argument_list|()
 argument_list|)
 expr_stmt|;
