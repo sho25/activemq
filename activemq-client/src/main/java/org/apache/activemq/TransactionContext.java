@@ -291,22 +291,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transport
-operator|.
-name|failover
-operator|.
-name|FailoverTransport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|JMSExceptionSupport
@@ -324,6 +308,20 @@ operator|.
 name|util
 operator|.
 name|LongSequenceGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|XASupport
 import|;
 end_import
 
@@ -708,8 +706,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Exception from afterRollback on "
-operator|+
+literal|"Exception from afterRollback on {}"
+argument_list|,
 name|synchronizations
 operator|.
 name|get
@@ -822,8 +820,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Exception from afterCommit on "
-operator|+
+literal|"Exception from afterCommit on {}"
+argument_list|,
 name|synchronizations
 operator|.
 name|get
@@ -1056,24 +1054,15 @@ name|beginEvent
 argument_list|()
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Begin:"
-operator|+
+literal|"Begin:{}"
+argument_list|,
 name|transactionId
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Rolls back any work done in this transaction and releases any locks      * currently held.      *      * @throws JMSException if the JMS provider fails to roll back the      *                 transaction due to some internal error.      * @throws javax.jms.IllegalStateException if the method is not called by a      *                 transacted session.      */
@@ -1127,24 +1116,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Rollback: "
-operator|+
+literal|"Rollback: {} syncCount: {}"
+argument_list|,
 name|transactionId
-operator|+
-literal|" syncCount: "
-operator|+
+argument_list|,
 operator|(
 name|synchronizations
 operator|!=
@@ -1159,7 +1138,6 @@ literal|0
 operator|)
 argument_list|)
 expr_stmt|;
-block|}
 name|TransactionInfo
 name|info
 init|=
@@ -1260,24 +1238,14 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Commit: "
-operator|+
+literal|"Commit: {} syncCount: {}"
+argument_list|,
 name|transactionId
-operator|+
-literal|" syncCount: "
-operator|+
+argument_list|,
 operator|(
 name|synchronizations
 operator|!=
@@ -1292,7 +1260,6 @@ literal|0
 operator|)
 argument_list|)
 expr_stmt|;
-block|}
 name|TransactionInfo
 name|info
 init|=
@@ -1350,8 +1317,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"commit failed for transaction "
-operator|+
+literal|"commit failed for transaction {}"
+argument_list|,
 name|info
 operator|.
 name|getTransactionId
@@ -1388,6 +1355,8 @@ comment|// XAResource Implementation
 comment|//
 comment|// ///////////////////////////////////////////////////////////
 comment|/**      * Associates a transaction with the resource.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1401,28 +1370,22 @@ parameter_list|)
 throws|throws
 name|XAException
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Start: "
-operator|+
+literal|"Start: {}, flags: {}"
+argument_list|,
 name|xid
-operator|+
-literal|", flags:"
-operator|+
+argument_list|,
+name|XASupport
+operator|.
+name|toString
+argument_list|(
 name|flags
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|isInLocalTransaction
@@ -1460,7 +1423,7 @@ block|}
 comment|// if ((flags& TMJOIN) == TMJOIN) {
 comment|// TODO: verify that the server has seen the xid
 comment|// // }
-comment|// if ((flags& TMJOIN) == TMRESUME) {
+comment|// if ((flags& TMRESUME) == TMRESUME) {
 comment|// // TODO: verify that the xid was suspended.
 comment|// }
 comment|// associate
@@ -1494,6 +1457,8 @@ name|getConnectionId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|end
@@ -1507,28 +1472,22 @@ parameter_list|)
 throws|throws
 name|XAException
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"End: "
-operator|+
+literal|"End: {}, flags: {}"
+argument_list|,
 name|xid
-operator|+
-literal|", flags:"
-operator|+
+argument_list|,
+name|XASupport
+operator|.
+name|toString
+argument_list|(
 name|flags
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|isInLocalTransaction
@@ -1756,6 +1715,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|prepare
@@ -1766,24 +1727,15 @@ parameter_list|)
 throws|throws
 name|XAException
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Prepare: "
-operator|+
+literal|"Prepare: {}"
+argument_list|,
 name|xid
 argument_list|)
 expr_stmt|;
-block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit prepare to the associated xid.
 name|XATransactionId
@@ -1903,24 +1855,15 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"firing afterCommit callbacks on XA_RDONLY from prepare: "
-operator|+
+literal|"firing afterCommit callbacks on XA_RDONLY from prepare: {}"
+argument_list|,
 name|xid
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|TransactionContext
@@ -2019,30 +1962,21 @@ name|Throwable
 name|ignored
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"failed to firing afterRollback callbacks on prepare failure, txid: "
+literal|"failed to firing afterRollback callbacks on prepare "
 operator|+
+literal|"failure, txid: {}, context: {}"
+argument_list|,
 name|x
-operator|+
-literal|", context: "
-operator|+
+argument_list|,
 name|ctx
 argument_list|,
 name|ignored
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -2055,6 +1989,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollback
@@ -2237,6 +2173,8 @@ throw|;
 block|}
 block|}
 comment|// XAResource interface
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commit
@@ -2250,28 +2188,17 @@ parameter_list|)
 throws|throws
 name|XAException
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Commit: "
-operator|+
+literal|"Commit: {}, onePhase={}"
+argument_list|,
 name|xid
-operator|+
-literal|", onePhase="
-operator|+
+argument_list|,
 name|onePhase
 argument_list|)
 expr_stmt|;
-block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit commit to the associated xid.
 name|XATransactionId
@@ -2417,8 +2344,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"ignoring exception from after completion on ended transaction: "
-operator|+
+literal|"ignoring exception from after completion on ended transaction: {}"
+argument_list|,
 name|ignored
 argument_list|,
 name|ignored
@@ -2508,30 +2435,19 @@ name|Throwable
 name|ignored
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"failed to firing afterRollback callbacks commit failure, txid: "
-operator|+
+literal|"failed to firing afterRollback callbacks commit failure, txid: {}, context: {}"
+argument_list|,
 name|x
-operator|+
-literal|", context: "
-operator|+
+argument_list|,
 name|ctx
 argument_list|,
 name|ignored
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -2545,6 +2461,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|forget
@@ -2555,24 +2473,15 @@ parameter_list|)
 throws|throws
 name|XAException
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Forget: "
-operator|+
+literal|"Forget: {}"
+argument_list|,
 name|xid
 argument_list|)
 expr_stmt|;
-block|}
 comment|// We allow interleaving multiple transactions, so
 comment|// we don't limit forget to the associated xid.
 name|XATransactionId
@@ -2677,6 +2586,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSameRM
@@ -2758,6 +2669,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Xid
 index|[]
@@ -2914,6 +2827,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getTransactionTimeout
@@ -2925,6 +2840,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|setTransactionTimeout
@@ -3050,26 +2967,17 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"{} started XA transaction {} "
+literal|"{} started XA transaction {}"
 argument_list|,
 name|this
 argument_list|,
 name|transactionId
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -3120,14 +3028,6 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -3139,7 +3039,6 @@ argument_list|,
 name|transactionId
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
