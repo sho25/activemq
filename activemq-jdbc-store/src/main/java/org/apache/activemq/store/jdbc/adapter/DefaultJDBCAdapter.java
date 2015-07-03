@@ -6795,8 +6795,6 @@ operator|.
 name|min
 argument_list|(
 name|maxReturned
-operator|*
-literal|2
 argument_list|,
 name|maxRows
 argument_list|)

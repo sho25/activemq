@@ -1820,7 +1820,7 @@ literal|" WHERE CONTAINER=?"
 operator|+
 literal|" AND XID IS NULL"
 operator|+
-literal|" AND ((ID> ? AND ID< ? AND PRIORITY>= ?) OR PRIORITY< ?)"
+literal|" AND ((ID> ? AND ID< ? AND PRIORITY = ?) OR PRIORITY< ?)"
 operator|+
 literal|" ORDER BY PRIORITY DESC, ID"
 expr_stmt|;
