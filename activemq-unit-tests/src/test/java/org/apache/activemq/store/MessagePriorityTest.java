@@ -3935,7 +3935,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|initCombosForTestLowThenHighBatc
+name|initCombosForTestLowThenHighBatch
 parameter_list|()
 block|{
 comment|// the cache limits the priority ordering to available memory
