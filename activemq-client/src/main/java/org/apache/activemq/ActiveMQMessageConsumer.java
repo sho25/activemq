@@ -2141,10 +2141,15 @@ block|{
 return|return
 literal|null
 return|;
+comment|//AMQ-5340 - only check for expired if not a browser
 block|}
 elseif|else
 if|if
 condition|(
+operator|!
+name|isBrowser
+argument_list|()
+operator|&&
 name|isConsumerExpiryCheckEnabled
 argument_list|()
 operator|&&
