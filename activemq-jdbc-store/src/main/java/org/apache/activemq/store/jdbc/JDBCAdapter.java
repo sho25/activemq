@@ -625,13 +625,11 @@ name|ActiveMQDestination
 name|destination
 parameter_list|,
 name|long
+index|[]
+name|lastRecoveredEntries
+parameter_list|,
+name|long
 name|maxSeq
-parameter_list|,
-name|long
-name|nextSeq
-parameter_list|,
-name|long
-name|priority
 parameter_list|,
 name|int
 name|maxReturned
