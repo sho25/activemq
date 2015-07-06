@@ -471,7 +471,6 @@ name|SubscriptionKey
 name|subscriptionKey
 decl_stmt|;
 specifier|private
-specifier|final
 name|boolean
 name|keepDurableSubsActive
 decl_stmt|;
@@ -1275,6 +1274,12 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|keepDurableSubsActive
+operator|=
+name|keepDurableSubsActive
+expr_stmt|;
 name|offlineTimestamp
 operator|.
 name|set
@@ -1285,8 +1290,6 @@ name|currentTimeMillis
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|usageManager
 operator|.
 name|getMemoryUsage
