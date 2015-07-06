@@ -355,6 +355,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|broker
+operator|!=
+literal|null
+condition|)
+block|{
 name|broker
 operator|.
 name|stop
@@ -366,13 +373,13 @@ name|waitUntilStopped
 argument_list|()
 expr_stmt|;
 block|}
-comment|//This should finish in under 3 seconds because the messages should be expired
+block|}
 annotation|@
 name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|3000
+literal|10000
 argument_list|)
 specifier|public
 name|void
@@ -451,9 +458,12 @@ argument_list|,
 name|browserConnection
 argument_list|)
 expr_stmt|;
-name|String
-name|time
-init|=
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"[{}ms] found {}"
+argument_list|,
 name|TimeUnit
 operator|.
 name|NANOSECONDS
@@ -467,32 +477,14 @@ argument_list|()
 operator|-
 name|begin
 argument_list|)
-operator|+
-literal|" ms"
-decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"["
-operator|+
-name|time
-operator|+
-literal|"] found "
-operator|+
+argument_list|,
 name|browsed
-operator|+
-literal|" messages"
 argument_list|)
 expr_stmt|;
 block|}
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
 literal|"Finished"
 argument_list|)

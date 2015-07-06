@@ -3342,7 +3342,6 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|//AMQ-5340
 if|if
 condition|(
 operator|!

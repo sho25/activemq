@@ -2141,48 +2141,28 @@ block|{
 return|return
 literal|null
 return|;
-comment|//AMQ-5340 - only check for expired if not a browser
 block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|isBrowser
-argument_list|()
-operator|&&
-name|isConsumerExpiryCheckEnabled
-argument_list|()
-operator|&&
+name|consumeExpiredMessage
+argument_list|(
 name|md
-operator|.
-name|getMessage
-argument_list|()
-operator|.
-name|isExpired
-argument_list|()
-condition|)
-block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
+argument_list|)
 condition|)
 block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} received expired message: {}"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" received expired message: "
-operator|+
+argument_list|,
 name|md
 argument_list|)
 expr_stmt|;
-block|}
 name|beforeMessageIsConsumed
 argument_list|(
 name|md
@@ -2229,27 +2209,18 @@ name|md
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} received with excessive redelivered: {}"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" received with excessive redelivered: "
-operator|+
+argument_list|,
 name|md
 argument_list|)
 expr_stmt|;
-block|}
 name|posionAck
 argument_list|(
 name|md
@@ -2317,6 +2288,38 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+specifier|private
+name|boolean
+name|consumeExpiredMessage
+parameter_list|(
+name|MessageDispatch
+name|dispatch
+parameter_list|)
+block|{
+if|if
+condition|(
+name|dispatch
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|isExpired
+argument_list|()
+condition|)
+block|{
+return|return
+operator|!
+name|isBrowser
+argument_list|()
+operator|&&
+name|isConsumerExpiryCheckEnabled
+argument_list|()
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 specifier|private
 name|void
@@ -2998,31 +3001,18 @@ operator|.
 name|createRemoveCommand
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"remove: "
-operator|+
-name|this
-operator|.
+literal|"remove: {}, lastDeliveredSequenceId: {}"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|", lastDeliveredSequenceId:"
-operator|+
+argument_list|,
 name|lastDeliveredSequenceId
 argument_list|)
 expr_stmt|;
-block|}
 name|removeCommand
 operator|.
 name|setLastDeliveredSequenceId
@@ -3101,32 +3091,21 @@ operator|>
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} clearing unconsumed list ({}) on transport interrupt"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" clearing unconsumed list ("
-operator|+
+argument_list|,
 name|unconsumedMessages
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|") on transport interrupt"
 argument_list|)
 expr_stmt|;
-block|}
 comment|// ensure unconsumed are rolledback up front as they may get redelivered to another consumer
 name|List
 argument_list|<
@@ -3632,20 +3611,12 @@ name|list
 control|)
 block|{
 comment|// ensure we don't filter this as a duplicate
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"on close, rollback duplicate: "
-operator|+
+literal|"on close, rollback duplicate: {}"
+argument_list|,
 name|old
 operator|.
 name|getMessage
@@ -3655,7 +3626,6 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|session
 operator|.
 name|connection
@@ -4314,9 +4284,11 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|MessageDispatch
 name|md
 init|=
@@ -4478,28 +4450,17 @@ name|isDeliveredAck
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Sending old pending ack "
-operator|+
+literal|"Sending old pending ack {}, new pending: {}"
+argument_list|,
 name|oldPendingAck
-operator|+
-literal|", new pending: "
-operator|+
+argument_list|,
 name|pendingAck
 argument_list|)
 expr_stmt|;
-block|}
 name|session
 operator|.
 name|sendAck
@@ -4510,28 +4471,17 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"dropping old pending ack "
-operator|+
+literal|"dropping old pending ack {}, new pending: {}"
+argument_list|,
 name|oldPendingAck
-operator|+
-literal|", new pending: "
-operator|+
+argument_list|,
 name|pendingAck
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// AMQ-3956 evaluate both expired and normal msgs as
@@ -4556,24 +4506,15 @@ name|additionalWindowSize
 operator|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"ackLater: sending: "
-operator|+
+literal|"ackLater: sending: {}"
+argument_list|,
 name|pendingAck
 argument_list|)
 expr_stmt|;
-block|}
 name|session
 operator|.
 name|sendAck
@@ -4744,8 +4685,10 @@ name|ack
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
 comment|// no msgs
+block|}
 if|if
 condition|(
 name|session
@@ -4927,22 +4870,18 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"waiting for redelivery of "
-operator|+
+literal|"waiting for redelivery of {} in transaction: {}, to consumer: {}"
+argument_list|,
 name|numberNotReplayed
-operator|+
-literal|" in transaction: "
-operator|+
-name|previouslyDeliveredMessages
-operator|.
-name|transactionId
-operator|+
-literal|", to consumer :"
-operator|+
+argument_list|,
 name|this
 operator|.
 name|getConsumerId
 argument_list|()
+argument_list|,
+name|previouslyDeliveredMessages
+operator|.
+name|transactionId
 argument_list|)
 expr_stmt|;
 try|try
@@ -5040,33 +4979,22 @@ block|{
 name|numberNotReplayed
 operator|++
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"previously delivered message has not been replayed in transaction: "
-operator|+
+literal|"previously delivered message has not been replayed in transaction: {}, messageId: {}"
+argument_list|,
 name|previouslyDeliveredMessages
 operator|.
 name|transactionId
-operator|+
-literal|" , messageId: "
-operator|+
+argument_list|,
 name|entry
 operator|.
 name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 if|if
@@ -5892,19 +5820,11 @@ name|getValue
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"rollback non redelivered: "
+literal|"rollback non redelivered: {}"
 operator|+
 name|entry
 operator|.
@@ -5912,7 +5832,6 @@ name|getKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|removeFromDeliveredMessages
 argument_list|(
 name|entry
@@ -6191,11 +6110,11 @@ name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{} Exception while processing message: {}"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" Exception while processing message: "
-operator|+
+argument_list|,
 name|md
 operator|.
 name|getMessage
@@ -6314,14 +6233,6 @@ literal|true
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -6337,7 +6248,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|transactedIndividualAck
@@ -6713,38 +6623,25 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} tracking existing transacted {} delivered list ({}) on transport interrupt"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" tracking existing transacted "
-operator|+
+argument_list|,
 name|previouslyDeliveredMessages
 operator|.
 name|transactionId
-operator|+
-literal|" delivered list ("
-operator|+
+argument_list|,
 name|deliveredMessages
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|") on transport interrupt"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
@@ -6756,32 +6653,21 @@ name|isClientAcknowledge
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} rolling back delivered list ({}) on transport interrupt"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" rolling back delivered list ("
-operator|+
+argument_list|,
 name|deliveredMessages
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|") on transport interrupt"
 argument_list|)
 expr_stmt|;
-block|}
 comment|// allow redelivery
 if|if
 condition|(
@@ -6821,32 +6707,21 @@ expr_stmt|;
 block|}
 block|}
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} clearing delivered list ({}) on transport interrupt"
+argument_list|,
 name|getConsumerId
 argument_list|()
-operator|+
-literal|" clearing delivered list ("
-operator|+
+argument_list|,
 name|deliveredMessages
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|") on transport interrupt"
 argument_list|)
 expr_stmt|;
-block|}
 name|deliveredMessages
 operator|.
 name|clear
@@ -7184,14 +7059,6 @@ name|isClosed
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
@@ -7204,7 +7071,6 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|deliverAcks
 argument_list|()
 expr_stmt|;
