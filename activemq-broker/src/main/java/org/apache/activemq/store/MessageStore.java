@@ -306,6 +306,18 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * @return the size of the messages ready to deliver      * @throws IOException      */
+name|long
+name|getMessageSize
+parameter_list|()
+throws|throws
+name|IOException
+function_decl|;
+comment|/**      * @return The statistics bean for this message store      */
+name|MessageStoreStatistics
+name|getMessageStoreStatistics
+parameter_list|()
+function_decl|;
 comment|/**      * A hint to the Store to reset any batching state for the Destination      *      */
 name|void
 name|resetBatching

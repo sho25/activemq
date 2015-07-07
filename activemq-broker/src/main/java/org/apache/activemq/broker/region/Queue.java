@@ -2331,6 +2331,11 @@ name|getCursorMemoryHighWaterMark
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|store
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 specifier|final
 name|int
 name|messageCount

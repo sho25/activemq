@@ -366,7 +366,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MessageStore that uses a Journal to store it's messages.  *   *   */
+comment|/**  * A MessageStore that uses a Journal to store it's messages.  *  *  */
 end_comment
 
 begin_class
@@ -1748,7 +1748,7 @@ name|lastLocation
 return|;
 block|}
 block|}
-comment|/**      *       */
+comment|/**      *      */
 specifier|public
 name|Message
 name|getMessage
@@ -1822,7 +1822,7 @@ name|identity
 argument_list|)
 return|;
 block|}
-comment|/**      * Replays the checkpointStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *       * @param listener      * @throws Exception      */
+comment|/**      * Replays the checkpointStore first as those messages are the oldest ones,      * then messages are replayed from the transaction log and then the cache is      * updated.      *      * @param listener      * @throws Exception      */
 specifier|public
 name|void
 name|recover
@@ -2019,6 +2019,29 @@ return|return
 name|longTermStore
 operator|.
 name|getMessageCount
+argument_list|()
+return|;
+block|}
+specifier|public
+name|long
+name|getMessageSize
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|peristenceAdapter
+operator|.
+name|checkpoint
+argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|longTermStore
+operator|.
+name|getMessageSize
 argument_list|()
 return|;
 block|}

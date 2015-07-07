@@ -848,6 +848,11 @@ comment|// AMQ-2586: Better to leave this stat at zero than to give the user
 comment|// misleading metrics.
 comment|// int messageCount = store.getMessageCount();
 comment|// destinationStatistics.getMessages().setCount(messageCount);
+name|store
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 annotation|@
