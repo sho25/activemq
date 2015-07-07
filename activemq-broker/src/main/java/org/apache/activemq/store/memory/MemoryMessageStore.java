@@ -274,6 +274,8 @@ name|messageTable
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -378,6 +380,8 @@ comment|// synchronized(messageTable){
 comment|// messageTable.put(messageId,messageRef);
 comment|// }
 comment|// }
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -400,6 +404,8 @@ block|}
 comment|// public String getMessageReference(MessageId identity) throws IOException{
 comment|// return (String)messageTable.get(identity);
 comment|// }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeMessage
@@ -459,6 +465,30 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
+name|getMessageStoreStatistics
+argument_list|()
+operator|.
+name|getMessageCount
+argument_list|()
+operator|.
+name|decrement
+argument_list|()
+expr_stmt|;
+name|getMessageStoreStatistics
+argument_list|()
+operator|.
+name|getMessageSize
+argument_list|()
+operator|.
+name|addSize
+argument_list|(
+operator|-
+name|removed
+operator|.
+name|getSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -486,32 +516,10 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|getMessageStoreStatistics
-argument_list|()
-operator|.
-name|getMessageCount
-argument_list|()
-operator|.
-name|decrement
-argument_list|()
-expr_stmt|;
-name|getMessageStoreStatistics
-argument_list|()
-operator|.
-name|getMessageSize
-argument_list|()
-operator|.
-name|addSize
-argument_list|(
-operator|-
-name|removed
-operator|.
-name|getSize
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -599,6 +607,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeAllMessages
@@ -650,6 +660,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverNextMessages
@@ -794,6 +806,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching
@@ -819,6 +833,8 @@ operator|=
 name|messageId
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateMessage
