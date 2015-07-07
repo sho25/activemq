@@ -1565,6 +1565,15 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|getSubscriptionStatistics
+argument_list|()
+operator|.
+name|getInflightMessageSize
+argument_list|()
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(

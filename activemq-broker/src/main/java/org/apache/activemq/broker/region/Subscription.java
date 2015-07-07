@@ -389,6 +389,11 @@ name|int
 name|getInFlightSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return the size in bytes of the messages awaiting acknowledgement      */
+name|long
+name|getInFlightMessageSize
+parameter_list|()
+function_decl|;
 comment|/**      * @return the in flight messages as a percentage of the prefetch size      */
 name|int
 name|getInFlightUsage
