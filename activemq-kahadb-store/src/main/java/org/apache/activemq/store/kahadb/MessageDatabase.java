@@ -13195,6 +13195,80 @@ argument_list|(
 name|tx
 argument_list|)
 expr_stmt|;
+comment|//go through an upgrade old index if older than version 6
+if|if
+condition|(
+name|metadata
+operator|.
+name|version
+operator|<
+literal|6
+condition|)
+block|{
+for|for
+control|(
+name|Iterator
+argument_list|<
+name|Entry
+argument_list|<
+name|Location
+argument_list|,
+name|Long
+argument_list|>
+argument_list|>
+name|iterator
+init|=
+name|rc
+operator|.
+name|locationIndex
+operator|.
+name|iterator
+argument_list|(
+name|tx
+argument_list|)
+init|;
+name|iterator
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|Entry
+argument_list|<
+name|Location
+argument_list|,
+name|Long
+argument_list|>
+name|entry
+init|=
+name|iterator
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+comment|// modify so it is upgraded
+name|rc
+operator|.
+name|locationIndex
+operator|.
+name|put
+argument_list|(
+name|tx
+argument_list|,
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|// If it was a topic...
 if|if
 condition|(
@@ -14089,7 +14163,7 @@ name|MessageStore
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** 	 * Locate the storeMessageSize counter for this KahaDestination 	 * @param kahaDestination 	 * @return 	 */
+comment|/**      * Locate the storeMessageSize counter for this KahaDestination      * @param kahaDestination      * @return      */
 specifier|protected
 name|MessageStoreStatistics
 name|getStoreStats
@@ -14226,6 +14300,8 @@ specifier|public
 name|LocationSizeMarshaller
 parameter_list|()
 block|{          }
+annotation|@
+name|Override
 specifier|public
 name|Location
 name|readPayload
@@ -14287,6 +14363,8 @@ return|return
 name|rc
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writePayload
@@ -14331,6 +14409,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getFixedSize
@@ -14340,6 +14420,8 @@ return|return
 literal|12
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Location
 name|deepCopy
@@ -14356,6 +14438,8 @@ name|source
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeepCopySupported
