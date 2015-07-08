@@ -1295,7 +1295,7 @@ name|long
 name|connectTimeout
 parameter_list|)
 block|{
-name|this
+name|wireFormat
 operator|.
 name|setConnectAttemptTimeout
 argument_list|(
