@@ -1339,17 +1339,6 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Override
-specifier|protected
-name|int
-name|getStoreOpenWireVersion
-parameter_list|()
-block|{
-return|return
-literal|10
-return|;
-block|}
 block|}
 end_class
 

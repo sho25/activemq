@@ -2154,7 +2154,7 @@ name|storeOpenWireVersion
 init|=
 name|OpenWireFormat
 operator|.
-name|DEFAULT_VERSION
+name|DEFAULT_STORE_VERSION
 decl_stmt|;
 static|static
 block|{

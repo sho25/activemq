@@ -329,6 +329,8 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -380,6 +382,8 @@ operator|new
 name|TransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -407,6 +411,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -443,11 +449,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed
@@ -510,6 +520,8 @@ name|getPort
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -591,6 +603,8 @@ name|tearDown
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onAccept
@@ -625,6 +639,8 @@ operator|new
 name|TransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -652,6 +668,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -685,11 +703,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{                 }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed
@@ -717,6 +739,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onAcceptError
@@ -743,10 +767,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//
 comment|// Manually create a client transport so that it does not send KeepAlive
-comment|// packets.
-comment|// this should simulate a client hang.
+comment|// packets.  this should simulate a client hang.
 name|clientTransport
 operator|=
 operator|new
@@ -780,6 +802,8 @@ operator|new
 name|TransportListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -807,6 +831,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -843,11 +869,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed
@@ -874,7 +904,7 @@ name|setVersion
 argument_list|(
 name|OpenWireFormat
 operator|.
-name|DEFAULT_VERSION
+name|DEFAULT_LEGACY_VERSION
 argument_list|)
 expr_stmt|;
 name|info
@@ -1056,6 +1086,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

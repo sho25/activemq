@@ -1424,7 +1424,7 @@ name|openwireVersion
 init|=
 name|OpenWireFormat
 operator|.
-name|DEFAULT_VERSION
+name|DEFAULT_STORE_VERSION
 decl_stmt|;
 specifier|public
 name|void
@@ -1623,7 +1623,7 @@ name|openwireVersion
 operator|=
 name|OpenWireFormat
 operator|.
-name|DEFAULT_VERSION
+name|DEFAULT_LEGACY_VERSION
 expr_stmt|;
 block|}
 name|LOG

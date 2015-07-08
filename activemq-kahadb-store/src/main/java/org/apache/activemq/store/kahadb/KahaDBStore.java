@@ -1432,9 +1432,13 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Recovered Store uses a different OpenWire version[{}] "
+literal|"Existing Store uses a different OpenWire version[{}] "
 operator|+
-literal|"than the version configured[{}]."
+literal|"than the version configured[{}] reverting to the version "
+operator|+
+literal|"used by this store, some newer broker features may not work"
+operator|+
+literal|"as expected."
 argument_list|,
 name|metadata
 operator|.
@@ -1444,6 +1448,25 @@ name|brokerService
 operator|.
 name|getStoreOpenWireVersion
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Update the broker service instance to the actual version in use.
+name|wireFormat
+operator|.
+name|setVersion
+argument_list|(
+name|metadata
+operator|.
+name|openwireVersion
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|setStoreOpenWireVersion
+argument_list|(
+name|metadata
+operator|.
+name|openwireVersion
 argument_list|)
 expr_stmt|;
 block|}

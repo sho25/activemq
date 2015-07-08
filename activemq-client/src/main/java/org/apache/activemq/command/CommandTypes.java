@@ -34,6 +34,12 @@ comment|// What is the latest version of the openwire protocol used in the store
 name|byte
 name|PROTOCOL_STORE_VERSION
 init|=
+literal|11
+decl_stmt|;
+comment|// What is the legacy version that old KahaDB store's most commonly used
+name|byte
+name|PROTOCOL_LEGACY_STORE_VERSION
+init|=
 literal|6
 decl_stmt|;
 comment|// A marshaling layer can use this type to specify a null object.

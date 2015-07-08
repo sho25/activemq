@@ -190,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   *   */
+comment|/**  *  *  */
 end_comment
 
 begin_class
@@ -205,7 +205,7 @@ specifier|public
 specifier|static
 specifier|final
 name|int
-name|DEFAULT_VERSION
+name|DEFAULT_STORE_VERSION
 init|=
 name|CommandTypes
 operator|.
@@ -220,6 +220,16 @@ init|=
 name|CommandTypes
 operator|.
 name|PROTOCOL_VERSION
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_LEGACY_VERSION
+init|=
+name|CommandTypes
+operator|.
+name|PROTOCOL_LEGACY_STORE_VERSION
 decl_stmt|;
 specifier|public
 specifier|static
@@ -362,7 +372,7 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-name|DEFAULT_VERSION
+name|DEFAULT_STORE_VERSION
 argument_list|)
 expr_stmt|;
 block|}
@@ -379,6 +389,8 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -474,6 +486,8 @@ return|return
 name|answer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -533,6 +547,8 @@ operator|==
 name|sizePrefixDisabled
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -568,6 +584,8 @@ return|;
 comment|// return "OpenWireFormat{id="+id+",
 comment|// tightEncodingEnabled="+tightEncodingEnabled+"}";
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getVersion
@@ -577,6 +595,8 @@ return|return
 name|version
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|ByteSequence
@@ -633,9 +653,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
@@ -872,6 +889,8 @@ return|return
 name|sequence
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|Object
@@ -976,6 +995,8 @@ return|return
 name|command
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1030,9 +1051,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
@@ -1244,6 +1262,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|unmarshal
@@ -1370,9 +1390,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
@@ -1474,9 +1491,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
@@ -1530,7 +1544,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Allows you to dynamically switch the version of the openwire protocol      * being used.      *       * @param version      */
+comment|/**      * Allows you to dynamically switch the version of the openwire protocol      * being used.      *      * @param version      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setVersion
@@ -1706,9 +1722,6 @@ block|{
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|dataType
@@ -1890,9 +1903,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
@@ -2005,9 +2015,6 @@ block|{
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
@@ -2079,9 +2086,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|dataType
@@ -2224,9 +2228,6 @@ decl_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|dataType
@@ -2328,9 +2329,6 @@ expr_stmt|;
 name|DataStreamMarshaller
 name|dsm
 init|=
-operator|(
-name|DataStreamMarshaller
-operator|)
 name|dataMarshallers
 index|[
 name|type
