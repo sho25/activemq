@@ -212,6 +212,8 @@ specifier|public
 specifier|abstract
 class|class
 name|CertificateLoginModule
+extends|extends
+name|PropertiesLoader
 implements|implements
 name|LoginModule
 block|{
@@ -268,10 +270,6 @@ name|Principal
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-name|boolean
-name|debug
-decl_stmt|;
 comment|/**      * Overriding to allow for proper initialization. Standard JAAS.      */
 annotation|@
 name|Override
@@ -304,36 +302,11 @@ name|callbackHandler
 operator|=
 name|callbackHandler
 expr_stmt|;
-name|debug
-operator|=
-literal|"true"
-operator|.
-name|equalsIgnoreCase
+name|init
 argument_list|(
-operator|(
-name|String
-operator|)
 name|options
-operator|.
-name|get
-argument_list|(
-literal|"debug"
-argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|debug
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Initialized debug"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Overriding to allow for certificate-based login. Standard JAAS.      */
 annotation|@

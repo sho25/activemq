@@ -678,7 +678,7 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|PropertiesLoginModule
+name|PropertiesLoader
 operator|.
 name|resetUsersAndGroupsCache
 argument_list|()
