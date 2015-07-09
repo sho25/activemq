@@ -289,9 +289,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -528,8 +528,6 @@ operator|.
 name|doStart
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|locker1
@@ -634,8 +632,6 @@ name|timewait
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|thread
@@ -705,8 +701,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|locker2
