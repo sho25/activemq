@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -92,18 +104,6 @@ operator|.
 name|util
 operator|.
 name|UUID
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|TimeUnit
 import|;
 end_import
 
@@ -377,20 +377,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
 begin_comment
-comment|/**  * Stuck messages test client.  *<p/>  * Will kick of publisher and consumer simultaneously, and will usually result in stuck messages on the queue.  */
+comment|/**  * Will kick of publisher and consumer simultaneously, and will usually result in  * stuck messages on the queue.  */
 end_comment
 
 begin_class
@@ -418,11 +406,11 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 name|String
 name|activemqURL
-init|=
-literal|"tcp://localhost:61617"
 decl_stmt|;
+specifier|private
 name|BrokerService
 name|brokerService
 decl_stmt|;
@@ -1266,6 +1254,9 @@ name|waitForCompletion
 argument_list|()
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|publishedIds
 init|=
 name|publisher
@@ -1277,6 +1268,9 @@ name|distinctPublishedCount
 operator|=
 operator|new
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|publishedIds
 argument_list|)
@@ -1889,6 +1883,8 @@ name|q
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2731,6 +2727,8 @@ name|queueName
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2846,7 +2844,6 @@ name|count
 operator|=
 literal|0
 expr_stmt|;
-comment|// Sleep a little before trying to read after not getting a message
 try|try
 block|{
 if|if
@@ -2874,7 +2871,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//sleep(3000);
 block|}
 catch|catch
 parameter_list|(
@@ -2961,7 +2957,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{                  }
+block|{                 }
 block|}
 block|}
 block|}
