@@ -16,6 +16,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -129,16 +177,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -149,16 +187,30 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
 
 begin_class
 specifier|public
 class|class
 name|ManagedConnectionTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -192,8 +244,9 @@ specifier|private
 name|ActiveMQManagedConnection
 name|managedConnection
 decl_stmt|;
-comment|/**      * @see junit.framework.TestCase#setUp()      */
-specifier|protected
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -261,6 +314,13 @@ name|getManagedConnection
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testConnectionCloseEvent
@@ -290,6 +350,8 @@ operator|new
 name|ConnectionEventListenerAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|connectionClosed
@@ -323,6 +385,13 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testLocalTransactionCommittedEvent
@@ -352,6 +421,8 @@ operator|new
 name|ConnectionEventListenerAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionCommitted
@@ -410,6 +481,13 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testLocalTransactionRollbackEvent
@@ -439,6 +517,8 @@ operator|new
 name|ConnectionEventListenerAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionRolledback
@@ -497,6 +577,13 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testLocalTransactionStartedEvent
@@ -526,6 +613,8 @@ operator|new
 name|ConnectionEventListenerAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionStarted
@@ -581,6 +670,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * A managed connection that has been clean up should throw exceptions when      * it used.      */
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testCleanup
@@ -615,7 +711,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-comment|// This should throw expection
+comment|// This should throw exception
 name|doWork
 argument_list|(
 name|session
@@ -634,6 +730,13 @@ name|e
 parameter_list|)
 block|{         }
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSessionCloseIndependance
@@ -686,7 +789,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-comment|// This should throw expection
+comment|// This should throw exception
 name|doWork
 argument_list|(
 name|session1
@@ -717,7 +820,7 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
-comment|// This should throw expection
+comment|// This should throw exception
 name|doWork
 argument_list|(
 name|session2
@@ -736,7 +839,7 @@ name|e
 parameter_list|)
 block|{         }
 block|}
-comment|/**      * Does some work so that we can test commit/rollback etc.      *       * @throws JMSException      */
+comment|/**      * Does some work so that we can test commit/rollback etc.      *      * @throws JMSException      */
 specifier|public
 name|void
 name|doWork
@@ -780,6 +883,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testImplementsQueueAndTopicConnection
@@ -824,6 +934,13 @@ name|tc
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSelfEquality
@@ -837,6 +954,13 @@ name|managedConnection
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSamePropertiesButNotEqual

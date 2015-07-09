@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -109,16 +121,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -129,16 +131,30 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
 
 begin_class
 specifier|public
 class|class
 name|UnsubscribeResubscribeTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -172,8 +188,9 @@ specifier|private
 name|ActiveMQManagedConnection
 name|managedConnection
 decl_stmt|;
-comment|/**      * @see junit.framework.TestCase#setUp()      */
-specifier|protected
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -258,6 +275,13 @@ name|getManagedConnection
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testUnsubscribeResubscribe
@@ -271,6 +295,11 @@ name|XAException
 block|{
 name|getConnection
 argument_list|()
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+name|managedConnection
+argument_list|)
 expr_stmt|;
 name|Session
 name|session

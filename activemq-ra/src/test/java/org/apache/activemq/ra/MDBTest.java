@@ -16,6 +16,66 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -419,16 +479,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|apache
 operator|.
 name|activemq
@@ -651,6 +701,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -664,18 +724,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -699,6 +747,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 name|long
 name|txGenerator
 init|=
@@ -708,6 +757,16 @@ name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 specifier|private
+name|AtomicInteger
+name|id
+init|=
+operator|new
+name|AtomicInteger
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 class|class
@@ -715,6 +774,8 @@ name|StubBootstrapContext
 implements|implements
 name|BootstrapContext
 block|{
+annotation|@
+name|Override
 specifier|public
 name|WorkManager
 name|getWorkManager
@@ -725,6 +786,8 @@ operator|new
 name|WorkManager
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doWork
@@ -745,6 +808,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doWork
@@ -774,6 +839,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|startWork
@@ -797,6 +864,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|startWork
@@ -829,6 +898,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scheduleWork
@@ -849,6 +920,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scheduleWork
@@ -881,6 +954,8 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|XATerminator
 name|getXATerminator
@@ -890,6 +965,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Timer
 name|createTimer
@@ -922,6 +999,8 @@ specifier|public
 name|Xid
 name|xid
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeDelivery
@@ -987,6 +1066,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterDelivery
@@ -1054,6 +1135,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|release
@@ -1073,6 +1156,8 @@ name|xid
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1088,6 +1173,11 @@ block|}
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testDestinationInJndi
@@ -1198,6 +1288,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1274,6 +1366,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -1294,6 +1388,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -1434,6 +1530,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testMessageDelivery
@@ -1544,6 +1645,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1613,6 +1716,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -1633,6 +1738,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -1774,6 +1881,11 @@ block|}
 comment|//https://issues.apache.org/jira/browse/AMQ-5811
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testAsyncStop
@@ -1875,6 +1987,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1956,6 +2070,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -1976,6 +2092,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -2158,6 +2276,8 @@ operator|new
 name|Thread
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2182,6 +2302,11 @@ return|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testErrorOnNoMessageDeliveryBrokerZeroPrefetchConfig
@@ -2547,6 +2672,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -2616,6 +2743,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -2636,6 +2765,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -2918,6 +3049,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -3030,6 +3163,8 @@ parameter_list|)
 block|{                 }
 block|}
 empty_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterDelivery
@@ -3173,6 +3308,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -3193,6 +3330,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -3321,6 +3460,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testOrderOfMessageExceptionReDelivery
@@ -3410,6 +3554,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -3469,6 +3615,8 @@ expr_stmt|;
 block|}
 block|}
 empty_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterDelivery
@@ -3631,6 +3779,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -3651,6 +3801,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -3857,6 +4009,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testXaTimeoutRedelivery
@@ -3936,6 +4093,8 @@ operator|new
 name|StubMessageEndpoint
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -4050,6 +4209,8 @@ parameter_list|)
 block|{                 }
 block|}
 empty_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterDelivery
@@ -4142,6 +4303,8 @@ operator|new
 name|MessageEndpointFactory
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|MessageEndpoint
 name|createEndpoint
@@ -4162,6 +4325,8 @@ return|return
 name|endpoint
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDeliveryTransacted
@@ -4204,7 +4369,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{          }
+block|{         }
 comment|// Send the broker a message to that endpoint
 name|MessageProducer
 name|producer
@@ -4268,15 +4433,6 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-name|AtomicInteger
-name|id
-init|=
-operator|new
-name|AtomicInteger
-argument_list|(
-literal|0
-argument_list|)
-decl_stmt|;
 specifier|public
 name|Xid
 name|createXid
@@ -4347,6 +4503,8 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getFormatId
@@ -4356,6 +4514,8 @@ return|return
 literal|86
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -4366,6 +4526,8 @@ return|return
 name|bs
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -4376,6 +4538,8 @@ return|return
 name|bs
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

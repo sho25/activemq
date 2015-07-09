@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -176,16 +188,6 @@ operator|.
 name|xa
 operator|.
 name|XAResource
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -441,10 +443,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
-
 begin_class
 annotation|@
 name|RunWith
@@ -456,8 +454,6 @@ argument_list|)
 specifier|public
 class|class
 name|ServerSessionImplTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -506,6 +502,7 @@ specifier|private
 name|ActiveMQSession
 name|session
 decl_stmt|;
+specifier|private
 name|ActiveMQEndpointWorker
 name|endpointWorker
 decl_stmt|;
@@ -522,11 +519,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|context
 operator|=
 operator|new
@@ -667,16 +659,10 @@ operator|=
 operator|new
 name|ServerSessionImpl
 argument_list|(
-operator|(
-name|ServerSessionPoolImpl
-operator|)
 name|pool
 argument_list|,
 name|session
 argument_list|,
-operator|(
-name|WorkManager
-operator|)
 name|workManager
 argument_list|,
 name|messageEndpoint
@@ -1099,9 +1085,6 @@ name|anything
 argument_list|()
 argument_list|)
 argument_list|,
-operator|(
-name|long
-operator|)
 name|with
 argument_list|(
 name|any
@@ -1164,7 +1147,7 @@ parameter_list|(
 name|Description
 name|description
 parameter_list|)
-block|{                 }
+block|{                     }
 block|}
 argument_list|)
 expr_stmt|;

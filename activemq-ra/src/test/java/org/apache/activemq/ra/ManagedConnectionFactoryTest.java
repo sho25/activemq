@@ -16,6 +16,78 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -203,16 +275,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -223,16 +285,30 @@ name|ActiveMQConnectionFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
 
 begin_class
 specifier|public
 class|class
 name|ManagedConnectionFactoryTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -254,8 +330,9 @@ specifier|private
 name|ActiveMQManagedConnectionFactory
 name|managedConnectionFactory
 decl_stmt|;
-comment|/**      * @see junit.framework.TestCase#setUp()      */
-specifier|protected
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -301,6 +378,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testConnectionFactoryAllocation
@@ -311,8 +395,7 @@ throws|,
 name|JMSException
 block|{
 comment|// Make sure that the ConnectionFactory is asking the connection manager
-comment|// to
-comment|// allocate the connection.
+comment|// to allocate the connection.
 specifier|final
 name|boolean
 name|allocateRequested
@@ -344,6 +427,8 @@ name|serialVersionUID
 init|=
 literal|1699499816530099939L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|allocateConnection
@@ -455,6 +540,13 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testConnectionSessionArgs
@@ -558,6 +650,13 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testConnectionFactoryConnectionMatching
@@ -797,6 +896,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testConnectionFactoryIsSerializableAndReferenceable
@@ -840,6 +946,13 @@ name|Referenceable
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testImplementsQueueAndTopicConnectionFactory
@@ -874,6 +987,13 @@ name|TopicConnectionFactory
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testSerializability

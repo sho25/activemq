@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation of a ConnectionManager that can be extended so that  * it can see how the RA connections are interacting with it.  *   *   */
+comment|/**  * A simple implementation of a ConnectionManager that can be extended so that  * it can see how the RA connections are interacting with it.  */
 end_comment
 
 begin_class
@@ -185,6 +185,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+specifier|private
 name|ArrayList
 argument_list|<
 name|ConnectionEventListener
@@ -198,6 +199,7 @@ name|ConnectionEventListener
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
 name|ArrayList
 argument_list|<
 name|ManagedConnection
@@ -211,7 +213,7 @@ name|ManagedConnection
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**      * Adds a listener to all connections created by this connection manager.      * This listener will be added to all previously created connections.      *       * @param l      */
+comment|/**      * Adds a listener to all connections created by this connection manager.      * This listener will be added to all previously created connections.      *      * @param l      */
 specifier|public
 name|void
 name|addConnectionEventListener
@@ -265,6 +267,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see javax.resource.spi.ConnectionManager#allocateConnection(javax.resource.spi.ManagedConnectionFactory,      *      javax.resource.spi.ConnectionRequestInfo)      */
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|allocateConnection
@@ -357,6 +361,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#connectionClosed(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|connectionClosed
@@ -441,6 +447,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionStarted(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionStarted
@@ -450,6 +458,8 @@ name|event
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionCommitted(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionCommitted
@@ -459,6 +469,8 @@ name|event
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionRolledback(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionRolledback
@@ -468,6 +480,8 @@ name|event
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#connectionErrorOccurred(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|connectionErrorOccurred

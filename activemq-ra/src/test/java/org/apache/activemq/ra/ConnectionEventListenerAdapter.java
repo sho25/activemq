@@ -39,10 +39,6 @@ name|ConnectionEventListener
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -51,6 +47,8 @@ implements|implements
 name|ConnectionEventListener
 block|{
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#connectionClosed(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|connectionClosed
@@ -60,6 +58,8 @@ name|arg0
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionStarted(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionStarted
@@ -69,6 +69,8 @@ name|arg0
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionCommitted(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionCommitted
@@ -78,6 +80,8 @@ name|arg0
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionRolledback(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|localTransactionRolledback
@@ -87,6 +91,8 @@ name|arg0
 parameter_list|)
 block|{     }
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#connectionErrorOccurred(javax.resource.spi.ConnectionEvent)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|connectionErrorOccurred
