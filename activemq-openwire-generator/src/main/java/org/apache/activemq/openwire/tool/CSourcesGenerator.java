@@ -167,9 +167,15 @@ return|;
 block|}
 specifier|protected
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|sort
 parameter_list|(
 name|List
+argument_list|<
+name|JClass
+argument_list|>
 name|source
 parameter_list|)
 block|{
