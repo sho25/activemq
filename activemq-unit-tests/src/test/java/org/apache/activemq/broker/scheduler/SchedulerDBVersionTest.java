@@ -400,6 +400,7 @@ operator|+
 literal|"/src/test/resources/org/apache/activemq/store/schedulerDB/legacy"
 argument_list|)
 decl_stmt|;
+specifier|private
 name|BrokerService
 name|broker
 init|=
@@ -449,7 +450,7 @@ name|answer
 operator|.
 name|setDataDirectory
 argument_list|(
-literal|"target"
+literal|"target/SchedulerDBVersionTest/"
 argument_list|)
 expr_stmt|;
 name|answer
@@ -733,7 +734,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"target/activemq-data/store/scheduler/versionDB"
+literal|"target/SchedulerDBVersionTest/store/scheduler/versionDB"
 argument_list|)
 decl_stmt|;
 name|IOHelper
