@@ -69,16 +69,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|jms
-operator|.
-name|Topic
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -113,7 +103,7 @@ name|activemq
 operator|.
 name|command
 operator|.
-name|ActiveMQTopic
+name|ActiveMQQueue
 import|;
 end_import
 
@@ -192,7 +182,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * AMQ-5875  *  * This test shows that when multiple destinations share a single KahaDB  * instance when using mKahaDB, that the deletion of one Topic will no longer  * cause an IllegalStateException and the store will be properly kept around  * until all destinations associated with the store are gone.  *  * */
+comment|/**  * AMQ-5875  *  * This test shows that when multiple destinations share a single KahaDB  * instance when using mKahaDB, that the deletion of one Queue will not cause  * the store to be deleted if another destination is still attached.  This  * issue was related to Topics but this test makes sure Queues work as well.  *  * */
 end_comment
 
 begin_class
@@ -205,7 +195,7 @@ name|class
 argument_list|)
 specifier|public
 class|class
-name|MultiKahaDBTopicDeletionTest
+name|MultiKahaDBQueueDeletionTest
 extends|extends
 name|AbstractMultiKahaDBDeletionTest
 block|{
@@ -226,24 +216,24 @@ argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|static
-name|ActiveMQTopic
-name|TOPIC1
+name|ActiveMQQueue
+name|QUEUE1
 init|=
 operator|new
-name|ActiveMQTopic
+name|ActiveMQQueue
 argument_list|(
 literal|"test.>"
 argument_list|)
 decl_stmt|;
 specifier|protected
 specifier|static
-name|ActiveMQTopic
-name|TOPIC2
+name|ActiveMQQueue
+name|QUEUE2
 init|=
 operator|new
-name|ActiveMQTopic
+name|ActiveMQQueue
 argument_list|(
-literal|"test.t.topic"
+literal|"test.t.queue"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -258,7 +248,7 @@ argument_list|>
 name|data
 parameter_list|()
 block|{
-comment|//Test with topics created in different orders
+comment|//Test with queues created in different orders
 return|return
 name|Arrays
 operator|.
@@ -270,27 +260,27 @@ index|[]
 index|[]
 block|{
 block|{
-name|TOPIC1
+name|QUEUE1
 block|,
-name|TOPIC2
+name|QUEUE2
 block|}
 block|,
 block|{
-name|TOPIC2
+name|QUEUE2
 block|,
-name|TOPIC1
+name|QUEUE1
 block|}
 block|}
 argument_list|)
 return|;
 block|}
 specifier|public
-name|MultiKahaDBTopicDeletionTest
+name|MultiKahaDBQueueDeletionTest
 parameter_list|(
-name|ActiveMQTopic
+name|ActiveMQQueue
 name|dest1
 parameter_list|,
-name|ActiveMQTopic
+name|ActiveMQQueue
 name|dest2
 parameter_list|)
 block|{
@@ -302,6 +292,7 @@ name|dest2
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.store.kahadb.AbstractMultiKahaDBDeletionTest#createConsumer(org.apache.activemq.command.ActiveMQDestination)      */
 annotation|@
 name|Override
 specifier|protected
@@ -359,17 +350,13 @@ argument_list|)
 decl_stmt|;
 name|session
 operator|.
-name|createDurableSubscriber
+name|createConsumer
 argument_list|(
-operator|(
-name|Topic
-operator|)
 name|dest
-argument_list|,
-literal|"sub1"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.store.kahadb.AbstractMultiKahaDBDeletionTest#getStoreFileFilter()      */
 annotation|@
 name|Override
 specifier|protected
@@ -381,7 +368,7 @@ return|return
 operator|new
 name|WildcardFileFilter
 argument_list|(
-literal|"topic*"
+literal|"queue*"
 argument_list|)
 return|;
 block|}
