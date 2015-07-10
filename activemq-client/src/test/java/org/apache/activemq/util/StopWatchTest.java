@@ -16,26 +16,58 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotSame
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
 
 begin_class
 specifier|public
 class|class
 name|StopWatchTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testStopWatch
@@ -87,6 +119,8 @@ literal|150
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testStopWatchNotStarted
@@ -159,6 +193,8 @@ literal|150
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testStopWatchRestart
@@ -250,6 +286,8 @@ literal|50
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testStopWatchTaken

@@ -153,11 +153,46 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|MemoryUsageConcurrencyTest
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MemoryUsageConcurrencyTest
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -185,7 +220,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|50000
+literal|30000
 condition|;
 name|i
 operator|++
@@ -774,21 +809,15 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
-literal|"Attempt: "
-operator|+
+literal|"Attempt: {} : {} waitForSpace never returned"
+argument_list|,
 name|attempt
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|memUsage
-operator|+
-literal|" waitForSpace never returned"
 argument_list|)
 expr_stmt|;
 name|waitForSpaceThread
@@ -833,29 +862,23 @@ name|getPercentUsage
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
-literal|"Attempt: "
-operator|+
+literal|"Attempt: {} : {}"
+argument_list|,
 name|attempt
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|memUsage
 argument_list|)
 expr_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|debug
 argument_list|(
-literal|"Operations: "
-operator|+
+literal|"Operations: {}"
+argument_list|,
 name|ops
 argument_list|)
 expr_stmt|;

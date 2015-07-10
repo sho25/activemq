@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -27,54 +39,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
-
-begin_comment
-comment|/**  * @author rajdavies  */
-end_comment
 
 begin_class
 specifier|public
 class|class
 name|MarshallingSupportTest
-extends|extends
-name|TestCase
 block|{
-comment|/**      * @throws java.lang.Exception      * @see junit.framework.TestCase#setUp()      */
-specifier|protected
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * @throws java.lang.Exception      * @see junit.framework.TestCase#tearDown()      */
-specifier|protected
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Test method for      * {@link org.apache.activemq.util.MarshallingSupport#propertiesToString(java.util.Properties)}.      *       * @throws Exception      */
+comment|/**      * Test method for      * {@link org.apache.activemq.util.MarshallingSupport#propertiesToString(java.util.Properties)}.      *      * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPropertiesToString

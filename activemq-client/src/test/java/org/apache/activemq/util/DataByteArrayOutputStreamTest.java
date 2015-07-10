@@ -27,11 +27,11 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -39,10 +39,10 @@ begin_class
 specifier|public
 class|class
 name|DataByteArrayOutputStreamTest
-extends|extends
-name|TestCase
 block|{
 comment|/**      * This test case assumes that an ArrayIndexOutOfBoundsException will be thrown when the buffer fails to resize      * @throws IOException      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testResize

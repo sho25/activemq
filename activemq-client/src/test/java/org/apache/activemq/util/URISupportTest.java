@@ -16,6 +16,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -57,16 +105,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -81,13 +119,23 @@ name|CompositeData
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|URISupportTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmptyCompositePath
@@ -122,6 +170,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCompositePath
@@ -175,6 +225,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSimpleComposite
@@ -209,6 +261,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testComposite
@@ -248,6 +302,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmptyCompositeWithParenthesisInParam
@@ -328,6 +384,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCompositeWithParenthesisInParam
@@ -408,6 +466,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCompositeWithComponentParam
@@ -496,6 +556,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsingURI
@@ -619,6 +681,8 @@ name|expected
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsingCompositeURI
@@ -675,6 +739,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCheckParenthesis
@@ -712,6 +778,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCreateWithQuery
@@ -806,6 +874,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsingParams
@@ -882,6 +952,8 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCompositeCreateURIWithQuery
@@ -1137,6 +1209,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testApplyParameters
@@ -1332,6 +1406,8 @@ literal|"80"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsCompositeURIWithQueryNoSlashes
@@ -1384,6 +1460,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsCompositeURIWithQueryAndSlashes
@@ -1436,6 +1514,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsCompositeURINoQueryNoSlashes
@@ -1488,6 +1568,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsCompositeURINoQueryNoSlashesNoParentheses
@@ -1514,6 +1596,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsCompositeURINoQueryWithSlashes

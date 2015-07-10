@@ -16,26 +16,33 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertTrue
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author<a href="http://www.christianposta.com/blog">Christian Posta</a>  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
 
 begin_class
 specifier|public
 class|class
 name|IntrospectionSupportTest
-extends|extends
-name|TestCase
 block|{
+specifier|private
 class|class
 name|DummyClass
 block|{
@@ -81,6 +88,8 @@ name|trace
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSetPropertyPrimitiveWithWrapperValue
@@ -106,6 +115,13 @@ argument_list|(
 literal|false
 argument_list|)
 decl_stmt|;
+name|dummyClass
+operator|.
+name|setTrace
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 comment|// dummy field expects a primitive
 name|IntrospectionSupport
 operator|.
