@@ -252,6 +252,8 @@ specifier|protected
 name|String
 name|text
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|copy
@@ -295,6 +297,8 @@ operator|=
 name|text
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -304,6 +308,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSXMimeType
@@ -313,6 +319,8 @@ return|return
 literal|"jms/text-message"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setText
@@ -338,6 +346,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getText
@@ -512,6 +522,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|beforeMarshall
@@ -529,7 +541,7 @@ argument_list|(
 name|wireFormat
 argument_list|)
 expr_stmt|;
-name|storeContent
+name|storeContentAndClear
 argument_list|()
 expr_stmt|;
 block|}
@@ -669,6 +681,8 @@ block|}
 block|}
 comment|// see https://issues.apache.org/activemq/browse/AMQ-2103
 comment|// and https://issues.apache.org/activemq/browse/AMQ-2966
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearMarshalledState
@@ -689,6 +703,8 @@ literal|null
 expr_stmt|;
 block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *      * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearBody
@@ -708,6 +724,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getSize
@@ -765,6 +783,8 @@ name|getSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
