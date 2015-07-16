@@ -3470,6 +3470,11 @@ name|session
 operator|.
 name|isClientAcknowledge
 argument_list|()
+operator|||
+name|session
+operator|.
+name|isIndividualAcknowledge
+argument_list|()
 condition|)
 block|{
 if|if
