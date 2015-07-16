@@ -249,6 +249,15 @@ name|ActiveMQConnection
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|protected
+name|String
+name|getBindAddress
+parameter_list|()
+block|{
+return|return
+name|BROKER_BIND_ADDRESS
+return|;
+block|}
 specifier|public
 name|void
 name|testClusterConnectedAfterClients
@@ -270,7 +279,8 @@ name|brokerB
 operator|=
 name|createBrokerB
 argument_list|(
-name|BROKER_BIND_ADDRESS
+name|getBindAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -349,7 +359,8 @@ name|brokerB
 operator|=
 name|createBrokerB
 argument_list|(
-name|BROKER_BIND_ADDRESS
+name|getBindAddress
+argument_list|()
 operator|+
 literal|"?transport.closeAsync=false"
 argument_list|)
@@ -426,7 +437,8 @@ name|brokerB
 operator|=
 name|createBrokerB
 argument_list|(
-name|BROKER_BIND_ADDRESS
+name|getBindAddress
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -537,7 +549,8 @@ name|brokerA
 operator|=
 name|createBrokerA
 argument_list|(
-name|BROKER_BIND_ADDRESS
+name|getBindAddress
+argument_list|()
 operator|+
 literal|"?transport.closeAsync=false"
 argument_list|)

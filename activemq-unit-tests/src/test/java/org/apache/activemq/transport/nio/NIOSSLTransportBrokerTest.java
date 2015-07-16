@@ -110,6 +110,8 @@ name|TRUST_KEYSTORE
 init|=
 literal|"src/test/resources/client.keystore"
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|String
 name|getBindLocation
@@ -136,6 +138,8 @@ literal|"nio+ssl://localhost:0?soWriteTimeout=20000"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp

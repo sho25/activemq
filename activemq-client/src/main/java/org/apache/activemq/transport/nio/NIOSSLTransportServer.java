@@ -218,6 +218,12 @@ argument_list|(
 name|format
 argument_list|,
 name|socket
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 if|if

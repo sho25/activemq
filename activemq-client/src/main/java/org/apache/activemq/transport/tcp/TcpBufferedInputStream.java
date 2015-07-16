@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An optimized buffered input stream for Tcp  *   *   */
+comment|/**  * An optimized buffered input stream for Tcp  *  *  */
 end_comment
 
 begin_class
@@ -187,6 +187,8 @@ name|position
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -338,6 +340,8 @@ return|return
 name|cnt
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -489,6 +493,8 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|skip
@@ -554,6 +560,8 @@ return|return
 name|skipped
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|available
@@ -574,6 +582,8 @@ name|position
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|markSupported
@@ -583,6 +593,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -603,6 +615,68 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * @param array      * @throws IOException      */
+specifier|public
+name|void
+name|unread
+parameter_list|(
+name|byte
+index|[]
+name|array
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|int
+name|avail
+init|=
+name|internalBuffer
+operator|.
+name|length
+operator|-
+name|position
+decl_stmt|;
+if|if
+condition|(
+name|array
+operator|.
+name|length
+operator|>
+name|avail
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Buffer is full, can't unread"
+argument_list|)
+throw|;
+block|}
+name|System
+operator|.
+name|arraycopy
+argument_list|(
+name|array
+argument_list|,
+name|position
+argument_list|,
+name|internalBuffer
+argument_list|,
+literal|0
+argument_list|,
+name|array
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+name|count
+operator|+=
+name|array
+operator|.
+name|length
+expr_stmt|;
 block|}
 block|}
 end_class

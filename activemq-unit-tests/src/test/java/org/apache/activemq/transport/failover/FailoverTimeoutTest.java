@@ -308,6 +308,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|protected
+name|String
+name|getTransportUri
+parameter_list|()
+block|{
+return|return
+literal|"tcp://localhost:0"
+return|;
+block|}
 annotation|@
 name|Test
 specifier|public

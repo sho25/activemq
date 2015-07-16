@@ -170,7 +170,7 @@ name|SslTransport
 extends|extends
 name|TcpTransport
 block|{
-comment|/**      * Connect to a remote node such as a Broker.      *       * @param wireFormat The WireFormat to be used.      * @param socketFactory The socket factory to be used. Forcing SSLSockets      *                for obvious reasons.      * @param remoteLocation The remote location.      * @param localLocation The local location.      * @param needClientAuth If set to true, the underlying socket will need      *                client certificate authentication.      * @throws UnknownHostException If TcpTransport throws.      * @throws IOException If TcpTransport throws.      */
+comment|/**      * Connect to a remote node such as a Broker.      *      * @param wireFormat The WireFormat to be used.      * @param socketFactory The socket factory to be used. Forcing SSLSockets      *                for obvious reasons.      * @param remoteLocation The remote location.      * @param localLocation The local location.      * @param needClientAuth If set to true, the underlying socket will need      *                client certificate authentication.      * @throws UnknownHostException If TcpTransport throws.      * @throws IOException If TcpTransport throws.      */
 specifier|public
 name|SslTransport
 parameter_list|(
@@ -262,7 +262,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Initialize from a ServerSocket. No access to needClientAuth is given      * since it is already set within the provided socket.      *       * @param wireFormat The WireFormat to be used.      * @param socket The Socket to be used. Forcing SSL.      * @throws IOException If TcpTransport throws.      */
+comment|/**      * Initialize from a ServerSocket. No access to needClientAuth is given      * since it is already set within the provided socket.      *      * @param wireFormat The WireFormat to be used.      * @param socket The Socket to be used. Forcing SSL.      * @throws IOException If TcpTransport throws.      */
 specifier|public
 name|SslTransport
 parameter_list|(
@@ -283,7 +283,34 @@ name|socket
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Overriding in order to add the client's certificates to ConnectionInfo      * Commmands.      *       * @param command The Command coming in.      */
+specifier|public
+name|SslTransport
+parameter_list|(
+name|WireFormat
+name|format
+parameter_list|,
+name|SSLSocket
+name|socket
+parameter_list|,
+name|InitBuffer
+name|initBuffer
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|super
+argument_list|(
+name|format
+argument_list|,
+name|socket
+argument_list|,
+name|initBuffer
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Overriding in order to add the client's certificates to ConnectionInfo      * Commmands.      *      * @param command The Command coming in.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doConsume
@@ -386,6 +413,8 @@ name|clientCertChain
 return|;
 block|}
 comment|/**      * @return pretty print of 'this'      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

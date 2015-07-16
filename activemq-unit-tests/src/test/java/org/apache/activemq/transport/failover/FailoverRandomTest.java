@@ -77,6 +77,8 @@ name|brokerA
 decl_stmt|,
 name|brokerB
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUp
@@ -99,6 +101,8 @@ literal|"B"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|tearDown
@@ -116,6 +120,15 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+specifier|protected
+name|String
+name|getBrokerUrl
+parameter_list|()
+block|{
+return|return
+literal|"tcp://localhost:0"
+return|;
 block|}
 specifier|private
 name|BrokerService
@@ -147,7 +160,8 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"tcp://localhost:0"
+name|getBrokerUrl
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|broker

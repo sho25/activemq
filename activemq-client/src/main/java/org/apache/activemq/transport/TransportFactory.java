@@ -41,6 +41,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|Socket
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URI
 import|;
 end_import
@@ -62,6 +72,16 @@ operator|.
 name|net
 operator|.
 name|UnknownHostException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|ByteBuffer
 import|;
 end_import
 
@@ -118,6 +138,18 @@ operator|.
 name|concurrent
 operator|.
 name|Executor
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ssl
+operator|.
+name|SSLEngine
 import|;
 end_import
 
@@ -566,6 +598,16 @@ argument_list|,
 name|options
 argument_list|)
 decl_stmt|;
+comment|//remove auto
+name|IntrospectionSupport
+operator|.
+name|extractProperties
+argument_list|(
+name|options
+argument_list|,
+literal|"auto."
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
