@@ -554,51 +554,16 @@ name|delivery
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Rejects the message, marking it as not deliverable here and failed to deliver.      *      * @throws Exception if an error occurs during the reject.      */
+comment|/**      * Marks the message as Modified, indicating whether it failed to deliver and is not deliverable here.      *      * @param deliveryFailed      *        indicates that the delivery failed for some reason.      * @param undeliverableHere      *        marks the delivery as not being able to be process by link it was sent to.      *      * @throws Exception if an error occurs during the process.      */
 specifier|public
 name|void
-name|reject
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|reject
-argument_list|(
-literal|true
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Rejects the message, marking it as failed to deliver and applying the given value      * to the undeliverable here tag.      *      * @param undeliverableHere      *        marks the delivery as not being able to be process by link it was sent to.      *      * @throws Exception if an error occurs during the reject.      */
-specifier|public
-name|void
-name|reject
+name|modified
 parameter_list|(
-name|boolean
-name|undeliverableHere
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|reject
-argument_list|(
-name|undeliverableHere
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Rejects the message, marking it as not deliverable here and failed to deliver.      *      * @param undeliverableHere      *        marks the delivery as not being able to be process by link it was sent to.      * @param deliveryFailed      *        indicates that the delivery failed for some reason.      *      * @throws Exception if an error occurs during the reject.      */
-specifier|public
-name|void
-name|reject
-parameter_list|(
-name|boolean
-name|undeliverableHere
-parameter_list|,
-name|boolean
+name|Boolean
 name|deliveryFailed
+parameter_list|,
+name|Boolean
+name|undeliverableHere
 parameter_list|)
 throws|throws
 name|Exception
@@ -614,19 +579,19 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Can't reject non-received message."
+literal|"Can't modify non-received message."
 argument_list|)
 throw|;
 block|}
 name|receiver
 operator|.
-name|reject
+name|modified
 argument_list|(
 name|delivery
 argument_list|,
-name|undeliverableHere
-argument_list|,
 name|deliveryFailed
+argument_list|,
+name|undeliverableHere
 argument_list|)
 expr_stmt|;
 block|}

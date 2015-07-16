@@ -1493,10 +1493,17 @@ name|state
 decl_stmt|;
 if|if
 condition|(
+name|Boolean
+operator|.
+name|TRUE
+operator|.
+name|equals
+argument_list|(
 name|modified
 operator|.
 name|getDeliveryFailed
 argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|// increment delivery counter..

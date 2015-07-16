@@ -1235,22 +1235,22 @@ name|sync
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Reject a message that was dispatched under the given Delivery instance.      *      * @param delivery      *        the Delivery instance to reject.      * @param undeliverableHere      *        marks the delivery as not being able to be process by link it was sent to.      * @param deliveryFailed      *        indicates that the delivery failed for some reason.      *      * @throws IOException if an error occurs while sending the reject.      */
+comment|/**      * Mark a message that was dispatched under the given Delivery instance as Modified.      *      * @param delivery      *        the Delivery instance to mark modified.      * @param deliveryFailed      *        indicates that the delivery failed for some reason.      * @param undeliverableHere      *        marks the delivery as not being able to be process by link it was sent to.      * @throws IOException if an error occurs while sending the reject.      */
 specifier|public
 name|void
-name|reject
+name|modified
 parameter_list|(
 specifier|final
 name|Delivery
 name|delivery
 parameter_list|,
 specifier|final
-name|boolean
-name|undeliverableHere
+name|Boolean
+name|deliveryFailed
 parameter_list|,
 specifier|final
-name|boolean
-name|deliveryFailed
+name|Boolean
+name|undeliverableHere
 parameter_list|)
 throws|throws
 name|IOException
