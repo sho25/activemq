@@ -993,16 +993,6 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|static
-specifier|final
-name|Object
-name|REDELIVERY_GUARD
-init|=
-operator|new
-name|Object
-argument_list|()
-decl_stmt|;
-specifier|private
 specifier|final
 name|ThreadPoolExecutor
 name|connectionExecutor
@@ -1117,8 +1107,18 @@ name|boolean
 name|debug
 decl_stmt|;
 specifier|protected
+specifier|final
 name|Object
 name|sendMutex
+init|=
+operator|new
+name|Object
+argument_list|()
+decl_stmt|;
+specifier|protected
+specifier|final
+name|Object
+name|redeliveryGuard
 init|=
 operator|new
 name|Object
@@ -2999,7 +2999,7 @@ decl_stmt|;
 comment|/*             * The redelivery guard is to allow the endpoint lifecycle to complete before the messsage is dispatched.             * We dont want the after deliver being called after the redeliver as it may cause some weird stuff.             * */
 synchronized|synchronized
 init|(
-name|REDELIVERY_GUARD
+name|redeliveryGuard
 init|)
 block|{
 try|try
@@ -3468,7 +3468,7 @@ block|{
 comment|/*                                             * wait for the first delivery to be complete, i.e. after delivery has been called.                                             * */
 synchronized|synchronized
 init|(
-name|REDELIVERY_GUARD
+name|redeliveryGuard
 init|)
 block|{
 comment|/*                                                 * If its non blocking then we can just dispatch in a new session.                                                 * */
