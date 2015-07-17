@@ -427,6 +427,8 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
+literal|5
+operator|*
 literal|60000
 argument_list|)
 specifier|public
