@@ -710,6 +710,11 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
+name|completions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
