@@ -2639,6 +2639,20 @@ name|key
 argument_list|)
 return|;
 block|}
+specifier|public
+name|Map
+argument_list|<
+name|SubscriptionKey
+argument_list|,
+name|DurableTopicSubscription
+argument_list|>
+name|getDurableSubscriptions
+parameter_list|()
+block|{
+return|return
+name|durableSubscriptions
+return|;
+block|}
 block|}
 end_class
 
