@@ -844,6 +844,9 @@ block|{
 name|incThroughput
 argument_list|()
 expr_stmt|;
+name|sleep
+argument_list|()
+expr_stmt|;
 name|recvCount
 operator|.
 name|incrementAndGet
