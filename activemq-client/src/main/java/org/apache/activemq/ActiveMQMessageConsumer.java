@@ -2199,6 +2199,11 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+name|sendPullCommand
+argument_list|(
+name|timeout
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
