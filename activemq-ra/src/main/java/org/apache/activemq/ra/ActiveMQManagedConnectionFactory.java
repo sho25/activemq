@@ -227,6 +227,8 @@ name|PrintWriter
 name|logWriter
 decl_stmt|;
 comment|/**      * @see javax.resource.spi.ResourceAdapterAssociation#setResourceAdapter(javax.resource.spi.ResourceAdapter)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setResourceAdapter
@@ -485,26 +487,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|getInputStreamPrefetch
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-name|setInputStreamPrefetch
-argument_list|(
-name|baseInfo
-operator|.
-name|getInputStreamPrefetch
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * @see javax.resource.spi.ResourceAdapterAssociation#getResourceAdapter()      */
+annotation|@
+name|Override
 specifier|public
 name|ResourceAdapter
 name|getResourceAdapter
@@ -579,7 +566,7 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      * Writes this factory during serialization along with the superclass'<i>info</i> property.      * This needs to be done manually since the superclass is not serializable itself.      *       * @param out the stream to write object state to      * @throws java.io.IOException if the object cannot be serialized      */
+comment|/**      * Writes this factory during serialization along with the superclass'      *<i>info</i> property. This needs to be done manually since the superclass      * is not serializable itself.      *      * @param out      *        the stream to write object state to      * @throws java.io.IOException      *         if the object cannot be serialized      */
 specifier|private
 name|void
 name|writeObject
@@ -627,7 +614,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Restores this factory along with the superclass'<i>info</i> property.      * This needs to be done manually since the superclass is not serializable itself.      *       * @param in the stream to read object state from      * @throws java.io.IOException if the object state could not be restored      * @throws java.lang.ClassNotFoundException if the object state could not be restored      */
+comment|/**      * Restores this factory along with the superclass'<i>info</i> property.      * This needs to be done manually since the superclass is not serializable      * itself.      *      * @param in      *        the stream to read object state from      * @throws java.io.IOException      *         if the object state could not be restored      * @throws java.lang.ClassNotFoundException      *         if the object state could not be restored      */
 specifier|private
 name|void
 name|readObject
@@ -668,6 +655,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnectionFactory#createConnectionFactory(javax.resource.spi.ConnectionManager)      */
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|createConnectionFactory
@@ -691,7 +680,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * This is used when not running in an app server. For now we are creating a      * ConnectionFactory that has our SimpleConnectionManager implementation but      * it may be a better idea to not support this. The JMS api will have many      * quirks the user may not expect when running through the resource adapter.      *       * @see javax.resource.spi.ManagedConnectionFactory#createConnectionFactory()      */
+comment|/**      * This is used when not running in an app server. For now we are creating a      * ConnectionFactory that has our SimpleConnectionManager implementation but      * it may be a better idea to not support this. The JMS api will have many      * quirks the user may not expect when running through the resource adapter.      *      * @see javax.resource.spi.ManagedConnectionFactory#createConnectionFactory()      */
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|createConnectionFactory
@@ -715,6 +706,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnectionFactory#createManagedConnection(javax.security.auth.Subject,      *      javax.resource.spi.ConnectionRequestInfo)      */
+annotation|@
+name|Override
 specifier|public
 name|ManagedConnection
 name|createManagedConnection
@@ -784,6 +777,8 @@ throw|;
 block|}
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnectionFactory#matchManagedConnections(java.util.Set,      *      javax.security.auth.Subject,      *      javax.resource.spi.ConnectionRequestInfo)      */
+annotation|@
+name|Override
 specifier|public
 name|ManagedConnection
 name|matchManagedConnections
@@ -878,6 +873,8 @@ literal|null
 return|;
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnectionFactory#setLogWriter(java.io.PrintWriter)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setLogWriter
@@ -916,6 +913,8 @@ name|aLogWriter
 expr_stmt|;
 block|}
 comment|/**      * @see javax.resource.spi.ManagedConnectionFactory#getLogWriter()      */
+annotation|@
+name|Override
 specifier|public
 name|PrintWriter
 name|getLogWriter

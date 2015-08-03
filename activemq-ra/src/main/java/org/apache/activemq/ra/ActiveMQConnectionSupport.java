@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class providing support for creating physical  * connections to an ActiveMQ instance.  *   *   */
+comment|/**  * Abstract base class providing support for creating physical connections to an  * ActiveMQ instance.  *  *  */
 end_comment
 
 begin_class
@@ -110,7 +110,7 @@ name|getClass
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/**      * Creates a factory for obtaining physical connections to an Active MQ      * broker. The factory is configured with the given configuration information.      *       * @param connectionRequestInfo the configuration request information      * @param activationSpec      * @return the connection factory      * @throws java.lang.IllegalArgumentException if the server URL given in the      * configuration information is not a valid URL      */
+comment|/**      * Creates a factory for obtaining physical connections to an Active MQ      * broker. The factory is configured with the given configuration      * information.      *      * @param connectionRequestInfo      *        the configuration request information      * @param activationSpec      * @return the connection factory      * @throws java.lang.IllegalArgumentException      *         if the server URL given in the configuration information is not a      *         valid URL      */
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -122,7 +122,7 @@ name|MessageActivationSpec
 name|activationSpec
 parameter_list|)
 block|{
-comment|//ActiveMQSslConnectionFactory defaults to TCP anyway
+comment|// ActiveMQSslConnectionFactory defaults to TCP anyway
 name|ActiveMQConnectionFactory
 name|factory
 init|=
@@ -143,7 +143,7 @@ return|return
 name|factory
 return|;
 block|}
-comment|/**      * Creates a new physical connection to an Active MQ broker identified by given      * connection request information.      *       * @param connectionRequestInfo the connection request information identifying the broker and any      * required connection parameters, e.g. username/password      * @return the physical connection      * @throws JMSException if the connection could not be established      */
+comment|/**      * Creates a new physical connection to an Active MQ broker identified by      * given connection request information.      *      * @param connectionRequestInfo      *        the connection request information identifying the broker and any      *        required connection parameters, e.g. username/password      * @return the physical connection      * @throws JMSException      *         if the connection could not be established      */
 specifier|public
 name|ActiveMQConnection
 name|makeConnection
@@ -168,7 +168,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a new physical connection to an Active MQ broker using a given      * connection factory and credentials supplied in connection request information.      *       * @param connectionRequestInfo the connection request information containing the credentials to use      * for the connection request      * @return the physical connection      * @throws JMSException if the connection could not be established      */
+comment|/**      * Creates a new physical connection to an Active MQ broker using a given      * connection factory and credentials supplied in connection request      * information.      *      * @param connectionRequestInfo      *        the connection request information containing the credentials to      *        use for the connection request      * @return the physical connection      * @throws JMSException      *         if the connection could not be established      */
 specifier|public
 name|ActiveMQConnection
 name|makeConnection
@@ -247,7 +247,7 @@ return|return
 name|physicalConnection
 return|;
 block|}
-comment|/**      * Gets the connection request information.      *       * @return the connection request information      */
+comment|/**      * Gets the connection request information.      *      * @return the connection request information      */
 specifier|public
 name|ActiveMQConnectionRequestInfo
 name|getInfo
@@ -257,7 +257,7 @@ return|return
 name|info
 return|;
 block|}
-comment|/**      * Sets the connection request information as a whole.      *       * @param connectionRequestInfo the connection request information      */
+comment|/**      * Sets the connection request information as a whole.      *      * @param connectionRequestInfo      *        the connection request information      */
 specifier|protected
 name|void
 name|setInfo
@@ -970,52 +970,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return input stream prefetch      */
+annotation|@
+name|Deprecated
 specifier|public
 name|Integer
 name|getInputStreamPrefetch
 parameter_list|()
 block|{
 return|return
-name|info
-operator|.
-name|getInputStreamPrefetch
-argument_list|()
+literal|0
 return|;
-block|}
-comment|/**      * @param inputStreamPrefetch      */
-specifier|public
-name|void
-name|setInputStreamPrefetch
-parameter_list|(
-name|Integer
-name|inputStreamPrefetch
-parameter_list|)
-block|{
-if|if
-condition|(
-name|log
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|log
-operator|.
-name|debug
-argument_list|(
-literal|"setting [inputStreamPrefetch] to: "
-operator|+
-name|inputStreamPrefetch
-argument_list|)
-expr_stmt|;
-block|}
-name|info
-operator|.
-name|setInputStreamPrefetch
-argument_list|(
-name|inputStreamPrefetch
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * @return maximum redeliveries      */
 specifier|public
@@ -1407,7 +1371,7 @@ name|getUseSessionArgs
 argument_list|()
 return|;
 block|}
-comment|/**      * if true, calls to managed connection factory.connection.createSession will      * respect the passed in args. When false (default) the args are ignored b/c      * the container will do transaction demarcation via xa or local transaction rar      * contracts.      * This option is useful when a managed connection is used in plain jms mode      * and a jms transacted session session is required.      * @param useSessionArgs      */
+comment|/**      * if true, calls to managed connection factory.connection.createSession      * will respect the passed in args. When false (default) the args are      * ignored b/c the container will do transaction demarcation via xa or local      * transaction rar contracts. This option is useful when a managed      * connection is used in plain jms mode and a jms transacted session session      * is required.      *      * @param useSessionArgs      */
 specifier|public
 name|void
 name|setUseSessionArgs

@@ -106,7 +106,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  Must override equals and hashCode (JCA spec 16.4)  */
+comment|/**  * Must override equals and hashCode (JCA spec 16.4)  */
 end_comment
 
 begin_class
@@ -576,6 +576,8 @@ block|}
 block|}
 block|}
 comment|/**      * @see javax.resource.spi.ConnectionRequestInfo#hashCode()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -636,6 +638,8 @@ name|rc
 return|;
 block|}
 comment|/**      * @see javax.resource.spi.ConnectionRequestInfo#equals(java.lang.Object)      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -782,7 +786,7 @@ return|return
 name|serverUrl
 return|;
 block|}
-comment|/**      * @param url The url to set.      */
+comment|/**      * @param url      *        The url to set.      */
 specifier|public
 name|void
 name|setServerUrl
@@ -808,7 +812,7 @@ return|return
 name|password
 return|;
 block|}
-comment|/**      * @param password The password to set.      */
+comment|/**      * @param password      *        The password to set.      */
 specifier|public
 name|void
 name|setPassword
@@ -834,7 +838,7 @@ return|return
 name|userName
 return|;
 block|}
-comment|/**      * @param userid The userid to set.      */
+comment|/**      * @param userid      *        The userid to set.      */
 specifier|public
 name|void
 name|setUserName
@@ -860,7 +864,7 @@ return|return
 name|clientid
 return|;
 block|}
-comment|/**      * @param clientid The clientid to set.      */
+comment|/**      * @param clientid      *        The clientid to set.      */
 specifier|public
 name|void
 name|setClientid
@@ -1402,22 +1406,15 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|Integer
 name|getInputStreamPrefetch
 parameter_list|()
 block|{
 return|return
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
-name|prefetchPolicy
-argument_list|()
-operator|.
-name|getInputStreamPrefetch
-argument_list|()
-argument_list|)
+literal|0
 return|;
 block|}
 specifier|public
@@ -1551,34 +1548,6 @@ operator|.
 name|setOptimizeDurableTopicPrefetch
 argument_list|(
 name|optimizeDurableTopicPrefetch
-operator|.
-name|intValue
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|setInputStreamPrefetch
-parameter_list|(
-name|Integer
-name|inputStreamPrefetch
-parameter_list|)
-block|{
-if|if
-condition|(
-name|inputStreamPrefetch
-operator|!=
-literal|null
-condition|)
-block|{
-name|prefetchPolicy
-argument_list|()
-operator|.
-name|setInputStreamPrefetch
-argument_list|(
-name|inputStreamPrefetch
 operator|.
 name|intValue
 argument_list|()
