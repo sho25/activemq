@@ -204,7 +204,7 @@ name|int
 name|getDispatchedQueueSize
 parameter_list|()
 function_decl|;
-comment|/**      * The same as the number of messages dispatched -      * making it explicit      * @return      */
+comment|/**      * The same as the number of messages dispatched - making it explicit      * @return number of messages waiting for an acknowledge.      */
 annotation|@
 name|MBeanInfo
 argument_list|(

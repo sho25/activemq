@@ -302,7 +302,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Message Broker which routes messages, maintains subscriptions and  * connections, acknowledges messages and handles transactions.  *  *  */
+comment|/**  * The Message Broker which routes messages, maintains subscriptions and  * connections, acknowledges messages and handles transactions.  */
 end_comment
 
 begin_interface
@@ -314,7 +314,7 @@ name|Region
 extends|,
 name|Service
 block|{
-comment|/**      * Get a Broker from the Broker Stack that is a particular class      *      * @param type      * @return      */
+comment|/**      * Get a Broker from the Broker Stack that is a particular class      *      * @param type      * @return a Broker instance.      */
 name|Broker
 name|getAdaptor
 parameter_list|(
@@ -409,7 +409,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Adds a producer.      *      * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Adds a producer.      *      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 annotation|@
 name|Override
 name|void
@@ -424,7 +424,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Removes a producer.      *      * @param context the enviorment the operation is being executed under.      * @throws Exception TODO      */
+comment|/**      * Removes a producer.      *      * @param context the environment the operation is being executed under.      * @throws Exception TODO      */
 annotation|@
 name|Override
 name|void
@@ -455,7 +455,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * return a reference destination map of a region based on the destination type      * @param destination      * @return      */
+comment|/**      * return a reference destination map of a region based on the destination type      *      * @param destination      *      * @return destination Map      */
 specifier|public
 name|Map
 argument_list|<
@@ -469,7 +469,7 @@ name|ActiveMQDestination
 name|destination
 parameter_list|)
 function_decl|;
-comment|/**      * Gets a list of all the prepared xa transactions.      *      * @param context transaction ids      * @return      * @throws Exception TODO      */
+comment|/**      * Gets a list of all the prepared xa transactions.      *      * @param context transaction ids      * @return array of TransactionId values      * @throws Exception TODO      */
 name|TransactionId
 index|[]
 name|getPreparedTransactions
@@ -596,7 +596,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Remove and process a DestinationInfo object      *      * @param context      * @param info      * @throws Exception      */
+comment|/**      * Remove and process a DestinationInfo object      *      * @param context      * @param info      *      * @throws Exception      */
 name|void
 name|removeDestinationInfo
 parameter_list|(
@@ -660,7 +660,7 @@ name|MessageReference
 name|messageReference
 parameter_list|)
 function_decl|;
-comment|/**      * A Message has Expired      *      * @param context      * @param messageReference      * @param subscription, may be null      */
+comment|/**      * A Message has Expired      *      * @param context      * @param messageReference      * @param subscription (may be null)      */
 name|void
 name|messageExpired
 parameter_list|(

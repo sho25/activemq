@@ -2407,7 +2407,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * @return      * @throws NullPointerException      * @throws MalformedObjectNameException      * @throws IOException      */
+comment|/**      * @return an MBeanServer instance      * @throws NullPointerException      * @throws MalformedObjectNameException      * @throws IOException      */
 specifier|protected
 name|MBeanServer
 name|createMBeanServer

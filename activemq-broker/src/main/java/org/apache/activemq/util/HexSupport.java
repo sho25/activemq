@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Used to convert to hex from byte arrays and back.  *   *   */
+comment|/**  * Used to convert to hex from byte arrays and back.  *  *  */
 end_comment
 
 begin_class
@@ -573,7 +573,7 @@ specifier|private
 name|HexSupport
 parameter_list|()
 block|{     }
-comment|/**      * @param hex      * @return      */
+comment|/**      * @param hex      * @return array of bytes      */
 specifier|public
 specifier|static
 name|byte
@@ -661,7 +661,7 @@ return|return
 name|rc
 return|;
 block|}
-comment|/**      * @param bytes      * @return      */
+comment|/**      * @param bytes      * @return string hex value      */
 specifier|public
 specifier|static
 name|String
@@ -725,7 +725,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      *       * @param value       * @param trim if the leading 0's should be trimmed off.      * @return      */
+comment|/**      *      * @param value      * @param trim if the leading 0's should be trimmed off.      * @return string hex value      */
 specifier|public
 specifier|static
 name|String

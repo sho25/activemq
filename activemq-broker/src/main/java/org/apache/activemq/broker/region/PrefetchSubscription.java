@@ -2885,7 +2885,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * Used to determine if the broker can dispatch to the consumer.      *      * @return      */
+comment|/**      * Used to determine if the broker can dispatch to the consumer.      *      * @return true if the subscription is full      */
 annotation|@
 name|Override
 specifier|public

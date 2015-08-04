@@ -65,7 +65,7 @@ operator|=
 name|value
 expr_stmt|;
 block|}
-comment|/**      *       * @param entry      * @return false if you are trying to remove the tail pointer.      */
+comment|/**      * @return false if you are trying to remove the tail pointer.      */
 specifier|public
 name|boolean
 name|remove

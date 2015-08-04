@@ -93,7 +93,7 @@ return|return
 name|maxSendRetries
 return|;
 block|}
-comment|/**      * Sets the maximum number of a times a Message send should be retried before      * a JMSExeception is thrown indicating that the operation failed.      *      * @param maxRetries      * 			number of send retries that will be performed.      */
+comment|/**      * Sets the maximum number of a times a Message send should be retried before      * a JMSExeception is thrown indicating that the operation failed.      *      * @param maxSendRetries      * 			number of send retries that will be performed.      */
 specifier|public
 name|void
 name|setMaxSendRetries

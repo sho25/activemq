@@ -102,7 +102,7 @@ name|boolean
 name|isDestinationTemporary
 parameter_list|()
 function_decl|;
-comment|/**      * @returns the windows size configured for the producer      */
+comment|/**      * @return the windows size configured for the producer      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -112,7 +112,7 @@ name|int
 name|getProducerWindowSize
 parameter_list|()
 function_decl|;
-comment|/**      * @returns if the Producer is configured for Async dispatch      */
+comment|/**      * @return if the Producer is configured for Async dispatch      */
 annotation|@
 name|MBeanInfo
 argument_list|(

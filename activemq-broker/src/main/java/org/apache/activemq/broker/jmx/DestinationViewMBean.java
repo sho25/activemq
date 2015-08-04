@@ -128,7 +128,7 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-comment|/**      * Resets the managment counters.      */
+comment|/**      * Resets the management counters.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -228,7 +228,7 @@ name|long
 name|getQueueSize
 parameter_list|()
 function_decl|;
-comment|/**      * Returns the memory size of all messages in this destination's store       *      * @return Returns the memory size of all messages in this destination's store       */
+comment|/**      * Returns the memory size of all messages in this destination's store      *      * @return Returns the memory size of all messages in this destination's store      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -377,7 +377,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Sends a TextMesage to the destination.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+comment|/**      * Sends a TextMesage to the destination.      * @param body the text to send      * @param user      * @param password      * @return a string value      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -413,7 +413,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      *      * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @param user      * @param password      * @return      * @throws Exception      */
+comment|/**      *      * @param headers the message headers and properties to set. Can only      *                container Strings maped to primitive types.      * @param body the text to send      * @param user      * @param password      *      * @return a string value      *      * @throws Exception      */
 annotation|@
 name|MBeanInfo
 argument_list|(

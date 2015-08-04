@@ -152,7 +152,9 @@ name|reportInterval
 init|=
 literal|1000
 decl_stmt|;
-comment|/**      * Installs the plugin into the interceptor chain of the broker, returning the new intercepted broker to use.      * @param broker Broker      * @throws Exception      * @return Broker      * @todo Implement this org.apache.activemq.broker.BrokerPlugin method      */
+comment|/**      * Installs the plugin into the intercepter chain of the broker, returning the new      * intercepted broker to use.      *      * @param broker Broker      *      * @return Broker      *      * @throws Exception      */
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|installPlugin

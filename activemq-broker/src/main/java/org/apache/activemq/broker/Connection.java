@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -85,18 +95,8 @@ name|Response
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_interface
@@ -111,7 +111,7 @@ name|Connector
 name|getConnector
 parameter_list|()
 function_decl|;
-comment|/**      * Sends a message to the client.      *       * @param message the message to send to the client.      */
+comment|/**      * Sends a message to the client.      *      * @param message the message to send to the client.      */
 name|void
 name|dispatchSync
 parameter_list|(
@@ -119,7 +119,7 @@ name|Command
 name|message
 parameter_list|)
 function_decl|;
-comment|/**      * Sends a message to the client.      *       * @param command      */
+comment|/**      * Sends a message to the client.      *      * @param command      */
 name|void
 name|dispatchAsync
 parameter_list|(
@@ -127,7 +127,7 @@ name|Command
 name|command
 parameter_list|)
 function_decl|;
-comment|/**      * Services a client command and submits it to the broker.      *       * @param command      * @return Response      */
+comment|/**      * Services a client command and submits it to the broker.      *      * @param command      * @return Response      */
 name|Response
 name|service
 parameter_list|(
@@ -135,7 +135,7 @@ name|Command
 name|command
 parameter_list|)
 function_decl|;
-comment|/**      * Handles an unexpected error associated with a connection.      *       * @param error      */
+comment|/**      * Handles an unexpected error associated with a connection.      *      * @param error      */
 name|void
 name|serviceException
 parameter_list|(
@@ -194,7 +194,7 @@ name|String
 name|getConnectionId
 parameter_list|()
 function_decl|;
-comment|/**      * return true if a network connection      * @return      */
+comment|/**      * return true if a network connection      *      * @return if this is a network connection      */
 name|boolean
 name|isNetworkConnection
 parameter_list|()

@@ -255,7 +255,7 @@ return|return
 name|localQueueConnectionFactory
 return|;
 block|}
-comment|/**      * @param localQueueConnectionFactory The localQueueConnectionFactory to      *                set.      */
+comment|/**      * @param localConnectionFactory The localQueueConnectionFactory to      *                set.      */
 specifier|public
 name|void
 name|setLocalQueueConnectionFactory
@@ -291,7 +291,7 @@ return|return
 name|outboundQueueConnectionFactoryName
 return|;
 block|}
-comment|/**      * @param outboundQueueConnectionFactoryName The      *                outboundQueueConnectionFactoryName to set.      */
+comment|/**      * @param foreignQueueConnectionFactoryName The      *                foreignQueueConnectionFactoryName to set.      */
 specifier|public
 name|void
 name|setOutboundQueueConnectionFactoryName
@@ -384,7 +384,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * @param outboundQueueConnection The outboundQueueConnection to set.      */
+comment|/**      * @param foreignQueueConnection The foreignQueueConnection to set.      */
 specifier|public
 name|void
 name|setOutboundQueueConnection
@@ -403,7 +403,7 @@ name|foreignQueueConnection
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param outboundQueueConnectionFactory The outboundQueueConnectionFactory      *                to set.      */
+comment|/**      * @param foreignQueueConnectionFactory The foreignQueueConnectionFactory to set.      */
 specifier|public
 name|void
 name|setOutboundQueueConnectionFactory
@@ -462,9 +462,6 @@ condition|)
 block|{
 name|outboundQueueConnectionFactory
 operator|=
-operator|(
-name|QueueConnectionFactory
-operator|)
 name|jndiOutboundTemplate
 operator|.
 name|lookup
@@ -700,9 +697,6 @@ condition|)
 block|{
 name|localQueueConnectionFactory
 operator|=
-operator|(
-name|QueueConnectionFactory
-operator|)
 name|jndiLocalTemplate
 operator|.
 name|lookup
@@ -1315,6 +1309,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|createReplyToBridge
@@ -1381,6 +1377,8 @@ operator|new
 name|InboundQueueBridge
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|processReplyToDestination
@@ -1577,6 +1575,8 @@ operator|new
 name|OutboundQueueBridge
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|processReplyToDestination
@@ -1796,9 +1796,6 @@ block|{
 comment|// look-up the Queue
 name|result
 operator|=
-operator|(
-name|Queue
-operator|)
 name|jndiOutboundTemplate
 operator|.
 name|lookup
@@ -1898,9 +1895,6 @@ try|try
 block|{
 name|result
 operator|=
-operator|(
-name|Queue
-operator|)
 name|jndiOutboundTemplate
 operator|.
 name|lookup

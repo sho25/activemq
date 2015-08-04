@@ -465,7 +465,7 @@ name|length
 index|]
 return|;
 block|}
-comment|/**      * sets the LDAP server URI      *      * @param _uri      *            LDAP server URI      */
+comment|/**      * sets the LDAP server URI      *      * @param uri      *            LDAP server URI      */
 specifier|public
 name|void
 name|setUri
@@ -524,7 +524,7 @@ block|}
 expr_stmt|;
 block|}
 block|}
-comment|/**      * sets the base LDAP dn used for lookup operations      *      * @param _base      *            LDAP base dn      */
+comment|/**      * sets the base LDAP dn used for lookup operations      *      * @param base      *            LDAP base dn      */
 specifier|public
 name|void
 name|setBase
@@ -540,7 +540,7 @@ operator|=
 name|base
 expr_stmt|;
 block|}
-comment|/**      * sets the LDAP user for access credentials      *      * @param _user      *            LDAP dn of user      */
+comment|/**      * sets the LDAP user for access credentials      *      * @param user      *            LDAP dn of user      */
 specifier|public
 name|void
 name|setUser
@@ -556,7 +556,9 @@ operator|=
 name|user
 expr_stmt|;
 block|}
-comment|/**      * sets the LDAP password for access credentials      *      * @param _password      *            user password      */
+comment|/**      * sets the LDAP password for access credentials      *      * @param password      *            user password      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPassword
@@ -572,7 +574,7 @@ operator|=
 name|password
 expr_stmt|;
 block|}
-comment|/**      * sets LDAP anonymous authentication access credentials      *      * @param _anonymousAuthentication      *            set to true to use anonymous authentication      */
+comment|/**      * sets LDAP anonymous authentication access credentials      *      * @param anonymousAuthentication      *            set to true to use anonymous authentication      */
 specifier|public
 name|void
 name|setAnonymousAuthentication
@@ -588,7 +590,7 @@ operator|=
 name|anonymousAuthentication
 expr_stmt|;
 block|}
-comment|/**      * sets the LDAP search scope      *      * @param _searchScope      *            LDAP JNDI search scope      */
+comment|/**      * sets the LDAP search scope      *      * @param searchScope      *            LDAP JNDI search scope      */
 specifier|public
 name|void
 name|setSearchScope
@@ -675,7 +677,7 @@ name|scope
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * sets the LDAP search filter as defined in RFC 2254      *      * @param _searchFilter      *            LDAP search filter      * @see<a href="http://www.faqs.org/rfcs/rfc2254.html">RFC 2254</a>      */
+comment|/**      * sets the LDAP search filter as defined in RFC 2254      *      * @param searchFilter      *            LDAP search filter      * @see<a href="http://www.faqs.org/rfcs/rfc2254.html">RFC 2254</a>      */
 specifier|public
 name|void
 name|setSearchFilter
@@ -699,7 +701,7 @@ operator|+
 literal|"))"
 expr_stmt|;
 block|}
-comment|/**      * enables/disable a persistent search to the LDAP server as defined in      * draft-ietf-ldapext-psearch-03.txt (2.16.840.1.113730.3.4.3)      *      * @param _searchEventListener      *            enable = true, disable = false (default)      * @see<a      *      href="http://www.ietf.org/proceedings/01mar/I-D/draft-ietf-ldapext-psearch-03.txt">draft-ietf-ldapext-psearch-03.txt</a>      */
+comment|/**      * enables/disable a persistent search to the LDAP server as defined in      * draft-ietf-ldapext-psearch-03.txt (2.16.840.1.113730.3.4.3)      *      * @param searchEventListener      *            enable = true, disable = false (default)      * @see<a      *      href="http://www.ietf.org/proceedings/01mar/I-D/draft-ietf-ldapext-psearch-03.txt">draft-ietf-ldapext-psearch-03.txt</a>      */
 specifier|public
 name|void
 name|setSearchEventListener
@@ -716,6 +718,8 @@ name|searchEventListener
 expr_stmt|;
 block|}
 comment|/**      * start the connector      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -1137,6 +1141,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * stop the connector      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -1189,6 +1195,8 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1781,6 +1789,8 @@ name|uuid
 return|;
 block|}
 comment|/**      * invoked when an entry has been added during a persistent search      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|objectAdded
@@ -1828,6 +1838,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * invoked when an entry has been removed during a persistent search      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|objectRemoved
@@ -1875,6 +1887,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * invoked when an entry has been renamed during a persistent search      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|objectRenamed
@@ -1953,6 +1967,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * invoked when an entry has been changed during a persistent search      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|objectChanged
@@ -2010,6 +2026,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * invoked when an exception has occurred during a persistent search      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|namingExceptionThrown

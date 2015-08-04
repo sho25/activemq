@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A plugin which allows the caching of the selector from a subscription queue.  *<p/>  * This stops the build-up of unwanted messages, especially when consumers may  * disconnect from time to time when using virtual destinations.  *<p/>  * This is influenced by code snippets developed by Maciej Rakowicz  *  * @see https://issues.apache.org/activemq/browse/AMQ-3004  * @see http://mail-archives.apache.org/mod_mbox/activemq-users/201011.mbox/%3C8A013711-2613-450A-A487-379E784AF1D6@homeaway.co.uk%3E  */
+comment|/**  * A plugin which allows the caching of the selector from a subscription queue.  *<p/>  * This stops the build-up of unwanted messages, especially when consumers may  * disconnect from time to time when using virtual destinations.  *<p/>  * This is influenced by code snippets developed by Maciej Rakowicz  *  * Refer to:  * https://issues.apache.org/activemq/browse/AMQ-3004  * http://mail-archives.apache.org/mod_mbox/activemq-users/201011.mbox/%3C8A013711-2613-450A-A487-379E784AF1D6@homeaway.co.uk%3E  */
 end_comment
 
 begin_class

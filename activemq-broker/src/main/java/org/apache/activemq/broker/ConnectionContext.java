@@ -748,7 +748,7 @@ operator|=
 name|messageAuthorizationPolicy
 expr_stmt|;
 block|}
-comment|/**      * @return      */
+comment|/**      * @return true if in recovery mode.      */
 specifier|public
 name|boolean
 name|isInRecoveryMode

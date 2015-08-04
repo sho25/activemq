@@ -85,7 +85,7 @@ name|boolean
 name|isStatisticsEnabled
 parameter_list|()
 function_decl|;
-comment|/**      * Returns true if link stealing is enabled on this Connector      *      * @returns true if link stealing is enabled.      */
+comment|/**      * Returns true if link stealing is enabled on this Connector      *      * @return true if link stealing is enabled.      */
 annotation|@
 name|MBeanInfo
 argument_list|(

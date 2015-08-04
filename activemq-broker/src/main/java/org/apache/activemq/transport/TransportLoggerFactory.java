@@ -17,6 +17,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|ObjectName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -95,28 +115,8 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|ObjectName
-import|;
-end_import
-
 begin_comment
-comment|/**  * Singleton class to create TransportLogger objects.  * When the method getInstance() is called for the first time,  * a TransportLoggerControlMBean is created and registered.  * This MBean permits enabling and disabling the logging for  * all TransportLogger objects at once.  *   * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *   * @see TransportLoggerControlMBean  */
+comment|/**  * Singleton class to create TransportLogger objects.  * When the method getInstance() is called for the first time,  * a TransportLoggerControlMBean is created and registered.  * This MBean permits enabling and disabling the logging for  * all TransportLogger objects at once.  *  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *  * @see TransportLoggerControlMBean  */
 end_comment
 
 begin_class
@@ -171,7 +171,7 @@ name|defaultLogWriterName
 init|=
 literal|"default"
 decl_stmt|;
-comment|/**      * If transport logging is enabled, it will be possible to control      * the transport loggers or not based on this value       */
+comment|/**      * If transport logging is enabled, it will be possible to control      * the transport loggers or not based on this value      */
 specifier|private
 specifier|static
 name|boolean
@@ -179,7 +179,7 @@ name|defaultDynamicManagement
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * If transport logging is enabled, the transport loggers will initially      * output or not depending on this value.      * This setting only has a meaning if       */
+comment|/**      * If transport logging is enabled, the transport loggers will initially      * output or not depending on this value.      * This setting only has a meaning if      */
 specifier|private
 specifier|static
 name|boolean
@@ -423,7 +423,7 @@ name|jmxport
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TransportLogger object, that will be inserted in the Transport Stack.      * @param next The next Transport layer in the Transport stack.      * @param id The id of the transport logger.      * @param log The log4j log that will be used by the TransportLogger.      * @param logWriterName The name or the LogWriter to be used. Different log writers can output      * @param dynamicManagement Specifies if JMX will be used to switch on/off the TransportLogger to be created.      * @param startLogging Specifies if this TransportLogger should be initially active or not. Only has a meaning if      * dynamicManagement = true.      * @param jmxPort the port to be used by the JMX server. It should only be different from 1099 (broker's default JMX port)      * when it's a client that is using Transport Logging. In a broker, if the port is different from 1099, 2 JMX servers will      * be created, both identical, with all the MBeans.      * @return A TransportLogger object.      * @throws IOException      */
+comment|/**      * Creates a TransportLogger object, that will be inserted in the Transport Stack.      * @param next The next Transport layer in the Transport stack.      * @param id The id of the transport logger.      * @param log The log4j log that will be used by the TransportLogger.      * @param logWriterName The name or the LogWriter to be used. Different log writers can output      * @param dynamicManagement Specifies if JMX will be used to switch on/off the TransportLogger to be created.      * @param startLogging Specifies if this TransportLogger should be initially active or not. Only has a meaning if      * dynamicManagement = true.      * @param jmxport the port to be used by the JMX server. It should only be different from 1099 (broker's default JMX port)      * when it's a client that is using Transport Logging. In a broker, if the port is different from 1099, 2 JMX servers will      * be created, both identical, with all the MBeans.      * @return A TransportLogger object.      * @throws IOException      */
 specifier|public
 name|TransportLogger
 name|createTransportLogger

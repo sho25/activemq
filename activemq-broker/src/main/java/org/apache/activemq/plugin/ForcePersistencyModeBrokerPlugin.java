@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Plugin which allows to force every incoming message to be PERSISTENT or NON-PERSISTENT.   *   * Useful, if you have set the broker usage policy to process ONLY persistent or ONLY non-persistent  * messages.   *  @org.apache.xbean.XBean element="forcePersistencyModeBrokerPlugin"  */
+comment|/**  * A Plugin which allows to force every incoming message to be PERSISTENT or  * NON-PERSISTENT.  *  * Useful, if you have set the broker usage policy to process ONLY persistent or  * ONLY non-persistent messages.  *  * @org.apache.xbean.XBean element="forcePersistencyModeBrokerPlugin"  */
 end_comment
 
 begin_class
@@ -94,12 +94,14 @@ name|persistenceFlag
 init|=
 literal|false
 decl_stmt|;
-comment|/**  * Constructor  */
+comment|/**      * Constructor      */
 specifier|public
 name|ForcePersistencyModeBrokerPlugin
 parameter_list|()
-block|{   }
-comment|/**   * @param broker  * @return the Broker  * @throws Exception  * @see org.apache.activemq.broker.BrokerPlugin#installPlugin(org.apache.activemq.broker.Broker)  */
+block|{}
+comment|/**      * @param broker      *      * @return the Broker      *      * @throws Exception      *      * @see org.apache.activemq.broker.BrokerPlugin#installPlugin(org.apache.activemq.broker.Broker)      */
+annotation|@
+name|Override
 specifier|public
 name|Broker
 name|installPlugin
@@ -143,7 +145,7 @@ return|return
 name|pB
 return|;
 block|}
-comment|/** Sets the persistency mode.    *      * @param persistenceFlag    */
+comment|/**      * Sets the persistence mode.      *      * @param persistenceFlag      */
 specifier|public
 name|void
 name|setPersistenceFlag
@@ -160,7 +162,7 @@ operator|=
 name|persistenceFlag
 expr_stmt|;
 block|}
-comment|/**    * @return the mode the (activated) plugin will set the message delivery mode     */
+comment|/**      * @return the mode the (activated) plugin will set the message delivery      *         mode      */
 specifier|public
 specifier|final
 name|boolean

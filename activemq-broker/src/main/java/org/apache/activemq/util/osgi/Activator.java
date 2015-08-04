@@ -587,7 +587,7 @@ literal|"activated"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Caches the package capabilities that are needed for a set of interface classes      *        * @param classes interfaces we want to track      */
+comment|/**      * Caches the package capabilities that are needed for a set of interface classes      *      * @param classes interfaces we want to track      */
 specifier|private
 name|void
 name|cachePackageCapabilities
@@ -1319,7 +1319,7 @@ parameter_list|)
 block|{             }
 block|}
 block|}
-comment|/**      * We consider a bundle to be a candidate for objects if it imports at least      * one of the packages of our interfaces      *       * @param bundle      * @return      */
+comment|/**      * We consider a bundle to be a candidate for objects if it imports at least      * one of the packages of our interfaces      *      * @param bundle      * @return true if the bundle is improting.      */
 specifier|private
 name|boolean
 name|isImportingUs

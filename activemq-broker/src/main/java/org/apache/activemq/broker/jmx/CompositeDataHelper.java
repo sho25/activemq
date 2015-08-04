@@ -19,30 +19,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|openmbean
-operator|.
-name|CompositeData
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|management
-operator|.
-name|openmbean
-operator|.
-name|TabularData
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -71,8 +47,32 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|CompositeData
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|management
+operator|.
+name|openmbean
+operator|.
+name|TabularData
+import|;
+end_import
+
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -210,7 +210,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Returns a map of all the user properties in the given message {@link javax.management.openmbean.CompositeData}      * object      *      * @param cdata      * @return      */
+comment|/**      * Returns a map of all the user properties in the given message {@link javax.management.openmbean.CompositeData}      * object      *      * @param cdata      *      * @return a Map of user properties      */
 specifier|public
 specifier|static
 name|Map

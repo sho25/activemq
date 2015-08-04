@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines the interface used to cache messages.  *   *   */
+comment|/**  * Defines the interface used to cache messages.  */
 end_comment
 
 begin_interface
@@ -24,7 +24,7 @@ specifier|public
 interface|interface
 name|Cache
 block|{
-comment|/**      * Gets an object that was previously<code>put</code> into this object.      *       * @param msgid      * @return null if the object was not previously put or if the object has      *         expired out of the cache.      */
+comment|/**      * Gets an object that was previously<code>put</code> into this object.      *      * @param key      * @return null if the object was not previously put or if the object has      *         expired out of the cache.      */
 name|Object
 name|get
 parameter_list|(
@@ -32,7 +32,7 @@ name|Object
 name|key
 parameter_list|)
 function_decl|;
-comment|/**      * Puts an object into the cache.      *       * @param messageID      * @param message      */
+comment|/**      * Puts an object into the cache.      *      * @param key      * @param value      */
 name|Object
 name|put
 parameter_list|(
@@ -43,7 +43,7 @@ name|Object
 name|value
 parameter_list|)
 function_decl|;
-comment|/**      * Removes an object from the cache.      *       * @param messageID      * @return the object associated with the key if it was still in the cache.      */
+comment|/**      * Removes an object from the cache.      *      * @param key      * @return the object associated with the key if it was still in the cache.      */
 name|Object
 name|remove
 parameter_list|(
@@ -56,7 +56,7 @@ name|void
 name|close
 parameter_list|()
 function_decl|;
-comment|/**      * How big is the cache right now?      *       * @return      */
+comment|/**      * How big is the cache right now?      *      * @return the size.      */
 name|int
 name|size
 parameter_list|()

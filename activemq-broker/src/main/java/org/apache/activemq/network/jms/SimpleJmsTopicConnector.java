@@ -261,14 +261,14 @@ name|void
 name|setLocalTopicConnectionFactory
 parameter_list|(
 name|TopicConnectionFactory
-name|localConnectionFactory
+name|localTopicConnectionFactory
 parameter_list|)
 block|{
 name|this
 operator|.
 name|localTopicConnectionFactory
 operator|=
-name|localConnectionFactory
+name|localTopicConnectionFactory
 expr_stmt|;
 block|}
 comment|/**      * @return Returns the outboundTopicConnectionFactory.      */
@@ -291,7 +291,7 @@ return|return
 name|outboundTopicConnectionFactoryName
 return|;
 block|}
-comment|/**      * @param outboundTopicConnectionFactoryName The outboundTopicConnectionFactoryName to set.      */
+comment|/**      * @param foreignTopicConnectionFactoryName The foreignTopicConnectionFactoryName to set.      */
 specifier|public
 name|void
 name|setOutboundTopicConnectionFactoryName
@@ -384,7 +384,7 @@ name|get
 argument_list|()
 return|;
 block|}
-comment|/**      * @param outboundTopicConnection The outboundTopicConnection to set.      */
+comment|/**      * @param foreignTopicConnection The foreignTopicConnection to set.      */
 specifier|public
 name|void
 name|setOutboundTopicConnection
@@ -403,7 +403,7 @@ name|foreignTopicConnection
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param outboundTopicConnectionFactory The outboundTopicConnectionFactory to set.      */
+comment|/**      * @param foreignTopicConnectionFactory The foreignTopicConnectionFactory to set.      */
 specifier|public
 name|void
 name|setOutboundTopicConnectionFactory
@@ -462,9 +462,6 @@ condition|)
 block|{
 name|outboundTopicConnectionFactory
 operator|=
-operator|(
-name|TopicConnectionFactory
-operator|)
 name|jndiOutboundTemplate
 operator|.
 name|lookup
@@ -700,9 +697,6 @@ condition|)
 block|{
 name|localTopicConnectionFactory
 operator|=
-operator|(
-name|TopicConnectionFactory
-operator|)
 name|jndiLocalTemplate
 operator|.
 name|lookup
@@ -1315,6 +1309,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|createReplyToBridge
@@ -1381,6 +1377,8 @@ operator|new
 name|InboundTopicBridge
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|processReplyToDestination
@@ -1577,6 +1575,8 @@ operator|new
 name|OutboundTopicBridge
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|Destination
 name|processReplyToDestination
@@ -1796,9 +1796,6 @@ block|{
 comment|// look-up the Queue
 name|result
 operator|=
-operator|(
-name|Topic
-operator|)
 name|jndiOutboundTemplate
 operator|.
 name|lookup
@@ -1898,9 +1895,6 @@ try|try
 block|{
 name|result
 operator|=
-operator|(
-name|Topic
-operator|)
 name|jndiOutboundTemplate
 operator|.
 name|lookup

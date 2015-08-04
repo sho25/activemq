@@ -16,6 +16,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|plugin
+operator|.
+name|SubQueueSelectorCacheBroker
+operator|.
+name|MAX_PERSIST_INTERVAL
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -53,24 +69,8 @@ name|BrokerPlugin
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|plugin
-operator|.
-name|SubQueueSelectorCacheBroker
-operator|.
-name|MAX_PERSIST_INTERVAL
-import|;
-end_import
-
 begin_comment
-comment|/**  * A plugin which allows the caching of the selector from a subscription queue.  *<p/>  * This stops the build-up of unwanted messages, especially when consumers may  * disconnect from time to time when using virtual destinations.  *<p/>  * This is influenced by code snippets developed by Maciej Rakowicz  *  * @author Roelof Naude roelof(dot)naude(at)gmail.com  *@org.apache.xbean.XBean element="virtualSelectorCacheBrokerPlugin"  */
+comment|/**  * A plugin which allows the caching of the selector from a subscription queue.  *<p/>  * This stops the build-up of unwanted messages, especially when consumers may  * disconnect from time to time when using virtual destinations.  *<p/>  * This is influenced by code snippets developed by Maciej Rakowicz  *  * @org.apache.xbean.XBean element="virtualSelectorCacheBrokerPlugin"  */
 end_comment
 
 begin_class

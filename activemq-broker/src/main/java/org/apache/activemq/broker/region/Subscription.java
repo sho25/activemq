@@ -222,7 +222,7 @@ name|boolean
 name|isWildcard
 parameter_list|()
 function_decl|;
-comment|/**      * Is the subscription interested in the message?      * @param node      * @param context      * @return      * @throws IOException      */
+comment|/**      * Is the subscription interested in the message?      * @param node      * @param context      * @return true if matching      * @throws IOException      */
 name|boolean
 name|matches
 parameter_list|(
@@ -235,7 +235,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Is the subscription interested in messages in the destination?      * @param destination      * @return      */
+comment|/**      * Is the subscription interested in messages in the destination?      * @param destination      * @return true if matching      */
 name|boolean
 name|matches
 parameter_list|(

@@ -1132,7 +1132,7 @@ return|return
 name|inboundMessageConvertor
 return|;
 block|}
-comment|/**      * @param inboundMessageConvertor The inboundMessageConvertor to set.      */
+comment|/**      * @param jmsMessageConvertor The jmsMessageConvertor to set.      */
 specifier|public
 name|void
 name|setInboundMessageConvertor

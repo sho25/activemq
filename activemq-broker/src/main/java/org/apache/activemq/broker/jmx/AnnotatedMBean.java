@@ -859,7 +859,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * Extracts the Method from the MBeanOperationInfo      *      * @param op      * @return      */
+comment|/**      * Extracts the Method from the MBeanOperationInfo      *      * @param op      *      * @return a Method      */
 specifier|private
 name|Method
 name|getMethod
@@ -935,7 +935,7 @@ name|paramTypes
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the Method with the specified name and parameter types for the      * given class, null if it doesn't exist.      *      * @param mbean      * @param method      * @param params      * @return      */
+comment|/**      * Returns the Method with the specified name and parameter types for the      * given class, null if it doesn't exist.      *      * @param mbean      * @param method      * @param params      *      * @return a Method      */
 specifier|private
 specifier|static
 name|Method

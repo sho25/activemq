@@ -179,7 +179,7 @@ specifier|final
 name|String
 name|jaasConfiguration
 decl_stmt|;
-comment|/**      * Simple constructor. Leaves everything to superclass.      *      * @param next The Broker that does the actual work for this Filter.      * @param jassConfiguration The JAAS domain configuration name (refere to      *                JAAS documentation).      */
+comment|/**      * Simple constructor. Leaves everything to superclass.      *      * @param next The Broker that does the actual work for this Filter.      * @param jaasConfiguration The JAAS domain configuration name (refere to      *                JAAS documentation).      */
 specifier|public
 name|JaasCertificateAuthenticationBroker
 parameter_list|(

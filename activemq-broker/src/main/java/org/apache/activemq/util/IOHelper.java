@@ -206,7 +206,7 @@ literal|""
 return|;
 block|}
 block|}
-comment|/**      * Converts any string into a string that is safe to use as a file name. The      * result will only include ascii characters and numbers, and the "-","_",      * and "." characters.      *      * @param name      * @return      */
+comment|/**      * Converts any string into a string that is safe to use as a file name. The      * result will only include ascii characters and numbers, and the "-","_",      * and "." characters.      *      * @param name      * @return safe name of the directory      */
 specifier|public
 specifier|static
 name|String
@@ -247,7 +247,7 @@ name|MAX_FILE_NAME_LENGTH
 argument_list|)
 return|;
 block|}
-comment|/**      * Converts any string into a string that is safe to use as a file name. The      * result will only include ascii characters and numbers, and the "-","_",      * and "." characters.      *      * @param name      * @param dirSeparators      * @param maxFileLength      * @return      */
+comment|/**      * Converts any string into a string that is safe to use as a file name. The      * result will only include ascii characters and numbers, and the "-","_",      * and "." characters.      *      * @param name      * @param dirSeparators      * @param maxFileLength      * @return file system safe name      */
 specifier|public
 specifier|static
 name|String

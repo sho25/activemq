@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Queue dispatch policy that determines if a message can be sent to a subscription  *   * @org.apache.xbean.XBean  *   */
+comment|/**  * Queue dispatch policy that determines if a message can be sent to a subscription  *  * @org.apache.xbean.XBean  *  */
 end_comment
 
 begin_class

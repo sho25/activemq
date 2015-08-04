@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|management
@@ -26,16 +36,6 @@ operator|.
 name|openmbean
 operator|.
 name|TabularData
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
 import|;
 end_import
 
@@ -55,7 +55,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link HealthStatus} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #status()} method instead!      */
+comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link HealthStatus} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #getCurrentStatus()} method instead!      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -70,7 +70,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * @return  String representation of the current Broker state      */
+comment|/**      * @return String representation of the current Broker state      */
 annotation|@
 name|MBeanInfo
 argument_list|(

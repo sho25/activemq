@@ -156,7 +156,7 @@ specifier|protected
 name|SubscriptionInfo
 name|subscriptionInfo
 decl_stmt|;
-comment|/**      * Constructor      *      * @param broker      * @param clientId      * @param userName      * @param subInfo      */
+comment|/**      * Constructor      *      * @param broker      * @param brokerService      * @param clientId      * @param subInfo      * @param subscription      */
 specifier|public
 name|InactiveDurableSubscriptionView
 parameter_list|(

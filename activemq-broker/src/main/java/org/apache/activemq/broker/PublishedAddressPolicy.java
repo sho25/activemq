@@ -73,22 +73,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|transport
-operator|.
-name|vm
-operator|.
-name|VMTransport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|util
 operator|.
 name|InetAddressUtil
@@ -341,7 +325,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Subclasses can override what host value is published by implementing alternate      * logic for this method.      *      * @param uriHostEntry      * @return      * @throws UnknownHostException      */
+comment|/**      * Subclasses can override what host value is published by implementing alternate      * logic for this method.      *      * @param uriHostEntry      *      * @return the value published for the given host.      *      * @throws UnknownHostException      */
 specifier|protected
 name|String
 name|getPublishedHostValue

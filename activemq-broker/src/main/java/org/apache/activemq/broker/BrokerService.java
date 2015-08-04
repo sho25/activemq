@@ -10634,7 +10634,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Factory method to create a new broker      *      * @throws Exception      * @throws      * @throws      */
+comment|/**      * Factory method to create a new broker      *      * @throws Exception      */
 end_comment
 
 begin_function
@@ -14232,7 +14232,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Sets if the broker allowed to restart on shutdown.      * @return      */
+comment|/**      * Sets if the broker allowed to restart on shutdown.      */
 end_comment
 
 begin_function

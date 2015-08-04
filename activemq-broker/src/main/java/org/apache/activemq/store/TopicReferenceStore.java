@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MessageStore for durable topic subscriptions  *   *   */
+comment|/**  * A MessageStore for durable topic subscriptions  */
 end_comment
 
 begin_interface
@@ -90,7 +90,7 @@ name|ReferenceStore
 extends|,
 name|TopicMessageStore
 block|{
-comment|/**      * Removes the last acknowledged messgeID for the given subscription so that      * we can recover and commence dispatching messages from the last checkpoint      * N.B. - all messages previous to this one for a given subscriber      * should also be acknowledged      *       * @param context      * @param clientId      * @param subscriptionName      * @param messageId      * @param subscriptionPersistentId      * @return true if there are no more references to the message - or the message is null      * @throws IOException      */
+comment|/**      * Removes the last acknowledged messgeID for the given subscription so that      * we can recover and commence dispatching messages from the last checkpoint      * N.B. - all messages previous to this one for a given subscriber      * should also be acknowledged      *      * @param context      * @param clientId      * @param subscriptionName      * @param messageId      *       * @return true if there are no more references to the message - or the message is null      *       * @throws IOException      */
 name|boolean
 name|acknowledgeReference
 parameter_list|(
@@ -109,7 +109,9 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * @param clientId      * @param subscriptionName      * @param sub      * @throws IOException      * @throws JMSException      */
+comment|/**      * @param clientId      * @param subscriptionName      *       * @throws IOException      * @throws JMSException      */
+annotation|@
+name|Override
 name|void
 name|deleteSubscription
 parameter_list|(
@@ -122,7 +124,9 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * For the new subscription find the last acknowledged message ID and then      * find any new messages since then and dispatch them to the subscription.      *<p/> e.g. if we dispatched some messages to a new durable topic      * subscriber, then went down before acknowledging any messages, we need to      * know the correct point from which to recover from.      *       * @param clientId      * @param subscriptionName      * @param listener      * @param subscription      * @throws Exception      */
+comment|/**      * For the new subscription find the last acknowledged message ID and then      * find any new messages since then and dispatch them to the subscription.      *<p/> e.g. if we dispatched some messages to a new durable topic      * subscriber, then went down before acknowledging any messages, we need to      * know the correct point from which to recover from.      *      * @param clientId      * @param subscriptionName      * @param listener      *      * @throws Exception      */
+annotation|@
+name|Override
 name|void
 name|recoverSubscription
 parameter_list|(
@@ -138,7 +142,9 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * For an active subscription - retrieve messages from the store for the      * subscriber after the lastMessageId messageId<p/>      *       * @param clientId      * @param subscriptionName      * @param maxReturned      * @param listener      * @throws Exception      */
+comment|/**      * For an active subscription - retrieve messages from the store for the      * subscriber after the lastMessageId messageId<p/>      *      * @param clientId      * @param subscriptionName      * @param maxReturned      * @param listener      *       * @throws Exception      */
+annotation|@
+name|Override
 name|void
 name|recoverNextMessages
 parameter_list|(
@@ -157,7 +163,9 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * A hint to the Store to reset any batching state for a durable subsriber      *       * @param clientId      * @param subscriptionName      */
+comment|/**      * A hint to the Store to reset any batching state for a durable subsriber      *      * @param clientId      * @param subscriptionName      */
+annotation|@
+name|Override
 name|void
 name|resetBatching
 parameter_list|(
@@ -168,7 +176,9 @@ name|String
 name|subscriptionName
 parameter_list|)
 function_decl|;
-comment|/**      * Get the number of messages ready to deliver from the store to a durable      * subscriber      *       * @param clientId      * @param subscriberName      * @return the outstanding message count      * @throws IOException      */
+comment|/**      * Get the number of messages ready to deliver from the store to a durable      * subscriber      *      * @param clientId      * @param subscriberName      *       * @return the outstanding message count      *       * @throws IOException      */
+annotation|@
+name|Override
 name|int
 name|getMessageCount
 parameter_list|(
@@ -181,7 +191,9 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Finds the subscriber entry for the given consumer info      *       * @param clientId      * @param subscriptionName      * @return the SubscriptionInfo      * @throws IOException      */
+comment|/**      * Finds the subscriber entry for the given consumer info      *      * @param clientId      * @param subscriptionName      *       * @return the SubscriptionInfo      *       * @throws IOException      */
+annotation|@
+name|Override
 name|SubscriptionInfo
 name|lookupSubscription
 parameter_list|(
@@ -194,7 +206,9 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Lists all the durable subscirptions for a given destination.      *       * @return an array SubscriptionInfos      * @throws IOException      */
+comment|/**      * Lists all the durable subscriptions for a given destination.      *      * @return an array SubscriptionInfos      *       * @throws IOException      */
+annotation|@
+name|Override
 name|SubscriptionInfo
 index|[]
 name|getAllSubscriptions
@@ -202,7 +216,7 @@ parameter_list|()
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Inserts the subscriber info due to a subscription change<p/> If this is      * a new subscription and the retroactive is false, then the last message      * sent to the topic should be set as the last message acknowledged by they      * new subscription. Otherwise, if retroactive is true, then create the      * subscription without it having an acknowledged message so that on      * recovery, all message recorded for the topic get replayed.      *       * @param clientId      * @param subscriptionName      * @param selector      * @param retroactive      * @throws IOException      */
+comment|/**      * Inserts the subscriber info due to a subscription change<p/> If this is      * a new subscription and the retroactive is false, then the last message      * sent to the topic should be set as the last message acknowledged by they      * new subscription. Otherwise, if retroactive is true, then create the      * subscription without it having an acknowledged message so that on      * recovery, all message recorded for the topic get replayed.      *      * @param subscriptionInfo      * @param retroactive      *      * @throws IOException      */
 name|void
 name|addSubsciption
 parameter_list|(

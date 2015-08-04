@@ -163,6 +163,8 @@ specifier|protected
 name|TopicConnection
 name|producerConnection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -202,6 +204,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|MessageConsumer
 name|createConsumer
@@ -350,6 +354,8 @@ return|return
 name|consumer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 specifier|synchronized
 name|MessageProducer
@@ -393,6 +399,8 @@ return|return
 name|producer
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 specifier|synchronized
 name|void
@@ -507,7 +515,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * @return Returns the subscriptionName.      */
+comment|/**      * @return Returns the consumerName.      */
 specifier|public
 name|String
 name|getConsumerName
@@ -517,7 +525,7 @@ return|return
 name|consumerName
 return|;
 block|}
-comment|/**      * @param subscriptionName The subscriptionName to set.      */
+comment|/**      * @param consumerName The consumerName to set.      */
 specifier|public
 name|void
 name|setConsumerName
@@ -637,6 +645,8 @@ operator|=
 name|selector
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Connection
 name|getConnnectionForConsumer
@@ -647,6 +657,8 @@ name|getConsumerConnection
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Connection
 name|getConnectionForProducer
