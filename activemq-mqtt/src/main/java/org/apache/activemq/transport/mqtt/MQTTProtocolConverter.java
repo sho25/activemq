@@ -1340,10 +1340,16 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Failed to send command "
+operator|+
+name|command
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1356,10 +1362,16 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Failed to send command "
+operator|+
+name|command
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}

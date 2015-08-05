@@ -408,7 +408,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implements all the default JDBC operations that are used by the JDBCPersistenceAdapter.<p/> sub-classing is  * encouraged to override the default implementation of methods to account for differences in JDBC Driver  * implementations.<p/> The JDBCAdapter inserts and extracts BLOB data using the getBytes()/setBytes() operations.<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *   * @org.apache.xbean.XBean element="defaultJDBCAdapter"  *   *   */
+comment|/**  * Implements all the default JDBC operations that are used by the JDBCPersistenceAdapter.<p/> sub-classing is  * encouraged to override the default implementation of methods to account for differences in JDBC Driver  * implementations.<p/> The JDBCAdapter inserts and extracts BLOB data using the getBytes()/setBytes() operations.<p/>  * The databases/JDBC drivers that use this adapter are:  *<ul>  *<li></li>  *</ul>  *  * @org.apache.xbean.XBean element="defaultJDBCAdapter"  *  *  */
 end_comment
 
 begin_class
@@ -534,6 +534,8 @@ name|index
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doCreateTables
@@ -841,6 +843,8 @@ parameter_list|)
 block|{             }
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doDropTables
@@ -1034,6 +1038,8 @@ parameter_list|)
 block|{             }
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|doGetLastMessageStoreSequenceId
@@ -1208,6 +1214,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -1322,6 +1330,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * A non null xid indicated the op is part of 2pc prepare, so ops are flagged pending outcome      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doAddMessage
@@ -1755,6 +1765,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doAddMessageReference
@@ -1968,6 +1980,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 index|[]
@@ -2133,6 +2147,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 index|[]
@@ -2264,6 +2280,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|doGetMessageReference
@@ -2377,6 +2395,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * A non null xid indicated the op is part of 2pc prepare, so ops are flagged pending outcome      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRemoveMessage
@@ -2591,6 +2611,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRecover
@@ -2761,6 +2783,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doMessageIdScan
@@ -2942,6 +2966,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doSetLastAckWithPriority
@@ -3195,6 +3221,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doSetLastAck
@@ -3644,6 +3672,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRecoverSubscription
@@ -3840,6 +3870,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRecoverNextMessages
@@ -4083,6 +4115,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRecoverNextMessagesWithPriority
@@ -4335,6 +4369,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|doGetDurableSubscriberMessageCount
@@ -4508,7 +4544,9 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @param c       * @param info       * @param retroactive       * @throws SQLException       * @throws IOException       */
+comment|/**      * @param c      * @param info      * @param retroactive      * @throws SQLException      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doSetSubscriberEntry
@@ -4796,6 +4834,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 name|doGetSubscriberEntry
@@ -4991,6 +5031,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 index|[]
@@ -5201,6 +5243,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRemoveAllMessages
@@ -5322,6 +5366,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doDeleteSubscription
@@ -5434,6 +5480,8 @@ init|=
 literal|0
 decl_stmt|;
 comment|// unsigned
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doDeleteOldMessages
@@ -5557,6 +5605,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|doGetLastAckedDurableSubscriberMessageId
@@ -5768,6 +5818,8 @@ name|e
 parameter_list|)
 block|{         }
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Set
 argument_list|<
@@ -5967,6 +6019,8 @@ operator|=
 name|batchStatments
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseExternalMessageReferences
@@ -5997,6 +6051,8 @@ operator|.
 name|statements
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setStatements
@@ -6012,6 +6068,8 @@ operator|=
 name|statements
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxRows
@@ -6022,6 +6080,8 @@ name|maxRows
 return|;
 block|}
 comment|/**      * the max value for statement maxRows, used to limit jdbc queries      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxRows
@@ -6588,6 +6648,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|doGetMessageCount
@@ -6708,6 +6770,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doRecoverNextMessages
@@ -7016,10 +7080,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Exception recovering next messages"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -7044,6 +7112,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|doGetLastProducerSequenceId

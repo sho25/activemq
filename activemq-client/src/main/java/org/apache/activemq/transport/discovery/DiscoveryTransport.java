@@ -570,10 +570,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Exception suspending discoverAgent: "
+argument_list|,
+name|discoveryAgent
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -616,10 +620,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Exception resuming discoverAgent: "
+argument_list|,
+name|discoveryAgent
+argument_list|)
 expr_stmt|;
 block|}
 block|}

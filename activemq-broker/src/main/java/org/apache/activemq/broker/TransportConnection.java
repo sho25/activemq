@@ -4461,10 +4461,19 @@ name|IllegalStateException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
+name|warn
+argument_list|(
+literal|"Failed to add session: {}"
+argument_list|,
+name|info
+operator|.
+name|getSessionId
 argument_list|()
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|broker
 operator|.
@@ -6836,10 +6845,22 @@ name|Throwable
 name|ignore
 parameter_list|)
 block|{
-name|ignore
+name|LOG
 operator|.
-name|printStackTrace
+name|debug
+argument_list|(
+literal|"Exception caught removing connection {}. This exception is ignored."
+argument_list|,
+name|cs
+operator|.
+name|getInfo
 argument_list|()
+operator|.
+name|getConnectionId
+argument_list|()
+argument_list|,
+name|ignore
+argument_list|)
 expr_stmt|;
 block|}
 block|}

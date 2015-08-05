@@ -926,6 +926,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the average size of a message (bytes)      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getAverageMessageSize
@@ -949,6 +951,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the max size of a message (bytes)      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMaxMessageSize
@@ -968,6 +972,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return the min size of a message (bytes)      */
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getMinMessageSize
@@ -1193,22 +1199,6 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-comment|// TODO DELETE ME
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-comment|// TODO DELETE ME
 name|LOG
 operator|.
 name|warn
