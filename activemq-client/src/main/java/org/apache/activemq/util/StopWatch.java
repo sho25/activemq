@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A very simple stop watch.  *<p/>  * This implementation is not thread safe and can only time one task at any given time.  *  * @version  */
+comment|/**  * A very simple stop watch.  *<p/>  * This implementation is not thread safe and can only time one task at any given time.  */
 end_comment
 
 begin_class
@@ -80,7 +80,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-comment|/**      * Stops the stop watch      *      * @return the time taken in millis.      */
+comment|/**      * Stops the stop watch      *      * @return the time taken in milliseconds.      */
 specifier|public
 name|long
 name|stop
@@ -98,7 +98,7 @@ name|taken
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the time taken in millis.      *      * @return time in millis      */
+comment|/**      * Returns the time taken in milliseconds.      *      * @return time in milliseconds      */
 specifier|public
 name|long
 name|taken

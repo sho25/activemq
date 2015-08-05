@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A QueueSession implementation that throws IllegalStateExceptions when Topic  * operations are attempted but which delegates to another QueueSession for all  * other operations. The ActiveMQSessions implement both Topic and Queue  * Sessions methods but the spec states that Queue session should throw  * Exceptions if topic operations are attempted on it.  *  *  */
+comment|/**  * A QueueSession implementation that throws IllegalStateExceptions when Topic  * operations are attempted but which delegates to another QueueSession for all  * other operations. The ActiveMQSessions implement both Topic and Queue  * Sessions methods but the specification states that Queue session should throw  * Exceptions if topic operations are attempted on it.  */
 end_comment
 
 begin_class
@@ -273,7 +273,8 @@ operator|=
 name|next
 expr_stmt|;
 block|}
-comment|/**      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|close
@@ -287,7 +288,8 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|commit
@@ -301,7 +303,8 @@ name|commit
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param queue      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -321,7 +324,8 @@ name|queue
 argument_list|)
 return|;
 block|}
-comment|/**      * @param queue      * @param messageSelector      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|QueueBrowser
 name|createBrowser
@@ -346,7 +350,8 @@ name|messageSelector
 argument_list|)
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|BytesMessage
 name|createBytesMessage
@@ -361,7 +366,8 @@ name|createBytesMessage
 argument_list|()
 return|;
 block|}
-comment|/**      * @param destination      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -396,7 +402,8 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @param messageSelector      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -436,7 +443,8 @@ name|messageSelector
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @param messageSelector      * @param noLocal      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|MessageConsumer
 name|createConsumer
@@ -481,7 +489,8 @@ name|noLocal
 argument_list|)
 return|;
 block|}
-comment|/**      * @param topic      * @param name      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TopicSubscriber
 name|createDurableSubscriber
@@ -503,7 +512,8 @@ literal|"Operation not supported by a QueueSession"
 argument_list|)
 throw|;
 block|}
-comment|/**      * @param topic      * @param name      * @param messageSelector      * @param noLocal      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TopicSubscriber
 name|createDurableSubscriber
@@ -531,7 +541,8 @@ literal|"Operation not supported by a QueueSession"
 argument_list|)
 throw|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|MapMessage
 name|createMapMessage
@@ -546,7 +557,8 @@ name|createMapMessage
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|createMessage
@@ -561,7 +573,8 @@ name|createMessage
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|ObjectMessage
 name|createObjectMessage
@@ -576,7 +589,8 @@ name|createObjectMessage
 argument_list|()
 return|;
 block|}
-comment|/**      * @param object      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|ObjectMessage
 name|createObjectMessage
@@ -596,7 +610,8 @@ name|object
 argument_list|)
 return|;
 block|}
-comment|/**      * @param destination      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|MessageProducer
 name|createProducer
@@ -631,7 +646,8 @@ name|destination
 argument_list|)
 return|;
 block|}
-comment|/**      * @param queueName      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|Queue
 name|createQueue
@@ -651,7 +667,8 @@ name|queueName
 argument_list|)
 return|;
 block|}
-comment|/**      * @param queue      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|QueueReceiver
 name|createReceiver
@@ -671,7 +688,8 @@ name|queue
 argument_list|)
 return|;
 block|}
-comment|/**      * @param queue      * @param messageSelector      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|QueueReceiver
 name|createReceiver
@@ -696,7 +714,8 @@ name|messageSelector
 argument_list|)
 return|;
 block|}
-comment|/**      * @param queue      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|QueueSender
 name|createSender
@@ -716,7 +735,8 @@ name|queue
 argument_list|)
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|StreamMessage
 name|createStreamMessage
@@ -731,7 +751,8 @@ name|createStreamMessage
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TemporaryQueue
 name|createTemporaryQueue
@@ -746,7 +767,8 @@ name|createTemporaryQueue
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TemporaryTopic
 name|createTemporaryTopic
@@ -762,7 +784,8 @@ literal|"Operation not supported by a QueueSession"
 argument_list|)
 throw|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TextMessage
 name|createTextMessage
@@ -777,7 +800,8 @@ name|createTextMessage
 argument_list|()
 return|;
 block|}
-comment|/**      * @param text      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|TextMessage
 name|createTextMessage
@@ -797,7 +821,8 @@ name|text
 argument_list|)
 return|;
 block|}
-comment|/**      * @param topicName      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|Topic
 name|createTopic
@@ -816,7 +841,8 @@ literal|"Operation not supported by a QueueSession"
 argument_list|)
 throw|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see java.lang.Object#equals(java.lang.Object)      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|equals
@@ -845,7 +871,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getAcknowledgeMode
@@ -860,7 +887,8 @@ name|getAcknowledgeMode
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|MessageListener
 name|getMessageListener
@@ -875,7 +903,8 @@ name|getMessageListener
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|getTransacted
@@ -890,7 +919,8 @@ name|getTransacted
 argument_list|()
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see java.lang.Object#hashCode()      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -903,7 +933,8 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-comment|/**      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -917,7 +948,8 @@ name|recover
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rollback
@@ -931,7 +963,8 @@ name|rollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -943,7 +976,8 @@ name|run
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param listener      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMessageListener
@@ -962,7 +996,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *      * @see java.lang.Object#toString()      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -975,7 +1010,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * @param name      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|unsubscribe

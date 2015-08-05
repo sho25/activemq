@@ -4445,7 +4445,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a<CODE>QueueReceiver</CODE> object to receive messages from      * the specified queue.      *      * @param queue the<CODE>Queue</CODE> to access      * @return      * @throws JMSException if the session fails to create a receiver due to      *                 some internal error.      * @throws JMSException      * @throws InvalidDestinationException if an invalid queue is specified.      */
+comment|/**      * Creates a<CODE>QueueReceiver</CODE> object to receive messages from      * the specified queue.      *      * @param queue the<CODE>Queue</CODE> to access      * @return a new QueueBrowser instance.      * @throws JMSException if the session fails to create a receiver due to      *                 some internal error.      * @throws JMSException      * @throws InvalidDestinationException if an invalid queue is specified.      */
 annotation|@
 name|Override
 specifier|public
@@ -5220,7 +5220,7 @@ name|getSessionId
 argument_list|()
 return|;
 block|}
-comment|/**      * @return      */
+comment|/**      * @return a unique ConsumerId instance.      */
 specifier|protected
 name|ConsumerId
 name|getNextConsumerId
@@ -5242,7 +5242,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * @return      */
+comment|/**      * @return a unique ProducerId instance.      */
 specifier|protected
 name|ProducerId
 name|getNextProducerId
@@ -5264,7 +5264,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Sends the message for dispatch by the broker.      *      *      * @param producer - message producer.      * @param destination - message destination.      * @param message - message to be sent.      * @param deliveryMode - JMS messsage delivery mode.      * @param priority - message priority.      * @param timeToLive - message expiration.      * @param producerWindow      * @param onComplete      * @throws JMSException      */
+comment|/**      * Sends the message for dispatch by the broker.      *      * @param producer - message producer.      * @param destination - message destination.      * @param message - message to be sent.      * @param deliveryMode - JMS message delivery mode.      * @param priority - message priority.      * @param timeToLive - message expiration.      * @param producerWindow      * @param onComplete      * @throws JMSException      */
 specifier|protected
 name|void
 name|send
@@ -5872,7 +5872,7 @@ return|return
 name|info
 return|;
 block|}
-comment|/**      * Send the asynchronus command.      *      * @param command - command to be executed.      * @throws JMSException      */
+comment|/**      * Send the asynchronous command.      *      * @param command - command to be executed.      * @throws JMSException      */
 specifier|public
 name|void
 name|asyncSendPacket
@@ -5891,7 +5891,7 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Send the synchronus command.      *      * @param command - command to be executed.      * @return Response      * @throws JMSException      */
+comment|/**      * Send the synchronous command.      *      * @param command - command to be executed.      * @return Response      * @throws JMSException      */
 specifier|public
 name|Response
 name|syncSendPacket

@@ -2539,7 +2539,7 @@ name|md
 argument_list|)
 return|;
 block|}
-comment|/**      * @param md      * @return      */
+comment|/**      * @param md      *      the MessageDispatch that arrived from the Broker.      *      * @return an ActiveMQMessage initialized from the Message in the dispatch.      */
 specifier|private
 name|ActiveMQMessage
 name|createActiveMQMessage
@@ -6891,7 +6891,7 @@ operator|+
 literal|" }"
 return|;
 block|}
-comment|/**      * Delivers a message to the message listener.      *      * @return      * @throws JMSException      */
+comment|/**      * Delivers a message to the message listener.      *      * @return true if another execution is needed.      *      * @throws JMSException      */
 specifier|public
 name|boolean
 name|iterate

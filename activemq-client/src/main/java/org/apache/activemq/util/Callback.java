@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A simple callback object used by the  * {@link org.apache.activemq.util.TransactionTemplate}  * and {@link org.apache.activemq.util.ExceptionTemplate}    objects to provide automatic transactional or exception handling blocks.  *  *   */
+comment|/**  * A simple callback object used by objects to provide automatic  * transactional or exception handling blocks.  */
 end_comment
 
 begin_interface
@@ -24,7 +24,7 @@ specifier|public
 interface|interface
 name|Callback
 block|{
-comment|/**      * Executes some piece of code within a transaction      * performing a commit if there is no exception thrown      * else a rollback is performed      * @throws Exception TODO      */
+comment|/**      * Executes some piece of code within a transaction      * performing a commit if there is no exception thrown      * else a rollback is performed      *      * @throws Exception TODO      */
 name|void
 name|execute
 parameter_list|()

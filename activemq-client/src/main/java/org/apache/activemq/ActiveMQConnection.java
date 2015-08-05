@@ -4109,7 +4109,7 @@ name|consumerInfo
 argument_list|)
 return|;
 block|}
-comment|/**      * @return      */
+comment|/**      * @return a newly created ConsumedId unique to this connection session instance.      */
 specifier|private
 name|ConsumerId
 name|createConsumerId
@@ -4253,7 +4253,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Send a packet through a Connection - for internal use only      *      * @param command      * @return      * @throws JMSException      */
+comment|/**      * Send a packet through a Connection - for internal use only      *      * @param command      *      * @throws JMSException      */
 specifier|public
 name|void
 name|syncSendPacket
@@ -4750,7 +4750,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Send a packet through a Connection - for internal use only      *      * @param command      * @return      * @throws JMSException      */
+comment|/**      * Send a packet through a Connection - for internal use only      *      * @param command      *      * @return the broker Response for the given Command.      *      * @throws JMSException      */
 specifier|public
 name|Response
 name|syncSendPacket

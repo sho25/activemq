@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Time utils.  *  * @version  */
+comment|/**  * Time utilities.  */
 end_comment
 
 begin_class
@@ -69,7 +69,7 @@ specifier|private
 name|TimeUtils
 parameter_list|()
 block|{     }
-comment|/**      * Prints the duration in a human readable format as X days Y hours Z minutes etc.      *      * @param uptime the uptime in millis      * @return the time used for displaying on screen or in logs      */
+comment|/**      * Prints the duration in a human readable format as X days Y hours Z minutes etc.      *      * @param uptime the up-time in milliseconds      *      * @return the time used for displaying on screen or in logs      */
 specifier|public
 specifier|static
 name|String

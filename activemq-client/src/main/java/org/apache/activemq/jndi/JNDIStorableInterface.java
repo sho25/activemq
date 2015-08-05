@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Faciliates objects to be stored in JNDI as properties  */
+comment|/**  * Facilitates objects to be stored in JNDI as properties  */
 end_comment
 
 begin_interface
@@ -54,7 +54,7 @@ name|Properties
 name|properties
 parameter_list|)
 function_decl|;
-comment|/**      * Get the properties from this instance for storing in JNDI      *      * @return      */
+comment|/**      * Get the properties from this instance for storing in JNDI      *      * @return the properties that should be stored in JNDI      */
 name|Properties
 name|getProperties
 parameter_list|()

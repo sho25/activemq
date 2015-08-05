@@ -1436,7 +1436,7 @@ name|password
 argument_list|)
 return|;
 block|}
-comment|/**      * @returns the StatsImpl associated with this ConnectionFactory.      */
+comment|/**      * @return the StatsImpl associated with this ConnectionFactory.      */
 annotation|@
 name|Override
 specifier|public

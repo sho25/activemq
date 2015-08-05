@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Thrown to indicate that the {@link TcpTransportServer#maximumConnections}   * property has been exceeded.   *   * @see {@link TcpTransportServer#maximumConnections}  * @author bsnyder  *  */
+comment|/**  * Thrown to indicate that the {@link TcpTransportServer#maximumConnections}  * property has been exceeded.  *  * @see TcpTransportServer#maximumConnections  */
 end_comment
 
 begin_class

@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides basic audit functions for Messages without sync  *  *  */
+comment|/**  * Provides basic audit functions for Messages without sync  */
 end_comment
 
 begin_class
@@ -803,7 +803,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Check the message is in order      * @param msg      * @return      * @throws JMSException      */
+comment|/**      * Check the message is in order      *      * @param msg      *      * @return true if the id is in order      *      * @throws JMSException      */
 specifier|public
 name|boolean
 name|isInOrder
@@ -824,7 +824,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Check the message id is in order      * @param id      * @return      */
+comment|/**      * Check the message id is in order      *      * @param id      *      * @return true if the id is in order      */
 specifier|public
 name|boolean
 name|isInOrder
@@ -910,7 +910,7 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * Check the MessageId is in order      * @param message      * @return      */
+comment|/**      * Check the MessageId is in order      *      * @param message      *      * @return true if the id is in order      */
 specifier|public
 name|boolean
 name|isInOrder
@@ -930,7 +930,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Check the MessageId is in order      * @param id      * @return      */
+comment|/**      * Check the MessageId is in order      *      * @param id      *      * @return true if the id is in order      */
 specifier|public
 name|boolean
 name|isInOrder

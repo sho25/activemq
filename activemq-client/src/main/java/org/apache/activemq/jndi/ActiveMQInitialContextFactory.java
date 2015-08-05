@@ -212,7 +212,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A factory of the ActiveMQ InitialContext which contains  * {@link ConnectionFactory} instances as well as a child context called  *<i>destinations</i> which contain all of the current active destinations, in  * child context depending on the QoS such as transient or durable and queue or  * topic.  *   *   */
+comment|/**  * A factory of the ActiveMQ InitialContext which contains  * {@link javax.jms.ConnectionFactory} instances as well as a child context called  *<i>destinations</i> which contain all of the current active destinations, in  * child context depending on the QoS such as transient or durable and queue or  * topic.  */
 end_comment
 
 begin_class
@@ -257,6 +257,8 @@ name|topicPrefix
 init|=
 literal|"topic."
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Context
 name|getInitialContext
@@ -394,6 +396,8 @@ name|serialVersionUID
 init|=
 literal|6503881346214855588L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|Object
 name|createEntry
@@ -431,6 +435,8 @@ name|serialVersionUID
 init|=
 literal|2019166796234979615L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|Object
 name|createEntry

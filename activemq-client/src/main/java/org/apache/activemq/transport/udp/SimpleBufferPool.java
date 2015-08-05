@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple implementation of {@link BufferPool} which does no pooling and just  * creates new buffers each time  *   *   */
+comment|/**  * A simple implementation of {@link ByteBufferPool} which does no pooling and just  * creates new buffers each time  */
 end_comment
 
 begin_class
@@ -70,6 +70,8 @@ operator|=
 name|useDirect
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|ByteBuffer
@@ -81,6 +83,8 @@ name|createBuffer
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|returnBuffer
@@ -89,6 +93,8 @@ name|ByteBuffer
 name|buffer
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDefaultSize
@@ -129,6 +135,8 @@ operator|=
 name|useDirect
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -136,6 +144,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
