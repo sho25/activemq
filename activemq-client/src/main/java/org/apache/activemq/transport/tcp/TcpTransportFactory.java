@@ -133,7 +133,63 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|*
+name|InactivityMonitor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|Transport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|TransportFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|TransportServer
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|WireFormatNegotiator
 import|;
 end_import
 
@@ -213,10 +269,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (logging improvement modifications)  *  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -239,6 +291,8 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind
@@ -360,7 +414,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Allows subclasses of TcpTransportFactory to create custom instances of      * TcpTransportServer.      *      * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
+comment|/**      * Allows subclasses of TcpTransportFactory to create custom instances of      * TcpTransportServer.      *      * @param location      * @param serverSocketFactory      * @return a new TcpTransportServer instance.      * @throws IOException      * @throws URISyntaxException      */
 specifier|protected
 name|TcpTransportServer
 name|createTcpTransportServer
@@ -390,6 +444,8 @@ argument_list|)
 return|;
 block|}
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"rawtypes"
@@ -411,9 +467,6 @@ block|{
 name|TcpTransport
 name|tcpTransport
 init|=
-operator|(
-name|TcpTransport
-operator|)
 name|transport
 operator|.
 name|narrow
@@ -608,7 +661,7 @@ name|options
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns true if the inactivity monitor should be used on the transport      */
+comment|/**      * @return true if the inactivity monitor should be used on the transport      */
 specifier|protected
 name|boolean
 name|isUseInactivityMonitor
@@ -621,6 +674,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createTransport
@@ -773,7 +828,7 @@ name|localLocation
 argument_list|)
 return|;
 block|}
-comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom      * TcpTransport intances.      *      * @param location      * @param wf      * @param socketFactory      * @param localLocation      * @return      * @throws UnknownHostException      * @throws IOException      */
+comment|/**      * Allows subclasses of TcpTransportFactory to provide a create custom      * TcpTransport instances.      *      * @param wf      * @param socketFactory      * @param location      * @param localLocation      *      * @return a new TcpTransport instance connected to the given location.      *      * @throws UnknownHostException      * @throws IOException      */
 specifier|protected
 name|TcpTransport
 name|createTcpTransport

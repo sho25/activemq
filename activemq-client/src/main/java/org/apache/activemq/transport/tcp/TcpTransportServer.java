@@ -1670,7 +1670,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Allow derived classes to override the Transport implementation that this transport server creates.      *      * @param socket      * @param format      * @return      * @throws IOException      */
+comment|/**      * Allow derived classes to override the Transport implementation that this transport server creates.      *      * @param socket      * @param format      *      * @return a new Transport instance.      *      * @throws IOException      */
 specifier|protected
 name|Transport
 name|createTransport

@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ResponseHolder utility  *   *   */
+comment|/**  * ResponseHolder utility  */
 end_comment
 
 begin_class
@@ -61,7 +61,7 @@ specifier|public
 name|ResponseHolder
 parameter_list|()
 block|{     }
-comment|/**      * Set the Response for this holder      *       * @param r      */
+comment|/**      * Set the Response for this holder      *      * @param response      *      the response returned from the remote peer.      */
 specifier|public
 name|void
 name|setResponse
@@ -92,7 +92,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Get the Response      *       * @return the Response or null if it is closed      */
+comment|/**      * Get the Response      *      * @return the Response or null if it is closed      */
 specifier|public
 name|Response
 name|getResponse
@@ -105,7 +105,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * wait upto<Code>timeout</Code> timeout ms to get a receipt      *       * @param timeout      * @return      */
+comment|/**      * wait up to<Code>timeout</Code> timeout milliseconds to get a receipt      *      * @param timeout      * @return the Response that was set or null if none set yet.      */
 specifier|public
 name|Response
 name|getResponse

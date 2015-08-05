@@ -266,6 +266,8 @@ name|class
 argument_list|)
 decl_stmt|;
 comment|/**      * Overriding to use SslTransportServer and allow for proper reflection.      */
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind
@@ -390,7 +392,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Allows subclasses of SslTransportFactory to create custom instances of      * SslTransportServer.      *      * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
+comment|/**      * Allows subclasses of SslTransportFactory to create custom instances of      * SslTransportServer.      *      * @param location      * @param serverSocketFactory      * @return a new SslTransportServer initialized from the given location and socket factory.      * @throws IOException      * @throws URISyntaxException      */
 specifier|protected
 name|SslTransportServer
 name|createSslTransportServer
@@ -421,6 +423,8 @@ return|;
 block|}
 comment|/**      * Overriding to allow for proper configuration through reflection but delegate to get common      * configuration      */
 annotation|@
+name|Override
+annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"rawtypes"
@@ -442,9 +446,6 @@ block|{
 name|SslTransport
 name|sslTransport
 init|=
-operator|(
-name|SslTransport
-operator|)
 name|transport
 operator|.
 name|narrow
@@ -477,6 +478,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Overriding to use SslTransports.      */
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createTransport
@@ -615,6 +618,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Creates a new SSL ServerSocketFactory. The given factory will use      * user-provided key and trust managers (if the user provided them).      *      * @return Newly created (Ssl)ServerSocketFactory.      * @throws IOException      */
+annotation|@
+name|Override
 specifier|protected
 name|ServerSocketFactory
 name|createServerSocketFactory
@@ -679,6 +684,8 @@ return|;
 block|}
 block|}
 comment|/**      * Creates a new SSL SocketFactory. The given factory will use user-provided      * key and trust managers (if the user provided them).      *      * @return Newly created (Ssl)SocketFactory.      * @throws IOException      */
+annotation|@
+name|Override
 specifier|protected
 name|SocketFactory
 name|createSocketFactory

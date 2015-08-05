@@ -48,7 +48,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A default implementation of {@link BufferPool} which keeps a pool of direct  * byte buffers.  *   *   */
+comment|/**  * A default implementation of {@link SimpleBufferPool} which keeps a pool of direct  * byte buffers.  */
 end_comment
 
 begin_class
@@ -105,6 +105,8 @@ name|useDirect
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|ByteBuffer
@@ -148,6 +150,8 @@ name|createBuffer
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|returnBuffer
@@ -170,6 +174,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -177,6 +183,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop

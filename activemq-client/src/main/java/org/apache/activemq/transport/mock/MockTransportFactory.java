@@ -168,6 +168,8 @@ name|MockTransportFactory
 extends|extends
 name|TransportFactory
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doConnect
@@ -213,6 +215,8 @@ return|return
 name|transport
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Transport
 name|doCompositeConnect
@@ -237,7 +241,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * @param location      * @return      * @throws Exception      */
+comment|/**      * @param location      * @return a new Transport instance.      * @throws Exception      */
 specifier|public
 name|Transport
 name|createTransport
@@ -284,6 +288,8 @@ return|return
 name|transport
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportServer
 name|doBind
