@@ -338,6 +338,11 @@ name|Synchronization
 name|r
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|synchronizations
+init|)
+block|{
 name|synchronizations
 operator|.
 name|add
@@ -345,6 +350,7 @@ argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|state
