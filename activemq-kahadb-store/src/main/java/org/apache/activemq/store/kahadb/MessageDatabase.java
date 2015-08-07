@@ -339,6 +339,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|ConcurrentMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicBoolean
@@ -14146,7 +14158,7 @@ block|}
 comment|/**      * This is a map to cache DestinationStatistics for a specific      * KahaDestination key      */
 specifier|protected
 specifier|final
-name|Map
+name|ConcurrentMap
 argument_list|<
 name|String
 argument_list|,
