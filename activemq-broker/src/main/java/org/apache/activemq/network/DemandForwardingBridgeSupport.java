@@ -2341,7 +2341,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|fireBridgeFailed
+name|serviceLocalException
 argument_list|(
 operator|new
 name|Throwable
@@ -2382,7 +2382,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|fireBridgeFailed
+name|serviceLocalException
 argument_list|(
 operator|new
 name|Throwable
