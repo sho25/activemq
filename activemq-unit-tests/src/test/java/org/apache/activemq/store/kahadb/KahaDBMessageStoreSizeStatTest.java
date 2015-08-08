@@ -236,7 +236,7 @@ block|{
 name|Destination
 name|dest
 init|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|)
@@ -266,7 +266,7 @@ argument_list|)
 expr_stmt|;
 name|dest
 operator|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|)

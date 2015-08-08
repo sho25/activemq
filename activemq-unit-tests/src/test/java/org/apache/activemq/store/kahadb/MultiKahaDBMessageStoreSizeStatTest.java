@@ -346,7 +346,7 @@ block|{
 name|Destination
 name|dest
 init|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|)
@@ -376,7 +376,7 @@ argument_list|)
 expr_stmt|;
 name|dest
 operator|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|)
@@ -406,7 +406,7 @@ block|{
 name|Destination
 name|dest
 init|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|)
@@ -441,7 +441,7 @@ expr_stmt|;
 name|Destination
 name|dest2
 init|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|,
@@ -488,14 +488,14 @@ argument_list|)
 expr_stmt|;
 name|dest
 operator|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|)
 expr_stmt|;
 name|dest2
 operator|=
-name|publishTestMessages
+name|publishTestQueueMessages
 argument_list|(
 literal|200
 argument_list|,
