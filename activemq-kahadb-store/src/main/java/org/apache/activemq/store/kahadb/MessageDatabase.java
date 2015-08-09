@@ -3125,6 +3125,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|//clear the cache on shutdown of the store
+name|storeCache
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public
