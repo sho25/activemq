@@ -222,6 +222,7 @@ name|EMPTY_UPDATABLE_CONFIG
 init|=
 literal|"emptyUpdatableConfig1000"
 decl_stmt|;
+specifier|protected
 name|BrokerService
 name|brokerService
 decl_stmt|;
