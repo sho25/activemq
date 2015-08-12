@@ -11,8 +11,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
 name|transport
 operator|.
 name|auto
@@ -220,13 +218,19 @@ condition|(
 name|initBuffer
 operator|==
 literal|null
+operator|||
+name|initBuffer
+operator|.
+name|readSize
+operator|<
+literal|8
 condition|)
 block|{
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Null initBuffer"
+literal|"Protocol type could not be determined."
 argument_list|)
 throw|;
 block|}

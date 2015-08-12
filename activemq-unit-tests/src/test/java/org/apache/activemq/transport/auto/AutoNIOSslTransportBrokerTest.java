@@ -201,7 +201,6 @@ argument_list|,
 name|KEYSTORE_TYPE
 argument_list|)
 expr_stmt|;
-comment|//System.setProperty("javax.net.debug", "ssl,handshake,data,trustmanager");
 name|maxWait
 operator|=
 literal|10000

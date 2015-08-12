@@ -11,8 +11,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
 name|transport
 operator|.
 name|protocol
@@ -89,9 +87,11 @@ index|[
 name|i
 index|]
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 return|return
 literal|true

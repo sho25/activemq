@@ -484,6 +484,7 @@ name|engine
 operator|!=
 literal|null
 condition|)
+block|{
 name|this
 operator|.
 name|sslSession
@@ -493,6 +494,7 @@ operator|.
 name|getSession
 argument_list|()
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|inputBuffer
@@ -791,11 +793,13 @@ condition|(
 operator|!
 name|hasSslEngine
 condition|)
+block|{
 name|sslEngine
 operator|.
 name|beginHandshake
 argument_list|()
 expr_stmt|;
+block|}
 name|handshakeStatus
 operator|=
 name|sslEngine
@@ -808,9 +812,11 @@ condition|(
 operator|!
 name|hasSslEngine
 condition|)
+block|{
 name|doHandshake
 argument_list|()
 expr_stmt|;
+block|}
 comment|// if (hasSslEngine) {
 name|selection
 operator|=
@@ -1531,6 +1537,13 @@ comment|// the current frame size and the next iteration starts a new command.
 if|if
 condition|(
 name|currentBuffer
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|currentBuffer
 operator|.
 name|remaining
 argument_list|()
@@ -1629,6 +1642,7 @@ name|currentBuffer
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

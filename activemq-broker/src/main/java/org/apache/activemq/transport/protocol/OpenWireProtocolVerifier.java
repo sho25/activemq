@@ -11,8 +11,6 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
 name|transport
 operator|.
 name|protocol

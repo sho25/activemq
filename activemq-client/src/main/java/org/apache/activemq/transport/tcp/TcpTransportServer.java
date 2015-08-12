@@ -2104,16 +2104,28 @@ name|closeSocket
 init|=
 literal|true
 decl_stmt|;
+name|boolean
+name|countIncremented
+init|=
+literal|false
+decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|this
-operator|.
+name|int
+name|currentCount
+decl_stmt|;
+do|do
+block|{
+name|currentCount
+operator|=
 name|currentTransportCount
 operator|.
 name|get
 argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|currentCount
 operator|>=
 name|this
 operator|.
@@ -2132,12 +2144,29 @@ literal|"in the ActiveMQ configuration file (e.g., activemq.xml)"
 argument_list|)
 throw|;
 block|}
-else|else
-block|{
+comment|//Increment this value before configuring the transport
+comment|//This is necessary because some of the transport servers must read from the
+comment|//socket during configureTransport() so we want to make sure this value is
+comment|//accurate as the transport server could pause here waiting for data to be sent from a client
+block|}
+do|while
+condition|(
+operator|!
 name|currentTransportCount
 operator|.
-name|incrementAndGet
-argument_list|()
+name|compareAndSet
+argument_list|(
+name|currentCount
+argument_list|,
+name|currentCount
+operator|+
+literal|1
+argument_list|)
+condition|)
+do|;
+name|countIncremented
+operator|=
+literal|true
 expr_stmt|;
 name|HashMap
 argument_list|<
@@ -2365,7 +2394,6 @@ name|configuredTransport
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|SocketTimeoutException
@@ -2373,11 +2401,6 @@ name|ste
 parameter_list|)
 block|{
 comment|// expect this to happen
-name|currentTransportCount
-operator|.
-name|decrementAndGet
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -2385,11 +2408,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|currentTransportCount
-operator|.
-name|decrementAndGet
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|closeSocket
@@ -2397,6 +2415,19 @@ condition|)
 block|{
 try|try
 block|{
+comment|//if closing the socket, only decrement the count it was actually incremented
+comment|//where it was incremented
+if|if
+condition|(
+name|countIncremented
+condition|)
+block|{
+name|currentTransportCount
+operator|.
+name|decrementAndGet
+argument_list|()
+expr_stmt|;
+block|}
 name|socket
 operator|.
 name|close

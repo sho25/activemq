@@ -754,15 +754,6 @@ argument_list|(
 name|plain
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|readCount
-operator|==
-literal|0
-condition|)
-block|{
-break|break;
-block|}
 comment|// channel is closed, cleanup
 if|if
 condition|(
@@ -778,11 +769,6 @@ operator|new
 name|EOFException
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|selection
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 break|break;
 block|}
@@ -815,8 +801,20 @@ argument_list|(
 name|plain
 argument_list|)
 expr_stmt|;
-comment|//Break when command is found
+comment|//we have received enough bytes to detect the protocol
+if|if
+condition|(
+name|receiveCounter
+operator|>=
+literal|8
+condition|)
+block|{
+name|readSize
+operator|=
+name|receiveCounter
+expr_stmt|;
 break|break;
+block|}
 block|}
 block|}
 block|}
@@ -862,16 +860,49 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|ByteBuffer
+name|newBuffer
+init|=
+name|ByteBuffer
+operator|.
+name|allocate
+argument_list|(
+name|receiveCounter
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|read
+operator|!=
+literal|null
+condition|)
+block|{
+name|newBuffer
+operator|.
+name|put
+argument_list|(
+name|read
+argument_list|)
+expr_stmt|;
+block|}
+name|newBuffer
+operator|.
+name|put
+argument_list|(
+name|plain
+argument_list|)
+expr_stmt|;
+name|newBuffer
+operator|.
+name|flip
+argument_list|()
+expr_stmt|;
 name|read
 operator|=
-name|plain
+name|newBuffer
 operator|.
 name|array
 argument_list|()
-expr_stmt|;
-name|readSize
-operator|=
-name|receiveCounter
 expr_stmt|;
 block|}
 annotation|@
@@ -895,7 +926,6 @@ comment|// no need to init as we can delay that until demand (eg in doHandshake)
 name|connect
 argument_list|()
 expr_stmt|;
-comment|//super.doStart();
 block|}
 annotation|@
 name|Override
@@ -926,10 +956,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|//        if (selection != null) {
-comment|//            selection.close();
-comment|//            selection = null;
-comment|//        }
 block|}
 block|}
 end_class
