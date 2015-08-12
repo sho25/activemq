@@ -162,9 +162,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+operator|!
+name|isMonitorStarted
+argument_list|()
+condition|)
+block|{
 name|startConnectCheckTask
 argument_list|()
 expr_stmt|;
+block|}
 name|super
 operator|.
 name|start

@@ -495,7 +495,7 @@ argument_list|(
 operator|new
 name|InactivityIOException
 argument_list|(
-literal|"Channel was inactive for too (>"
+literal|"Channel was inactive (no connection attempt made) for too (>"
 operator|+
 operator|(
 name|connectAttemptTimeout
