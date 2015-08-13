@@ -1528,7 +1528,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Connection faild, stream is closed."
+literal|"Connection failed, stream is closed."
 argument_list|)
 throw|;
 block|}
@@ -1577,62 +1577,18 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
-try|try
-block|{
-comment|//Wait for protocolDetectionTimeOut if defined
-if|if
-condition|(
-name|protocolDetectionTimeOut
-operator|>
-literal|0
-condition|)
-block|{
-name|future
-operator|.
-name|get
+name|waitForProtocolDetectionFinish
 argument_list|(
-name|protocolDetectionTimeOut
+name|future
 argument_list|,
-name|TimeUnit
-operator|.
-name|MILLISECONDS
+name|readBytes
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|future
-operator|.
-name|get
-argument_list|()
-expr_stmt|;
-block|}
 name|data
 operator|.
 name|flip
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|TimeoutException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|InactivityIOException
-argument_list|(
-literal|"Client timed out before wire format could be detected. "
-operator|+
-literal|" 8 bytes are required to detect the protocol but only: "
-operator|+
-name|readBytes
-operator|+
-literal|" were sent."
-argument_list|)
-throw|;
-block|}
 name|ProtocolInfo
 name|protocolInfo
 init|=
@@ -1738,6 +1694,79 @@ operator|.
 name|detectedTransportFactory
 argument_list|)
 return|;
+block|}
+specifier|protected
+name|void
+name|waitForProtocolDetectionFinish
+parameter_list|(
+specifier|final
+name|Future
+argument_list|<
+name|?
+argument_list|>
+name|future
+parameter_list|,
+specifier|final
+name|AtomicInteger
+name|readBytes
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+comment|//Wait for protocolDetectionTimeOut if defined
+if|if
+condition|(
+name|protocolDetectionTimeOut
+operator|>
+literal|0
+condition|)
+block|{
+name|future
+operator|.
+name|get
+argument_list|(
+name|protocolDetectionTimeOut
+argument_list|,
+name|TimeUnit
+operator|.
+name|MILLISECONDS
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|future
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|TimeoutException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|InactivityIOException
+argument_list|(
+literal|"Client timed out before wire format could be detected. "
+operator|+
+literal|" 8 bytes are required to detect the protocol but only: "
+operator|+
+name|readBytes
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|" byte(s) were sent."
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1978,7 +2007,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Detected "
+literal|"Detected protocol "
 operator|+
 name|scheme
 argument_list|)
@@ -2036,7 +2065,7 @@ throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Could not detect wire format"
+literal|"Could not detect the wire format"
 argument_list|)
 throw|;
 block|}
