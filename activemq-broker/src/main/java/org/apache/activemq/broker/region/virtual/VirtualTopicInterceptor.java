@@ -286,6 +286,11 @@ name|concurrentSend
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|transactedSend
+decl_stmt|;
+specifier|private
+specifier|final
 name|LRUCache
 argument_list|<
 name|ActiveMQDestination
@@ -352,6 +357,15 @@ operator|=
 name|virtualTopic
 operator|.
 name|isConcurrentSend
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|transactedSend
+operator|=
+name|virtualTopic
+operator|.
+name|isTransactedSend
 argument_list|()
 expr_stmt|;
 block|}
@@ -756,6 +770,8 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+name|transactedSend
+operator|&&
 name|numDestinations
 operator|>
 literal|1
