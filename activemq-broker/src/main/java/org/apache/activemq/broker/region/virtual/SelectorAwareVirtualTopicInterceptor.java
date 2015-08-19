@@ -476,6 +476,13 @@ name|getQualifiedName
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|selectors
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|String
@@ -532,6 +539,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
