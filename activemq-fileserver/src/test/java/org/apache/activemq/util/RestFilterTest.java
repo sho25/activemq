@@ -130,7 +130,11 @@ init|=
 operator|new
 name|URL
 argument_list|(
-literal|"http://localhost:8080/uploads/file.txt"
+literal|"http://localhost:"
+operator|+
+name|port
+operator|+
+literal|"/uploads/file.txt"
 argument_list|)
 decl_stmt|;
 comment|// 1. upload

@@ -21,13 +21,15 @@ begin_import
 import|import
 name|org
 operator|.
-name|eclipse
+name|apache
 operator|.
-name|jetty
+name|activemq
 operator|.
-name|server
+name|web
 operator|.
-name|Connector
+name|config
+operator|.
+name|JspConfigurer
 import|;
 end_import
 
@@ -53,6 +55,22 @@ name|eclipse
 operator|.
 name|jetty
 operator|.
+name|server
+operator|.
+name|handler
+operator|.
+name|ContextHandlerCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|eclipse
+operator|.
+name|jetty
+operator|.
 name|webapp
 operator|.
 name|WebAppContext
@@ -60,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A simple bootstrap class for starting Jetty in your IDE using the local web  * application.  *   *   */
+comment|/**  * A simple bootstrap class for starting Jetty in your IDE using the local web  * application.  *  *  */
 end_comment
 
 begin_class
@@ -144,6 +162,15 @@ expr_stmt|;
 block|}
 name|System
 operator|.
+name|setProperty
+argument_list|(
+literal|"activemq.conf"
+argument_list|,
+literal|"/home/clshann/dev/git/apache-activemq/assembly/target/apache-activemq-5.13-SNAPSHOT/conf"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
 name|out
 operator|.
 name|println
@@ -183,6 +210,34 @@ operator|new
 name|WebAppContext
 argument_list|()
 decl_stmt|;
+name|ContextHandlerCollection
+name|handlers
+init|=
+operator|new
+name|ContextHandlerCollection
+argument_list|()
+decl_stmt|;
+name|handlers
+operator|.
+name|setHandlers
+argument_list|(
+operator|new
+name|WebAppContext
+index|[]
+block|{
+name|context
+block|}
+argument_list|)
+expr_stmt|;
+name|JspConfigurer
+operator|.
+name|configureJetty
+argument_list|(
+name|server
+argument_list|,
+name|handlers
+argument_list|)
+expr_stmt|;
 name|context
 operator|.
 name|setResourceBase
@@ -208,7 +263,7 @@ name|server
 operator|.
 name|setHandler
 argument_list|(
-name|context
+name|handlers
 argument_list|)
 expr_stmt|;
 name|server

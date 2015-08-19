@@ -335,6 +335,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|receiveCounter
+operator|+=
+name|length
+expr_stmt|;
 try|try
 block|{
 name|MQTTFrame

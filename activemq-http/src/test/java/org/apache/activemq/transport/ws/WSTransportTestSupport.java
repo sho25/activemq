@@ -344,6 +344,12 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//    protected String getWSConnectorURI() {
+comment|//        return "ws://127.0.0.1:" + getProxyPort() +
+comment|//            "?allowLinkStealing=" + isAllowLinkStealing() +
+comment|//            "&websocket.maxTextMessageSize=99999&" +
+comment|//            "transport.maxIdleTime=1001";
+comment|//    }
 specifier|protected
 name|String
 name|getWSConnectorURI
@@ -362,7 +368,7 @@ argument_list|()
 operator|+
 literal|"&websocket.maxTextMessageSize=99999&"
 operator|+
-literal|"transport.maxIdleTime=1001"
+literal|"transport.idleTimeout=1001"
 return|;
 block|}
 specifier|protected

@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -193,9 +205,7 @@ name|jetty
 operator|.
 name|server
 operator|.
-name|nio
-operator|.
-name|SelectChannelConnector
+name|ServerConnector
 import|;
 end_import
 
@@ -250,18 +260,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -430,25 +428,20 @@ operator|new
 name|Server
 argument_list|()
 expr_stmt|;
-name|SelectChannelConnector
+name|ServerConnector
 name|connector
 init|=
 operator|new
-name|SelectChannelConnector
-argument_list|()
+name|ServerConnector
+argument_list|(
+name|server
+argument_list|)
 decl_stmt|;
 name|connector
 operator|.
 name|setPort
 argument_list|(
 name|port
-argument_list|)
-expr_stmt|;
-name|connector
-operator|.
-name|setServer
-argument_list|(
-name|server
 argument_list|)
 expr_stmt|;
 name|WebAppContext
@@ -706,6 +699,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified
