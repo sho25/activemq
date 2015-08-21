@@ -1135,6 +1135,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|long
+name|getPendingMessageSize
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|int
 name|getPrefetchSize
 parameter_list|()
@@ -1463,11 +1474,15 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|incrementConsumedCount
 parameter_list|()
 block|{              }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetConsumedCount

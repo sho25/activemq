@@ -365,6 +365,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -427,6 +429,8 @@ name|resetSize
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -448,6 +452,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 name|boolean
@@ -747,6 +753,8 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -803,6 +811,8 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -885,6 +895,8 @@ name|void
 name|finished
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -944,6 +956,8 @@ name|hasNext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1005,6 +1019,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -1784,6 +1800,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1804,6 +1822,8 @@ name|size
 operator|++
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1841,6 +1861,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1873,6 +1895,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -1884,6 +1908,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1932,6 +1958,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 specifier|final
 specifier|synchronized
@@ -2039,6 +2067,8 @@ throw|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -2053,6 +2083,8 @@ operator|==
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -2068,6 +2100,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|final
 specifier|synchronized
@@ -2092,6 +2126,20 @@ expr_stmt|;
 block|}
 return|return
 name|size
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+specifier|final
+specifier|synchronized
+name|long
+name|messageSize
+parameter_list|()
+block|{
+return|return
+name|getStoreMessageSize
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -2223,6 +2271,12 @@ specifier|protected
 specifier|abstract
 name|int
 name|getStoreSize
+parameter_list|()
+function_decl|;
+specifier|protected
+specifier|abstract
+name|long
+name|getStoreMessageSize
 parameter_list|()
 function_decl|;
 specifier|protected

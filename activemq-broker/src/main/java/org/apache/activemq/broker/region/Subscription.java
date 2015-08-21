@@ -297,6 +297,11 @@ name|int
 name|getPendingQueueSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return size of the messages pending delivery      */
+name|long
+name|getPendingMessageSize
+parameter_list|()
+function_decl|;
 comment|/**      * @return number of messages dispatched to the client      */
 name|int
 name|getDispatchedQueueSize

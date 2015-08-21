@@ -324,7 +324,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -442,6 +442,8 @@ index|[]
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|removeEldestEntry
@@ -502,6 +504,8 @@ name|audit
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -829,6 +833,8 @@ name|val
 return|;
 block|}
 comment|/**      * @throws Exception      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverSubscription
@@ -872,6 +878,8 @@ operator|new
 name|JDBCMessageRecoveryListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -922,6 +930,8 @@ name|msg
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -1081,6 +1091,8 @@ name|DEFAULT_PRIORITY
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1095,6 +1107,8 @@ name|perPriority
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<
@@ -1122,6 +1136,8 @@ name|current
 init|=
 literal|9
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -1166,6 +1182,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|LastRecoveredEntry
 name|next
@@ -1178,6 +1196,8 @@ name|current
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -1227,6 +1247,8 @@ operator|=
 name|priority
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -1311,6 +1333,8 @@ operator|=
 name|maxMessages
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -1392,6 +1416,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -1463,6 +1489,8 @@ name|recoveredCount
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1769,6 +1797,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching
@@ -2033,6 +2063,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -2123,6 +2155,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.store.TopicMessageStore#lookupSubscription(String,      *      String)      */
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 name|lookupSubscription
@@ -2202,6 +2236,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteSubscription
@@ -2287,6 +2323,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 index|[]
@@ -2353,6 +2391,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageCount
@@ -2468,6 +2508,25 @@ block|}
 comment|//duration.end();
 return|return
 name|result
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getMessageSize
+parameter_list|(
+name|String
+name|clientId
+parameter_list|,
+name|String
+name|subscriberName
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+literal|0
 return|;
 block|}
 specifier|protected

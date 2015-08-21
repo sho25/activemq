@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   *   */
+comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *  *  */
 end_comment
 
 begin_class
@@ -234,6 +234,8 @@ operator|=
 name|broker
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -330,6 +332,49 @@ operator|.
 name|error
 argument_list|(
 literal|"Failed to get message count"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|protected
+specifier|synchronized
+name|long
+name|getStoreMessageSize
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+name|this
+operator|.
+name|store
+operator|.
+name|getMessageSize
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Failed to get message size"
 argument_list|,
 name|e
 argument_list|)

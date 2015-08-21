@@ -250,7 +250,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A MessageStore that uses a Journal to store it's messages.  *   *   */
+comment|/**  * A MessageStore that uses a Journal to store it's messages.  *  *  */
 end_comment
 
 begin_class
@@ -328,6 +328,8 @@ operator|=
 name|checkpointStore
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverSubscription
@@ -367,6 +369,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverNextMessages
@@ -411,6 +415,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 name|lookupSubscription
@@ -435,6 +441,8 @@ name|subscriptionName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addSubscription
@@ -469,6 +477,8 @@ name|retroactive
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessage
@@ -493,6 +503,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -711,6 +723,8 @@ operator|new
 name|Synchronization
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterCommit
@@ -762,6 +776,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|afterRollback
@@ -920,6 +936,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|RecordLocation
 name|checkpoint
@@ -971,6 +989,8 @@ operator|new
 name|Callback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|execute
@@ -1057,6 +1077,8 @@ return|return
 name|longTermStore
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|deleteSubscription
@@ -1080,6 +1102,8 @@ name|subscriptionName
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|SubscriptionInfo
 index|[]
@@ -1095,6 +1119,8 @@ name|getAllSubscriptions
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageCount
@@ -1130,6 +1156,45 @@ name|subscriberName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getMessageSize
+parameter_list|(
+name|String
+name|clientId
+parameter_list|,
+name|String
+name|subscriberName
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|this
+operator|.
+name|peristenceAdapter
+operator|.
+name|checkpoint
+argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+return|return
+name|longTermStore
+operator|.
+name|getMessageSize
+argument_list|(
+name|clientId
+argument_list|,
+name|subscriberName
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching

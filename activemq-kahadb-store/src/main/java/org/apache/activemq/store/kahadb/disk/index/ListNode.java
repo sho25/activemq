@@ -376,6 +376,8 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Key
 name|getKey
@@ -385,6 +387,8 @@ return|return
 name|key
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Value
 name|getValue
@@ -394,6 +398,8 @@ return|return
 name|value
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Value
 name|setValue
@@ -510,6 +516,8 @@ name|getContainingList
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -521,6 +529,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ListNode
 argument_list|<
@@ -625,6 +635,8 @@ return|return
 name|current
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -903,6 +915,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -927,6 +941,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Entry
 argument_list|<
@@ -968,6 +984,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -1189,7 +1207,9 @@ block|}
 name|targetList
 operator|.
 name|onRemove
-argument_list|()
+argument_list|(
+name|entryToRemove
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1333,6 +1353,8 @@ operator|=
 name|valueMarshaller
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writePayload
@@ -1470,6 +1492,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(

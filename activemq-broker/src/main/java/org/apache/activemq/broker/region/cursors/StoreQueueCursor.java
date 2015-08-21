@@ -226,6 +226,8 @@ operator|=
 name|persistent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -371,6 +373,8 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -419,6 +423,8 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -499,6 +505,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -569,6 +577,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -580,6 +590,8 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -628,6 +640,8 @@ else|:
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|MessageReference
@@ -652,6 +666,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -675,6 +691,8 @@ name|pendingCount
 operator|--
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -715,6 +733,8 @@ name|pendingCount
 operator|--
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -744,6 +764,8 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|release
@@ -760,6 +782,8 @@ name|release
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|int
@@ -790,6 +814,28 @@ return|return
 name|pendingCount
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|long
+name|messageSize
+parameter_list|()
+block|{
+return|return
+name|persistent
+operator|.
+name|messageSize
+argument_list|()
+operator|+
+name|nonPersistent
+operator|.
+name|messageSize
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -804,6 +850,8 @@ literal|0
 return|;
 block|}
 comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *      * @see org.apache.activemq.broker.region.cursors.PendingMessageCursor      * @return true if recovery required      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -841,6 +889,8 @@ operator|=
 name|nonPersistent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxBatchSize
@@ -879,6 +929,8 @@ name|maxBatchSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxProducersToAudit
@@ -925,6 +977,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxAuditDepth
@@ -971,6 +1025,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setEnableAudit
@@ -1113,6 +1169,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1158,6 +1216,8 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSystemUsage

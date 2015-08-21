@@ -115,6 +115,10 @@ name|long
 name|size
 parameter_list|()
 function_decl|;
+name|long
+name|messageSize
+parameter_list|()
+function_decl|;
 specifier|public
 interface|interface
 name|PListIterator

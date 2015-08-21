@@ -344,7 +344,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *   *   */
+comment|/**  * persist pending messages pending message (messages awaiting dispatch to a  * consumer) cursor  *  *  */
 end_comment
 
 begin_class
@@ -1075,7 +1075,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * add message to await dispatch      *       * @param node      * @throws Exception       */
+comment|/**      * add message to await dispatch      *      * @param node      * @throws Exception      */
 annotation|@
 name|Override
 specifier|public
@@ -1311,7 +1311,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * add message to await dispatch      *       * @param node      */
+comment|/**      * add message to await dispatch      *      * @param node      */
 annotation|@
 name|Override
 specifier|public
@@ -1723,6 +1723,37 @@ argument_list|()
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|long
+name|messageSize
+parameter_list|()
+block|{
+return|return
+name|memoryList
+operator|.
+name|messageSize
+argument_list|()
+operator|+
+operator|(
+name|isDiskListEmpty
+argument_list|()
+condition|?
+literal|0
+else|:
+operator|(
+name|int
+operator|)
+name|getDiskList
+argument_list|()
+operator|.
+name|messageSize
+argument_list|()
+operator|)
+return|;
+block|}
 comment|/**      * clear all pending messages      */
 annotation|@
 name|Override
@@ -1837,6 +1868,8 @@ name|usageManager
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onUsageChanged
@@ -2494,6 +2527,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -2506,6 +2541,8 @@ name|hasNext
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageReference
 name|next
@@ -2573,6 +2610,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove

@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pendingCount messages pendingCount message (messages awaiting disptach  * to a consumer) cursor  *   *   */
+comment|/**  * persist pendingCount messages pendingCount message (messages awaiting disptach  * to a consumer) cursor  *  *  */
 end_comment
 
 begin_class
@@ -292,6 +292,8 @@ operator|>
 literal|0
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -311,6 +313,8 @@ literal|"Not supported"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -332,6 +336,7 @@ expr_stmt|;
 name|size
 operator|++
 expr_stmt|;
+comment|//this.messageSize.addSize(node.getMessage().getSize());
 block|}
 annotation|@
 name|Override
@@ -482,6 +487,53 @@ return|return
 name|store
 operator|.
 name|getMessageCount
+argument_list|(
+name|clientId
+argument_list|,
+name|subscriberName
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"{} Failed to get the outstanding message count from the store"
+argument_list|,
+name|this
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|protected
+specifier|synchronized
+name|long
+name|getStoreMessageSize
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+name|store
+operator|.
+name|getMessageSize
 argument_list|(
 name|clientId
 argument_list|,

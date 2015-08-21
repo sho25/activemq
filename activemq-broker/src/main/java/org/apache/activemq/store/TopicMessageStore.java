@@ -196,6 +196,18 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+name|long
+name|getMessageSize
+parameter_list|(
+name|String
+name|clientId
+parameter_list|,
+name|String
+name|subscriberName
+parameter_list|)
+throws|throws
+name|IOException
+function_decl|;
 comment|/**      * Finds the subscriber entry for the given consumer info      *      * @param clientId      * @param subscriptionName      *      * @return the SubscriptionInfo      *      * @throws IOException      */
 name|SubscriptionInfo
 name|lookupSubscription

@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface to pending message (messages awaiting disptach to a consumer)  * cursor  *   *   */
+comment|/**  * Interface to pending message (messages awaiting disptach to a consumer)  * cursor  *  *  */
 end_comment
 
 begin_interface
@@ -158,7 +158,7 @@ name|PendingMessageCursor
 extends|extends
 name|Service
 block|{
-comment|/**      * Add a destination      *       * @param context      * @param destination      * @throws Exception      */
+comment|/**      * Add a destination      *      * @param context      * @param destination      * @throws Exception      */
 name|void
 name|add
 parameter_list|(
@@ -171,7 +171,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * remove a destination      *       * @param context      * @param destination      * @throws Exception      */
+comment|/**      * remove a destination      *      * @param context      * @param destination      * @throws Exception      */
 name|List
 argument_list|<
 name|MessageReference
@@ -192,7 +192,7 @@ name|boolean
 name|isEmpty
 parameter_list|()
 function_decl|;
-comment|/**      * check if a Destination is Empty for this cursor      *       * @param destination      * @return true id the Destination is empty      */
+comment|/**      * check if a Destination is Empty for this cursor      *      * @param destination      * @return true id the Destination is empty      */
 name|boolean
 name|isEmpty
 parameter_list|(
@@ -210,7 +210,7 @@ name|void
 name|release
 parameter_list|()
 function_decl|;
-comment|/**      * add message to await dispatch      *       * @param node      * @return boolean true if successful, false if cursor traps a duplicate      * @throws IOException      * @throws Exception      */
+comment|/**      * add message to await dispatch      *      * @param node      * @return boolean true if successful, false if cursor traps a duplicate      * @throws IOException      * @throws Exception      */
 name|boolean
 name|addMessageLast
 parameter_list|(
@@ -220,7 +220,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * add message to await dispatch - if it can      *       * @param node      * @param maxWaitTime       * @return true if successful      * @throws IOException      * @throws Exception      */
+comment|/**      * add message to await dispatch - if it can      *      * @param node      * @param maxWaitTime      * @return true if successful      * @throws IOException      * @throws Exception      */
 name|boolean
 name|tryAddMessageLast
 parameter_list|(
@@ -233,7 +233,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * add message to await dispatch      *       * @param node      * @throws Exception      */
+comment|/**      * add message to await dispatch      *      * @param node      * @throws Exception      */
 name|void
 name|addMessageFirst
 parameter_list|(
@@ -243,7 +243,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Add a message recovered from a retroactive policy      *       * @param node      * @throws Exception      */
+comment|/**      * Add a message recovered from a retroactive policy      *      * @param node      * @throws Exception      */
 name|void
 name|addRecoveredMessage
 parameter_list|(
@@ -273,12 +273,16 @@ name|int
 name|size
 parameter_list|()
 function_decl|;
+name|long
+name|messageSize
+parameter_list|()
+function_decl|;
 comment|/**      * clear all pending messages      */
 name|void
 name|clear
 parameter_list|()
 function_decl|;
-comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *       * @return true if recovery required      */
+comment|/**      * Informs the Broker if the subscription needs to intervention to recover      * it's state e.g. DurableTopicSubscriber may do      *      * @return true if recovery required      */
 name|boolean
 name|isRecoveryRequired
 parameter_list|()
@@ -288,7 +292,7 @@ name|int
 name|getMaxBatchSize
 parameter_list|()
 function_decl|;
-comment|/**      * Set the max batch size      *       * @param maxBatchSize      */
+comment|/**      * Set the max batch size      *      * @param maxBatchSize      */
 name|void
 name|setMaxBatchSize
 parameter_list|(
@@ -301,7 +305,7 @@ name|void
 name|resetForGC
 parameter_list|()
 function_decl|;
-comment|/**      * remove a node      *       * @param node      */
+comment|/**      * remove a node      *      * @param node      */
 name|void
 name|remove
 parameter_list|(
@@ -314,7 +318,7 @@ name|void
 name|gc
 parameter_list|()
 function_decl|;
-comment|/**      * Set the UsageManager      *       * @param systemUsage      * @see org.apache.activemq.usage.SystemUsage      */
+comment|/**      * Set the UsageManager      *      * @param systemUsage      * @see org.apache.activemq.usage.SystemUsage      */
 name|void
 name|setSystemUsage
 parameter_list|(
@@ -356,14 +360,14 @@ name|boolean
 name|hasMessagesBufferedToDeliver
 parameter_list|()
 function_decl|;
-comment|/**      * destroy the cursor      *       * @throws Exception      */
+comment|/**      * destroy the cursor      *      * @throws Exception      */
 name|void
 name|destroy
 parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Page in a restricted number of messages and increment the reference count      *       * @param maxItems      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages and increment the reference count      *      * @param maxItems      * @return a list of paged in messages      */
 name|LinkedList
 argument_list|<
 name|MessageReference
@@ -387,7 +391,7 @@ name|int
 name|getMaxProducersToAudit
 parameter_list|()
 function_decl|;
-comment|/**      * Set the maximum depth of message ids to track      * @param depth       */
+comment|/**      * Set the maximum depth of message ids to track      * @param depth      */
 name|void
 name|setMaxAuditDepth
 parameter_list|(
@@ -415,7 +419,7 @@ name|boolean
 name|enableAudit
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if the underlying state of this cursor       * disappears when the broker shuts down      */
+comment|/**      * @return true if the underlying state of this cursor      * disappears when the broker shuts down      */
 specifier|public
 name|boolean
 name|isTransient

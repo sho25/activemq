@@ -124,7 +124,14 @@ name|int
 name|size
 parameter_list|()
 function_decl|;
+specifier|public
+name|long
+name|messageSize
+parameter_list|()
+function_decl|;
 comment|/**      * Returns an iterator over the pending Messages.  The subclass controls how      * the returned iterator actually traverses the list of pending messages allowing      * for the order to vary based on factors like Message priority or some other      * mechanism.      *      * @return an Iterator that returns MessageReferences contained in this list.      */
+annotation|@
+name|Override
 specifier|public
 name|Iterator
 argument_list|<

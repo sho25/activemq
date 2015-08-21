@@ -596,6 +596,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -695,6 +697,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1011,6 +1015,8 @@ argument_list|>
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|acknowledge
@@ -1024,6 +1030,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -1058,6 +1066,8 @@ name|qmr
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConnectionContext
 name|getContext
@@ -1147,6 +1157,8 @@ name|void
 name|resetConsumedCount
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -1160,16 +1172,22 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroy
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
 parameter_list|()
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|ConsumerInfo
 name|getConsumerInfo
@@ -1179,6 +1197,8 @@ return|return
 name|info
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDequeueCounter
@@ -1188,6 +1208,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getDispatchedCounter
@@ -1197,6 +1219,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getDispatchedQueueSize
@@ -1206,6 +1230,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getEnqueueCounter
@@ -1215,6 +1241,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getInFlightSize
@@ -1224,6 +1252,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getInFlightUsage
@@ -1233,6 +1263,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ObjectName
 name|getObjectName
@@ -1242,6 +1274,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPendingQueueSize
@@ -1251,6 +1285,19 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getPendingMessageSize
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPrefetchSize
@@ -1260,6 +1307,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getSelector
@@ -1269,6 +1318,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBrowser
@@ -1278,6 +1329,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFull
@@ -1287,6 +1340,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isHighWaterMark
@@ -1296,6 +1351,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLowWaterMark
@@ -1305,6 +1362,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -1323,6 +1382,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -1340,6 +1401,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -1352,6 +1415,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|processMessageDispatchNotification
@@ -1362,6 +1427,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|pullMessage
@@ -1390,6 +1457,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|List
 argument_list|<
@@ -1417,6 +1486,8 @@ name|dispatched
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setObjectName
@@ -1425,6 +1496,8 @@ name|ObjectName
 name|objectName
 parameter_list|)
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSelector
@@ -1437,6 +1510,8 @@ name|InvalidSelectorException
 throws|,
 name|UnsupportedOperationException
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateConsumerPrefetch
@@ -1445,6 +1520,8 @@ name|int
 name|newPrefetch
 parameter_list|)
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|addRecoveredMessage
@@ -1462,6 +1539,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQDestination
 name|getActiveMQDestination
@@ -1471,6 +1550,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getLockPriority
@@ -1480,6 +1561,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isLockExclusive
@@ -1505,6 +1588,8 @@ name|Destination
 name|destination
 parameter_list|)
 block|{         }
+annotation|@
+name|Override
 specifier|public
 name|int
 name|countBeforeFull
