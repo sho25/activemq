@@ -74,10 +74,11 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Only used by the {@link QueueMessageReference#NULL_MESSAGE}  */
+comment|/**  * Used by the {@link QueueMessageReference#NULL_MESSAGE}  */
 end_comment
 
 begin_class
+specifier|public
 specifier|final
 class|class
 name|NullMessageReference

@@ -102,7 +102,7 @@ comment|/**      * @return the destination name      */
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The name of the destionation the subscription is on."
+literal|"The name of the destination the subscription is on."
 argument_list|)
 name|String
 name|getDestinationName
@@ -278,7 +278,7 @@ comment|/**      * @return whether or not the subscriber is durable (persistent)
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The subsription is persistent."
+literal|"The subscription is persistent."
 argument_list|)
 name|boolean
 name|isDurable
@@ -288,7 +288,7 @@ comment|/**      * @return whether or not the subscriber ignores local messages 
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The subsription ignores local messages."
+literal|"The subscription ignores local messages."
 argument_list|)
 name|boolean
 name|isNoLocal
