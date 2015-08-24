@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URI
@@ -262,7 +272,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *   * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  *                         description="The JCA Resource Adaptor for ActiveMQ"  *   */
+comment|/**  * Knows how to connect to one ActiveMQ server. It can then activate endpoints  * and deliver messages to those end points using the connection configure in  * the resource adapter.<p/>Must override equals and hashCode (JCA spec 16.4)  *  * @org.apache.xbean.XBean element="resourceAdapter" rootElement="true"  *                         description="The JCA Resource Adaptor for ActiveMQ"  *  */
 end_comment
 
 begin_class
@@ -272,8 +282,18 @@ name|ActiveMQResourceAdapter
 extends|extends
 name|ActiveMQConnectionSupport
 implements|implements
+name|Serializable
+implements|,
 name|MessageResourceAdapter
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|360805587169336959L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -290,6 +310,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|transient
 specifier|final
 name|HashMap
 argument_list|<
@@ -309,6 +330,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|transient
 name|BootstrapContext
 name|bootstrapContext
 decl_stmt|;
@@ -317,10 +339,12 @@ name|String
 name|brokerXmlConfig
 decl_stmt|;
 specifier|private
+specifier|transient
 name|BrokerService
 name|broker
 decl_stmt|;
 specifier|private
+specifier|transient
 name|Thread
 name|brokerStartThread
 decl_stmt|;
@@ -328,7 +352,7 @@ specifier|private
 name|ActiveMQConnectionFactory
 name|connectionFactory
 decl_stmt|;
-comment|/**      *       */
+comment|/**      *      */
 specifier|public
 name|ActiveMQResourceAdapter
 parameter_list|()
@@ -338,6 +362,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see javax.resource.spi.ResourceAdapter#start(javax.resource.spi.BootstrapContext)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -600,6 +626,8 @@ return|;
 block|}
 block|}
 comment|/**      * @param activationSpec      */
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQConnection
 name|makeConnection
@@ -756,6 +784,8 @@ name|physicalConnection
 return|;
 block|}
 comment|/**      * @see javax.resource.spi.ResourceAdapter#stop()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -852,6 +882,8 @@ literal|null
 expr_stmt|;
 block|}
 comment|/**      * @see org.apache.activemq.ra.MessageResourceAdapter#getBootstrapContext()      */
+annotation|@
+name|Override
 specifier|public
 name|BootstrapContext
 name|getBootstrapContext
@@ -862,6 +894,8 @@ name|bootstrapContext
 return|;
 block|}
 comment|/**      * @see javax.resource.spi.ResourceAdapter#endpointActivation(javax.resource.spi.endpoint.MessageEndpointFactory,      *      javax.resource.spi.ActivationSpec)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|endpointActivation
@@ -991,6 +1025,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see javax.resource.spi.ResourceAdapter#endpointDeactivation(javax.resource.spi.endpoint.MessageEndpointFactory,      *      javax.resource.spi.ActivationSpec)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|endpointDeactivation
@@ -1084,7 +1120,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * We only connect to one resource manager per ResourceAdapter instance, so      * any ActivationSpec will return the same XAResource.      *       * @see javax.resource.spi.ResourceAdapter#getXAResources(javax.resource.spi.ActivationSpec[])      */
+comment|/**      * We only connect to one resource manager per ResourceAdapter instance, so      * any ActivationSpec will return the same XAResource.      *      * @see javax.resource.spi.ResourceAdapter#getXAResources(javax.resource.spi.ActivationSpec[])      */
+annotation|@
+name|Override
 specifier|public
 name|XAResource
 index|[]
@@ -1743,7 +1781,9 @@ comment|/**      * @see org.apache.activemq.ra.MessageResourceAdapter#getBrokerX
 end_comment
 
 begin_function
-unit|public
+unit|@
+name|Override
+specifier|public
 name|String
 name|getBrokerXmlConfig
 parameter_list|()
@@ -1755,7 +1795,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Sets the<a href="http://activemq.org/Xml+Configuration">XML      * configuration file</a> used to configure the ActiveMQ broker via Spring      * if using embedded mode.      *       * @param brokerXmlConfig is the filename which is assumed to be on the      *                classpath unless a URL is specified. So a value of      *<code>foo/bar.xml</code> would be assumed to be on the      *                classpath whereas<code>file:dir/file.xml</code> would      *                use the file system. Any valid URL string is supported.      */
+comment|/**      * Sets the<a href="http://activemq.org/Xml+Configuration">XML      * configuration file</a> used to configure the ActiveMQ broker via Spring      * if using embedded mode.      *      * @param brokerXmlConfig is the filename which is assumed to be on the      *                classpath unless a URL is specified. So a value of      *<code>foo/bar.xml</code> would be assumed to be on the      *                classpath whereas<code>file:dir/file.xml</code> would      *                use the file system. Any valid URL string is supported.      */
 end_comment
 
 begin_function
