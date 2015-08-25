@@ -53,6 +53,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|karaf
+operator|.
+name|features
+operator|.
+name|Feature
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Ignore
@@ -268,6 +282,8 @@ argument_list|,
 name|configure
 argument_list|(
 literal|"activemq"
+argument_list|,
+literal|"activemq-camel"
 argument_list|)
 argument_list|)
 return|;
@@ -298,7 +314,7 @@ name|println
 argument_list|(
 name|executeCommand
 argument_list|(
-literal|"osgi:list"
+literal|"feature:list"
 argument_list|)
 operator|.
 name|trim
@@ -310,17 +326,14 @@ argument_list|(
 literal|"activemq"
 argument_list|)
 expr_stmt|;
-name|executeCommand
+name|assertTrue
 argument_list|(
-literal|"features:addurl "
-operator|+
-name|getCamelFeatureUrl
-argument_list|()
+literal|"activemq-camel bundle installed"
+argument_list|,
+name|verifyBundleInstalled
+argument_list|(
+literal|"org.apache.activemq.activemq-camel"
 argument_list|)
-expr_stmt|;
-name|installAndAssertFeature
-argument_list|(
-literal|"activemq-camel"
 argument_list|)
 expr_stmt|;
 name|withinReason

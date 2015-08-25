@@ -468,7 +468,7 @@ name|Throwable
 block|{
 name|executeCommand
 argument_list|(
-literal|"features:addurl "
+literal|"feature:repo-add "
 operator|+
 name|getCamelFeatureUrl
 argument_list|()
