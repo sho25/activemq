@@ -765,9 +765,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"still zero dequeue, we don't decrement on each sub ack to stop exceeding the enqueue count with multiple subs"
+literal|"topic view dequeue not updated"
 argument_list|,
-literal|0
+literal|5
 argument_list|,
 name|topicView
 operator|.
@@ -913,9 +913,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"still zero dequeue, we don't decrement on each sub ack to stop exceeding the enqueue count with multiple subs"
+literal|"topic view dequeue not updated"
 argument_list|,
-literal|0
+literal|5
 argument_list|,
 name|topicView
 operator|.
