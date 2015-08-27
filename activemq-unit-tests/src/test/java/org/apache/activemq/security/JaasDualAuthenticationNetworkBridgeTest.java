@@ -178,7 +178,7 @@ specifier|static
 name|String
 name|CONFIG_FILE
 init|=
-literal|"org/apache/activemq/security/JaasDualAuthenticationNetworkBridgeTest.xml"
+literal|"org/apache/activemq/security/JaasDualAuthenticationNetworkBridge.xml"
 decl_stmt|;
 specifier|protected
 specifier|static
@@ -240,7 +240,7 @@ argument_list|()
 operator|.
 name|getResource
 argument_list|(
-literal|"login-JaasDualAuthenticationNetworkBridgeTest.config"
+literal|"login-JaasDualAuthenticationNetworkBridge.config"
 argument_list|)
 decl_stmt|;
 if|if
