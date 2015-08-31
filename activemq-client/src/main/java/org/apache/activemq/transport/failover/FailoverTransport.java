@@ -3364,6 +3364,9 @@ condition|(
 name|tracked
 operator|==
 literal|null
+operator|&&
+name|canReconnect
+argument_list|()
 condition|)
 block|{
 comment|// since we will retry in this method.. take it
