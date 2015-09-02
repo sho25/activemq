@@ -281,6 +281,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -308,6 +310,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -323,6 +327,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -359,9 +365,17 @@ name|message
 operator|!=
 literal|null
 operator|&&
+operator|(
+name|maxRetries
+operator|==
+name|ReconnectionPolicy
+operator|.
+name|INFINITE
+operator|||
 name|attempt
 operator|<=
 name|maxRetries
+operator|)
 condition|)
 block|{
 try|try
