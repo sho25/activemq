@@ -264,8 +264,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
 comment|// If there is no queue name specified, let's select all
 if|if
 condition|(
@@ -480,34 +478,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|context
-operator|.
-name|printException
-argument_list|(
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Failed to execute purge task. Reason: "
-operator|+
-name|e
-argument_list|)
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|Exception
-argument_list|(
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 comment|/**      * Purge all the messages in the queue      *      * @param queue - ObjectName of the queue to purge      * @throws Exception      */

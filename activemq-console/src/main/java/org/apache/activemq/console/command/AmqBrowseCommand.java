@@ -95,6 +95,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ActiveMQConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQQueue
@@ -187,7 +199,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"Task Usage: Main browse --amqurl<broker url> [browse-options]<destinations>"
+literal|"Task Usage: Main browse [browse-options]<destinations>"
 block|,
 literal|"Description: Display selected destination's messages."
 block|,
@@ -195,7 +207,7 @@ literal|""
 block|,
 literal|"Browse Options:"
 block|,
-literal|"    --amqurl<url>                Set the broker URL to connect to."
+literal|"    --amqurl<url>                Set the broker URL to connect to. Default tcp://localhost:61616"
 block|,
 literal|"    --msgsel<msgsel1,msglsel2>   Add to the search list messages matched by the query similar to"
 block|,
@@ -402,18 +414,13 @@ operator|==
 literal|null
 condition|)
 block|{
-name|context
+name|setBrokerUrl
+argument_list|(
+name|ActiveMQConnectionFactory
 operator|.
-name|printException
-argument_list|(
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"No broker url specified. Use the --amqurl option to specify a broker url."
-argument_list|)
+name|DEFAULT_BROKER_BIND_URL
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 comment|// Display the messages for each destination
 for|for
@@ -588,29 +595,20 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|exception
 parameter_list|)
 block|{
-name|context
+name|handleException
+argument_list|(
+name|exception
+argument_list|,
+name|getBrokerUrl
+argument_list|()
 operator|.
-name|printException
-argument_list|(
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Failed to execute browse task. Reason: "
-operator|+
-name|e
-argument_list|)
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
-throw|throw
-operator|new
-name|Exception
-argument_list|(
-name|e
-argument_list|)
-throw|;
 block|}
 block|}
 comment|/**      * Handle the --msgsel, --xmsgsel, --view, -V options.      *      * @param token - option token to handle      * @param tokens - succeeding command arguments      * @throws Exception      */

@@ -193,8 +193,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
 name|Collection
 name|mbeans
 decl_stmt|;
@@ -392,34 +390,6 @@ argument_list|,
 name|mbeans
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|context
-operator|.
-name|printException
-argument_list|(
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Failed to execute stop task. Reason: "
-operator|+
-name|e
-argument_list|)
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|Exception
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Stops the list of brokers.      *       * @param jmxConnection - connection to the mbean server      * @param brokerBeans - broker mbeans to stop @throws Exception      */
 specifier|protected

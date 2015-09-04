@@ -137,8 +137,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-try|try
-block|{
 name|Set
 argument_list|<
 name|String
@@ -179,34 +177,6 @@ name|propsView
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|context
-operator|.
-name|printException
-argument_list|(
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Failed to execute list task. Reason: "
-operator|+
-name|e
-argument_list|)
-argument_list|)
-expr_stmt|;
-throw|throw
-operator|new
-name|Exception
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Print the help messages for the browse command      */
 specifier|protected
