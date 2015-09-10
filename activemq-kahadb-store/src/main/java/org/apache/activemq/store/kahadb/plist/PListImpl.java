@@ -2174,6 +2174,13 @@ argument_list|(
 name|removed
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|removed
+operator|!=
+literal|null
+condition|)
+block|{
 name|messageSize
 operator|.
 name|addSize
@@ -2188,6 +2195,7 @@ name|getSize
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
