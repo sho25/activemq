@@ -8290,6 +8290,25 @@ operator|=
 name|location
 expr_stmt|;
 comment|// remove ack positions
+if|if
+condition|(
+name|sd
+operator|.
+name|subscriptions
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|sd
+operator|.
+name|subscriptions
+operator|.
+name|isEmpty
+argument_list|(
+name|tx
+argument_list|)
+condition|)
+block|{
 name|Iterator
 argument_list|<
 name|Entry
@@ -8341,6 +8360,7 @@ argument_list|(
 name|id
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// record this id in any event, initial send or recovery
