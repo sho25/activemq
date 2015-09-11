@@ -154,6 +154,9 @@ operator|.
 name|setDirectory
 argument_list|(
 name|dataFileDir
+operator|.
+name|getRoot
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|KahaDBPersistenceAdapter

@@ -311,6 +311,24 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
+name|AbstractPendingMessageCursorTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -359,6 +377,26 @@ name|ActiveMQTopic
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  *  *  */
 end_comment
@@ -369,6 +407,21 @@ specifier|abstract
 class|class
 name|AbstractStoreStatTestSupport
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AbstractStoreStatTestSupport
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|protected
 specifier|static
 name|int
@@ -940,6 +993,19 @@ name|i
 operator|++
 control|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Publishing message: "
+operator|+
+name|i
+operator|+
+literal|", size: "
+operator|+
+name|messageSize
+argument_list|)
+expr_stmt|;
 name|prod
 operator|.
 name|send
@@ -1223,6 +1289,19 @@ name|i
 operator|++
 control|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Publishing message: "
+operator|+
+name|i
+operator|+
+literal|", size: "
+operator|+
+name|messageSize
+argument_list|)
+expr_stmt|;
 name|prod
 operator|.
 name|send
