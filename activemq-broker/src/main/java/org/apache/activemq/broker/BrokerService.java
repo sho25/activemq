@@ -9337,6 +9337,17 @@ operator|.
 name|getLimit
 argument_list|()
 decl_stmt|;
+name|long
+name|storeCurrent
+init|=
+name|usage
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getUsage
+argument_list|()
+decl_stmt|;
 while|while
 condition|(
 name|tmpDir
@@ -9370,7 +9381,11 @@ if|if
 condition|(
 name|storeLimit
 operator|>
+operator|(
 name|dirFreeSpace
+operator|+
+name|storeCurrent
+operator|)
 condition|)
 block|{
 name|LOG
@@ -9387,9 +9402,22 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb, whilst the temporary data directory: "
+literal|" mb (current temporary store usage is "
 operator|+
-name|tmpDirPath
+name|storeCurrent
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|" mb). The temporary data directory: "
+operator|+
+name|tmpDir
+operator|.
+name|getAbsolutePath
+argument_list|()
 operator|+
 literal|" only has "
 operator|+
@@ -9401,9 +9429,13 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb of usable space - resetting to maximum available "
+literal|" mb of usable space - resetting to maximum available disk space: "
 operator|+
+operator|(
 name|dirFreeSpace
+operator|+
+name|storeCurrent
+operator|)
 operator|/
 operator|(
 literal|1024
@@ -9411,7 +9443,7 @@ operator|*
 literal|1024
 operator|)
 operator|+
-literal|" mb."
+literal|" mb"
 argument_list|)
 expr_stmt|;
 name|usage
@@ -9422,6 +9454,8 @@ operator|.
 name|setLimit
 argument_list|(
 name|dirFreeSpace
+operator|+
+name|storeCurrent
 argument_list|)
 expr_stmt|;
 block|}
