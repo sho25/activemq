@@ -659,12 +659,14 @@ specifier|protected
 name|void
 name|handleException
 parameter_list|(
-name|Throwable
+name|Exception
 name|exception
 parameter_list|,
 name|String
 name|serviceUrl
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|Throwable
 name|cause
@@ -722,22 +724,19 @@ else|else
 block|{
 name|context
 operator|.
-name|printException
-argument_list|(
-operator|new
-name|RuntimeException
+name|printInfo
 argument_list|(
 literal|"Failed to execute "
 operator|+
 name|getName
 argument_list|()
 operator|+
-literal|" task. Reason: "
-operator|+
-name|exception
-argument_list|)
+literal|" task."
 argument_list|)
 expr_stmt|;
+throw|throw
+name|exception
+throw|;
 block|}
 block|}
 block|}

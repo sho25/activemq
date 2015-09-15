@@ -1809,7 +1809,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|exception
 parameter_list|)
 block|{
