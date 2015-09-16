@@ -1064,7 +1064,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|10000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -1197,7 +1197,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|10000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -1334,7 +1334,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|10000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -1484,7 +1484,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|10000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -1639,7 +1639,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|10000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -1800,7 +1800,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|10000
+literal|30000
 argument_list|)
 specifier|public
 name|void
@@ -2900,6 +2900,8 @@ name|send
 argument_list|(
 name|createMessage
 argument_list|(
+name|i
+argument_list|,
 name|session
 argument_list|,
 name|AbstractPendingMessageCursorTest

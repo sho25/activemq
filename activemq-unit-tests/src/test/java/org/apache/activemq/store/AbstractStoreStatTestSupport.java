@@ -993,25 +993,14 @@ name|i
 operator|++
 control|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Publishing message: "
-operator|+
-name|i
-operator|+
-literal|", size: "
-operator|+
-name|messageSize
-argument_list|)
-expr_stmt|;
 name|prod
 operator|.
 name|send
 argument_list|(
 name|createMessage
 argument_list|(
+name|i
+argument_list|,
 name|session
 argument_list|,
 name|messageSize
@@ -1289,25 +1278,14 @@ name|i
 operator|++
 control|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Publishing message: "
-operator|+
-name|i
-operator|+
-literal|", size: "
-operator|+
-name|messageSize
-argument_list|)
-expr_stmt|;
 name|prod
 operator|.
 name|send
 argument_list|(
 name|createMessage
 argument_list|(
+name|i
+argument_list|,
 name|session
 argument_list|,
 name|messageSize
@@ -1420,16 +1398,19 @@ operator|)
 name|dest
 return|;
 block|}
-comment|/**      * Generate random messages between 100 bytes and messageSize      * @param session      * @return      * @throws JMSException      */
+comment|/**      * Generate random messages between 100 bytes and maxMessageSize      * @param session      * @return      * @throws JMSException      */
 specifier|protected
 name|BytesMessage
 name|createMessage
 parameter_list|(
+name|int
+name|count
+parameter_list|,
 name|Session
 name|session
 parameter_list|,
 name|int
-name|messageSize
+name|maxMessageSize
 parameter_list|,
 name|AtomicLong
 name|publishedMessageSize
@@ -1446,11 +1427,45 @@ operator|.
 name|createBytesMessage
 argument_list|()
 decl_stmt|;
+specifier|final
+name|Random
+name|randomSize
+init|=
+operator|new
+name|Random
+argument_list|()
+decl_stmt|;
 name|int
 name|size
 init|=
-name|messageSize
+name|randomSize
+operator|.
+name|nextInt
+argument_list|(
+operator|(
+name|maxMessageSize
+operator|-
+literal|100
+operator|)
+operator|+
+literal|1
+argument_list|)
+operator|+
+literal|100
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Creating message to publish: "
+operator|+
+name|count
+operator|+
+literal|", size: "
+operator|+
+name|size
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|publishedMessageSize

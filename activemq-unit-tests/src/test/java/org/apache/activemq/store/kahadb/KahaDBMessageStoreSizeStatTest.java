@@ -278,6 +278,11 @@ block|}
 comment|/**      * Test that the the counter restores size and works after restart and more      * messages are published      *      * @throws Exception      */
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
 specifier|public
 name|void
 name|testMessageSizeAfterRestartAndPublish
