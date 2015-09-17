@@ -878,7 +878,7 @@ decl_stmt|;
 return|return
 name|sortedSet
 operator|.
-name|last
+name|first
 argument_list|()
 return|;
 block|}

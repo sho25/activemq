@@ -3505,6 +3505,21 @@ operator|=
 name|maxDestinations
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"PolicyEntry ["
+operator|+
+name|destination
+operator|+
+literal|"]"
+return|;
+block|}
 block|}
 end_class
 
