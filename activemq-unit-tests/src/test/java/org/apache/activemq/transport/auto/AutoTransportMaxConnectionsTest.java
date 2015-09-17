@@ -255,20 +255,6 @@ name|Parameters
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|springframework
-operator|.
-name|jms
-operator|.
-name|support
-operator|.
-name|JmsUtils
-import|;
-end_import
-
 begin_class
 annotation|@
 name|RunWith
@@ -537,6 +523,11 @@ return|;
 block|}
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|60000
+argument_list|)
 specifier|public
 name|void
 name|testMaxConnectionControl
@@ -561,6 +552,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+comment|//create an extra 10 connections above max
 for|for
 control|(
 name|int
@@ -572,12 +564,18 @@ name|i
 operator|<
 name|maxConnections
 operator|+
-literal|20
+literal|10
 condition|;
 name|i
 operator|++
 control|)
 block|{
+specifier|final
+name|int
+name|count
+init|=
+name|i
+decl_stmt|;
 name|executor
 operator|.
 name|submit
@@ -604,6 +602,16 @@ name|startupLatch
 operator|.
 name|await
 argument_list|()
+expr_stmt|;
+comment|//sleep for a short period of time
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+name|count
+operator|*
+literal|3
+argument_list|)
 expr_stmt|;
 name|conn
 operator|=
