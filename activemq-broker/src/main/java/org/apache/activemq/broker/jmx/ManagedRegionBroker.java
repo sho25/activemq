@@ -4273,12 +4273,9 @@ literal|null
 condition|)
 block|{
 specifier|final
-name|Topic
+name|Destination
 name|topic
 init|=
-operator|(
-name|Topic
-operator|)
 name|getTopicRegion
 argument_list|()
 operator|.
@@ -4422,12 +4419,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Topic
+name|Destination
 name|topic
 init|=
-operator|(
-name|Topic
-operator|)
 name|getTopicRegion
 argument_list|()
 operator|.

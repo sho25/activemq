@@ -819,6 +819,11 @@ name|journalMaxFileLength
 argument_list|)
 expr_stmt|;
 block|}
+name|configurePlugins
+argument_list|(
+name|broker
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|start
@@ -830,6 +835,16 @@ name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|configurePlugins
+parameter_list|(
+name|BrokerService
+name|broker
+parameter_list|)
+throws|throws
+name|Exception
+block|{     }
 specifier|protected
 name|void
 name|destroyBroker
