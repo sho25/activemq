@@ -118,11 +118,15 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+comment|// will fail on windows b/c the file is open
+if|if
+condition|(
 name|lockFile
 operator|.
 name|delete
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
 name|assertFalse
 argument_list|(
 literal|"no longer valid"
@@ -154,6 +158,7 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Test
