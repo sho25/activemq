@@ -1387,7 +1387,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not delete the MQTT queue subsscriptions."
+literal|"Could not delete the MQTT queue subscriptions."
 argument_list|,
 name|e
 argument_list|)
@@ -1719,6 +1719,8 @@ argument_list|(
 literal|"Consumer."
 operator|+
 name|clientId
+operator|+
+literal|":"
 argument_list|)
 condition|)
 block|{
