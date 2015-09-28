@@ -7021,6 +7021,16 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+specifier|final
+name|CountDownLatch
+name|gotException
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
 comment|// will block pending re-deliveries
 name|Executors
 operator|.
@@ -7052,18 +7062,32 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-name|commitDone
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|JMSException
 name|ignored
 parameter_list|)
-block|{                 }
+block|{
+name|ignored
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|gotException
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|commitDone
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -7103,9 +7127,25 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertTrue
 argument_list|(
-literal|"should not get committed message"
+literal|"got exception on commit"
+argument_list|,
+name|gotException
+operator|.
+name|await
+argument_list|(
+literal|30
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"should get failed committed message"
 argument_list|,
 name|consumer
 operator|.

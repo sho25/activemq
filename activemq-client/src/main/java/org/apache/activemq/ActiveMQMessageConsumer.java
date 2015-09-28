@@ -3092,6 +3092,37 @@ name|clearDeliveredList
 operator|=
 literal|true
 expr_stmt|;
+comment|// force a rollback if we will be acking in a transaction after/during failover
+comment|// bc acks are async they may not get there reliably on reconnect and the consumer
+comment|// may not be aware of the reconnect in a timely fashion if in onMessage
+if|if
+condition|(
+operator|!
+name|deliveredMessages
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+name|session
+operator|.
+name|getTransactionContext
+argument_list|()
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+name|session
+operator|.
+name|getTransactionContext
+argument_list|()
+operator|.
+name|setRollbackOnly
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|void
 name|clearMessagesInProgress
