@@ -6935,7 +6935,7 @@ parameter_list|)
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|lock
@@ -6958,7 +6958,7 @@ finally|finally
 block|{
 name|indexLock
 operator|.
-name|readLock
+name|writeLock
 argument_list|()
 operator|.
 name|unlock
