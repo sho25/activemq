@@ -3013,6 +3013,9 @@ argument_list|()
 operator|.
 name|isInterrupted
 argument_list|()
+operator|&&
+name|willReconnect
+argument_list|()
 condition|)
 block|{
 if|if
@@ -3198,6 +3201,27 @@ operator|+
 name|timeout
 operator|+
 literal|" ms reached."
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|willReconnect
+argument_list|()
+condition|)
+block|{
+name|error
+operator|=
+operator|new
+name|IOException
+argument_list|(
+literal|"Reconnect attempts of "
+operator|+
+name|maxReconnectAttempts
+operator|+
+literal|" exceeded"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3533,6 +3557,20 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
+specifier|private
+name|boolean
+name|willReconnect
+parameter_list|()
+block|{
+return|return
+name|firstConnection
+operator|||
+literal|0
+operator|!=
+name|calculateReconnectAttemptLimit
+argument_list|()
+return|;
 block|}
 annotation|@
 name|Override
