@@ -7264,6 +7264,21 @@ operator|.
 name|SESSION_TRANSACTED
 argument_list|)
 decl_stmt|;
+specifier|final
+name|Session
+name|secondConsumerSession
+init|=
+name|connection
+operator|.
+name|createSession
+argument_list|(
+literal|true
+argument_list|,
+name|Session
+operator|.
+name|SESSION_TRANSACTED
+argument_list|)
+decl_stmt|;
 name|MessageConsumer
 name|consumer
 init|=
@@ -7317,7 +7332,7 @@ comment|// add another consumer into the mix that may get the message after rest
 name|MessageConsumer
 name|consumer2
 init|=
-name|consumerSession
+name|secondConsumerSession
 operator|.
 name|createConsumer
 argument_list|(
@@ -7361,6 +7376,16 @@ literal|1
 argument_list|)
 decl_stmt|;
 specifier|final
+name|CountDownLatch
+name|gotRollback
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+specifier|final
 name|Vector
 argument_list|<
 name|Exception
@@ -7374,7 +7399,7 @@ name|Exception
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// commit may fail if other consumer gets the message on restart
+comment|// commit will fail due to failover with outstanding ack
 name|Executors
 operator|.
 name|newSingleThreadExecutor
@@ -7403,6 +7428,18 @@ block|{
 name|consumerSession
 operator|.
 name|commit
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TransactionRolledBackException
+name|ex
+parameter_list|)
+block|{
+name|gotRollback
+operator|.
+name|countDown
 argument_list|()
 expr_stmt|;
 block|}
@@ -7448,81 +7485,77 @@ name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// either message redelivered in existing tx or consumed by consumer2
-comment|// should not be available again in any event
-name|assertNull
+name|assertTrue
 argument_list|(
-literal|"consumer should not get rolled back on non redelivered message or duplicate"
+literal|"got Rollback"
 argument_list|,
-name|consumer
+name|gotRollback
 operator|.
-name|receive
+name|await
 argument_list|(
-literal|5000
+literal|15
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// consumer replay is hashmap order dependent on a failover connection state recover so need to deal with both cases
-if|if
-condition|(
+name|assertTrue
+argument_list|(
+literal|"no other exceptions"
+argument_list|,
 name|exceptions
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"commit succeeded, message was redelivered to the correct consumer after restart so commit was fine"
 argument_list|)
 expr_stmt|;
-name|assertNull
-argument_list|(
-literal|"consumer2 not get a second message consumed by 1"
-argument_list|,
+comment|// consumer replay is hashmap order dependent on a failover connection state recover so need to deal with both cases
+comment|// consume message from one of the consumers
+name|Message
+name|message
+init|=
 name|consumer2
 operator|.
 name|receive
 argument_list|(
 literal|2000
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|message
+operator|==
+literal|null
+condition|)
+block|{
+name|message
+operator|=
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|2000
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"commit failed, consumer2 should get it"
-argument_list|,
-name|exceptions
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"consumer2 got message"
-argument_list|,
-name|consumer2
-operator|.
-name|receive
-argument_list|(
-literal|2000
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|consumerSession
 operator|.
 name|commit
 argument_list|()
+expr_stmt|;
+name|secondConsumerSession
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"got message after rollback"
+argument_list|,
+name|message
+argument_list|)
 expr_stmt|;
 comment|// no message should be in dlq
 name|MessageConsumer
@@ -7548,11 +7581,10 @@ name|dlqConsumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|2000
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|connection
 operator|.
 name|close

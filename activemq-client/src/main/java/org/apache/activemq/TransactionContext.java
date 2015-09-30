@@ -1255,6 +1255,10 @@ throw|;
 block|}
 if|if
 condition|(
+name|transactionId
+operator|!=
+literal|null
+operator|&&
 name|rollbackOnly
 condition|)
 block|{
