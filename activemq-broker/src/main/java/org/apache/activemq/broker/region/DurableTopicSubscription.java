@@ -1870,6 +1870,14 @@ parameter_list|)
 throws|throws
 name|InvalidSelectorException
 block|{
+if|if
+condition|(
+name|active
+operator|.
+name|get
+argument_list|()
+condition|)
+block|{
 throw|throw
 operator|new
 name|UnsupportedOperationException
@@ -1877,6 +1885,18 @@ argument_list|(
 literal|"You cannot dynamically change the selector for durable topic subscriptions"
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+name|super
+operator|.
+name|setSelector
+argument_list|(
+name|getSelector
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

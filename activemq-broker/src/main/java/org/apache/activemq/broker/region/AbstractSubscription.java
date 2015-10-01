@@ -61,20 +61,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicLong
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -1202,7 +1188,7 @@ parameter_list|(
 name|Destination
 name|destination
 parameter_list|)
-block|{      }
+block|{     }
 comment|/**      * Remove a destination      * @param destination      */
 specifier|public
 name|void
@@ -1211,7 +1197,7 @@ parameter_list|(
 name|Destination
 name|destination
 parameter_list|)
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -1315,6 +1301,8 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getConsumedCount
@@ -1330,6 +1318,8 @@ name|getCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|incrementConsumedCount
@@ -1344,6 +1334,8 @@ name|increment
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetConsumedCount
