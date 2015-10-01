@@ -189,6 +189,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|pool2
+operator|.
+name|impl
+operator|.
+name|GenericKeyedObjectPoolConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -343,6 +359,21 @@ operator|==
 literal|null
 condition|)
 block|{
+specifier|final
+name|GenericKeyedObjectPoolConfig
+name|poolConfig
+init|=
+operator|new
+name|GenericKeyedObjectPoolConfig
+argument_list|()
+decl_stmt|;
+name|poolConfig
+operator|.
+name|setJmxEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|connectionsPool
@@ -675,6 +706,8 @@ throws|throws
 name|Exception
 block|{                     }
 block|}
+argument_list|,
+name|poolConfig
 argument_list|)
 expr_stmt|;
 comment|// Set max idle (not max active) since our connections always idle in the pool.
