@@ -41,16 +41,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
 import|;
 end_import
@@ -924,7 +914,7 @@ specifier|volatile
 name|long
 name|nextExpectedSeqNum
 init|=
-literal|0
+literal|1
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1168,7 +1158,8 @@ condition|(
 name|resumeOnNextOrPreviousIsOk
 condition|)
 block|{
-comment|// after an indoubt commit we need to accept what we get (within reason)
+comment|// after an indoubt commit we need to accept what we get
+comment|// either a batch replay or next batch
 if|if
 condition|(
 name|seqNum
@@ -1182,20 +1173,12 @@ name|seqNum
 operator|==
 name|nextExpectedSeqNum
 operator|-
-operator|(
 name|TRANSACITON_BATCH
-operator|-
-literal|1
-operator|)
 condition|)
 block|{
 name|nextExpectedSeqNum
 operator|-=
-operator|(
 name|TRANSACITON_BATCH
-operator|-
-literal|1
-operator|)
 expr_stmt|;
 name|LOG
 operator|.
@@ -1281,6 +1264,9 @@ name|TransactionRolledBackException
 name|expectedSometimesOnFailoverRecovery
 parameter_list|)
 block|{
+operator|++
+name|nextExpectedSeqNum
+expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -1309,9 +1295,6 @@ name|resumeOnNextOrPreviousIsOk
 operator|=
 literal|true
 expr_stmt|;
-name|nextExpectedSeqNum
-operator|++
-expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -1331,11 +1314,7 @@ expr_stmt|;
 comment|// batch will be replayed
 name|nextExpectedSeqNum
 operator|-=
-operator|(
 name|TRANSACITON_BATCH
-operator|-
-literal|1
-operator|)
 expr_stmt|;
 block|}
 block|}
@@ -1351,8 +1330,8 @@ name|error
 argument_list|(
 name|dest
 operator|+
-literal|" onMessage error"
-argument_list|,
+literal|" onMessage error:"
+operator|+
 name|e
 argument_list|)
 expr_stmt|;
@@ -1515,11 +1494,9 @@ name|setLongProperty
 argument_list|(
 name|SEQ_NUM_PROPERTY
 argument_list|,
-name|nextSequenceNumber
-argument_list|)
-expr_stmt|;
 operator|++
 name|nextSequenceNumber
+argument_list|)
 expr_stmt|;
 name|messageProducer
 operator|.
