@@ -1327,7 +1327,7 @@ operator|(
 name|getConfiguredReceiverCredit
 argument_list|()
 operator|*
-literal|.2
+literal|.3
 operator|)
 condition|)
 block|{
@@ -1460,7 +1460,7 @@ operator|(
 name|getConfiguredReceiverCredit
 argument_list|()
 operator|*
-literal|.2
+literal|.3
 operator|)
 condition|)
 block|{
