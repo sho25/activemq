@@ -9379,14 +9379,6 @@ name|getUsage
 argument_list|()
 decl_stmt|;
 name|long
-name|usableSpace
-init|=
-name|dir
-operator|.
-name|getUsableSpace
-argument_list|()
-decl_stmt|;
-name|long
 name|totalSpace
 init|=
 name|dir
@@ -9598,7 +9590,7 @@ argument_list|()
 operator|+
 literal|" only has "
 operator|+
-name|usableSpace
+name|totalUsableSpace
 operator|/
 name|oneMeg
 operator|+
