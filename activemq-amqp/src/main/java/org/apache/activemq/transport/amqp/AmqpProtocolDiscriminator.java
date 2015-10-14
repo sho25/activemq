@@ -426,7 +426,15 @@ parameter_list|(
 name|IOException
 name|error
 parameter_list|)
-block|{     }
+block|{
+name|transport
+operator|.
+name|sendToActiveMQ
+argument_list|(
+name|error
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
