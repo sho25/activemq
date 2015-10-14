@@ -9535,7 +9535,7 @@ name|percentLimit
 operator|+
 literal|"% ("
 operator|+
-name|storeLimit
+name|bytePercentLimit
 operator|/
 name|oneMeg
 operator|+
@@ -9543,7 +9543,17 @@ literal|" mb)"
 operator|+
 literal|" of the partition size but there is not enough usable space."
 operator|+
-literal|" Only "
+literal|" The current store limit (which may have been adjusted by a"
+operator|+
+literal|" previous usage limit check) is set to ("
+operator|+
+name|storeLimit
+operator|/
+name|oneMeg
+operator|+
+literal|" mb)"
+operator|+
+literal|" but only "
 operator|+
 name|totalUsableSpace
 operator|*
@@ -9559,7 +9569,7 @@ name|oneMeg
 operator|+
 literal|" mb)"
 operator|+
-literal|" is available"
+literal|" is available - resetting limit"
 argument_list|)
 expr_stmt|;
 block|}
