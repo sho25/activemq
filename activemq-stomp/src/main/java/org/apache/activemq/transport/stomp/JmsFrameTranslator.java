@@ -699,7 +699,7 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-literal|"Unkown transformation: "
+literal|"Unknown transformation: "
 operator|+
 name|transformation
 argument_list|)
@@ -1710,8 +1710,9 @@ condition|)
 block|{
 name|xstream
 operator|=
-operator|new
-name|XStream
+name|XStreamSupport
+operator|.
+name|createXStream
 argument_list|()
 expr_stmt|;
 name|xstream

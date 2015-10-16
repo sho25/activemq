@@ -343,13 +343,22 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|JMSException
+name|Exception
 name|e
 parameter_list|)
 block|{
 comment|//message could not be parsed, make the reason available
 return|return
+operator|new
+name|String
+argument_list|(
+literal|"Cannot display ObjectMessage body. Reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
 return|;
 block|}
 block|}
