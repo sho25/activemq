@@ -1529,15 +1529,20 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// not sure why pending.addMessageFirst does not take ownership of message reference
+comment|// by incrementing
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 block|}
-else|else
-block|{
+comment|// createMessageDispatch increments on remove from pending for dispatch
 name|node
 operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1693,6 +1698,11 @@ operator|.
 name|NULL_MESSAGE
 condition|)
 block|{
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 name|Integer
 name|count
 init|=

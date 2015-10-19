@@ -3579,11 +3579,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|node
-operator|.
-name|decrementReferenceCount
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -3668,6 +3663,12 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+comment|// decrement after dispatch has taken ownership to avoid usage jitter
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 elseif|else
