@@ -8121,6 +8121,16 @@ operator|.
 name|getDestination
 argument_list|()
 argument_list|)
+operator|||
+name|AdvisorySupport
+operator|.
+name|isVirtualDestinationConsumerAdvisoryTopic
+argument_list|(
+name|info
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
 condition|)
 block|{
 name|sub

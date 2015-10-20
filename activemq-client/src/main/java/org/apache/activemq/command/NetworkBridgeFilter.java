@@ -219,6 +219,8 @@ operator|=
 name|consumerInfo
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -228,6 +230,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isMarshallAware
@@ -237,6 +241,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|matches
@@ -290,6 +296,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|evaluate
@@ -640,6 +648,16 @@ return|return
 name|AdvisorySupport
 operator|.
 name|isConsumerAdvisoryTopic
+argument_list|(
+name|message
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+operator|||
+name|AdvisorySupport
+operator|.
+name|isVirtualDestinationConsumerAdvisoryTopic
 argument_list|(
 name|message
 operator|.

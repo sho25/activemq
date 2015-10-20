@@ -123,6 +123,24 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|virtual
+operator|.
+name|VirtualDestination
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|command
 operator|.
 name|ActiveMQDestination
@@ -1260,6 +1278,32 @@ name|destination
 parameter_list|,
 name|Subscription
 name|subs
+parameter_list|)
+block|{     }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|virtualDestinationAdded
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|VirtualDestination
+name|virtualDestination
+parameter_list|)
+block|{     }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|virtualDestinationRemoved
+parameter_list|(
+name|ConnectionContext
+name|context
+parameter_list|,
+name|VirtualDestination
+name|virtualDestination
 parameter_list|)
 block|{     }
 annotation|@

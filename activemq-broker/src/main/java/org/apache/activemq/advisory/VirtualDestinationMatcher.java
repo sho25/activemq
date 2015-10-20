@@ -11,11 +11,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|virtual
+name|advisory
 package|;
 end_package
 
@@ -31,7 +27,9 @@ name|broker
 operator|.
 name|region
 operator|.
-name|Destination
+name|virtual
+operator|.
+name|VirtualDestination
 import|;
 end_import
 
@@ -46,83 +44,31 @@ operator|.
 name|command
 operator|.
 name|ActiveMQDestination
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQQueue
 import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a virtual queue which forwards to a number of other destinations.  *  * @org.apache.xbean.XBean  *  */
+comment|/**  *  *  */
 end_comment
 
-begin_class
+begin_interface
 specifier|public
-class|class
-name|CompositeQueue
-extends|extends
-name|CompositeDestination
+interface|interface
+name|VirtualDestinationMatcher
 block|{
-annotation|@
-name|Override
 specifier|public
-name|ActiveMQDestination
-name|getVirtualDestination
-parameter_list|()
-block|{
-return|return
-operator|new
-name|ActiveMQQueue
-argument_list|(
-name|getName
-argument_list|()
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-specifier|public
-name|Destination
-name|interceptMappedDestination
+name|boolean
+name|matches
 parameter_list|(
-name|Destination
-name|destination
+name|VirtualDestination
+name|virtualDestination
+parameter_list|,
+name|ActiveMQDestination
+name|activeMQDest
 parameter_list|)
-block|{
-comment|// nothing to do for mapped destinations
-return|return
-name|destination
-return|;
+function_decl|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-literal|"CompositeQueue ["
-operator|+
-name|getName
-argument_list|()
-operator|+
-literal|"]"
-return|;
-block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
