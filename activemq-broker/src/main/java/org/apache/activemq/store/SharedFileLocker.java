@@ -397,6 +397,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|lockFile
+operator|!=
+literal|null
+condition|)
+block|{
 name|lockFile
 operator|.
 name|unlock
@@ -406,6 +413,7 @@ name|lockFile
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|File
