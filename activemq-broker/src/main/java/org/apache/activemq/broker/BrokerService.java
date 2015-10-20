@@ -9125,6 +9125,10 @@ block|}
 if|if
 condition|(
 name|storeLimit
+operator|>
+literal|0
+operator|&&
+name|storeLimit
 operator|<
 name|maxJournalFileSize
 condition|)
@@ -9277,6 +9281,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|storeLimit
+operator|>
+literal|0
+operator|&&
 name|storeLimit
 operator|<
 name|maxJournalFileSize
