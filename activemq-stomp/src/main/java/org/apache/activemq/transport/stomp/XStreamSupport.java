@@ -200,8 +200,7 @@ name|packageName
 range|:
 name|ClassLoadingAwareObjectInputStream
 operator|.
-name|getSerialziablePackages
-argument_list|()
+name|serializablePackages
 control|)
 block|{
 name|stream

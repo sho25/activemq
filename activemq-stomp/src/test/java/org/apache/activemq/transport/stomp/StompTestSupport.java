@@ -728,15 +728,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"org.apache.activemq.SERIALIZABLE_PACKAGES"
-argument_list|,
-literal|"*"
-argument_list|)
-expr_stmt|;
 name|createBroker
 argument_list|(
 literal|true
