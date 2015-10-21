@@ -1005,7 +1005,7 @@ return|;
 block|}
 block|}
 argument_list|,
-literal|5
+literal|10
 operator|*
 literal|60
 operator|*
