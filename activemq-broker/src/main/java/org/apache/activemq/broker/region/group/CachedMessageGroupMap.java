@@ -228,7 +228,12 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|decrementAssignedGroupCount
+argument_list|(
+name|destination
+operator|.
+name|getActiveMQDestination
 argument_list|()
+argument_list|)
 expr_stmt|;
 break|break;
 block|}
@@ -464,7 +469,12 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|clearAssignedGroupCount
+argument_list|(
+name|destination
+operator|.
+name|getActiveMQDestination
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

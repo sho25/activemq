@@ -1618,7 +1618,9 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|getAssignedGroupCount
-argument_list|()
+argument_list|(
+name|destination
+argument_list|)
 decl_stmt|;
 name|long
 name|y
@@ -1629,7 +1631,9 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|getAssignedGroupCount
-argument_list|()
+argument_list|(
+name|destination
+argument_list|)
 decl_stmt|;
 name|val
 operator|=
@@ -2909,7 +2913,9 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|getAssignedGroupCount
-argument_list|()
+argument_list|(
+name|destination
+argument_list|)
 block|}
 argument_list|)
 expr_stmt|;
@@ -10849,7 +10855,9 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|decrementAssignedGroupCount
-argument_list|()
+argument_list|(
+name|destination
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -10922,7 +10930,9 @@ name|getConsumerInfo
 argument_list|()
 operator|.
 name|incrementAssignedGroupCount
-argument_list|()
+argument_list|(
+name|destination
+argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
