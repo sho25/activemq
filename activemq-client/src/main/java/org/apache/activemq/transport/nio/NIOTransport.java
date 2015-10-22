@@ -436,9 +436,8 @@ name|ByteBuffer
 operator|.
 name|allocate
 argument_list|(
-literal|8
-operator|*
-literal|1024
+name|getIoBufferSize
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|currentBuffer
@@ -465,9 +464,8 @@ name|NIOOutputStream
 argument_list|(
 name|channel
 argument_list|,
-literal|16
-operator|*
-literal|1024
+name|getIoBufferSize
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|this
