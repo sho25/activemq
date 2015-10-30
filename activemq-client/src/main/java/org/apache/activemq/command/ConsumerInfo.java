@@ -1544,6 +1544,25 @@ return|return
 name|result
 return|;
 block|}
+specifier|public
+name|void
+name|initTransients
+parameter_list|()
+block|{
+name|assignedGroupCount
+operator|=
+operator|new
+name|ConcurrentHashMap
+argument_list|<>
+argument_list|()
+expr_stmt|;
+name|lastDeliveredSequenceId
+operator|=
+name|RemoveInfo
+operator|.
+name|LAST_DELIVERED_UNSET
+expr_stmt|;
+block|}
 block|}
 end_class
 
