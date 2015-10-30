@@ -1583,8 +1583,6 @@ init|=
 operator|(
 name|Message
 operator|)
-name|this
-operator|.
 name|wireFormat
 operator|.
 name|unmarshal
@@ -1693,12 +1691,8 @@ argument_list|(
 operator|new
 name|MessageId
 argument_list|(
-name|this
-operator|.
 name|producerId
 argument_list|,
-name|this
-operator|.
 name|messageIdGenerator
 operator|.
 name|getNextSequenceId
@@ -1877,6 +1871,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Repackage the message contents prior to send now that all updates are complete.
+name|messageSend
+operator|.
+name|beforeMarshall
+argument_list|(
+name|wireFormat
+argument_list|)
+expr_stmt|;
 specifier|final
 name|ProducerBrokerExchange
 name|producerExchange
