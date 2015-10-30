@@ -102,6 +102,15 @@ parameter_list|()
 function_decl|;
 specifier|public
 name|void
+name|setPeerCertificates
+parameter_list|(
+name|X509Certificate
+index|[]
+name|certificates
+parameter_list|)
+function_decl|;
+specifier|public
+name|void
 name|onException
 parameter_list|(
 name|IOException

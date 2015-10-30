@@ -1472,6 +1472,17 @@ name|maxFrameSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPeerCertificates
+parameter_list|(
+name|X509Certificate
+index|[]
+name|certificates
+parameter_list|)
+block|{}
 block|}
 end_class
 
