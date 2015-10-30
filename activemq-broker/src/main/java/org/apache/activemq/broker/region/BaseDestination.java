@@ -2871,7 +2871,7 @@ operator|=
 name|reduceMemoryFootprint
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|boolean
 name|isReduceMemoryFootprint
 parameter_list|()
