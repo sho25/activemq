@@ -4035,16 +4035,7 @@ name|consumerInfo
 operator|.
 name|setDestination
 argument_list|(
-name|translator
-operator|.
-name|convertDestination
-argument_list|(
-name|this
-argument_list|,
-name|destination
-argument_list|,
-literal|true
-argument_list|)
+name|actualDest
 argument_list|)
 expr_stmt|;
 name|StompSubscription
