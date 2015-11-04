@@ -209,7 +209,7 @@ name|client
 operator|.
 name|util
 operator|.
-name|UnmodifiableReceiver
+name|IOExceptionSupport
 import|;
 end_import
 
@@ -221,9 +221,15 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|client
+operator|.
 name|util
 operator|.
-name|IOExceptionSupport
+name|UnmodifiableReceiver
 import|;
 end_import
 
