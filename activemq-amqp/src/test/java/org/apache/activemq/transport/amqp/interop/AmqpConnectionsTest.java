@@ -134,6 +134,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1073,7 +1085,11 @@ operator|.
 name|connect
 argument_list|()
 expr_stmt|;
-comment|//fail("Should not be able to connect with same container Id.");
+name|fail
+argument_list|(
+literal|"Should not be able to connect with same container Id."
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
