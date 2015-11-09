@@ -702,7 +702,8 @@ name|brokerService
 operator|.
 name|setSchedulerSupport
 argument_list|(
-literal|false
+name|isSchedulerEnabled
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|brokerService
@@ -1409,6 +1410,15 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+specifier|protected
+name|boolean
+name|isSchedulerEnabled
+parameter_list|()
+block|{
+return|return
+literal|false
 return|;
 block|}
 specifier|protected
