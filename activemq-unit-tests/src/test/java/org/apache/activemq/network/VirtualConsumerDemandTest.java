@@ -1565,7 +1565,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test that dynamic flow works for virtual destinations when a second composite      * topic is included that forwards to the same queue, but is excluded from      * being forwarded from the remote broker      *      * @throws Exception      */
+comment|/**      * Test that dynamic flow works for virtual destinations when a second composite      * topic is included, but is excluded from      * being forwarded from the remote broker      *      * @throws Exception      */
 annotation|@
 name|Test
 argument_list|(
@@ -1615,7 +1615,7 @@ argument_list|,
 operator|new
 name|ActiveMQQueue
 argument_list|(
-literal|"include.test.bar.bridge"
+literal|"include.test.bar.bridge2"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1784,9 +1784,9 @@ name|assertAdvisoryBrokerCounts
 argument_list|(
 literal|2
 argument_list|,
-literal|2
+literal|1
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -2415,7 +2415,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -2716,7 +2716,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -3055,7 +3055,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -3218,7 +3218,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -3442,7 +3442,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -3707,7 +3707,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 specifier|final
@@ -3955,7 +3955,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 expr_stmt|;
 name|MessageConsumer
@@ -4143,6 +4143,13 @@ name|testQueueName
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 name|Message
 name|test
 init|=
@@ -4153,13 +4160,6 @@ argument_list|(
 literal|"test"
 argument_list|)
 decl_stmt|;
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|2000
-argument_list|)
-expr_stmt|;
 specifier|final
 name|DestinationStatistics
 name|destinationStatistics
