@@ -569,10 +569,10 @@ operator|.
 name|getLimit
 argument_list|()
 decl_stmt|;
-comment|//write a 2 meg file to the file system
+comment|//write a 5 meg file to the file system
 name|writeTestFile
 argument_list|(
-literal|2
+literal|5
 operator|*
 literal|1024
 operator|*
@@ -766,10 +766,10 @@ operator|.
 name|getLimit
 argument_list|()
 decl_stmt|;
-comment|//write a 2 meg file to the file system
+comment|//write a 5 meg file to the file system
 name|writeTestFile
 argument_list|(
-literal|2
+literal|5
 operator|*
 literal|1024
 operator|*
@@ -1164,10 +1164,10 @@ operator|.
 name|getLimit
 argument_list|()
 decl_stmt|;
-comment|//write a 2 meg file to the file system
+comment|//write a 5 meg file to the file system
 name|writeTestFile
 argument_list|(
-literal|2
+literal|5
 operator|*
 literal|1024
 operator|*
@@ -1442,10 +1442,10 @@ operator|.
 name|getLimit
 argument_list|()
 decl_stmt|;
-comment|//write a 2 meg file to the file system
+comment|//write a 5 meg file to the file system
 name|writeTestFile
 argument_list|(
-literal|2
+literal|5
 operator|*
 literal|1024
 operator|*
