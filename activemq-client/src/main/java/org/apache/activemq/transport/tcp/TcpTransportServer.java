@@ -1928,20 +1928,24 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"socketQueue interuppted - stopping"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
+operator|!
+name|isStopped
+argument_list|()
+operator|||
 operator|!
 name|isStopping
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"socketQueue interrupted - stopping"
+argument_list|)
+expr_stmt|;
 name|onAcceptError
 argument_list|(
 name|e

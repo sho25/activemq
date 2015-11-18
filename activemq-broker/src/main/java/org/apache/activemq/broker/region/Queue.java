@@ -355,6 +355,20 @@ name|activemq
 operator|.
 name|broker
 operator|.
+name|BrokerStoppedException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
 name|ConnectionContext
 import|;
 end_import
@@ -6102,6 +6116,12 @@ expr_stmt|;
 comment|// we need a store iterator to walk messages on disk, independent of the cursor which is tracking
 comment|// the next message batch
 block|}
+catch|catch
+parameter_list|(
+name|BrokerStoppedException
+name|ignored
+parameter_list|)
+block|{         }
 catch|catch
 parameter_list|(
 name|Exception
