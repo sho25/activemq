@@ -825,6 +825,13 @@ name|SQLException
 throws|,
 name|IOException
 function_decl|;
+name|String
+name|limitQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
