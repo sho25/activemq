@@ -5175,6 +5175,12 @@ argument_list|(
 name|sending
 argument_list|)
 expr_stmt|;
+comment|//remove subscriber from map
+name|i
+operator|.
+name|remove
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
