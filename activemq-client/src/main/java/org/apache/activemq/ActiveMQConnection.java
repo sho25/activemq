@@ -2803,6 +2803,8 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|isConnectionInfoSentToBroker
@@ -2868,6 +2870,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+finally|finally
+block|{
+comment|// release anyway even if previous communication fails
 name|started
 operator|.
 name|set
@@ -2906,6 +2912,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
