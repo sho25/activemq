@@ -391,10 +391,13 @@ name|Override
 specifier|public
 specifier|synchronized
 name|boolean
-name|addMessageLast
+name|tryAddMessageLast
 parameter_list|(
 name|MessageReference
 name|node
+parameter_list|,
+name|long
+name|maxWait
 parameter_list|)
 block|{
 name|node

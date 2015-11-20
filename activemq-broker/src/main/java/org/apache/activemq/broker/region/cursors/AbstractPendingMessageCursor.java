@@ -192,7 +192,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a  * consumer) cursor  *   *   */
+comment|/**  * Abstract method holder for pending message (messages awaiting disptach to a  * consumer) cursor  *  *  */
 end_comment
 
 begin_class
@@ -290,6 +290,8 @@ operator|=
 name|prioritizedMessages
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -326,6 +328,8 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -342,6 +346,8 @@ name|gc
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|add
@@ -355,6 +361,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -382,6 +390,8 @@ operator|.
 name|EMPTY_LIST
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isRecoveryRequired
@@ -391,6 +401,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessageFirst
@@ -401,6 +413,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|addMessageLast
@@ -412,9 +426,16 @@ throws|throws
 name|Exception
 block|{
 return|return
-literal|true
+name|tryAddMessageLast
+argument_list|(
+name|node
+argument_list|,
+name|INFINITE_WAIT
+argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|tryAddMessageLast
@@ -429,12 +450,11 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|addMessageLast
-argument_list|(
-name|node
-argument_list|)
+literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addRecoveredMessage
@@ -451,11 +471,15 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clear
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasNext
@@ -465,6 +489,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
@@ -474,6 +500,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEmpty
@@ -487,6 +515,8 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageReference
 name|next
@@ -496,16 +526,22 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reset
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|int
 name|size
@@ -515,6 +551,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxBatchSize
@@ -524,6 +562,8 @@ return|return
 name|maxBatchSize
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMaxBatchSize
@@ -546,6 +586,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetForGC
@@ -555,6 +597,8 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|remove
@@ -563,11 +607,15 @@ name|MessageReference
 name|node
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|gc
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSystemUsage
@@ -583,6 +631,8 @@ operator|=
 name|usageManager
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasSpace
@@ -609,6 +659,8 @@ else|:
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFull
@@ -630,11 +682,15 @@ else|:
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|release
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasMessagesBufferedToDeliver
@@ -645,6 +701,8 @@ literal|false
 return|;
 block|}
 comment|/**      * @return the memoryUsageHighWaterMark      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMemoryUsageHighWaterMark
@@ -655,6 +713,8 @@ name|memoryUsageHighWaterMark
 return|;
 block|}
 comment|/**      * @param memoryUsageHighWaterMark the memoryUsageHighWaterMark to set      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMemoryUsageHighWaterMark
@@ -671,6 +731,8 @@ name|memoryUsageHighWaterMark
 expr_stmt|;
 block|}
 comment|/**      * @return the usageManager      */
+annotation|@
+name|Override
 specifier|public
 name|SystemUsage
 name|getSystemUsage
@@ -682,7 +744,9 @@ operator|.
 name|systemUsage
 return|;
 block|}
-comment|/**      * destroy the cursor      *       * @throws Exception      */
+comment|/**      * destroy the cursor      *      * @throws Exception      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|destroy
@@ -694,7 +758,9 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Page in a restricted number of messages      *       * @param maxItems maximum number of messages to return      * @return a list of paged in messages      */
+comment|/**      * Page in a restricted number of messages      *      * @param maxItems maximum number of messages to return      * @return a list of paged in messages      */
+annotation|@
+name|Override
 specifier|public
 name|LinkedList
 argument_list|<
@@ -715,6 +781,8 @@ argument_list|)
 throw|;
 block|}
 comment|/**      * @return the maxProducersToAudit      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxProducersToAudit
@@ -725,6 +793,8 @@ name|maxProducersToAudit
 return|;
 block|}
 comment|/**      * @param maxProducersToAudit the maxProducersToAudit to set      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -757,6 +827,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return the maxAuditDepth      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMaxAuditDepth
@@ -767,6 +839,8 @@ name|maxAuditDepth
 return|;
 block|}
 comment|/**      * @param maxAuditDepth the maxAuditDepth to set      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -799,6 +873,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @return the enableAudit      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isEnableAudit
@@ -809,6 +885,8 @@ name|enableAudit
 return|;
 block|}
 comment|/**      * @param enableAudit the enableAudit to set      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -847,6 +925,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isTransient
@@ -857,6 +937,8 @@ literal|false
 return|;
 block|}
 comment|/**      * set the audit      * @param audit new audit component      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMessageAudit
@@ -873,6 +955,8 @@ name|audit
 expr_stmt|;
 block|}
 comment|/**      * @return the audit      */
+annotation|@
+name|Override
 specifier|public
 name|ActiveMQMessageAudit
 name|getMessageAudit
@@ -882,6 +966,8 @@ return|return
 name|audit
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUseCache
@@ -891,6 +977,8 @@ return|return
 name|useCache
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUseCache
@@ -967,6 +1055,8 @@ name|messageId
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1070,6 +1160,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -1094,6 +1186,8 @@ operator|=
 name|val
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|rebase

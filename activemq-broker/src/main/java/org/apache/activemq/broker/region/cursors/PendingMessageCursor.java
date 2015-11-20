@@ -158,6 +158,13 @@ name|PendingMessageCursor
 extends|extends
 name|Service
 block|{
+specifier|static
+specifier|final
+name|long
+name|INFINITE_WAIT
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * Add a destination      *      * @param context      * @param destination      * @throws Exception      */
 name|void
 name|add

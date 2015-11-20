@@ -867,10 +867,13 @@ name|Override
 specifier|public
 specifier|synchronized
 name|boolean
-name|addMessageLast
+name|tryAddMessageLast
 parameter_list|(
 name|MessageReference
 name|node
+parameter_list|,
+name|long
+name|wait
 parameter_list|)
 throws|throws
 name|Exception
