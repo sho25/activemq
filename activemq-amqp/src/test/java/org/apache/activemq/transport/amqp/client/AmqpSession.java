@@ -195,6 +195,11 @@ specifier|final
 name|String
 name|sessionId
 decl_stmt|;
+specifier|private
+specifier|final
+name|AmqpTransactionContext
+name|txContext
+decl_stmt|;
 comment|/**      * Create a new session instance.      *      * @param connection      * 		  The parent connection that created the session.      * @param sessionId      *        The unique ID value assigned to this session.      */
 specifier|public
 name|AmqpSession
@@ -217,6 +222,16 @@ operator|.
 name|sessionId
 operator|=
 name|sessionId
+expr_stmt|;
+name|this
+operator|.
+name|txContext
+operator|=
+operator|new
+name|AmqpTransactionContext
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Create a sender instance using the given address      *      * @param address      *        the address to which the sender will produce its messages.      *      * @return a newly created sender that is ready for use.      *      * @throws Exception if an error occurs while creating the sender.      */
@@ -1053,7 +1068,139 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|//----- Internal getters used from the child AmqpResource classes --------//
+specifier|public
+name|boolean
+name|isInTransaction
+parameter_list|()
+block|{
+return|return
+name|txContext
+operator|.
+name|isInTransaction
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"AmqpSession { "
+operator|+
+name|sessionId
+operator|+
+literal|" }"
+return|;
+block|}
+comment|//----- Session Transaction Methods --------------------------------------//
+comment|/**      * Starts a new transaction associated with this session.      *      * @throws Exception if an error occurs starting a new Transaction.      */
+specifier|public
+name|void
+name|begin
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|txContext
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+argument_list|(
+literal|"Session already has an active transaction"
+argument_list|)
+throw|;
+block|}
+name|txContext
+operator|.
+name|begin
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Commit the current transaction associated with this session.      *      * @throws Exception if an error occurs committing the Transaction.      */
+specifier|public
+name|void
+name|commit
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+operator|!
+name|txContext
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+argument_list|(
+literal|"Commit called on Session that does not have an active transaction"
+argument_list|)
+throw|;
+block|}
+name|txContext
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Roll back the current transaction associated with this session.      *      * @throws Exception if an error occurs rolling back the Transaction.      */
+specifier|public
+name|void
+name|rollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+operator|!
+name|txContext
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|javax
+operator|.
+name|jms
+operator|.
+name|IllegalStateException
+argument_list|(
+literal|"Rollback called on Session that does not have an active transaction"
+argument_list|)
+throw|;
+block|}
+name|txContext
+operator|.
+name|rollback
+argument_list|()
+expr_stmt|;
+block|}
+comment|//----- Internal access used to manage resources -------------------------//
 name|ScheduledExecutorService
 name|getScheduler
 parameter_list|()
@@ -1085,6 +1232,25 @@ operator|.
 name|pumpToProtonTransport
 argument_list|()
 expr_stmt|;
+block|}
+name|AmqpTransactionId
+name|getTransactionId
+parameter_list|()
+block|{
+return|return
+name|txContext
+operator|.
+name|getTransactionId
+argument_list|()
+return|;
+block|}
+name|AmqpTransactionContext
+name|getTransactionContext
+parameter_list|()
+block|{
+return|return
+name|txContext
+return|;
 block|}
 comment|//----- Private implementation details -----------------------------------//
 annotation|@
@@ -1219,21 +1385,6 @@ literal|"Session is already closed"
 argument_list|)
 throw|;
 block|}
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-literal|"AmqpSession { "
-operator|+
-name|sessionId
-operator|+
-literal|" }"
-return|;
 block|}
 block|}
 end_class
