@@ -196,10 +196,23 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
+comment|/**      * Using the configured credentials, check if the mechanism applies or not.      *      * @param username      *      The user name that will be used with this mechanism      * @param password      *      The password that will be used with this mechanism      *      * @return true if the mechanism works with the provided credentials or not.      */
+name|boolean
+name|isApplicable
+parameter_list|(
+name|String
+name|username
+parameter_list|,
+name|String
+name|password
+parameter_list|)
+function_decl|;
+comment|/**      * Get the currently configured Authentication ID.      *      * @return the currently set Authentication ID.      */
 name|String
 name|getAuthzid
 parameter_list|()
 function_decl|;
+comment|/**      * Sets an Authentication ID that some mechanism can use during the      * challenge response phase.      *      * @param authzid      *      The Authentication ID to use.      */
 name|void
 name|setAuthzid
 parameter_list|(

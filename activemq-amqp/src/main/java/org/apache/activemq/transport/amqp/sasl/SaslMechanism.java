@@ -67,6 +67,16 @@ name|String
 name|getMechanismName
 parameter_list|()
 function_decl|;
+comment|/**      * @return true if the SASL processing failed during a step.      */
+name|boolean
+name|isFailed
+parameter_list|()
+function_decl|;
+comment|/**      * @return a failure error to explain why the mechanism failed.      */
+name|String
+name|getFailureReason
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

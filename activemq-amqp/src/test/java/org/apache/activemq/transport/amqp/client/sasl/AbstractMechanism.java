@@ -282,6 +282,23 @@ operator|=
 name|authzid
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isApplicable
+parameter_list|(
+name|String
+name|username
+parameter_list|,
+name|String
+name|password
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 
