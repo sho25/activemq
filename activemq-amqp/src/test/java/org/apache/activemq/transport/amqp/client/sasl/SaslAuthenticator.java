@@ -149,10 +149,19 @@ name|String
 name|password
 decl_stmt|;
 specifier|private
+specifier|final
+name|String
+name|authzid
+decl_stmt|;
+specifier|private
 name|Mechanism
 name|mechanism
 decl_stmt|;
-comment|/**      * Create the authenticator and initialize it.      *      * @param sasl      *        The Proton SASL entry point this class will use to manage the authentication.      * @param username      *        The user name that will be used to authenticate.      * @param password      *        The password that will be used to authenticate.      */
+specifier|private
+name|String
+name|mechanismRestriction
+decl_stmt|;
+comment|/**      * Create the authenticator and initialize it.      *      * @param sasl      *        The Proton SASL entry point this class will use to manage the authentication.      * @param username      *        The user name that will be used to authenticate.      * @param password      *        The password that will be used to authenticate.      * @param authzid      *        The authzid used when authenticating (currently only with PLAIN)      * @param mechanismRestriction      *        A particular mechanism to use (if offered by the server) or null to allow selection.      */
 specifier|public
 name|SaslAuthenticator
 parameter_list|(
@@ -164,6 +173,12 @@ name|username
 parameter_list|,
 name|String
 name|password
+parameter_list|,
+name|String
+name|authzid
+parameter_list|,
+name|String
+name|mechanismRestriction
 parameter_list|)
 block|{
 name|this
@@ -183,6 +198,18 @@ operator|.
 name|password
 operator|=
 name|password
+expr_stmt|;
+name|this
+operator|.
+name|authzid
+operator|=
+name|authzid
+expr_stmt|;
+name|this
+operator|.
+name|mechanismRestriction
+operator|=
+name|mechanismRestriction
 expr_stmt|;
 block|}
 comment|/**      * Process the SASL authentication cycle until such time as an outcome is determine. This      * method must be called by the managing entity until the return value is true indicating a      * successful authentication or a JMSSecurityException is thrown indicating that the      * handshake failed.      *      * @throws JMSSecurityException      */
@@ -291,6 +318,13 @@ operator|.
 name|setPassword
 argument_list|(
 name|password
+argument_list|)
+expr_stmt|;
+name|mechanism
+operator|.
+name|setAuthzid
+argument_list|(
+name|authzid
 argument_list|)
 expr_stmt|;
 comment|// TODO - set additional options from URI.
@@ -418,6 +452,34 @@ range|:
 name|remoteMechanisms
 control|)
 block|{
+if|if
+condition|(
+name|mechanismRestriction
+operator|!=
+literal|null
+operator|&&
+operator|!
+name|mechanismRestriction
+operator|.
+name|equals
+argument_list|(
+name|remoteMechanism
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Skipping {} mechanism because it is not the configured mechanism restriction {}"
+argument_list|,
+name|remoteMechanism
+argument_list|,
+name|mechanismRestriction
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 name|remoteMechanism

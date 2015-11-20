@@ -175,6 +175,14 @@ name|URI
 name|remoteURI
 decl_stmt|;
 specifier|private
+name|String
+name|authzid
+decl_stmt|;
+specifier|private
+name|String
+name|mechanismRestriction
+decl_stmt|;
+specifier|private
 name|AmqpValidator
 name|stateInspector
 init|=
@@ -325,6 +333,20 @@ argument_list|)
 decl_stmt|;
 name|connection
 operator|.
+name|setMechanismRestriction
+argument_list|(
+name|mechanismRestriction
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setAuthzid
+argument_list|(
+name|authzid
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
 name|setOfferedCapabilities
 argument_list|(
 name|getOfferedCapabilities
@@ -351,7 +373,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * @return the user name value given when connect was called, always null before connect.      */
+comment|/**      * @return the user name value given when constructed.      */
 specifier|public
 name|String
 name|getUsername
@@ -361,7 +383,7 @@ return|return
 name|username
 return|;
 block|}
-comment|/**      * @return the password value given when connect was called, always null before connect.      */
+comment|/**      * @return the password value given when constructed.      */
 specifier|public
 name|String
 name|getPassword
@@ -369,6 +391,56 @@ parameter_list|()
 block|{
 return|return
 name|password
+return|;
+block|}
+comment|/**      * @param authzid      *        The authzid used when authenticating (currently only with PLAIN)      */
+specifier|public
+name|void
+name|setAuthzid
+parameter_list|(
+name|String
+name|authzid
+parameter_list|)
+block|{
+name|this
+operator|.
+name|authzid
+operator|=
+name|authzid
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getAuthzid
+parameter_list|()
+block|{
+return|return
+name|authzid
+return|;
+block|}
+comment|/**      * @param mechanismRestriction      *        The mechanism to use when authenticating (if offered by the server)      */
+specifier|public
+name|void
+name|setMechanismRestriction
+parameter_list|(
+name|String
+name|mechanismRestriction
+parameter_list|)
+block|{
+name|this
+operator|.
+name|mechanismRestriction
+operator|=
+name|mechanismRestriction
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getMechanismRestriction
+parameter_list|()
+block|{
+return|return
+name|mechanismRestriction
 return|;
 block|}
 comment|/**      * @return the currently set address to use to connect to the AMQP peer.      */

@@ -196,6 +196,17 @@ argument_list|>
 name|getProperties
 parameter_list|()
 function_decl|;
+name|String
+name|getAuthzid
+parameter_list|()
+function_decl|;
+name|void
+name|setAuthzid
+parameter_list|(
+name|String
+name|authzid
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
