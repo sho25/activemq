@@ -6215,6 +6215,13 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+name|md
+operator|.
+name|setRollbackCause
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isAutoAcknowledgeBatch
@@ -6230,21 +6237,13 @@ argument_list|()
 condition|)
 block|{
 comment|// schedual redelivery and possible dlq processing
-name|md
-operator|.
-name|setRollbackCause
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
 name|rollback
 argument_list|()
 expr_stmt|;
 block|}
 else|else
 block|{
-comment|// Transacted or Client ack: Deliver the
-comment|// next message.
+comment|// Transacted or Client ack: Deliver the next message.
 name|afterMessageIsConsumed
 argument_list|(
 name|md
