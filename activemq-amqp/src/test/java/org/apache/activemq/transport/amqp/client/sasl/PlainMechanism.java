@@ -230,6 +230,10 @@ name|data
 argument_list|,
 literal|2
 operator|+
+name|authzidBytes
+operator|.
+name|length
+operator|+
 name|usernameBytes
 operator|.
 name|length
