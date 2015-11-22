@@ -269,6 +269,7 @@ block|}
 block|}
 comment|//---- Send methods ------------------------------------------------------//
 specifier|public
+specifier|synchronized
 name|void
 name|sendRawFrame
 parameter_list|(
@@ -293,6 +294,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|sendFrame
 parameter_list|(
@@ -320,6 +322,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|keepAlive
 parameter_list|()
