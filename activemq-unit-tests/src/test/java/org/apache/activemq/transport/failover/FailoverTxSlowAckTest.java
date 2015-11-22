@@ -688,6 +688,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -932,6 +934,19 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|final
+name|CountDownLatch
+name|brokerDisconnectedLatch
+init|=
+operator|new
+name|CountDownLatch
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|final
 name|AtomicInteger
 name|receivedCount
 init|=
@@ -986,6 +1001,8 @@ operator|new
 name|MessageListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
@@ -1119,6 +1136,12 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//connect down to trigger reconnect
+name|brokerDisconnectedLatch
+operator|.
+name|countDown
+argument_list|()
+expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -1230,6 +1253,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1304,6 +1329,18 @@ begin_expr_stmt
 name|broker
 operator|.
 name|waitUntilStopped
+argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_comment
+comment|//await for listener to detect disconnect
+end_comment
+
+begin_expr_stmt
+name|brokerDisconnectedLatch
+operator|.
+name|await
 argument_list|()
 expr_stmt|;
 end_expr_stmt
