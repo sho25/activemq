@@ -336,6 +336,11 @@ expr_stmt|;
 name|size
 operator|++
 expr_stmt|;
+name|node
+operator|.
+name|incrementReferenceCount
+argument_list|()
+expr_stmt|;
 comment|//this.messageSize.addSize(node.getMessage().getSize());
 block|}
 annotation|@

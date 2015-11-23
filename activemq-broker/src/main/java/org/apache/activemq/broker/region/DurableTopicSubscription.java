@@ -1529,13 +1529,6 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// not sure why pending.addMessageFirst does not take ownership of message reference
-comment|// by incrementing
-name|node
-operator|.
-name|incrementReferenceCount
-argument_list|()
-expr_stmt|;
 block|}
 comment|// createMessageDispatch increments on remove from pending for dispatch
 name|node
