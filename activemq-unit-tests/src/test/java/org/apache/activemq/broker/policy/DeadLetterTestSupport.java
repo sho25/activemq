@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -269,6 +269,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -284,10 +298,6 @@ operator|.
 name|LoggerFactory
 import|;
 end_import
-
-begin_comment
-comment|/**  *   */
-end_comment
 
 begin_class
 specifier|public
@@ -382,6 +392,8 @@ specifier|protected
 name|Destination
 name|destination
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -444,6 +456,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -697,16 +711,50 @@ specifier|protected
 name|void
 name|verifyIsDlq
 parameter_list|(
+specifier|final
 name|Queue
 name|dlqQ
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-specifier|final
+name|assertTrue
+argument_list|(
+literal|"Need to verify a DLQ exists: "
+operator|+
+name|dlqQ
+operator|.
+name|getQueueName
+argument_list|()
+argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|QueueViewMBean
-name|queueViewMBean
+name|dlqView
 init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|dlqView
+operator|=
 name|getProxyToQueue
 argument_list|(
 name|dlqQ
@@ -714,15 +762,29 @@ operator|.
 name|getQueueName
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|assertTrue
-argument_list|(
-literal|"is dlq"
-argument_list|,
-name|queueViewMBean
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|error
+parameter_list|)
+block|{                 }
+return|return
+name|dlqView
+operator|!=
+literal|null
+condition|?
+name|dlqView
 operator|.
 name|isDLQ
 argument_list|()
+else|:
+literal|false
+return|;
+block|}
+block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
