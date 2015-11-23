@@ -936,20 +936,15 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|//can't find .* in the prefix, so default back to old logic and return true
-if|if
-condition|(
+comment|//if can't find .* in the prefix, default back to old logic and return true
+return|return
 name|prefix
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|".*"
 argument_list|)
-operator|>
-literal|0
-condition|)
-block|{
-return|return
+condition|?
 name|dest
 operator|.
 name|getName
@@ -971,10 +966,7 @@ literal|".*"
 argument_list|)
 argument_list|)
 argument_list|)
-return|;
-block|}
-else|else
-return|return
+else|:
 literal|true
 return|;
 block|}

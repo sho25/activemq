@@ -322,6 +322,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//first validate that the prefix matches in the super class
+if|if
+condition|(
+name|super
+operator|.
+name|shouldDispatch
+argument_list|(
+name|broker
+argument_list|,
+name|message
+argument_list|,
+name|dest
+argument_list|)
+condition|)
+block|{
 name|boolean
 name|matches
 init|=
@@ -410,6 +425,10 @@ expr_stmt|;
 block|}
 return|return
 name|matches
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 specifier|private
