@@ -3125,11 +3125,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//clear the cache on shutdown of the store
+comment|//clear the cache and journalSize on shutdown of the store
 name|storeCache
 operator|.
 name|clear
 argument_list|()
+expr_stmt|;
+name|journalSize
+operator|.
+name|set
+argument_list|(
+literal|0
+argument_list|)
 expr_stmt|;
 block|}
 block|}
