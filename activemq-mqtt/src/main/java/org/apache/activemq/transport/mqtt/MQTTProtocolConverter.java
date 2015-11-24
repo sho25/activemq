@@ -4284,6 +4284,16 @@ name|willMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|publish
+operator|.
+name|retain
+argument_list|(
+name|connect
+operator|.
+name|willRetain
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ActiveMQMessage
 name|message
 init|=
