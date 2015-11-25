@@ -373,14 +373,6 @@ argument_list|(
 name|activeMQDestination
 argument_list|)
 decl_stmt|;
-assert|assert
-name|mappedDestinations
-operator|.
-name|size
-argument_list|()
-operator|<
-literal|2
-assert|;
 if|if
 condition|(
 operator|!
