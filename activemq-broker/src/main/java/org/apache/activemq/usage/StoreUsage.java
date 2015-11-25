@@ -325,7 +325,7 @@ block|{
 if|if
 condition|(
 name|percentLimit
-operator|>
+operator|>=
 literal|0
 operator|&&
 name|store
