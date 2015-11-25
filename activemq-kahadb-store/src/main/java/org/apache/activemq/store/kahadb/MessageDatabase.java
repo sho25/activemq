@@ -4953,6 +4953,13 @@ argument_list|,
 name|sequenceId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|keys
+operator|!=
+literal|null
+condition|)
+block|{
 name|sd
 operator|.
 name|locationIndex
@@ -5006,6 +5013,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TODO: do we need to modify the ack positions for the pub sub case?
+block|}
 block|}
 block|}
 if|if
