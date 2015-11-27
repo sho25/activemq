@@ -331,6 +331,8 @@ operator|new
 name|FutureResponse
 argument_list|(
 name|responseCallback
+argument_list|,
+name|this
 argument_list|)
 decl_stmt|;
 name|IOException
@@ -614,7 +616,13 @@ parameter_list|)
 block|{
 name|dispose
 argument_list|(
+operator|new
+name|TransportDisposedIOException
+argument_list|(
+literal|"Disposed due to prior exception"
+argument_list|,
 name|error
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|super

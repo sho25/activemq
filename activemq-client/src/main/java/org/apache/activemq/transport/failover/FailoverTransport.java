@@ -984,8 +984,6 @@ decl_stmt|;
 specifier|public
 name|FailoverTransport
 parameter_list|()
-throws|throws
-name|InterruptedIOException
 block|{
 name|brokerSslContext
 operator|=

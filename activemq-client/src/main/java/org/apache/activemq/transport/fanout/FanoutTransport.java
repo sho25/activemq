@@ -867,8 +867,6 @@ block|}
 specifier|public
 name|FanoutTransport
 parameter_list|()
-throws|throws
-name|InterruptedIOException
 block|{
 comment|// Setup a task that is used to reconnect the a connection async.
 name|reconnectTaskFactory

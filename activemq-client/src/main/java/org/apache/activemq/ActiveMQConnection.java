@@ -2570,16 +2570,6 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-comment|// Store the interrupted state and clear so that cleanup happens without
-comment|// leaking connection resources.  Reset in finally to preserve state.
-name|boolean
-name|interrupted
-init|=
-name|Thread
-operator|.
-name|interrupted
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 comment|// If we were running, lets stop first.
@@ -2972,20 +2962,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|interrupted
-condition|)
-block|{
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 comment|/**      * Tells the broker to terminate its VM. This can be used to cleanly      * terminate a broker running in a standalone java process. Server must have      * property enable.vm.shutdown=true defined to allow this to work.      */

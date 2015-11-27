@@ -3014,16 +3014,6 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-comment|// Store interrupted state and clear so that Transport operations don't
-comment|// throw InterruptedException and we ensure that resources are cleaned up.
-name|boolean
-name|interrupted
-init|=
-name|Thread
-operator|.
-name|interrupted
-argument_list|()
-decl_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
@@ -3063,20 +3053,6 @@ argument_list|(
 name|removeCommand
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|interrupted
-condition|)
-block|{
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 name|void
 name|inProgressClearRequired

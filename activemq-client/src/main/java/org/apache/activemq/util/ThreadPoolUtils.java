@@ -390,11 +390,25 @@ name|executorService
 argument_list|)
 expr_stmt|;
 comment|// we were interrupted during shutdown, so force shutdown
+try|try
+block|{
 name|executorService
 operator|.
 name|shutdownNow
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|// if we logged at WARN level, then report at INFO level when we are complete so the end user can see this in the log
