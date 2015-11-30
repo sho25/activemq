@@ -222,6 +222,12 @@ operator|.
 name|countDown
 argument_list|()
 expr_stmt|;
+comment|// ensure we don't actually exit the jvm
+name|setSystemExitOnShutdown
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|stop
