@@ -413,38 +413,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
-operator|(
-operator|(
-name|ManagedConnection
-operator|)
-name|event
-operator|.
-name|getSource
-argument_list|()
-operator|)
-operator|.
-name|destroy
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ResourceException
-name|e
-parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Error occured during the destruction of a managed connection: "
-argument_list|,
-name|e
-argument_list|)
-expr_stmt|;
-block|}
+comment|// should go back in a pool, no destroy
 block|}
 comment|/**      * @see javax.resource.spi.ConnectionEventListener#localTransactionStarted(javax.resource.spi.ConnectionEvent)      */
 annotation|@

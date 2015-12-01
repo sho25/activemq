@@ -1014,8 +1014,10 @@ try|try
 block|{
 name|physicalConnection
 operator|.
-name|cleanup
-argument_list|()
+name|doCleanup
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
