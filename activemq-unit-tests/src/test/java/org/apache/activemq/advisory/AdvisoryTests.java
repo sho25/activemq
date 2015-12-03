@@ -1016,6 +1016,28 @@ literal|"tcp://"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_DESTINATION
+argument_list|)
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQDestination
+operator|)
+name|queue
+operator|)
+operator|.
+name|getQualifiedName
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
 comment|//when includeBodyForAdvisory is true
 name|assertIncludeBodyForAdvisory
@@ -1229,6 +1251,28 @@ name|startsWith
 argument_list|(
 literal|"tcp://"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_DESTINATION
+argument_list|)
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQDestination
+operator|)
+name|queue
+operator|)
+operator|.
+name|getQualifiedName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
@@ -1667,8 +1711,6 @@ expr_stmt|;
 comment|// we should get here without StackOverflow
 block|}
 annotation|@
-name|Ignore
-annotation|@
 name|Test
 argument_list|(
 name|timeout
@@ -1693,7 +1735,7 @@ literal|false
 argument_list|,
 name|Session
 operator|.
-name|AUTO_ACKNOWLEDGE
+name|CLIENT_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
 name|Topic
@@ -1860,6 +1902,28 @@ name|AdvisorySupport
 operator|.
 name|MSG_PROPERTY_ORIGIN_BROKER_URL
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|message
+operator|.
+name|getProperty
+argument_list|(
+name|AdvisorySupport
+operator|.
+name|MSG_PROPERTY_DESTINATION
+argument_list|)
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQDestination
+operator|)
+name|topic
+operator|)
+operator|.
+name|getQualifiedName
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//Add assertion to make sure body is included for advisory topics
