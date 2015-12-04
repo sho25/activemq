@@ -452,7 +452,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Corrupt journal records found in '"
 operator|+
@@ -1931,7 +1931,7 @@ argument_list|)
 decl_stmt|;
 name|LOG
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Corrupt journal records found in '"
 operator|+
