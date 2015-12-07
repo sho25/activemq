@@ -503,6 +503,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|protected
+name|Session
+name|getConnection
+parameter_list|()
+block|{
+return|return
+name|connection
+return|;
+block|}
 comment|//----- Connection and Disconnection methods -----------------------------//
 specifier|public
 name|void
