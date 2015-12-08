@@ -2098,6 +2098,13 @@ operator|.
 name|isInRecoveryMode
 argument_list|()
 decl_stmt|;
+name|message
+operator|.
+name|setRegionDestination
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 comment|// There is delay between the client sending it and it arriving at the
 comment|// destination.. it may have expired.
 if|if
@@ -2723,13 +2730,6 @@ operator|.
 name|getConnectionContext
 argument_list|()
 decl_stmt|;
-name|message
-operator|.
-name|setRegionDestination
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|message
 operator|.
 name|getMessageId
