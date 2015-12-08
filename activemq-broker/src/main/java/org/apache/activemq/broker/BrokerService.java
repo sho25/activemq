@@ -1916,7 +1916,7 @@ name|useVirtualDestSubs
 init|=
 literal|false
 decl_stmt|;
-comment|/**      * Whether or no the creation of destinations that match virtual destinations      * should cause network demand      */
+comment|/**      * Whether or not the creation of destinations that match virtual destinations      * should cause network demand      */
 specifier|private
 name|boolean
 name|useVirtualDestSubsOnCreation

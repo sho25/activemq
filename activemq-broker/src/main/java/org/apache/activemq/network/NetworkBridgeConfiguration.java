@@ -1347,6 +1347,18 @@ expr_stmt|;
 block|}
 specifier|public
 name|boolean
+name|isUseVirtualDestSubs
+parameter_list|()
+block|{
+return|return
+name|useVirtualDestSubs
+return|;
+block|}
+comment|/**      * This was a typo, so this is deprecated as of 5.13.1      */
+annotation|@
+name|Deprecated
+specifier|public
+name|boolean
 name|isUseVirtualDestSus
 parameter_list|()
 block|{
