@@ -2912,6 +2912,11 @@ operator|=
 name|createMetadata
 argument_list|()
 expr_stmt|;
+comment|//The metadata was recreated after a detect corruption so we need to
+comment|//reconfigure anything that was configured on the old metadata on startup
+name|configureMetadata
+argument_list|()
+expr_stmt|;
 name|pageFile
 operator|=
 literal|null
@@ -16645,6 +16650,12 @@ return|return
 name|md
 return|;
 block|}
+specifier|protected
+specifier|abstract
+name|void
+name|configureMetadata
+parameter_list|()
+function_decl|;
 specifier|public
 name|int
 name|getJournalMaxWriteBatchSize
