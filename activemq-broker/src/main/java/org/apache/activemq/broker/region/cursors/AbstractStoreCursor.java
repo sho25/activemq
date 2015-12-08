@@ -494,6 +494,13 @@ name|recovered
 init|=
 literal|false
 decl_stmt|;
+name|message
+operator|.
+name|setRegionDestination
+argument_list|(
+name|regionDestination
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|recordUniqueId
@@ -511,13 +518,6 @@ operator|!
 name|cached
 condition|)
 block|{
-name|message
-operator|.
-name|setRegionDestination
-argument_list|(
-name|regionDestination
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|message
