@@ -625,7 +625,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testDirableSubPrefetchRecovered
+name|testDurableSubPrefetchRecovered
 parameter_list|()
 throws|throws
 name|Exception

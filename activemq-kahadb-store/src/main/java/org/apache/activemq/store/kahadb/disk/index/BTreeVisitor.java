@@ -747,7 +747,7 @@ block|{
 return|return
 name|first
 operator|+
-literal|"<= key< "
+literal|">= key< "
 operator|+
 name|last
 return|;
