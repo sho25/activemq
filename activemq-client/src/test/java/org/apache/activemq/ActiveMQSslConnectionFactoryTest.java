@@ -291,7 +291,7 @@ name|Test
 argument_list|(
 name|expected
 operator|=
-name|ConnectException
+name|IOException
 operator|.
 name|class
 argument_list|)
@@ -317,7 +317,7 @@ name|Test
 argument_list|(
 name|expected
 operator|=
-name|ConnectException
+name|IOException
 operator|.
 name|class
 argument_list|)
@@ -353,7 +353,7 @@ name|Test
 argument_list|(
 name|expected
 operator|=
-name|ConnectException
+name|IOException
 operator|.
 name|class
 argument_list|)
