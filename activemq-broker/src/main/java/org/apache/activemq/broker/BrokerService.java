@@ -2108,6 +2108,12 @@ operator|-
 literal|1
 decl_stmt|;
 specifier|private
+name|boolean
+name|adjustUsageLimits
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 name|BrokerContext
 name|brokerContext
 decl_stmt|;
@@ -3372,6 +3378,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+name|checkMemorySystemUsageLimits
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|systemExitOnShutdown
@@ -4059,7 +4068,7 @@ operator|.
 name|brokerServiceStarted
 argument_list|()
 expr_stmt|;
-name|checkSystemUsageLimits
+name|checkStoreSystemUsageLimits
 argument_list|()
 expr_stmt|;
 name|startedLatch
@@ -9056,7 +9065,7 @@ name|void
 name|checkStoreUsageLimits
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 specifier|final
 name|SystemUsage
@@ -9191,7 +9200,7 @@ name|void
 name|checkTmpStoreUsageLimits
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 specifier|final
 name|SystemUsage
@@ -9356,6 +9365,8 @@ parameter_list|,
 name|int
 name|percentLimit
 parameter_list|)
+throws|throws
+name|ConfigurationException
 block|{
 if|if
 condition|(
@@ -9538,6 +9549,61 @@ operator|>
 name|totalUsableSpace
 condition|)
 block|{
+specifier|final
+name|String
+name|message
+init|=
+name|storeName
+operator|+
+literal|" limit is "
+operator|+
+name|storeLimit
+operator|/
+name|oneMeg
+operator|+
+literal|" mb (current store usage is "
+operator|+
+name|storeCurrent
+operator|/
+name|oneMeg
+operator|+
+literal|" mb). The data directory: "
+operator|+
+name|dir
+operator|.
+name|getAbsolutePath
+argument_list|()
+operator|+
+literal|" only has "
+operator|+
+name|totalUsableSpace
+operator|/
+name|oneMeg
+operator|+
+literal|" mb of usable space."
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|isAdjustUsageLimits
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|ConfigurationException
+argument_list|(
+name|message
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|percentLimit
@@ -9595,38 +9661,15 @@ literal|" is available - resetting limit"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
 name|LOG
 operator|.
 name|warn
 argument_list|(
-name|storeName
+name|message
 operator|+
-literal|" limit is "
-operator|+
-name|storeLimit
-operator|/
-name|oneMeg
-operator|+
-literal|" mb (current store usage is "
-operator|+
-name|storeCurrent
-operator|/
-name|oneMeg
-operator|+
-literal|" mb). The data directory: "
-operator|+
-name|dir
-operator|.
-name|getAbsolutePath
-argument_list|()
-operator|+
-literal|" only has "
-operator|+
-name|totalUsableSpace
-operator|/
-name|oneMeg
-operator|+
-literal|" mb of usable space - resetting to maximum available disk space: "
+literal|" - resetting to maximum available disk space: "
 operator|+
 name|totalUsableSpace
 operator|/
@@ -9635,6 +9678,7 @@ operator|+
 literal|" mb"
 argument_list|)
 expr_stmt|;
+block|}
 name|storeUsage
 operator|.
 name|setLimit
@@ -9700,7 +9744,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -9722,7 +9766,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -9755,10 +9799,10 @@ end_function
 begin_function
 specifier|protected
 name|void
-name|checkSystemUsageLimits
+name|checkMemorySystemUsageLimits
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 specifier|final
 name|SystemUsage
@@ -9796,6 +9840,35 @@ operator|>
 name|jvmLimit
 condition|)
 block|{
+specifier|final
+name|String
+name|message
+init|=
+literal|"Memory Usage for the Broker ("
+operator|+
+name|memLimit
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|"mb) is more than the maximum available for the JVM: "
+operator|+
+name|jvmLimit
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+decl_stmt|;
+if|if
+condition|(
+name|adjustUsageLimits
+condition|)
+block|{
 name|usage
 operator|.
 name|getMemoryUsage
@@ -9810,25 +9883,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Memory Usage for the Broker ("
-operator|+
-name|memLimit
-operator|/
-operator|(
-literal|1024
-operator|*
-literal|1024
-operator|)
-operator|+
-literal|" mb) is more than the maximum available for the JVM: "
-operator|+
-name|jvmLimit
-operator|/
-operator|(
-literal|1024
-operator|*
-literal|1024
-operator|)
+name|message
 operator|+
 literal|" mb - resetting to 70% of maximum available: "
 operator|+
@@ -9852,6 +9907,42 @@ literal|" mb"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|ConfigurationException
+argument_list|(
+name|message
+argument_list|)
+throw|;
+block|}
+block|}
+block|}
+end_function
+
+begin_function
+specifier|protected
+name|void
+name|checkStoreSystemUsageLimits
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|SystemUsage
+name|usage
+init|=
+name|getSystemUsage
+argument_list|()
+decl_stmt|;
 comment|//Check the persistent store and temp store limits if they exist
 comment|//and schedule a periodic check to update disk limits if
 comment|//schedulePeriodForDiskLimitCheck is set
@@ -14702,6 +14793,36 @@ operator|.
 name|useVirtualDestSubsOnCreation
 operator|=
 name|useVirtualDestSubsOnCreation
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+specifier|public
+name|boolean
+name|isAdjustUsageLimits
+parameter_list|()
+block|{
+return|return
+name|adjustUsageLimits
+return|;
+block|}
+end_function
+
+begin_function
+specifier|public
+name|void
+name|setAdjustUsageLimits
+parameter_list|(
+name|boolean
+name|adjustUsageLimits
+parameter_list|)
+block|{
+name|this
+operator|.
+name|adjustUsageLimits
+operator|=
+name|adjustUsageLimits
 expr_stmt|;
 block|}
 end_function
