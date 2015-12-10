@@ -284,6 +284,11 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+name|brokerService
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|underTest
 operator|=
 operator|new

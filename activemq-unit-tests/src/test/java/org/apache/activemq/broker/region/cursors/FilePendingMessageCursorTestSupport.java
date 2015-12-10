@@ -213,9 +213,6 @@ condition|)
 block|{
 name|brokerService
 operator|.
-name|getTempDataStore
-argument_list|()
-operator|.
 name|stop
 argument_list|()
 expr_stmt|;
@@ -262,6 +259,11 @@ literal|1024
 operator|*
 literal|15
 argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 comment|// put something in the temp store to on demand initialise it
 name|PList

@@ -1612,6 +1612,15 @@ operator|.
 name|directory
 argument_list|)
 expr_stmt|;
+name|IOHelper
+operator|.
+name|deleteChildren
+argument_list|(
+name|this
+operator|.
+name|directory
+argument_list|)
+expr_stmt|;
 name|lock
 argument_list|()
 expr_stmt|;
