@@ -3965,7 +3965,7 @@ argument_list|)
 expr_stmt|;
 name|session
 operator|.
-name|syncSendPacket
+name|sendAck
 argument_list|(
 name|ack
 argument_list|)
