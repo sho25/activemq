@@ -497,6 +497,7 @@ block|}
 block|}
 block|}
 comment|/**      */
+specifier|synchronized
 specifier|public
 name|void
 name|unlock
