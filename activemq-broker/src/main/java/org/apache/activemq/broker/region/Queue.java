@@ -2045,6 +2045,15 @@ expr_stmt|;
 block|}
 comment|// Message could have expired while it was being
 comment|// loaded..
+name|message
+operator|.
+name|setRegionDestination
+argument_list|(
+name|Queue
+operator|.
+name|this
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|message
@@ -2077,15 +2086,6 @@ name|hasSpace
 argument_list|()
 condition|)
 block|{
-name|message
-operator|.
-name|setRegionDestination
-argument_list|(
-name|Queue
-operator|.
-name|this
-argument_list|)
-expr_stmt|;
 name|messagesLock
 operator|.
 name|writeLock
