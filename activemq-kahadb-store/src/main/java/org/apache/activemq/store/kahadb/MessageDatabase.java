@@ -10887,6 +10887,11 @@ name|ackMessageFileMap
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|ackMessageFileMapMod
+init|=
+literal|false
+decl_stmt|;
 name|Iterator
 argument_list|<
 name|Integer
@@ -10981,6 +10986,9 @@ name|candidate
 argument_list|)
 condition|)
 block|{
+name|ackMessageFileMapMod
+operator||=
+operator|(
 name|metadata
 operator|.
 name|ackMessageFileMap
@@ -10989,6 +10997,9 @@ name|remove
 argument_list|(
 name|candidate
 argument_list|)
+operator|!=
+literal|null
+operator|)
 expr_stmt|;
 block|}
 else|else
@@ -11052,11 +11063,6 @@ argument_list|(
 name|gcCandidateSet
 argument_list|)
 expr_stmt|;
-name|boolean
-name|ackMessageFileMapMod
-init|=
-literal|false
-decl_stmt|;
 for|for
 control|(
 name|Integer
