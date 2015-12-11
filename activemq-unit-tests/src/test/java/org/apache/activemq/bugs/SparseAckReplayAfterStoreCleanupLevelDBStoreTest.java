@@ -43,6 +43,16 @@ name|LevelDBStore
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -87,6 +97,28 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Ignore
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testAckRemovedMessageReplayedAfterRecovery
+parameter_list|()
+throws|throws
+name|Exception
+block|{ }
+annotation|@
+name|Ignore
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testNoRestartOnMissingAckDataFile
+parameter_list|()
+throws|throws
+name|Exception
+block|{ }
 block|}
 end_class
 
