@@ -341,6 +341,18 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|ConfigurationException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|broker
 operator|.
 name|BrokerService
@@ -1487,6 +1499,12 @@ parameter_list|)
 block|{                 }
 catch|catch
 parameter_list|(
+name|ConfigurationException
+name|expected
+parameter_list|)
+block|{                 }
+catch|catch
+parameter_list|(
 name|Exception
 name|e
 parameter_list|)
@@ -1696,6 +1714,12 @@ block|}
 catch|catch
 parameter_list|(
 name|BrokerStoppedException
+name|expected
+parameter_list|)
+block|{                 }
+catch|catch
+parameter_list|(
+name|ConfigurationException
 name|expected
 parameter_list|)
 block|{                 }

@@ -3678,8 +3678,31 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|PersistenceAdapter
+name|persistenceAdapterToStart
+init|=
 name|getPersistenceAdapter
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|persistenceAdapterToStart
+operator|==
+literal|null
+condition|)
+block|{
+name|checkStartException
+argument_list|()
+expr_stmt|;
+throw|throw
+operator|new
+name|ConfigurationException
+argument_list|(
+literal|"Cannot start null persistence adapter"
+argument_list|)
+throw|;
+block|}
+name|persistenceAdapterToStart
 operator|.
 name|setUsageManager
 argument_list|(
@@ -3687,8 +3710,7 @@ name|getProducerSystemUsage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|getPersistenceAdapter
-argument_list|()
+name|persistenceAdapterToStart
 operator|.
 name|setBrokerName
 argument_list|(
@@ -3702,8 +3724,7 @@ name|info
 argument_list|(
 literal|"Using Persistence Adapter: {}"
 argument_list|,
-name|getPersistenceAdapter
-argument_list|()
+name|persistenceAdapterToStart
 argument_list|)
 expr_stmt|;
 if|if
@@ -3715,8 +3736,7 @@ name|deleteAllMessages
 argument_list|()
 expr_stmt|;
 block|}
-name|getPersistenceAdapter
-argument_list|()
+name|persistenceAdapterToStart
 operator|.
 name|start
 argument_list|()
