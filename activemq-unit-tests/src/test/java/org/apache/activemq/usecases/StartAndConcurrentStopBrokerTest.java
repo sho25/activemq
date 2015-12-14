@@ -1514,13 +1514,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|error
-operator|.
-name|set
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
+comment|// lots of possible errors depending on progress
 block|}
 block|}
 block|}
@@ -1734,13 +1728,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|error
-operator|.
-name|set
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
+comment|// lots of possible errors depending on progress
 block|}
 block|}
 block|}
