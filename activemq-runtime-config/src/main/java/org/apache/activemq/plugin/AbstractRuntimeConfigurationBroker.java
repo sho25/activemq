@@ -663,7 +663,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-specifier|protected
+specifier|public
 name|void
 name|debug
 parameter_list|(
@@ -679,7 +679,7 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|void
 name|info
 parameter_list|(
@@ -714,7 +714,7 @@ literal|";"
 expr_stmt|;
 block|}
 block|}
-specifier|protected
+specifier|public
 name|void
 name|info
 parameter_list|(
