@@ -596,7 +596,7 @@ literal|"Forbidden "
 operator|+
 name|clazz
 operator|+
-literal|"! This class is not allowed to be serialized. Add package with 'org.apache.activemq.SERIALIZABLE_PACKAGES' system property."
+literal|"! This class is not trusted to be serialized as ObjectMessage payload. Please take a look at http://activemq.apache.org/objectmessage.html for more information on how to configure trusted classes."
 argument_list|)
 throw|;
 block|}
