@@ -121,6 +121,18 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|zip
 operator|.
 name|DeflaterOutputStream
@@ -267,6 +279,8 @@ extends|extends
 name|ActiveMQMessage
 implements|implements
 name|ObjectMessage
+implements|,
+name|TransientInitializer
 block|{
 specifier|public
 specifier|static
@@ -279,6 +293,7 @@ operator|.
 name|ACTIVEMQ_OBJECT_MESSAGE
 decl_stmt|;
 specifier|private
+specifier|transient
 name|List
 argument_list|<
 name|String
@@ -295,6 +310,7 @@ name|serializablePackages
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|transient
 name|boolean
 name|trustAllPackages
 init|=
@@ -305,6 +321,8 @@ specifier|transient
 name|Serializable
 name|object
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|copy
@@ -548,6 +566,8 @@ throw|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -557,6 +577,8 @@ return|return
 name|DATA_STRUCTURE_TYPE
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getJMSXMimeType
@@ -567,6 +589,8 @@ literal|"jms/object-message"
 return|;
 block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *      * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearBody
@@ -587,6 +611,8 @@ literal|null
 expr_stmt|;
 block|}
 comment|/**      * Sets the serializable object containing this message's data. It is      * important to note that an<CODE>ObjectMessage</CODE> contains a      * snapshot of the object at the time<CODE>setObject()</CODE> is called;      * subsequent modifications of the object will have no effect on the      *<CODE>ObjectMessage</CODE> body.      *      * @param newObject the message's data      * @throws JMSException if the JMS provider fails to set the object due to      *                 some internal error.      * @throws javax.jms.MessageFormatException if object serialization fails.      * @throws javax.jms.MessageNotWriteableException if the message is in      *                 read-only mode.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setObject
@@ -636,6 +662,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Gets the serializable object containing this message's data. The default      * value is null.      *      * @return the serializable object containing this message's data      * @throws JMSException      */
+annotation|@
+name|Override
 specifier|public
 name|Serializable
 name|getObject
@@ -810,6 +838,8 @@ name|storeContent
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|clearMarshalledState
@@ -829,6 +859,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessageRolledBack
@@ -864,6 +896,8 @@ name|compress
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -940,6 +974,29 @@ operator|.
 name|trustAllPackages
 operator|=
 name|trustAllPackages
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|initTransients
+parameter_list|()
+block|{
+name|trustedPackages
+operator|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|ClassLoadingAwareObjectInputStream
+operator|.
+name|serializablePackages
+argument_list|)
+expr_stmt|;
+name|trustAllPackages
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}

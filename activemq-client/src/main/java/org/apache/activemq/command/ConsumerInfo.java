@@ -31,16 +31,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -119,6 +109,8 @@ class|class
 name|ConsumerInfo
 extends|extends
 name|BaseCommand
+implements|implements
+name|TransientInitializer
 block|{
 specifier|public
 specifier|static
@@ -1544,6 +1536,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|initTransients
