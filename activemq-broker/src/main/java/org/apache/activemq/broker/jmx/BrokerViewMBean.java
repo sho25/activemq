@@ -49,10 +49,6 @@ name|Service
 import|;
 end_import
 
-begin_comment
-comment|/**  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com (for the reloadLog4jProperties method)  *  */
-end_comment
-
 begin_interface
 specifier|public
 interface|interface
@@ -848,54 +844,6 @@ name|reloadLog4jProperties
 parameter_list|()
 throws|throws
 name|Throwable
-function_decl|;
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The url of the openwire connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
-argument_list|)
-name|String
-name|getOpenWireURL
-parameter_list|()
-function_decl|;
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The url of the stomp connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
-argument_list|)
-name|String
-name|getStompURL
-parameter_list|()
-function_decl|;
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The url of the SSL connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
-argument_list|)
-name|String
-name|getSslURL
-parameter_list|()
-function_decl|;
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The url of the Stomp SSL connector - deprecated, use getTransportConnectors or getTransportConnectorByType instead"
-argument_list|)
-name|String
-name|getStompSslURL
-parameter_list|()
 function_decl|;
 annotation|@
 name|MBeanInfo

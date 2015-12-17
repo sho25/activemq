@@ -289,10 +289,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -2160,138 +2156,6 @@ return|;
 block|}
 annotation|@
 name|Override
-annotation|@
-name|Deprecated
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-specifier|public
-name|String
-name|getOpenWireURL
-parameter_list|()
-block|{
-name|String
-name|answer
-init|=
-name|brokerService
-operator|.
-name|getTransportConnectorURIsAsMap
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|"tcp"
-argument_list|)
-decl_stmt|;
-return|return
-name|answer
-operator|!=
-literal|null
-condition|?
-name|answer
-else|:
-literal|""
-return|;
-block|}
-annotation|@
-name|Override
-annotation|@
-name|Deprecated
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-specifier|public
-name|String
-name|getStompURL
-parameter_list|()
-block|{
-name|String
-name|answer
-init|=
-name|brokerService
-operator|.
-name|getTransportConnectorURIsAsMap
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|"stomp"
-argument_list|)
-decl_stmt|;
-return|return
-name|answer
-operator|!=
-literal|null
-condition|?
-name|answer
-else|:
-literal|""
-return|;
-block|}
-annotation|@
-name|Override
-annotation|@
-name|Deprecated
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-specifier|public
-name|String
-name|getSslURL
-parameter_list|()
-block|{
-name|String
-name|answer
-init|=
-name|brokerService
-operator|.
-name|getTransportConnectorURIsAsMap
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|"ssl"
-argument_list|)
-decl_stmt|;
-return|return
-name|answer
-operator|!=
-literal|null
-condition|?
-name|answer
-else|:
-literal|""
-return|;
-block|}
-annotation|@
-name|Override
-annotation|@
-name|Deprecated
-comment|/**      * @deprecated use {@link #getTransportConnectors()} or {@link #getTransportConnectorByType(String)}      */
-specifier|public
-name|String
-name|getStompSslURL
-parameter_list|()
-block|{
-name|String
-name|answer
-init|=
-name|brokerService
-operator|.
-name|getTransportConnectorURIsAsMap
-argument_list|()
-operator|.
-name|get
-argument_list|(
-literal|"stomp+ssl"
-argument_list|)
-decl_stmt|;
-return|return
-name|answer
-operator|!=
-literal|null
-condition|?
-name|answer
-else|:
-literal|""
-return|;
-block|}
-annotation|@
-name|Override
 specifier|public
 name|String
 name|getVMURL
@@ -2462,9 +2326,11 @@ name|getContextBroker
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//Make a local copy of the sharedContext. We do this because we do not want to set a clientId on the
-comment|//global sharedContext. Taking a copy of the sharedContext is a good way to make sure that we are not
-comment|//messing up the shared context
+comment|// Make a local copy of the sharedContext. We do this because we do
+comment|// not want to set a clientId on the
+comment|// global sharedContext. Taking a copy of the sharedContext is a
+comment|// good way to make sure that we are not
+comment|// messing up the shared context
 name|context
 operator|=
 name|sharedContext
