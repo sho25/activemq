@@ -405,7 +405,7 @@ specifier|final
 name|String
 name|dlqPrefix
 init|=
-literal|"ActiveMQ.DLQ.Topic."
+literal|"ActiveMQ.DLQ.Queue."
 decl_stmt|;
 comment|// Number of messages
 specifier|private
