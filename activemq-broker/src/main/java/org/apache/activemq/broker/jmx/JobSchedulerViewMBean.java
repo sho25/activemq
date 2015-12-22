@@ -34,30 +34,6 @@ specifier|public
 interface|interface
 name|JobSchedulerViewMBean
 block|{
-comment|/**      * Remove all jobs scheduled to run at this time.  If there are no jobs scheduled      * at the given time this methods returns without making any modifications to the      * scheduler store.      *      * @param time      *        the string formated time that should be used to remove jobs.      *      * @throws Exception if an error occurs while performing the remove.      *      * @deprecated use removeAllJobsAtScheduledTime instead as it is more explicit about what      *             the method is actually doing.      */
-annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"remove jobs with matching execution time"
-argument_list|)
-specifier|public
-specifier|abstract
-name|void
-name|removeJobAtScheduledTime
-parameter_list|(
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"time: yyyy-MM-dd hh:mm:ss"
-argument_list|)
-name|String
-name|time
-parameter_list|)
-throws|throws
-name|Exception
-function_decl|;
 comment|/**      * Remove all jobs scheduled to run at this time.  If there are no jobs scheduled      * at the given time this methods returns without making any modifications to the      * scheduler store.      *      * @param time      *        the string formated time that should be used to remove jobs.      *      * @throws Exception if an error occurs while performing the remove.      */
 annotation|@
 name|MBeanInfo

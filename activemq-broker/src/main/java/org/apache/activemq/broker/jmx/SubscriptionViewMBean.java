@@ -78,18 +78,6 @@ parameter_list|()
 function_decl|;
 comment|/**      * @return the id of the Subscription      */
 annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"ID of the Subscription."
-argument_list|)
-name|long
-name|getSubcriptionId
-parameter_list|()
-function_decl|;
-comment|/**      * @return the id of the Subscription      */
-annotation|@
 name|MBeanInfo
 argument_list|(
 literal|"ID of the Subscription."
@@ -312,18 +300,6 @@ literal|"The subscription priority"
 argument_list|)
 name|byte
 name|getPriority
-parameter_list|()
-function_decl|;
-comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
-annotation|@
-name|Deprecated
-annotation|@
-name|MBeanInfo
-argument_list|(
-literal|"The name of the subscription (durable subscriptions only)."
-argument_list|)
-name|String
-name|getSubcriptionName
 parameter_list|()
 function_decl|;
 comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */

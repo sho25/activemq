@@ -522,21 +522,6 @@ return|;
 block|}
 comment|/**      * @return the id of the Subscription      */
 annotation|@
-name|Deprecated
-annotation|@
-name|Override
-specifier|public
-name|long
-name|getSubcriptionId
-parameter_list|()
-block|{
-return|return
-name|getSubscriptionId
-argument_list|()
-return|;
-block|}
-comment|/**      * @return the id of the Subscription      */
-annotation|@
 name|Override
 specifier|public
 name|long
@@ -1018,21 +1003,6 @@ name|getPriority
 argument_list|()
 else|:
 literal|0
-return|;
-block|}
-comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
-annotation|@
-name|Deprecated
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getSubcriptionName
-parameter_list|()
-block|{
-return|return
-name|getSubscriptionName
-argument_list|()
 return|;
 block|}
 comment|/**      * @return the name of the consumer which is only used for durable      *         consumers.      */
