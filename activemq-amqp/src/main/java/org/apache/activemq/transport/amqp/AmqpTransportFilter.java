@@ -903,17 +903,6 @@ operator|=
 name|protocolConverter
 expr_stmt|;
 block|}
-comment|/**      * @deprecated AMQP receiver configures it's prefetch via flow, remove on next release.      */
-annotation|@
-name|Deprecated
-specifier|public
-name|void
-name|setPrefetch
-parameter_list|(
-name|int
-name|prefetch
-parameter_list|)
-block|{     }
 specifier|public
 name|void
 name|setProducerCredit
