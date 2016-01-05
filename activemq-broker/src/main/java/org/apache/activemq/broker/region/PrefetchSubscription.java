@@ -3650,6 +3650,11 @@ name|isBrowser
 argument_list|()
 condition|)
 block|{
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
 continue|continue;
 block|}
 block|}
