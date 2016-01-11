@@ -746,15 +746,16 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|QueueViewMBean
-name|dlqView
+name|boolean
+name|satisfied
 init|=
-literal|null
+literal|false
 decl_stmt|;
 try|try
 block|{
+name|QueueViewMBean
 name|dlqView
-operator|=
+init|=
 name|getProxyToQueue
 argument_list|(
 name|dlqQ
@@ -762,15 +763,9 @@ operator|.
 name|getQueueName
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|error
-parameter_list|)
-block|{                 }
-return|return
+decl_stmt|;
+name|satisfied
+operator|=
 name|dlqView
 operator|!=
 literal|null
@@ -781,6 +776,16 @@ name|isDLQ
 argument_list|()
 else|:
 literal|false
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|error
+parameter_list|)
+block|{                 }
+return|return
+name|satisfied
 return|;
 block|}
 block|}

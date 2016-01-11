@@ -4372,6 +4372,53 @@ name|message
 argument_list|)
 condition|)
 block|{
+name|ActiveMQDestination
+name|deadLetterDestination
+init|=
+name|deadLetterStrategy
+operator|.
+name|getDeadLetterQueueFor
+argument_list|(
+name|message
+argument_list|,
+name|subscription
+argument_list|)
+decl_stmt|;
+comment|// Prevent a DLQ loop where same message is sent from a DLQ back to itself
+if|if
+condition|(
+name|deadLetterDestination
+operator|.
+name|equals
+argument_list|(
+name|message
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Not re-adding to DLQ: {}, dest: {}"
+argument_list|,
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|,
+name|message
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 comment|// message may be inflight to other subscriptions so do not modify
 name|message
 operator|=
@@ -4470,18 +4517,6 @@ comment|// The original destination and transaction id do
 comment|// not get filled when the message is first sent,
 comment|// it is only populated if the message is routed to
 comment|// another destination like the DLQ
-name|ActiveMQDestination
-name|deadLetterDestination
-init|=
-name|deadLetterStrategy
-operator|.
-name|getDeadLetterQueueFor
-argument_list|(
-name|message
-argument_list|,
-name|subscription
-argument_list|)
-decl_stmt|;
 name|ConnectionContext
 name|adminContext
 init|=
