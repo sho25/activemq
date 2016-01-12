@@ -223,6 +223,11 @@ name|BROKER_A_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertBrokerInfo
+argument_list|(
+name|BROKER_A_NAME
+argument_list|)
+expr_stmt|;
 name|restart
 argument_list|(
 literal|false
@@ -922,6 +927,11 @@ name|secondaryName
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertBrokerInfo
+argument_list|(
+name|secondaryName
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -933,6 +943,11 @@ name|get
 argument_list|(
 name|primaryName
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertBrokerInfo
+argument_list|(
+name|primaryName
 argument_list|)
 expr_stmt|;
 block|}
@@ -1004,6 +1019,11 @@ name|get
 argument_list|(
 name|primaryName
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertBrokerInfo
+argument_list|(
+name|primaryName
 argument_list|)
 expr_stmt|;
 block|}

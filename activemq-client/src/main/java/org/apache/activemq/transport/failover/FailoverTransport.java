@@ -4789,6 +4789,16 @@ operator|.
 name|getUri
 argument_list|()
 expr_stmt|;
+name|myTransportListener
+operator|.
+name|onCommand
+argument_list|(
+name|bt
+operator|.
+name|getBrokerInfo
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|priorityBackup
