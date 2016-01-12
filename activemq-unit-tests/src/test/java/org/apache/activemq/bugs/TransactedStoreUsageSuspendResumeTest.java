@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -295,18 +307,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
 comment|// https://issues.apache.org/jira/browse/AMQ-4262
 end_comment
@@ -522,11 +522,30 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|(
+name|messagesReceivedCountDown
+operator|.
+name|getCount
+argument_list|()
+operator|%
+operator|(
+name|MAX_MESSAGES
+operator|/
+literal|5
+operator|)
+operator|)
+operator|==
+literal|0
+condition|)
+block|{
 name|session
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+block|}
 name|messagesReceivedCountDown
 operator|.
 name|countDown
@@ -569,6 +588,11 @@ operator|!=
 literal|0
 condition|)
 do|;
+name|session
+operator|.
+name|commit
+argument_list|()
+expr_stmt|;
 name|consumer
 operator|.
 name|close
