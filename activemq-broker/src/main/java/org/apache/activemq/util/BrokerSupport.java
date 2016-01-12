@@ -140,7 +140,7 @@ block|{
 specifier|private
 name|BrokerSupport
 parameter_list|()
-block|{             }
+block|{     }
 specifier|public
 specifier|static
 name|void
@@ -171,7 +171,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param context      * @param originalMessage       * @param deadLetterDestination      * @throws Exception      */
+comment|/**      * @param context      * @param originalMessage      * @param deadLetterDestination      * @throws Exception      */
 specifier|public
 specifier|static
 name|void
@@ -281,6 +281,16 @@ operator|.
 name|setRedeliveryCounter
 argument_list|(
 literal|0
+argument_list|)
+expr_stmt|;
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+operator|.
+name|setDataLocator
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 name|boolean
