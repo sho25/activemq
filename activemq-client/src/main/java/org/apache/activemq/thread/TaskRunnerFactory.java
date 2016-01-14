@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is kinda like  * cooperative multitasking.  *  * @org.apache.xbean.XBean  */
+comment|/**  * Manages the thread pool for long running tasks. Long running tasks are not  * always active but when they are active, they may need a few iterations of  * processing for them to become idle. The manager ensures that each task is  * processes but that no one task overtakes the system. This is somewhat like  * cooperative multitasking.  *  * @org.apache.xbean.XBean  */
 end_comment
 
 begin_class
@@ -243,9 +243,8 @@ specifier|private
 name|int
 name|maxThreadPoolSize
 init|=
-name|Integer
-operator|.
-name|MAX_VALUE
+name|getDefaultMaximumPoolSize
+argument_list|()
 decl_stmt|;
 specifier|private
 name|RejectedExecutionHandler
@@ -771,7 +770,8 @@ init|=
 operator|new
 name|ThreadPoolExecutor
 argument_list|(
-literal|0
+name|getDefaultCorePoolSize
+argument_list|()
 argument_list|,
 name|getMaxThreadPoolSize
 argument_list|()
@@ -1166,6 +1166,42 @@ name|shutdownAwaitTermination
 operator|=
 name|shutdownAwaitTermination
 expr_stmt|;
+block|}
+specifier|private
+specifier|static
+name|int
+name|getDefaultCorePoolSize
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"org.apache.activemq.thread.TaskRunnerFactory.corePoolSize"
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
+specifier|private
+specifier|static
+name|int
+name|getDefaultMaximumPoolSize
+parameter_list|()
+block|{
+return|return
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"org.apache.activemq.thread.TaskRunnerFactory.maximumPoolSize"
+argument_list|,
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+return|;
 block|}
 specifier|private
 specifier|static
