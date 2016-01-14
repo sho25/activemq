@@ -228,12 +228,6 @@ name|Runnable
 name|runnable
 parameter_list|)
 block|{
-name|this
-operator|.
-name|i
-operator|++
-expr_stmt|;
-specifier|final
 name|Thread
 name|t
 init|=
@@ -244,11 +238,19 @@ name|runnable
 argument_list|,
 literal|"ActiveMQ NIO Worker "
 operator|+
-name|this
-operator|.
+operator|(
 name|i
+operator|++
+operator|)
 argument_list|)
 decl_stmt|;
+name|t
+operator|.
+name|setDaemon
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 return|return
 name|t
 return|;

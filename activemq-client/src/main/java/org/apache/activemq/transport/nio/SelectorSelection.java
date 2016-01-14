@@ -362,11 +362,14 @@ name|CancelledKeyException
 name|e
 parameter_list|)
 block|{                     }
+finally|finally
+block|{
 name|worker
 operator|.
 name|release
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)

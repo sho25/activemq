@@ -348,6 +348,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -410,6 +412,9 @@ block|}
 comment|// Get a java.util.Set containing the SelectionKey objects
 comment|// for all channels that are ready for I/O.
 name|Set
+argument_list|<
+name|SelectionKey
+argument_list|>
 name|keys
 init|=
 name|selector
@@ -420,6 +425,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|SelectionKey
+argument_list|>
 name|i
 init|=
 name|keys
@@ -438,9 +446,6 @@ specifier|final
 name|SelectionKey
 name|key
 init|=
-operator|(
-name|SelectionKey
-operator|)
 name|i
 operator|.
 name|next
@@ -495,6 +500,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -562,6 +569,9 @@ argument_list|()
 expr_stmt|;
 comment|// Notify all the selections that the error occurred.
 name|Set
+argument_list|<
+name|SelectionKey
+argument_list|>
 name|keys
 init|=
 name|selector
@@ -572,6 +582,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|SelectionKey
+argument_list|>
 name|i
 init|=
 name|keys
@@ -589,9 +602,6 @@ block|{
 name|SelectionKey
 name|key
 init|=
-operator|(
-name|SelectionKey
-operator|)
 name|i
 operator|.
 name|next
