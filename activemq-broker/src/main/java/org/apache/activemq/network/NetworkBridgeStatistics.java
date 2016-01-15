@@ -44,7 +44,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Statistics for a NewtorkBridge.  */
+comment|/**  * The Statistics for a NetworkBridge.  */
 end_comment
 
 begin_class
