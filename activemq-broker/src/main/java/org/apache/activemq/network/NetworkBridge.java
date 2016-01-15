@@ -107,6 +107,11 @@ name|long
 name|getDequeueCounter
 parameter_list|()
 function_decl|;
+comment|/**      * @return the statistics for this NetworkBridge      */
+name|NetworkBridgeStatistics
+name|getNetworkBridgeStatistics
+parameter_list|()
+function_decl|;
 comment|/**      * @param objectName      *      The ObjectName assigned to this bridge in the MBean server.      */
 name|void
 name|setMbeanObjectName

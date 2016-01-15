@@ -64,6 +64,10 @@ name|long
 name|getDequeueCounter
 parameter_list|()
 function_decl|;
+name|long
+name|getReceivedCounter
+parameter_list|()
+function_decl|;
 name|boolean
 name|isCreatedByDuplex
 parameter_list|()
