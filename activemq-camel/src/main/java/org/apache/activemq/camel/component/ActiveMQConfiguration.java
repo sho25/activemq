@@ -147,6 +147,10 @@ extends|extends
 name|JmsConfiguration
 block|{
 specifier|private
+name|ActiveMQComponent
+name|activeMQComponent
+decl_stmt|;
+specifier|private
 name|String
 name|brokerURL
 init|=
@@ -173,10 +177,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|password
-decl_stmt|;
-specifier|private
-name|ActiveMQComponent
-name|activeMQComponent
 decl_stmt|;
 specifier|public
 name|ActiveMQConfiguration
@@ -225,7 +225,7 @@ return|return
 name|userName
 return|;
 block|}
-comment|/**      * Sets the username to be used to login to ActiveMQ      * @param userName      */
+comment|/**      * Sets the username to be used to login to ActiveMQ      */
 specifier|public
 name|void
 name|setUserName
@@ -250,7 +250,7 @@ return|return
 name|password
 return|;
 block|}
-comment|/**      * Sets the password/passcode used to login to ActiveMQ      *      * @param password      */
+comment|/**      * Sets the password/passcode used to login to ActiveMQ      */
 specifier|public
 name|void
 name|setPassword
@@ -266,7 +266,7 @@ operator|=
 name|password
 expr_stmt|;
 block|}
-comment|/**      * Enables or disables whether a Spring {@link SingleConnectionFactory} will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is false and a pooled connection is used by default.      *      * @param useSingleConnection      */
+comment|/**      * Enables or disables whether a Spring {@link SingleConnectionFactory} will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is false and a pooled connection is used by default.      */
 specifier|public
 name|void
 name|setUseSingleConnection

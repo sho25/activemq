@@ -249,6 +249,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|springframework
+operator|.
+name|jms
+operator|.
+name|core
+operator|.
+name|JmsTemplate
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -429,6 +443,7 @@ name|configuration
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Sets the broker URL to use to connect to ActiveMQ using the      *<a href="http://activemq.apache.org/configuring-transports.html">ActiveMQ URI format</a>      */
 specifier|public
 name|void
 name|setBrokerURL
@@ -460,6 +475,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Sets the username to be used to login to ActiveMQ      */
 specifier|public
 name|void
 name|setUserName
@@ -491,6 +507,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Sets the password/passcode used to login to ActiveMQ      */
 specifier|public
 name|void
 name|setPassword
@@ -531,7 +548,7 @@ return|return
 name|exposeAllQueues
 return|;
 block|}
-comment|/**      * If enabled this will cause all Queues in the ActiveMQ broker to be eagerly populated into the CamelContext      * so that they can be easily browsed by any Camel tooling. This option is disabled by default.      *      * @param exposeAllQueues      */
+comment|/**      * If enabled this will cause all Queues in the ActiveMQ broker to be eagerly populated into the CamelContext      * so that they can be easily browsed by any Camel tooling. This option is disabled by default.      */
 specifier|public
 name|void
 name|setExposeAllQueues
@@ -547,6 +564,7 @@ operator|=
 name|exposeAllQueues
 expr_stmt|;
 block|}
+comment|/**      * Enables or disables whether a PooledConnectionFactory will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is true. Note that this requires an extra dependency on commons-pool2.      */
 specifier|public
 name|void
 name|setUsePooledConnection
@@ -578,6 +596,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Enables or disables whether a Spring {@link SingleConnectionFactory} will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is false and a pooled connection is used by default.      */
 specifier|public
 name|void
 name|setUseSingleConnection
