@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|beans
+operator|.
+name|Transient
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|DataInputStream
@@ -2050,6 +2060,8 @@ block|}
 block|}
 annotation|@
 name|Override
+annotation|@
+name|Transient
 specifier|public
 name|MessageDestination
 name|getRegionDestination
