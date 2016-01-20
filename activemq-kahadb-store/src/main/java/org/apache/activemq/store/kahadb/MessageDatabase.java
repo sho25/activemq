@@ -8736,32 +8736,16 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|LOG
+comment|//Add the message if it can't be found
+name|this
 operator|.
-name|warn
+name|updateIndex
 argument_list|(
-literal|"Non existent message update attempt rejected. Destination: {}://{}, Message id: {}"
+name|tx
 argument_list|,
 name|command
-operator|.
-name|getDestination
-argument_list|()
-operator|.
-name|getType
-argument_list|()
 argument_list|,
-name|command
-operator|.
-name|getDestination
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|command
-operator|.
-name|getMessageId
-argument_list|()
+name|location
 argument_list|)
 expr_stmt|;
 block|}
