@@ -1774,6 +1774,93 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|testSpecialEscapeLiteral
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Message
+name|message
+init|=
+name|createMessage
+argument_list|()
+decl_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"foo LIKE '%_%' ESCAPE '%'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '_D7xlJIQn$_' ESCAPE '$'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '_D7xlJIQn__' ESCAPE '_'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '%D7xlJIQn%_' ESCAPE '%'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '%D7xlJIQn%'  ESCAPE '%'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+comment|// literal '%' at the end, no match
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '%D7xlJIQn%%'  ESCAPE '%'"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '_D7xlJIQn\\_' ESCAPE '\\'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"endingUnderScore LIKE '%D7xlJIQn\\_' ESCAPE '\\'"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|testInvalidSelector
 parameter_list|()
 throws|throws
@@ -2082,6 +2169,15 @@ argument_list|(
 literal|"punctuation"
 argument_list|,
 literal|"!#$&()*+,-./:;<=>?@[\\]^`{|}~"
+argument_list|)
+expr_stmt|;
+name|message
+operator|.
+name|setStringProperty
+argument_list|(
+literal|"endingUnderScore"
+argument_list|,
+literal|"XD7xlJIQn_"
 argument_list|)
 expr_stmt|;
 name|message
