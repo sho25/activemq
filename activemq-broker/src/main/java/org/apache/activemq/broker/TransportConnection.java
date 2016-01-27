@@ -1895,11 +1895,6 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|TRANSPORTLOG
