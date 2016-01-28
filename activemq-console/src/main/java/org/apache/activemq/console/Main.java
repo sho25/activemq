@@ -1576,7 +1576,9 @@ name|StringTokenizer
 argument_list|(
 name|fileList
 argument_list|,
-literal|";"
+name|File
+operator|.
+name|pathSeparator
 argument_list|)
 decl_stmt|;
 while|while
@@ -1814,6 +1816,8 @@ name|File
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
