@@ -162,15 +162,6 @@ expr_stmt|;
 block|}
 name|System
 operator|.
-name|setProperty
-argument_list|(
-literal|"activemq.conf"
-argument_list|,
-literal|"/home/clshann/dev/git/apache-activemq/assembly/target/apache-activemq-5.13-SNAPSHOT/conf"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
 name|out
 operator|.
 name|println
