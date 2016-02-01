@@ -173,31 +173,7 @@ name|apache
 operator|.
 name|activemq
 operator|.
-name|ActiveMQQueueSession
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
 name|ActiveMQSession
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|ActiveMQTopicSession
 import|;
 end_import
 
@@ -466,9 +442,6 @@ name|ServerSessionImpl
 argument_list|(
 name|this
 argument_list|,
-operator|(
-name|ActiveMQSession
-operator|)
 name|session
 argument_list|,
 name|activeMQAsfEndpointWorker
@@ -506,9 +479,6 @@ name|ServerSessionImpl
 argument_list|(
 name|this
 argument_list|,
-operator|(
-name|ActiveMQSession
-operator|)
 name|session
 argument_list|,
 name|activeMQAsfEndpointWorker
@@ -598,6 +568,8 @@ name|endpointProxy
 return|;
 block|}
 comment|/**      */
+annotation|@
+name|Override
 specifier|public
 name|ServerSession
 name|getServerSession
@@ -1098,6 +1070,9 @@ name|getSession
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|l
 init|=
 name|session
@@ -1132,6 +1107,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MessageDispatch
+argument_list|>
 name|i
 init|=
 name|l
@@ -1149,9 +1127,6 @@ block|{
 name|MessageDispatch
 name|md
 init|=
-operator|(
-name|MessageDispatch
-operator|)
 name|i
 operator|.
 name|next
