@@ -2945,7 +2945,25 @@ expr_stmt|;
 block|}
 comment|// now that the job is removed from the index we can store the remove info and
 comment|// then dereference the log files that hold the initial add command and the most
-comment|// recent update command.
+comment|// recent update command.  If the remove and the add that created the job are in
+comment|// the same file we don't need to track it and just let a normal GC of the logs
+comment|// remove it when the log is unreferenced.
+if|if
+condition|(
+name|removed
+operator|.
+name|getLocation
+argument_list|()
+operator|.
+name|getDataFileId
+argument_list|()
+operator|!=
+name|location
+operator|.
+name|getDataFileId
+argument_list|()
+condition|)
+block|{
 name|this
 operator|.
 name|store
@@ -2959,6 +2977,7 @@ argument_list|,
 name|removed
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Removes all scheduled jobs within a given time range.      *      * The method can be used to clear the entire scheduler index by specifying a range that      * encompasses all time [0...Long.MAX_VALUE] or a single execution time can be removed by      * setting start and end time to the same value.      *      * @param tx      *      The transaction under which the index is updated.      * @param command      *      The remove command to process.      * @param location      *      The location of the remove command in the Journal.      *      * @throws IOException if an error occurs while updating the scheduler index.      */
@@ -3235,7 +3254,25 @@ expr_stmt|;
 block|}
 comment|// now that the job is removed from the index we can store the remove info and
 comment|// then dereference the log files that hold the initial add command and the most
-comment|// recent update command.
+comment|// recent update command.  If the remove and the add that created the job are in
+comment|// the same file we don't need to track it and just let a normal GC of the logs
+comment|// remove it when the log is unreferenced.
+if|if
+condition|(
+name|job
+operator|.
+name|getLocation
+argument_list|()
+operator|.
+name|getDataFileId
+argument_list|()
+operator|!=
+name|location
+operator|.
+name|getDataFileId
+argument_list|()
+condition|)
+block|{
 name|this
 operator|.
 name|store
@@ -3249,6 +3286,7 @@ argument_list|,
 name|job
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

@@ -2276,7 +2276,7 @@ argument_list|()
 condition|)
 block|{
 name|boolean
-name|orphanedRemve
+name|orphanedRemove
 init|=
 literal|true
 decl_stmt|;
@@ -2331,7 +2331,21 @@ name|addLocation
 argument_list|)
 condition|)
 block|{
-name|orphanedRemve
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"A remove in log {} has an add still in existance in {}."
+argument_list|,
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|,
+name|addLocation
+argument_list|)
+expr_stmt|;
+name|orphanedRemove
 operator|=
 literal|false
 expr_stmt|;
@@ -2343,21 +2357,9 @@ comment|// stop tracking it it's log will get deleted on the next check.
 if|if
 condition|(
 operator|!
-name|orphanedRemve
+name|orphanedRemove
 condition|)
 block|{
-name|LOG
-operator|.
-name|trace
-argument_list|(
-literal|"A remove in log {} has an add still in existance."
-argument_list|,
-name|entry
-operator|.
-name|getKey
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|gcCandidateSet
 operator|.
 name|remove
