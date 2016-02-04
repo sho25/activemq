@@ -20,6 +20,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1592,6 +1604,37 @@ argument_list|,
 name|publishedMessageSize
 operator|.
 name|get
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//should be equal in this case
+name|assertEquals
+argument_list|(
+name|dest
+operator|.
+name|getDurableTopicSubs
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|subKey
+argument_list|)
+operator|.
+name|getPendingMessageSize
+argument_list|()
+argument_list|,
+name|dest
+operator|.
+name|getMessageStore
+argument_list|()
+operator|.
+name|getMessageStoreStatistics
+argument_list|()
+operator|.
+name|getMessageSize
+argument_list|()
+operator|.
+name|getTotalSize
 argument_list|()
 argument_list|)
 expr_stmt|;
