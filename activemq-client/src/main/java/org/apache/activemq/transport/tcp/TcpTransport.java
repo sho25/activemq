@@ -1568,6 +1568,14 @@ block|}
 block|}
 try|try
 block|{
+comment|//only positive values are legal
+if|if
+condition|(
+name|socketBufferSize
+operator|>
+literal|0
+condition|)
+block|{
 name|sock
 operator|.
 name|setReceiveBufferSize
@@ -1582,6 +1590,19 @@ argument_list|(
 name|socketBufferSize
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Socket buffer size was set to {}; Skipping this setting as the size must be a positive number."
+argument_list|,
+name|socketBufferSize
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
