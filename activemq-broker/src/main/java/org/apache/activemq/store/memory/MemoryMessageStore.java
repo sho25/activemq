@@ -329,7 +329,6 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
-block|}
 name|message
 operator|.
 name|incrementReferenceCount
@@ -370,6 +369,7 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// public void addMessageReference(ConnectionContext context,MessageId

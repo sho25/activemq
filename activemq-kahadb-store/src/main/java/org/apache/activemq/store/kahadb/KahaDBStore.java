@@ -2096,6 +2096,7 @@ return|return
 name|task
 return|;
 block|}
+comment|// with asyncTaskMap locked
 specifier|protected
 name|void
 name|addQueueTask
@@ -2108,13 +2109,6 @@ name|task
 parameter_list|)
 throws|throws
 name|IOException
-block|{
-synchronized|synchronized
-init|(
-name|store
-operator|.
-name|asyncTaskMap
-init|)
 block|{
 name|store
 operator|.
@@ -2142,7 +2136,6 @@ argument_list|,
 name|task
 argument_list|)
 expr_stmt|;
-block|}
 name|this
 operator|.
 name|queueExecutor
@@ -2473,6 +2466,11 @@ operator|.
 name|aquireLocks
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|asyncTaskMap
+init|)
+block|{
 name|addQueueTask
 argument_list|(
 name|this
@@ -2504,6 +2502,7 @@ literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|future
