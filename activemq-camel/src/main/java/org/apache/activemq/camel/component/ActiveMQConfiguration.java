@@ -178,6 +178,10 @@ specifier|private
 name|String
 name|password
 decl_stmt|;
+specifier|private
+name|boolean
+name|trustAllPackages
+decl_stmt|;
 specifier|public
 name|ActiveMQConfiguration
 parameter_list|()
@@ -307,6 +311,31 @@ operator|=
 name|usePooledConnection
 expr_stmt|;
 block|}
+specifier|public
+name|boolean
+name|isTrustAllPackages
+parameter_list|()
+block|{
+return|return
+name|trustAllPackages
+return|;
+block|}
+comment|/**      * ObjectMessage objects depend on Java serialization of marshal/unmarshal object payload.      * This process is generally considered unsafe as malicious payload can exploit the host system.      * That's why starting with versions 5.12.2 and 5.13.0, ActiveMQ enforces users to explicitly whitelist packages      * that can be exchanged using ObjectMessages.      *<br/>      * This option can be set to<tt>true</tt> to trust all packages (eg whitelist is *).      *<p/>      * See more details at: http://activemq.apache.org/objectmessage.html      */
+specifier|public
+name|void
+name|setTrustAllPackages
+parameter_list|(
+name|boolean
+name|trustAllPackages
+parameter_list|)
+block|{
+name|this
+operator|.
+name|trustAllPackages
+operator|=
+name|trustAllPackages
+expr_stmt|;
+block|}
 comment|/**      * Factory method to create a default transaction manager if one is not specified      */
 annotation|@
 name|Override
@@ -363,6 +392,13 @@ operator|new
 name|ActiveMQConnectionFactory
 argument_list|()
 decl_stmt|;
+name|answer
+operator|.
+name|setTrustAllPackages
+argument_list|(
+name|trustAllPackages
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|userName
