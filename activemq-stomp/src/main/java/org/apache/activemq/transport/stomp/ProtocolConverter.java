@@ -1996,6 +1996,8 @@ argument_list|(
 literal|"Unknown STOMP action: "
 operator|+
 name|action
+argument_list|,
+literal|true
 argument_list|)
 throw|;
 block|}
