@@ -5310,6 +5310,17 @@ begin_comment
 comment|/**      * Sets the name of this broker; which must be unique in the network      *      * @param brokerName      */
 end_comment
 
+begin_decl_stmt
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|brokerNameReplacedCharsRegExp
+init|=
+literal|"[^a-zA-Z0-9\\.\\_\\-\\:]"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 specifier|public
 name|void
@@ -5341,7 +5352,7 @@ name|brokerName
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[^a-zA-Z0-9\\.\\_\\-\\:]"
+name|brokerNameReplacedCharsRegExp
 argument_list|,
 literal|"_"
 argument_list|)
@@ -5361,9 +5372,11 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Broker Name: {} contained illegal characters - replaced with {}"
+literal|"Broker Name: {} contained illegal characters matching regExp: {} - replaced with {}"
 argument_list|,
 name|brokerName
+argument_list|,
+name|brokerNameReplacedCharsRegExp
 argument_list|,
 name|str
 argument_list|)
@@ -7625,13 +7638,6 @@ literal|"vm://"
 operator|+
 name|getBrokerName
 argument_list|()
-operator|.
-name|replaceAll
-argument_list|(
-literal|"[^a-zA-Z0-9\\.\\_\\-]"
-argument_list|,
-literal|"_"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -12425,6 +12431,15 @@ operator|.
 name|put
 argument_list|(
 literal|"async"
+argument_list|,
+literal|"false"
+argument_list|)
+expr_stmt|;
+name|map
+operator|.
+name|put
+argument_list|(
+literal|"create"
 argument_list|,
 literal|"false"
 argument_list|)
