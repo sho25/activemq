@@ -562,6 +562,24 @@ literal|"Cannot alter the Delivery"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setMessageFormat
+parameter_list|(
+name|int
+name|messageFormat
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"Cannot alter the Delivery"
+argument_list|)
+throw|;
+block|}
 block|}
 end_class
 
