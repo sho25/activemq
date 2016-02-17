@@ -6564,6 +6564,13 @@ condition|(
 name|command
 operator|!=
 literal|null
+operator|&&
+name|command
+operator|.
+name|getAction
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|String
