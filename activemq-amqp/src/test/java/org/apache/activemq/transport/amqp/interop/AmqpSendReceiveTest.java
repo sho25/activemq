@@ -422,6 +422,13 @@ operator|.
 name|SECONDS
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have got a message"
+argument_list|,
+name|received
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"msg0"
@@ -483,6 +490,13 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have got a message"
+argument_list|,
+name|received
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -661,6 +675,8 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"Should have read a message"
+argument_list|,
 name|received
 argument_list|)
 expr_stmt|;
@@ -874,6 +890,20 @@ operator|.
 name|SECONDS
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read message 1"
+argument_list|,
+name|message1
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read message 2"
+argument_list|,
+name|message2
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"msg0"
@@ -952,6 +982,20 @@ operator|.
 name|SECONDS
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read message 3"
+argument_list|,
+name|message3
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read message 4"
+argument_list|,
+name|message4
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"msg2"
@@ -1022,6 +1066,13 @@ operator|.
 name|SECONDS
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read a message"
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"msg"
@@ -1188,6 +1239,13 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read a message"
+argument_list|,
+name|message1
+argument_list|)
+expr_stmt|;
 name|assertFalse
 argument_list|(
 literal|"First message sent should not be durable"
@@ -1267,6 +1325,13 @@ argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
+argument_list|)
+expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Should have read a message"
+argument_list|,
+name|message2
 argument_list|)
 expr_stmt|;
 name|assertTrue
