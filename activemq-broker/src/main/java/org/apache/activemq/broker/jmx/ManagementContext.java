@@ -1840,7 +1840,7 @@ return|return
 name|result
 return|;
 block|}
-specifier|private
+specifier|protected
 name|boolean
 name|isAllowedToRegister
 parameter_list|(

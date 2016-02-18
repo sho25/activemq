@@ -1203,7 +1203,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTopics
+name|getTopicsNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1219,7 +1219,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getQueues
+name|getQueuesNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1235,7 +1235,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTemporaryTopics
+name|getTemporaryTopicsNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1251,7 +1251,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTemporaryQueues
+name|getTemporaryQueuesNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1267,7 +1267,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTopicSubscribers
+name|getTopicSubscribersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1283,7 +1283,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getDurableTopicSubscribers
+name|getDurableTopicSubscribersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1299,7 +1299,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getQueueSubscribers
+name|getQueueSubscribersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1315,7 +1315,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTemporaryTopicSubscribers
+name|getTemporaryTopicSubscribersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1331,7 +1331,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTemporaryQueueSubscribers
+name|getTemporaryQueueSubscribersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1347,7 +1347,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getInactiveDurableTopicSubscribers
+name|getInactiveDurableTopicSubscribersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1363,7 +1363,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTopicProducers
+name|getTopicProducersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1379,7 +1379,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getQueueProducers
+name|getQueueProducersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1395,7 +1395,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTemporaryTopicProducers
+name|getTemporaryTopicProducersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1411,7 +1411,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getTemporaryQueueProducers
+name|getTemporaryQueueProducersNonSuppressed
 argument_list|()
 return|;
 block|}
@@ -1427,7 +1427,7 @@ return|return
 name|safeGetBroker
 argument_list|()
 operator|.
-name|getDynamicDestinationProducers
+name|getDynamicDestinationProducersNonSuppressed
 argument_list|()
 return|;
 block|}
