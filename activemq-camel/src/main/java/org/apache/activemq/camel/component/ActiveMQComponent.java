@@ -824,6 +824,23 @@ name|afterPropertiesSet
 argument_list|()
 expr_stmt|;
 block|}
+comment|// use OriginalDestinationPropagateStrategy by default if no custom stategy has been set
+if|if
+condition|(
+name|getMessageCreatedStrategy
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|setMessageCreatedStrategy
+argument_list|(
+operator|new
+name|OriginalDestinationPropagateStrategy
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|void
