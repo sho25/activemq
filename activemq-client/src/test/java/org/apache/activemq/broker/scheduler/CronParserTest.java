@@ -2085,7 +2085,7 @@ if|if
 condition|(
 name|startHours
 operator|==
-literal|8
+literal|20
 operator|&&
 name|startMinutes
 operator|==
@@ -2103,6 +2103,7 @@ argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
+comment|// allow for 30 min offset timezone
 block|}
 else|else
 block|{
