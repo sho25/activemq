@@ -112,7 +112,9 @@ name|int
 name|getProducerWindowSize
 parameter_list|()
 function_decl|;
-comment|/**      * @return if the Producer is configured for Async dispatch      */
+comment|/**      * @deprecated This value is no longer used for producers.      * @return if the Producer is configured for Async dispatch      */
+annotation|@
+name|Deprecated
 annotation|@
 name|MBeanInfo
 argument_list|(

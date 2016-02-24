@@ -282,6 +282,16 @@ name|boolean
 name|isNoLocal
 parameter_list|()
 function_decl|;
+comment|/**      * @return if the Consumer is configured for Async dispatch      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Is the consumer configured for Async Dispatch"
+argument_list|)
+name|boolean
+name|isDispatchAsync
+parameter_list|()
+function_decl|;
 comment|/**      * @return the maximum number of pending messages allowed in addition to the      *         prefetch size. If enabled to a non-zero value then this will      *         perform eviction of messages for slow consumers on non-durable      *         topics.      */
 annotation|@
 name|MBeanInfo

@@ -951,6 +951,33 @@ else|:
 literal|false
 return|;
 block|}
+comment|/**      * @return whether or not the subscriber is configured for async dispatch      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isDispatchAsync
+parameter_list|()
+block|{
+name|ConsumerInfo
+name|info
+init|=
+name|getConsumerInfo
+argument_list|()
+decl_stmt|;
+return|return
+name|info
+operator|!=
+literal|null
+condition|?
+name|info
+operator|.
+name|isDispatchAsync
+argument_list|()
+else|:
+literal|false
+return|;
+block|}
 comment|/**      * @return the maximum number of pending messages allowed in addition to the      *         prefetch size. If enabled to a non-zero value then this will      *         perform eviction of messages for slow consumers on non-durable      *         topics.      */
 annotation|@
 name|Override
