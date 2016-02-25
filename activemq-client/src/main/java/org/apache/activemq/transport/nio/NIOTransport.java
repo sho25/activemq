@@ -434,7 +434,7 @@ name|inputBuffer
 operator|=
 name|ByteBuffer
 operator|.
-name|allocate
+name|allocateDirect
 argument_list|(
 name|getIoBufferSize
 argument_list|()
@@ -671,7 +671,7 @@ name|currentBuffer
 operator|=
 name|ByteBuffer
 operator|.
-name|allocate
+name|allocateDirect
 argument_list|(
 name|nextFrameSize
 argument_list|)
