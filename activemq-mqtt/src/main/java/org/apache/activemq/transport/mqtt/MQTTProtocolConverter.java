@@ -1810,6 +1810,40 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|userName
+operator|==
+literal|null
+operator|&&
+name|connect
+operator|.
+name|version
+argument_list|()
+operator|!=
+name|V3_1
+condition|)
+block|{
+comment|// [MQTT-3.1.2-22]: If the user name is not present then the
+comment|// password must also be absent.
+comment|// [MQTT-3.1.4-1]: would seem to imply we don't send a CONNACK here.
+name|getMQTTTransport
+argument_list|()
+operator|.
+name|onException
+argument_list|(
+name|IOExceptionSupport
+operator|.
+name|create
+argument_list|(
+literal|"Password given without a user name"
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|passswd
 operator|=
 name|connect
