@@ -364,6 +364,11 @@ block|}
 comment|/**      * This tests whether the TRACE method is enabled or not      * @throws Exception      */
 annotation|@
 name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|10000
+argument_list|)
 specifier|public
 name|void
 name|testHttpTraceEnabled
