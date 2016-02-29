@@ -1397,7 +1397,10 @@ name|String
 name|getTopicName
 parameter_list|()
 block|{
+comment|//wildcard characters are illegal in publish
+comment|//replace a + with something else, like _ which is allowed
 return|return
+operator|(
 name|getClass
 argument_list|()
 operator|.
@@ -1410,6 +1413,14 @@ name|name
 operator|.
 name|getMethodName
 argument_list|()
+operator|)
+operator|.
+name|replace
+argument_list|(
+literal|"+"
+argument_list|,
+literal|"_"
+argument_list|)
 return|;
 block|}
 specifier|protected

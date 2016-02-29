@@ -515,7 +515,7 @@ name|connectionPub
 operator|.
 name|publish
 argument_list|(
-name|subscribe
+literal|"test/1"
 argument_list|,
 name|payload
 operator|.
