@@ -47,9 +47,13 @@ name|org
 operator|.
 name|apache
 operator|.
-name|qpid
+name|activemq
 operator|.
-name|jms
+name|transport
+operator|.
+name|amqp
+operator|.
+name|client
 operator|.
 name|util
 operator|.
