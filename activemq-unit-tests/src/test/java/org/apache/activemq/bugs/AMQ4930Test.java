@@ -322,7 +322,7 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|1
+literal|100
 operator|*
 literal|1024
 operator|*

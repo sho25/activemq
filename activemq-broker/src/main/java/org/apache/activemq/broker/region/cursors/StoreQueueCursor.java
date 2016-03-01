@@ -217,8 +217,6 @@ operator|new
 name|QueueStorePrefetch
 argument_list|(
 name|queue
-argument_list|,
-name|broker
 argument_list|)
 expr_stmt|;
 name|currentCursor

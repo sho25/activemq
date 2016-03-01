@@ -978,7 +978,13 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|16
+operator|(
+name|maxPageSize
+operator|+
+literal|10
+operator|)
+operator|*
+literal|4
 operator|*
 literal|1024
 argument_list|)
@@ -1161,7 +1167,9 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"got at least maxPageSize"
+literal|"got at least maxPageSize, received: "
+operator|+
+name|received
 argument_list|,
 name|received
 operator|>=
