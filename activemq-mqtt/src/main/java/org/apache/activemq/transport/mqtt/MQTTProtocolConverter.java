@@ -2512,6 +2512,22 @@ name|i
 operator|++
 control|)
 block|{
+name|MQTTProtocolSupport
+operator|.
+name|validate
+argument_list|(
+name|topics
+index|[
+name|i
+index|]
+operator|.
+name|name
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|qos
@@ -2618,6 +2634,13 @@ operator|+
 name|command
 argument_list|)
 expr_stmt|;
+throw|throw
+operator|new
+name|MQTTProtocolException
+argument_list|(
+literal|"SUBSCRIBE command received with no topic filter"
+argument_list|)
+throw|;
 block|}
 block|}
 specifier|public
@@ -2695,6 +2718,16 @@ range|:
 name|topics
 control|)
 block|{
+name|MQTTProtocolSupport
+operator|.
+name|validate
+argument_list|(
+name|topic
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|findSubscriptionStrategy
@@ -2728,7 +2761,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-block|}
 name|UNSUBACK
 name|ack
 init|=
@@ -2754,6 +2786,26 @@ name|encode
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"No topics defined for Subscription "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|MQTTProtocolException
+argument_list|(
+literal|"UNSUBSCRIBE command received with no topic filter"
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Dispatch an ActiveMQ command      */
 specifier|public
