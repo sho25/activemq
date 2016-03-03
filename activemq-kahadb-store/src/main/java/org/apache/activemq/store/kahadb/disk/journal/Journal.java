@@ -1926,13 +1926,11 @@ name|exists
 argument_list|()
 condition|)
 block|{
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|trace
 argument_list|(
-literal|"deleting file because it already exists..."
+literal|"deleting journal template file because it already exists..."
 argument_list|)
 expr_stmt|;
 name|rc
