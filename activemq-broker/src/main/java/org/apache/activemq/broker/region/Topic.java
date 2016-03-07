@@ -3539,6 +3539,13 @@ name|isActive
 argument_list|()
 condition|)
 block|{
+name|message
+operator|.
+name|setRegionDestination
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|messageExpired
 argument_list|(
 name|connectionContext
