@@ -3723,16 +3723,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Usage Manager Memory Limit ({}) reached (%{}) on {}, size {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
+literal|"Usage Manager Memory Limit ({}) reached on {}, size {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
 argument_list|,
 name|memoryUsage
 operator|.
 name|getLimit
-argument_list|()
-argument_list|,
-name|memoryUsage
-operator|.
-name|getPercentUsage
 argument_list|()
 argument_list|,
 name|getActiveMQDestination

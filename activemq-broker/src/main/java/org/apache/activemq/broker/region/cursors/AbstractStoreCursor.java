@@ -304,6 +304,12 @@ literal|2
 index|]
 decl_stmt|;
 specifier|protected
+name|boolean
+name|hadSpace
+init|=
+literal|false
+decl_stmt|;
+specifier|protected
 name|AbstractStoreCursor
 parameter_list|(
 name|Destination
@@ -2030,9 +2036,6 @@ operator|.
 name|size
 operator|>
 literal|0
-operator|&&
-name|hasSpace
-argument_list|()
 condition|)
 block|{
 try|try
