@@ -451,6 +451,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|MSG_PROPERTY_USAGE_COUNT
+init|=
+literal|"usageCount"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|MSG_PROPERTY_CONSUMER_ID
 init|=
 literal|"consumerId"

@@ -262,7 +262,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TopicProducerFlowControlTest
+name|TopicProducerToSubFileCursorTest
 extends|extends
 name|TestCase
 implements|implements
@@ -278,7 +278,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|TopicProducerFlowControlTest
+name|TopicProducerToSubFileCursorTest
 operator|.
 name|class
 argument_list|)
@@ -336,7 +336,7 @@ specifier|final
 name|int
 name|numMessagesToSend
 init|=
-literal|50000
+literal|20000
 decl_stmt|;
 specifier|private
 name|BrokerService
@@ -367,7 +367,14 @@ name|broker
 operator|.
 name|setPersistent
 argument_list|(
-literal|false
+literal|true
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|broker
@@ -430,6 +437,14 @@ argument_list|)
 expr_stmt|;
 name|tpe
 operator|.
+name|setCursorMemoryHighWaterMark
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
+comment|// 2% of global usage will match destMemLimit
+name|tpe
+operator|.
 name|setProducerFlowControl
 argument_list|(
 literal|true
@@ -464,6 +479,23 @@ argument_list|(
 name|broker
 argument_list|,
 name|pm
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+literal|100
+operator|*
+literal|1024
+operator|*
+literal|1024
 argument_list|)
 expr_stmt|;
 comment|// Start the broker
@@ -517,7 +549,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testTopicProducerFlowControl
+name|testTopicProducerFlowControlNotUsedWhenSubSpoolsToDiskOnTwoPercentSystemUsage
 parameter_list|()
 throws|throws
 name|Exception
@@ -611,7 +643,7 @@ operator|.
 name|setMessageListener
 argument_list|(
 operator|new
-name|TopicProducerFlowControlTest
+name|TopicProducerToSubFileCursorTest
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -658,21 +690,9 @@ parameter_list|)
 block|{
 try|try
 block|{
-if|if
-condition|(
-name|blockedCounter
-operator|.
-name|get
-argument_list|()
-operator|%
-literal|100
-operator|==
-literal|0
-condition|)
-block|{
 name|LOG
 operator|.
-name|info
+name|error
 argument_list|(
 literal|"Got full advisory, usageName: "
 operator|+
@@ -704,7 +724,6 @@ name|get
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 name|blockedCounter
 operator|.
 name|incrementAndGet
@@ -944,7 +963,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-literal|"Producer got blocked"
+literal|"Producer did not get blocked"
 argument_list|,
 name|Wait
 operator|.
@@ -968,7 +987,7 @@ name|blockedCounter
 operator|.
 name|get
 argument_list|()
-operator|>
+operator|==
 literal|0
 return|;
 block|}

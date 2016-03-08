@@ -1816,6 +1816,14 @@ argument_list|(
 name|subscription
 argument_list|)
 expr_stmt|;
+name|subscription
+operator|.
+name|setCursorMemoryHighWaterMark
+argument_list|(
+name|getCursorMemoryHighWaterMark
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|pendingMessageLimitStrategy
