@@ -2126,10 +2126,7 @@ name|equals
 argument_list|(
 name|i
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|brokerConsumerDests
 operator|.
 name|remove
@@ -2140,6 +2137,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual consumer pair removed: {} for consumer: {} "
+argument_list|,
+name|key
+argument_list|,
+name|i
+argument_list|)
+expr_stmt|;
 name|fireVirtualDestinationRemoveAdvisory
 argument_list|(
 name|context
@@ -2148,7 +2156,6 @@ name|consumerInfo
 argument_list|)
 expr_stmt|;
 break|break;
-block|}
 block|}
 block|}
 block|}
@@ -3812,6 +3819,15 @@ name|virtualDestination
 argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual destination added: {}"
+argument_list|,
+name|virtualDestination
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 comment|// Don't advise advisory topics.
@@ -4020,6 +4036,31 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|//store the virtual destination and the activeMQDestination as a pair so that we can keep track
+comment|//of all matching forwarded destinations that caused demand
+name|VirtualConsumerPair
+name|pair
+init|=
+operator|new
+name|VirtualConsumerPair
+argument_list|(
+name|virtualDestination
+argument_list|,
+name|activeMQDest
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|brokerConsumerDests
+operator|.
+name|get
+argument_list|(
+name|pair
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
 name|ConnectionId
 name|connectionId
 init|=
@@ -4068,21 +4109,13 @@ argument_list|(
 name|consumerId
 argument_list|)
 expr_stmt|;
-comment|//store the virtual destination and the activeMQDestination as a pair so that we can keep track
-comment|//of all matching forwarded destinations that caused demand
 if|if
 condition|(
 name|brokerConsumerDests
 operator|.
 name|putIfAbsent
 argument_list|(
-operator|new
-name|VirtualConsumerPair
-argument_list|(
-name|virtualDestination
-argument_list|,
-name|activeMQDest
-argument_list|)
+name|pair
 argument_list|,
 name|info
 argument_list|)
@@ -4090,6 +4123,17 @@ operator|==
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual consumer pair added: {} for consumer: {} "
+argument_list|,
+name|pair
+argument_list|,
+name|info
+argument_list|)
+expr_stmt|;
 name|info
 operator|.
 name|setDestination
@@ -4127,6 +4171,17 @@ operator|==
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual consumer added: {}, for virtual destination: {}"
+argument_list|,
+name|info
+argument_list|,
+name|virtualDestination
+argument_list|)
+expr_stmt|;
 name|fireConsumerAdvisory
 argument_list|(
 name|context
@@ -4141,6 +4196,7 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|//this is the case of a real consumer coming online
@@ -4191,6 +4247,17 @@ operator|==
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual consumer added: {}, for virtual destination: {}"
+argument_list|,
+name|info
+argument_list|,
+name|virtualDestination
+argument_list|)
+expr_stmt|;
 name|fireConsumerAdvisory
 argument_list|(
 name|context
@@ -4240,6 +4307,15 @@ name|virtualDestination
 argument_list|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual destination removed: {}"
+argument_list|,
+name|virtualDestination
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|consumersLock
@@ -4310,7 +4386,6 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
-block|}
 comment|//check consumers created for the existence of a destination to see if they
 comment|//match the consumerinfo and clean up
 for|for
@@ -4342,15 +4417,29 @@ name|equals
 argument_list|(
 name|i
 argument_list|)
-condition|)
-block|{
+operator|&&
 name|brokerConsumerDests
 operator|.
 name|remove
 argument_list|(
 name|activeMQDest
 argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual consumer pair removed: {} for consumer: {} "
+argument_list|,
+name|activeMQDest
+argument_list|,
+name|i
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4415,6 +4504,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Virtual consumer removed: {}, for virtual destination: {}"
+argument_list|,
+name|info
+argument_list|,
+name|virtualDestination
+argument_list|)
+expr_stmt|;
 name|ActiveMQTopic
 name|topic
 init|=
@@ -6069,6 +6169,25 @@ literal|false
 return|;
 return|return
 literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"VirtualConsumerPair [virtualDestination="
+operator|+
+name|virtualDestination
+operator|+
+literal|", activeMQDestination="
+operator|+
+name|activeMQDestination
+operator|+
+literal|"]"
 return|;
 block|}
 specifier|private
