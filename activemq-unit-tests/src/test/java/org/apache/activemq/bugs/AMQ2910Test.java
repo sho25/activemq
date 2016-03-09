@@ -368,7 +368,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|30
+literal|60
 operator|*
 literal|1000
 argument_list|)
