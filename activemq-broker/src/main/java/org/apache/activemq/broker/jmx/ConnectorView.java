@@ -240,7 +240,7 @@ name|this
 operator|.
 name|connector
 operator|.
-name|isUpdateClusterClientsOnRemove
+name|isUpdateClusterClients
 argument_list|()
 return|;
 block|}

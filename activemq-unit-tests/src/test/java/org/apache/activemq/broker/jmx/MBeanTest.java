@@ -5463,6 +5463,18 @@ operator|.
 name|getMBeanServer
 argument_list|()
 expr_stmt|;
+name|broker
+operator|.
+name|getTransportConnectorByScheme
+argument_list|(
+literal|"tcp"
+argument_list|)
+operator|.
+name|setUpdateClusterClientsOnRemove
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -9841,7 +9853,7 @@ name|isRebalanceClusterClients
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
 name|connector
 operator|.
