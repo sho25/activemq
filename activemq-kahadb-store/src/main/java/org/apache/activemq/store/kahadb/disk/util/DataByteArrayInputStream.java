@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -20,20 +20,6 @@ operator|.
 name|util
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ByteSequence
-import|;
-end_import
 
 begin_import
 import|import
@@ -75,8 +61,22 @@ name|UTFDataFormatException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ByteSequence
+import|;
+end_import
+
 begin_comment
-comment|/**  * Optimized ByteArrayInputStream that can be used more than once  *  *  */
+comment|/**  * Optimized ByteArrayInputStream that can be used more than once  */
 end_comment
 
 begin_class
@@ -88,6 +88,8 @@ extends|extends
 name|InputStream
 implements|implements
 name|DataInput
+implements|,
+name|AutoCloseable
 block|{
 specifier|private
 name|byte
@@ -370,6 +372,8 @@ name|size
 expr_stmt|;
 block|}
 comment|/**      * Reads the next byte of data from this input stream. The value byte is      * returned as an<code>int</code> in the range<code>0</code> to      *<code>255</code>. If no byte is available because the end of the      * stream has been reached, the value<code>-1</code> is returned.      *<p>      * This<code>read</code> method cannot block.      *      * @return the next byte of data, or<code>-1</code> if the end of the      *         stream has been reached.      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -397,6 +401,8 @@ literal|1
 return|;
 block|}
 comment|/**      * Reads up to<code>len</code> bytes of data into an array of bytes from      * this input stream.      *      * @param b the buffer into which the data is read.      * @param off the start offset of the data.      * @param len the maximum number of bytes read.      * @return the total number of bytes read into the buffer, or      *<code>-1</code> if there is no more data because the end of the      *         stream has been reached.      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|read
@@ -488,6 +494,8 @@ name|len
 return|;
 block|}
 comment|/**      * @return the number of bytes that can be read from the input stream      *         without blocking.      */
+annotation|@
+name|Override
 specifier|public
 name|int
 name|available
@@ -499,6 +507,8 @@ operator|-
 name|pos
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|readFully
@@ -520,6 +530,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|readFully
@@ -545,6 +557,8 @@ name|len
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|skipBytes
@@ -588,6 +602,8 @@ return|return
 name|n
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|readBoolean
@@ -600,6 +616,8 @@ operator|!=
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|readByte
@@ -613,6 +631,8 @@ name|read
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|readUnsignedByte
@@ -623,6 +643,8 @@ name|read
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|short
 name|readShort
@@ -668,6 +690,8 @@ operator|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|readUnsignedShort
@@ -685,10 +709,6 @@ literal|2
 argument_list|)
 expr_stmt|;
 return|return
-call|(
-name|int
-call|)
-argument_list|(
 operator|(
 operator|(
 name|work
@@ -710,9 +730,10 @@ index|]
 operator|&
 literal|0xff
 operator|)
-argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|char
 name|readChar
@@ -758,6 +779,8 @@ operator|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|readInt
@@ -824,6 +847,8 @@ literal|0xff
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|readLong
@@ -960,6 +985,8 @@ literal|0xffffffffL
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|float
 name|readFloat
@@ -977,6 +1004,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|double
 name|readDouble
@@ -994,6 +1023,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readLine
@@ -1069,6 +1100,8 @@ name|pos
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|readUTF

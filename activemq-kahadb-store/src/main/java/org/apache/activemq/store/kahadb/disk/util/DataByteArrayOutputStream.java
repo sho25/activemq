@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -20,40 +20,6 @@ operator|.
 name|util
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadb
-operator|.
-name|disk
-operator|.
-name|page
-operator|.
-name|PageFile
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|ByteSequence
-import|;
-end_import
 
 begin_import
 import|import
@@ -95,8 +61,42 @@ name|UTFDataFormatException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|disk
+operator|.
+name|page
+operator|.
+name|PageFile
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|ByteSequence
+import|;
+end_import
+
 begin_comment
-comment|/**  * Optimized ByteArrayOutputStream  *  *  */
+comment|/**  * Optimized ByteArrayOutputStream  */
 end_comment
 
 begin_class
@@ -107,6 +107,8 @@ extends|extends
 name|OutputStream
 implements|implements
 name|DataOutput
+implements|,
+name|AutoCloseable
 block|{
 specifier|private
 specifier|static
@@ -225,6 +227,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Writes the specified byte to this byte array output stream.      *      * @param b the byte to be written.      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -266,6 +270,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Writes<code>len</code> bytes from the specified byte array starting at      * offset<code>off</code> to this byte array output stream.      *      * @param b the data.      * @param off the start offset in the data.      * @param len the number of bytes to write.      * @throws IOException      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|write
@@ -382,6 +388,8 @@ return|return
 name|pos
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeBoolean
@@ -420,6 +428,8 @@ name|onWrite
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeByte
@@ -456,6 +466,8 @@ name|onWrite
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeShort
@@ -507,6 +519,8 @@ name|onWrite
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeChar
@@ -558,6 +572,8 @@ name|onWrite
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeInt
@@ -639,6 +655,8 @@ name|onWrite
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeLong
@@ -780,6 +798,8 @@ name|onWrite
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeFloat
@@ -801,6 +821,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeDouble
@@ -822,6 +844,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeBytes
@@ -870,6 +894,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeChars
@@ -937,6 +963,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeUTF
