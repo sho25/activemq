@@ -478,6 +478,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
+specifier|synchronized
 name|CompositeType
 name|getCompositeType
 parameter_list|()
