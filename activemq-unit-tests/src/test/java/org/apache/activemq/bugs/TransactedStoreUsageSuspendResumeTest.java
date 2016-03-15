@@ -686,6 +686,13 @@ operator|*
 literal|1000
 argument_list|)
 expr_stmt|;
+name|kahaDB
+operator|.
+name|setCompactAcksAfterNoGC
+argument_list|(
+literal|5
+argument_list|)
+expr_stmt|;
 name|broker
 operator|.
 name|setPersistenceAdapter
@@ -805,7 +812,7 @@ name|sendExecutor
 operator|.
 name|awaitTermination
 argument_list|(
-literal|5
+literal|10
 argument_list|,
 name|TimeUnit
 operator|.
@@ -917,7 +924,7 @@ name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|2
+literal|5
 argument_list|)
 expr_stmt|;
 block|}
