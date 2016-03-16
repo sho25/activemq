@@ -368,6 +368,8 @@ name|absPath
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|hashCode
@@ -557,6 +559,8 @@ return|return
 name|baseDir
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString

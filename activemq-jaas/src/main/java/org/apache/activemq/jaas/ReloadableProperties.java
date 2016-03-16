@@ -251,6 +251,10 @@ name|invertedProps
 operator|=
 literal|null
 expr_stmt|;
+name|invertedValueProps
+operator|=
+literal|null
+expr_stmt|;
 if|if
 condition|(
 name|key
