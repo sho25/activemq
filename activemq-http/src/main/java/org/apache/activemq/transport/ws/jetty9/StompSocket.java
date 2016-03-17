@@ -301,7 +301,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Stomp WebSocket closed: code[{}] message[{}]"
 argument_list|,
@@ -335,9 +335,9 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
-literal|"Failed to close WebSocket"
+literal|"Failed to close STOMP WebSocket cleanly"
 argument_list|,
 name|e
 argument_list|)

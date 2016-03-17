@@ -1472,6 +1472,8 @@ operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|wsStompConnection
 operator|.
 name|sendFrame
@@ -1487,6 +1489,23 @@ name|DISCONNECT
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Caught exception on write of disconnect"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

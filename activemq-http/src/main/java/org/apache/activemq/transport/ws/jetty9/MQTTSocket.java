@@ -426,9 +426,9 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warn
+name|debug
 argument_list|(
-literal|"Failed to close WebSocket"
+literal|"Failed to close MQTT WebSocket cleanly"
 argument_list|,
 name|e
 argument_list|)
