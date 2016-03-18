@@ -126,13 +126,20 @@ comment|/**      * @param prioritizedMessages      */
 specifier|public
 name|MultiKahaDBPendingMessageCursorTest
 parameter_list|(
+specifier|final
 name|boolean
 name|prioritizedMessages
+parameter_list|,
+specifier|final
+name|boolean
+name|enableSubscriptionStatistics
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|prioritizedMessages
+argument_list|,
+name|enableSubscriptionStatistics
 argument_list|)
 expr_stmt|;
 block|}
@@ -187,6 +194,13 @@ argument_list|(
 literal|1024
 operator|*
 literal|512
+argument_list|)
+expr_stmt|;
+name|kahaStore
+operator|.
+name|setEnableSubscriptionStatistics
+argument_list|(
+name|enableSubscriptionStatistics
 argument_list|)
 expr_stmt|;
 comment|//set up a store per destination

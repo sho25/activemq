@@ -2099,6 +2099,36 @@ name|enableAckCompaction
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Whether non-blocking subscription statistics have been enabled      *      * @return      */
+specifier|public
+name|boolean
+name|isEnableSubscriptionStatistics
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|isEnableSubscriptionStatistics
+argument_list|()
+return|;
+block|}
+comment|/**      * Enable caching statistics for each subscription to allow non-blocking      * retrieval of metrics.  This could incur some overhead to compute if there are a lot      * of subscriptions.      *      * @param enableSubscriptionStatistics      */
+specifier|public
+name|void
+name|setEnableSubscriptionStatistics
+parameter_list|(
+name|boolean
+name|enableSubscriptionStatistics
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setEnableSubscriptionStatistics
+argument_list|(
+name|enableSubscriptionStatistics
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|KahaDBStore
 name|getStore

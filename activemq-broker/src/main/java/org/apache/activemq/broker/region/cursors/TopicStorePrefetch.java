@@ -341,7 +341,6 @@ operator|.
 name|incrementReferenceCount
 argument_list|()
 expr_stmt|;
-comment|//this.messageSize.addSize(node.getMessage().getSize());
 block|}
 annotation|@
 name|Override

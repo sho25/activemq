@@ -196,6 +196,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
+comment|/**      * Get the total size of the messages ready to deliver from the store to the      * durable subscriber      *      * @param clientId      * @param subscriberName      * @return      * @throws IOException      */
 name|long
 name|getMessageSize
 parameter_list|(
@@ -207,6 +208,11 @@ name|subscriberName
 parameter_list|)
 throws|throws
 name|IOException
+function_decl|;
+comment|/**      * The subscription metrics contained in this store      *      * @param subscriptionKey      * @return      */
+name|MessageStoreSubscriptionStatistics
+name|getMessageStoreSubStatistics
+parameter_list|()
 function_decl|;
 comment|/**      * Finds the subscriber entry for the given consumer info      *      * @param clientId      * @param subscriptionName      *      * @return the SubscriptionInfo      *      * @throws IOException      */
 name|SubscriptionInfo
