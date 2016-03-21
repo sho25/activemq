@@ -283,6 +283,18 @@ name|ActiveMQTextMessage
 name|copy
 parameter_list|)
 block|{
+comment|//AMQ-6218 - Save text before calling super.copy() to prevent a race condition when
+comment|//concurrent store and dispatch is enabled in KahaDB
+comment|//The issue is sometimes beforeMarshall() gets called in between the time content and
+comment|//text are copied to the new object leading to both fields being null when text should
+comment|//not be null
+name|String
+name|text
+init|=
+name|this
+operator|.
+name|text
+decl_stmt|;
 name|super
 operator|.
 name|copy
@@ -361,6 +373,13 @@ init|=
 name|getContent
 argument_list|()
 decl_stmt|;
+name|String
+name|text
+init|=
+name|this
+operator|.
+name|text
+decl_stmt|;
 if|if
 condition|(
 name|text
@@ -378,6 +397,12 @@ name|decodeContent
 argument_list|(
 name|content
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|text
+operator|=
+name|text
 expr_stmt|;
 name|setContent
 argument_list|(
