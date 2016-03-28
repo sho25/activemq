@@ -256,6 +256,12 @@ name|t
 return|;
 block|}
 block|}
+argument_list|,
+operator|new
+name|ThreadPoolExecutor
+operator|.
+name|CallerRunsPolicy
+argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
