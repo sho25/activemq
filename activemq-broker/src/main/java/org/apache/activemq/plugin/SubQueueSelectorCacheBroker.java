@@ -630,7 +630,6 @@ name|join
 argument_list|()
 expr_stmt|;
 block|}
-comment|//if
 name|unregisterMBeans
 argument_list|()
 expr_stmt|;
@@ -704,7 +703,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// don't track selectors for advisory topics
+comment|// don't track selectors for advisory topics or temp destinations
 if|if
 condition|(
 operator|!
@@ -717,6 +716,15 @@ operator|.
 name|getDestination
 argument_list|()
 argument_list|)
+operator|&&
+operator|!
+name|info
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isTemporary
+argument_list|()
 condition|)
 block|{
 name|String
@@ -1026,6 +1034,11 @@ name|info
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|private
 name|void
 name|readCache
@@ -1110,7 +1123,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//try
 block|}
 finally|finally
 block|{
@@ -1120,7 +1132,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//try
 block|}
 catch|catch
 parameter_list|(
@@ -1138,9 +1149,7 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-comment|//try
 block|}
-comment|//if
 block|}
 comment|/**      * Persist the selector cache.      */
 specifier|private
@@ -1200,7 +1209,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//try
 block|}
 catch|catch
 parameter_list|(
@@ -1226,7 +1234,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//try
 block|}
 catch|catch
 parameter_list|(
@@ -1246,7 +1253,6 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
-comment|//try
 block|}
 comment|/**      * @return The JMS selector for the specified {@code destination}      */
 specifier|public
@@ -1299,7 +1305,6 @@ name|InterruptedException
 name|ex
 parameter_list|)
 block|{             }
-comment|//try
 name|persistCache
 argument_list|()
 expr_stmt|;
@@ -1329,6 +1334,11 @@ operator|=
 name|singleSelectorPerDestination
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|Set
 argument_list|<
