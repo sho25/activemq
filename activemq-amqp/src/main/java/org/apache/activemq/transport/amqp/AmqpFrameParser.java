@@ -75,6 +75,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|IOExceptionSupport
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|fusesource
 operator|.
 name|hawtbuf
@@ -317,15 +331,12 @@ name|maxFrameSize
 condition|)
 block|{
 throw|throw
-operator|new
-name|IOException
+name|IOExceptionSupport
+operator|.
+name|createFrameSizeException
 argument_list|(
-literal|"Frame size of "
-operator|+
 name|frameSize
-operator|+
-literal|" larger than max allowed "
-operator|+
+argument_list|,
 name|maxFrameSize
 argument_list|)
 throw|;
