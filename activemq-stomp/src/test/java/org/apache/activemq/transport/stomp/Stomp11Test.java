@@ -2872,6 +2872,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Expected MESSAGE but got: "
+operator|+
+name|received
+operator|.
+name|getAction
+argument_list|()
+argument_list|,
 name|received
 operator|.
 name|getAction
@@ -2932,6 +2939,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Expected ERROR but got: "
+operator|+
+name|error
+operator|.
+name|getAction
+argument_list|()
+argument_list|,
 name|error
 operator|.
 name|getAction
