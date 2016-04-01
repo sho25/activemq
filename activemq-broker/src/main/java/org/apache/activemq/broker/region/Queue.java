@@ -4725,11 +4725,19 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|//AMQ-6133 - don't store async if using persistJMSRedelivered
+comment|//This flag causes a sync update later on dispatch which can cause a race
+comment|//condition if the original add is processed after the update, which can cause
+comment|//a duplicate message to be stored
 if|if
 condition|(
 name|messages
 operator|.
 name|isCacheEnabled
+argument_list|()
+operator|&&
+operator|!
+name|isPersistJMSRedelivered
 argument_list|()
 condition|)
 block|{
