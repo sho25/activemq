@@ -2069,6 +2069,36 @@ name|compactAcksIgnoresStoreGrowth
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns whether Ack compaction is enabled      *      * @return enableAckCompaction      */
+specifier|public
+name|boolean
+name|isEnableAckCompaction
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|isEnableAckCompaction
+argument_list|()
+return|;
+block|}
+comment|/**      * Configure if the Ack compaction task should be enabled to run      *      * @param enableAckCompaction      */
+specifier|public
+name|void
+name|setEnableAckCompaction
+parameter_list|(
+name|boolean
+name|enableAckCompaction
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setEnableAckCompaction
+argument_list|(
+name|enableAckCompaction
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|KahaDBStore
 name|getStore
