@@ -122,6 +122,20 @@ name|MultiKahaDBPendingMessageCursorTest
 extends|extends
 name|KahaDBPendingMessageCursorTest
 block|{
+comment|/**      * @param prioritizedMessages      */
+specifier|public
+name|MultiKahaDBPendingMessageCursorTest
+parameter_list|(
+name|boolean
+name|prioritizedMessages
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|prioritizedMessages
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|protected
