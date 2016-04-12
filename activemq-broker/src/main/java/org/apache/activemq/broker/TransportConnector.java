@@ -1196,12 +1196,24 @@ name|String
 name|remoteHost
 parameter_list|)
 block|{
+if|if
+condition|(
+name|brokerService
+operator|!=
+literal|null
+operator|&&
+name|brokerService
+operator|.
+name|isStopping
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
-name|error
+name|info
 argument_list|(
-literal|"Could not accept connection "
-operator|+
+literal|"Could not accept connection during shutdown {} : {}"
+argument_list|,
 operator|(
 name|remoteHost
 operator|==
@@ -1213,9 +1225,31 @@ literal|"from "
 operator|+
 name|remoteHost
 operator|)
+argument_list|,
+name|error
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Could not accept connection {} : {}"
+argument_list|,
+operator|(
+name|remoteHost
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+literal|"from "
 operator|+
-literal|": "
-operator|+
+name|remoteHost
+operator|)
+argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
@@ -1230,6 +1264,7 @@ argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -2419,6 +2454,8 @@ name|updateClusterClientsOnRemove
 expr_stmt|;
 block|}
 comment|/**      * @return the updateClusterFilter      */
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getUpdateClusterFilter
