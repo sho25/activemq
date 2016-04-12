@@ -4804,7 +4804,7 @@ argument_list|)
 return|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|Response
 name|doSyncSendPacket
 parameter_list|(

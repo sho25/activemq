@@ -204,7 +204,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|int
 name|messageSize
@@ -213,14 +213,14 @@ literal|1024
 operator|*
 literal|64
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|int
 name|messageCount
 init|=
 literal|10000
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|AtomicInteger
 name|exceptionCount
@@ -736,7 +736,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|protected
 name|String
 name|createMessageText
 parameter_list|()
