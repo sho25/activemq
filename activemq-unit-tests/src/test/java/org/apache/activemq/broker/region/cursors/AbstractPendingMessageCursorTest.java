@@ -32,6 +32,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -2206,6 +2218,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -2233,6 +2247,7 @@ name|count
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|verifySize
@@ -2311,6 +2326,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -2338,6 +2355,7 @@ name|count
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|verifySize
@@ -2416,6 +2434,8 @@ name|subKey
 argument_list|)
 decl_stmt|;
 comment|//verify message count
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -2443,6 +2463,7 @@ name|count
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//verify message size
@@ -2513,6 +2534,8 @@ operator|.
 name|getMessageStore
 argument_list|()
 decl_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -2540,6 +2563,7 @@ name|storeCount
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|verifySize
@@ -2598,6 +2622,8 @@ operator|>
 literal|0
 condition|)
 block|{
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -2626,10 +2652,13 @@ return|;
 block|}
 block|}
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -2657,6 +2686,7 @@ literal|0
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

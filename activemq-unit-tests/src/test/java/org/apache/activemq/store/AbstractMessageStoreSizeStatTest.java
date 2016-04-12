@@ -877,6 +877,8 @@ operator|.
 name|getMessageStoreStatistics
 argument_list|()
 decl_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -940,6 +942,7 @@ return|;
 block|}
 block|}
 argument_list|)
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -961,6 +964,8 @@ operator|>
 name|minimumSize
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -992,10 +997,13 @@ return|;
 block|}
 block|}
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
+name|assertTrue
+argument_list|(
 name|Wait
 operator|.
 name|waitFor
@@ -1026,6 +1034,7 @@ literal|0
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
