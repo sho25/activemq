@@ -3738,6 +3738,16 @@ name|list
 control|)
 block|{
 comment|// ensure we don't filter this as a duplicate
+if|if
+condition|(
+name|old
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|LOG
 operator|.
 name|debug
@@ -3753,6 +3763,7 @@ name|getMessageId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|connection
