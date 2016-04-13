@@ -1436,7 +1436,6 @@ name|getQualifiedName
 argument_list|()
 argument_list|)
 expr_stmt|;
-continue|continue;
 block|}
 block|}
 catch|catch
@@ -1464,6 +1463,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|ProtocolException
@@ -1477,6 +1478,7 @@ operator|+
 literal|"must begin with one of: /queue/ /topic/ /temp-queue/ /temp-topic/"
 argument_list|)
 throw|;
+block|}
 block|}
 if|if
 condition|(
