@@ -2241,7 +2241,8 @@ name|content
 decl_stmt|;
 if|if
 condition|(
-name|compressed
+name|isCompressed
+argument_list|()
 condition|)
 block|{
 name|toRestore
@@ -2256,6 +2257,10 @@ operator|.
 name|content
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|compressed
+operator|=
+literal|false
 expr_stmt|;
 block|}
 name|this
