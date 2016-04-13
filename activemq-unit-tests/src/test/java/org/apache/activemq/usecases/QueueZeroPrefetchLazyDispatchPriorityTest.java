@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *<p/>  * http://www.apache.org/licenses/LICENSE-2.0  *<p/>  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *<p/>  * http://www.apache.org/licenses/LICENSE-2.0  *<p/>  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -14,6 +14,42 @@ operator|.
 name|usecases
 package|;
 end_package
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
 
 begin_import
 import|import
@@ -127,16 +163,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -215,6 +241,36 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -235,9 +291,8 @@ begin_class
 specifier|public
 class|class
 name|QueueZeroPrefetchLazyDispatchPriorityTest
-extends|extends
-name|TestCase
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|Logger
@@ -253,11 +308,6 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|private
-name|BrokerService
-name|broker
-decl_stmt|;
-specifier|public
-specifier|static
 specifier|final
 name|byte
 index|[]
@@ -288,7 +338,20 @@ block|,
 literal|9
 block|}
 decl_stmt|;
-specifier|protected
+specifier|private
+specifier|final
+name|int
+name|ITERATIONS
+init|=
+literal|10
+decl_stmt|;
+specifier|private
+name|BrokerService
+name|broker
+decl_stmt|;
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -311,7 +374,9 @@ name|waitUntilStarted
 argument_list|()
 expr_stmt|;
 block|}
-specifier|protected
+annotation|@
+name|After
+specifier|public
 name|void
 name|tearDown
 parameter_list|()
@@ -332,6 +397,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testPriorityMessages
@@ -348,13 +420,13 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5
+name|ITERATIONS
 condition|;
 name|i
 operator|++
 control|)
 block|{
-comment|//send 4 message priority MEDIUM
+comment|// send 4 message priority MEDIUM
 name|produceMessages
 argument_list|(
 literal|4
@@ -364,7 +436,7 @@ argument_list|,
 literal|"TestQ"
 argument_list|)
 expr_stmt|;
-comment|//send 1 message priority HIGH
+comment|// send 1 message priority HIGH
 name|produceMessages
 argument_list|(
 literal|1
@@ -378,8 +450,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"On iteration "
-operator|+
+literal|"On iteration {}"
+argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
@@ -502,6 +574,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|120000
+argument_list|)
 specifier|public
 name|void
 name|testPriorityMessagesMoreThanPageSize
@@ -524,7 +603,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5
+name|ITERATIONS
 condition|;
 name|i
 operator|++
@@ -549,7 +628,7 @@ argument_list|(
 literal|700
 argument_list|)
 expr_stmt|;
-comment|//send 1 message priority HIGH
+comment|// send 1 message priority HIGH
 name|produceMessages
 argument_list|(
 literal|1
@@ -570,8 +649,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"On iteration "
-operator|+
+literal|"On iteration {}"
+argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
@@ -591,8 +670,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Consumed list "
-operator|+
+literal|"Consumed list {}"
+argument_list|,
 name|consumeList
 operator|.
 name|size
@@ -600,6 +679,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// compare lists
+name|assertFalse
+argument_list|(
+literal|"Consumed list should not be empty"
+argument_list|,
+name|consumeList
+operator|.
+name|isEmpty
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"message 1 should be priority high"
@@ -660,6 +749,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testLongLivedPriorityConsumer
@@ -742,7 +838,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5
+name|ITERATIONS
 condition|;
 name|i
 operator|++
@@ -759,7 +855,7 @@ argument_list|,
 literal|"TestQ"
 argument_list|)
 expr_stmt|;
-comment|//send 1 message priority HIGH
+comment|// send 1 message priority HIGH
 name|produceMessages
 argument_list|(
 literal|1
@@ -816,8 +912,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Consumed list "
-operator|+
+literal|"Consumed list {}"
+argument_list|,
 name|consumeList
 operator|.
 name|size
@@ -846,6 +942,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testPriorityMessagesWithJmsBrowser
@@ -868,7 +971,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|5
+name|ITERATIONS
 condition|;
 name|i
 operator|++
@@ -900,15 +1003,15 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Browsed: "
-operator|+
+literal|"Browsed: {}"
+argument_list|,
 name|browsed
 operator|.
 name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//send 1 message priority HIGH
+comment|// send 1 message priority HIGH
 name|produceMessages
 argument_list|(
 literal|1
@@ -929,8 +1032,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"On iteration "
-operator|+
+literal|"On iteration {}"
+argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
@@ -973,8 +1076,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Consumed list "
-operator|+
+literal|"Consumed list {}"
+argument_list|,
 name|consumeList
 operator|.
 name|size
@@ -982,7 +1085,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// compare lists
-comment|//assertEquals("Iteration: " + i +", message 1 should be priority high", 5, consumeList.get(0).getJMSPriority());
+comment|// assertEquals("Iteration: " + i
+comment|// +", message 1 should be priority high", 5,
+comment|// consumeList.get(0).getJMSPriority());
 for|for
 control|(
 name|int
@@ -1030,6 +1135,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|90000
+argument_list|)
 specifier|public
 name|void
 name|testJmsBrowserGetsPagedIn
@@ -1052,7 +1164,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+name|ITERATIONS
 condition|;
 name|i
 operator|++
@@ -1082,8 +1194,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Browsed: "
-operator|+
+literal|"Browsed: {}"
+argument_list|,
 name|browsed
 operator|.
 name|size
@@ -1128,8 +1240,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Browsed: "
-operator|+
+literal|"Browsed: {}"
+argument_list|,
 name|browsed
 operator|.
 name|size
@@ -1603,7 +1715,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|1000
+literal|2000
 argument_list|)
 return|;
 block|}
@@ -1711,6 +1823,9 @@ name|start
 argument_list|()
 expr_stmt|;
 name|Enumeration
+argument_list|<
+name|?
+argument_list|>
 name|enumeration
 init|=
 name|consumer
@@ -1787,7 +1902,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//add the policy entries
+comment|// add the policy entries
 name|PolicyMap
 name|policyMap
 init|=
