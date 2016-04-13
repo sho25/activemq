@@ -237,14 +237,13 @@ name|replaceConfigurationFile
 import|;
 end_import
 
+begin_comment
+comment|//@RunWith(PaxExam.class)
+end_comment
+
 begin_class
 annotation|@
-name|RunWith
-argument_list|(
-name|PaxExam
-operator|.
-name|class
-argument_list|)
+name|Ignore
 specifier|public
 class|class
 name|ActiveMQBrokerNdCamelFeatureTest
