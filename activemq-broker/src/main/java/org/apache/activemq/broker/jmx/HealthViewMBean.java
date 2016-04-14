@@ -55,7 +55,7 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link HealthStatus} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #getCurrentStatus()} method instead!      */
+comment|/**      * Warning this method can only be invoked if you have the correct version      * of {@link HealthStatus} on your classpath or you use something      * like<a href="http://jolokia.org/">jolokia</a> to access JMX.      *      * If in doubt, please use the {@link #getCurrentStatus()} method instead!      *      * @return a list of HealthStatus objects that describe the health of the Broker.      */
 annotation|@
 name|MBeanInfo
 argument_list|(
@@ -70,7 +70,19 @@ parameter_list|()
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * @return String representation of the current Broker state      */
+comment|/**      * @return a String representation of current Broker health state.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"String representation of current Broker state"
+argument_list|)
+name|String
+name|healthStatus
+parameter_list|()
+throws|throws
+name|Exception
+function_decl|;
+comment|/**      * Warning, this method only return a value if the health or healthList method has previously      * been called.  The value is not updated on its own and requires periodic calls to the health      * or healthList methods to refresh its value.      *      * @return String representation of the current Broker state      */
 annotation|@
 name|MBeanInfo
 argument_list|(
