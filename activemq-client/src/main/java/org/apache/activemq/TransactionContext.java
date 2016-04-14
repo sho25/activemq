@@ -1148,15 +1148,6 @@ name|this
 operator|.
 name|connection
 operator|.
-name|getSendTimeout
-argument_list|()
-operator|>
-literal|0
-operator|&&
-name|this
-operator|.
-name|connection
-operator|.
 name|isClosing
 argument_list|()
 condition|?
@@ -1164,7 +1155,7 @@ name|this
 operator|.
 name|connection
 operator|.
-name|getSendTimeout
+name|getCloseTimeout
 argument_list|()
 else|:
 literal|0
