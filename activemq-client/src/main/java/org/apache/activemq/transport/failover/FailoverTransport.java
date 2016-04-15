@@ -4838,8 +4838,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// Sleep for the reconnectDelay if there's no backup and we aren't trying
-comment|// for the first time, or we were disposed for some reason.
+comment|// When there was no backup and we are reconnecting for the first time
+comment|// we honor the initialReconnectDelay before trying a new connection, after
+comment|// this normal reconnect delay happens following a failed attempt.
 if|if
 condition|(
 name|transport
@@ -4849,67 +4850,25 @@ operator|&&
 operator|!
 name|firstConnection
 operator|&&
-operator|(
-name|reconnectDelay
+name|connectFailures
+operator|==
+literal|0
+operator|&&
+name|initialReconnectDelay
 operator|>
 literal|0
-operator|)
 operator|&&
 operator|!
 name|disposed
 condition|)
 block|{
-synchronized|synchronized
-init|(
-name|sleepMutex
-init|)
-block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Waiting "
-operator|+
-name|reconnectDelay
-operator|+
-literal|" ms before attempting connection. "
-argument_list|)
-expr_stmt|;
-block|}
-try|try
-block|{
-name|sleepMutex
-operator|.
-name|wait
-argument_list|(
-name|reconnectDelay
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
+comment|// reconnectDelay will be equal to initialReconnectDelay since we are on
+comment|// the first connect attempt after we had a working connection, doDelay
+comment|// will apply updates to move to the next reconnectDelay value based on
+comment|// configuration.
+name|doDelay
 argument_list|()
 expr_stmt|;
-block|}
-block|}
 block|}
 name|Iterator
 argument_list|<
@@ -5422,26 +5381,15 @@ init|(
 name|sleepMutex
 init|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Waiting "
-operator|+
+literal|"Waiting {} ms before attempting connection"
+argument_list|,
 name|reconnectDelay
-operator|+
-literal|" ms before attempting connection"
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 name|sleepMutex
