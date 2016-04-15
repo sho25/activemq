@@ -825,6 +825,8 @@ name|firstMessage
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onMessage
