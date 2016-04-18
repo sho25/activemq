@@ -893,15 +893,7 @@ init|=
 operator|new
 name|DefaultTransportListener
 argument_list|()
-block|{     }
-decl_stmt|;
-specifier|private
-specifier|final
-name|TransportListener
-name|myTransportListener
-init|=
-name|createTransportListener
-argument_list|()
+block|{}
 decl_stmt|;
 specifier|private
 name|boolean
@@ -1199,23 +1191,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|TransportListener
-name|createTransportListener
-parameter_list|()
-block|{
-return|return
-operator|new
-name|TransportListener
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
+specifier|private
 name|void
-name|onCommand
+name|processCommand
 parameter_list|(
 name|Object
-name|o
+name|incoming
 parameter_list|)
 block|{
 name|Command
@@ -1224,7 +1205,7 @@ init|=
 operator|(
 name|Command
 operator|)
-name|o
+name|incoming
 decl_stmt|;
 if|if
 condition|(
@@ -1380,6 +1361,36 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+specifier|private
+name|TransportListener
+name|createTransportListener
+parameter_list|(
+specifier|final
+name|Transport
+name|owner
+parameter_list|)
+block|{
+return|return
+operator|new
+name|TransportListener
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|onCommand
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+name|processCommand
+argument_list|(
+name|o
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -1394,6 +1405,8 @@ try|try
 block|{
 name|handleTransportFailure
 argument_list|(
+name|owner
+argument_list|,
 name|error
 argument_list|)
 expr_stmt|;
@@ -1412,6 +1425,13 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|transportListener
+operator|!=
+literal|null
+condition|)
+block|{
 name|transportListener
 operator|.
 name|onException
@@ -1423,48 +1443,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 annotation|@
 name|Override
 specifier|public
 name|void
 name|transportInterupted
 parameter_list|()
-block|{
-if|if
-condition|(
-name|transportListener
-operator|!=
-literal|null
-condition|)
-block|{
-name|transportListener
-operator|.
-name|transportInterupted
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+block|{             }
 annotation|@
 name|Override
 specifier|public
 name|void
 name|transportResumed
 parameter_list|()
-block|{
-if|if
-condition|(
-name|transportListener
-operator|!=
-literal|null
-condition|)
-block|{
-name|transportListener
-operator|.
-name|transportResumed
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+block|{             }
 block|}
 return|;
 block|}
@@ -1497,6 +1490,29 @@ specifier|final
 name|void
 name|handleTransportFailure
 parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+throws|throws
+name|InterruptedException
+block|{
+name|handleTransportFailure
+argument_list|(
+name|getConnectedTransport
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+specifier|final
+name|void
+name|handleTransportFailure
+parameter_list|(
+name|Transport
+name|failed
+parameter_list|,
 name|IOException
 name|e
 parameter_list|)
@@ -1538,13 +1554,24 @@ comment|// could be blocked in write with the reconnectMutex held, but still nee
 name|Transport
 name|transport
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
 name|connectedTransport
 operator|.
-name|getAndSet
+name|compareAndSet
 argument_list|(
+name|failed
+argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+condition|)
+block|{
+name|transport
+operator|=
+name|failed
+expr_stmt|;
 if|if
 condition|(
 name|transport
@@ -1557,6 +1584,7 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 synchronized|synchronized
 init|(
@@ -1597,12 +1625,10 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Transport ("
-operator|+
-name|connectedTransportURI
-operator|+
-literal|") failed"
-operator|+
+literal|"Transport ({}) failed {} attempting to automatically reconnect: {}"
+argument_list|,
+name|connectedTransport
+argument_list|,
 operator|(
 name|reconnectOk
 condition|?
@@ -1610,8 +1636,6 @@ literal|","
 else|:
 literal|", not"
 operator|)
-operator|+
-literal|" attempting to automatically reconnect"
 argument_list|,
 name|e
 argument_list|)
@@ -2002,24 +2026,15 @@ init|(
 name|reconnectMutex
 init|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Started "
-operator|+
+literal|"Started {}"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|started
@@ -2137,8 +2152,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stopped "
-operator|+
+literal|"Stopped {}"
+argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
@@ -2277,24 +2292,15 @@ control|)
 block|{
 try|try
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Stopped backup: "
-operator|+
+literal|"Stopped backup: {}"
+argument_list|,
 name|transport
 argument_list|)
 expr_stmt|;
-block|}
 name|disposeTransport
 argument_list|(
 name|transport
@@ -2876,9 +2882,7 @@ name|getCommandId
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|myTransportListener
-operator|.
-name|onCommand
+name|processCommand
 argument_list|(
 name|response
 argument_list|)
@@ -2940,9 +2944,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|myTransportListener
-operator|.
-name|onCommand
+name|processCommand
 argument_list|(
 name|dispatch
 argument_list|)
@@ -3016,24 +3018,15 @@ name|willReconnect
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Waiting for transport to reconnect..: "
-operator|+
+literal|"Waiting for transport to reconnect..: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 name|long
 name|end
 init|=
@@ -3066,30 +3059,19 @@ name|timedout
 operator|=
 literal|true
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isInfoEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Failover timed out after "
-operator|+
+literal|"Failover timed out after {} ms"
+argument_list|,
 operator|(
 name|end
 operator|-
 name|start
 operator|)
-operator|+
-literal|"ms"
 argument_list|)
 expr_stmt|;
-block|}
 break|break;
 block|}
 try|try
@@ -3116,26 +3098,15 @@ operator|.
 name|interrupt
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Interupted: "
-operator|+
-name|e
+literal|"Interupted:"
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|transport
 operator|=
@@ -3263,8 +3234,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Cannot track the command "
-operator|+
+literal|"Cannot track the command {} {}"
+argument_list|,
 name|command
 argument_list|,
 name|ioe
@@ -3429,28 +3400,17 @@ else|else
 block|{
 comment|// Handle the error but allow the method to return since the
 comment|// tracked commands are replayed on reconnect.
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Send oneway attempt: "
-operator|+
+literal|"Send oneway attempt: {} failed for command: {}"
+argument_list|,
 name|i
-operator|+
-literal|" failed for command:"
-operator|+
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 name|handleTransportFailure
 argument_list|(
 name|e
@@ -3466,28 +3426,17 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Send oneway attempt: "
-operator|+
+literal|"Send oneway attempt: {} failed for command: {}"
+argument_list|,
 name|i
-operator|+
-literal|" failed for command:"
-operator|+
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 name|handleTransportFailure
 argument_list|(
 name|e
@@ -3785,8 +3734,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to parse URI: "
-operator|+
+literal|"Failed to parse URI: {}"
+argument_list|,
 name|u
 argument_list|)
 expr_stmt|;
@@ -4016,28 +3965,17 @@ name|failedConnectTransportURI
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"urlList connectionList:"
-operator|+
+literal|"urlList connectionList:{}, from: {}"
+argument_list|,
 name|l
-operator|+
-literal|", from: "
-operator|+
+argument_list|,
 name|uris
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|l
 return|;
@@ -4231,24 +4169,15 @@ name|values
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"restore requestMap, replay: "
-operator|+
+literal|"restore requestMap, replay: {}"
+argument_list|,
 name|command
 argument_list|)
 expr_stmt|;
-block|}
 name|t
 operator|.
 name|oneway
@@ -4445,8 +4374,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to read updateURIsURL: "
-operator|+
+literal|"Failed to read updateURIsURL: {} {}"
+argument_list|,
 name|fileURL
 argument_list|,
 name|ioe
@@ -4615,28 +4544,17 @@ return|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Doing rebalance from: "
-operator|+
+literal|"Doing rebalance from: {} to {}"
+argument_list|,
 name|connectedTransportURI
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|connectList
 argument_list|)
 expr_stmt|;
-block|}
 try|try
 block|{
 name|Transport
@@ -4671,14 +4589,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -4688,7 +4598,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|doRebalance
@@ -4789,9 +4698,7 @@ operator|.
 name|getUri
 argument_list|()
 expr_stmt|;
-name|myTransportListener
-operator|.
-name|onCommand
+name|processCommand
 argument_list|(
 name|bt
 operator|.
@@ -4945,33 +4852,25 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Attempting  "
-operator|+
+literal|"Attempting {}th connect to: {}"
+argument_list|,
 name|connectFailures
-operator|+
-literal|"th  connect to: "
-operator|+
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
-block|}
 name|transport
 operator|.
 name|setTransportListener
 argument_list|(
-name|myTransportListener
+name|createTransportListener
+argument_list|(
+name|transport
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|transport
@@ -4993,14 +4892,6 @@ name|transport
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -5008,7 +4899,6 @@ argument_list|(
 literal|"Connection established"
 argument_list|)
 expr_stmt|;
-block|}
 name|reconnectDelay
 operator|=
 name|initialReconnectDelay
@@ -5088,14 +4978,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -5103,7 +4985,6 @@ argument_list|(
 literal|"transport resumed by transport listener not set"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -5118,8 +4999,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Successfully connected to "
-operator|+
+literal|"Successfully connected to {}"
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
@@ -5130,8 +5011,8 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Successfully reconnected to "
-operator|+
+literal|"Successfully reconnected to {}"
+argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
@@ -5150,28 +5031,17 @@ name|failure
 operator|=
 name|e
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Connect fail to: "
-operator|+
+literal|"Connect fail to: {}, reason: {}"
+argument_list|,
 name|uri
-operator|+
-literal|", reason: "
-operator|+
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|transport
@@ -5197,28 +5067,17 @@ name|Exception
 name|ee
 parameter_list|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isDebugEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Stop of failed transport: "
-operator|+
+literal|"Stop of failed transport: {} failed with reason: {}"
+argument_list|,
 name|transport
-operator|+
-literal|" failed with reason: "
-operator|+
+argument_list|,
 name|ee
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -5259,15 +5118,11 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to connect to "
-operator|+
+literal|"Failed to connect to {} after: {} attempt(s)"
+argument_list|,
 name|uris
-operator|+
-literal|" after: "
-operator|+
+argument_list|,
 name|connectFailures
-operator|+
-literal|" attempt(s)"
 argument_list|)
 expr_stmt|;
 name|connectionFailure
@@ -6580,12 +6435,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to Lookup INetAddress for URI[ "
-operator|+
+literal|"Failed to Lookup INetAddress for URI[{}] : {}"
+argument_list|,
 name|first
-operator|+
-literal|" ] : "
-operator|+
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
@@ -6596,12 +6449,10 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Failed to Lookup INetAddress for URI[ "
-operator|+
+literal|"Failed to Lookup INetAddress for URI[{}] : {}"
+argument_list|,
 name|second
-operator|+
-literal|" ] : "
-operator|+
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
