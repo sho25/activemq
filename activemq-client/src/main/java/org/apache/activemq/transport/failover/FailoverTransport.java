@@ -1627,7 +1627,7 @@ name|warn
 argument_list|(
 literal|"Transport ({}) failed {} attempting to automatically reconnect: {}"
 argument_list|,
-name|connectedTransport
+name|connectedTransportURI
 argument_list|,
 operator|(
 name|reconnectOk
