@@ -2401,6 +2401,13 @@ name|isConcurrentStoreAndDispatchQueues
 argument_list|()
 condition|)
 block|{
+name|message
+operator|.
+name|beforeMarshall
+argument_list|(
+name|wireFormat
+argument_list|)
+expr_stmt|;
 name|StoreQueueTask
 name|result
 init|=
@@ -4687,6 +4694,13 @@ name|isConcurrentStoreAndDispatchTopics
 argument_list|()
 condition|)
 block|{
+name|message
+operator|.
+name|beforeMarshall
+argument_list|(
+name|wireFormat
+argument_list|)
+expr_stmt|;
 name|StoreTopicTask
 name|result
 init|=

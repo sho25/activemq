@@ -4741,13 +4741,6 @@ name|isPersistJMSRedelivered
 argument_list|()
 condition|)
 block|{
-name|message
-operator|.
-name|beforeMarshall
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 name|result
 operator|=
 name|store
