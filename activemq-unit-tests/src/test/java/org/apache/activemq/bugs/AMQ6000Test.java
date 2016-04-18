@@ -289,7 +289,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|AMQ5921Test
+name|AMQ6000Test
 operator|.
 name|class
 argument_list|)
