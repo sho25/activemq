@@ -343,7 +343,7 @@ specifier|final
 name|int
 name|ITERATIONS
 init|=
-literal|10
+literal|6
 decl_stmt|;
 specifier|private
 name|BrokerService
@@ -402,7 +402,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|90000
+literal|120000
 argument_list|)
 specifier|public
 name|void
@@ -754,7 +754,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|90000
+literal|120000
 argument_list|)
 specifier|public
 name|void
@@ -947,7 +947,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|90000
+literal|120000
 argument_list|)
 specifier|public
 name|void
@@ -1140,7 +1140,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|90000
+literal|120000
 argument_list|)
 specifier|public
 name|void
