@@ -763,7 +763,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"connectionFactory should implement javax.jmx.ConnectionFactory"
+literal|"connectionFactory should implement javax.jms.ConnectionFactory"
 argument_list|)
 throw|;
 block|}
