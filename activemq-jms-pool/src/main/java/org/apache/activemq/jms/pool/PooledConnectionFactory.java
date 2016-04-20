@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like<a href="http://camel.apache.org/activemq.html">Camel</a> and Spring's  *<a href="http://activemq.apache.org/spring-support.html">JmsTemplate and MessagListenerContainer</a>.  * Connections, sessions and producers are returned to a pool after use so that they can be reused later  * without having to undergo the cost of creating them again.  *  * b>NOTE:</b> while this implementation does allow the creation of a collection of active consumers,  * it does not 'pool' consumers. Pooling makes sense for connections, sessions and producers, which  * are expensive to create and can remain idle a minimal cost. Consumers, on the other hand, are usually  * just created at startup and left active, handling incoming messages as they come. When a consumer is  * complete, it is best to close it rather than return it to a pool for later reuse: this is because,  * even if a consumer is idle, ActiveMQ will keep delivering messages to the consumer's prefetch buffer,  * where they'll get held until the consumer is active again.  *  * If you are creating a collection of consumers (for example, for multi-threaded message consumption), you  * might want to consider using a lower prefetch value for each consumer (e.g. 10 or 20), to ensure that  * all messages don't end up going to just one of the consumers. See this FAQ entry for more detail:  * http://activemq.apache.org/i-do-not-receive-messages-in-my-second-consumer.html  *  * Optionally, one may configure the pool to examine and possibly evict objects as they sit idle in the  * pool. This is performed by an "idle object eviction" thread, which runs asynchronously. Caution should  * be used when configuring this optional feature. Eviction runs contend with client threads for access  * to objects in the pool, so if they run too frequently performance issues may result. The idle object  * eviction thread may be configured using the {@link org.apache.activemq.jms.pool.PooledConnectionFactory#setTimeBetweenExpirationCheckMillis} method.  By  * default the value is -1 which means no eviction thread will be run.  Set to a non-negative value to  * configure the idle eviction thread to run.  *  */
+comment|/**  * A JMS provider which pools Connection, Session and MessageProducer instances  * so it can be used with tools like<a href="http://camel.apache.org/activemq.html">Camel</a> and Spring's  *<a href="http://activemq.apache.org/spring-support.html">JmsTemplate and MessagListenerContainer</a>.  * Connections, sessions and producers are returned to a pool after use so that they can be reused later  * without having to undergo the cost of creating them again.  *  * b>NOTE:</b> while this implementation does allow the creation of a collection of active consumers,  * it does not 'pool' consumers. Pooling makes sense for connections, sessions and producers, which  * are expensive to create and can remain idle a minimal cost. Consumers, on the other hand, are usually  * just created at startup and left active, handling incoming messages as they come. When a consumer is  * complete, it is best to close it rather than return it to a pool for later reuse: this is because,  * even if a consumer is idle, ActiveMQ will keep delivering messages to the consumer's prefetch buffer,  * where they'll get held until the consumer is active again.  *  * If you are creating a collection of consumers (for example, for multi-threaded message consumption), you  * might want to consider using a lower prefetch value for each consumer (e.g. 10 or 20), to ensure that  * all messages don't end up going to just one of the consumers. See this FAQ entry for more detail:  * http://activemq.apache.org/i-do-not-receive-messages-in-my-second-consumer.html  *  * Optionally, one may configure the pool to examine and possibly evict objects as they sit idle in the  * pool. This is performed by an "idle object eviction" thread, which runs asynchronously. Caution should  * be used when configuring this optional feature. Eviction runs contend with client threads for access  * to objects in the pool, so if they run too frequently performance issues may result. The idle object  * eviction thread may be configured using the {@link org.apache.activemq.jms.pool.PooledConnectionFactory#setTimeBetweenExpirationCheckMillis} method.  By  * default the value is -1 which means no eviction thread will be run.  Set to a non-negative value to  * configure the idle eviction thread to run.  */
 end_comment
 
 begin_class
@@ -494,14 +494,6 @@ name|isReconnectOnException
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -511,7 +503,6 @@ argument_list|,
 name|connection
 argument_list|)
 expr_stmt|;
-block|}
 name|PooledConnectionFactory
 operator|.
 name|this
@@ -562,14 +553,6 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -579,7 +562,6 @@ argument_list|,
 name|connection
 argument_list|)
 expr_stmt|;
-block|}
 name|connection
 operator|.
 name|close
@@ -643,14 +625,6 @@ name|expiredCheck
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|LOG
-operator|.
-name|isTraceEnabled
-argument_list|()
-condition|)
-block|{
 name|LOG
 operator|.
 name|trace
@@ -660,7 +634,6 @@ argument_list|,
 name|connection
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|false
 return|;

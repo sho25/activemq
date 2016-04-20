@@ -561,10 +561,9 @@ throws|throws
 name|JMSException
 block|{
 return|return
-name|getConnection
-argument_list|()
+name|pool
 operator|.
-name|getExceptionListener
+name|getParentExceptionListener
 argument_list|()
 return|;
 block|}
@@ -597,10 +596,9 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
-name|getConnection
-argument_list|()
+name|pool
 operator|.
-name|setExceptionListener
+name|setParentExceptionListener
 argument_list|(
 name|exceptionListener
 argument_list|)
