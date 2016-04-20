@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -41,9 +41,19 @@ name|BrokerService
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|TransportConnector
+import|;
+end_import
 
 begin_class
 specifier|public
@@ -60,9 +70,15 @@ specifier|protected
 name|String
 name|bindAddress
 init|=
-literal|"tcp://localhost:61616"
+literal|"tcp://localhost:0"
 decl_stmt|;
-comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
+specifier|protected
+name|String
+name|connectionAddress
+decl_stmt|;
+comment|/**      * Sets up a test where the producer and consumer have their own connection.      *      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -89,6 +105,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -113,9 +131,13 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|broker
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
-comment|/**      * Factory method to create a new broker      *       * @throws Exception      */
+comment|/**      * Factory method to create a new broker      *      * @throws Exception      */
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -130,14 +152,24 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
+name|TransportConnector
+name|connector
+init|=
 name|configureBroker
 argument_list|(
 name|answer
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|answer
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+name|connectionAddress
+operator|=
+name|connector
+operator|.
+name|getPublishableConnectString
 argument_list|()
 expr_stmt|;
 return|return
@@ -145,7 +177,7 @@ name|answer
 return|;
 block|}
 specifier|protected
-name|void
+name|TransportConnector
 name|configureBroker
 parameter_list|(
 name|BrokerService
@@ -154,14 +186,17 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+return|return
 name|answer
 operator|.
 name|addConnector
 argument_list|(
 name|bindAddress
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory
@@ -173,7 +208,7 @@ return|return
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-name|bindAddress
+name|connectionAddress
 argument_list|)
 return|;
 block|}

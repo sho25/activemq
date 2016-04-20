@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -97,10 +97,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -135,7 +131,9 @@ specifier|protected
 name|Session
 name|receiveSession
 decl_stmt|;
-comment|/**      * Sets up a test where the producer and consumer have their own connection.      *       * @see junit.framework.TestCase#setUp()      */
+comment|/**      * Sets up a test where the producer and consumer have their own connection.      *      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -420,6 +418,8 @@ argument_list|)
 return|;
 block|}
 comment|/*      * @see junit.framework.TestCase#tearDown()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -448,7 +448,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Creates a connection.      *       * @return Connection      * @throws Exception      */
+comment|/**      * Creates a connection.      *      * @return Connection      * @throws Exception      */
 specifier|protected
 name|Connection
 name|createReceiveConnection
@@ -461,7 +461,7 @@ name|createConnection
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates a connection.      *       * @return Connection      * @throws Exception      */
+comment|/**      * Creates a connection.      *      * @return Connection      * @throws Exception      */
 specifier|protected
 name|Connection
 name|createSendConnection
@@ -474,7 +474,9 @@ name|createConnection
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates an ActiveMQConnectionFactory.      *       * @see org.apache.activemq.test.TestSupport#createConnectionFactory()      */
+comment|/**      * Creates an ActiveMQConnectionFactory.      *      * @see org.apache.activemq.test.TestSupport#createConnectionFactory()      */
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createConnectionFactory

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -167,28 +167,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|AssertionFailedError
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|slf4j
@@ -207,9 +185,15 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|AssertionFailedError
+import|;
+end_import
 
 begin_class
 specifier|public
@@ -335,6 +319,8 @@ operator|*
 literal|1024
 decl_stmt|;
 comment|/*      * @see junit.framework.TestCase#setUp()      */
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -345,6 +331,11 @@ block|{
 name|super
 operator|.
 name|setUp
+argument_list|()
+expr_stmt|;
+name|messages
+operator|.
+name|clear
 argument_list|()
 expr_stmt|;
 name|String
@@ -506,7 +497,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Test if all the messages sent are being received.      *       * @throws Exception      */
+comment|/**      * Test if all the messages sent are being received.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceive
@@ -514,18 +505,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|1000
-argument_list|)
-expr_stmt|;
-name|messages
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 name|sendMessages
 argument_list|()
 expr_stmt|;
@@ -664,7 +643,7 @@ return|return
 name|message
 return|;
 block|}
-comment|/**      * A hook to allow the message to be configured such as adding extra headers      *       * @throws JMSException      */
+comment|/**      * A hook to allow the message to be configured such as adding extra headers      *      * @throws JMSException      */
 specifier|protected
 name|void
 name|configureMessage
@@ -675,7 +654,7 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{     }
-comment|/**      * Waits to receive the messages and performs the test if all messages have      * been received and are in sequential order.      *       * @throws JMSException      */
+comment|/**      * Waits to receive the messages and performs the test if all messages have      * been received and are in sequential order.      *      * @throws JMSException      */
 specifier|protected
 name|void
 name|assertMessagesAreReceived
@@ -692,7 +671,7 @@ name|messages
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if the messages have all been received and are in sequential order.      *       * @param receivedMessages      * @throws JMSException      */
+comment|/**      * Tests if the messages have all been received and are in sequential order.      *      * @param receivedMessages      * @throws JMSException      */
 specifier|protected
 name|void
 name|assertMessagesReceivedAreValid
@@ -1041,6 +1020,8 @@ block|}
 block|}
 block|}
 comment|/**      * @see javax.jms.MessageListener#onMessage(javax.jms.Message)      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -1058,7 +1039,7 @@ name|messages
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Consumes a received message.      *       * @param message - a newly received message.      * @param messageList - list containing the received messages.      */
+comment|/**      * Consumes a received message.      *      * @param message - a newly received message.      * @param messageList - list containing the received messages.      */
 specifier|protected
 name|void
 name|consumeMessage
@@ -1120,7 +1101,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Creates a synchronized list.      *       * @return a synchronized view of the specified list.      */
+comment|/**      * Creates a synchronized list.      *      * @return a synchronized view of the specified list.      */
 specifier|protected
 name|List
 argument_list|<

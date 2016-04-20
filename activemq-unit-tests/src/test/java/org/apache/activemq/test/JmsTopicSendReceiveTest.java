@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -125,6 +125,8 @@ specifier|protected
 name|Connection
 name|connection
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -367,6 +369,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -378,19 +382,9 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Dumping stats..."
-argument_list|)
-expr_stmt|;
-comment|// TODO
-comment|// connectionFactory.getFactoryStats().dump(new IndentPrinter());
-name|LOG
-operator|.
-name|info
-argument_list|(
 literal|"Closing down connection"
 argument_list|)
 expr_stmt|;
-comment|/** TODO we should be able to shut down properly */
 name|session
 operator|.
 name|close
@@ -402,7 +396,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Creates a session.      *       * @return session      * @throws JMSException      */
+comment|/**      * Creates a session.      *      * @return session      * @throws JMSException      */
 specifier|protected
 name|Session
 name|createConsumerSession
@@ -435,7 +429,7 @@ name|session
 return|;
 block|}
 block|}
-comment|/**      * Creates a durable suscriber or a consumer.      *       * @return MessageConsumer - durable suscriber or consumer.      * @throws JMSException      */
+comment|/**      * Creates a durable subscriber or a consumer.      *      * @return MessageConsumer - durable subscriber or consumer.      * @throws JMSException      */
 specifier|protected
 name|MessageConsumer
 name|createConsumer
