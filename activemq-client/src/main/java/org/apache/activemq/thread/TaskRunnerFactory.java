@@ -348,9 +348,8 @@ name|maxIterationsPerRun
 argument_list|,
 name|dedicatedTaskRunner
 argument_list|,
-name|Integer
-operator|.
-name|MAX_VALUE
+name|getDefaultMaximumPoolSize
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
