@@ -502,9 +502,9 @@ specifier|final
 name|int
 name|PREALLOC_CHUNK_SIZE
 init|=
-literal|1
-operator|<<
-literal|20
+literal|1024
+operator|*
+literal|1024
 decl_stmt|;
 comment|// ITEM_HEAD_SPACE = length + type+ reserved space + SOR
 specifier|public
@@ -1751,13 +1751,6 @@ argument_list|(
 name|maxFileLength
 argument_list|)
 decl_stmt|;
-name|buffer
-operator|.
-name|limit
-argument_list|(
-name|maxFileLength
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|FileChannel
@@ -1992,20 +1985,6 @@ argument_list|(
 name|PREALLOC_CHUNK_SIZE
 argument_list|)
 decl_stmt|;
-name|buffer
-operator|.
-name|position
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|buffer
-operator|.
-name|limit
-argument_list|(
-name|PREALLOC_CHUNK_SIZE
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|FileChannel
