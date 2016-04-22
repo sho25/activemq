@@ -291,6 +291,17 @@ argument_list|()
 decl_stmt|;
 name|store
 operator|.
+name|setJournalMaxFileLength
+argument_list|(
+literal|16
+operator|*
+literal|1204
+operator|*
+literal|1024
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|deleteAllMessages
 argument_list|()
 expr_stmt|;
@@ -403,7 +414,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|300000
+literal|5000
 condition|;
 name|i
 operator|++
