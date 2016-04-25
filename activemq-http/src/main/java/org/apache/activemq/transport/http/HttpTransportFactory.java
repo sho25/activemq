@@ -87,20 +87,6 @@ name|activemq
 operator|.
 name|transport
 operator|.
-name|InactivityMonitor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
 name|Transport
 import|;
 end_import
@@ -420,8 +406,8 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Not created with a TextWireFormat: "
-operator|+
+literal|"Not created with a TextWireFormat: {}"
+argument_list|,
 name|wireFormat
 argument_list|)
 expr_stmt|;
@@ -590,9 +576,6 @@ expr_stmt|;
 name|HttpClientTransport
 name|httpTransport
 init|=
-operator|(
-name|HttpClientTransport
-operator|)
 name|transport
 operator|.
 name|narrow
@@ -679,12 +662,9 @@ block|{
 name|transport
 operator|=
 operator|new
-name|InactivityMonitor
+name|HttpInactivityMonitor
 argument_list|(
 name|transport
-argument_list|,
-literal|null
-comment|/* ignore wire format as no negotiation over http */
 argument_list|)
 expr_stmt|;
 name|IntrospectionSupport
