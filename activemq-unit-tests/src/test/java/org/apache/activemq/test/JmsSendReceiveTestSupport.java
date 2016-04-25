@@ -505,6 +505,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
 name|sendMessages
 argument_list|()
 expr_stmt|;
