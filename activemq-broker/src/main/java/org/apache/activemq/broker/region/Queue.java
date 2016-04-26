@@ -1302,6 +1302,7 @@ name|AtomicBoolean
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|boolean
 name|resetNeeded
 decl_stmt|;
