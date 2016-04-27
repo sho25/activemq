@@ -52,6 +52,18 @@ name|int
 name|getPrefetchSize
 parameter_list|()
 function_decl|;
+comment|/**      * @return Advisory prefetch setting.      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The prefetch setting for the advisory message consumer.  If set to<= 0 then this setting is disabled "
+operator|+
+literal|"and the prefetchSize attribute is used instead for configuring the advisory consumer."
+argument_list|)
+name|int
+name|getAdvisoryPrefetchSize
+parameter_list|()
+function_decl|;
 name|String
 name|getUserName
 parameter_list|()
@@ -142,6 +154,13 @@ name|setPrefetchSize
 parameter_list|(
 name|int
 name|prefetchSize
+parameter_list|)
+function_decl|;
+name|void
+name|setAdvisoryPrefetchSize
+parameter_list|(
+name|int
+name|advisoryPrefetchSize
 parameter_list|)
 function_decl|;
 name|void

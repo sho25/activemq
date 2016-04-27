@@ -57,6 +57,8 @@ operator|=
 name|connector
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -70,6 +72,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -83,6 +87,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -95,6 +101,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getMessageTTL
@@ -107,6 +115,8 @@ name|getMessageTTL
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getConsumerTTL
@@ -119,6 +129,8 @@ name|getConsumerTTL
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getPrefetchSize
@@ -131,6 +143,22 @@ name|getPrefetchSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getAdvisoryPrefetchSize
+parameter_list|()
+block|{
+return|return
+name|connector
+operator|.
+name|getAdvisoryPrefetchSize
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getUserName
@@ -143,6 +171,8 @@ name|getUserName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isBridgeTempDestinations
@@ -155,6 +185,8 @@ name|isBridgeTempDestinations
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConduitSubscriptions
@@ -167,6 +199,8 @@ name|isConduitSubscriptions
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDecreaseNetworkConsumerPriority
@@ -179,6 +213,8 @@ name|isDecreaseNetworkConsumerPriority
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDispatchAsync
@@ -191,6 +227,8 @@ name|isDispatchAsync
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDynamicOnly
@@ -203,6 +241,8 @@ name|isDynamicOnly
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDuplex
@@ -215,6 +255,8 @@ name|isDuplex
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSuppressDuplicateQueueSubscriptions
@@ -227,6 +269,8 @@ name|isSuppressDuplicateQueueSubscriptions
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSuppressDuplicateTopicSubscriptions
@@ -239,6 +283,8 @@ name|isSuppressDuplicateTopicSubscriptions
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setBridgeTempDestinations
@@ -255,6 +301,8 @@ name|bridgeTempDestinations
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setConduitSubscriptions
@@ -271,6 +319,8 @@ name|conduitSubscriptions
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDispatchAsync
@@ -287,6 +337,8 @@ name|dispatchAsync
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDynamicOnly
@@ -303,6 +355,8 @@ name|dynamicOnly
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setMessageTTL
@@ -319,6 +373,8 @@ name|messageTTL
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setConsumerTTL
@@ -335,6 +391,8 @@ name|consumerTTL
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPassword
@@ -351,6 +409,8 @@ name|password
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPrefetchSize
@@ -367,6 +427,26 @@ name|prefetchSize
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setAdvisoryPrefetchSize
+parameter_list|(
+name|int
+name|advisoryPrefetchSize
+parameter_list|)
+block|{
+name|connector
+operator|.
+name|setAdvisoryPrefetchSize
+argument_list|(
+name|advisoryPrefetchSize
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setUserName
@@ -383,6 +463,8 @@ name|userName
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getPassword
@@ -420,6 +502,8 @@ return|return
 name|pw
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setDecreaseNetworkConsumerPriority
@@ -436,6 +520,8 @@ name|decreaseNetworkConsumerPriority
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSuppressDuplicateQueueSubscriptions
@@ -452,6 +538,8 @@ name|val
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setSuppressDuplicateTopicSubscriptions
