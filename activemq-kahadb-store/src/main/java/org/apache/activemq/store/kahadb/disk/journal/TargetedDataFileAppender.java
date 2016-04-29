@@ -1095,16 +1095,11 @@ block|}
 comment|// append 'unset' next batch (5 bytes) so read can always find eof
 name|buff
 operator|.
-name|writeInt
+name|write
 argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|buff
+name|Journal
 operator|.
-name|writeByte
-argument_list|(
-literal|0
+name|EOF_RECORD
 argument_list|)
 expr_stmt|;
 name|ByteSequence
@@ -1147,7 +1142,11 @@ name|Journal
 operator|.
 name|BATCH_CONTROL_RECORD_SIZE
 operator|-
-literal|5
+name|Journal
+operator|.
+name|EOF_RECORD
+operator|.
+name|length
 argument_list|)
 expr_stmt|;
 if|if
@@ -1192,7 +1191,11 @@ name|Journal
 operator|.
 name|BATCH_CONTROL_RECORD_SIZE
 operator|-
-literal|5
+name|Journal
+operator|.
+name|EOF_RECORD
+operator|.
+name|length
 argument_list|)
 expr_stmt|;
 name|buff

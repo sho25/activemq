@@ -186,6 +186,16 @@ import|;
 end_import
 
 begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -544,6 +554,20 @@ operator|.
 name|list
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Children: "
+operator|+
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|children
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|children
 operator|.
@@ -584,7 +608,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|fileCount
 argument_list|)

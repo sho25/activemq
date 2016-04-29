@@ -640,7 +640,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|fileCount
 argument_list|)
@@ -848,7 +848,7 @@ name|fileCount
 argument_list|)
 expr_stmt|;
 return|return
-literal|4
+literal|5
 operator|==
 name|fileCount
 return|;

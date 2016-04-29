@@ -208,8 +208,9 @@ name|name
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|//TimeStatisticImpl zeros = executeTest(Journal.PreallocationStrategy.ZEROS.name());
 name|TimeStatisticImpl
-name|zeros
+name|kernel
 init|=
 name|executeTest
 argument_list|(
@@ -217,7 +218,7 @@ name|Journal
 operator|.
 name|PreallocationStrategy
 operator|.
-name|ZEROS
+name|OS_KERNEL_COPY
 operator|.
 name|name
 argument_list|()
@@ -241,13 +242,14 @@ operator|+
 name|chunked_zeros
 argument_list|)
 expr_stmt|;
+comment|//LOG.info("   zeros: " + zeros);
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"   zeros: "
+literal|"  kernel: "
 operator|+
-name|zeros
+name|kernel
 argument_list|)
 expr_stmt|;
 block|}
@@ -282,6 +284,7 @@ operator|+
 name|randInt
 argument_list|)
 decl_stmt|;
+specifier|final
 name|KahaDBStore
 name|store
 init|=
@@ -291,9 +294,16 @@ argument_list|()
 decl_stmt|;
 name|store
 operator|.
+name|setCheckpointInterval
+argument_list|(
+literal|5000
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
 name|setJournalMaxFileLength
 argument_list|(
-literal|16
+literal|32
 operator|*
 literal|1204
 operator|*
@@ -317,6 +327,20 @@ operator|.
 name|setPreallocationStrategy
 argument_list|(
 name|preallocationStrategy
+argument_list|)
+expr_stmt|;
+name|store
+operator|.
+name|setPreallocationScope
+argument_list|(
+name|Journal
+operator|.
+name|PreallocationScope
+operator|.
+name|ENTIRE_JOURNAL_ASYNC
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|store
@@ -388,7 +412,7 @@ argument_list|(
 operator|new
 name|byte
 index|[
-literal|8
+literal|16
 operator|*
 literal|1024
 index|]

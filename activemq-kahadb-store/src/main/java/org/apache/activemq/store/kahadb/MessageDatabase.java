@@ -2152,7 +2152,7 @@ name|Journal
 operator|.
 name|PreallocationScope
 operator|.
-name|ENTIRE_JOURNAL
+name|ENTIRE_JOURNAL_ASYNC
 operator|.
 name|name
 argument_list|()
@@ -11531,6 +11531,25 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|int
+name|journalToAdvance
+init|=
+operator|-
+literal|1
+decl_stmt|;
+name|Set
+argument_list|<
+name|Integer
+argument_list|>
+name|journalLogsReferenced
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|// Lock index to capture the ackMessageFileMap data
 name|indexLock
 operator|.
@@ -11540,6 +11559,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|// Map keys might not be sorted, find the earliest log file to forward acks
 comment|// from and move only those, future cycles can chip away at more as needed.
 comment|// We won't move files that are themselves rewritten on a previous compaction.
@@ -11570,12 +11591,6 @@ argument_list|(
 name|journalFileIds
 argument_list|)
 expr_stmt|;
-name|int
-name|journalToAdvance
-init|=
-operator|-
-literal|1
-decl_stmt|;
 for|for
 control|(
 name|Integer
@@ -11633,17 +11648,9 @@ condition|)
 block|{
 return|return;
 block|}
-name|Set
-argument_list|<
-name|Integer
-argument_list|>
 name|journalLogsReferenced
-init|=
-operator|new
-name|HashSet
-argument_list|<
-name|Integer
-argument_list|>
+operator|.
+name|addAll
 argument_list|(
 name|metadata
 operator|.
@@ -11654,7 +11661,10 @@ argument_list|(
 name|journalToAdvance
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+finally|finally
+block|{
 name|indexLock
 operator|.
 name|writeLock
@@ -11663,6 +11673,7 @@ operator|.
 name|unlock
 argument_list|()
 expr_stmt|;
+block|}
 try|try
 block|{
 comment|// Background rewrite of the old acks
