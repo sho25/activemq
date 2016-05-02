@@ -574,6 +574,18 @@ operator|=
 name|verbose
 expr_stmt|;
 block|}
+specifier|public
+name|List
+argument_list|<
+name|Message
+argument_list|>
+name|getMessages
+parameter_list|()
+block|{
+return|return
+name|messages
+return|;
+block|}
 comment|/**      * Identifies if the message is empty.      *      * @return      */
 specifier|protected
 name|boolean

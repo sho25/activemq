@@ -678,6 +678,16 @@ argument_list|()
 expr_stmt|;
 name|forwarded_message
 operator|.
+name|setOriginalDestination
+argument_list|(
+name|message
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|forwarded_message
+operator|.
 name|setDestination
 argument_list|(
 name|destination
