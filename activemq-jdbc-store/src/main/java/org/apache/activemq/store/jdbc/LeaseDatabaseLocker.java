@@ -388,7 +388,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|debug
+name|warn
 argument_list|(
 name|getLeaseHolderId
 argument_list|()
@@ -457,7 +457,7 @@ expr_stmt|;
 block|}
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 name|getLeaseHolderId
 argument_list|()
@@ -567,7 +567,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|debug
 argument_list|(
 name|getLeaseHolderId
 argument_list|()
