@@ -2524,6 +2524,22 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|ClosedByInterruptException
+name|ignored
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Could not preallocate journal file with zeros"
+argument_list|,
+name|ignored
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
