@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -206,7 +206,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Represents a composite {@link Destination} where send()s are replicated to  * each Destination instance.  *   *   */
+comment|/**  * Represents a composite {@link Destination} where send()s are replicated to  * each Destination instance.  */
 end_comment
 
 begin_class
@@ -226,10 +226,6 @@ name|forwardOnly
 decl_stmt|;
 specifier|private
 name|boolean
-name|copyMessage
-decl_stmt|;
-specifier|private
-name|boolean
 name|concurrentSend
 init|=
 literal|false
@@ -245,9 +241,6 @@ name|forwardDestinations
 parameter_list|,
 name|boolean
 name|forwardOnly
-parameter_list|,
-name|boolean
-name|copyMessage
 parameter_list|,
 name|boolean
 name|concurrentSend
@@ -272,17 +265,13 @@ name|forwardOnly
 expr_stmt|;
 name|this
 operator|.
-name|copyMessage
-operator|=
-name|copyMessage
-expr_stmt|;
-name|this
-operator|.
 name|concurrentSend
 operator|=
 name|concurrentSend
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|send
@@ -662,21 +651,14 @@ throws|throws
 name|Exception
 block|{
 name|Message
-name|forwarded_message
-decl_stmt|;
-if|if
-condition|(
-name|copyMessage
-condition|)
-block|{
-name|forwarded_message
-operator|=
+name|forwardedMessage
+init|=
 name|message
 operator|.
 name|copy
 argument_list|()
-expr_stmt|;
-name|forwarded_message
+decl_stmt|;
+name|forwardedMessage
 operator|.
 name|setOriginalDestination
 argument_list|(
@@ -686,21 +668,13 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|forwarded_message
+name|forwardedMessage
 operator|.
 name|setDestination
 argument_list|(
 name|destination
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|forwarded_message
-operator|=
-name|message
-expr_stmt|;
-block|}
 comment|// Send it back through the region broker for routing.
 name|context
 operator|.
@@ -715,7 +689,7 @@ name|send
 argument_list|(
 name|context
 argument_list|,
-name|forwarded_message
+name|forwardedMessage
 argument_list|)
 expr_stmt|;
 block|}

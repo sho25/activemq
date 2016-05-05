@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -101,10 +101,6 @@ name|CommandTypes
 import|;
 end_import
 
-begin_comment
-comment|/**  *  *  */
-end_comment
-
 begin_class
 specifier|public
 specifier|abstract
@@ -124,12 +120,6 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|forwardOnly
-init|=
-literal|true
-decl_stmt|;
-specifier|private
-name|boolean
-name|copyMessage
 init|=
 literal|true
 decl_stmt|;
@@ -159,9 +149,6 @@ name|getForwardTo
 argument_list|()
 argument_list|,
 name|isForwardOnly
-argument_list|()
-argument_list|,
-name|isCopyMessage
 argument_list|()
 argument_list|,
 name|isConcurrentSend
@@ -270,16 +257,20 @@ operator|=
 name|forwardOnly
 expr_stmt|;
 block|}
+annotation|@
+name|Deprecated
 specifier|public
 name|boolean
 name|isCopyMessage
 parameter_list|()
 block|{
 return|return
-name|copyMessage
+literal|true
 return|;
 block|}
-comment|/**      * Sets whether a copy of the message will be sent to each destination.      * Defaults to true so that the forward destination is set as the      * destination of the message      */
+comment|/**      * Sets whether a copy of the message will be sent to each destination.      * Defaults to true so that the forward destination is set as the      * destination of the message      *      * @deprecated this option will be removed in a later release, message are always copied.      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setCopyMessage
@@ -287,14 +278,7 @@ parameter_list|(
 name|boolean
 name|copyMessage
 parameter_list|)
-block|{
-name|this
-operator|.
-name|copyMessage
-operator|=
-name|copyMessage
-expr_stmt|;
-block|}
+block|{     }
 comment|/**      * when true, sends are done in parallel with the broker executor      */
 specifier|public
 name|void
@@ -508,20 +492,6 @@ operator|*
 name|result
 operator|+
 operator|(
-name|copyMessage
-condition|?
-literal|1231
-else|:
-literal|1237
-operator|)
-expr_stmt|;
-name|result
-operator|=
-name|prime
-operator|*
-name|result
-operator|+
-operator|(
 name|forwardOnly
 condition|?
 literal|1231
@@ -591,18 +561,22 @@ name|this
 operator|==
 name|obj
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|obj
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|getClass
@@ -613,9 +587,11 @@ operator|.
 name|getClass
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|CompositeDestination
 name|other
 init|=
@@ -632,20 +608,11 @@ name|other
 operator|.
 name|concurrentSend
 condition|)
+block|{
 return|return
 literal|false
 return|;
-if|if
-condition|(
-name|copyMessage
-operator|!=
-name|other
-operator|.
-name|copyMessage
-condition|)
-return|return
-literal|false
-return|;
+block|}
 if|if
 condition|(
 name|forwardOnly
@@ -654,9 +621,11 @@ name|other
 operator|.
 name|forwardOnly
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|forwardTo
@@ -672,9 +641,11 @@ name|forwardTo
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -689,9 +660,11 @@ operator|.
 name|forwardTo
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|name
@@ -724,9 +697,11 @@ operator|.
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 literal|true
 return|;
