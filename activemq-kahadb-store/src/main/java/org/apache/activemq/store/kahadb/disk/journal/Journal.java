@@ -1302,7 +1302,7 @@ name|preallocationScope
 init|=
 name|PreallocationScope
 operator|.
-name|ENTIRE_JOURNAL_ASYNC
+name|ENTIRE_JOURNAL
 decl_stmt|;
 specifier|protected
 name|PreallocationStrategy
@@ -1772,27 +1772,6 @@ operator|.
 name|dataFileId
 operator|+
 literal|1
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|preallocationStrategy
-operator|!=
-name|PreallocationStrategy
-operator|.
-name|SPARSE_FILE
-operator|&&
-name|maxFileLength
-operator|!=
-name|DEFAULT_MAX_FILE_LENGTH
-condition|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"You are using a preallocation strategy and journal maxFileLength which should be benchmarked accordingly to not introduce unexpected latencies."
-argument_list|)
 expr_stmt|;
 block|}
 if|if

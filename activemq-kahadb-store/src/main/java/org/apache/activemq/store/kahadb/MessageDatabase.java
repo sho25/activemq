@@ -2174,7 +2174,7 @@ name|Journal
 operator|.
 name|PreallocationScope
 operator|.
-name|ENTIRE_JOURNAL_ASYNC
+name|ENTIRE_JOURNAL
 operator|.
 name|name
 argument_list|()
