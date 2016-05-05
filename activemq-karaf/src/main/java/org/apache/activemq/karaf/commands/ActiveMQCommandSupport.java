@@ -337,6 +337,19 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * @return the description of the command.      */
+specifier|public
+name|String
+name|description
+parameter_list|()
+block|{
+return|return
+name|command
+operator|.
+name|getOneLineDescription
+argument_list|()
+return|;
+block|}
 specifier|public
 name|Command
 name|getCommand
