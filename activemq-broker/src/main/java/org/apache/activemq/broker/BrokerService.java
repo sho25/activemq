@@ -2269,7 +2269,14 @@ name|insertProviderAt
 argument_list|(
 name|bouncycastle
 argument_list|,
+name|Integer
+operator|.
+name|getInteger
+argument_list|(
+literal|"org.apache.activemq.broker.BouncyCastlePosition"
+argument_list|,
 literal|2
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|LOG
