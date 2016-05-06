@@ -795,24 +795,6 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
-comment|// ensure dispatch has started before pause
-name|frame
-operator|=
-name|stompConnection
-operator|.
-name|receiveFrame
-argument_list|()
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|frame
-operator|.
-name|startsWith
-argument_list|(
-literal|"MESSAGE"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|proxy
 operator|.
 name|pause
