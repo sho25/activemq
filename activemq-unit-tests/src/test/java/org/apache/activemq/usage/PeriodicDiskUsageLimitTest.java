@@ -339,6 +339,13 @@ argument_list|()
 expr_stmt|;
 name|broker
 operator|.
+name|setUseJmx
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|broker
+operator|.
 name|setPersistent
 argument_list|(
 literal|true
@@ -1250,6 +1257,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Not running b/c there is less that 4% disk space, freePrecent:"
+operator|+
+name|freePercent
+argument_list|)
+expr_stmt|;
 block|}
 specifier|protected
 name|void
