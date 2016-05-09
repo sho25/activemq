@@ -331,7 +331,7 @@ specifier|final
 name|String
 name|QUEUE_NAME
 init|=
-literal|"AMQ4899TestQueue"
+literal|"TestQ"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -419,7 +419,7 @@ literal|1000
 argument_list|)
 specifier|public
 name|void
-name|testVirtualTopicMultipleSelectors
+name|verifyNoDispatchDuringDisconnect
 parameter_list|()
 throws|throws
 name|Exception
