@@ -3315,6 +3315,18 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|schedulerLock
+init|)
+block|{
+if|if
+condition|(
+name|scheduler
+operator|!=
+literal|null
+condition|)
+block|{
 name|ThreadPoolUtils
 operator|.
 name|shutdownGraceful
@@ -3325,6 +3337,12 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+name|scheduler
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
 comment|// clear the cache and journalSize on shutdown of the store
 name|storeCache
 operator|.
