@@ -2761,6 +2761,11 @@ condition|(
 name|scheduler
 operator|==
 literal|null
+operator|||
+name|scheduler
+operator|.
+name|isShutdown
+argument_list|()
 condition|)
 block|{
 name|scheduler
