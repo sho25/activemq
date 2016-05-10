@@ -185,17 +185,6 @@ name|MessageId
 name|messageId
 parameter_list|)
 function_decl|;
-specifier|public
-name|void
-name|insertAtHead
-parameter_list|(
-name|List
-argument_list|<
-name|MessageReference
-argument_list|>
-name|list
-parameter_list|)
-function_decl|;
 block|}
 end_interface
 
