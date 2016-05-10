@@ -15,23 +15,23 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|jms
+name|util
 operator|.
-name|JMSException
+name|concurrent
+operator|.
+name|TimeUnit
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|javax
 operator|.
-name|apache
+name|jms
 operator|.
-name|activemq
-operator|.
-name|ActiveMQConnectionFactory
+name|JMSException
 import|;
 end_import
 
@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -60,6 +60,8 @@ name|TwoBrokerTopicSendReceiveUsingHttpTest
 extends|extends
 name|TwoBrokerTopicSendReceiveTest
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createReceiverConnectionFactory
@@ -78,6 +80,8 @@ literal|"vm://receiver"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|ActiveMQConnectionFactory
 name|createSenderConnectionFactory
@@ -95,6 +99,26 @@ argument_list|,
 literal|"vm://sender"
 argument_list|)
 return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|waitForMessagesToBeDelivered
+parameter_list|()
+block|{
+name|waitForMessagesToBeDelivered
+argument_list|(
+name|TimeUnit
+operator|.
+name|MINUTES
+operator|.
+name|toMillis
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
