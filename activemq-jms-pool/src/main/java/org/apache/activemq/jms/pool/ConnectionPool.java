@@ -640,6 +640,16 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isReconnectOnException
+argument_list|()
+condition|)
+block|{
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 throw|throw
 operator|(
 name|e
