@@ -11674,8 +11674,23 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// Lock index to capture the ackMessageFileMap data
-name|indexLock
+try|try
+block|{
+comment|//acquire the checkpoint lock to prevent other threads from
+comment|//running a checkpoint while this is running
+comment|//
+comment|//Normally this task runs on the same executor as the checkpoint task
+comment|//so this ack compaction runner wouldn't run at the same time as the checkpoint task.
+comment|//
+comment|//However, there are two cases where this isn't always true.
+comment|//First, the checkpoint() method is public and can be called through the
+comment|//PersistenceAdapter interface by someone at the same time this is running.
+comment|//Second, a checkpoint is called during shutdown without using the executor.
+comment|//
+comment|//In the future it might be better to just remove the checkpointLock entirely
+comment|//and only use the executor but this would need to be examined for any unintended
+comment|//consequences
+name|checkpointLock
 operator|.
 name|writeLock
 argument_list|()
@@ -11685,6 +11700,15 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+comment|// Lock index to capture the ackMessageFileMap data
+name|indexLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
 comment|// Map keys might not be sorted, find the earliest log file to forward acks
 comment|// from and move only those, future cycles can chip away at more as needed.
 comment|// We won't move files that are themselves rewritten on a previous compaction.
@@ -11867,6 +11891,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+finally|finally
+block|{
+name|checkpointLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 specifier|private
 name|void
@@ -12005,9 +12041,7 @@ expr_stmt|;
 name|Location
 name|nextLocation
 init|=
-name|journal
-operator|.
-name|getNextLocation
+name|getNextLocationForAckForward
 argument_list|(
 operator|new
 name|Location
@@ -12116,9 +12150,7 @@ expr_stmt|;
 block|}
 name|nextLocation
 operator|=
-name|journal
-operator|.
-name|getNextLocation
+name|getNextLocationForAckForward
 argument_list|(
 name|nextLocation
 argument_list|)
@@ -12266,6 +12298,76 @@ operator|.
 name|ackMessageFileMap
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+name|Location
+name|getNextLocationForAckForward
+parameter_list|(
+specifier|final
+name|Location
+name|nextLocation
+parameter_list|)
+block|{
+comment|//getNextLocation() can throw an IOException, we should handle it and set
+comment|//nextLocation to null and abort gracefully
+comment|//Should not happen in the normal case
+name|Location
+name|location
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|location
+operator|=
+name|journal
+operator|.
+name|getNextLocation
+argument_list|(
+name|nextLocation
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to load next journal location: {}"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|LOG
+operator|.
+name|isDebugEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Failed to load next journal location"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+return|return
+name|location
+return|;
 block|}
 specifier|final
 name|Runnable
