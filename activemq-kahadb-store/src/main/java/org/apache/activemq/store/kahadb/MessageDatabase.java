@@ -18,6 +18,28 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
+name|kahadb
+operator|.
+name|disk
+operator|.
+name|journal
+operator|.
+name|Location
+operator|.
+name|NOT_SET
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -1344,28 +1366,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
-name|kahadb
-operator|.
-name|disk
-operator|.
-name|journal
-operator|.
-name|Location
-operator|.
-name|NOT_SET
 import|;
 end_import
 
@@ -12095,8 +12095,7 @@ name|Journal
 operator|.
 name|USER_RECORD_TYPE
 argument_list|,
-name|isEnableJournalDiskSyncs
-argument_list|()
+literal|false
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -12201,8 +12200,7 @@ name|Journal
 operator|.
 name|USER_RECORD_TYPE
 argument_list|,
-name|isEnableJournalDiskSyncs
-argument_list|()
+literal|false
 argument_list|)
 decl_stmt|;
 name|updatedAckLocations
