@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Queue specific MessageReference.  *   * @author fateev@amazon.com  *   */
+comment|/**  * Queue specific MessageReference.  *  * @author fateev@amazon.com  *  */
 end_comment
 
 begin_interface
@@ -50,6 +50,12 @@ name|void
 name|drop
 parameter_list|()
 function_decl|;
+name|boolean
+name|dropIfLive
+parameter_list|()
+function_decl|;
+annotation|@
+name|Override
 name|boolean
 name|isDropped
 parameter_list|()

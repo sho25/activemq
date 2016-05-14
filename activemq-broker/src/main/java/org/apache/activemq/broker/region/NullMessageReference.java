@@ -99,6 +99,8 @@ specifier|volatile
 name|int
 name|references
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|drop
@@ -112,6 +114,24 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|boolean
+name|dropIfLive
+parameter_list|()
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"not implemented"
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
 specifier|public
 name|LockOwner
 name|getLockOwner
@@ -125,6 +145,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAcked
@@ -134,6 +156,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDropped
@@ -143,6 +167,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|lock
@@ -155,6 +181,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setAcked
@@ -171,6 +199,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|unlock
@@ -180,6 +210,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|decrementReferenceCount
@@ -190,6 +222,8 @@ operator|--
 name|references
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getExpiration
@@ -203,6 +237,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getGroupID
@@ -212,6 +248,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getGroupSequence
@@ -221,6 +259,8 @@ return|return
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -230,6 +270,8 @@ return|return
 name|message
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessageHardRef
@@ -243,6 +285,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageId
 name|getMessageId
@@ -255,6 +299,8 @@ name|getMessageId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRedeliveryCounter
@@ -268,6 +314,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReferenceCount
@@ -277,6 +325,8 @@ return|return
 name|references
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Destination
 name|getRegionDestination
@@ -286,6 +336,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getSize
@@ -299,6 +351,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConsumerId
 name|getTargetConsumerId
@@ -312,6 +366,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|incrementRedeliveryCounter
@@ -325,6 +381,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|incrementReferenceCount
@@ -335,6 +393,8 @@ operator|++
 name|references
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExpired
@@ -344,6 +404,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPersistent
@@ -357,6 +419,8 @@ literal|"not implemented"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAdvisory

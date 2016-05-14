@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Keeps track of a message that is flowing through the Broker. This object may  * hold a hard reference to the message or only hold the id of the message if  * the message has been persisted on in a MessageStore.  *   *   */
+comment|/**  * Keeps track of a message that is flowing through the Broker. This object may  * hold a hard reference to the message or only hold the id of the message if  * the message has been persisted on in a MessageStore.  *  *  */
 end_comment
 
 begin_class
@@ -139,6 +139,8 @@ name|getGroupSequence
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessageHardRef
@@ -148,6 +150,8 @@ return|return
 name|message
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReferenceCount
@@ -160,6 +164,8 @@ name|getReferenceCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|incrementReferenceCount
@@ -172,6 +178,8 @@ name|incrementReferenceCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|decrementReferenceCount
@@ -184,6 +192,8 @@ name|decrementReferenceCount
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -193,6 +203,8 @@ return|return
 name|message
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|toString
@@ -223,6 +235,8 @@ literal|null
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|incrementRedeliveryCounter
@@ -234,6 +248,8 @@ name|incrementRedeliveryCounter
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -244,6 +260,8 @@ return|return
 name|dropped
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -264,6 +282,37 @@ name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Check if the message has already been dropped before      * dropping. Return true if dropped, else false.      * This method exists so that this can be done atomically      * under the intrinisic lock      */
+annotation|@
+name|Override
+specifier|public
+specifier|synchronized
+name|boolean
+name|dropIfLive
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isDropped
+argument_list|()
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+else|else
+block|{
+name|drop
+argument_list|()
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|lock
@@ -299,6 +348,8 @@ literal|true
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -320,6 +371,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|LockOwner
@@ -330,6 +383,8 @@ return|return
 name|lockOwner
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRedeliveryCounter
@@ -342,6 +397,8 @@ name|getRedeliveryCounter
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|MessageId
 name|getMessageId
@@ -351,6 +408,8 @@ return|return
 name|messageId
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 operator|.
@@ -365,6 +424,8 @@ name|getRegionDestination
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isPersistent
@@ -389,6 +450,8 @@ operator|!=
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|boolean
@@ -399,6 +462,8 @@ return|return
 name|acked
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -413,6 +478,8 @@ operator|=
 name|b
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getGroupID
@@ -425,6 +492,8 @@ name|getGroupID
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getGroupSequence
@@ -437,6 +506,8 @@ name|getGroupSequence
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|ConsumerId
 name|getTargetConsumerId
@@ -449,6 +520,8 @@ name|getTargetConsumerId
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|long
 name|getExpiration
@@ -461,6 +534,8 @@ name|getExpiration
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isExpired
@@ -473,6 +548,8 @@ name|isExpired
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|int
@@ -486,6 +563,8 @@ name|getSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isAdvisory
