@@ -1889,13 +1889,26 @@ name|executor
 operator|.
 name|awaitTermination
 argument_list|(
-literal|60
+literal|5
 argument_list|,
 name|TimeUnit
 operator|.
-name|SECONDS
+name|MINUTES
 argument_list|)
 decl_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Tested completion finished in time? -> {}"
+argument_list|,
+name|finishedInTime
+condition|?
+literal|"YES"
+else|:
+literal|"NO"
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 literal|"no exceptions"
@@ -4194,13 +4207,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|//File directory = new File("target/test/PlistDB");
 name|File
 name|directory
 init|=
 operator|new
 name|File
 argument_list|(
-literal|"target/test/PlistDB"
+literal|"/sandbox/temp/plist"
 argument_list|)
 decl_stmt|;
 name|IOHelper
