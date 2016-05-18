@@ -4207,14 +4207,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//File directory = new File("target/test/PlistDB");
 name|File
 name|directory
 init|=
 operator|new
 name|File
 argument_list|(
-literal|"/sandbox/temp/plist"
+literal|"target/test/PlistDB"
 argument_list|)
 decl_stmt|;
 name|IOHelper
