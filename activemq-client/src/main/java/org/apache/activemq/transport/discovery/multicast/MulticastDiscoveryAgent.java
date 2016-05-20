@@ -1595,6 +1595,10 @@ block|{
 if|if
 condition|(
 name|ia
+operator|!=
+literal|null
+operator|&&
+name|ia
 operator|.
 name|getAddress
 argument_list|()
