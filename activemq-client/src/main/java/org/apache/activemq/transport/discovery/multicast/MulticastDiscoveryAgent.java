@@ -1618,6 +1618,14 @@ operator|.
 name|isLoopbackAddress
 argument_list|()
 operator|&&
+operator|(
+name|ni
+operator|.
+name|getDisplayName
+argument_list|()
+operator|==
+literal|null
+operator|||
 operator|!
 name|ni
 operator|.
@@ -1628,6 +1636,7 @@ name|startsWith
 argument_list|(
 literal|"vnic"
 argument_list|)
+operator|)
 condition|)
 block|{
 name|possibles
