@@ -1555,6 +1555,8 @@ name|m1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// a browse is a snapshot - only guarantee to see messages produced before
+comment|// the browser
 for|for
 control|(
 name|int
@@ -1564,7 +1566,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|4
+literal|1
 condition|;
 name|i
 operator|++
@@ -1638,6 +1640,36 @@ name|assertNoMessagesLeft
 argument_list|(
 name|connection2
 argument_list|)
+expr_stmt|;
+name|connection1
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|connection1
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
+name|connection2
+operator|.
+name|request
+argument_list|(
+name|closeConnectionInfo
+argument_list|(
+name|connectionInfo2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|connection2
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
