@@ -8438,24 +8438,6 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|completeFileSet
-operator|.
-name|contains
-argument_list|(
-name|command
-operator|.
-name|getSourceDataFileId
-argument_list|()
-argument_list|)
-operator|&&
-name|command
-operator|.
-name|getSkipIfSourceExists
-argument_list|()
-condition|)
-block|{
 comment|// Mark the current journal file as a compacted file so that gc checks can skip
 comment|// over logs that are smaller compaction type logs.
 name|DataFile
@@ -8481,6 +8463,24 @@ name|getRewriteType
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|completeFileSet
+operator|.
+name|contains
+argument_list|(
+name|command
+operator|.
+name|getSourceDataFileId
+argument_list|()
+argument_list|)
+operator|&&
+name|command
+operator|.
+name|getSkipIfSourceExists
+argument_list|()
+condition|)
+block|{
 comment|// Move offset so that next location read jumps to next file.
 name|location
 operator|.
@@ -12009,6 +12009,13 @@ operator|.
 name|reserveDataFile
 argument_list|()
 decl_stmt|;
+name|forwardsFile
+operator|.
+name|setTypeCode
+argument_list|(
+name|COMPACTED_JOURNAL_FILE
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|trace
@@ -12074,7 +12081,10 @@ name|compactionMarker
 operator|.
 name|setRewriteType
 argument_list|(
-name|COMPACTED_JOURNAL_FILE
+name|forwardsFile
+operator|.
+name|getTypeCode
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|ByteSequence
