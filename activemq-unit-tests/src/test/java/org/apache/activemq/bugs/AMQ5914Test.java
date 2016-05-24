@@ -420,7 +420,7 @@ name|Message
 operator|.
 name|DEFAULT_PRIORITY
 argument_list|,
-literal|50
+literal|1000
 argument_list|)
 expr_stmt|;
 name|producer
@@ -501,7 +501,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|75
+literal|1500
 argument_list|)
 expr_stmt|;
 comment|// Consume again, this should fetch the second valid message via a pull.
