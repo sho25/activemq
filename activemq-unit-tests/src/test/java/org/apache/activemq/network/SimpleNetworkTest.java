@@ -614,6 +614,10 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"not null? message: "
+operator|+
+name|i
+argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
