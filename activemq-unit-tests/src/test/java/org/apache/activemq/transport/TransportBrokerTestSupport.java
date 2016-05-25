@@ -137,6 +137,8 @@ name|StubConnection
 argument_list|>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -150,6 +152,8 @@ name|setUp
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|BrokerService
 name|createBroker
@@ -185,6 +189,8 @@ name|String
 name|getBindLocation
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -212,6 +218,8 @@ argument_list|()
 condition|;
 control|)
 block|{
+try|try
+block|{
 name|StubConnection
 name|connection
 init|=
@@ -231,6 +239,13 @@ name|remove
 argument_list|()
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{             }
+block|}
 if|if
 condition|(
 name|connector
@@ -238,11 +253,20 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|connector
 operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{             }
 block|}
 name|super
 operator|.
@@ -266,6 +290,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|StubConnection
 name|createConnection
