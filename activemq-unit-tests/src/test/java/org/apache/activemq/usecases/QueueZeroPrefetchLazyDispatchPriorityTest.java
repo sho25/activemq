@@ -1561,6 +1561,13 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
+name|returnedMessages
+operator|.
+name|isEmpty
+argument_list|()
+condition|?
+literal|5000
+else|:
 literal|1000
 argument_list|)
 decl_stmt|;
@@ -1715,7 +1722,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|2000
+literal|5000
 argument_list|)
 return|;
 block|}
