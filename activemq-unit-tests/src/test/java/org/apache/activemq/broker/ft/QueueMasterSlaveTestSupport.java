@@ -694,6 +694,8 @@ argument_list|()
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"master is indeed the master"
+argument_list|,
 operator|!
 name|master
 operator|.

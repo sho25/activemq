@@ -653,7 +653,7 @@ name|kahaDBPersistenceAdapter
 operator|.
 name|setLockKeepAlivePeriod
 argument_list|(
-literal|500
+literal|2000
 argument_list|)
 expr_stmt|;
 name|kahaDBPersistenceAdapter
@@ -663,7 +663,7 @@ argument_list|()
 operator|.
 name|setLockAcquireSleepInterval
 argument_list|(
-literal|500
+literal|5000
 argument_list|)
 expr_stmt|;
 block|}
