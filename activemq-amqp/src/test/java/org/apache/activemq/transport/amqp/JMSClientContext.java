@@ -1026,7 +1026,7 @@ argument_list|)
 expr_stmt|;
 name|factory
 operator|.
-name|setAlwaysSyncSend
+name|setForceSyncSend
 argument_list|(
 name|syncPublish
 argument_list|)
