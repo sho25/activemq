@@ -53,6 +53,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|ConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Destination
 import|;
 end_import
@@ -199,7 +209,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|protected
-name|ActiveMQConnectionFactory
+name|ConnectionFactory
 name|connectionFactory
 decl_stmt|;
 specifier|protected
@@ -653,7 +663,7 @@ expr_stmt|;
 block|}
 comment|/**      * Creates an ActiveMQConnectionFactory.      *       * @return ActiveMQConnectionFactory      * @throws Exception      */
 specifier|protected
-name|ActiveMQConnectionFactory
+name|ConnectionFactory
 name|createConnectionFactory
 parameter_list|()
 throws|throws
@@ -685,7 +695,7 @@ return|;
 block|}
 comment|/**      * Creates an ActiveMQ connection factory.      *       * @return connectionFactory      * @throws Exception      */
 specifier|public
-name|ActiveMQConnectionFactory
+name|ConnectionFactory
 name|getConnectionFactory
 parameter_list|()
 throws|throws

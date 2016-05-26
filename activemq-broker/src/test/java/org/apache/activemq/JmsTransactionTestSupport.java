@@ -285,10 +285,6 @@ init|=
 literal|"message"
 decl_stmt|;
 specifier|protected
-name|ConnectionFactory
-name|connectionFactory
-decl_stmt|;
-specifier|protected
 name|Connection
 name|connection
 decl_stmt|;
@@ -551,6 +547,23 @@ name|session
 operator|=
 literal|null
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Caught exception while closing resources."
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
 name|connection
 operator|.
 name|close
