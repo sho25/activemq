@@ -777,7 +777,9 @@ expr_stmt|;
 name|session
 operator|.
 name|pumpToProtonTransport
-argument_list|()
+argument_list|(
+name|sendRequest
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -893,7 +895,9 @@ expr_stmt|;
 name|session
 operator|.
 name|pumpToProtonTransport
-argument_list|()
+argument_list|(
+name|request
+argument_list|)
 expr_stmt|;
 block|}
 block|}

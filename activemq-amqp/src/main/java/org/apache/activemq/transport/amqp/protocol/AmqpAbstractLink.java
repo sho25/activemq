@@ -464,7 +464,7 @@ name|action
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shorcut method to hand off an ActiveMQ Command to the broker and assign      * a ResponseHandler to deal with any reply from the broker.      *      * @param command      *        the Command object to send to the Broker.      */
+comment|/**      * Shortcut method to hand off an ActiveMQ Command to the broker and assign      * a ResponseHandler to deal with any reply from the broker.      *      * @param command      *        the Command object to send to the Broker.      */
 specifier|protected
 name|void
 name|sendToActiveMQ
@@ -486,7 +486,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Shorcut method to hand off an ActiveMQ Command to the broker and assign      * a ResponseHandler to deal with any reply from the broker.      *      * @param command      *        the Command object to send to the Broker.      * @param handler      *        the ResponseHandler that will handle the Broker's response.      */
+comment|/**      * Shortcut method to hand off an ActiveMQ Command to the broker and assign      * a ResponseHandler to deal with any reply from the broker.      *      * @param command      *        the Command object to send to the Broker.      * @param handler      *        the ResponseHandler that will handle the Broker's response.      */
 specifier|protected
 name|void
 name|sendToActiveMQ

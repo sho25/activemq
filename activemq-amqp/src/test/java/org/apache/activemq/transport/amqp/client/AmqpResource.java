@@ -107,6 +107,17 @@ name|AmqpConnection
 name|connection
 parameter_list|)
 function_decl|;
+comment|/**      * Called to indicate that the local end has become closed but the resource      * was not awaiting a close.  This could happen during an open request where      * the remote does not set an error condition or during normal operation.      *      * @param connection      *        The connection that owns this resource.      * @param error      *        The error that triggered the local close of this resource.      */
+name|void
+name|locallyClosed
+parameter_list|(
+name|AmqpConnection
+name|connection
+parameter_list|,
+name|Exception
+name|error
+parameter_list|)
+function_decl|;
 comment|/**      * Sets the failed state for this Resource and triggers a failure signal for      * any pending ProduverRequest.      *      * @param cause      *        The Exception that triggered the failure.      */
 name|void
 name|failed

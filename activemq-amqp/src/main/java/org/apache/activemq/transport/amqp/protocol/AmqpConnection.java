@@ -1657,6 +1657,15 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|protonTransport
+operator|.
+name|setEmitFlowEventOnSend
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
 name|protonConnection
 operator|.
 name|collect
