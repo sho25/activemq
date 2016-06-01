@@ -3032,6 +3032,16 @@ argument_list|)
 expr_stmt|;
 name|protonConnection
 operator|.
+name|setContainer
+argument_list|(
+name|brokerService
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|protonConnection
+operator|.
 name|open
 argument_list|()
 expr_stmt|;
