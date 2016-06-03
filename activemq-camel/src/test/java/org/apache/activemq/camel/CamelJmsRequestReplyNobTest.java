@@ -627,7 +627,7 @@ name|discoveryNetworkConnector
 operator|.
 name|setDestinationFilter
 argument_list|(
-literal|"ActiveMQ.Advisory.Consumer.Queue.service1,ActiveMQ.Advisory.TempQueue,ActiveMQ.Advisory.TempTopic,ActiveMQ.Advisory.Consumer.Queue.*.*"
+literal|"ActiveMQ.Advisory.TempQueue,ActiveMQ.Advisory.TempTopic,ActiveMQ.Advisory.Consumer.Queue.>"
 argument_list|)
 expr_stmt|;
 name|producerBroker
