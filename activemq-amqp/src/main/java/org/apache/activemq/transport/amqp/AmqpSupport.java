@@ -524,9 +524,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid Filter Ids array passed: "
-operator|+
-name|filterIds
+literal|"Invalid empty Filter Ids array passed: "
 argument_list|)
 throw|;
 block|}

@@ -354,13 +354,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|browser
-operator|!=
-literal|null
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -401,14 +394,6 @@ name|browser
 operator|=
 literal|null
 expr_stmt|;
-block|}
-if|if
-condition|(
-name|session
-operator|!=
-literal|null
-condition|)
-block|{
 name|LOG
 operator|.
 name|debug
@@ -449,7 +434,6 @@ name|session
 operator|=
 literal|null
 expr_stmt|;
-block|}
 block|}
 name|LOG
 operator|.

@@ -1075,6 +1075,13 @@ condition|(
 name|remoteError
 operator|==
 literal|null
+operator|||
+name|remoteError
+operator|.
+name|getCondition
+argument_list|()
+operator|==
+literal|null
 condition|)
 block|{
 name|markAsInvalid
@@ -1083,6 +1090,8 @@ literal|"Broker did not add error condition for duplicate client ID"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
 if|if
 condition|(
 operator|!
@@ -1134,6 +1143,7 @@ operator|.
 name|INVALID_FIELD
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Validate the info map contains a hint that the container/client id was the problem
 name|Map
@@ -1162,6 +1172,7 @@ literal|"Broker did not set an info map on condition"
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 operator|!
@@ -1181,6 +1192,8 @@ literal|"Info map does not contain expected key"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
 name|Object
 name|value
 init|=
@@ -1213,6 +1226,7 @@ operator|+
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

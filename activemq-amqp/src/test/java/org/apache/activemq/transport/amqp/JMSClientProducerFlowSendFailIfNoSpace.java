@@ -243,29 +243,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Rule
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|rules
-operator|.
-name|TestName
 import|;
 end_import
 
@@ -276,16 +254,6 @@ name|JMSClientProducerFlowSendFailIfNoSpace
 extends|extends
 name|JMSClientTestSupport
 block|{
-annotation|@
-name|Rule
-specifier|public
-name|TestName
-name|name
-init|=
-operator|new
-name|TestName
-argument_list|()
-decl_stmt|;
 comment|// used to test sendFailIfNoSpace on SystemUsage
 specifier|protected
 specifier|final

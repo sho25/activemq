@@ -1710,14 +1710,6 @@ name|isException
 argument_list|()
 condition|)
 block|{
-if|if
-condition|(
-name|response
-operator|.
-name|isException
-argument_list|()
-condition|)
-block|{
 name|Throwable
 name|exception
 init|=
@@ -1742,7 +1734,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 name|session
 operator|.

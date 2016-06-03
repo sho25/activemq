@@ -29,6 +29,8 @@ begin_class
 specifier|public
 class|class
 name|NettyTransportOptions
+implements|implements
+name|Cloneable
 block|{
 specifier|public
 specifier|static
