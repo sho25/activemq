@@ -1636,11 +1636,6 @@ argument_list|(
 name|connection1
 argument_list|)
 expr_stmt|;
-name|assertNoMessagesLeft
-argument_list|(
-name|connection2
-argument_list|)
-expr_stmt|;
 name|connection1
 operator|.
 name|request
