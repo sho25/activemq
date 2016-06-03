@@ -484,6 +484,11 @@ argument_list|(
 literal|"Successfully create new connection."
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -589,6 +594,11 @@ name|info
 argument_list|(
 literal|"Successfully create new connection."
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -787,6 +797,19 @@ literal|"Caught expected security error"
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|connection2
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+name|connection1
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -888,6 +911,16 @@ name|connection1
 argument_list|,
 name|connection2
 argument_list|)
+expr_stmt|;
+name|connection1
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|connection2
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -993,6 +1026,11 @@ name|info
 argument_list|(
 literal|"Successfully create new connection."
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1194,6 +1232,19 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|connection2
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+name|connection1
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test

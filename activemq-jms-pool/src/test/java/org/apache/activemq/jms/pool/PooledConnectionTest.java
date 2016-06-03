@@ -191,10 +191,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|cf
-operator|=
-literal|null
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -223,6 +219,19 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+operator|(
+operator|(
+name|PooledConnectionFactory
+operator|)
+name|cf
+operator|)
+operator|.
+name|stop
+argument_list|()
 expr_stmt|;
 block|}
 comment|// 2nd test: call setClientID() twice with different IDs
@@ -285,6 +294,16 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+operator|(
+operator|(
+name|PooledConnectionFactory
+operator|)
+name|cf
+operator|)
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 block|}
 comment|// 3rd test: try to call setClientID() after start()
 comment|// should result in an exception
@@ -341,6 +360,16 @@ block|{
 name|conn
 operator|.
 name|close
+argument_list|()
+expr_stmt|;
+operator|(
+operator|(
+name|PooledConnectionFactory
+operator|)
+name|cf
+operator|)
+operator|.
+name|stop
 argument_list|()
 expr_stmt|;
 block|}

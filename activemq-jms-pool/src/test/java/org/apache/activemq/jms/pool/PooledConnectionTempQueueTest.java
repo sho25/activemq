@@ -328,6 +328,11 @@ argument_list|,
 name|SERVICE_QUEUE
 argument_list|)
 expr_stmt|;
+name|cf
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
