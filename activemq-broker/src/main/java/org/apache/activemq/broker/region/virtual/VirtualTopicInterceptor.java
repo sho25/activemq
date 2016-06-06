@@ -994,6 +994,14 @@ name|contains
 argument_list|(
 literal|".*"
 argument_list|)
+operator|&&
+operator|!
+name|prefix
+operator|.
+name|startsWith
+argument_list|(
+literal|"*"
+argument_list|)
 condition|?
 name|dest
 operator|.
