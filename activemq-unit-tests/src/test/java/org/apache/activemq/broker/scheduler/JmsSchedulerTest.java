@@ -1412,14 +1412,14 @@ literal|"vm://localhost"
 argument_list|)
 decl_stmt|;
 name|Connection
-name|conn
+name|connection
 init|=
 name|factory
 operator|.
 name|createConnection
 argument_list|()
 decl_stmt|;
-name|conn
+name|connection
 operator|.
 name|start
 argument_list|()
@@ -1427,7 +1427,7 @@ expr_stmt|;
 name|Session
 name|sess
 init|=
-name|conn
+name|connection
 operator|.
 name|createSession
 argument_list|(
@@ -1676,7 +1676,7 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|conn
+name|connection
 operator|.
 name|close
 argument_list|()

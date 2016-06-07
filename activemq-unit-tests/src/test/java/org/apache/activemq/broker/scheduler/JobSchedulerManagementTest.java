@@ -427,6 +427,11 @@ argument_list|,
 name|COUNT
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -821,6 +826,11 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1113,6 +1123,11 @@ argument_list|()
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -1506,6 +1521,11 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1813,6 +1833,11 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1924,6 +1949,14 @@ name|fail
 argument_list|(
 literal|"Caught unexpected exception during remove of unscheduled message."
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -2146,6 +2179,11 @@ name|assertNull
 argument_list|(
 name|message
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 specifier|protected

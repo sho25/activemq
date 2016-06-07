@@ -516,7 +516,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|//wait a couple sec so cron start time is different for next message
+comment|// wait a couple sec so cron start time is different for next message
 name|Thread
 operator|.
 name|sleep
@@ -585,7 +585,7 @@ operator|.
 name|MINUTES
 argument_list|)
 expr_stmt|;
-comment|//All should messages should have been received by now
+comment|// All should messages should have been received by now
 name|assertEquals
 argument_list|(
 name|COUNT
@@ -595,6 +595,11 @@ operator|.
 name|get
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -727,6 +732,11 @@ operator|.
 name|receiveNoWait
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 block|}
