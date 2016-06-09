@@ -253,6 +253,8 @@ argument_list|(
 literal|"target/FTPBlobTest/ftptest"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -536,6 +538,8 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -552,7 +556,7 @@ condition|)
 block|{
 name|connection
 operator|.
-name|stop
+name|close
 argument_list|()
 expr_stmt|;
 block|}

@@ -562,7 +562,7 @@ condition|)
 block|{
 name|connection
 operator|.
-name|stop
+name|close
 argument_list|()
 expr_stmt|;
 block|}
