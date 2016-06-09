@@ -1144,6 +1144,11 @@ name|getManagedConnection
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|newConnection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void

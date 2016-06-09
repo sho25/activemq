@@ -422,6 +422,11 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|connection
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -544,6 +549,11 @@ operator|.
 name|getPrefetchNumber
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|con
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
