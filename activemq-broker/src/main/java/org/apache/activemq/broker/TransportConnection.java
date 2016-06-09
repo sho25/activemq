@@ -4388,6 +4388,8 @@ argument_list|)
 expr_stmt|;
 name|addConsumerBrokerExchange
 argument_list|(
+name|cs
+argument_list|,
 name|info
 operator|.
 name|getConsumerId
@@ -8342,6 +8344,9 @@ specifier|private
 name|ConsumerBrokerExchange
 name|addConsumerBrokerExchange
 parameter_list|(
+name|TransportConnectionState
+name|connectionState
+parameter_list|,
 name|ConsumerId
 name|id
 parameter_list|)
@@ -8374,17 +8379,9 @@ operator|new
 name|ConsumerBrokerExchange
 argument_list|()
 expr_stmt|;
-name|TransportConnectionState
-name|state
-init|=
-name|lookupConnectionState
-argument_list|(
-name|id
-argument_list|)
-decl_stmt|;
 name|context
 operator|=
-name|state
+name|connectionState
 operator|.
 name|getContext
 argument_list|()
@@ -8399,7 +8396,7 @@ expr_stmt|;
 name|SessionState
 name|ss
 init|=
-name|state
+name|connectionState
 operator|.
 name|getSessionState
 argument_list|(
