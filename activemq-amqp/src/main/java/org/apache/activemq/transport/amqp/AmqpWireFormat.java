@@ -253,7 +253,7 @@ specifier|final
 name|boolean
 name|DEFAULT_ALLOW_NON_SASL_CONNECTIONS
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 specifier|static
