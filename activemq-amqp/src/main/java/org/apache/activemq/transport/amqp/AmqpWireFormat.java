@@ -643,13 +643,16 @@ name|frame
 return|;
 block|}
 block|}
-comment|/**      * Given an AMQP header validate that the AMQP magic is present and      * if so that the version and protocol values align with what we support.      *      * @param header      *        the header instance received from the client.      *      * @return true if the header is valid against the current WireFormat.      */
+comment|/**      * Given an AMQP header validate that the AMQP magic is present and      * if so that the version and protocol values align with what we support.      *      * In the case where authentication occurs the client sends us two AMQP      * headers, the first being the SASL initial header which triggers the      * authentication process and then if that succeeds we should get a second      * AMQP header that does not contain the SASL protocol ID indicating the      * connection process should follow the normal path.  We validate that the      * header align with these expectations.      *      * @param header      *        the header instance received from the client.      * @param authenticated      *        has the client already authenticated already.      *      * @return true if the header is valid against the current WireFormat.      */
 specifier|public
 name|boolean
 name|isHeaderValid
 parameter_list|(
 name|AmqpHeader
 name|header
+parameter_list|,
+name|boolean
+name|authenticated
 parameter_list|)
 block|{
 if|if
@@ -681,7 +684,7 @@ operator|.
 name|getProtocolId
 argument_list|()
 operator|==
-literal|3
+name|SASL_PROTOCOL
 operator|)
 condition|)
 block|{
@@ -691,6 +694,9 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
+name|authenticated
+operator|&&
 operator|!
 name|isAllowNonSaslConnections
 argument_list|()

@@ -2214,6 +2214,10 @@ operator|.
 name|isHeaderValid
 argument_list|(
 name|header
+argument_list|,
+name|authenticator
+operator|!=
+literal|null
 argument_list|)
 condition|)
 block|{

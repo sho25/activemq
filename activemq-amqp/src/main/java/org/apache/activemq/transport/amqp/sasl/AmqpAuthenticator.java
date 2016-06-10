@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SASL Authenitcation engine.  */
+comment|/**  * SASL Authentication engine.  */
 end_comment
 
 begin_class
