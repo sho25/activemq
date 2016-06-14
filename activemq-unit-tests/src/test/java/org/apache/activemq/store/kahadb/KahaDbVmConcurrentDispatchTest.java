@@ -155,7 +155,7 @@ name|Parameters
 argument_list|(
 name|name
 operator|=
-literal|"Type:{0}; ReduceMemoryFootPrint:{1}; ConcurrentDispatch:{2}"
+literal|"Type:{0}; ReduceMemoryFootPrint:{1}; ConcurrentDispatch:{2}; UseTopic:{3}"
 argument_list|)
 specifier|public
 specifier|static
@@ -206,6 +206,14 @@ range|:
 name|concurrentDispatchVals
 control|)
 block|{
+for|for
+control|(
+name|boolean
+name|tpVal
+range|:
+name|useTopicVals
+control|)
+block|{
 name|values
 operator|.
 name|add
@@ -219,9 +227,12 @@ block|,
 name|rmfVal
 block|,
 name|cdVal
+block|,
+name|tpVal
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -241,6 +252,9 @@ name|reduceMemoryFootPrint
 parameter_list|,
 name|boolean
 name|concurrentDispatch
+parameter_list|,
+name|boolean
+name|useTopic
 parameter_list|)
 block|{
 name|super
@@ -248,6 +262,8 @@ argument_list|(
 name|messageType
 argument_list|,
 name|reduceMemoryFootPrint
+argument_list|,
+name|useTopic
 argument_list|)
 expr_stmt|;
 name|this
@@ -280,6 +296,21 @@ operator|.
 name|getPersistenceAdapter
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|useTopic
+condition|)
+block|{
+name|ad
+operator|.
+name|setConcurrentStoreAndDispatchTopics
+argument_list|(
+name|concurrentDispatch
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|ad
 operator|.
 name|setConcurrentStoreAndDispatchQueues
@@ -287,6 +318,7 @@ argument_list|(
 name|concurrentDispatch
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
