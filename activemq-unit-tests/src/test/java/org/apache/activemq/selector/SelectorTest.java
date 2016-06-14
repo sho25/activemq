@@ -47,16 +47,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -122,6 +112,16 @@ operator|.
 name|filter
 operator|.
 name|MessageEvaluationContext
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
 import|;
 end_import
 
@@ -1891,6 +1891,20 @@ argument_list|(
 name|message
 argument_list|,
 literal|"=TEST 'test'"
+argument_list|)
+expr_stmt|;
+name|assertInvalidSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"prop1 = prop2 foo AND string = 'Test'"
+argument_list|)
+expr_stmt|;
+name|assertInvalidSelector
+argument_list|(
+name|message
+argument_list|,
+literal|"a = 1 AMD  b = 2"
 argument_list|)
 expr_stmt|;
 block|}
