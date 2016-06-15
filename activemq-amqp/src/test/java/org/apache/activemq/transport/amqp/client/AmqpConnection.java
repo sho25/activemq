@@ -2382,6 +2382,14 @@ block|{
 comment|// If the remote indicates that a close is pending, don't open.
 if|if
 condition|(
+name|getEndpoint
+argument_list|()
+operator|.
+name|getRemoteProperties
+argument_list|()
+operator|==
+literal|null
+operator|||
 operator|!
 name|getEndpoint
 argument_list|()
