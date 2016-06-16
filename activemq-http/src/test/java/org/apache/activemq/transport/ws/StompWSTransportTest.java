@@ -734,6 +734,8 @@ argument_list|(
 name|connectFrame
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|String
 name|incoming
 init|=
@@ -782,6 +784,21 @@ operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Connection closed before Frame was read."
+argument_list|)
+expr_stmt|;
+block|}
 name|assertTrue
 argument_list|(
 literal|"Connection should close"
@@ -862,6 +879,8 @@ argument_list|(
 name|connectFrame
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|String
 name|incoming
 init|=
@@ -910,6 +929,21 @@ operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Connection closed before Frame was read."
+argument_list|)
+expr_stmt|;
+block|}
 name|assertTrue
 argument_list|(
 literal|"Connection should close"
@@ -990,6 +1024,8 @@ argument_list|(
 name|connectFrame
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|String
 name|incoming
 init|=
@@ -1038,6 +1074,21 @@ operator|>=
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Connection closed before Frame was read."
+argument_list|)
+expr_stmt|;
+block|}
 name|assertTrue
 argument_list|(
 literal|"Connection should close"
