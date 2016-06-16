@@ -221,16 +221,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -365,6 +355,16 @@ name|ClassPathXmlApplicationContext
 import|;
 end_import
 
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -446,7 +446,7 @@ literal|"='"
 operator|+
 literal|"1:1"
 operator|+
-literal|"',JMSPriority>3"
+literal|"' AND JMSPriority>3"
 decl_stmt|;
 comment|// complex message selector query using XTestProperty AND JMSPriority
 comment|// but in SQL-92 syntax
