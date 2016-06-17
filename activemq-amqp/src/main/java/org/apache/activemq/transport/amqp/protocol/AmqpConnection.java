@@ -2127,7 +2127,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Sending {} bytes out"
+literal|"Server: Sending {} bytes out"
 argument_list|,
 name|toWrite
 operator|.
@@ -2346,6 +2346,18 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Server: Received from client: {} bytes"
+argument_list|,
+name|frame
+operator|.
+name|getLength
+argument_list|()
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|frame
@@ -2502,7 +2514,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Processing event: {}"
+literal|"Server: Processing event: {}"
 argument_list|,
 name|event
 operator|.

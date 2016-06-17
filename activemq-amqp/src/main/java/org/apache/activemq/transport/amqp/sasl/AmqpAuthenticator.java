@@ -262,7 +262,7 @@ name|server
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @return true if the SASL exchange has conpleted, regardless of success.      */
+comment|/**      * @return true if the SASL exchange has completed, regardless of success.      */
 specifier|public
 name|boolean
 name|isDone
@@ -281,7 +281,7 @@ operator|.
 name|PN_SASL_NONE
 return|;
 block|}
-comment|/**      * @return the list of all SASL mechanisms that are supported curretnly.      */
+comment|/**      * @return the list of all SASL mechanisms that are supported currently.      */
 specifier|public
 name|String
 index|[]

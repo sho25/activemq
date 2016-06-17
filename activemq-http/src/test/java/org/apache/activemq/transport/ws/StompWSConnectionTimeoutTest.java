@@ -166,8 +166,6 @@ operator|new
 name|StompWSConnection
 argument_list|()
 expr_stmt|;
-comment|//        WebSocketClientFactory clientFactory = new WebSocketClientFactory();
-comment|//        clientFactory.start();
 name|wsClient
 operator|=
 operator|new

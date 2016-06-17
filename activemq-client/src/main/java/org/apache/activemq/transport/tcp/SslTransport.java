@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -171,6 +171,15 @@ extends|extends
 name|TcpTransport
 block|{
 comment|/**      * Connect to a remote node such as a Broker.      *      * @param wireFormat The WireFormat to be used.      * @param socketFactory The socket factory to be used. Forcing SSLSockets      *                for obvious reasons.      * @param remoteLocation The remote location.      * @param localLocation The local location.      * @param needClientAuth If set to true, the underlying socket will need      *                client certificate authentication.      * @throws UnknownHostException If TcpTransport throws.      * @throws IOException If TcpTransport throws.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"unchecked"
+block|,
+literal|"rawtypes"
+block|}
+argument_list|)
 specifier|public
 name|SslTransport
 parameter_list|(
@@ -229,7 +238,7 @@ expr_stmt|;
 comment|// Lets try to configure the SSL SNI field.  Handy in case your using
 comment|// a single proxy to route to different messaging apps.
 comment|// On java 1.7 it seems like it can only be configured via reflection.
-comment|// todo: find out if this will work on java 1.8
+comment|// TODO: find out if this will work on java 1.8
 name|HashMap
 name|props
 init|=
@@ -355,6 +364,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return peer certificate chain associated with the ssl socket      */
+annotation|@
+name|Override
 specifier|public
 name|X509Certificate
 index|[]

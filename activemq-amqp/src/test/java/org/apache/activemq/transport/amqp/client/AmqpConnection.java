@@ -233,26 +233,6 @@ name|client
 operator|.
 name|transport
 operator|.
-name|NettyTransport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|amqp
-operator|.
-name|client
-operator|.
-name|transport
-operator|.
 name|NettyTransportListener
 import|;
 end_import
@@ -706,6 +686,20 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|client
+operator|.
+name|transport
+operator|.
 name|NettyTransport
 name|transport
 decl_stmt|;
@@ -828,6 +822,20 @@ decl_stmt|;
 specifier|public
 name|AmqpConnection
 parameter_list|(
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|client
+operator|.
+name|transport
+operator|.
 name|NettyTransport
 name|transport
 parameter_list|,
@@ -2214,7 +2222,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Received from Broker {} bytes:"
+literal|"Client Received from Broker {} bytes:"
 argument_list|,
 name|source
 operator|.
@@ -2352,6 +2360,12 @@ operator|.
 name|debug
 argument_list|(
 literal|"The transport has unexpectedly closed"
+argument_list|)
+expr_stmt|;
+name|failed
+argument_list|(
+name|getOpenAbortException
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2783,7 +2797,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"New Proton Event: {}"
+literal|"Client: New Proton Event: {}"
 argument_list|,
 name|protonEvent
 operator|.

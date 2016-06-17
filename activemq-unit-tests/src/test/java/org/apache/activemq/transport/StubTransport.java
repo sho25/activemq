@@ -29,6 +29,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|cert
+operator|.
+name|X509Certificate
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Queue
@@ -61,9 +73,19 @@ name|ServiceStopper
 import|;
 end_import
 
-begin_comment
-comment|/**  *   *   */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|wireformat
+operator|.
+name|WireFormat
+import|;
+end_import
 
 begin_class
 specifier|public
@@ -91,6 +113,8 @@ specifier|volatile
 name|int
 name|receiveCounter
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStop
@@ -101,6 +125,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|doStart
@@ -108,6 +134,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -141,6 +169,8 @@ return|return
 name|queue
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRemoteAddress
@@ -150,6 +180,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter
@@ -157,6 +189,40 @@ parameter_list|()
 block|{
 return|return
 name|receiveCounter
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|X509Certificate
+index|[]
+name|getPeerCertificates
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPeerCertificates
+parameter_list|(
+name|X509Certificate
+index|[]
+name|certificates
+parameter_list|)
+block|{      }
+annotation|@
+name|Override
+specifier|public
+name|WireFormat
+name|getWireFormat
+parameter_list|()
+block|{
+return|return
+literal|null
 return|;
 block|}
 block|}

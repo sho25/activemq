@@ -92,7 +92,7 @@ specifier|final
 name|boolean
 name|DEFAULT_VERIFY_HOST
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|public
 specifier|static

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -34,6 +34,18 @@ operator|.
 name|net
 operator|.
 name|URI
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|cert
+operator|.
+name|X509Certificate
 import|;
 end_import
 
@@ -121,9 +133,19 @@ name|TransportListener
 import|;
 end_import
 
-begin_comment
-comment|/**  *   */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|wireformat
+operator|.
+name|WireFormat
+import|;
+end_import
 
 begin_class
 specifier|public
@@ -156,7 +178,8 @@ operator|=
 name|next
 expr_stmt|;
 block|}
-comment|/**      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|void
@@ -200,7 +223,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException if the next channel has not been set.      */
+comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException      *         if the next channel has not been set.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -247,6 +272,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see org.apache.activemq.Service#stop()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -292,6 +319,8 @@ name|next
 return|;
 block|}
 comment|/**      * @return Returns the packetListener.      */
+annotation|@
+name|Override
 specifier|public
 specifier|synchronized
 name|TransportListener
@@ -317,6 +346,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -336,6 +367,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -361,6 +394,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -381,6 +416,8 @@ name|command
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -425,6 +462,8 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 parameter_list|<
 name|T
@@ -514,6 +553,8 @@ name|filter
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRemoteAddress
@@ -528,6 +569,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @see org.apache.activemq.transport.Transport#isFaultTolerant()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFaultTolerant
@@ -541,6 +584,8 @@ name|isFaultTolerant
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDisposed
@@ -554,6 +599,8 @@ name|isDisposed
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnected
@@ -567,6 +614,8 @@ name|isConnected
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reconnect
@@ -586,6 +635,8 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter
@@ -599,6 +650,8 @@ name|getReceiveCounter
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReconnectSupported
@@ -612,6 +665,8 @@ name|isReconnectSupported
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUpdateURIsSupported
@@ -625,6 +680,8 @@ name|isUpdateURIsSupported
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateURIs
@@ -649,6 +706,57 @@ argument_list|,
 name|uris
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|X509Certificate
+index|[]
+name|getPeerCertificates
+parameter_list|()
+block|{
+return|return
+name|getNext
+argument_list|()
+operator|.
+name|getPeerCertificates
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPeerCertificates
+parameter_list|(
+name|X509Certificate
+index|[]
+name|certificates
+parameter_list|)
+block|{
+name|getNext
+argument_list|()
+operator|.
+name|setPeerCertificates
+argument_list|(
+name|certificates
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|WireFormat
+name|getWireFormat
+parameter_list|()
+block|{
+return|return
+name|getNext
+argument_list|()
+operator|.
+name|getWireFormat
+argument_list|()
+return|;
 block|}
 block|}
 end_class

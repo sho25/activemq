@@ -37,6 +37,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|security
+operator|.
+name|cert
+operator|.
+name|X509Certificate
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -44,6 +56,20 @@ operator|.
 name|activemq
 operator|.
 name|Service
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|wireformat
+operator|.
+name|WireFormat
 import|;
 end_import
 
@@ -188,6 +214,26 @@ function_decl|;
 comment|/**      * Returns a counter which gets incremented as data is read from the transport.      * It should only be used to determine if there is progress being made in reading the next command from the transport.      * The value may wrap into the negative numbers.      *      * @return a counter which gets incremented as data is read from the transport.      */
 name|int
 name|getReceiveCounter
+parameter_list|()
+function_decl|;
+comment|/**      * @return the Certificates provided by the peer, or null if not a secure channel.      */
+name|X509Certificate
+index|[]
+name|getPeerCertificates
+parameter_list|()
+function_decl|;
+comment|/**      * Sets the certificates provided by the connected peer.      *      * @param certificates      *      the Certificates provided by the peer.      */
+name|void
+name|setPeerCertificates
+parameter_list|(
+name|X509Certificate
+index|[]
+name|certificates
+parameter_list|)
+function_decl|;
+comment|/**      * Retrieves the WireFormat instance associated with this Transport instance.      *      * @return the WireFormat in use.      */
+name|WireFormat
+name|getWireFormat
 parameter_list|()
 function_decl|;
 block|}

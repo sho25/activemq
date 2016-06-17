@@ -75,7 +75,7 @@ name|client
 operator|.
 name|transport
 operator|.
-name|NettyTransport
+name|NettyTransportFactory
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|client
 operator|.
 name|transport
 operator|.
-name|NettyTransportFactory
+name|NettyTransport
 import|;
 end_import
 

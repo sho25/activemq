@@ -42,7 +42,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface that defines the API for any AMQP protocol converter ised to  * map AMQP mechanincs to ActiveMQ and back.  */
+comment|/**  * Interface that defines the API for any AMQP protocol converter ised to  * map AMQP mechanics to ActiveMQ and back.  */
 end_comment
 
 begin_interface
@@ -50,7 +50,7 @@ specifier|public
 interface|interface
 name|AmqpProtocolConverter
 block|{
-comment|/**      * A new incoming data packet from the remote peer is handed off to the      * protocol converter for porcessing.  The type can vary and be either an      * AmqpHeader at the handshake phase or a byte buffer containing the next      * incoming frame data from the remote.      *      * @param data      *        the next incoming data object from the remote peer.      *      * @throws Exception if an error occurs processing the incoming data packet.      */
+comment|/**      * A new incoming data packet from the remote peer is handed off to the      * protocol converter for processing.  The type can vary and be either an      * AmqpHeader at the handshake phase or a byte buffer containing the next      * incoming frame data from the remote.      *      * @param data      *        the next incoming data object from the remote peer.      *      * @throws Exception if an error occurs processing the incoming data packet.      */
 name|void
 name|onAMQPData
 parameter_list|(
@@ -83,7 +83,7 @@ name|void
 name|updateTracer
 parameter_list|()
 function_decl|;
-comment|/**      * Perform any keep alive processing for the connection such as sending      * empty frames or closing connections due to remote end being inactive      * for to long.      *      * @returns the amount of milliseconds to wait before performaing another check.      *      * @throws IOException if an error occurs on writing heatbeats to the wire.      */
+comment|/**      * Perform any keep alive processing for the connection such as sending      * empty frames or closing connections due to remote end being inactive      * for to long.      *      * @returns the amount of milliseconds to wait before performing another check.      *      * @throws IOException if an error occurs on writing heart-beats to the wire.      */
 name|long
 name|keepAlive
 parameter_list|()

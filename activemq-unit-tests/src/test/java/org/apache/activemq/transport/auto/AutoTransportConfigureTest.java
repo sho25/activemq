@@ -548,12 +548,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//Will work because max frame size only applies to amqp
+comment|// Will work because max frame size only applies to stomp
 name|createBroker
 argument_list|(
 name|transportType
 operator|+
-literal|"://localhost:0?wireFormat.amqp.maxFrameSize=10"
+literal|"://localhost:0?wireFormat.stomp.maxFrameSize=10"
 argument_list|)
 expr_stmt|;
 name|ConnectionFactory
@@ -590,12 +590,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//only amqp is available so should fail
+comment|// only stomp is available so should fail
 name|createBroker
 argument_list|(
 name|transportType
 operator|+
-literal|"://localhost:0?auto.protocols=amqp"
+literal|"://localhost:0?auto.protocols=stomp"
 argument_list|)
 expr_stmt|;
 name|ConnectionFactory
@@ -625,7 +625,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|//only open wire is available
+comment|// only open wire is available
 name|createBroker
 argument_list|(
 name|transportType
@@ -664,7 +664,7 @@ name|createBroker
 argument_list|(
 name|transportType
 operator|+
-literal|"://localhost:0?auto.protocols=default,amqp"
+literal|"://localhost:0?auto.protocols=default,stomp"
 argument_list|)
 expr_stmt|;
 name|ConnectionFactory

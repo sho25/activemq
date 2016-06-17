@@ -529,7 +529,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* (non-Javadoc)      * @see org.eclipse.jetty.websocket.api.WebSocketListener#onWebSocketClose(int, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -573,7 +572,6 @@ operator|=
 name|reason
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc)      * @see org.eclipse.jetty.websocket.api.WebSocketListener#onWebSocketConnect(org.eclipse.jetty.websocket.api.Session)      */
 annotation|@
 name|Override
 specifier|public

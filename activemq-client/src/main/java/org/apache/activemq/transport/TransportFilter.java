@@ -35,8 +35,34 @@ name|URI
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|cert
+operator|.
+name|X509Certificate
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|wireformat
+operator|.
+name|WireFormat
+import|;
+end_import
+
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -71,6 +97,8 @@ operator|=
 name|next
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|TransportListener
 name|getTransportListener
@@ -80,6 +108,8 @@ return|return
 name|transportListener
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setTransportListener
@@ -121,6 +151,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.Service#start()      * @throws IOException      *             if the next channel has not been set.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|start
@@ -165,6 +197,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @see org.apache.activemq.Service#stop()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stop
@@ -178,6 +212,8 @@ name|stop
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onCommand
@@ -218,6 +254,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|oneway
@@ -236,6 +274,8 @@ name|command
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|FutureResponse
 name|asyncRequest
@@ -260,6 +300,8 @@ literal|null
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -279,6 +321,8 @@ name|command
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|request
@@ -303,6 +347,8 @@ name|timeout
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|onException
@@ -319,6 +365,8 @@ name|error
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportInterupted
@@ -330,6 +378,8 @@ name|transportInterupted
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|transportResumed
@@ -341,6 +391,8 @@ name|transportResumed
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 parameter_list|<
 name|T
@@ -384,6 +436,8 @@ name|target
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getRemoteAddress
@@ -397,6 +451,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * @return      * @see org.apache.activemq.transport.Transport#isFaultTolerant()      */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isFaultTolerant
@@ -409,6 +465,8 @@ name|isFaultTolerant
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isDisposed
@@ -421,6 +479,8 @@ name|isDisposed
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isConnected
@@ -433,6 +493,8 @@ name|isConnected
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|reconnect
@@ -451,6 +513,8 @@ name|uri
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getReceiveCounter
@@ -463,6 +527,8 @@ name|getReceiveCounter
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isReconnectSupported
@@ -475,6 +541,8 @@ name|isReconnectSupported
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isUpdateURIsSupported
@@ -487,6 +555,8 @@ name|isUpdateURIsSupported
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|updateURIs
@@ -510,6 +580,54 @@ argument_list|,
 name|uris
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|X509Certificate
+index|[]
+name|getPeerCertificates
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|getPeerCertificates
+argument_list|()
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPeerCertificates
+parameter_list|(
+name|X509Certificate
+index|[]
+name|certificates
+parameter_list|)
+block|{
+name|next
+operator|.
+name|setPeerCertificates
+argument_list|(
+name|certificates
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|WireFormat
+name|getWireFormat
+parameter_list|()
+block|{
+return|return
+name|next
+operator|.
+name|getWireFormat
+argument_list|()
+return|;
 block|}
 block|}
 end_class
