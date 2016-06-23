@@ -1050,8 +1050,8 @@ condition|(
 name|paramTypes
 operator|.
 name|length
-operator|!=
-literal|0
+operator|==
+literal|1
 operator|&&
 name|paramTypes
 index|[
@@ -1149,8 +1149,8 @@ condition|(
 name|paramTypes
 operator|.
 name|length
-operator|!=
-literal|0
+operator|==
+literal|1
 operator|&&
 name|methods
 index|[
