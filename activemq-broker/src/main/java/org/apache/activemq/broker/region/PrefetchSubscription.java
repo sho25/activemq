@@ -53,6 +53,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -3280,14 +3290,14 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|List
+name|LinkedList
 argument_list|<
 name|MessageReference
 argument_list|>
-name|rc
+name|redispatch
 init|=
 operator|new
-name|ArrayList
+name|LinkedList
 argument_list|<
 name|MessageReference
 argument_list|>
@@ -3310,7 +3320,7 @@ expr_stmt|;
 comment|// Here is a potential problem concerning Inflight stat:
 comment|// Messages not already committed or rolled back may not be removed from dispatched list at the moment
 comment|// Except if each commit or rollback callback action comes before remove of subscriber.
-name|rc
+name|redispatch
 operator|.
 name|addAll
 argument_list|(
@@ -3332,7 +3342,7 @@ literal|null
 condition|)
 block|{
 return|return
-name|rc
+name|redispatch
 return|;
 block|}
 comment|// Synchronized to DispatchLock if necessary
@@ -3350,9 +3360,9 @@ init|(
 name|dispatchLock
 init|)
 block|{
-name|updateDestinationStats
+name|addReferencesAndUpdateRedispatch
 argument_list|(
-name|rc
+name|redispatch
 argument_list|,
 name|destination
 argument_list|,
@@ -3363,9 +3373,9 @@ block|}
 block|}
 else|else
 block|{
-name|updateDestinationStats
+name|addReferencesAndUpdateRedispatch
 argument_list|(
-name|rc
+name|redispatch
 argument_list|,
 name|destination
 argument_list|,
@@ -3375,18 +3385,18 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|rc
+name|redispatch
 return|;
 block|}
 specifier|private
 name|void
-name|updateDestinationStats
+name|addReferencesAndUpdateRedispatch
 parameter_list|(
-name|List
+name|LinkedList
 argument_list|<
 name|MessageReference
 argument_list|>
-name|rc
+name|redispatch
 parameter_list|,
 name|Destination
 name|destination
@@ -3453,10 +3463,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|rc
+name|redispatch
 operator|.
 name|addAll
 argument_list|(
+literal|0
+argument_list|,
 name|references
 argument_list|)
 expr_stmt|;
