@@ -3325,16 +3325,16 @@ literal|true
 argument_list|)
 condition|)
 block|{
+synchronized|synchronized
+init|(
+name|deliveredMessages
+init|)
+block|{
 if|if
 condition|(
 name|isAutoAcknowledgeEach
 argument_list|()
 condition|)
-block|{
-synchronized|synchronized
-init|(
-name|deliveredMessages
-init|)
 block|{
 name|ack
 operator|=
@@ -3374,7 +3374,6 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-block|}
 elseif|else
 if|if
 condition|(
@@ -3396,6 +3395,7 @@ name|pendingAck
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -4502,6 +4502,11 @@ block|}
 name|deliveredCounter
 operator|++
 expr_stmt|;
+synchronized|synchronized
+init|(
+name|deliveredMessages
+init|)
+block|{
 name|MessageAck
 name|oldPendingAck
 init|=
@@ -4672,6 +4677,7 @@ name|additionalWindowSize
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
