@@ -813,7 +813,6 @@ literal|0
 argument_list|)
 decl_stmt|;
 specifier|private
-specifier|volatile
 name|MessageAck
 name|pendingAck
 decl_stmt|;
@@ -3326,14 +3325,6 @@ literal|true
 argument_list|)
 condition|)
 block|{
-comment|//Capture the pendingAck reference in case the optimizeAcknowledge dispatch
-comment|//thread mutates it
-specifier|final
-name|MessageAck
-name|oldPendingAck
-init|=
-name|pendingAck
-decl_stmt|;
 if|if
 condition|(
 name|isAutoAcknowledgeEach
@@ -3375,7 +3366,7 @@ else|else
 block|{
 name|ack
 operator|=
-name|oldPendingAck
+name|pendingAck
 expr_stmt|;
 name|pendingAck
 operator|=
@@ -3387,11 +3378,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|oldPendingAck
+name|pendingAck
 operator|!=
 literal|null
 operator|&&
-name|oldPendingAck
+name|pendingAck
 operator|.
 name|isStandardAck
 argument_list|()
@@ -3399,7 +3390,7 @@ condition|)
 block|{
 name|ack
 operator|=
-name|oldPendingAck
+name|pendingAck
 expr_stmt|;
 name|pendingAck
 operator|=
@@ -4258,15 +4249,9 @@ comment|// This resets the deliveredCounter to 0 so that
 comment|// we won't sent standard acks with every msg just
 comment|// because the deliveredCounter just below
 comment|// 0.5 * prefetch as used in ackLater()
-specifier|final
-name|MessageAck
-name|oldPendingAck
-init|=
-name|pendingAck
-decl_stmt|;
 if|if
 condition|(
-name|oldPendingAck
+name|pendingAck
 operator|!=
 literal|null
 operator|&&
@@ -4279,7 +4264,7 @@ name|session
 operator|.
 name|sendAck
 argument_list|(
-name|oldPendingAck
+name|pendingAck
 argument_list|)
 expr_stmt|;
 name|pendingAck
@@ -4517,16 +4502,13 @@ block|}
 name|deliveredCounter
 operator|++
 expr_stmt|;
-specifier|final
 name|MessageAck
 name|oldPendingAck
 init|=
 name|pendingAck
 decl_stmt|;
-specifier|final
-name|MessageAck
-name|newPendingAck
-init|=
+name|pendingAck
+operator|=
 operator|new
 name|MessageAck
 argument_list|(
@@ -4536,8 +4518,8 @@ name|ackType
 argument_list|,
 name|deliveredCounter
 argument_list|)
-decl_stmt|;
-name|newPendingAck
+expr_stmt|;
+name|pendingAck
 operator|.
 name|setTransactionId
 argument_list|(
@@ -4557,11 +4539,11 @@ operator|==
 literal|null
 condition|)
 block|{
-name|newPendingAck
+name|pendingAck
 operator|.
 name|setFirstMessageId
 argument_list|(
-name|newPendingAck
+name|pendingAck
 operator|.
 name|getLastMessageId
 argument_list|()
@@ -4576,13 +4558,13 @@ operator|.
 name|getAckType
 argument_list|()
 operator|==
-name|newPendingAck
+name|pendingAck
 operator|.
 name|getAckType
 argument_list|()
 condition|)
 block|{
-name|newPendingAck
+name|pendingAck
 operator|.
 name|setFirstMessageId
 argument_list|(
@@ -4614,7 +4596,7 @@ literal|"Sending old pending ack {}, new pending: {}"
 argument_list|,
 name|oldPendingAck
 argument_list|,
-name|newPendingAck
+name|pendingAck
 argument_list|)
 expr_stmt|;
 name|session
@@ -4635,15 +4617,11 @@ literal|"dropping old pending ack {}, new pending: {}"
 argument_list|,
 name|oldPendingAck
 argument_list|,
-name|newPendingAck
+name|pendingAck
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|pendingAck
-operator|=
-name|newPendingAck
-expr_stmt|;
 comment|// AMQ-3956 evaluate both expired and normal msgs as
 comment|// otherwise consumer may get stalled
 if|if
@@ -4672,14 +4650,14 @@ name|debug
 argument_list|(
 literal|"ackLater: sending: {}"
 argument_list|,
-name|newPendingAck
+name|pendingAck
 argument_list|)
 expr_stmt|;
 name|session
 operator|.
 name|sendAck
 argument_list|(
-name|newPendingAck
+name|pendingAck
 argument_list|)
 expr_stmt|;
 name|pendingAck
