@@ -299,6 +299,8 @@ operator|=
 name|createBroker
 argument_list|(
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -404,6 +406,9 @@ name|createBroker
 parameter_list|(
 name|boolean
 name|deleteMessages
+parameter_list|,
+name|boolean
+name|advisorySupport
 parameter_list|)
 throws|throws
 name|Exception
@@ -474,6 +479,13 @@ argument_list|)
 operator|.
 name|getPublishableConnectURI
 argument_list|()
+expr_stmt|;
+name|broker
+operator|.
+name|setAdvisorySupport
+argument_list|(
+name|advisorySupport
+argument_list|)
 expr_stmt|;
 name|broker
 operator|.
