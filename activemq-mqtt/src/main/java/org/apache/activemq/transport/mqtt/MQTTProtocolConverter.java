@@ -1507,6 +1507,9 @@ name|getClientId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|checkConnected
+argument_list|()
+expr_stmt|;
 name|sendToMQTT
 argument_list|(
 name|PING_RESP_FRAME
