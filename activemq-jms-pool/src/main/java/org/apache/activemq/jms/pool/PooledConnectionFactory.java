@@ -1336,6 +1336,10 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|connectionsPool
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 catch|catch
