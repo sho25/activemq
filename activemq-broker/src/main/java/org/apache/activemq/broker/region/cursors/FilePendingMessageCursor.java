@@ -1741,9 +1741,6 @@ argument_list|()
 condition|?
 literal|0
 else|:
-operator|(
-name|int
-operator|)
 name|getDiskList
 argument_list|()
 operator|.

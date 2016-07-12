@@ -1013,10 +1013,6 @@ operator|.
 name|unlink
 argument_list|()
 expr_stmt|;
-name|entryToRemove
-operator|=
-literal|null
-expr_stmt|;
 name|ListNode
 argument_list|<
 name|Key
@@ -1210,6 +1206,10 @@ name|onRemove
 argument_list|(
 name|entryToRemove
 argument_list|)
+expr_stmt|;
+name|entryToRemove
+operator|=
+literal|null
 expr_stmt|;
 if|if
 condition|(
