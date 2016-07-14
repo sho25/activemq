@@ -3144,10 +3144,10 @@ name|loadPageFile
 argument_list|()
 expr_stmt|;
 block|}
-name|startCheckpoint
+name|recover
 argument_list|()
 expr_stmt|;
-name|recover
+name|startCheckpoint
 argument_list|()
 expr_stmt|;
 block|}
