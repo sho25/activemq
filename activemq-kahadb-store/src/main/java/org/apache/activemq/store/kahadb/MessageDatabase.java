@@ -9089,13 +9089,32 @@ name|getSize
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// on first update previous is original location, on recovery/replay it may be the updated location
 if|if
 condition|(
 name|previousKeys
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+comment|//Remove the existing from the size
+name|decrementAndSubSizeToStoreStat
+argument_list|(
+name|command
+operator|.
+name|getDestination
+argument_list|()
+argument_list|,
+name|previousKeys
+operator|.
+name|location
+operator|.
+name|getSize
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// on first update previous is original location, on recovery/replay it may be the updated location
+if|if
+condition|(
 operator|!
 name|previousKeys
 operator|.
@@ -9120,21 +9139,7 @@ operator|.
 name|location
 argument_list|)
 expr_stmt|;
-name|decrementAndSubSizeToStoreStat
-argument_list|(
-name|command
-operator|.
-name|getDestination
-argument_list|()
-argument_list|,
-name|previousKeys
-operator|.
-name|location
-operator|.
-name|getSize
-argument_list|()
-argument_list|)
-expr_stmt|;
+block|}
 block|}
 name|metadata
 operator|.
