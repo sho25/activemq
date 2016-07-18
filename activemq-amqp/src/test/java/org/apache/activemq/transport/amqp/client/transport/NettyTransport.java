@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  */
+comment|/**  * Base for all Netty based Transports in this client.  */
 end_comment
 
 begin_interface
