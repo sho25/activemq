@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo  * so that the client knows which broker node he's talking to and also any peers  * that the node has in his cluster. This is the broker helping the client out  * in discovering other nodes in the cluster.  *   * @openwire:marshaller code="2"  *   */
+comment|/**  * When a client connects to a broker, the broker send the client a BrokerInfo  * so that the client knows which broker node he's talking to and also any peers  * that the node has in his cluster. This is the broker helping the client out  * in discovering other nodes in the cluster.  *  * @openwire:marshaller code="2"  *  */
 end_comment
 
 begin_class
@@ -279,6 +279,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|byte
 name|getDataStructureType
@@ -390,6 +392,8 @@ operator|=
 name|brokerName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|visit
@@ -542,7 +546,7 @@ operator|=
 name|networkConnection
 expr_stmt|;
 block|}
-comment|/**      * The broker assigns a each connection it accepts a connection id.      *       * @openwire:property version=2      */
+comment|/**      * The broker assigns a each connection it accepts a connection id.      *      * @openwire:property version=2      */
 specifier|public
 name|long
 name|getConnectionId
@@ -567,7 +571,7 @@ operator|=
 name|connectionId
 expr_stmt|;
 block|}
-comment|/**      * The URL to use when uploading BLOBs to the broker or some other external      * file/http server      *       * @openwire:property version=3      */
+comment|/**      * The URL to use when uploading BLOBs to the broker or some other external      * file/http server      *      * @openwire:property version=3      */
 specifier|public
 name|String
 name|getBrokerUploadUrl

@@ -28,7 +28,7 @@ comment|// What is the latest version of the openwire protocol
 name|byte
 name|PROTOCOL_VERSION
 init|=
-literal|11
+literal|12
 decl_stmt|;
 comment|// What is the latest version of the openwire protocol used in the stores
 name|byte
@@ -41,6 +41,12 @@ name|byte
 name|PROTOCOL_LEGACY_STORE_VERSION
 init|=
 literal|6
+decl_stmt|;
+comment|// What is the first version that BROKER_SUBSCRIPTION_INFO is supported
+name|byte
+name|PROTOCOL_VERSION_DURABLE_SYNC
+init|=
+literal|12
 decl_stmt|;
 comment|// A marshaling layer can use this type to specify a null object.
 name|byte
@@ -234,7 +240,7 @@ comment|// /////////////////////////////////////////////////
 comment|//
 comment|// Used by discovery
 comment|//
-comment|// /////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////BROKER_SUBSCRIPTION_INFO
 name|byte
 name|DISCOVERY_EVENT
 init|=
@@ -359,6 +365,11 @@ name|byte
 name|NETWORK_BRIDGE_FILTER
 init|=
 literal|91
+decl_stmt|;
+name|byte
+name|BROKER_SUBSCRIPTION_INFO
+init|=
+literal|92
 decl_stmt|;
 comment|// /////////////////////////////////////////////////
 comment|//

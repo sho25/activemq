@@ -39,6 +39,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|BrokerSubscriptionInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ConnectionControl
 import|;
 end_import
@@ -400,6 +414,8 @@ name|CommandVisitorAdapter
 implements|implements
 name|CommandVisitor
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddConnection
@@ -414,6 +430,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddConsumer
@@ -428,6 +446,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddDestination
@@ -442,6 +462,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddProducer
@@ -456,6 +478,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processAddSession
@@ -470,6 +494,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processBeginTransaction
@@ -484,6 +510,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processBrokerInfo
@@ -498,6 +526,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processCommitTransactionOnePhase
@@ -512,6 +542,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processCommitTransactionTwoPhase
@@ -526,6 +558,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processEndTransaction
@@ -540,6 +574,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processFlush
@@ -554,6 +590,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processForgetTransaction
@@ -568,6 +606,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processKeepAlive
@@ -582,6 +622,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processMessage
@@ -596,6 +638,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processMessageAck
@@ -610,6 +654,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processMessageDispatchNotification
@@ -624,6 +670,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processMessagePull
@@ -638,6 +686,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processPrepareTransaction
@@ -652,6 +702,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processProducerAck
@@ -666,6 +718,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRecoverTransactions
@@ -680,6 +734,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveConnection
@@ -697,6 +753,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveConsumer
@@ -714,6 +772,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveDestination
@@ -728,6 +788,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveProducer
@@ -742,6 +804,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveSession
@@ -759,6 +823,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRemoveSubscription
@@ -773,6 +839,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processRollbackTransaction
@@ -787,6 +855,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processShutdown
@@ -801,6 +871,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processWireFormat
@@ -815,6 +887,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processMessageDispatch
@@ -829,6 +903,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processControlCommand
@@ -843,6 +919,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processConnectionControl
@@ -857,6 +935,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processConnectionError
@@ -871,6 +951,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Response
 name|processConsumerControl
@@ -881,6 +963,24 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.state.CommandVisitor#processBrokerSubscriptionInfo(org.apache.activemq.command.BrokerSubscriptionInfo)      */
+annotation|@
+name|Override
+specifier|public
+name|Response
+name|processBrokerSubscriptionInfo
+parameter_list|(
+name|BrokerSubscriptionInfo
+name|info
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+comment|// TODO Auto-generated method stub
 return|return
 literal|null
 return|;

@@ -375,6 +375,8 @@ init|=
 name|createDemandSubscription
 argument_list|(
 name|dest
+argument_list|,
+name|subName
 argument_list|)
 decl_stmt|;
 name|sub
