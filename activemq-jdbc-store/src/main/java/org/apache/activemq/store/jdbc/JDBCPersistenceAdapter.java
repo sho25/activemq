@@ -1593,6 +1593,11 @@ argument_list|()
 decl_stmt|;
 name|transactionContext
 operator|.
+name|getExclusiveConnection
+argument_list|()
+expr_stmt|;
+name|transactionContext
+operator|.
 name|begin
 argument_list|()
 expr_stmt|;
@@ -1779,6 +1784,11 @@ expr_stmt|;
 name|c
 operator|=
 name|getTransactionContext
+argument_list|()
+expr_stmt|;
+name|c
+operator|.
+name|getExclusiveConnection
 argument_list|()
 expr_stmt|;
 name|getAdapter
@@ -2567,6 +2577,11 @@ init|=
 name|getTransactionContext
 argument_list|()
 decl_stmt|;
+name|c
+operator|.
+name|getExclusiveConnection
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|getAdapter
