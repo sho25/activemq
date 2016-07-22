@@ -2926,6 +2926,14 @@ comment|// operation.. by that time the message could have
 comment|// expired..
 if|if
 condition|(
+name|message
+operator|.
+name|isExpired
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|broker
 operator|.
 name|isExpired
@@ -2954,6 +2962,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|.
 name|decrementReferenceCount

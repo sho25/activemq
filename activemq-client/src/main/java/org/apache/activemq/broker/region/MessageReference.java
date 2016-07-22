@@ -145,6 +145,10 @@ name|boolean
 name|isAdvisory
 parameter_list|()
 function_decl|;
+name|boolean
+name|canProcessAsExpired
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

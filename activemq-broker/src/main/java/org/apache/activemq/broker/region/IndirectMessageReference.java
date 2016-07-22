@@ -577,6 +577,20 @@ name|isAdvisory
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|canProcessAsExpired
+parameter_list|()
+block|{
+return|return
+name|message
+operator|.
+name|canProcessAsExpired
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

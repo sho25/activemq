@@ -1857,6 +1857,16 @@ name|regionDestination
 init|=
 name|nodeDest
 decl_stmt|;
+if|if
+condition|(
+name|broker
+operator|.
+name|isExpired
+argument_list|(
+name|node
+argument_list|)
+condition|)
+block|{
 name|regionDestination
 operator|.
 name|messageExpired
@@ -1868,6 +1878,7 @@ argument_list|,
 name|node
 argument_list|)
 expr_stmt|;
+block|}
 name|iter
 operator|.
 name|remove

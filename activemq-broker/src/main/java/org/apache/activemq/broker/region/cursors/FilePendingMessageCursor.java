@@ -2368,6 +2368,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|reference
+operator|.
+name|isExpired
+argument_list|()
+operator|&&
 name|broker
 operator|.
 name|isExpired
