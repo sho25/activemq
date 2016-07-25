@@ -1140,7 +1140,7 @@ name|this
 operator|.
 name|connection
 operator|.
-name|doSyncSendPacket
+name|syncSendPacket
 argument_list|(
 name|info
 argument_list|,
