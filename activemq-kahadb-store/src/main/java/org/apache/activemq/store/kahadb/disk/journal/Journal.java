@@ -751,6 +751,15 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+name|DataFileAccessorPool
+name|getAccessorPool
+parameter_list|()
+block|{
+return|return
+name|accessorPool
+return|;
+block|}
+specifier|public
 enum|enum
 name|PreallocationStrategy
 block|{
@@ -3874,7 +3883,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-specifier|protected
+specifier|public
 specifier|synchronized
 name|void
 name|cleanup
