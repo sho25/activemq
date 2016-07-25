@@ -346,6 +346,14 @@ argument_list|(
 literal|"create"
 argument_list|)
 expr_stmt|;
+name|derby
+operator|.
+name|getConnection
+argument_list|()
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|broker
 operator|=
 name|createBroker
