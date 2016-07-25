@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -59,7 +59,7 @@ block|{
 specifier|public
 name|AMQPRawInboundTransformer
 parameter_list|(
-name|JMSVendor
+name|ActiveMQJMSVendor
 name|vendor
 parameter_list|)
 block|{
@@ -90,13 +90,13 @@ block|{
 return|return
 literal|null
 return|;
-comment|// No fallback from full raw transform
+comment|// No fallback from full raw transform, message likely dropped.
 block|}
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|Message
-name|transform
+name|doTransform
 parameter_list|(
 name|EncodedMessage
 name|amqpMessage
@@ -105,16 +105,11 @@ throws|throws
 name|Exception
 block|{
 name|BytesMessage
-name|rc
+name|result
 init|=
 name|vendor
 operator|.
 name|createBytesMessage
-argument_list|()
-decl_stmt|;
-name|rc
-operator|.
-name|writeBytes
 argument_list|(
 name|amqpMessage
 operator|.
@@ -131,10 +126,10 @@ operator|.
 name|getLength
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// We cannot decode the message headers to check so err on the side of caution
 comment|// and mark all messages as persistent.
-name|rc
+name|result
 operator|.
 name|setJMSDeliveryMode
 argument_list|(
@@ -143,7 +138,7 @@ operator|.
 name|PERSISTENT
 argument_list|)
 expr_stmt|;
-name|rc
+name|result
 operator|.
 name|setJMSPriority
 argument_list|(
@@ -159,7 +154,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-name|rc
+name|result
 operator|.
 name|setJMSTimestamp
 argument_list|(
@@ -173,7 +168,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|rc
+name|result
 operator|.
 name|setJMSExpiration
 argument_list|(
@@ -183,7 +178,7 @@ name|defaultTtl
 argument_list|)
 expr_stmt|;
 block|}
-name|rc
+name|result
 operator|.
 name|setLongProperty
 argument_list|(
@@ -197,7 +192,7 @@ name|getMessageFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|rc
+name|result
 operator|.
 name|setBooleanProperty
 argument_list|(
@@ -209,7 +204,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 return|return
-name|rc
+name|result
 return|;
 block|}
 block|}

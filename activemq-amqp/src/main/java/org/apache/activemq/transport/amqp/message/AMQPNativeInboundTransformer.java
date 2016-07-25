@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -39,7 +39,7 @@ block|{
 specifier|public
 name|AMQPNativeInboundTransformer
 parameter_list|(
-name|JMSVendor
+name|ActiveMQJMSVendor
 name|vendor
 parameter_list|)
 block|{
@@ -78,9 +78,9 @@ return|;
 block|}
 annotation|@
 name|Override
-specifier|public
+specifier|protected
 name|Message
-name|transform
+name|doTransform
 parameter_list|(
 name|EncodedMessage
 name|amqpMessage
@@ -107,24 +107,24 @@ name|decode
 argument_list|()
 decl_stmt|;
 name|Message
-name|rc
+name|result
 init|=
 name|super
 operator|.
-name|transform
+name|doTransform
 argument_list|(
 name|amqpMessage
 argument_list|)
 decl_stmt|;
 name|populateMessage
 argument_list|(
-name|rc
+name|result
 argument_list|,
 name|amqp
 argument_list|)
 expr_stmt|;
 return|return
-name|rc
+name|result
 return|;
 block|}
 block|}
