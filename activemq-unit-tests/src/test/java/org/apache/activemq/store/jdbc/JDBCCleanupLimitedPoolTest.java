@@ -539,7 +539,7 @@ init|=
 operator|new
 name|CountDownLatch
 argument_list|(
-literal|2000
+literal|1000
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -822,7 +822,7 @@ name|executorService
 operator|.
 name|awaitTermination
 argument_list|(
-literal|20
+literal|40
 argument_list|,
 name|TimeUnit
 operator|.
