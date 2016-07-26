@@ -1303,15 +1303,6 @@ operator|.
 name|incrementAndGet
 argument_list|()
 expr_stmt|;
-name|TimeUnit
-operator|.
-name|MILLISECONDS
-operator|.
-name|sleep
-argument_list|(
-literal|10
-argument_list|)
-expr_stmt|;
 block|}
 name|producer
 operator|.
