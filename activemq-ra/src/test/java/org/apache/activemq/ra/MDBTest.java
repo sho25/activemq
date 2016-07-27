@@ -3416,6 +3416,24 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|timeReceived
+operator|.
+name|get
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|timeReceived
+operator|.
+name|set
+argument_list|(
+name|now
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 operator|(
 name|now
 operator|-
@@ -3426,7 +3444,7 @@ argument_list|(
 name|now
 argument_list|)
 operator|)
-operator|>
+operator|>=
 literal|1000
 condition|)
 block|{
@@ -3462,7 +3480,12 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"ex on first delivery"
+literal|"ex on delivery: "
+operator|+
+name|messageDelivered
+operator|.
+name|getCount
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -3717,10 +3740,7 @@ name|timeReceived
 operator|.
 name|set
 argument_list|(
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
+literal|0
 argument_list|)
 expr_stmt|;
 comment|// Send the broker a message to that endpoint
@@ -3755,7 +3775,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|// Wait for the message to be delivered twice.
+comment|// Wait for the message to be delivered.
 name|assertTrue
 argument_list|(
 name|messageDelivered
