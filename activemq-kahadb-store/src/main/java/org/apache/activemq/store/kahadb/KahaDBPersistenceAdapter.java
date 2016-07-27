@@ -1403,7 +1403,7 @@ name|indexDirectory
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableJournalDiskSyncs      *      * @return the enableJournalDiskSyncs      */
+comment|/**      * Get the enableJournalDiskSyncs      * @deprecated use {@link #setEnableJournalDiskSyncs} instead      * @return the enableJournalDiskSyncs      */
 specifier|public
 name|boolean
 name|isEnableJournalDiskSyncs
@@ -1418,7 +1418,7 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableJournalDiskSyncs      *      * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
+comment|/**      * Set the enableJournalDiskSyncs      *      * @deprecated use {@link #setEnableJournalDiskSyncs} instead      * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
 specifier|public
 name|void
 name|setEnableJournalDiskSyncs
@@ -1434,6 +1434,66 @@ operator|.
 name|setEnableJournalDiskSyncs
 argument_list|(
 name|enableJournalDiskSyncs
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @return      */
+specifier|public
+name|String
+name|getJournalDiskSyncStrategy
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|getJournalDiskSyncStrategy
+argument_list|()
+return|;
+block|}
+comment|/**      * @param journalDiskSyncStrategy      */
+specifier|public
+name|void
+name|setJournalDiskSyncStrategy
+parameter_list|(
+name|String
+name|journalDiskSyncStrategy
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setJournalDiskSyncStrategy
+argument_list|(
+name|journalDiskSyncStrategy
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * @return      */
+specifier|public
+name|long
+name|getJournalDiskSyncInterval
+parameter_list|()
+block|{
+return|return
+name|letter
+operator|.
+name|getJournalDiskSyncInterval
+argument_list|()
+return|;
+block|}
+comment|/**      * @param journalDiskSyncInterval      */
+specifier|public
+name|void
+name|setJournalDiskSyncInterval
+parameter_list|(
+name|long
+name|journalDiskSyncInterval
+parameter_list|)
+block|{
+name|letter
+operator|.
+name|setJournalDiskSyncInterval
+argument_list|(
+name|journalDiskSyncInterval
 argument_list|)
 expr_stmt|;
 block|}
