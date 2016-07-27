@@ -7434,6 +7434,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+block|{
 name|JournalCommand
 argument_list|<
 name|?
@@ -7509,6 +7511,35 @@ decl_stmt|;
 return|return
 name|msg
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioe
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Failed to load message at: {}"
+argument_list|,
+name|location
+argument_list|,
+name|ioe
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|handleIOException
+argument_list|(
+name|ioe
+argument_list|)
+expr_stmt|;
+throw|throw
+name|ioe
+throw|;
+block|}
 block|}
 comment|// /////////////////////////////////////////////////////////////////
 comment|// Internal conversion methods.

@@ -141,6 +141,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|Message
 import|;
 end_import
@@ -2207,6 +2217,8 @@ name|count
 init|=
 literal|0
 decl_stmt|;
+try|try
+block|{
 while|while
 condition|(
 name|count
@@ -2227,6 +2239,15 @@ name|count
 operator|++
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|ok
+parameter_list|)
+block|{         }
+finally|finally
+block|{
 name|consumer
 operator|.
 name|close
@@ -2237,6 +2258,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|count
 return|;
