@@ -4908,6 +4908,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|KahaProducerAuditCommand
 name|audit
 init|=
@@ -4921,8 +4923,6 @@ operator|.
 name|producerSequenceIdTrackerLocation
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|ObjectInputStream
 name|objectIn
 init|=
@@ -5048,6 +5048,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|KahaAckMessageFileMapCommand
 name|audit
 init|=
@@ -5061,8 +5063,6 @@ operator|.
 name|ackMessageFileMapLocation
 argument_list|)
 decl_stmt|;
-try|try
-block|{
 name|ObjectInputStream
 name|objectIn
 init|=
@@ -19220,6 +19220,15 @@ expr_stmt|;
 block|}
 return|return
 name|journal
+return|;
+block|}
+specifier|protected
+name|Metadata
+name|getMetadata
+parameter_list|()
+block|{
+return|return
+name|metadata
 return|;
 block|}
 specifier|public
