@@ -421,7 +421,7 @@ block|{
 name|String
 name|details
 init|=
-literal|"unknown"
+literal|"java"
 decl_stmt|;
 try|try
 block|{
