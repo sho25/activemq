@@ -462,20 +462,6 @@ name|PLATFORM_DETAILS
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// the version won't be valid until runtime
-name|assertTrue
-argument_list|(
-name|clientWf
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getProviderVersion
-argument_list|()
-operator|==
-literal|null
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
