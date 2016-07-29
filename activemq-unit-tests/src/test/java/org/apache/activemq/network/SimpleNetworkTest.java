@@ -23,6 +23,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNotNull
 import|;
 end_import
@@ -1428,6 +1440,28 @@ operator|.
 name|sleep
 argument_list|(
 literal|1000
+argument_list|)
+expr_stmt|;
+comment|//Make sure stats are set
+name|assertEquals
+argument_list|(
+name|MESSAGE_COUNT
+argument_list|,
+name|localBroker
+operator|.
+name|getDestination
+argument_list|(
+name|included
+argument_list|)
+operator|.
+name|getDestinationStatistics
+argument_list|()
+operator|.
+name|getForwards
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// close everything down and restart
