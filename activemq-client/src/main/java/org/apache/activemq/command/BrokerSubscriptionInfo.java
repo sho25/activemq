@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Used to represent a durable subscription.  *  * @openwire:marshaller code="92"  *  */
+comment|/**  * Used to represent the durable subscriptions contained by the broker  * This is used to synchronize durable subs on bridge creation  *  * @openwire:marshaller code="92"  *  */
 end_comment
 
 begin_class
