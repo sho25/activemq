@@ -1273,6 +1273,11 @@ name|Message
 name|copy
 parameter_list|)
 block|{
+name|copy
+operator|.
+name|getSize
+argument_list|()
+expr_stmt|;
 name|Logger
 name|perDestinationsLogger
 init|=
