@@ -411,6 +411,26 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"mapped address in published address"
+argument_list|,
+name|brokerService
+operator|.
+name|getTransportConnectorByScheme
+argument_list|(
+literal|"tcp"
+argument_list|)
+operator|.
+name|getPublishableConnectString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Mapped"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
