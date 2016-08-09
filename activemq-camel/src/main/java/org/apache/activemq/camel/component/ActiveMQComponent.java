@@ -1253,6 +1253,16 @@ return|return
 name|answer
 return|;
 block|}
+comment|/**      * We don't want to ever auto-wire the connection factory from the spring app context.      * @return false      */
+specifier|public
+name|boolean
+name|getAllowAutoWiredConnectionFactory
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 end_class
 
