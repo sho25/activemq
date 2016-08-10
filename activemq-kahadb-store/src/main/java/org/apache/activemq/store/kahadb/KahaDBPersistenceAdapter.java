@@ -1403,7 +1403,7 @@ name|indexDirectory
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get the enableJournalDiskSyncs      * @deprecated use {@link #setEnableJournalDiskSyncs} instead      * @return the enableJournalDiskSyncs      */
+comment|/**      * Get the enableJournalDiskSyncs      * @deprecated use {@link #getJournalDiskSyncStrategy} instead      * @return the enableJournalDiskSyncs      */
 specifier|public
 name|boolean
 name|isEnableJournalDiskSyncs
@@ -1418,7 +1418,7 @@ name|isEnableJournalDiskSyncs
 argument_list|()
 return|;
 block|}
-comment|/**      * Set the enableJournalDiskSyncs      *      * @deprecated use {@link #setEnableJournalDiskSyncs} instead      * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
+comment|/**      * Set the enableJournalDiskSyncs      *      * @deprecated use {@link #setJournalDiskSyncStrategy} instead      * @param enableJournalDiskSyncs      *            the enableJournalDiskSyncs to set      */
 specifier|public
 name|void
 name|setEnableJournalDiskSyncs
