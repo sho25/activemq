@@ -1253,10 +1253,10 @@ return|return
 name|answer
 return|;
 block|}
-comment|/**      * We don't want to ever auto-wire the connection factory from the spring app context.      * @return false      */
+comment|/**      * We don't want to ever auto-wire the connection factory from the spring app context (requires Camel 2.18 onwards)      *      * @return false      */
 specifier|public
 name|boolean
-name|getAllowAutoWiredConnectionFactory
+name|isAllowAutoWiredConnectionFactory
 parameter_list|()
 block|{
 return|return
