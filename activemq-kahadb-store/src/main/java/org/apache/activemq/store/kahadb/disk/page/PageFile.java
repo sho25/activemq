@@ -4339,6 +4339,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+try|try
+block|{
 comment|// First land the writes in the recovery file
 if|if
 condition|(
@@ -4519,8 +4521,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-try|try
-block|{
 for|for
 control|(
 name|PageWrite
