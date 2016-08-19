@@ -8328,12 +8328,14 @@ name|cancelledTaskModMetric
 operator|>
 literal|0
 operator|&&
+operator|(
+operator|++
 name|this
 operator|.
 name|store
 operator|.
 name|canceledTasks
-operator|++
+operator|)
 operator|%
 name|cancelledTaskModMetric
 operator|==
