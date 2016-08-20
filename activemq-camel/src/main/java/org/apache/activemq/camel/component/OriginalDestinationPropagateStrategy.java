@@ -207,6 +207,14 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|jms
+operator|!=
+literal|null
+operator|&&
+name|jms
+operator|instanceof
+name|ActiveMQMessage
+operator|&&
 name|message
 operator|instanceof
 name|ActiveMQMessage
