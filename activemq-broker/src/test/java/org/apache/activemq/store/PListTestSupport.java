@@ -299,7 +299,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-specifier|private
+specifier|protected
 name|PListStore
 name|store
 decl_stmt|;
