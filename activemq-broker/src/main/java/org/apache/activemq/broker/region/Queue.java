@@ -1059,6 +1059,26 @@ name|MDC
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
+name|AbstractStoreCursor
+operator|.
+name|gotToTheStore
+import|;
+end_import
+
 begin_comment
 comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  */
 end_comment
@@ -10325,14 +10345,14 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
-comment|// store should have trapped duplicate in it's index, also cursor audit
-comment|// we need to remove the duplicate from the store in the knowledge that the original message may be inflight
+comment|// store should have trapped duplicate in it's index, or cursor audit trapped insert
+comment|// or producerBrokerExchange suppressed send.
 comment|// note: jdbc store will not trap unacked messages as a duplicate b/c it gives each message a unique sequence id
 name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"{}, duplicate message {} paged in, is cursor audit disabled? Removing from store and redirecting to dlq"
+literal|"{}, duplicate message {} from cursor, is cursor audit disabled or too constrained? Redirecting to dlq"
 argument_list|,
 name|this
 argument_list|,
@@ -10355,6 +10375,36 @@ init|=
 name|createConnectionContext
 argument_list|()
 decl_stmt|;
+name|dropMessage
+argument_list|(
+name|ref
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|gotToTheStore
+argument_list|(
+name|ref
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Duplicate message {} from cursor, removing from store"
+argument_list|,
+name|this
+argument_list|,
+name|ref
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|store
 operator|.
 name|removeMessage
@@ -10377,6 +10427,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|broker
 operator|.
 name|getRoot
@@ -10396,7 +10447,7 @@ argument_list|,
 operator|new
 name|Throwable
 argument_list|(
-literal|"duplicate paged in from store for "
+literal|"duplicate paged in from cursor for "
 operator|+
 name|destination
 argument_list|)

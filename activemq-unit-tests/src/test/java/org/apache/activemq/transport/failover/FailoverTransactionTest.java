@@ -5290,8 +5290,8 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|JMSException
-name|expectedSometimes
+name|TransactionRolledBackException
+name|expected
 parameter_list|)
 block|{
 name|LOG
@@ -5300,16 +5300,9 @@ name|info
 argument_list|(
 literal|"got exception ex on commit"
 argument_list|,
-name|expectedSometimes
+name|expected
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|expectedSometimes
-operator|instanceof
-name|TransactionRolledBackException
-condition|)
-block|{
 name|gotTransactionRolledBackException
 operator|.
 name|set
@@ -5318,13 +5311,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// ok, message one was not replayed so we expect the rollback
-block|}
-else|else
-block|{
-throw|throw
-name|expectedSometimes
-throw|;
-block|}
 block|}
 name|commitDoneLatch
 operator|.
@@ -5432,10 +5418,25 @@ expr_stmt|;
 end_expr_stmt
 
 begin_comment
-comment|// new transaction
+comment|// new transaction to get both messages from either consumer
 end_comment
 
-begin_decl_stmt
+begin_for
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|2
+condition|;
+name|i
+operator|++
+control|)
+block|{
 name|Message
 name|msg
 init|=
@@ -5443,19 +5444,9 @@ name|consumer1
 operator|.
 name|receive
 argument_list|(
-name|gotTransactionRolledBackException
-operator|.
-name|get
-argument_list|()
-condition|?
 literal|5000
-else|:
-literal|20000
 argument_list|)
 decl_stmt|;
-end_decl_stmt
-
-begin_expr_stmt
 name|LOG
 operator|.
 name|info
@@ -5465,69 +5456,18 @@ operator|+
 name|msg
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_if
-if|if
-condition|(
-name|gotTransactionRolledBackException
-operator|.
-name|get
-argument_list|()
-condition|)
-block|{
-name|assertNotNull
-argument_list|(
-literal|"should be available again after commit rollback ex"
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|assertNull
-argument_list|(
-literal|"should be nothing left for consumer as receive should have committed"
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
-block|}
-end_if
-
-begin_expr_stmt
 name|consumerSession1
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_if
 if|if
 condition|(
-name|gotTransactionRolledBackException
-operator|.
-name|get
-argument_list|()
-operator|||
-operator|!
-name|gotTransactionRolledBackException
-operator|.
-name|get
-argument_list|()
-operator|&&
-name|receivedMessages
-operator|.
-name|size
-argument_list|()
+name|msg
 operator|==
-literal|1
+literal|null
 condition|)
 block|{
-comment|// just one message successfully consumed or none consumed
-comment|// consumer2 should get other message
 name|msg
 operator|=
 name|consumer2
@@ -5546,20 +5486,25 @@ operator|+
 name|msg
 argument_list|)
 expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"got second message on consumer2"
-argument_list|,
-name|msg
-argument_list|)
-expr_stmt|;
 name|consumerSession2
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
 block|}
-end_if
+name|assertNotNull
+argument_list|(
+literal|"got message ["
+operator|+
+name|i
+operator|+
+literal|"]"
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+block|}
+end_for
 
 begin_for
 for|for
@@ -5711,17 +5656,18 @@ argument_list|)
 decl_stmt|;
 end_decl_stmt
 
-begin_expr_stmt
+begin_decl_stmt
+name|Message
 name|msg
-operator|=
+init|=
 name|sweeper
 operator|.
 name|receive
 argument_list|(
 literal|1000
 argument_list|)
-expr_stmt|;
-end_expr_stmt
+decl_stmt|;
+end_decl_stmt
 
 begin_expr_stmt
 name|LOG
