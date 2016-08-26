@@ -272,7 +272,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -613,6 +613,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|addMessage
@@ -805,6 +807,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1233,6 +1237,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Message
 name|getMessage
@@ -1467,6 +1473,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeMessage
@@ -1599,6 +1607,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recover
@@ -1640,6 +1650,8 @@ operator|new
 name|JDBCMessageRecoveryListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -1653,6 +1665,14 @@ name|data
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+if|if
+condition|(
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
+condition|)
 block|{
 name|Message
 name|msg
@@ -1690,6 +1710,31 @@ name|msg
 argument_list|)
 return|;
 block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Message recovery limit reached for MessageRecoveryListener"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|false
+return|;
+block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -1699,6 +1744,14 @@ name|reference
 parameter_list|)
 throws|throws
 name|Exception
+block|{
+if|if
+condition|(
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
+condition|)
 block|{
 return|return
 name|listener
@@ -1712,6 +1765,29 @@ name|reference
 argument_list|)
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"Message recovery limit reached for MessageRecoveryListener"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -1755,6 +1831,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @see org.apache.activemq.store.MessageStore#removeAllMessages(ConnectionContext)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeAllMessages
@@ -1906,6 +1984,8 @@ name|result
 return|;
 block|}
 comment|/**      * @param maxReturned      * @param listener      * @throws Exception      * @see org.apache.activemq.store.MessageStore#recoverNextMessages(int,      *      org.apache.activemq.store.MessageRecoveryListener)      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|recoverNextMessages
@@ -1982,6 +2062,8 @@ operator|new
 name|JDBCMessageRecoveryListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessage
@@ -2054,6 +2136,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|recoverMessageReference
@@ -2145,6 +2229,8 @@ name|sequenceId
 expr_stmt|;
 block|}
 comment|/**      * @see org.apache.activemq.store.MessageStore#resetBatching()      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|resetBatching
@@ -2313,6 +2399,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setPrioritizedMessages
