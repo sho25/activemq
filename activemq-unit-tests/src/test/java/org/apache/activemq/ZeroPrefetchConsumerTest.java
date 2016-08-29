@@ -2105,6 +2105,13 @@ argument_list|(
 literal|5000
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Consumer should have read a message"
+argument_list|,
+name|answer
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Should have received a message!"
@@ -2452,11 +2459,20 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+block|{
 name|connection
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{}
 name|super
 operator|.
 name|tearDown
