@@ -436,6 +436,19 @@ argument_list|(
 literal|"ANONYMOUS-RELAY"
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Symbol
+name|DELAYED_DELIVERY
+init|=
+name|Symbol
+operator|.
+name|valueOf
+argument_list|(
+literal|"DELAYED_DELIVERY"
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Parameters
 argument_list|(
@@ -640,6 +653,23 @@ block|{
 name|markAsInvalid
 argument_list|(
 literal|"Broker did not indicate it support anonymous relay"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|contains
+argument_list|(
+name|offered
+argument_list|,
+name|DELAYED_DELIVERY
+argument_list|)
+condition|)
+block|{
+name|markAsInvalid
+argument_list|(
+literal|"Broker did not indicate it support delayed message delivery"
 argument_list|)
 expr_stmt|;
 block|}

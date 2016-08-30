@@ -87,6 +87,24 @@ name|amqp
 operator|.
 name|AmqpSupport
 operator|.
+name|DELAYED_DELIVERY
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|AmqpSupport
+operator|.
 name|INVALID_FIELD
 import|;
 end_import
@@ -1690,6 +1708,8 @@ name|Symbol
 index|[]
 block|{
 name|ANONYMOUS_RELAY
+block|,
+name|DELAYED_DELIVERY
 block|}
 return|;
 block|}
