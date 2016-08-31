@@ -321,6 +321,8 @@ specifier|protected
 name|void
 name|doInit
 parameter_list|()
+throws|throws
+name|Exception
 block|{
 if|if
 condition|(
@@ -334,10 +336,12 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|serviceRead
+block|}
+name|super
+operator|.
+name|doInit
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Override

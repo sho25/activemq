@@ -560,7 +560,6 @@ expr_stmt|;
 name|doHandshake
 argument_list|()
 expr_stmt|;
-comment|// detectReadyState();
 block|}
 catch|catch
 parameter_list|(

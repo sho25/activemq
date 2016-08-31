@@ -412,7 +412,6 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-comment|// System.out.println("length1: " + initBuffer.array().length);
 name|receiveCounter
 operator|+=
 name|initBuffer
@@ -434,6 +433,11 @@ name|buffer
 argument_list|)
 expr_stmt|;
 block|}
+name|super
+operator|.
+name|doInit
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
