@@ -639,7 +639,7 @@ name|verifyStoreStats
 argument_list|(
 name|dest
 argument_list|,
-literal|100
+literal|0
 argument_list|,
 name|publishedMessageSize
 operator|.

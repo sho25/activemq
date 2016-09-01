@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -43,16 +43,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedHashMap
 import|;
 end_import
@@ -64,18 +54,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
 import|;
 end_import
 
@@ -159,6 +137,20 @@ name|activemq
 operator|.
 name|store
 operator|.
+name|AbstractMessageStore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
 name|IndexListener
 import|;
 end_import
@@ -187,26 +179,12 @@ name|activemq
 operator|.
 name|store
 operator|.
-name|AbstractMessageStore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|store
-operator|.
 name|MessageStoreStatistics
 import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore} which  * uses a  *  *  */
+comment|/**  * An implementation of {@link org.apache.activemq.store.MessageStore}  */
 end_comment
 
 begin_class
@@ -372,13 +350,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// public void addMessageReference(ConnectionContext context,MessageId
-comment|// messageId,long expirationTime,String messageRef)
-comment|// throws IOException{
-comment|// synchronized(messageTable){
-comment|// messageTable.put(messageId,messageRef);
-comment|// }
-comment|// }
 annotation|@
 name|Override
 specifier|public
@@ -400,9 +371,6 @@ name|identity
 argument_list|)
 return|;
 block|}
-comment|// public String getMessageReference(MessageId identity) throws IOException{
-comment|// return (String)messageTable.get(identity);
-comment|// }
 annotation|@
 name|Override
 specifier|public
@@ -513,8 +481,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// the message table is a synchronizedMap - so just have to synchronize
-comment|// here
+comment|// the message table is a synchronizedMap - so just have to synchronize here
 synchronized|synchronized
 init|(
 name|messageTable
@@ -522,40 +489,20 @@ init|)
 block|{
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|Message
-argument_list|>
-name|iter
-init|=
+name|message
+range|:
 name|messageTable
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|Message
-name|msg
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|listener
 operator|.
 name|recoverMessage
 argument_list|(
-name|msg
+name|message
 argument_list|)
 expr_stmt|;
 block|}
@@ -641,52 +588,29 @@ name|lastBatchId
 operator|==
 literal|null
 decl_stmt|;
-name|int
-name|count
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|MessageId
+argument_list|,
+name|Message
+argument_list|>
+name|entry
+range|:
 name|messageTable
 operator|.
 name|entrySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|Map
-operator|.
-name|Entry
-name|entry
-init|=
-operator|(
-name|Entry
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|pastLackBatch
 condition|)
 block|{
-name|count
-operator|++
-expr_stmt|;
 name|Object
 name|msg
 init|=
@@ -697,9 +621,6 @@ argument_list|()
 decl_stmt|;
 name|lastBatchId
 operator|=
-operator|(
-name|MessageId
-operator|)
 name|entry
 operator|.
 name|getKey
@@ -815,7 +736,7 @@ name|getMessageId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//if can't be found then increment count, else remove old size
+comment|// if can't be found then increment count, else remove old size
 if|if
 condition|(
 name|original
@@ -905,38 +826,18 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|Message
-argument_list|>
-name|iter
-init|=
+name|message
+range|:
 name|messageTable
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|Message
-name|msg
-init|=
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|size
 operator|+=
-name|msg
+name|message
 operator|.
 name|getSize
 argument_list|()

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -23,6 +23,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -34,6 +44,16 @@ operator|.
 name|util
 operator|.
 name|LinkedHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -101,8 +121,22 @@ name|MessageRecoveryListener
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|SubscriptionKey
+import|;
+end_import
+
 begin_comment
-comment|/**  * A holder for a durable subscriber  *  *  */
+comment|/**  * A holder for a durable subscriber  */
 end_comment
 
 begin_class
@@ -110,6 +144,7 @@ class|class
 name|MemoryTopicSub
 block|{
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|MessageId
@@ -128,9 +163,28 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
+specifier|final
+name|SubscriptionKey
+name|subscriptionKey
+decl_stmt|;
+specifier|private
 name|MessageId
 name|lastBatch
 decl_stmt|;
+specifier|public
+name|MemoryTopicSub
+parameter_list|(
+name|SubscriptionKey
+name|subscriptionKey
+parameter_list|)
+block|{
+name|this
+operator|.
+name|subscriptionKey
+operator|=
+name|subscriptionKey
+expr_stmt|;
+block|}
 name|void
 name|addMessage
 parameter_list|(
@@ -224,6 +278,33 @@ operator|.
 name|decrementReferenceCount
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+name|List
+argument_list|<
+name|Message
+argument_list|>
+name|getStoredMessages
+parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<
+name|Message
+argument_list|>
+argument_list|(
+name|map
+operator|.
+name|values
+argument_list|()
+argument_list|)
+return|;
 block|}
 block|}
 specifier|synchronized
@@ -397,8 +478,7 @@ name|lastId
 init|=
 literal|null
 decl_stmt|;
-comment|// the message table is a synchronizedMap - so just have to synchronize
-comment|// here
+comment|// the message table is a synchronizedMap - so just have to synchronize here
 name|int
 name|count
 init|=
@@ -518,6 +598,14 @@ name|lastBatch
 operator|=
 literal|null
 expr_stmt|;
+block|}
+name|SubscriptionKey
+name|getSubscriptionKey
+parameter_list|()
+block|{
+return|return
+name|subscriptionKey
+return|;
 block|}
 block|}
 end_class

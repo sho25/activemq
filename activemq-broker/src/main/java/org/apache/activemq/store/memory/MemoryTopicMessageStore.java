@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -53,7 +53,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|List
 import|;
 end_import
 
@@ -64,18 +64,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-operator|.
-name|Entry
 import|;
 end_import
 
@@ -247,10 +235,6 @@ name|SubscriptionKey
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
-
 begin_class
 specifier|public
 class|class
@@ -315,8 +299,8 @@ name|makeSubscriptionInfoMap
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//Set the messageStoreStatistics after the super class is initialized so that the stats can be
-comment|//properly updated on cache eviction
+comment|// Set the messageStoreStatistics after the super class is initialized
+comment|// so that the stats can be properly updated on cache eviction
 name|MemoryTopicMessageStoreLRUCache
 name|cache
 init|=
@@ -376,8 +360,9 @@ operator|=
 name|makeSubMap
 argument_list|()
 expr_stmt|;
-comment|//this is only necessary so that messageStoreStatistics can be set if necessary
-comment|//We need the original reference since messageTable is wrapped in a synchronized map in the parent class
+comment|// this is only necessary so that messageStoreStatistics can be set if
+comment|// necessary We need the original reference since messageTable is wrapped
+comment|// in a synchronized map in the parent class
 name|this
 operator|.
 name|originalMessageTable
@@ -466,35 +451,15 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|MemoryTopicSub
-argument_list|>
-name|i
-init|=
+name|sub
+range|:
 name|topicSubMap
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|MemoryTopicSub
-name|sub
-init|=
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|sub
 operator|.
 name|addMessage
@@ -534,6 +499,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|super
+operator|.
+name|removeMessage
+argument_list|(
+name|messageId
+argument_list|)
+expr_stmt|;
 name|SubscriptionKey
 name|key
 init|=
@@ -632,7 +604,9 @@ name|sub
 init|=
 operator|new
 name|MemoryTopicSub
-argument_list|()
+argument_list|(
+name|key
+argument_list|)
 decl_stmt|;
 name|topicSubMap
 operator|.
@@ -650,52 +624,31 @@ condition|)
 block|{
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|MessageId
+argument_list|,
+name|Message
+argument_list|>
+name|entry
+range|:
 name|messageTable
 operator|.
 name|entrySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|Map
-operator|.
-name|Entry
-name|entry
-init|=
-operator|(
-name|Entry
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|sub
 operator|.
 name|addMessage
 argument_list|(
-operator|(
-name|MessageId
-operator|)
 name|entry
 operator|.
 name|getKey
 argument_list|()
 argument_list|,
-operator|(
-name|Message
-operator|)
 name|entry
 operator|.
 name|getValue
@@ -728,14 +681,6 @@ name|String
 name|subscriptionName
 parameter_list|)
 block|{
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
 name|SubscriptionKey
 name|key
 init|=
@@ -747,6 +692,82 @@ argument_list|,
 name|subscriptionName
 argument_list|)
 decl_stmt|;
+name|subscriberDatabase
+operator|.
+name|remove
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+name|MemoryTopicSub
+name|subscription
+init|=
+name|topicSubMap
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|subscription
+operator|!=
+literal|null
+condition|)
+block|{
+name|List
+argument_list|<
+name|Message
+argument_list|>
+name|storedMessages
+init|=
+name|subscription
+operator|.
+name|getStoredMessages
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|Message
+name|message
+range|:
+name|storedMessages
+control|)
+block|{
+try|try
+block|{
+name|acknowledge
+argument_list|(
+literal|null
+argument_list|,
+name|key
+operator|.
+name|getClientId
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getSubscriptionName
+argument_list|()
+argument_list|,
+name|message
+operator|.
+name|getMessageId
+argument_list|()
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{                 }
+block|}
+block|}
 name|subscriberDatabase
 operator|.
 name|remove
@@ -1079,7 +1100,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//Disabled for the memory store, can be enabled later if necessary
+comment|// Disabled for the memory store, can be enabled later if necessary
 specifier|private
 specifier|final
 name|MessageStoreSubscriptionStatistics
@@ -1102,7 +1123,7 @@ return|return
 name|stats
 return|;
 block|}
-comment|/**      * Since we initialize the store with a LRUCache in some cases, we need to account for cache evictions      * when computing the message store statistics.      *      */
+comment|/**      * Since we initialize the store with a LRUCache in some cases, we need to      * account for cache evictions when computing the message store statistics.      *      */
 specifier|private
 specifier|static
 class|class
@@ -1197,6 +1218,15 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|)
+expr_stmt|;
+comment|// We aren't tracking this anymore so remove our reference to it.
+name|eldest
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|decrementReferenceCount
+argument_list|()
 expr_stmt|;
 block|}
 block|}
