@@ -368,7 +368,7 @@ name|Test
 argument_list|(
 name|timeout
 operator|=
-literal|60
+literal|120
 operator|*
 literal|1000
 argument_list|)
@@ -606,7 +606,7 @@ name|executor
 operator|.
 name|awaitTermination
 argument_list|(
-literal|60
+literal|30
 argument_list|,
 name|TimeUnit
 operator|.
@@ -618,7 +618,7 @@ name|allMessagesList
 operator|.
 name|setMaximumDuration
 argument_list|(
-literal|120
+literal|90
 operator|*
 literal|1000
 argument_list|)

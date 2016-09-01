@@ -1052,6 +1052,11 @@ argument_list|(
 name|conn
 argument_list|)
 expr_stmt|;
+name|conn
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|Session
 name|sess
 init|=
@@ -1077,11 +1082,6 @@ argument_list|(
 name|dest
 argument_list|)
 decl_stmt|;
-name|conn
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
 return|return
 name|consumer
 return|;
