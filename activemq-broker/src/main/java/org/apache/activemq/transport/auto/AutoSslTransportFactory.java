@@ -534,7 +534,6 @@ init|=
 literal|false
 decl_stmt|;
 comment|/**      * Allows subclasses of SslTransportFactory to create custom instances of      * SslTransportServer.      *      * @param location      * @param serverSocketFactory      * @return      * @throws IOException      * @throws URISyntaxException      */
-comment|// @Override
 specifier|protected
 name|AutoSslTransportServer
 name|createAutoSslTransportServer

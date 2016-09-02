@@ -73,16 +73,6 @@ name|javax
 operator|.
 name|net
 operator|.
-name|ServerSocketFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
 name|ssl
 operator|.
 name|SSLServerSocket
@@ -103,18 +93,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
-name|SSLSocket
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -124,36 +102,6 @@ operator|.
 name|broker
 operator|.
 name|BrokerService
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|Transport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|tcp
-operator|.
-name|SslTransport
 import|;
 end_import
 
@@ -240,19 +188,6 @@ specifier|private
 name|boolean
 name|wantClientAuth
 decl_stmt|;
-comment|//    /**
-comment|//     * Creates a ssl transport server for the specified url using the provided
-comment|//     * serverSocketFactory
-comment|//     *
-comment|//     * @param transportFactory The factory used to create transports when connections arrive.
-comment|//     * @param location The location of the broker to bind to.
-comment|//     * @param serverSocketFactory The factory used to create this server.
-comment|//     * @throws IOException passed up from TcpTransportFactory.
-comment|//     * @throws URISyntaxException passed up from TcpTransportFactory.
-comment|//     */
-comment|//    public SslTransportServer(SslTransportFactory transportFactory, URI location, SSLServerSocketFactory serverSocketFactory) throws IOException, URISyntaxException {
-comment|//        super(transportFactory, location, serverSocketFactory);
-comment|//    }
 specifier|public
 name|AutoSslTransportServer
 parameter_list|(
@@ -419,19 +354,20 @@ name|socket
 parameter_list|,
 name|WireFormat
 name|format
+parameter_list|,
+name|TcpTransportFactory
+name|detectedTransportFactory
 parameter_list|)
 throws|throws
 name|IOException
 block|{
 return|return
-operator|new
-name|SslTransport
+name|detectedTransportFactory
+operator|.
+name|createTransport
 argument_list|(
 name|format
 argument_list|,
-operator|(
-name|SSLSocket
-operator|)
 name|socket
 argument_list|,
 name|this
