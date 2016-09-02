@@ -17,11 +17,33 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|ActiveMQXAConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
 operator|.
 name|XAConnectionFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|naming
+operator|.
+name|Context
 import|;
 end_import
 
@@ -49,10 +71,9 @@ parameter_list|()
 throws|throws
 name|NamingException
 block|{
-name|assertTrue
-argument_list|(
-literal|"connection factory implements XA"
-argument_list|,
+name|Object
+name|factory
+init|=
 name|context
 operator|.
 name|lookup
@@ -60,8 +81,29 @@ argument_list|(
 name|getConnectionFactoryLookupName
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"connection factory implements XA"
+argument_list|,
+name|factory
 operator|instanceof
 name|XAConnectionFactory
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"is always sync send"
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQXAConnectionFactory
+operator|)
+name|factory
+operator|)
+operator|.
+name|isAlwaysSyncSend
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -77,6 +119,17 @@ argument_list|(
 literal|"xa"
 argument_list|,
 literal|"true"
+argument_list|)
+expr_stmt|;
+name|environment
+operator|.
+name|put
+argument_list|(
+name|Context
+operator|.
+name|PROVIDER_URL
+argument_list|,
+literal|"vm://locahost?jms.alwaysSyncSend=true"
 argument_list|)
 expr_stmt|;
 name|super
