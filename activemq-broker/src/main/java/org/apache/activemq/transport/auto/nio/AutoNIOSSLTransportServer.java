@@ -598,6 +598,7 @@ name|newSingleThreadExecutor
 argument_list|()
 decl_stmt|;
 comment|//The SSLEngine needs to be initialized and handshake done to get the first command and detect the format
+comment|//The wireformat doesn't need properties set here because we aren't using this format during the SSL handshake
 specifier|final
 name|AutoInitNioSSLTransport
 name|in

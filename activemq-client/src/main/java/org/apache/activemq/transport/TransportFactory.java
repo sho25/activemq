@@ -41,16 +41,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|Socket
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URI
 import|;
 end_import
@@ -72,16 +62,6 @@ operator|.
 name|net
 operator|.
 name|UnknownHostException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|ByteBuffer
 import|;
 end_import
 
@@ -138,18 +118,6 @@ operator|.
 name|concurrent
 operator|.
 name|Executor
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|net
-operator|.
-name|ssl
-operator|.
-name|SSLEngine
 import|;
 end_import
 
