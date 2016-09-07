@@ -254,6 +254,23 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Create an anonymous sender.      *      * @return a newly created sender that is ready for use.      *      * @throws Exception if an error occurs while creating the sender.      */
+specifier|public
+name|AmqpSender
+name|createSender
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
+name|createSender
+argument_list|(
+literal|null
+argument_list|,
+literal|false
+argument_list|)
+return|;
+block|}
 comment|/**      * Create a sender instance using the given address      *      * @param address      *        the address to which the sender will produce its messages.      *      * @return a newly created sender that is ready for use.      *      * @throws Exception if an error occurs while creating the sender.      */
 specifier|public
 name|AmqpSender
