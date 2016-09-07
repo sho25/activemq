@@ -2968,7 +2968,7 @@ name|ack
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|Region
 name|getRegion
 parameter_list|(
