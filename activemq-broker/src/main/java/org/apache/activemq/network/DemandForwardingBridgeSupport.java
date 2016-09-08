@@ -4151,13 +4151,6 @@ name|configuration
 operator|.
 name|isDynamicOnly
 argument_list|()
-operator|&&
-name|subInfo
-operator|.
-name|getSubscriptionInfos
-argument_list|()
-operator|!=
-literal|null
 condition|)
 block|{
 if|if
@@ -4166,6 +4159,16 @@ name|started
 operator|.
 name|get
 argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|subInfo
+operator|.
+name|getSubscriptionInfos
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 for|for
@@ -4206,6 +4209,7 @@ argument_list|(
 name|info
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|//After re-added, clean up any empty durables
