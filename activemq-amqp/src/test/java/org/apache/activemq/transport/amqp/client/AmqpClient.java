@@ -75,7 +75,7 @@ name|client
 operator|.
 name|transport
 operator|.
-name|NettyTransportFactory
+name|NettyTransport
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|client
 operator|.
 name|transport
 operator|.
-name|NettyTransport
+name|NettyTransportFactory
 import|;
 end_import
 
@@ -181,6 +181,10 @@ decl_stmt|;
 specifier|private
 name|String
 name|mechanismRestriction
+decl_stmt|;
+specifier|private
+name|boolean
+name|traceFrames
 decl_stmt|;
 specifier|private
 name|AmqpValidator
@@ -366,6 +370,14 @@ operator|.
 name|setStateInspector
 argument_list|(
 name|getStateInspector
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
+name|setTraceFrames
+argument_list|(
+name|isTraceFrames
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -599,6 +611,32 @@ operator|.
 name|stateInspector
 operator|=
 name|stateInspector
+expr_stmt|;
+block|}
+comment|/**      * @return the traceFrames setting for the client, true indicates frame tracing is on.      */
+specifier|public
+name|boolean
+name|isTraceFrames
+parameter_list|()
+block|{
+return|return
+name|traceFrames
+return|;
+block|}
+comment|/**      * Controls whether connections created from this client object will log AMQP      * frames to a trace level logger or not.      *      * @param traceFrames      *      configure the trace frames option for the client created connections.      */
+specifier|public
+name|void
+name|setTraceFrames
+parameter_list|(
+name|boolean
+name|traceFrames
+parameter_list|)
+block|{
+name|this
+operator|.
+name|traceFrames
+operator|=
+name|traceFrames
 expr_stmt|;
 block|}
 annotation|@

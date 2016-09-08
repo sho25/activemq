@@ -222,6 +222,13 @@ init|=
 name|createAmqpClient
 argument_list|()
 decl_stmt|;
+name|client
+operator|.
+name|setTraceFrames
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|AmqpConnection
 name|connection
 init|=
