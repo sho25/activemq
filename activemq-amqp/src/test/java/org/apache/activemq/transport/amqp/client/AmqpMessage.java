@@ -554,6 +554,42 @@ name|delivery
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Accepts the message marking it as consumed on the remote peer.      *      * @param session      *      The session that is used to manage acceptance of the message.      *      * @throws Exception if an error occurs during the accept.      */
+specifier|public
+name|void
+name|accept
+parameter_list|(
+name|AmqpSession
+name|txnSession
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|receiver
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Can't accept non-received message."
+argument_list|)
+throw|;
+block|}
+name|receiver
+operator|.
+name|accept
+argument_list|(
+name|delivery
+argument_list|,
+name|txnSession
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Marks the message as Modified, indicating whether it failed to deliver and is not deliverable here.      *      * @param deliveryFailed      *        indicates that the delivery failed for some reason.      * @param undeliverableHere      *        marks the delivery as not being able to be process by link it was sent to.      *      * @throws Exception if an error occurs during the process.      */
 specifier|public
 name|void
@@ -1039,7 +1075,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Gets the application property that is mapped to the given name or null      * if no property has been set with that name.      *      * @param key      *        the name used to lookup the property in the application properties.      *      * @return the propety value or null if not set.      */
+comment|/**      * Gets the application property that is mapped to the given name or null      * if no property has been set with that name.      *      * @param key      *        the name used to lookup the property in the application properties.      *      * @return the property value or null if not set.      */
 specifier|public
 name|Object
 name|getApplicationProperty
