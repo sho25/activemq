@@ -1589,12 +1589,11 @@ name|sync
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Accepts a message that was dispatched under the given Delivery instance.      *      * @param delivery      *        the Delivery instance to accept.      *      * @throws IOException if an error occurs while sending the accept.      */
+comment|/**      * Accepts a message that was dispatched under the given Delivery instance and settles the delivery.      *      * @param delivery      *        the Delivery instance to accept.      *      * @throws IOException if an error occurs while sending the accept.      */
 specifier|public
 name|void
 name|accept
 parameter_list|(
-specifier|final
 name|Delivery
 name|delivery
 parameter_list|)
@@ -1608,10 +1607,38 @@ argument_list|,
 name|this
 operator|.
 name|session
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Accepts a message that was dispatched under the given Delivery instance.      *      * This method allows for the session that is used in the accept to be specified by the      * caller.  This allows for an accepted message to be involved in a transaction that is      * being managed by some other session other than the one that created this receiver.      *      * @param delivery      *        the Delivery instance to accept.      * @param session      *        the session under which the message is being accepted.      *      * @throws IOException if an error occurs while sending the accept.      */
+comment|/**      * Accepts a message that was dispatched under the given Delivery instance.      *      * @param delivery      *        the Delivery instance to accept.      * @param settle      *        true if the receiver should settle the delivery or just send the disposition.      *      * @throws IOException if an error occurs while sending the accept.      */
+specifier|public
+name|void
+name|accept
+parameter_list|(
+name|Delivery
+name|delivery
+parameter_list|,
+name|boolean
+name|settle
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|accept
+argument_list|(
+name|delivery
+argument_list|,
+name|this
+operator|.
+name|session
+argument_list|,
+name|settle
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Accepts a message that was dispatched under the given Delivery instance and settles the delivery.      *      * This method allows for the session that is used in the accept to be specified by the      * caller.  This allows for an accepted message to be involved in a transaction that is      * being managed by some other session other than the one that created this receiver.      *      * @param delivery      *        the Delivery instance to accept.      * @param session      *        the session under which the message is being accepted.      *      * @throws IOException if an error occurs while sending the accept.      */
 specifier|public
 name|void
 name|accept
@@ -1623,6 +1650,36 @@ parameter_list|,
 specifier|final
 name|AmqpSession
 name|session
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|accept
+argument_list|(
+name|delivery
+argument_list|,
+name|session
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Accepts a message that was dispatched under the given Delivery instance.      *      * This method allows for the session that is used in the accept to be specified by the      * caller.  This allows for an accepted message to be involved in a transaction that is      * being managed by some other session other than the one that created this receiver.      *      * @param delivery      *        the Delivery instance to accept.      * @param session      *        the session under which the message is being accepted.      * @param settle      *        true if the receiver should settle the delivery or just send the disposition.      *      * @throws IOException if an error occurs while sending the accept.      */
+specifier|public
+name|void
+name|accept
+parameter_list|(
+specifier|final
+name|Delivery
+name|delivery
+parameter_list|,
+specifier|final
+name|AmqpSession
+name|session
+parameter_list|,
+specifier|final
+name|boolean
+name|settle
 parameter_list|)
 throws|throws
 name|IOException
@@ -1780,11 +1837,6 @@ argument_list|(
 name|txState
 argument_list|)
 expr_stmt|;
-name|delivery
-operator|.
-name|settle
-argument_list|()
-expr_stmt|;
 name|session
 operator|.
 name|getTransactionContext
@@ -1811,6 +1863,12 @@ name|getInstance
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|settle
+condition|)
+block|{
 name|delivery
 operator|.
 name|settle
