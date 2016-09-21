@@ -3673,7 +3673,7 @@ operator|.
 name|getConsumerInfo
 argument_list|()
 operator|.
-name|getCurrentPrefetchSize
+name|getPrefetchSize
 argument_list|()
 block|}
 argument_list|)

@@ -1958,7 +1958,11 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
-literal|"Receiver #2 should have read a message"
+literal|"Receiver #2 should have read message["
+operator|+
+name|i
+operator|+
+literal|"]"
 argument_list|,
 name|message
 argument_list|)
@@ -4030,7 +4034,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"**** Receiver #1 granting creadit[{}] for its block of messages"
+literal|"**** Receiver #1 granting credit[{}] for its block of messages"
 argument_list|,
 name|splitCredit
 argument_list|)
@@ -4100,7 +4104,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"**** Receiver #2 granting creadit[{}] for its block of messages"
+literal|"**** Receiver #2 granting credit[{}] for its block of messages"
 argument_list|,
 name|splitCredit
 argument_list|)
@@ -4143,7 +4147,11 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
-literal|"Receiver #2 should have read a message"
+literal|"Receiver #2 should have read a message["
+operator|+
+name|i
+operator|+
+literal|"]"
 argument_list|,
 name|message
 argument_list|)

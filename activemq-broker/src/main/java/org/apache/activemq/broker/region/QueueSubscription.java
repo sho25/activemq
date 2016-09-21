@@ -408,6 +408,18 @@ literal|", pending="
 operator|+
 name|getPendingQueueSize
 argument_list|()
+operator|+
+literal|", prefetch="
+operator|+
+name|getPrefetchSize
+argument_list|()
+operator|+
+literal|", prefetchExtension="
+operator|+
+name|prefetchExtension
+operator|.
+name|get
+argument_list|()
 return|;
 block|}
 annotation|@
