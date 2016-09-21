@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -34,6 +34,26 @@ operator|.
 name|AmqpSupport
 operator|.
 name|toLong
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transport
+operator|.
+name|amqp
+operator|.
+name|message
+operator|.
+name|AmqpMessageSupport
+operator|.
+name|JMS_AMQP_MESSAGE_FORMAT
 import|;
 end_import
 
@@ -312,24 +332,6 @@ operator|.
 name|amqp
 operator|.
 name|ResponseHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|transport
-operator|.
-name|amqp
-operator|.
-name|message
-operator|.
-name|ActiveMQJMSVendor
 import|;
 end_import
 
@@ -695,11 +697,7 @@ name|outboundTransformer
 init|=
 operator|new
 name|AutoOutboundTransformer
-argument_list|(
-name|ActiveMQJMSVendor
-operator|.
-name|INSTANCE
-argument_list|)
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -739,18 +737,6 @@ argument_list|<
 name|MessageDispatch
 argument_list|>
 argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|String
-name|MESSAGE_FORMAT_KEY
-init|=
-name|outboundTransformer
-operator|.
-name|getPrefixVendor
-argument_list|()
-operator|+
-literal|"MESSAGE_FORMAT"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2345,7 +2331,7 @@ argument_list|()
 operator|.
 name|containsKey
 argument_list|(
-name|MESSAGE_FORMAT_KEY
+name|JMS_AMQP_MESSAGE_FORMAT
 argument_list|)
 condition|)
 block|{
@@ -2353,7 +2339,7 @@ name|temp
 operator|.
 name|setProperty
 argument_list|(
-name|MESSAGE_FORMAT_KEY
+name|JMS_AMQP_MESSAGE_FORMAT
 argument_list|,
 literal|0
 argument_list|)
@@ -2623,6 +2609,19 @@ operator|.
 name|setContext
 argument_list|(
 name|md
+argument_list|)
+expr_stmt|;
+name|currentDelivery
+operator|.
+name|setMessageFormat
+argument_list|(
+operator|(
+name|int
+operator|)
+name|amqp
+operator|.
+name|getMessageFormat
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

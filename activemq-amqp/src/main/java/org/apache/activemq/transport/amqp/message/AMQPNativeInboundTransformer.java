@@ -21,11 +21,15 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|jms
+name|apache
 operator|.
-name|Message
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQMessage
 import|;
 end_import
 
@@ -36,19 +40,6 @@ name|AMQPNativeInboundTransformer
 extends|extends
 name|AMQPRawInboundTransformer
 block|{
-specifier|public
-name|AMQPNativeInboundTransformer
-parameter_list|(
-name|ActiveMQJMSVendor
-name|vendor
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|vendor
-argument_list|)
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 specifier|public
@@ -70,16 +61,13 @@ block|{
 return|return
 operator|new
 name|AMQPRawInboundTransformer
-argument_list|(
-name|getVendor
 argument_list|()
-argument_list|)
 return|;
 block|}
 annotation|@
 name|Override
 specifier|protected
-name|Message
+name|ActiveMQMessage
 name|doTransform
 parameter_list|(
 name|EncodedMessage
@@ -106,7 +94,7 @@ operator|.
 name|decode
 argument_list|()
 decl_stmt|;
-name|Message
+name|ActiveMQMessage
 name|result
 init|=
 name|super
