@@ -1115,6 +1115,28 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//If NoLocal we need to update the NoLocal selector with the new connectionId
+comment|//Simply setting the selector with the current one will trigger a
+comment|//refresh of of the connectionId for the NoLocal expression
+if|if
+condition|(
+name|info
+operator|.
+name|isNoLocal
+argument_list|()
+condition|)
+block|{
+name|sub
+operator|.
+name|setSelector
+argument_list|(
+name|sub
+operator|.
+name|getSelector
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|subscriptions
 operator|.
 name|put
@@ -1284,6 +1306,7 @@ argument_list|()
 operator|==
 name|context
 condition|)
+block|{
 name|sub
 operator|.
 name|deactivate
@@ -1296,6 +1319,7 @@ name|getLastDeliveredSequenceId
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -2374,6 +2398,38 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+comment|// Prior to V11 the broker did not store the noLocal value for durable subs.
+if|if
+condition|(
+name|broker
+operator|.
+name|getBrokerService
+argument_list|()
+operator|.
+name|getStoreOpenWireVersion
+argument_list|()
+operator|>=
+literal|11
+condition|)
+block|{
+if|if
+condition|(
+name|info1
+operator|.
+name|isNoLocal
+argument_list|()
+operator|^
+name|info2
+operator|.
+name|isNoLocal
+argument_list|()
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 return|return
 operator|!
