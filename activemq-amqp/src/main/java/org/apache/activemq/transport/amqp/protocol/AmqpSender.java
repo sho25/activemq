@@ -1780,9 +1780,6 @@ block|}
 name|pumpOutbound
 argument_list|()
 expr_stmt|;
-name|logicalDeliveryCount
-operator|++
-expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -2241,6 +2238,9 @@ expr_stmt|;
 name|currentDelivery
 operator|=
 literal|null
+expr_stmt|;
+name|logicalDeliveryCount
+operator|++
 expr_stmt|;
 block|}
 block|}
