@@ -481,10 +481,7 @@ condition|)
 block|{
 name|longFirstIndex
 operator|=
-call|(
-name|int
-call|)
-argument_list|(
+operator|(
 name|index
 operator|-
 operator|(
@@ -494,7 +491,7 @@ name|BitArray
 operator|.
 name|LONG_SIZE
 operator|)
-argument_list|)
+operator|)
 expr_stmt|;
 block|}
 elseif|else
