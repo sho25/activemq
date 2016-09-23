@@ -437,8 +437,9 @@ operator|.
 name|notifyAll
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
+else|else
+block|{
 comment|// If we could not iterate all the items
 comment|// then we need to re-queue.
 if|if
@@ -464,6 +465,7 @@ argument_list|(
 name|runable
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
