@@ -407,6 +407,20 @@ name|activemq
 operator|.
 name|store
 operator|.
+name|NoLocalSubscriptionAware
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|store
+operator|.
 name|PersistenceAdapter
 import|;
 end_import
@@ -603,6 +617,8 @@ implements|implements
 name|PersistenceAdapter
 implements|,
 name|BrokerServiceAware
+implements|,
+name|NoLocalSubscriptionAware
 block|{
 specifier|static
 specifier|final
@@ -2900,6 +2916,24 @@ return|return
 operator|new
 name|JobSchedulerStoreImpl
 argument_list|()
+return|;
+block|}
+comment|/* (non-Javadoc)      * @see org.apache.activemq.store.NoLocalSubscriptionAware#isPersistNoLocal()      */
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isPersistNoLocal
+parameter_list|()
+block|{
+comment|// Prior to v11 the broker did not store the noLocal value for durable subs.
+return|return
+name|brokerService
+operator|.
+name|getStoreOpenWireVersion
+argument_list|()
+operator|>=
+literal|11
 return|;
 block|}
 block|}
