@@ -1264,6 +1264,14 @@ argument_list|(
 literal|"x-opt-jms-reply-to"
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|AMQ_SCHEDULED_MESSAGE_PREFIX
+init|=
+literal|"AMQ_SCHEDULED_"
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -2668,6 +2676,20 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|key
+operator|.
+name|startsWith
+argument_list|(
+name|AMQ_SCHEDULED_MESSAGE_PREFIX
+argument_list|)
+condition|)
+block|{
+comment|// strip off the scheduled message properties
+continue|continue;
 block|}
 comment|// The property didn't map into any other slot so we store it in the
 comment|// Application Properties section of the message.
