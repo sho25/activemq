@@ -706,13 +706,6 @@ argument_list|,
 name|queueView
 argument_list|)
 expr_stmt|;
-name|TestSupport
-operator|.
-name|dumpAllThreads
-argument_list|(
-literal|"Blocked"
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|Session
