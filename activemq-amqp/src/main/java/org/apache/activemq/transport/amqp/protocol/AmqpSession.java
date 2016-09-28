@@ -265,6 +265,20 @@ name|activemq
 operator|.
 name|command
 operator|.
+name|LocalTransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
 name|ProducerId
 import|;
 end_import
@@ -854,11 +868,14 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Commits all pending work for all resources managed under this session.      *      * @throws Exception if an error occurs while attempting to commit work.      */
+comment|/**      * Commits all pending work for all resources managed under this session.      *      * @param txId      *      The specific TransactionId that is being committed.      *      * @throws Exception if an error occurs while attempting to commit work.      */
 specifier|public
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+name|LocalTransactionId
+name|txId
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -876,7 +893,9 @@ block|{
 name|consumer
 operator|.
 name|commit
-argument_list|()
+argument_list|(
+name|txId
+argument_list|)
 expr_stmt|;
 block|}
 name|enlisted
@@ -884,11 +903,14 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|/**      * Rolls back any pending work being down under this session.      *      * @throws Exception if an error occurs while attempting to roll back work.      */
+comment|/**      * Rolls back any pending work being down under this session.      *      * @param txId      *      The specific TransactionId that is being rolled back.      *      * @throws Exception if an error occurs while attempting to roll back work.      */
 specifier|public
 name|void
 name|rollback
-parameter_list|()
+parameter_list|(
+name|LocalTransactionId
+name|txId
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -906,7 +928,9 @@ block|{
 name|consumer
 operator|.
 name|rollback
-argument_list|()
+argument_list|(
+name|txId
+argument_list|)
 expr_stmt|;
 block|}
 name|enlisted

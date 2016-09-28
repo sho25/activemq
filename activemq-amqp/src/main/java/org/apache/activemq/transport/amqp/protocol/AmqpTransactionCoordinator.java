@@ -732,9 +732,6 @@ argument_list|(
 literal|"started transaction {}"
 argument_list|,
 name|txId
-operator|.
-name|getValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|Declared
@@ -828,9 +825,6 @@ argument_list|(
 literal|"rollback transaction {}"
 argument_list|,
 name|txId
-operator|.
-name|getValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|operation
@@ -849,9 +843,6 @@ argument_list|(
 literal|"commit transaction {}"
 argument_list|,
 name|txId
-operator|.
-name|getValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|operation
@@ -881,7 +872,9 @@ block|{
 name|txSession
 operator|.
 name|rollback
-argument_list|()
+argument_list|(
+name|txId
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -889,7 +882,9 @@ block|{
 name|txSession
 operator|.
 name|commit
-argument_list|()
+argument_list|(
+name|txId
+argument_list|)
 expr_stmt|;
 block|}
 block|}

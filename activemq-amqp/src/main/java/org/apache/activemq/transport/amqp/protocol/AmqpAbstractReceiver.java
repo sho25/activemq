@@ -27,6 +27,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|LocalTransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|transport
 operator|.
 name|amqp
@@ -248,7 +262,10 @@ name|Override
 specifier|public
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+name|LocalTransactionId
+name|txnId
+parameter_list|)
 throws|throws
 name|Exception
 block|{     }
@@ -257,7 +274,10 @@ name|Override
 specifier|public
 name|void
 name|rollback
-parameter_list|()
+parameter_list|(
+name|LocalTransactionId
+name|txnId
+parameter_list|)
 throws|throws
 name|Exception
 block|{     }

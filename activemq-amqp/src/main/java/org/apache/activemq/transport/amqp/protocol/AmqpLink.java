@@ -39,6 +39,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|LocalTransactionId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|qpid
 operator|.
 name|proton
@@ -108,17 +122,23 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Handle work necessary on commit of transacted resources associated with      * this Link instance.      *      * @throws Exception if an error occurs while performing the commit.      */
+comment|/**      * Handle work necessary on commit of transacted resources associated with      * this Link instance.      *      * @param txnId      *      The Transaction ID being committed.      *      * @throws Exception if an error occurs while performing the commit.      */
 name|void
 name|commit
-parameter_list|()
+parameter_list|(
+name|LocalTransactionId
+name|txnId
+parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/**      * Handle work necessary on rollback of transacted resources associated with      * this Link instance.      *      * @throws Exception if an error occurs while performing the rollback.      */
+comment|/**      * Handle work necessary on rollback of transacted resources associated with      * this Link instance.      *      * @param txnId      *      The Transaction ID being rolled back.      *      * @throws Exception if an error occurs while performing the rollback.      */
 name|void
 name|rollback
-parameter_list|()
+parameter_list|(
+name|LocalTransactionId
+name|txnId
+parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
