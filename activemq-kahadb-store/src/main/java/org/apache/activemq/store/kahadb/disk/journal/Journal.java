@@ -2293,7 +2293,7 @@ name|file
 parameter_list|)
 block|{
 try|try
-block|{
+init|(
 name|RandomAccessFile
 name|templateRaf
 init|=
@@ -2304,7 +2304,9 @@ name|osKernelCopyTemplateFile
 argument_list|,
 literal|"rw"
 argument_list|)
-decl_stmt|;
+init|;
+init|)
+block|{
 name|templateRaf
 operator|.
 name|getChannel
@@ -2322,11 +2324,6 @@ operator|.
 name|getChannel
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|templateRaf
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 catch|catch

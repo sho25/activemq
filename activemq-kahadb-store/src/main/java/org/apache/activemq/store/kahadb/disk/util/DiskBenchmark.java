@@ -1439,6 +1439,8 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
+try|try
+init|(
 name|RandomAccessFile
 name|templateFile
 init|=
@@ -1449,7 +1451,9 @@ name|tmpFile
 argument_list|,
 literal|"rw"
 argument_list|)
-decl_stmt|;
+init|;
+init|)
+block|{
 name|templateFile
 operator|.
 name|setLength
@@ -1484,11 +1488,7 @@ name|getChannel
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|templateFile
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+block|}
 name|tmpFile
 operator|.
 name|delete
