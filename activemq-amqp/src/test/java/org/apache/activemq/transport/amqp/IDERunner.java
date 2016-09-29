@@ -100,7 +100,7 @@ specifier|final
 name|boolean
 name|TRANSPORT_TRACE
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|private
 specifier|static
@@ -152,7 +152,7 @@ literal|"&transport.transformer="
 operator|+
 name|AMQP_TRANSFORMER
 operator|+
-literal|"&transport.wireFormat.maxAmqpFrameSize=104857600"
+literal|"&transport.wireFormat.maxFrameSize=104857600"
 argument_list|)
 decl_stmt|;
 name|KahaDBStore
