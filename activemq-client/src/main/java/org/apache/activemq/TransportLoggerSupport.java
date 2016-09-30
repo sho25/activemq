@@ -53,6 +53,14 @@ name|defaultLogWriterName
 init|=
 literal|"default"
 decl_stmt|;
+comment|/**      * Default port to control the transport loggers through JMX      */
+specifier|public
+specifier|static
+name|int
+name|defaultJmxPort
+init|=
+literal|1099
+decl_stmt|;
 specifier|public
 specifier|static
 interface|interface

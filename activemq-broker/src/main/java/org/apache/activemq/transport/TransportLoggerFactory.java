@@ -115,6 +115,20 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|TransportLoggerSupport
+operator|.
+name|defaultJmxPort
+import|;
+end_import
+
 begin_comment
 comment|/**  * Singleton class to create TransportLogger objects.  * When the method getInstance() is called for the first time,  * a TransportLoggerControlMBean is created and registered.  * This MBean permits enabling and disabling the logging for  * all TransportLogger objects at once.  *  * @author David Martin Clavo david(dot)martin(dot)clavo(at)gmail.com  *  * @see TransportLoggerControlMBean  */
 end_comment
@@ -186,14 +200,6 @@ name|boolean
 name|defaultInitialBehavior
 init|=
 literal|true
-decl_stmt|;
-comment|/**      * Default port to control the transport loggers through JMX      */
-specifier|private
-specifier|static
-name|int
-name|defaultJmxPort
-init|=
-literal|1099
 decl_stmt|;
 specifier|private
 name|boolean
@@ -398,9 +404,27 @@ block|{
 name|int
 name|id
 init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|// new default to single logger
+comment|// allow old behaviour with incantation
+if|if
+condition|(
+operator|!
+name|useJmx
+operator|&&
+name|jmxport
+operator|!=
+name|defaultJmxPort
+condition|)
+block|{
+name|id
+operator|=
 name|getNextId
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 return|return
 name|createTransportLogger
 argument_list|(
@@ -464,6 +488,30 @@ argument_list|(
 name|logWriterName
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|id
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+name|logWriter
+operator|.
+name|setPrefix
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%08X: "
+argument_list|,
+name|getNextId
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|TransportLogger
 name|tl
 init|=
@@ -595,9 +643,19 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|".Connection:"
+literal|".Connection"
+operator|+
+operator|(
+name|id
+operator|>
+literal|0
+condition|?
+literal|":"
 operator|+
 name|id
+else|:
+literal|""
+operator|)
 argument_list|)
 return|;
 block|}

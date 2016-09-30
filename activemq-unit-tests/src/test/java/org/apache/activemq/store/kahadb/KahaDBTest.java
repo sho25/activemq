@@ -1215,7 +1215,7 @@ operator|.
 name|getRootLogger
 argument_list|()
 operator|.
-name|addAppender
+name|removeAppender
 argument_list|(
 name|appender
 argument_list|)

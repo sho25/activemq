@@ -174,6 +174,18 @@ name|CustomLogWriter
 implements|implements
 name|LogWriter
 block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPrefix
+parameter_list|(
+name|String
+name|prefix
+parameter_list|)
+block|{
+comment|// for the custom case, revert to the logger per connection
+block|}
 comment|// doc comment inherited from LogWriter
 specifier|public
 name|void

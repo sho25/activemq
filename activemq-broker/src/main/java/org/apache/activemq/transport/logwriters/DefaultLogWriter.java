@@ -62,6 +62,28 @@ name|DefaultLogWriter
 implements|implements
 name|LogWriter
 block|{
+name|String
+name|prefix
+init|=
+literal|""
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setPrefix
+parameter_list|(
+name|String
+name|prefix
+parameter_list|)
+block|{
+name|this
+operator|.
+name|prefix
+operator|=
+name|prefix
+expr_stmt|;
+block|}
 comment|// doc comment inherited from LogWriter
 specifier|public
 name|void
@@ -89,6 +111,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
+name|prefix
+operator|+
 literal|"SENDING REQUEST: "
 operator|+
 name|command
@@ -111,6 +135,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
+name|prefix
+operator|+
 literal|"GOT RESPONSE: "
 operator|+
 name|response
@@ -133,6 +159,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
+name|prefix
+operator|+
 literal|"SENDING ASNYC REQUEST: "
 operator|+
 name|command
@@ -155,6 +183,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
+name|prefix
+operator|+
 literal|"SENDING: "
 operator|+
 name|command
@@ -177,6 +207,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
+name|prefix
+operator|+
 literal|"RECEIVED: "
 operator|+
 name|command
@@ -199,6 +231,8 @@ name|log
 operator|.
 name|debug
 argument_list|(
+name|prefix
+operator|+
 literal|"RECEIVED Exception: "
 operator|+
 name|error

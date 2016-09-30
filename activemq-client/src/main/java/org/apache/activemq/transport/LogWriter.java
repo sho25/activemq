@@ -44,6 +44,15 @@ specifier|public
 interface|interface
 name|LogWriter
 block|{
+comment|/**      * prefix each statement with this value. allows connections to be correlated      * when logger is shared      * @param prefix      */
+specifier|public
+name|void
+name|setPrefix
+parameter_list|(
+name|String
+name|prefix
+parameter_list|)
+function_decl|;
 comment|/**      * Writes a header message to the log.      * @param log The log to be written to.      */
 specifier|public
 name|void
