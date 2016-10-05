@@ -563,7 +563,7 @@ condition|)
 block|{
 name|plugin
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"modification to:"
 operator|+
