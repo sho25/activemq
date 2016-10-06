@@ -443,7 +443,7 @@ specifier|final
 name|int
 name|WARM_CYCLES
 init|=
-literal|1000
+literal|10000
 decl_stmt|;
 specifier|private
 specifier|final
