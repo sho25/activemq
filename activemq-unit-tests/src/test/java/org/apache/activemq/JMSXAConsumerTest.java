@@ -106,6 +106,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+comment|// needs client ack, xa is auto ack if no transaction
+specifier|public
+name|void
+name|testExceptionOnClientAckAfterConsumerClose
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
 block|}
 end_class
 

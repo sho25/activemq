@@ -2735,6 +2735,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|checkClosed
+argument_list|()
+expr_stmt|;
 name|session
 operator|.
 name|checkClosed
@@ -2776,6 +2779,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|checkClosed
+argument_list|()
+expr_stmt|;
 name|session
 operator|.
 name|checkClosed
