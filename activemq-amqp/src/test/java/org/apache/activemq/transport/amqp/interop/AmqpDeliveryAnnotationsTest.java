@@ -382,10 +382,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session

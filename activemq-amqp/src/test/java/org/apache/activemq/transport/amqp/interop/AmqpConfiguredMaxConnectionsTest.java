@@ -373,10 +373,13 @@ block|{
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|createConnection
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|connection
 operator|.

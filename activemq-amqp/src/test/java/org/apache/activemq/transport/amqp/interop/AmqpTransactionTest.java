@@ -365,10 +365,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -430,10 +433,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -495,10 +501,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -611,10 +620,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -727,10 +739,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -887,10 +902,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -1108,10 +1126,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -1268,10 +1289,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Load up the Queue with some messages
 block|{
@@ -1578,10 +1602,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Load up the Queue with some messages
 block|{
@@ -1888,10 +1915,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
@@ -2100,10 +2130,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
@@ -2451,10 +2484,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -2878,10 +2914,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|AmqpSession
 name|session
@@ -3193,10 +3232,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
@@ -3489,10 +3531,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
@@ -3917,10 +3962,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
@@ -4276,10 +4324,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
@@ -4721,10 +4772,13 @@ decl_stmt|;
 name|AmqpConnection
 name|connection
 init|=
+name|trackConnection
+argument_list|(
 name|client
 operator|.
 name|connect
 argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// Root TXN session controls all TXN send lifetimes.
 name|AmqpSession
