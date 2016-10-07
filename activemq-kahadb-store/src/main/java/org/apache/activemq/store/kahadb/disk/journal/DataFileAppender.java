@@ -1877,13 +1877,24 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|info
+name|warn
 argument_list|(
 literal|"Journal failed while writing at: "
 operator|+
 name|wb
 operator|.
+name|dataFile
+operator|.
+name|getDataFileId
+argument_list|()
+operator|+
+literal|":"
+operator|+
+name|wb
+operator|.
 name|offset
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 synchronized|synchronized
