@@ -674,7 +674,7 @@ name|undeliverableHere
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Release the message, remote can redeliver it elsewhere.      *      * @throws Exception if an error occurs during the reject.      */
+comment|/**      * Release the message, remote can redeliver it elsewhere.      *      * @throws Exception if an error occurs during the release.      */
 specifier|public
 name|void
 name|release
@@ -700,6 +700,37 @@ block|}
 name|receiver
 operator|.
 name|release
+argument_list|(
+name|delivery
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Reject the message, remote can redeliver it elsewhere.      *      * @throws Exception if an error occurs during the reject.      */
+specifier|public
+name|void
+name|reject
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+if|if
+condition|(
+name|receiver
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Can't release non-received message."
+argument_list|)
+throw|;
+block|}
+name|receiver
+operator|.
+name|reject
 argument_list|(
 name|delivery
 argument_list|)
