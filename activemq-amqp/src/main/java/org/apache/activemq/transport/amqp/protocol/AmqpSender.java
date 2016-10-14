@@ -1627,24 +1627,14 @@ operator|instanceof
 name|Rejected
 condition|)
 block|{
-comment|// re-deliver /w incremented delivery counter.
-name|md
-operator|.
-name|setRedeliveryCounter
-argument_list|(
-name|md
-operator|.
-name|getRedeliveryCounter
-argument_list|()
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
+comment|// Rejection is a terminal outcome, we poison the message for dispatch to
+comment|// the DLQ.  If a custom redelivery policy is used on the broker the message
+comment|// can still be redelivered based on the configation of that policy.
 name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"onDelivery: Rejected state = {}, delivery count now {}"
+literal|"onDelivery: Rejected state = {}, message poisoned."
 argument_list|,
 name|state
 argument_list|,
@@ -1658,8 +1648,9 @@ name|settle
 argument_list|(
 name|delivery
 argument_list|,
-operator|-
-literal|1
+name|MessageAck
+operator|.
+name|POSION_ACK_TYPE
 argument_list|)
 expr_stmt|;
 block|}

@@ -3181,54 +3181,25 @@ operator|.
 name|reject
 argument_list|()
 expr_stmt|;
-comment|// Read the message again and validate its state
+comment|// Attempt to read the message again but should not get it.
 name|message
 operator|=
 name|receiver
 operator|.
 name|receive
 argument_list|(
-literal|10
+literal|2
 argument_list|,
 name|TimeUnit
 operator|.
 name|SECONDS
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assertNull
 argument_list|(
-literal|"did not receive message again"
+literal|"shoudl not receive message again"
 argument_list|,
 name|message
-argument_list|)
-expr_stmt|;
-name|message
-operator|.
-name|accept
-argument_list|()
-expr_stmt|;
-name|protonMessage
-operator|=
-name|message
-operator|.
-name|getWrappedMessage
-argument_list|()
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-name|protonMessage
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Unexpected updated value for AMQP delivery-count"
-argument_list|,
-literal|1
-argument_list|,
-name|protonMessage
-operator|.
-name|getDeliveryCount
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|connection
