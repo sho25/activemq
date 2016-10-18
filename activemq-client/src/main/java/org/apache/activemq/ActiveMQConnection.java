@@ -6169,11 +6169,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|onControlCommand
-argument_list|(
-name|command
-argument_list|)
-expr_stmt|;
 return|return
 literal|null
 return|;
@@ -7482,64 +7477,6 @@ argument_list|(
 name|msg
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-specifier|protected
-name|void
-name|onControlCommand
-parameter_list|(
-name|ControlCommand
-name|command
-parameter_list|)
-block|{
-name|String
-name|text
-init|=
-name|command
-operator|.
-name|getCommand
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|text
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-literal|"shutdown"
-operator|.
-name|equals
-argument_list|(
-name|text
-argument_list|)
-condition|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"JVM told to shutdown"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-block|}
-comment|// TODO Should we handle the "close" case?
-comment|// if (false&& "close".equals(text)){
-comment|//     LOG.error("Broker " + getBrokerInfo() + "shutdown connection");
-comment|//     try {
-comment|//         close();
-comment|//     } catch (JMSException e) {
-comment|//     }
-comment|// }
 block|}
 block|}
 specifier|protected
