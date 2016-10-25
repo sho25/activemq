@@ -2915,18 +2915,7 @@ name|isOptimizeStorage
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|isReduceMemoryFootprint
-argument_list|()
-condition|)
-block|{
-name|message
-operator|.
-name|clearMarshalledState
-argument_list|()
-expr_stmt|;
-block|}
+comment|//Moved the reduceMemoryfootprint clearing to the dispatch method
 block|}
 name|message
 operator|.
@@ -3971,6 +3960,25 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+block|}
+comment|// Clear memory before dispatch - need to clear here because the call to
+comment|//subscriptionRecoveryPolicy.add() will unmarshall the state
+if|if
+condition|(
+name|isReduceMemoryFootprint
+argument_list|()
+operator|&&
+name|message
+operator|.
+name|isMarshalled
+argument_list|()
+condition|)
+block|{
+name|message
+operator|.
+name|clearUnMarshalledState
+argument_list|()
+expr_stmt|;
 block|}
 name|msgContext
 operator|=

@@ -67,16 +67,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -215,7 +205,33 @@ name|MyObject
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|Test
+import|;
+end_import
+
+begin_comment
+comment|/**  * AMQ-6477 changes the behavior to only clear memory if the marshalled state exists  * so this test no longer works  */
+end_comment
+
 begin_class
+annotation|@
+name|Ignore
 specifier|public
 class|class
 name|AMQ2103Test
@@ -294,7 +310,7 @@ name|class
 argument_list|)
 return|;
 block|}
-comment|/**      * use mem persistence so no marshaling,      * reduceMemoryFootprint on/off that will reduce memory by whacking the marshaled state      * With vm transport and deferred serialisation and no persistence (mem persistence),      * we see the message as sent by the client so we can validate the contents against      * the policy      * @throws Exception      */
+comment|/**      * use mem persistence so no marshaling,      * reduceMemoryFootprint on/off that will reduce memory by whacking the marshaled state      * With vm transport and deferred serialisation and no persistence (mem persistence),      * we see the message as sent by the client so we can validate the contents against      * the policy      *      *      * @throws Exception      */
 specifier|public
 name|void
 name|testVerifyMarshalledStateIsCleared

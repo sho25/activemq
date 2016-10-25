@@ -4800,18 +4800,6 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|isReduceMemoryFootprint
-argument_list|()
-condition|)
-block|{
-name|message
-operator|.
-name|clearMarshalledState
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -4829,6 +4817,26 @@ throw|throw
 name|e
 throw|;
 block|}
+block|}
+comment|//Clear the unmarshalled state if the message is marshalled
+comment|//Persistent messages will always be marshalled but non-persistent may not be
+comment|//Specially non-persistent messages over the VM transport won't be
+if|if
+condition|(
+name|isReduceMemoryFootprint
+argument_list|()
+operator|&&
+name|message
+operator|.
+name|isMarshalled
+argument_list|()
+condition|)
+block|{
+name|message
+operator|.
+name|clearUnMarshalledState
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(

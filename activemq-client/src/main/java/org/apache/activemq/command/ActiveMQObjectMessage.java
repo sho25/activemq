@@ -842,14 +842,14 @@ annotation|@
 name|Override
 specifier|public
 name|void
-name|clearMarshalledState
+name|clearUnMarshalledState
 parameter_list|()
 throws|throws
 name|JMSException
 block|{
 name|super
 operator|.
-name|clearMarshalledState
+name|clearUnMarshalledState
 argument_list|()
 expr_stmt|;
 name|this

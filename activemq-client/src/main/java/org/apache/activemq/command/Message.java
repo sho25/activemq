@@ -514,10 +514,22 @@ name|void
 name|storeContentAndClear
 parameter_list|()
 function_decl|;
-comment|// useful to reduce the memory footprint of a persisted message
+comment|/**      * @deprecated - This method name is misnamed      * @throws JMSException      */
 specifier|public
 name|void
 name|clearMarshalledState
+parameter_list|()
+throws|throws
+name|JMSException
+block|{
+name|clearUnMarshalledState
+argument_list|()
+expr_stmt|;
+block|}
+comment|// useful to reduce the memory footprint of a persisted message
+specifier|public
+name|void
+name|clearUnMarshalledState
 parameter_list|()
 throws|throws
 name|JMSException
@@ -526,6 +538,33 @@ name|properties
 operator|=
 literal|null
 expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isMarshalled
+parameter_list|()
+block|{
+return|return
+name|content
+operator|!=
+literal|null
+operator|&&
+operator|(
+name|marshalledProperties
+operator|!=
+literal|null
+operator|||
+operator|(
+name|marshalledProperties
+operator|==
+literal|null
+operator|&&
+name|properties
+operator|==
+literal|null
+operator|)
+operator|)
+return|;
 block|}
 specifier|protected
 name|void
