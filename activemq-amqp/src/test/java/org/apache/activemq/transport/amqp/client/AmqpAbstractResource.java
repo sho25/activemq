@@ -1015,7 +1015,6 @@ literal|"Open failed unexpectedly."
 argument_list|)
 return|;
 block|}
-comment|// TODO - Fina a more generic way to do this.
 specifier|protected
 specifier|abstract
 name|void

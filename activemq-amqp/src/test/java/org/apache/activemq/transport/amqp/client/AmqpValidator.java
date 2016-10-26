@@ -61,6 +61,22 @@ name|proton
 operator|.
 name|engine
 operator|.
+name|Delivery
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|qpid
+operator|.
+name|proton
+operator|.
+name|engine
+operator|.
 name|Receiver
 import|;
 end_import
@@ -198,6 +214,28 @@ name|inspectDetachedResource
 parameter_list|(
 name|Receiver
 name|receiver
+parameter_list|)
+block|{      }
+specifier|public
+name|void
+name|inspectDelivery
+parameter_list|(
+name|Receiver
+name|receiver
+parameter_list|,
+name|Delivery
+name|delivery
+parameter_list|)
+block|{      }
+specifier|public
+name|void
+name|inspectDeliveryUpdate
+parameter_list|(
+name|Sender
+name|sender
+parameter_list|,
+name|Delivery
+name|delivery
 parameter_list|)
 block|{      }
 specifier|public
