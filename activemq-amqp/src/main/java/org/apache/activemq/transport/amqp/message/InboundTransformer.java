@@ -828,6 +828,13 @@ operator|.
 name|DEFAULT_PRIORITY
 argument_list|)
 expr_stmt|;
+name|jms
+operator|.
+name|setPersistent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 specifier|final
 name|MessageAnnotations

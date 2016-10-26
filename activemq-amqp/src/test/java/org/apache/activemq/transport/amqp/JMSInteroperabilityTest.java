@@ -1135,7 +1135,7 @@ decl_stmt|;
 name|TextMessage
 name|outbound
 init|=
-name|openwireSession
+name|amqpSession
 operator|.
 name|createTextMessage
 argument_list|()
