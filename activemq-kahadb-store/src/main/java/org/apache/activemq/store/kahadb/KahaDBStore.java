@@ -5905,7 +5905,7 @@ name|Transaction
 operator|.
 name|CallableClosure
 argument_list|<
-name|Integer
+name|Long
 argument_list|,
 name|IOException
 argument_list|>
@@ -5914,7 +5914,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|Integer
+name|Long
 name|execute
 parameter_list|(
 name|Transaction
@@ -5954,13 +5954,10 @@ condition|)
 block|{
 comment|// The subscription might not exist.
 return|return
-literal|0
+literal|0l
 return|;
 block|}
 return|return
-operator|(
-name|int
-operator|)
 name|getStoredMessageSize
 argument_list|(
 name|tx
