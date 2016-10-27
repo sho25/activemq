@@ -554,15 +554,9 @@ name|marshalledProperties
 operator|!=
 literal|null
 operator|||
-operator|(
-name|marshalledProperties
-operator|==
-literal|null
-operator|&&
 name|properties
 operator|==
 literal|null
-operator|)
 operator|)
 return|;
 block|}
