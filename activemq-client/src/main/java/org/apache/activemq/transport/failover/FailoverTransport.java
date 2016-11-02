@@ -653,6 +653,7 @@ name|TransportListener
 name|transportListener
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|boolean
 name|disposed
 decl_stmt|;
@@ -784,6 +785,7 @@ name|TaskRunner
 name|reconnectTask
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|boolean
 name|started
 decl_stmt|;
@@ -994,6 +996,7 @@ name|String
 name|nestedExtraQueryOptions
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|boolean
 name|shuttingDown
 init|=
