@@ -205,12 +205,13 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//Send async - do we need to wait for the future to complete?
 name|session
 operator|.
 name|getRemote
 argument_list|()
 operator|.
-name|sendString
+name|sendStringByFuture
 argument_list|(
 name|command
 operator|.
