@@ -767,15 +767,13 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Corrupt journal records found in '"
-operator|+
+literal|"Corrupt journal records found in '{}' between offsets: {}"
+argument_list|,
 name|dataFile
 operator|.
 name|getFile
 argument_list|()
-operator|+
-literal|"' between offsets: "
-operator|+
+argument_list|,
 name|sequence
 argument_list|)
 expr_stmt|;
@@ -2928,15 +2926,13 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Corrupt journal records found in '"
-operator|+
+literal|"Corrupt journal records found in '{}' between offsets: {}"
+argument_list|,
 name|dataFile
 operator|.
 name|getFile
 argument_list|()
-operator|+
-literal|"' between offsets: "
-operator|+
+argument_list|,
 name|sequence
 argument_list|)
 expr_stmt|;
