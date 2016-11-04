@@ -1115,7 +1115,7 @@ return|return
 name|answer
 return|;
 block|}
-specifier|private
+specifier|protected
 name|boolean
 name|needsXA
 parameter_list|(

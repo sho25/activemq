@@ -349,8 +349,7 @@ expr_stmt|;
 name|InitialContextFactory
 name|factory
 init|=
-operator|new
-name|ActiveMQInitialContextFactory
+name|getInitialContextFactory
 argument_list|()
 decl_stmt|;
 name|context
@@ -371,6 +370,17 @@ operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
+specifier|protected
+name|InitialContextFactory
+name|getInitialContextFactory
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ActiveMQInitialContextFactory
+argument_list|()
+return|;
 block|}
 comment|/**      * Stops all existing ActiveMQConnectionFactory in Context.      *      * @throws javax.naming.NamingException      */
 annotation|@
