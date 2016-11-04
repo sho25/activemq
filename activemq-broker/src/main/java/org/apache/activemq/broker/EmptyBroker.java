@@ -453,34 +453,27 @@ name|Broker
 name|getAdaptor
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|type
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|type
 operator|.
 name|isInstance
 argument_list|(
 name|this
 argument_list|)
-condition|)
-block|{
-return|return
+condition|?
 name|this
-return|;
-block|}
-return|return
+else|:
 literal|null
 return|;
 block|}
 annotation|@
 name|Override
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|public
 name|Map
 argument_list|<
@@ -494,7 +487,8 @@ block|{
 return|return
 name|Collections
 operator|.
-name|EMPTY_MAP
+name|emptyMap
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -515,13 +509,17 @@ block|{
 return|return
 name|Collections
 operator|.
-name|EMPTY_MAP
+name|emptyMap
+argument_list|()
 return|;
 block|}
 annotation|@
 name|Override
 specifier|public
 name|Set
+argument_list|<
+name|Destination
+argument_list|>
 name|getDestinations
 parameter_list|(
 name|ActiveMQDestination
@@ -531,7 +529,8 @@ block|{
 return|return
 name|Collections
 operator|.
-name|EMPTY_SET
+name|emptySet
+argument_list|()
 return|;
 block|}
 annotation|@
@@ -548,7 +547,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -566,7 +565,7 @@ name|error
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -581,7 +580,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -596,7 +595,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -611,7 +610,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -626,7 +625,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -686,7 +685,7 @@ name|xid
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -720,7 +719,7 @@ name|xid
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -738,7 +737,7 @@ name|onePhase
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -753,7 +752,7 @@ name|transactionId
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -793,7 +792,7 @@ name|timeout
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -827,7 +826,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -842,7 +841,7 @@ name|info
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -857,7 +856,7 @@ name|message
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -872,14 +871,14 @@ name|ack
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
 name|void
 name|gc
 parameter_list|()
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -888,7 +887,7 @@ name|start
 parameter_list|()
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -897,7 +896,7 @@ name|stop
 parameter_list|()
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -910,7 +909,7 @@ parameter_list|,
 name|BrokerInfo
 name|info
 parameter_list|)
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -923,7 +922,7 @@ parameter_list|,
 name|BrokerInfo
 name|info
 parameter_list|)
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -967,7 +966,7 @@ name|messageDispatchNotification
 parameter_list|)
 throws|throws
 name|Exception
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
@@ -1219,6 +1218,9 @@ name|Destination
 name|destination
 parameter_list|,
 name|Usage
+argument_list|<
+name|?
+argument_list|>
 name|usage
 parameter_list|)
 block|{     }
@@ -1358,7 +1360,7 @@ specifier|public
 name|void
 name|reapplyInterceptor
 parameter_list|()
-block|{      }
+block|{     }
 annotation|@
 name|Override
 specifier|public
