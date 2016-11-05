@@ -337,6 +337,9 @@ name|Broker
 name|getAdaptor
 parameter_list|(
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|type
 parameter_list|)
 function_decl|;
@@ -789,6 +792,9 @@ name|Destination
 name|destination
 parameter_list|,
 name|Usage
+argument_list|<
+name|?
+argument_list|>
 name|usage
 parameter_list|)
 function_decl|;
