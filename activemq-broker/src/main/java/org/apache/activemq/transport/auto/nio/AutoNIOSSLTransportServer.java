@@ -728,8 +728,9 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
+name|InitBuffer
 name|initBuffer
-operator|=
+init|=
 operator|new
 name|InitBuffer
 argument_list|(
@@ -753,7 +754,7 @@ operator|.
 name|length
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|initBuffer
 operator|.
 name|buffer
