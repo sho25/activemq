@@ -1843,6 +1843,17 @@ name|isDone
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"error with pending local brokerInfo on: "
+operator|+
+name|localBroker
+argument_list|,
+name|error
+argument_list|)
+expr_stmt|;
 name|futureLocalBrokerInfo
 operator|.
 name|cancel
@@ -1912,6 +1923,17 @@ name|isDone
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"error with pending remote brokerInfo on: "
+operator|+
+name|remoteBroker
+argument_list|,
+name|error
+argument_list|)
+expr_stmt|;
 name|futureRemoteBrokerInfo
 operator|.
 name|cancel
