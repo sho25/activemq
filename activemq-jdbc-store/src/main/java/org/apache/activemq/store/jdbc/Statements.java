@@ -341,7 +341,7 @@ literal|", CONTAINER "
 operator|+
 name|containerNameDataType
 operator|+
-literal|", MSGID_PROD "
+literal|" NOT NULL, MSGID_PROD "
 operator|+
 name|msgIdDataType
 operator|+
@@ -1451,7 +1451,7 @@ operator|+
 name|getFullMessageTableName
 argument_list|()
 operator|+
-literal|" UNION SELECT DISTINCT CONTAINER FROM "
+literal|" WHERE CONTAINER IS NOT NULL UNION SELECT DISTINCT CONTAINER FROM "
 operator|+
 name|getFullAckTableName
 argument_list|()
