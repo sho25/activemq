@@ -1584,8 +1584,7 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
-comment|// round startTime - so we can schedule more jobs
-comment|// at the same time
+comment|// round startTime - so we can schedule more jobs at the same time
 name|startTime
 operator|=
 operator|(
@@ -1595,10 +1594,10 @@ operator|+
 literal|500
 operator|)
 operator|/
-literal|1000
+literal|500
 operator|)
 operator|*
-literal|1000
+literal|500
 expr_stmt|;
 name|long
 name|time

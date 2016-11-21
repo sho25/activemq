@@ -1226,10 +1226,10 @@ operator|+
 literal|500
 operator|)
 operator|/
-literal|1000
+literal|500
 operator|)
 operator|*
-literal|1000
+literal|500
 expr_stmt|;
 if|if
 condition|(
