@@ -400,6 +400,7 @@ end_import
 begin_class
 specifier|public
 class|class
+name|AMQ3166Test
 block|{
 specifier|private
 specifier|static
