@@ -265,7 +265,6 @@ argument_list|(
 literal|"ws+mqtt"
 argument_list|)
 expr_stmt|;
-empty_stmt|;
 name|broker
 operator|.
 name|setDeleteAllMessagesOnStartup

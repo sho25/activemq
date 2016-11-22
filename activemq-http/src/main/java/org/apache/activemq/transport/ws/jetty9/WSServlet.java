@@ -541,21 +541,7 @@ name|ServletException
 throws|,
 name|IOException
 block|{
-name|getServletContext
-argument_list|()
-operator|.
-name|getNamedDispatcher
-argument_list|(
-literal|"default"
-argument_list|)
-operator|.
-name|forward
-argument_list|(
-name|request
-argument_list|,
-name|response
-argument_list|)
-expr_stmt|;
+comment|//return empty response - AMQ-6491
 block|}
 annotation|@
 name|Override

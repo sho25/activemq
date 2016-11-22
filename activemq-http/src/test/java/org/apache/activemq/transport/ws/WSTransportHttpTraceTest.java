@@ -49,16 +49,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -113,7 +103,7 @@ specifier|public
 class|class
 name|WSTransportHttpTraceTest
 extends|extends
-name|WSTransportTest
+name|WSTransportTestSupport
 block|{
 specifier|protected
 name|String
@@ -224,19 +214,6 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
-annotation|@
-name|Ignore
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testBrokerStart
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 block|}
 end_class
 
