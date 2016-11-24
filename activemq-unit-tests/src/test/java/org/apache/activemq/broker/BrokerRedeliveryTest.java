@@ -444,7 +444,7 @@ argument_list|)
 decl_stmt|;
 name|assertNull
 argument_list|(
-literal|"did not get message after redelivery count exceeded: "
+literal|"did not get message early: "
 operator|+
 name|shouldBeNull
 argument_list|,

@@ -1844,6 +1844,26 @@ literal|"RedeliveryPolicy"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"cause redelivered count is remembered"
+argument_list|,
+name|cause
+operator|.
+name|contains
+argument_list|(
+literal|"["
+operator|+
+operator|(
+name|maxDeliveries
+operator|+
+literal|1
+operator|)
+operator|+
+literal|"]"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|session
 operator|.
 name|close

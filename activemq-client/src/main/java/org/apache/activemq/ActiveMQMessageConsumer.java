@@ -2262,7 +2262,14 @@ name|posionAck
 argument_list|(
 name|md
 argument_list|,
-literal|"dispatch to "
+literal|"Dispatch["
+operator|+
+name|md
+operator|.
+name|getRedeliveryCounter
+argument_list|()
+operator|+
+literal|"] to "
 operator|+
 name|getConsumerId
 argument_list|()
@@ -2455,6 +2462,11 @@ operator|&&
 name|redeliveryPolicy
 operator|!=
 literal|null
+operator|&&
+name|redeliveryPolicy
+operator|.
+name|isPreDispatchCheck
+argument_list|()
 operator|&&
 name|redeliveryPolicy
 operator|.
@@ -5576,7 +5588,17 @@ argument_list|(
 operator|new
 name|Throwable
 argument_list|(
-literal|"Exceeded redelivery policy limit:"
+literal|"Delivery["
+operator|+
+name|lastMd
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getRedeliveryCounter
+argument_list|()
+operator|+
+literal|"] exceeds redelivery policy limit:"
 operator|+
 name|redeliveryPolicy
 operator|+
@@ -6198,7 +6220,14 @@ name|posionAck
 argument_list|(
 name|md
 argument_list|,
-literal|"dispatch to "
+literal|"listener dispatch["
+operator|+
+name|md
+operator|.
+name|getRedeliveryCounter
+argument_list|()
+operator|+
+literal|"] to "
 operator|+
 name|getConsumerId
 argument_list|()

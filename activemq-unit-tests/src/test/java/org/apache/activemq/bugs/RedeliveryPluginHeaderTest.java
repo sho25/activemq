@@ -342,7 +342,7 @@ name|ActiveMQConnectionFactory
 argument_list|(
 name|transportURL
 operator|+
-literal|"?trace=true&jms.redeliveryPolicy.maximumRedeliveries=0"
+literal|"?trace=true&jms.redeliveryPolicy.maximumRedeliveries=0&jms.redeliveryPolicy.preDispatchCheck=true"
 argument_list|)
 decl_stmt|;
 name|Connection
