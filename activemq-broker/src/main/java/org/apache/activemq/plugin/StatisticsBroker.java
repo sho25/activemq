@@ -920,7 +920,7 @@ operator|.
 name|getMessageSize
 argument_list|()
 operator|.
-name|getAveragePerSecond
+name|getAverageSize
 argument_list|()
 argument_list|)
 expr_stmt|;

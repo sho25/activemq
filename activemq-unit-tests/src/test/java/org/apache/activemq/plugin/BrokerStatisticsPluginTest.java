@@ -772,6 +772,18 @@ name|getJMSPriority
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+name|reply
+operator|.
+name|getLong
+argument_list|(
+literal|"averageMessageSize"
+argument_list|)
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
 comment|/*         for (Enumeration e = reply.getMapNames();e.hasMoreElements();) {             String name = e.nextElement().toString();             System.err.println(name+"="+reply.getObject(name));         }         */
 block|}
 specifier|public
