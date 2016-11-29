@@ -6177,16 +6177,20 @@ name|getValue
 argument_list|()
 decl_stmt|;
 specifier|final
-name|ArrayList
+name|LinkedHashMap
 argument_list|<
 name|Long
+argument_list|,
+name|Location
 argument_list|>
 name|matches
 init|=
 operator|new
-name|ArrayList
+name|LinkedHashMap
 argument_list|<
 name|Long
+argument_list|,
+name|Location
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -6226,9 +6230,11 @@ parameter_list|)
 block|{
 name|matches
 operator|.
-name|add
+name|put
 argument_list|(
 name|value
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 block|}
@@ -6259,6 +6265,9 @@ name|Long
 name|sequenceId
 range|:
 name|matches
+operator|.
+name|keySet
+argument_list|()
 control|)
 block|{
 name|MessageKeys
@@ -6359,14 +6368,9 @@ operator|.
 name|getKey
 argument_list|()
 operator|+
-literal|"] references corrupt locations. "
+literal|"] references corrupt locations: "
 operator|+
 name|matches
-operator|.
-name|size
-argument_list|()
-operator|+
-literal|" messages affected."
 argument_list|)
 expr_stmt|;
 throw|throw
