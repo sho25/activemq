@@ -257,7 +257,7 @@ literal|"        - Print the message header and the custom field 'MyField' of al
 block|,
 literal|""
 block|,
-literal|"    Main browse --amqurl tcp://localhost:61616 --msgsel JMSMessageID='*:10',JMSPriority>5 FOO.BAR"
+literal|"    Main browse --amqurl tcp://localhost:61616 --msgsel \"JMSMessageID='*:10',JMSPriority>5\" FOO.BAR"
 block|,
 literal|"        - Print all the message fields that has a JMSMessageID in the header field that matches the"
 block|,
