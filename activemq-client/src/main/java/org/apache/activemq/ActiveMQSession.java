@@ -4738,6 +4738,21 @@ parameter_list|)
 throws|throws
 name|JMSException
 block|{
+if|if
+condition|(
+name|topic
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|InvalidDestinationException
+argument_list|(
+literal|"topic is null"
+argument_list|)
+throw|;
+block|}
 name|checkClosed
 argument_list|()
 expr_stmt|;
