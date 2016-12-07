@@ -65,6 +65,20 @@ operator|+
 literal|4193L
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|long
+name|getUsableSpace
+parameter_list|()
+block|{
+return|return
+name|getTotalSpace
+argument_list|()
+operator|-
+literal|1024L
+return|;
+block|}
 block|}
 end_class
 
