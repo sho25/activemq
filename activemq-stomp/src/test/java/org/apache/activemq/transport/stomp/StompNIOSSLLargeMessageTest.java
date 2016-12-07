@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+end_comment
+
 begin_package
 package|package
 name|org
@@ -219,6 +223,8 @@ name|DefaultTestAppender
 argument_list|()
 block|{
 comment|//@Override
+annotation|@
+name|Override
 specifier|public
 name|void
 name|doAppend
@@ -424,7 +430,7 @@ name|appender
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a Stomp message larger than maxDataLength bytes.      * Expects to receive an exception from the broker.      * The broker will throw an Stomp ProtocolException of type      * "Exception occurred processing: SEND ->       * org.apache.activemq.transport.stomp.ProtocolException:       * The maximum data length was exceeded"      *       * Before bug AMQ-6526 this exception would contain \<Unkown\> for the       * operation name. With the fix it should print the Stomp operation.      *       * @throws Exception      */
+comment|/**      * Sends a Stomp message larger than maxDataLength bytes.      * Expects to receive an exception from the broker.      * The broker will throw an Stomp ProtocolException of type      * "Exception occurred processing: SEND ->      * org.apache.activemq.transport.stomp.ProtocolException:      * The maximum data length was exceeded"      *      * Before bug AMQ-6526 this exception would contain \<Unkown\> for the      * operation name. With the fix it should print the Stomp operation.      *      * @throws Exception      */
 annotation|@
 name|Test
 argument_list|(
@@ -549,7 +555,7 @@ name|gotUnknownOperationInLog
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a large byte buffer and fills it with char 'X' except for the       * last byte, it gets value 0x0 assigned.      *       * @param size - the size of the array to be created.      * @return     */
+comment|/**      * Creates a large byte buffer and fills it with char 'X' except for the      * last byte, it gets value 0x0 assigned.      *      * @param size - the size of the array to be created.      * @return     */
 specifier|protected
 name|byte
 index|[]
