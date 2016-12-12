@@ -93,30 +93,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|Future
 import|;
 end_import
@@ -589,14 +565,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|ExecutorService
-name|executor
-init|=
-name|Executors
-operator|.
-name|newSingleThreadExecutor
-argument_list|()
-decl_stmt|;
 comment|//The SSLEngine needs to be initialized and handshake done to get the first command and detect the format
 comment|//The wireformat doesn't need properties set here because we aren't using this format during the SSL handshake
 specifier|final
@@ -666,13 +634,15 @@ operator|.
 name|getSslSession
 argument_list|()
 decl_stmt|;
+comment|//Attempt to read enough bytes to detect the protocol until the timeout period
+comment|//is reached
 name|Future
 argument_list|<
 name|?
 argument_list|>
 name|future
 init|=
-name|executor
+name|protocolDetectionExecutor
 operator|.
 name|submit
 argument_list|(
@@ -687,13 +657,63 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|//Wait for handshake to finish initializing
+name|int
+name|attempts
+init|=
+literal|0
+decl_stmt|;
 do|do
 block|{
+if|if
+condition|(
+name|attempts
+operator|>
+literal|0
+condition|)
+block|{
+try|try
+block|{
+comment|//increase sleep period each attempt to prevent high cpu usage
+comment|//if the client is hung and not sending bytes
+name|int
+name|sleep
+init|=
+name|attempts
+operator|>=
+literal|1024
+condition|?
+literal|1024
+else|:
+literal|4
+operator|*
+name|attempts
+decl_stmt|;
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+name|sleep
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+break|break;
+block|}
+block|}
+comment|//In the future it might be better to register a nonblocking selector
+comment|//to be told when bytes are ready
 name|in
 operator|.
 name|serviceRead
 argument_list|()
+expr_stmt|;
+name|attempts
+operator|++
 expr_stmt|;
 block|}
 do|while
@@ -707,12 +727,21 @@ name|get
 argument_list|()
 operator|<
 literal|8
+operator|&&
+operator|!
+name|Thread
+operator|.
+name|interrupted
+argument_list|()
 condition|)
 do|;
 block|}
 block|}
 argument_list|)
 decl_stmt|;
+try|try
+block|{
+comment|//If this fails and throws an exception and the socket will be closed
 name|waitForProtocolDetectionFinish
 argument_list|(
 name|future
@@ -723,6 +752,18 @@ name|getReadSize
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+comment|//call cancel in case task didn't complete which will interrupt the task
+name|future
+operator|.
+name|cancel
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|in
 operator|.
 name|stop

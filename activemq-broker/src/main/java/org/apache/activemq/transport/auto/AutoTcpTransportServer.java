@@ -139,30 +139,6 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ExecutorService
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|Executors
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
 name|Future
 import|;
 end_import
@@ -667,6 +643,16 @@ name|BrokerService
 name|brokerService
 decl_stmt|;
 specifier|protected
+specifier|final
+name|ThreadPoolExecutor
+name|newConnectionExecutor
+decl_stmt|;
+specifier|protected
+specifier|final
+name|ThreadPoolExecutor
+name|protocolDetectionExecutor
+decl_stmt|;
+specifier|protected
 name|int
 name|maxConnectionThreadPoolSize
 init|=
@@ -678,7 +664,7 @@ specifier|protected
 name|int
 name|protocolDetectionTimeOut
 init|=
-literal|30000
+literal|15000
 decl_stmt|;
 specifier|private
 specifier|static
@@ -1126,7 +1112,7 @@ argument_list|)
 expr_stmt|;
 comment|//Use an executor service here to handle new connections.  Setting the max number
 comment|//of threads to the maximum number of connections the thread count isn't unbounded
-name|service
+name|newConnectionExecutor
 operator|=
 operator|new
 name|ThreadPoolExecutor
@@ -1150,7 +1136,40 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//allow the thread pool to shrink if the max number of threads isn't needed
-name|service
+comment|//and the pool can grow and shrink as needed if contention is high
+name|newConnectionExecutor
+operator|.
+name|allowCoreThreadTimeOut
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|//Executor for waiting for bytes to detection of protocol
+name|protocolDetectionExecutor
+operator|=
+operator|new
+name|ThreadPoolExecutor
+argument_list|(
+name|maxConnectionThreadPoolSize
+argument_list|,
+name|maxConnectionThreadPoolSize
+argument_list|,
+literal|30L
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|,
+operator|new
+name|LinkedBlockingQueue
+argument_list|<
+name|Runnable
+argument_list|>
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//allow the thread pool to shrink if the max number of threads isn't needed
+name|protocolDetectionExecutor
 operator|.
 name|allowCoreThreadTimeOut
 argument_list|(
@@ -1182,6 +1201,7 @@ return|return
 name|maxConnectionThreadPoolSize
 return|;
 block|}
+comment|/**      * Set the number of threads to be used for processing connections.  Defaults      * to Integer.MAX_SIZE.  Set this value to be lower to reduce the      * number of simultaneous connection attempts.  If not set then the maximum number of      * threads will generally be controlled by the transport maxConnections setting:      * {@link TcpTransportServer#setMaximumConnections(int)}.      *<p>      * Note that this setter controls two thread pools because connection attempts      * require 1 thread to start processing the connection and another thread to read from the      * socket and to detect the protocol. Two threads are needed because some transports      * block on socket read so the first thread needs to be able to abort the second thread on timeout.      * Therefore this setting will set each thread pool to the size passed in essentially giving      * 2 times as many potential threads as the value set.      *<p>      * Both thread pools will close idle threads after a period of time      * essentially allowing the thread pools to grow and shrink dynamically based on load.      *      * @see {@link TcpTransportServer#setMaximumConnections(int)}.      * @param maxConnectionThreadPoolSize      */
 specifier|public
 name|void
 name|setMaxConnectionThreadPoolSize
@@ -1196,14 +1216,28 @@ name|maxConnectionThreadPoolSize
 operator|=
 name|maxConnectionThreadPoolSize
 expr_stmt|;
-name|service
+name|newConnectionExecutor
 operator|.
 name|setCorePoolSize
 argument_list|(
 name|maxConnectionThreadPoolSize
 argument_list|)
 expr_stmt|;
-name|service
+name|newConnectionExecutor
+operator|.
+name|setMaximumPoolSize
+argument_list|(
+name|maxConnectionThreadPoolSize
+argument_list|)
+expr_stmt|;
+name|protocolDetectionExecutor
+operator|.
+name|setCorePoolSize
+argument_list|(
+name|maxConnectionThreadPoolSize
+argument_list|)
+expr_stmt|;
+name|protocolDetectionExecutor
 operator|.
 name|setMaximumPoolSize
 argument_list|(
@@ -1427,11 +1461,6 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-specifier|protected
-specifier|final
-name|ThreadPoolExecutor
-name|service
-decl_stmt|;
 annotation|@
 name|Override
 specifier|protected
@@ -1452,7 +1481,7 @@ decl_stmt|;
 comment|//This needs to be done in a new thread because
 comment|//the socket might be waiting on the client to send bytes
 comment|//doHandleSocket can't complete until the protocol can be detected
-name|service
+name|newConnectionExecutor
 operator|.
 name|submit
 argument_list|(
@@ -1505,14 +1534,6 @@ operator|.
 name|getInputStream
 argument_list|()
 decl_stmt|;
-name|ExecutorService
-name|executor
-init|=
-name|Executors
-operator|.
-name|newSingleThreadExecutor
-argument_list|()
-decl_stmt|;
 specifier|final
 name|AtomicInteger
 name|readBytes
@@ -1541,7 +1562,7 @@ name|?
 argument_list|>
 name|future
 init|=
-name|executor
+name|protocolDetectionExecutor
 operator|.
 name|submit
 argument_list|(
@@ -1560,6 +1581,8 @@ try|try
 block|{
 do|do
 block|{
+comment|//will block until enough bytes or read or a timeout
+comment|//and the socket is closed
 name|int
 name|read
 init|=
@@ -1608,6 +1631,12 @@ name|get
 argument_list|()
 operator|<
 literal|8
+operator|&&
+operator|!
+name|Thread
+operator|.
+name|interrupted
+argument_list|()
 condition|)
 do|;
 block|}
@@ -1629,6 +1658,9 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+try|try
+block|{
+comment|//If this fails and throws an exception and the socket will be closed
 name|waitForProtocolDetectionFinish
 argument_list|(
 name|future
@@ -1636,6 +1668,18 @@ argument_list|,
 name|readBytes
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+comment|//call cancel in case task didn't complete
+name|future
+operator|.
+name|cancel
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|data
 operator|.
 name|flip
@@ -1964,16 +2008,93 @@ name|Exception
 block|{
 if|if
 condition|(
-name|service
+name|newConnectionExecutor
 operator|!=
 literal|null
 condition|)
 block|{
-name|service
+name|newConnectionExecutor
 operator|.
-name|shutdown
+name|shutdownNow
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+if|if
+condition|(
+operator|!
+name|newConnectionExecutor
+operator|.
+name|awaitTermination
+argument_list|(
+literal|3
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Auto Transport newConnectionExecutor didn't shutdown cleanly"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{             }
+block|}
+if|if
+condition|(
+name|protocolDetectionExecutor
+operator|!=
+literal|null
+condition|)
+block|{
+name|protocolDetectionExecutor
+operator|.
+name|shutdownNow
+argument_list|()
+expr_stmt|;
+try|try
+block|{
+if|if
+condition|(
+operator|!
+name|protocolDetectionExecutor
+operator|.
+name|awaitTermination
+argument_list|(
+literal|3
+argument_list|,
+name|TimeUnit
+operator|.
+name|SECONDS
+argument_list|)
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Auto Transport protocolDetectionExecutor didn't shutdown cleanly"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{             }
 block|}
 name|super
 operator|.
