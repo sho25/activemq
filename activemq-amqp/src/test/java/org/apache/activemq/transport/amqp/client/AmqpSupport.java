@@ -255,6 +255,19 @@ argument_list|(
 literal|"ANONYMOUS-RELAY"
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|Symbol
+name|DELAYED_DELIVERY
+init|=
+name|Symbol
+operator|.
+name|valueOf
+argument_list|(
+literal|"DELAYED_DELIVERY"
+argument_list|)
+decl_stmt|;
 comment|// Symbols used to announce connection error information
 specifier|public
 specifier|static
