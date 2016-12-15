@@ -129,6 +129,11 @@ name|AbstractJmsFeatureTest
 extends|extends
 name|AbstractFeatureTest
 block|{
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 specifier|public
 specifier|static
 name|void
