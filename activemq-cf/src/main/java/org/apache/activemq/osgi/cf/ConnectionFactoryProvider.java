@@ -183,7 +183,7 @@ name|Component
 comment|//
 argument_list|(
 comment|//
-name|configurationPid
+name|name
 operator|=
 literal|"org.apache.activemq"
 argument_list|,
