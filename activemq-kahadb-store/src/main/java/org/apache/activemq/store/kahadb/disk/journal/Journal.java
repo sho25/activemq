@@ -5366,6 +5366,42 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//First just acquire the currentDataFile lock and return if no rotation needed
+synchronized|synchronized
+init|(
+name|currentDataFile
+init|)
+block|{
+if|if
+condition|(
+name|currentDataFile
+operator|.
+name|get
+argument_list|()
+operator|.
+name|getLength
+argument_list|()
+operator|+
+name|capacity
+operator|<
+name|maxFileLength
+condition|)
+block|{
+return|return
+name|currentDataFile
+operator|.
+name|get
+argument_list|()
+return|;
+block|}
+block|}
+comment|//AMQ-6545 - if rotation needed, acquire dataFileIdLock first to prevent deadlocks
+comment|//then re-check if rotation is needed
+synchronized|synchronized
+init|(
+name|dataFileIdLock
+init|)
+block|{
 synchronized|synchronized
 init|(
 name|currentDataFile
@@ -5396,6 +5432,7 @@ operator|.
 name|get
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 specifier|public
