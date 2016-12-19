@@ -198,9 +198,7 @@ argument_list|,
 operator|new
 name|File
 argument_list|(
-name|basedir
-operator|+
-literal|"/src/test/resources/org/apache/activemq/karaf/itest/activemq-blueprint.xml"
+literal|"src/test/resources/org/apache/activemq/karaf/itest/activemq-blueprint.xml"
 argument_list|)
 argument_list|)
 block|}
