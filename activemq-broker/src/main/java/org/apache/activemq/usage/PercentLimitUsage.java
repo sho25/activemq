@@ -162,6 +162,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Sets the total available space in bytes. When non zero, the filesystem totalAvailableSpace is ignored.      * When set using Xbean, values of the form "20 Mb", "1024kb", and "1g" can be used      *      * @org.apache.xbean.Property propertyEditor="org.apache.activemq.util.MemoryPropertyEditor"      */
 specifier|public
 name|void
 name|setTotal

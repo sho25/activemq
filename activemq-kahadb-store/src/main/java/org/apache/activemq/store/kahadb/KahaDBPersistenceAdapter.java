@@ -875,8 +875,17 @@ name|this
 operator|.
 name|letter
 operator|.
+name|isStarted
+argument_list|()
+condition|?
+name|this
+operator|.
+name|letter
+operator|.
 name|size
 argument_list|()
+else|:
+literal|0l
 return|;
 block|}
 comment|/**      * @throws Exception      * @see org.apache.activemq.Service#start()      */

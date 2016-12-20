@@ -523,6 +523,20 @@ name|activemq
 operator|.
 name|usage
 operator|.
+name|StoreUsage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|usage
+operator|.
 name|SystemUsage
 import|;
 end_import
@@ -2331,9 +2345,6 @@ init|=
 name|adapterFromTemplate
 argument_list|(
 name|filteredAdapter
-operator|.
-name|getPersistenceAdapter
-argument_list|()
 argument_list|,
 name|candidate
 operator|.
@@ -2374,6 +2385,8 @@ condition|)
 block|{
 name|registerAdapter
 argument_list|(
+name|filteredAdapter
+argument_list|,
 name|adapter
 argument_list|,
 name|destinations
@@ -2424,9 +2437,6 @@ init|=
 name|adapterFromTemplate
 argument_list|(
 name|filteredAdapter
-operator|.
-name|getPersistenceAdapter
-argument_list|()
 argument_list|,
 name|nameFromDestinationFilter
 argument_list|(
@@ -2437,6 +2447,8 @@ decl_stmt|;
 return|return
 name|registerAdapter
 argument_list|(
+name|filteredAdapter
+argument_list|,
 name|adapter
 argument_list|,
 name|destination
@@ -2447,7 +2459,7 @@ specifier|private
 name|PersistenceAdapter
 name|adapterFromTemplate
 parameter_list|(
-name|PersistenceAdapter
+name|FilteredKahaDBPersistenceAdapter
 name|template
 parameter_list|,
 name|String
@@ -2462,6 +2474,9 @@ init|=
 name|kahaDBFromTemplate
 argument_list|(
 name|template
+operator|.
+name|getPersistenceAdapter
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|configureAdapter
@@ -2481,6 +2496,9 @@ argument_list|(
 name|adapter
 argument_list|,
 name|template
+operator|.
+name|getPersistenceAdapter
+argument_list|()
 argument_list|,
 name|destinationName
 argument_list|)
@@ -2680,6 +2698,9 @@ specifier|private
 name|FilteredKahaDBPersistenceAdapter
 name|registerAdapter
 parameter_list|(
+name|FilteredKahaDBPersistenceAdapter
+name|template
+parameter_list|,
 name|PersistenceAdapter
 name|adapter
 parameter_list|,
@@ -2700,6 +2721,8 @@ init|=
 operator|new
 name|FilteredKahaDBPersistenceAdapter
 argument_list|(
+name|template
+argument_list|,
 name|destination
 argument_list|,
 name|adapter

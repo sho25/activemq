@@ -3287,6 +3287,15 @@ return|return
 name|persistJMSRedelivered
 return|;
 block|}
+specifier|public
+name|SystemUsage
+name|getSystemUsage
+parameter_list|()
+block|{
+return|return
+name|systemUsage
+return|;
+block|}
 block|}
 end_class
 
