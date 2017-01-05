@@ -354,7 +354,7 @@ name|Throwable
 block|{
 name|testWithSpringVersion
 argument_list|(
-literal|"3.2.14.RELEASE_1"
+literal|"3.2.17.RELEASE_1"
 argument_list|)
 expr_stmt|;
 block|}
@@ -402,7 +402,7 @@ name|Throwable
 block|{
 name|testWithSpringVersion
 argument_list|(
-literal|"4.1.7.RELEASE_2"
+literal|"4.1.9.RELEASE_1"
 argument_list|)
 expr_stmt|;
 block|}
@@ -426,7 +426,7 @@ name|Throwable
 block|{
 name|testWithSpringVersion
 argument_list|(
-literal|"4.2.2.RELEASE_1"
+literal|"4.2.8.RELEASE_1"
 argument_list|)
 expr_stmt|;
 block|}

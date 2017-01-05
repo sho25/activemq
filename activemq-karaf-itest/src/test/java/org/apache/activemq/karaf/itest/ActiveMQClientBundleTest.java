@@ -124,10 +124,12 @@ name|Option
 index|[]
 comment|//
 block|{
+comment|//
 name|configure
 argument_list|(
 literal|"activemq-client"
 argument_list|)
+comment|//
 block|}
 return|;
 block|}

@@ -25,18 +25,6 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
 name|assertTrue
 import|;
 end_import
@@ -191,7 +179,7 @@ specifier|public
 class|class
 name|ActiveMQBrokerRuntimeConfigTest
 extends|extends
-name|AbstractJmsFeatureTest
+name|AbstractFeatureTest
 block|{
 annotation|@
 name|Configuration
@@ -208,11 +196,13 @@ name|Option
 index|[]
 comment|//
 block|{
+comment|//
 name|configure
 argument_list|(
 literal|"activemq"
 argument_list|)
 block|,
+comment|//
 name|editConfigurationFilePut
 argument_list|(
 literal|"etc/org.apache.activemq.server-default.cfg"
@@ -260,50 +250,12 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
-name|withinReason
-argument_list|(
-operator|new
-name|Runnable
+name|assertBrokerStarted
 argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|assertEquals
-argument_list|(
-literal|"brokerName = amq-broker"
-argument_list|,
-name|executeCommand
-argument_list|(
-literal|"activemq:list"
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertMemoryLimit
 argument_list|(
-literal|"3MB limit"
-argument_list|,
-name|executeCommand
-argument_list|(
-literal|"activemq:query"
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"MemoryLimit = 3145728"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+literal|"3145728"
 argument_list|)
 expr_stmt|;
 comment|// ensure update will be reflected in OS fs modified window
@@ -391,6 +343,22 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertMemoryLimit
+argument_list|(
+literal|"4194304"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|assertMemoryLimit
+parameter_list|(
+name|String
+name|limit
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|withinReason
 argument_list|(
 operator|new
@@ -404,7 +372,7 @@ parameter_list|()
 block|{
 name|assertTrue
 argument_list|(
-literal|"4MB limit"
+literal|"3MB limit"
 argument_list|,
 name|executeCommand
 argument_list|(
@@ -416,7 +384,9 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-literal|"MemoryLimit = 4194304"
+literal|"MemoryLimit = "
+operator|+
+name|limit
 argument_list|)
 argument_list|)
 expr_stmt|;

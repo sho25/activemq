@@ -173,7 +173,7 @@ specifier|public
 class|class
 name|ActiveMQClientFactoryTest
 extends|extends
-name|AbstractJmsFeatureTest
+name|AbstractFeatureTest
 block|{
 annotation|@
 name|Inject
@@ -216,7 +216,9 @@ argument_list|,
 operator|new
 name|File
 argument_list|(
-literal|"src/test/resources/org/apache/activemq/karaf/itest/org.apache.activemq-local.cfg"
+name|RESOURCE_BASE
+operator|+
+literal|"org.apache.activemq-local.cfg"
 argument_list|)
 argument_list|)
 block|}
