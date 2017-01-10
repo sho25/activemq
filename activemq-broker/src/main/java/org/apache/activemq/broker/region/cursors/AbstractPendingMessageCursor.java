@@ -638,6 +638,7 @@ name|boolean
 name|hasSpace
 parameter_list|()
 block|{
+comment|// allow isFull to verify parent usage and otherwise enforce local memoryUsageHighWaterMark
 return|return
 name|systemUsage
 operator|!=
@@ -645,15 +646,18 @@ literal|null
 condition|?
 operator|(
 operator|!
+name|isFull
+argument_list|()
+operator|&&
 name|systemUsage
 operator|.
 name|getMemoryUsage
 argument_list|()
 operator|.
-name|isFull
-argument_list|(
+name|getPercentUsage
+argument_list|()
+operator|<
 name|memoryUsageHighWaterMark
-argument_list|)
 operator|)
 else|:
 literal|true
