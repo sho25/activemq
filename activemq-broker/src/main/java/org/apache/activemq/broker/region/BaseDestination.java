@@ -39,6 +39,20 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicBoolean
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -425,6 +439,15 @@ name|int
 name|MAX_AUDIT_DEPTH
 init|=
 literal|10000
+decl_stmt|;
+specifier|protected
+specifier|final
+name|AtomicBoolean
+name|started
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|()
 decl_stmt|;
 specifier|protected
 specifier|final

@@ -760,7 +760,6 @@ name|e
 parameter_list|)
 block|{             }
 block|}
-empty_stmt|;
 block|}
 decl_stmt|;
 specifier|public
@@ -3257,6 +3256,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|started
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 name|this
 operator|.
 name|subscriptionRecoveryPolicy
@@ -3306,6 +3317,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -3314,6 +3326,18 @@ name|stop
 parameter_list|()
 throws|throws
 name|Exception
+block|{
+if|if
+condition|(
+name|started
+operator|.
+name|compareAndSet
+argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+condition|)
 block|{
 if|if
 condition|(
@@ -3372,6 +3396,7 @@ argument_list|(
 name|expireMessagesTask
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override

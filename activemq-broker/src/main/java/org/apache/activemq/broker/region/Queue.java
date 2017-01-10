@@ -18,6 +18,26 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|cursors
+operator|.
+name|AbstractStoreCursor
+operator|.
+name|gotToTheStore
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -228,20 +248,6 @@ operator|.
 name|concurrent
 operator|.
 name|TimeUnit
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|concurrent
-operator|.
-name|atomic
-operator|.
-name|AtomicBoolean
 import|;
 end_import
 
@@ -1059,26 +1065,6 @@ name|MDC
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|broker
-operator|.
-name|region
-operator|.
-name|cursors
-operator|.
-name|AbstractStoreCursor
-operator|.
-name|gotToTheStore
-import|;
-end_import
-
 begin_comment
 comment|/**  * The Queue is a List of MessageEntry objects that are dispatched to matching  * subscriptions.  */
 end_comment
@@ -1311,15 +1297,6 @@ name|boolean
 name|allConsumersExclusiveByDefault
 init|=
 literal|false
-decl_stmt|;
-specifier|private
-specifier|final
-name|AtomicBoolean
-name|started
-init|=
-operator|new
-name|AtomicBoolean
-argument_list|()
 decl_stmt|;
 specifier|private
 specifier|volatile
@@ -1681,7 +1658,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-empty_stmt|;
 specifier|private
 specifier|final
 name|FlowControlTimeoutTask
