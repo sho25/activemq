@@ -247,6 +247,22 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|TestUtils
+operator|.
+name|findOpenPort
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -261,6 +277,9 @@ decl_stmt|;
 specifier|protected
 name|ActiveMQQueue
 name|queue
+decl_stmt|;
+name|int
+name|portToUse
 decl_stmt|;
 annotation|@
 name|Override
@@ -315,6 +334,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|portToUse
+operator|=
+name|findOpenPort
+argument_list|()
+expr_stmt|;
 name|broker
 operator|.
 name|setManagementContext
@@ -323,7 +347,7 @@ name|createManagementContext
 argument_list|(
 literal|"broker"
 argument_list|,
-literal|1099
+name|portToUse
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -672,7 +696,7 @@ name|conn
 init|=
 name|createJMXConnector
 argument_list|(
-literal|1099
+name|portToUse
 argument_list|)
 decl_stmt|;
 name|ObjectName
