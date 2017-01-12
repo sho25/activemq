@@ -5357,13 +5357,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|e
-operator|instanceof
-name|SecurityException
-condition|)
-block|{
+comment|//AMQ-6561 - stop for all exceptions on addConnection
 comment|// close this down - in case the peer of this transport doesn't play nice
 name|delayedStop
 argument_list|(
@@ -5379,7 +5373,6 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-block|}
 throw|throw
 name|e
 throw|;
