@@ -480,6 +480,23 @@ block|}
 annotation|@
 name|Override
 specifier|protected
+name|boolean
+name|duplicateFromStoreExcepted
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+block|{
+comment|// setBatch is not implemented - sequence order not reliable with concurrent transactions
+comment|// on cache exhaustion - first pageIn starts from last ack location which may replay what
+comment|// cursor has dispatched
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|protected
 specifier|synchronized
 name|int
 name|getStoreSize
@@ -663,6 +680,9 @@ name|maxBatchSize
 argument_list|,
 name|this
 argument_list|)
+expr_stmt|;
+name|dealWithDuplicates
+argument_list|()
 expr_stmt|;
 if|if
 condition|(

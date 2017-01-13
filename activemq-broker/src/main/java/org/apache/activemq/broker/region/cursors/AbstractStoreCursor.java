@@ -575,13 +575,12 @@ block|{
 comment|// a duplicate from the store (!cached) - needs to be removed/acked - otherwise it will get re dispatched on restart
 if|if
 condition|(
+name|duplicateFromStoreExcepted
+argument_list|(
 name|message
-operator|.
-name|isRecievedByDFBridge
-argument_list|()
+argument_list|)
 condition|)
 block|{
-comment|// expected for messages pending acks with kahadb.concurrentStoreAndDispatchQueues=true
 if|if
 condition|(
 name|LOG
@@ -686,6 +685,23 @@ block|}
 block|}
 return|return
 name|recovered
+return|;
+block|}
+specifier|protected
+name|boolean
+name|duplicateFromStoreExcepted
+parameter_list|(
+name|Message
+name|message
+parameter_list|)
+block|{
+comment|// expected for messages pending acks with kahadb.concurrentStoreAndDispatchQueues=true for
+comment|// which this existing unused flag has been repurposed
+return|return
+name|message
+operator|.
+name|isRecievedByDFBridge
+argument_list|()
 return|;
 block|}
 specifier|public
