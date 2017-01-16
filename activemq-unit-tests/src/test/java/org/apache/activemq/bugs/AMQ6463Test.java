@@ -533,6 +533,10 @@ name|close
 argument_list|()
 expr_stmt|;
 comment|// lets not consume till producer is blocked
+name|assertTrue
+argument_list|(
+literal|"got blocked event"
+argument_list|,
 name|Wait
 operator|.
 name|waitFor
@@ -560,6 +564,7 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|MessageConsumer
@@ -671,6 +676,13 @@ expr_stmt|;
 name|service
 operator|.
 name|setSchedulerSupport
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|service
+operator|.
+name|setDeleteAllMessagesOnStartup
 argument_list|(
 literal|true
 argument_list|)
