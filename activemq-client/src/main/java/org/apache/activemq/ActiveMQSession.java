@@ -3575,6 +3575,34 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getTransactionContext
+argument_list|()
+operator|.
+name|isInXATransaction
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Marking transaction: {} rollbackOnly"
+argument_list|,
+name|getTransactionContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|getTransactionContext
+argument_list|()
+operator|.
+name|setRollbackOnly
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 comment|// A problem while invoking the MessageListener does not
 comment|// in general indicate a problem with the connection to the broker, i.e.
 comment|// it will usually be sufficient to let the afterDelivery() method either
