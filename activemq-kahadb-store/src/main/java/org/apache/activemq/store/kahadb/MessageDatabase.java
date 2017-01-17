@@ -10596,6 +10596,12 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+name|Set
+argument_list|<
+name|Integer
+argument_list|>
+name|filesToGc
+init|=
 name|pageFile
 operator|.
 name|tx
@@ -10606,8 +10612,13 @@ argument_list|(
 operator|new
 name|Transaction
 operator|.
-name|Closure
+name|CallableClosure
 argument_list|<
+name|Set
+argument_list|<
+name|Integer
+argument_list|>
+argument_list|,
 name|IOException
 argument_list|>
 argument_list|()
@@ -10615,7 +10626,10 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|void
+name|Set
+argument_list|<
+name|Integer
+argument_list|>
 name|execute
 parameter_list|(
 name|Transaction
@@ -10624,15 +10638,24 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+return|return
 name|checkpointUpdate
 argument_list|(
 name|tx
 argument_list|,
 name|cleanup
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
+argument_list|)
+decl_stmt|;
+comment|// after the index update such that partial removal does not leave dangling references in the index.
+name|journal
+operator|.
+name|removeDataFiles
+argument_list|(
+name|filesToGc
 argument_list|)
 expr_stmt|;
 block|}
@@ -10663,7 +10686,10 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @param tx      * @throws IOException      */
-name|void
+name|Set
+argument_list|<
+name|Integer
+argument_list|>
 name|checkpointUpdate
 parameter_list|(
 name|Transaction
@@ -10757,6 +10783,18 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+specifier|final
+name|TreeSet
+argument_list|<
+name|Integer
+argument_list|>
+name|gcCandidateSet
+init|=
+operator|new
+name|TreeSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|cleanup
@@ -10782,20 +10820,13 @@ name|keySet
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|final
-name|TreeSet
-argument_list|<
-name|Integer
-argument_list|>
 name|gcCandidateSet
-init|=
-operator|new
-name|TreeSet
-argument_list|<>
+operator|.
+name|addAll
 argument_list|(
 name|completeFileSet
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|LOG
@@ -11854,13 +11885,6 @@ argument_list|,
 name|gcCandidateSet
 argument_list|)
 expr_stmt|;
-name|journal
-operator|.
-name|removeDataFiles
-argument_list|(
-name|gcCandidateSet
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|Integer
@@ -12049,6 +12073,9 @@ argument_list|(
 literal|"Checkpoint done."
 argument_list|)
 expr_stmt|;
+return|return
+name|gcCandidateSet
+return|;
 block|}
 specifier|private
 specifier|final
@@ -16373,7 +16400,7 @@ name|ConcurrentHashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-comment|/**      * Locate the storeMessageSize counter for this KahaDestination      * @param kahaDestination      * @return      */
+comment|/**      * Locate the storeMessageSize counter for this KahaDestination      */
 specifier|protected
 name|MessageStoreStatistics
 name|getStoreStats
