@@ -1931,6 +1931,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// ensure we don't report unused space of last journal file in size metric
+name|int
+name|lastFileLength
+init|=
+name|dataFiles
+operator|.
+name|getTail
+argument_list|()
+operator|.
+name|getLength
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|totalLength
@@ -1938,7 +1949,7 @@ operator|.
 name|get
 argument_list|()
 operator|>
-name|maxFileLength
+name|lastFileLength
 operator|&&
 name|lastAppendLocation
 operator|.
@@ -1963,7 +1974,7 @@ operator|.
 name|getOffset
 argument_list|()
 operator|-
-name|maxFileLength
+name|lastFileLength
 argument_list|)
 expr_stmt|;
 block|}
