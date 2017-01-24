@@ -6731,6 +6731,13 @@ name|list
 init|=
 literal|null
 decl_stmt|;
+try|try
+block|{
+name|sendLock
+operator|.
+name|lock
+argument_list|()
+expr_stmt|;
 name|long
 name|originalMessageCount
 init|=
@@ -6824,7 +6831,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{                 }
+block|{                     }
 block|}
 comment|// don't spin/hang if stats are out and there is nothing left in the
 comment|// store
@@ -6891,27 +6898,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|gc
+block|}
+finally|finally
+block|{
+name|sendLock
+operator|.
+name|unlock
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
-name|destinationStatistics
-operator|.
-name|getMessages
-argument_list|()
-operator|.
-name|setCount
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-name|getMessages
-argument_list|()
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
