@@ -2323,6 +2323,15 @@ name|int
 name|amount
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|isUsePrefetchExtension
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 while|while
 condition|(
 literal|true
@@ -3664,6 +3673,11 @@ operator|+
 name|prefetchExtension
 operator|.
 name|get
+argument_list|()
+operator|+
+literal|", usePrefetchExtension="
+operator|+
+name|isUsePrefetchExtension
 argument_list|()
 return|;
 block|}
