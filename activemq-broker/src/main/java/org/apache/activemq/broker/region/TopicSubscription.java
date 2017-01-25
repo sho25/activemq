@@ -1363,15 +1363,6 @@ operator|.
 name|remove
 argument_list|()
 expr_stmt|;
-name|getSubscriptionStatistics
-argument_list|()
-operator|.
-name|getDispatched
-argument_list|()
-operator|.
-name|increment
-argument_list|()
-expr_stmt|;
 name|node
 operator|.
 name|decrementReferenceCount
