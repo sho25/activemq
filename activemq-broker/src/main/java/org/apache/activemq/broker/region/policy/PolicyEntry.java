@@ -1818,6 +1818,14 @@ argument_list|)
 expr_stmt|;
 name|subscription
 operator|.
+name|setUsePrefetchExtension
+argument_list|(
+name|isUsePrefetchExtension
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|subscription
+operator|.
 name|setCursorMemoryHighWaterMark
 argument_list|(
 name|getCursorMemoryHighWaterMark
