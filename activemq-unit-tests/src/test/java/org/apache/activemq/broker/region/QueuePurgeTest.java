@@ -1165,6 +1165,7 @@ operator|/
 literal|2
 argument_list|)
 expr_stmt|;
+specifier|final
 name|QueueViewMBean
 name|proxy
 init|=
@@ -1174,6 +1175,7 @@ decl_stmt|;
 name|createConsumer
 argument_list|()
 expr_stmt|;
+specifier|final
 name|long
 name|start
 init|=

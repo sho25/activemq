@@ -509,6 +509,7 @@ argument_list|(
 literal|"id"
 argument_list|)
 expr_stmt|;
+specifier|final
 name|TcpTransportServer
 name|server
 init|=
