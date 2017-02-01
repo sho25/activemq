@@ -767,7 +767,7 @@ decl_stmt|;
 name|Message
 name|message
 init|=
-name|session
+name|s
 operator|.
 name|createTextMessage
 argument_list|()
