@@ -1094,6 +1094,13 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|addSubscriptionsForDestination
+argument_list|(
+name|context
+argument_list|,
+name|dest
+argument_list|)
+expr_stmt|;
 name|destinations
 operator|.
 name|put
@@ -1115,13 +1122,6 @@ operator|.
 name|put
 argument_list|(
 name|destination
-argument_list|,
-name|dest
-argument_list|)
-expr_stmt|;
-name|addSubscriptionsForDestination
-argument_list|(
-name|context
 argument_list|,
 name|dest
 argument_list|)
