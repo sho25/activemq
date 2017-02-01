@@ -5347,12 +5347,14 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to add Connection {} due to {}"
+literal|"Failed to add Connection id={}, clientId={} due to {}"
 argument_list|,
 name|info
 operator|.
 name|getConnectionId
 argument_list|()
+argument_list|,
+name|clientId
 argument_list|,
 name|e
 argument_list|)
