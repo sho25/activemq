@@ -12839,12 +12839,11 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to load next journal location: {}"
+literal|"Failed to load next journal location after: {}, reason: {}"
+argument_list|,
+name|nextLocation
 argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -12859,7 +12858,9 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Failed to load next journal location"
+literal|"Failed to load next journal location after: {}"
+argument_list|,
+name|nextLocation
 argument_list|,
 name|e
 argument_list|)
