@@ -10971,7 +10971,9 @@ name|trace
 argument_list|(
 literal|"gc candidates after producerSequenceIdTrackerLocation:"
 operator|+
-name|dataFileId
+name|metadata
+operator|.
+name|producerSequenceIdTrackerLocation
 operator|+
 literal|", "
 operator|+
@@ -11020,7 +11022,9 @@ name|trace
 argument_list|(
 literal|"gc candidates after ackMessageFileMapLocation:"
 operator|+
-name|dataFileId
+name|metadata
+operator|.
+name|ackMessageFileMapLocation
 operator|+
 literal|", "
 operator|+
@@ -11088,7 +11092,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"gc candidates after tx range:"
+literal|"gc candidates after in progress tx range:"
 operator|+
 name|Arrays
 operator|.
@@ -12452,7 +12456,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Reserved now file for forwarded acks: {}"
+literal|"Reserved file for forwarded acks: {}"
 argument_list|,
 name|forwardsFile
 argument_list|)
@@ -12542,6 +12546,20 @@ argument_list|,
 name|journalToRead
 argument_list|)
 expr_stmt|;
+specifier|final
+name|Location
+name|limit
+init|=
+operator|new
+name|Location
+argument_list|(
+name|journalToRead
+operator|+
+literal|1
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
 name|Location
 name|nextLocation
 init|=
@@ -12554,6 +12572,8 @@ name|journalToRead
 argument_list|,
 literal|0
 argument_list|)
+argument_list|,
+name|limit
 argument_list|)
 decl_stmt|;
 while|while
@@ -12561,13 +12581,6 @@ condition|(
 name|nextLocation
 operator|!=
 literal|null
-operator|&&
-name|nextLocation
-operator|.
-name|getDataFileId
-argument_list|()
-operator|==
-name|journalToRead
 condition|)
 block|{
 name|JournalCommand
@@ -12656,6 +12669,8 @@ operator|=
 name|getNextLocationForAckForward
 argument_list|(
 name|nextLocation
+argument_list|,
+name|limit
 argument_list|)
 expr_stmt|;
 block|}
@@ -12807,6 +12822,10 @@ parameter_list|(
 specifier|final
 name|Location
 name|nextLocation
+parameter_list|,
+specifier|final
+name|Location
+name|limit
 parameter_list|)
 block|{
 comment|//getNextLocation() can throw an IOException, we should handle it and set
@@ -12826,6 +12845,8 @@ operator|.
 name|getNextLocation
 argument_list|(
 name|nextLocation
+argument_list|,
+name|limit
 argument_list|)
 expr_stmt|;
 block|}
