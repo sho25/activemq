@@ -1131,6 +1131,12 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|lastActiveTime
+operator|=
+literal|0l
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1228,7 +1234,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|!=
+operator|>
 literal|0
 operator|||
 name|destinationStatistics
@@ -1238,7 +1244,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|!=
+operator|>
 literal|0
 decl_stmt|;
 if|if
@@ -1255,7 +1261,7 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|!=
+operator|>
 literal|0
 condition|)
 block|{
