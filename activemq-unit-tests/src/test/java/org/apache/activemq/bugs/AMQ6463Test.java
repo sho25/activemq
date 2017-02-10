@@ -704,6 +704,14 @@ argument_list|()
 decl_stmt|;
 name|policy
 operator|.
+name|setExpireMessagesPeriod
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+comment|// so not to effect memory usage
+name|policy
+operator|.
 name|setMemoryLimit
 argument_list|(
 literal|1
