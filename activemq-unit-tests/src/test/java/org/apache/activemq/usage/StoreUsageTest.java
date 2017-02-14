@@ -274,6 +274,7 @@ operator|.
 name|AUTO_ACKNOWLEDGE
 argument_list|)
 decl_stmt|;
+specifier|final
 name|Destination
 name|dest
 init|=
