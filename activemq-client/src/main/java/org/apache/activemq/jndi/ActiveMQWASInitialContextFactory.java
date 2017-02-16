@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This implementation of<CODE>InitialContextFactory</CODE> should be used  * when ActiveMQ is used as WebSphere Generic JMS Provider. It is proved that it  * works on WebSphere 5.1. The reason for using this class is that custom  * property defined for Generic JMS Provider are passed to InitialContextFactory  * only if it begins with java.naming or javax.naming prefix. Additionally  * provider url for the JMS provider can not contain ',' character that is  * necessary when the list of nodes is provided. So the role of this class is to  * transform properties before passing it to<tt>ActiveMQInitialContextFactory</tt>.  */
+comment|/**  * A InitialContextFactory for WebSphere Generic JMS Provider.  *<p>  * Works on WebSphere 5.1. The reason for using this class is that custom  * property defined for Generic JMS Provider are passed to {@link InitialContextFactory}  * only if it begins with {@code java.naming} or {@code javax.naming} prefix.  * Additionally provider url for the JMS provider can not contain {@code ','}  * character that is necessary when the list of nodes is provided. So the role  * of this class is to transform properties before passing it to   * {@link ActiveMQInitialContextFactory}.  */
 end_comment
 
 begin_class
@@ -99,7 +99,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Performs following transformation of properties:      *<ul>      *<li>(java.naming.queue.xxx.yyy,value)=>(queue.xxx/yyy,value)      *<li>(java.naming.topic.xxx.yyy,value)=>(topic.xxx/yyy,value)      *<li>(java.naming.connectionFactoryNames,value)=>(connectionFactoryNames,value)      *<li>(java.naming.provider.url,url1;url2)=>java.naming.provider.url,url1,url1)      *<ul>      *      * @param environment properties for transformation      * @return environment after transformation      */
+comment|/**      * Performs following transformation of properties:      *<ul>      *<li>(java.naming.queue.xxx.yyy=value) ->(queue.xxx/yyy=value)      *<li>(java.naming.topic.xxx.yyy=value) -> (topic.xxx/yyy=value)      *<li>(java.naming.connectionxxx=value) -> (connectionxxx=value)      *<li>(java.naming.provider.url=url1;url2) -> (java.naming.provider.url=url1,url2)      *<ul>      *      * @param environment properties for transformation      * @return environment after transformation      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
