@@ -1055,6 +1055,8 @@ throw|;
 block|}
 block|}
 block|}
+comment|//AMQ-6599 - don't strip out set properties on the socket as we need to set them
+comment|//on the Transport as well later
 name|IntrospectionSupport
 operator|.
 name|setProperties
@@ -1062,6 +1064,8 @@ argument_list|(
 name|socket
 argument_list|,
 name|transportOptions
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
