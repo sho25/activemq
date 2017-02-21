@@ -7206,7 +7206,12 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"KahaDB failed to store to Journal"
+literal|"KahaDB failed to store to Journal, command of type: "
+operator|+
+name|data
+operator|.
+name|type
+argument_list|()
 argument_list|,
 name|ioe
 argument_list|)
