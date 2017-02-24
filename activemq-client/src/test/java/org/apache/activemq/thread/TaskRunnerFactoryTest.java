@@ -166,11 +166,16 @@ name|runners
 init|=
 name|Collections
 operator|.
+expr|<
+name|TaskRunner
+operator|>
 name|synchronizedList
 argument_list|(
 operator|new
 name|ArrayList
-argument_list|<>
+argument_list|<
+name|TaskRunner
+argument_list|>
 argument_list|(
 literal|10
 argument_list|)
