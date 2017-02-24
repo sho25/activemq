@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -70,16 +80,6 @@ operator|.
 name|util
 operator|.
 name|IntrospectionSupport
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeMap
 import|;
 end_import
 
@@ -160,10 +160,17 @@ argument_list|(
 name|nc
 argument_list|)
 expr_stmt|;
-name|nc
+name|plugin
 operator|.
-name|start
+name|getBrokerService
 argument_list|()
+operator|.
+name|startNetworkConnector
+argument_list|(
+name|nc
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 name|plugin
 operator|.
