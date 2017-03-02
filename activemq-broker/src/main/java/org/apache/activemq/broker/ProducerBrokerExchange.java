@@ -217,7 +217,6 @@ name|BrokerService
 name|brokerService
 decl_stmt|;
 specifier|private
-specifier|final
 name|FlowControlInfo
 name|flowControlInfo
 init|=
@@ -273,6 +272,12 @@ operator|.
 name|mutable
 operator|=
 name|mutable
+expr_stmt|;
+name|rc
+operator|.
+name|flowControlInfo
+operator|=
+name|flowControlInfo
 expr_stmt|;
 return|return
 name|rc
