@@ -3709,13 +3709,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|warnOnProducerFlowControl
+name|isFlowControlLogRequired
+argument_list|()
 condition|)
 block|{
-name|warnOnProducerFlowControl
-operator|=
-literal|false
-expr_stmt|;
 name|LOG
 operator|.
 name|info
