@@ -580,6 +580,20 @@ literal|"Cannot alter the Delivery"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|available
+parameter_list|()
+block|{
+return|return
+name|delivery
+operator|.
+name|available
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
