@@ -2203,6 +2203,19 @@ name|get
 argument_list|()
 return|;
 block|}
+specifier|public
+name|void
+name|allowIOResumption
+parameter_list|()
+block|{
+name|loaded
+operator|.
+name|set
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Flush and sync all write buffers to disk.      *      * @throws IOException If an disk error occurred.      */
 specifier|public
 name|void
@@ -4590,6 +4603,41 @@ name|sync
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ioError
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Unexpected io error on pagefile write of "
+operator|+
+name|batch
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" pages."
+argument_list|,
+name|ioError
+argument_list|)
+expr_stmt|;
+comment|// any subsequent write needs to be prefaced with a considered call to redoRecoveryUpdates
+comment|// to ensure disk image is self consistent
+name|loaded
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+throw|throw
+name|ioError
+throw|;
 block|}
 finally|finally
 block|{

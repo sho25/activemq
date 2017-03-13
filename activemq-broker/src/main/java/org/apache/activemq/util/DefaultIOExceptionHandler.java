@@ -288,6 +288,9 @@ condition|(
 name|ignoreAllErrors
 condition|)
 block|{
+name|allowIOResumption
+argument_list|()
+expr_stmt|;
 name|LOG
 operator|.
 name|info
@@ -354,6 +357,9 @@ name|exception
 argument_list|,
 name|exception
 argument_list|)
+expr_stmt|;
+name|allowIOResumption
+argument_list|()
 expr_stmt|;
 return|return;
 block|}
@@ -548,6 +554,9 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|allowIOResumption
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|hasLockOwnership
@@ -789,6 +798,11 @@ name|exception
 argument_list|)
 throw|;
 block|}
+specifier|protected
+name|void
+name|allowIOResumption
+parameter_list|()
+block|{     }
 specifier|private
 name|void
 name|stopBroker

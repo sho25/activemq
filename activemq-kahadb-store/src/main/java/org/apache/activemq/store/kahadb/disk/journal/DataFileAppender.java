@@ -1889,6 +1889,10 @@ init|(
 name|enqueueMutex
 init|)
 block|{
+name|shutdown
+operator|=
+literal|true
+expr_stmt|;
 name|running
 operator|=
 literal|false
