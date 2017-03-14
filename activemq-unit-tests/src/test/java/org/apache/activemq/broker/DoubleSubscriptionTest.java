@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|InvalidClientIDException
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -434,6 +444,8 @@ expr_stmt|;
 comment|// Now we're going to resend the same consumer commands again and see if
 comment|// the broker
 comment|// can handle it.
+try|try
+block|{
 name|connection1
 operator|.
 name|send
@@ -455,6 +467,15 @@ argument_list|(
 name|consumerInfo1
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InvalidClientIDException
+name|expected
+parameter_list|)
+block|{
+comment|// //AMQ-6561 - delayed stop for all exceptions on addConnection
+block|}
 comment|// After this there should be 2 messages on the broker...
 name|connection2
 operator|.
