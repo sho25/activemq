@@ -16,6 +16,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|command
+operator|.
+name|ActiveMQDestination
+operator|.
+name|QUEUE_TYPE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -335,22 +351,6 @@ name|LoggerFactory
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|command
-operator|.
-name|ActiveMQDestination
-operator|.
-name|QUEUE_TYPE
-import|;
-end_import
-
 begin_comment
 comment|/**  * A JUnit Rule that embeds an ActiveMQ broker into a test.  */
 end_comment
@@ -381,7 +381,7 @@ decl_stmt|;
 name|InternalClient
 name|internalClient
 decl_stmt|;
-comment|/**      * Create an embedded ActiveMQ broker using defaults      *<p>      * The defaults are:      * - the broker name is 'embedded-broker'      * - JMX is disabled      * - Persistence is disabled      */
+comment|/**      * Create an embedded ActiveMQ broker using defaults      *<p>      * The defaults are:      * - the broker name is 'embedded-broker'      * - JMX is enable but no management connector is created.      * - Persistence is disabled      */
 specifier|public
 name|EmbeddedActiveMQBroker
 parameter_list|()
@@ -395,6 +395,16 @@ expr_stmt|;
 name|brokerService
 operator|.
 name|setUseJmx
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateConnector
 argument_list|(
 literal|false
 argument_list|)
