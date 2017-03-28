@@ -2294,7 +2294,7 @@ literal|">"
 argument_list|,
 name|ActiveMQDestination
 operator|.
-name|QUEUE_TYPE
+name|TOPIC_TYPE
 argument_list|)
 expr_stmt|;
 block|}
@@ -2314,7 +2314,7 @@ literal|">"
 argument_list|,
 name|ActiveMQDestination
 operator|.
-name|TOPIC_TYPE
+name|QUEUE_TYPE
 argument_list|)
 expr_stmt|;
 block|}
