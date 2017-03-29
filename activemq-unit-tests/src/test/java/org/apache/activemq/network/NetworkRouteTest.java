@@ -446,13 +446,9 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|EasyMock
-operator|.
-name|expect
-argument_list|(
 name|localBroker
 operator|.
-name|request
+name|oneway
 argument_list|(
 name|EasyMock
 operator|.
@@ -462,12 +458,6 @@ name|ConsumerInfo
 operator|.
 name|class
 argument_list|)
-argument_list|)
-argument_list|)
-operator|.
-name|andReturn
-argument_list|(
-literal|null
 argument_list|)
 expr_stmt|;
 name|control
@@ -514,7 +504,7 @@ block|{
 comment|// from (1)
 name|localBroker
 operator|.
-name|request
+name|oneway
 argument_list|(
 name|EasyMock
 operator|.
@@ -819,7 +809,7 @@ block|{
 comment|// from (1)
 name|localBroker
 operator|.
-name|request
+name|oneway
 argument_list|(
 name|EasyMock
 operator|.

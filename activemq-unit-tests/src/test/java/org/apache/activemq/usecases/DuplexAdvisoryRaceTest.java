@@ -808,7 +808,7 @@ specifier|final
 name|int
 name|numDests
 init|=
-literal|200
+literal|800
 decl_stmt|;
 end_decl_stmt
 
@@ -817,7 +817,7 @@ specifier|final
 name|int
 name|numMessagesPerDest
 init|=
-literal|300
+literal|50
 decl_stmt|;
 end_decl_stmt
 
@@ -826,7 +826,7 @@ specifier|final
 name|int
 name|numConsumersPerDest
 init|=
-literal|100
+literal|5
 decl_stmt|;
 end_decl_stmt
 
@@ -1007,7 +1007,7 @@ operator|,
 end_operator
 
 begin_expr_stmt
-literal|2
+literal|5
 operator|*
 literal|60
 operator|*
@@ -1194,7 +1194,6 @@ operator|.
 name|createBytesMessage
 argument_list|()
 decl_stmt|;
-comment|//message.writeBytes(new byte[50]);
 name|MessageProducer
 name|producer
 init|=
@@ -1586,7 +1585,7 @@ literal|"static:(failover:("
 operator|+
 name|networkConnectorUrlString
 operator|+
-literal|"?socketBufferSize=1024)?maxReconnectAttempts=0)"
+literal|"?socketBufferSize=1024&trace=false)?maxReconnectAttempts=0)"
 decl_stmt|;
 name|NetworkConnector
 name|connector

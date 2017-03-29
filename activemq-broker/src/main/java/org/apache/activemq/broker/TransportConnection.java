@@ -7838,6 +7838,9 @@ operator|.
 name|createLocalTransport
 argument_list|(
 name|broker
+operator|.
+name|getVmConnectorURI
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Transport

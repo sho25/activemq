@@ -700,9 +700,9 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|TransportFactory
+name|NetworkBridgeFactory
 operator|.
-name|connect
+name|createLocalTransport
 argument_list|(
 name|localURI
 argument_list|)
