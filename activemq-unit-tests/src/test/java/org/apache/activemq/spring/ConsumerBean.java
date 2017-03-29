@@ -128,11 +128,31 @@ specifier|private
 name|boolean
 name|verbose
 decl_stmt|;
+specifier|private
+name|String
+name|id
+init|=
+literal|null
+decl_stmt|;
 comment|/**      * Constructor.      */
 specifier|public
 name|ConsumerBean
 parameter_list|()
 block|{     }
+specifier|public
+name|ConsumerBean
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+name|this
+operator|.
+name|id
+operator|=
+name|id
+expr_stmt|;
+block|}
 comment|/**      * @return all the messages on the list so far, clearing the buffer      */
 specifier|public
 name|List
@@ -208,6 +228,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|""
+operator|+
+name|id
+operator|+
 literal|"Received: "
 operator|+
 name|message
