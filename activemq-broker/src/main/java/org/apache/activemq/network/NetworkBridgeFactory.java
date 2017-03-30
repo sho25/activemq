@@ -191,18 +191,26 @@ specifier|static
 name|Transport
 name|createLocalTransport
 parameter_list|(
+name|NetworkBridgeConfiguration
+name|configuration
+parameter_list|,
 name|URI
 name|uri
 parameter_list|)
 throws|throws
 name|Exception
 block|{
+comment|// one end of the localbroker<->bridge transport needs to be async to allow concurrent forwards and acks
 return|return
 name|createLocalTransport
 argument_list|(
 name|uri
 argument_list|,
-literal|false
+operator|!
+name|configuration
+operator|.
+name|isDispatchAsync
+argument_list|()
 argument_list|)
 return|;
 block|}

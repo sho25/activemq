@@ -704,6 +704,8 @@ name|NetworkBridgeFactory
 operator|.
 name|createLocalTransport
 argument_list|(
+name|this
+argument_list|,
 name|localURI
 argument_list|)
 return|;

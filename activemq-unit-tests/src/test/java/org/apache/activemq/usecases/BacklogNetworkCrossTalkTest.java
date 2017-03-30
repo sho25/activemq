@@ -269,7 +269,7 @@ specifier|final
 name|int
 name|numMessages
 init|=
-literal|2000
+literal|1000
 decl_stmt|;
 comment|// Create queue
 name|ActiveMQDestination
@@ -444,7 +444,7 @@ name|Exception
 block|{
 name|messageSize
 operator|=
-literal|500
+literal|5000
 expr_stmt|;
 name|super
 operator|.

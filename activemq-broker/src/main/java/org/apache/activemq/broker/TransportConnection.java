@@ -7837,6 +7837,8 @@ name|NetworkBridgeFactory
 operator|.
 name|createLocalTransport
 argument_list|(
+name|config
+argument_list|,
 name|broker
 operator|.
 name|getVmConnectorURI
