@@ -705,7 +705,7 @@ name|MILLISECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|300
+literal|200
 argument_list|)
 expr_stmt|;
 block|}
@@ -808,7 +808,7 @@ specifier|final
 name|int
 name|numDests
 init|=
-literal|800
+literal|400
 decl_stmt|;
 end_decl_stmt
 
@@ -1007,7 +1007,7 @@ operator|,
 end_operator
 
 begin_expr_stmt
-literal|5
+literal|10
 operator|*
 literal|60
 operator|*
