@@ -242,15 +242,9 @@ literal|"Connecting to URL: "
 operator|+
 name|brokerUrl
 operator|+
-literal|" ("
+literal|" as user: "
 operator|+
 name|user
-operator|+
-literal|":"
-operator|+
-name|password
-operator|+
-literal|")"
 argument_list|)
 expr_stmt|;
 name|LOG
