@@ -312,6 +312,24 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|error
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"PUT failed to: "
+operator|+
+name|url
+argument_list|,
+name|error
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 operator|!
@@ -328,7 +346,11 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"PUT was not successful: "
+literal|"PUT to "
+operator|+
+name|url
+operator|+
+literal|" was not successful: "
 operator|+
 name|connection
 operator|.
