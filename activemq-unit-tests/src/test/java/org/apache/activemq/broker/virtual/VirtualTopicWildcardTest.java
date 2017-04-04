@@ -421,6 +421,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+specifier|final
 name|ConsumerBean
 name|messageList1
 init|=
@@ -430,6 +431,7 @@ argument_list|(
 literal|"1:"
 argument_list|)
 decl_stmt|;
+specifier|final
 name|ConsumerBean
 name|messageList2
 init|=
@@ -439,6 +441,7 @@ argument_list|(
 literal|"2:"
 argument_list|)
 decl_stmt|;
+specifier|final
 name|ConsumerBean
 name|messageList3
 init|=
