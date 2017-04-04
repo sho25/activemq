@@ -532,6 +532,14 @@ operator|)
 operator|+
 literal|" Group: "
 operator|+
+operator|(
+name|thread
+operator|.
+name|getThreadGroup
+argument_list|()
+operator|!=
+literal|null
+condition|?
 name|thread
 operator|.
 name|getThreadGroup
@@ -539,6 +547,9 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+else|:
+literal|""
+operator|)
 operator|+
 literal|"\n"
 argument_list|)
