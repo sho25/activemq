@@ -197,6 +197,26 @@ name|Buffer
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -204,6 +224,21 @@ name|AmqpWireFormat
 implements|implements
 name|WireFormat
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|AmqpWireFormat
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -664,6 +699,15 @@ name|hasValidPrefix
 argument_list|()
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"AMQP Header arrived with invalid prefix: {}"
+argument_list|,
+name|header
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -688,6 +732,15 @@ name|SASL_PROTOCOL
 operator|)
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"AMQP Header arrived with invalid protocol ID: {}"
+argument_list|,
+name|header
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -709,6 +762,15 @@ operator|!=
 name|SASL_PROTOCOL
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"AMQP Header arrived without SASL and server requires SASL: {}"
+argument_list|,
+name|header
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;
@@ -737,6 +799,15 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"AMQP Header arrived invalid version: {}"
+argument_list|,
+name|header
+argument_list|)
+expr_stmt|;
 return|return
 literal|false
 return|;

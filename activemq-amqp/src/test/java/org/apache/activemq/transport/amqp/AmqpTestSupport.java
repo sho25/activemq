@@ -569,9 +569,7 @@ name|exceptions
 init|=
 operator|new
 name|Vector
-argument_list|<
-name|Throwable
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -1005,9 +1003,7 @@ name|plugins
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|BrokerPlugin
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|addAdditionalPlugins
@@ -1149,7 +1145,7 @@ literal|"amqp://0.0.0.0:"
 operator|+
 name|amqpPort
 operator|+
-literal|"?transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
@@ -1201,7 +1197,7 @@ literal|"amqp+ssl://0.0.0.0:"
 operator|+
 name|amqpSslPort
 operator|+
-literal|"?transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
@@ -1253,7 +1249,7 @@ literal|"amqp+nio://0.0.0.0:"
 operator|+
 name|amqpNioPort
 operator|+
-literal|"?transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
@@ -1305,7 +1301,7 @@ literal|"amqp+nio+ssl://0.0.0.0:"
 operator|+
 name|amqpNioPlusSslPort
 operator|+
-literal|"?transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
@@ -1548,7 +1544,7 @@ argument_list|(
 name|amqpWsPort
 argument_list|)
 operator|+
-literal|"?transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
@@ -1603,7 +1599,7 @@ argument_list|(
 name|amqpWssPort
 argument_list|)
 operator|+
-literal|"?transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
