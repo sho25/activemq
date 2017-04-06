@@ -6527,13 +6527,13 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|closing
+name|closed
 operator|.
 name|get
 argument_list|()
 operator|&&
 operator|!
-name|closed
+name|closing
 operator|.
 name|get
 argument_list|()
