@@ -10690,6 +10690,11 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+name|pageFile
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 comment|// after the index update such that partial removal does not leave dangling references in the index.
 name|journal
 operator|.
@@ -10817,11 +10822,6 @@ name|metadataMarshaller
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
-name|pageFile
-operator|.
-name|flush
-argument_list|()
 expr_stmt|;
 specifier|final
 name|TreeSet
