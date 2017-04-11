@@ -812,6 +812,7 @@ index|[
 literal|1
 index|]
 decl_stmt|;
+specifier|final
 name|KahaDBStore
 name|messageStore
 init|=
