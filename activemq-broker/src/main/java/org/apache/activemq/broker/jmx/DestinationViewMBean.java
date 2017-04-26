@@ -152,7 +152,7 @@ comment|/**      * Returns the number of messages that have been delivered (pote
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Number of messages that have been delivered (but potentially not acknowledged) to consumers."
+literal|"Number of messages that has been delivered to consumers, including those not acknowledged"
 argument_list|)
 name|long
 name|getDispatchCount
@@ -162,7 +162,7 @@ comment|/**      * Returns the number of messages that have been acknowledged fr
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Number of messages that have been acknowledged (and removed from) from the destination."
+literal|"Number of messages that has been acknowledged (and removed) from the destination."
 argument_list|)
 name|long
 name|getDequeueCount
@@ -212,7 +212,7 @@ comment|/**      * @return the number of producers publishing to the destination
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Number of producers publishing to this destination"
+literal|"Number of producers attached to this destination"
 argument_list|)
 name|long
 name|getProducerCount
@@ -222,7 +222,7 @@ comment|/**      * Returns the number of messages in this destination which are 
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Number of messages in the destination which are yet to be consumed.  Potentially dispatched but unacknowledged."
+literal|"Number of messages on this destination, including any that have been dispatched but not acknowledged"
 argument_list|)
 name|long
 name|getQueueSize
@@ -476,7 +476,7 @@ comment|/**      * @return the amount of memory currently used by this destinati
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Memory usage, in bytes, used by undelivered messages"
+literal|"Memory used by undelivered messages in bytes"
 argument_list|)
 name|long
 name|getMemoryUsageByteCount
@@ -486,7 +486,7 @@ comment|/**      * @return the amount of memory allocated to this destination   
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Memory limit, in bytes, used for holding undelivered messages before paging to temporary storage."
+literal|"Memory limit, in bytes, used by undelivered messages before paging to temporary storage."
 argument_list|)
 name|long
 name|getMemoryLimit
@@ -560,7 +560,7 @@ comment|/**      * @return longest time a message is held by a destination      
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The longest time a message has been held this destination."
+literal|"The longest time a message was held on this destination"
 argument_list|)
 name|long
 name|getMaxEnqueueTime
@@ -570,7 +570,7 @@ comment|/**      * @return shortest time a message is held by a destination     
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"The shortest time a message has been held this destination."
+literal|"The shortest time a message was held on this destination"
 argument_list|)
 name|long
 name|getMinEnqueueTime
@@ -579,7 +579,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Average time a message has been held this destination."
+literal|"Average time a message was held on this destination."
 argument_list|)
 name|double
 name|getAverageEnqueueTime
@@ -618,7 +618,7 @@ comment|/**      * @return the producerFlowControl      */
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Producers are flow controlled"
+literal|"Flow control is enabled for producers"
 argument_list|)
 name|boolean
 name|isProducerFlowControl
@@ -642,7 +642,7 @@ comment|/**      * @return if we treat consumers as alwaysRetroactive      */
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Always treat consumers as retroActive"
+literal|"Always treat consumers as retroactive"
 argument_list|)
 name|boolean
 name|isAlwaysRetroactive
@@ -802,7 +802,7 @@ comment|/**      * Returns all the current subscription MBeans matching this des
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"returns all the current subscription MBeans matching this destination"
+literal|"Subscription MBeans matching this destination"
 argument_list|)
 name|ObjectName
 index|[]
@@ -817,7 +817,7 @@ comment|/**      * Returns the slow consumer strategy MBean for this destination
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"returns the optional slowConsumer handler MBeans for this destination"
+literal|"Optional slowConsumer handler MBean for this destination"
 argument_list|)
 name|ObjectName
 name|getSlowConsumerStrategy
@@ -831,7 +831,7 @@ comment|/**      * @return A string of destination options, name value pairs as 
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"returns the destination options, name value pairs as URL queryString"
+literal|"Destination options as name value pairs in a URL queryString"
 argument_list|)
 name|String
 name|getOptions
@@ -850,7 +850,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Get number of messages blocked for Flow Control"
+literal|"Number of messages blocked for flow control"
 argument_list|)
 name|long
 name|getBlockedSends
@@ -859,7 +859,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"get the average time (ms) a message is blocked for Flow Control"
+literal|"Average time (ms) messages have been blocked by flow control"
 argument_list|)
 name|double
 name|getAverageBlockedTime
@@ -868,7 +868,7 @@ function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(
-literal|"Get the total time (ms) messages are blocked for Flow Control"
+literal|"Total time (ms) messages have been blocked by flow control"
 argument_list|)
 name|long
 name|getTotalBlockedTime
