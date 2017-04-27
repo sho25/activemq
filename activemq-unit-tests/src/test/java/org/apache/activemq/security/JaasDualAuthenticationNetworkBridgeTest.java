@@ -163,6 +163,18 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|sun
+operator|.
+name|nio
+operator|.
+name|ch
+operator|.
+name|Net
+import|;
+end_import
+
 begin_comment
 comment|/**  * Unit test for https://issues.apache.org/jira/browse/AMQ-5943.  * Creates a network bridge to a broker that is configured for   * JaasDualAuthenticationPlugin.  * The broker that creates the network bridge does not set a   * username/password on the nc configuration but expects to be   * authenticated via its SSL certificate.  * This test uses these external configuration files from  * src/test/resources/  * - org/apache/activemq/security/JaasDualAuthenticationNetworkBridgeTest.xml  * - login-JaasDualAuthenticationNetworkBridgeTest.config  * - users-JaasDualAuthenticationNetworkBridgeTest.properties  * - groups-JaasDualAuthenticationNetworkBridgeTest.properties  * - ssl-domain-JaasDualAuthenticationNetworkBridgeTest.properties  */
 end_comment
@@ -173,8 +185,6 @@ class|class
 name|JaasDualAuthenticationNetworkBridgeTest
 block|{
 specifier|protected
-specifier|final
-specifier|static
 name|String
 name|CONFIG_FILE
 init|=
@@ -334,6 +344,16 @@ throw|throw
 name|e
 throw|;
 block|}
+name|broker2
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|broker1
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * @throws java.lang.Exception      */
 annotation|@
@@ -540,6 +560,27 @@ operator|==
 literal|1
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|NetworkBridge
+name|nb
+range|:
+name|bridges
+control|)
+block|{
+name|Assert
+operator|.
+name|assertTrue
+argument_list|(
+name|nb
+operator|.
+name|getRemoteBrokerId
+argument_list|()
+operator|!=
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 name|LOG
 operator|.
 name|info
