@@ -646,6 +646,13 @@ argument_list|()
 expr_stmt|;
 name|remoteBroker
 operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|remoteBroker
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
@@ -658,6 +665,13 @@ name|localBroker
 operator|=
 name|createLocalBroker
 argument_list|()
+expr_stmt|;
+name|localBroker
+operator|.
+name|setDeleteAllMessagesOnStartup
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|localBroker
 operator|.
