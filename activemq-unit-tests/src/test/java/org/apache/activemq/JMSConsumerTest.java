@@ -133,6 +133,16 @@ name|javax
 operator|.
 name|jms
 operator|.
+name|IllegalStateException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
 name|JMSException
 import|;
 end_import
@@ -932,11 +942,20 @@ condition|)
 block|{
 comment|// ensure there are some outstanding messages
 comment|// ack every 200
+try|try
+block|{
 name|message
 operator|.
 name|acknowledge
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalStateException
+name|okForAck
+parameter_list|)
+block|{}
 block|}
 block|}
 catch|catch
