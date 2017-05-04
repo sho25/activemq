@@ -88,6 +88,11 @@ throws|throws
 name|IOException
 function_decl|;
 block|}
+comment|/**      * @return the maximum frame size allowed for this WS Transport.      */
+name|int
+name|getMaxFrameSize
+parameter_list|()
+function_decl|;
 comment|/**      * @return the WS sub-protocol that this transport is supplying.      */
 name|String
 name|getSubProtocol

@@ -715,6 +715,7 @@ argument_list|>
 name|transportOptions
 parameter_list|)
 block|{
+comment|// String transport from options and
 name|Map
 argument_list|<
 name|String
@@ -739,11 +740,18 @@ argument_list|(
 name|socketOptions
 argument_list|)
 expr_stmt|;
+name|transportOptions
+operator|.
+name|putAll
+argument_list|(
+name|socketOptions
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setTransportOption
 argument_list|(
-name|socketOptions
+name|transportOptions
 argument_list|)
 expr_stmt|;
 block|}

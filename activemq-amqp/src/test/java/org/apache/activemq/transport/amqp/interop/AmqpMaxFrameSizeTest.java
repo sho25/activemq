@@ -293,6 +293,13 @@ name|AmqpClientTestSupport
 block|{
 specifier|private
 specifier|final
+name|int
+name|TEST_IDLE_TIMEOUT
+init|=
+literal|500
+decl_stmt|;
+specifier|private
+specifier|final
 name|String
 name|testName
 decl_stmt|;
@@ -373,6 +380,30 @@ block|{
 literal|"amqp+nio-> MFS< MAFS"
 block|,
 literal|"amqp+nio"
+block|,
+literal|false
+block|,
+literal|2048
+block|,
+literal|1024
+block|}
+block|,
+block|{
+literal|"amqp+ws-> MFS> MAFS"
+block|,
+literal|"amqp+ws"
+block|,
+literal|false
+block|,
+literal|1024
+block|,
+literal|2048
+block|}
+block|,
+block|{
+literal|"amqp+ws-> MFS< MAFS"
+block|,
+literal|"amqp+ws"
 block|,
 literal|false
 block|,
@@ -537,6 +568,13 @@ argument_list|)
 expr_stmt|;
 name|connection
 operator|.
+name|setIdleTimeout
+argument_list|(
+name|TEST_IDLE_TIMEOUT
+argument_list|)
+expr_stmt|;
+name|connection
+operator|.
 name|connect
 argument_list|()
 expr_stmt|;
@@ -571,6 +609,8 @@ operator|new
 name|byte
 index|[
 name|maxFrameSize
+operator|*
+literal|2
 index|]
 decl_stmt|;
 for|for
@@ -627,7 +667,7 @@ name|failed
 operator|.
 name|await
 argument_list|(
-literal|10
+literal|30
 argument_list|,
 name|TimeUnit
 operator|.

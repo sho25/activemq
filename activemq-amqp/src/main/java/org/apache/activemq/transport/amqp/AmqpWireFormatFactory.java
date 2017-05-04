@@ -88,7 +88,7 @@ name|maxAmqpFrameSize
 init|=
 name|AmqpWireFormat
 operator|.
-name|NO_AMQP_MAX_FRAME_SIZE
+name|DEFAULT_ANQP_FRAME_SIZE
 decl_stmt|;
 specifier|private
 name|int

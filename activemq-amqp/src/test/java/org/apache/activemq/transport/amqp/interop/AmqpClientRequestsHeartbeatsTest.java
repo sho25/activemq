@@ -302,7 +302,7 @@ specifier|final
 name|int
 name|TEST_IDLE_TIMEOUT
 init|=
-literal|3000
+literal|1000
 decl_stmt|;
 annotation|@
 name|Parameters
@@ -572,7 +572,7 @@ name|disconnected
 operator|.
 name|await
 argument_list|(
-literal|10
+literal|5
 argument_list|,
 name|TimeUnit
 operator|.

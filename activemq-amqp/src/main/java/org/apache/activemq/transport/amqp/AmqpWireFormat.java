@@ -290,6 +290,14 @@ name|DEFAULT_ALLOW_NON_SASL_CONNECTIONS
 init|=
 literal|false
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_ANQP_FRAME_SIZE
+init|=
+name|NO_AMQP_MAX_FRAME_SIZE
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -314,7 +322,7 @@ specifier|private
 name|int
 name|maxAmqpFrameSize
 init|=
-name|NO_AMQP_MAX_FRAME_SIZE
+name|DEFAULT_ANQP_FRAME_SIZE
 decl_stmt|;
 specifier|private
 name|int
