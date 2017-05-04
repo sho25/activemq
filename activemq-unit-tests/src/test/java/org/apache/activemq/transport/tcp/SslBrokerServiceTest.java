@@ -414,7 +414,7 @@ name|service
 operator|.
 name|addSslConnector
 argument_list|(
-literal|"ssl://localhost:0?transport.enabledCipherSuites=SSL_RSA_WITH_RC4_128_SHA,SSL_DH_anon_WITH_3DES_EDE_CBC_SHA"
+literal|"ssl://localhost:0?transport.enabledCipherSuites=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
 argument_list|,
 name|km
 argument_list|,
@@ -657,7 +657,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"SSL_RSA_WITH_RC4_128_SHA"
+literal|"TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"
 block|}
 argument_list|,
 name|limitedCipherSuites
