@@ -1016,7 +1016,10 @@ name|physicalConnection
 operator|.
 name|doCleanup
 argument_list|(
-literal|true
+name|physicalConnection
+operator|.
+name|isUserSpecifiedClientID
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -5118,6 +5118,15 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+name|boolean
+name|isUserSpecifiedClientID
+parameter_list|()
+block|{
+return|return
+name|userSpecifiedClientID
+return|;
+block|}
+specifier|public
 name|void
 name|doCleanup
 parameter_list|(
