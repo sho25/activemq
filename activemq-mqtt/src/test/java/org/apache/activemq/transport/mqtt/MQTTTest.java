@@ -11095,6 +11095,8 @@ operator|.
 name|disconnect
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 for|for
 control|(
 name|int
@@ -11230,6 +11232,28 @@ block|}
 name|connectionSub
 operator|.
 name|disconnect
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|exception
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"unexpected exception"
+argument_list|,
+name|exception
+argument_list|)
+expr_stmt|;
+name|exception
+operator|.
+name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
