@@ -7387,7 +7387,11 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Could not load journal record. Invalid location: "
+literal|"Could not load journal record, null type information from: "
+operator|+
+name|readByte
+operator|+
+literal|" at location: "
 operator|+
 name|location
 argument_list|)
