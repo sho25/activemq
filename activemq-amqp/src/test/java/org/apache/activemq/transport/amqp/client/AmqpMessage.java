@@ -65,7 +65,7 @@ name|client
 operator|.
 name|util
 operator|.
-name|UnmodifiableDelivery
+name|UnmodifiableProxy
 import|;
 end_import
 
@@ -491,8 +491,9 @@ literal|null
 condition|)
 block|{
 return|return
-operator|new
-name|UnmodifiableDelivery
+name|UnmodifiableProxy
+operator|.
+name|deliveryProxy
 argument_list|(
 name|delivery
 argument_list|)

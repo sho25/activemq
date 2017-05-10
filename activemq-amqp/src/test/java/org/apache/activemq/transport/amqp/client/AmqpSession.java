@@ -135,7 +135,7 @@ name|client
 operator|.
 name|util
 operator|.
-name|UnmodifiableSession
+name|UnmodifiableProxy
 import|;
 end_import
 
@@ -1743,8 +1743,9 @@ name|getSession
 parameter_list|()
 block|{
 return|return
-operator|new
-name|UnmodifiableSession
+name|UnmodifiableProxy
+operator|.
+name|sessionProxy
 argument_list|(
 name|getEndpoint
 argument_list|()

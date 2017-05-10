@@ -171,7 +171,7 @@ name|client
 operator|.
 name|util
 operator|.
-name|UnmodifiableSender
+name|UnmodifiableProxy
 import|;
 end_import
 
@@ -1051,8 +1051,9 @@ name|getSender
 parameter_list|()
 block|{
 return|return
-operator|new
-name|UnmodifiableSender
+name|UnmodifiableProxy
+operator|.
+name|senderProxy
 argument_list|(
 name|getEndpoint
 argument_list|()

@@ -333,7 +333,7 @@ name|client
 operator|.
 name|util
 operator|.
-name|UnmodifiableConnection
+name|UnmodifiableProxy
 import|;
 end_import
 
@@ -2016,8 +2016,9 @@ name|getConnection
 parameter_list|()
 block|{
 return|return
-operator|new
-name|UnmodifiableConnection
+name|UnmodifiableProxy
+operator|.
+name|connectionProxy
 argument_list|(
 name|getEndpoint
 argument_list|()

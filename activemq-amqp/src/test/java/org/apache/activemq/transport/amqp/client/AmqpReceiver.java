@@ -261,7 +261,7 @@ name|client
 operator|.
 name|util
 operator|.
-name|UnmodifiableReceiver
+name|UnmodifiableProxy
 import|;
 end_import
 
@@ -2380,8 +2380,9 @@ name|getReceiver
 parameter_list|()
 block|{
 return|return
-operator|new
-name|UnmodifiableReceiver
+name|UnmodifiableProxy
+operator|.
+name|receiverProxy
 argument_list|(
 name|getEndpoint
 argument_list|()
