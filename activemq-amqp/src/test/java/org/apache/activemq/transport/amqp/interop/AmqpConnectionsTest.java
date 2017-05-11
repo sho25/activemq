@@ -618,6 +618,17 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
+name|Override
+specifier|protected
+name|String
+name|getAdditionalConfig
+parameter_list|()
+block|{
+return|return
+literal|"&wireFormat.maxAmqpFrameSize=1048576"
+return|;
+block|}
+annotation|@
 name|Test
 argument_list|(
 name|timeout

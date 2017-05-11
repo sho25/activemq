@@ -133,6 +133,17 @@ name|Principal
 name|getLocalPrincipal
 parameter_list|()
 function_decl|;
+name|void
+name|setMaxFrameSize
+parameter_list|(
+name|int
+name|maxFrameSize
+parameter_list|)
+function_decl|;
+name|int
+name|getMaxFrameSize
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

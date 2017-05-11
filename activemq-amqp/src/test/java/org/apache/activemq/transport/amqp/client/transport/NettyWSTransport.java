@@ -596,6 +596,9 @@ argument_list|,
 operator|new
 name|DefaultHttpHeaders
 argument_list|()
+argument_list|,
+name|getMaxFrameSize
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

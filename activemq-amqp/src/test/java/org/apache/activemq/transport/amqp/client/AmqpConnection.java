@@ -1013,6 +1013,16 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|transport
+operator|.
+name|setMaxFrameSize
+argument_list|(
+name|getMaxFrameSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
