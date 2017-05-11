@@ -112,6 +112,14 @@ decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
+name|boolean
+name|DEFAULT_TRACE_BYTES
+init|=
+literal|false
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
 name|NettyTransportOptions
 name|INSTANCE
 init|=
@@ -172,6 +180,12 @@ name|int
 name|defaultTcpPort
 init|=
 name|DEFAULT_TCP_PORT
+decl_stmt|;
+specifier|private
+name|boolean
+name|traceBytes
+init|=
+name|DEFAULT_TRACE_BYTES
 decl_stmt|;
 comment|/**      * @return the currently set send buffer size in bytes.      */
 specifier|public
@@ -442,6 +456,32 @@ operator|.
 name|defaultTcpPort
 operator|=
 name|defaultTcpPort
+expr_stmt|;
+block|}
+comment|/**      * @return true if the transport should enable byte tracing      */
+specifier|public
+name|boolean
+name|isTraceBytes
+parameter_list|()
+block|{
+return|return
+name|traceBytes
+return|;
+block|}
+comment|/**      * Determines if the transport should add a logger for bytes in / out      *      * @param traceBytes      *      should the transport log the bytes in and out.      */
+specifier|public
+name|void
+name|setTraceBytes
+parameter_list|(
+name|boolean
+name|traceBytes
+parameter_list|)
+block|{
+name|this
+operator|.
+name|traceBytes
+operator|=
+name|traceBytes
 expr_stmt|;
 block|}
 specifier|public

@@ -730,7 +730,7 @@ literal|"Unexpected FullHttpResponse (getStatus="
 operator|+
 name|response
 operator|.
-name|getStatus
+name|status
 argument_list|()
 operator|+
 literal|", content="
