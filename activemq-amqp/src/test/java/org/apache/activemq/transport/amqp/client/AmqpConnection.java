@@ -115,7 +115,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|Executors
+name|ScheduledExecutorService
 import|;
 end_import
 
@@ -127,7 +127,7 @@ name|util
 operator|.
 name|concurrent
 operator|.
-name|ScheduledExecutorService
+name|ScheduledThreadPoolExecutor
 import|;
 end_import
 
@@ -653,8 +653,7 @@ init|=
 literal|60000
 decl_stmt|;
 specifier|private
-specifier|final
-name|ScheduledExecutorService
+name|ScheduledThreadPoolExecutor
 name|serializer
 decl_stmt|;
 specifier|private
@@ -936,10 +935,11 @@ name|this
 operator|.
 name|serializer
 operator|=
-name|Executors
-operator|.
-name|newSingleThreadScheduledExecutor
+operator|new
+name|ScheduledThreadPoolExecutor
 argument_list|(
+literal|1
+argument_list|,
 operator|new
 name|ThreadFactory
 argument_list|()
@@ -983,6 +983,25 @@ name|serial
 return|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+comment|// Ensure timely shutdown
+name|this
+operator|.
+name|serializer
+operator|.
+name|setExecuteExistingDelayedTasksAfterShutdownPolicy
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|serializer
+operator|.
+name|setContinueExistingPeriodicTasksAfterShutdownPolicy
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
