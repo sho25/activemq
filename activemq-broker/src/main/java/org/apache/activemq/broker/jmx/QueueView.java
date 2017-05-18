@@ -360,6 +360,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|removeMatchingMessages
 parameter_list|(
@@ -384,6 +385,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|removeMatchingMessages
 parameter_list|(
@@ -650,6 +652,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|moveMatchingMessagesTo
 parameter_list|(
@@ -708,6 +711,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|moveMatchingMessagesTo
 parameter_list|(
@@ -771,6 +775,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|retryMessages
 parameter_list|()
