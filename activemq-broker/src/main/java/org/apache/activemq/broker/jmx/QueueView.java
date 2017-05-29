@@ -286,6 +286,7 @@ name|result
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|void
 name|purge
 parameter_list|()
