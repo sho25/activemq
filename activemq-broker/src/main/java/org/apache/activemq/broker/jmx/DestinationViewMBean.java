@@ -847,6 +847,14 @@ name|boolean
 name|isDLQ
 parameter_list|()
 function_decl|;
+comment|/**      * @param value      * enable/disable the DLQ flag      */
+name|void
+name|setDLQ
+parameter_list|(
+name|boolean
+name|value
+parameter_list|)
+function_decl|;
 annotation|@
 name|MBeanInfo
 argument_list|(

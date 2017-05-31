@@ -2180,7 +2180,10 @@ block|}
 specifier|public
 name|void
 name|setDLQ
-parameter_list|()
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -2211,7 +2214,7 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-literal|true
+name|val
 argument_list|)
 argument_list|)
 expr_stmt|;
