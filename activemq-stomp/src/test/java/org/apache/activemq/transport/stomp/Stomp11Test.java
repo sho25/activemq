@@ -6820,6 +6820,7 @@ literal|"CONNECTED"
 argument_list|)
 argument_list|)
 expr_stmt|;
+specifier|final
 name|QueueViewMBean
 name|queueView
 init|=
