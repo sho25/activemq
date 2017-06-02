@@ -660,6 +660,13 @@ argument_list|()
 decl_stmt|;
 name|forwardedMessage
 operator|.
+name|setMemoryUsage
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|forwardedMessage
+operator|.
 name|setOriginalDestination
 argument_list|(
 name|message
