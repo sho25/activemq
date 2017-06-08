@@ -664,7 +664,7 @@ specifier|protected
 name|int
 name|protocolDetectionTimeOut
 init|=
-literal|15000
+literal|30000
 decl_stmt|;
 specifier|private
 specifier|static

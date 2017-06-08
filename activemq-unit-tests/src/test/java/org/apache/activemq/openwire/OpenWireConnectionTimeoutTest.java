@@ -926,7 +926,6 @@ name|useSsl
 operator|=
 literal|true
 expr_stmt|;
-empty_stmt|;
 break|break;
 default|default:
 throw|throw

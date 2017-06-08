@@ -621,19 +621,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|in
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-name|SSLEngine
-name|engine
-init|=
-name|in
-operator|.
-name|getSslSession
-argument_list|()
-decl_stmt|;
 comment|//Attempt to read enough bytes to detect the protocol until the timeout period
 comment|//is reached
 name|Future
@@ -657,6 +644,30 @@ name|void
 name|run
 parameter_list|()
 block|{
+try|try
+block|{
+name|in
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Could not complete Transport start"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 name|int
 name|attempts
 init|=
@@ -862,7 +873,10 @@ name|socket
 argument_list|,
 name|format
 argument_list|,
-name|engine
+name|in
+operator|.
+name|getSslSession
+argument_list|()
 argument_list|,
 name|initBuffer
 argument_list|,
