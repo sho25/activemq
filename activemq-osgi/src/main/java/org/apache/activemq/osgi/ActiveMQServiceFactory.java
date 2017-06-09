@@ -125,7 +125,7 @@ name|apache
 operator|.
 name|camel
 operator|.
-name|osgi
+name|blueprint
 operator|.
 name|CamelContextFactoryBean
 import|;
