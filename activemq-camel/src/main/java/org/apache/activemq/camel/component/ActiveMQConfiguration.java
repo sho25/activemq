@@ -171,14 +171,6 @@ init|=
 literal|true
 decl_stmt|;
 specifier|private
-name|String
-name|userName
-decl_stmt|;
-specifier|private
-name|String
-name|password
-decl_stmt|;
-specifier|private
 name|boolean
 name|trustAllPackages
 decl_stmt|;
@@ -220,16 +212,22 @@ return|return
 name|useSingleConnection
 return|;
 block|}
+comment|/**      * @deprecated - use JmsConfiguration#getUsername()      * @see JmsConfiguration#getUsername()      */
+annotation|@
+name|Deprecated
 specifier|public
 name|String
 name|getUserName
 parameter_list|()
 block|{
 return|return
-name|userName
+name|getUsername
+argument_list|()
 return|;
 block|}
-comment|/**      * Sets the username to be used to login to ActiveMQ      */
+comment|/**      * @deprecated - use JmsConfiguration#setUsername(String)      * @see JmsConfiguration#setUsername(String)      */
+annotation|@
+name|Deprecated
 specifier|public
 name|void
 name|setUserName
@@ -238,36 +236,10 @@ name|String
 name|userName
 parameter_list|)
 block|{
-name|this
-operator|.
+name|setUsername
+argument_list|(
 name|userName
-operator|=
-name|userName
-expr_stmt|;
-block|}
-specifier|public
-name|String
-name|getPassword
-parameter_list|()
-block|{
-return|return
-name|password
-return|;
-block|}
-comment|/**      * Sets the password/passcode used to login to ActiveMQ      */
-specifier|public
-name|void
-name|setPassword
-parameter_list|(
-name|String
-name|password
-parameter_list|)
-block|{
-name|this
-operator|.
-name|password
-operator|=
-name|password
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Enables or disables whether a Spring {@link SingleConnectionFactory} will be used so that when      * messages are sent to ActiveMQ from outside of a message consuming thread, pooling will be used rather      * than the default with the Spring {@link JmsTemplate} which will create a new connection, session, producer      * for each message then close them all down again.      *<p/>      * The default value is false and a pooled connection is used by default.      */
@@ -401,7 +373,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|userName
+name|getUsername
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -410,13 +383,15 @@ name|answer
 operator|.
 name|setUserName
 argument_list|(
-name|userName
+name|getUsername
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|password
+name|getPassword
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -425,7 +400,8 @@ name|answer
 operator|.
 name|setPassword
 argument_list|(
-name|password
+name|getPassword
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
