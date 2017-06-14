@@ -229,10 +229,13 @@ argument_list|()
 operator|.
 name|sendStringByFuture
 argument_list|(
-name|command
-operator|.
-name|format
+name|getWireFormat
 argument_list|()
+operator|.
+name|marshalToString
+argument_list|(
+name|command
+argument_list|)
 argument_list|)
 operator|.
 name|get
