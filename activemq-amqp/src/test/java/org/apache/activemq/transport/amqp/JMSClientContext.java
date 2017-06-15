@@ -1115,6 +1115,13 @@ argument_list|(
 literal|"queue://"
 argument_list|)
 expr_stmt|;
+name|factory
+operator|.
+name|setCloseTimeout
+argument_list|(
+literal|60000
+argument_list|)
+expr_stmt|;
 return|return
 name|factory
 return|;
