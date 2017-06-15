@@ -6986,6 +6986,17 @@ operator|>
 literal|0
 condition|)
 do|;
+if|if
+condition|(
+name|getMessages
+argument_list|()
+operator|.
+name|getMessageAudit
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|getMessages
 argument_list|()
 operator|.
@@ -6995,6 +7006,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|this
