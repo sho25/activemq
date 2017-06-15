@@ -802,7 +802,35 @@ specifier|protected
 name|void
 name|allowIOResumption
 parameter_list|()
-block|{     }
+block|{
+try|try
+block|{
+name|broker
+operator|.
+name|getPersistenceAdapter
+argument_list|()
+operator|.
+name|allowIOResumption
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Failed to allow IO resumption"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 specifier|private
 name|void
 name|stopBroker

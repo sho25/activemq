@@ -777,6 +777,21 @@ name|id
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|allowIOResumption
+parameter_list|()
+block|{
+name|this
+operator|.
+name|letter
+operator|.
+name|allowIOResumption
+argument_list|()
+expr_stmt|;
+block|}
 comment|/**      * @param destination      * @see org.apache.activemq.store.PersistenceAdapter#removeQueueMessageStore(org.apache.activemq.command.ActiveMQQueue)      */
 annotation|@
 name|Override

@@ -1076,6 +1076,13 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|void
+name|allowIOResumption
+parameter_list|()
+block|{}
+annotation|@
+name|Override
+specifier|public
 name|JobSchedulerStore
 name|createJobSchedulerStore
 parameter_list|()
