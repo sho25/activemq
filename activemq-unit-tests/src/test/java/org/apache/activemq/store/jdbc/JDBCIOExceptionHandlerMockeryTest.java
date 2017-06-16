@@ -480,6 +480,14 @@ argument_list|(
 name|jdbcPersistenceAdapter
 argument_list|)
 operator|.
+name|allowIOResumption
+argument_list|()
+expr_stmt|;
+name|allowing
+argument_list|(
+name|jdbcPersistenceAdapter
+argument_list|)
+operator|.
 name|getLocker
 argument_list|()
 expr_stmt|;
