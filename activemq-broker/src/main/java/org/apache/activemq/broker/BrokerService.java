@@ -1477,20 +1477,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|util
-operator|.
-name|URISupport
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1881,6 +1867,17 @@ literal|false
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
+name|AtomicBoolean
+name|preShutdownHooksInvoked
+init|=
+operator|new
+name|AtomicBoolean
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+specifier|private
 name|BrokerPlugin
 index|[]
 name|plugins
@@ -2230,6 +2227,7 @@ operator|.
 name|DEFAULT_STORE_VERSION
 decl_stmt|;
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Runnable
@@ -3414,6 +3412,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|preShutdownHooksInvoked
+operator|.
+name|set
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|startDate
 operator|=
 operator|new
@@ -4259,6 +4264,22 @@ operator|new
 name|ServiceStopper
 argument_list|()
 decl_stmt|;
+comment|//The preShutdownHooks need to run before stopping.compareAndSet()
+comment|//so there is a separate AtomicBoolean so the hooks only run once
+comment|//We want to make sure the hooks are run before stop is initialized
+comment|//including setting the stopping variable - See AMQ-6706
+if|if
+condition|(
+name|preShutdownHooksInvoked
+operator|.
+name|compareAndSet
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+condition|)
+block|{
 for|for
 control|(
 name|Runnable
@@ -4290,6 +4311,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
