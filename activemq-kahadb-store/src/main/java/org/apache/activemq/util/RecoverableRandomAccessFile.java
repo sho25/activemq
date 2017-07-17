@@ -196,7 +196,7 @@ name|mode
 argument_list|)
 expr_stmt|;
 block|}
-specifier|protected
+specifier|public
 name|RandomAccessFile
 name|getRaf
 parameter_list|()

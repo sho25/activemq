@@ -142,6 +142,15 @@ operator|-
 name|offset
 return|;
 block|}
+specifier|public
+name|int
+name|position
+parameter_list|()
+block|{
+return|return
+name|pos
+return|;
+block|}
 comment|/**      * @return the underlying data array      */
 specifier|public
 name|byte
@@ -718,6 +727,8 @@ block|{
 if|if
 condition|(
 name|pos
+operator|+
+literal|8
 operator|>=
 name|buf
 operator|.

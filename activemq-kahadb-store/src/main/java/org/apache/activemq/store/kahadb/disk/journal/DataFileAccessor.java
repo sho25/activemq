@@ -35,6 +35,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|RandomAccessFile
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Map
@@ -567,38 +577,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//    public boolean readLocationDetailsAndValidate(Location location) {
-comment|//        try {
-comment|//            WriteCommand asyncWrite = (WriteCommand)inflightWrites.get(new WriteKey(location));
-comment|//            if (asyncWrite != null) {
-comment|//                location.setSize(asyncWrite.location.getSize());
-comment|//                location.setType(asyncWrite.location.getType());
-comment|//            } else {
-comment|//                file.seek(location.getOffset());
-comment|//                location.setSize(file.readInt());
-comment|//                location.setType(file.readByte());
-comment|//
-comment|//                byte data[] = new byte[3];
-comment|//                file.seek(location.getOffset() + Journal.ITEM_HEAD_OFFSET_TO_SOR);
-comment|//                file.readFully(data);
-comment|//                if (data[0] != Journal.ITEM_HEAD_SOR[0]
-comment|//                    || data[1] != Journal.ITEM_HEAD_SOR[1]
-comment|//                    || data[2] != Journal.ITEM_HEAD_SOR[2]) {
-comment|//                    return false;
-comment|//                }
-comment|//                file.seek(location.getOffset() + location.getSize() - Journal.ITEM_FOOT_SPACE);
-comment|//                file.readFully(data);
-comment|//                if (data[0] != Journal.ITEM_HEAD_EOR[0]
-comment|//                    || data[1] != Journal.ITEM_HEAD_EOR[1]
-comment|//                    || data[2] != Journal.ITEM_HEAD_EOR[2]) {
-comment|//                    return false;
-comment|//                }
-comment|//            }
-comment|//        } catch (IOException e) {
-comment|//            return false;
-comment|//        }
-comment|//        return true;
-comment|//    }
 specifier|public
 name|void
 name|updateRecord
@@ -675,6 +653,15 @@ name|sync
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|RecoverableRandomAccessFile
+name|getRaf
+parameter_list|()
+block|{
+return|return
+name|file
+return|;
 block|}
 block|}
 end_class

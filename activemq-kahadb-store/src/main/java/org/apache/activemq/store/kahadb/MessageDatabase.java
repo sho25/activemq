@@ -3422,6 +3422,14 @@ block|{
 name|getJournal
 argument_list|()
 operator|.
+name|setCheckForCorruptionOnStartup
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|getJournal
+argument_list|()
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
@@ -6718,6 +6726,10 @@ name|getSize
 argument_list|()
 operator|==
 name|NOT_SET
+operator|&&
+name|mayNotBeInitialized
+operator|!=
+literal|null
 operator|&&
 name|mayNotBeInitialized
 operator|.
