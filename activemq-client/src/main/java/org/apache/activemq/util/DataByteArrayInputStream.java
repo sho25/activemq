@@ -729,7 +729,7 @@ condition|(
 name|pos
 operator|+
 literal|8
-operator|>=
+operator|>
 name|buf
 operator|.
 name|length
