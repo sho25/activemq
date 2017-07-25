@@ -5551,15 +5551,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|getBrokerService
-argument_list|()
-operator|.
-name|isStarted
-argument_list|()
-condition|)
-block|{
 comment|//set properties
 name|advisoryMessage
 operator|.
@@ -5826,7 +5817,6 @@ argument_list|(
 name|originalFlowControl
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 specifier|public
