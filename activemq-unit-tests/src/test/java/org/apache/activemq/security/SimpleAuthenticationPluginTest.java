@@ -27,6 +27,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -773,6 +783,26 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"dest list at start:"
+operator|+
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|broker
+operator|.
+name|getRegionBroker
+argument_list|()
+operator|.
+name|getDestinations
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 specifier|final
 name|int
 name|numDests
@@ -851,6 +881,26 @@ name|LOG
 operator|.
 name|info
 argument_list|(
+literal|"dest list:"
+operator|+
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|broker
+operator|.
+name|getRegionBroker
+argument_list|()
+operator|.
+name|getDestinations
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
 literal|"dests, orig: "
 operator|+
 name|numDests
@@ -869,11 +919,7 @@ name|length
 argument_list|)
 expr_stmt|;
 return|return
-operator|(
 name|numDests
-operator|+
-literal|1
-operator|)
 operator|==
 name|broker
 operator|.
