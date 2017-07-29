@@ -1223,7 +1223,9 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Message received since last read check, resetting flag: "
+literal|"Message received since last read check, resetting flag: {}"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 block|}

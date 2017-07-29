@@ -280,6 +280,9 @@ name|warn
 argument_list|(
 literal|"Suppress error on shutdown: {}"
 argument_list|,
+operator|(
+name|Object
+operator|)
 name|ex
 argument_list|)
 expr_stmt|;
