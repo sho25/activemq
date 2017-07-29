@@ -614,14 +614,9 @@ name|trace
 argument_list|(
 literal|"{} recover({})"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|this
-block|,
+argument_list|,
 name|arg0
-block|}
 argument_list|)
 expr_stmt|;
 name|answer

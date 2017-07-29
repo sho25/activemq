@@ -1318,20 +1318,15 @@ name|debug
 argument_list|(
 literal|"destination {} matched persistence adapter {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|destination
 operator|.
 name|getQualifiedName
 argument_list|()
-block|,
+argument_list|,
 name|filteredAdapter
 operator|.
 name|getPersistenceAdapter
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 return|return
