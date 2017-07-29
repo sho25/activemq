@@ -1286,7 +1286,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"created per destination adapter for: "
 operator|+
@@ -2038,7 +2038,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"deleted per destination adapter directory for: "
 operator|+
@@ -2059,7 +2059,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"failed to deleted per destination adapter directory for: "
 operator|+
