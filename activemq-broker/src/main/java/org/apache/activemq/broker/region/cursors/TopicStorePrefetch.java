@@ -158,7 +158,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * persist pendingCount messages pendingCount message (messages awaiting disptach  * to a consumer) cursor  *  *  */
+comment|/**  * persist pendingCount messages pendingCount message (messages awaiting dispatch  * to a consumer) cursor  *  *  */
 end_comment
 
 begin_class

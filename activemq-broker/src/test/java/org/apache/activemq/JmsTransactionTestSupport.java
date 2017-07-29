@@ -681,7 +681,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Producing bacth "
+literal|"Producing batch "
 operator|+
 name|j
 operator|+
@@ -728,7 +728,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Consuming bacth "
+literal|"Consuming batch "
 operator|+
 name|j
 operator|+
@@ -807,7 +807,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rolled-back message was      * not consumed.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendRollback
@@ -855,7 +855,7 @@ expr_stmt|;
 name|commitTx
 argument_list|()
 expr_stmt|;
-comment|// sends a message that gets rollbacked
+comment|// sends a message that gets rolled-back
 name|beginTx
 argument_list|()
 expr_stmt|;
@@ -974,7 +974,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|// validates that the rollbacked was not consumed
+comment|// validates that the rolled-back was not consumed
 name|commitTx
 argument_list|()
 expr_stmt|;
@@ -1115,7 +1115,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|// validates that the rollbacked was not consumed
+comment|// validates that the rolled-back was not consumed
 name|commitTx
 argument_list|()
 expr_stmt|;
@@ -1197,7 +1197,7 @@ expr_stmt|;
 name|commitTx
 argument_list|()
 expr_stmt|;
-comment|// sends a message that gets rollbacked
+comment|// sends a message that gets rolled-back
 name|beginTx
 argument_list|()
 expr_stmt|;
@@ -1318,7 +1318,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|// validates that the rollbacked was not consumed
+comment|// validates that the rolled-back was not consumed
 name|commitTx
 argument_list|()
 expr_stmt|;
@@ -1400,7 +1400,7 @@ expr_stmt|;
 name|commitTx
 argument_list|()
 expr_stmt|;
-comment|// sends a message that gets rollbacked
+comment|// sends a message that gets rolled-back
 name|beginTx
 argument_list|()
 expr_stmt|;
@@ -1529,7 +1529,7 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
-comment|// validates that the rollbacked was not consumed
+comment|// validates that the rolled-back was not consumed
 name|commitTx
 argument_list|()
 expr_stmt|;
@@ -1563,7 +1563,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rolled-back message was      * redelivered.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveRollback
@@ -1802,7 +1802,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * redelivered.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rolled-back message was      * redelivered.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenRollback
@@ -2078,7 +2078,7 @@ name|inbound
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rolled-back message was      * not consumed.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendReceiveWithPrefetchOne
@@ -2214,12 +2214,12 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|// validates that the rollbacked was not consumed
+comment|// validates that the rolled-back was not consumed
 name|commitTx
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Perform the test that validates if the rollbacked message was redelivered      * multiple times.      *      * @throws Exception      */
+comment|/**      * Perform the test that validates if the rolled-back message was redelivered      * multiple times.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveTwoThenRollbackManyTimes
@@ -2247,7 +2247,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sends a batch of messages and validates that the rollbacked message was      * not consumed. This test differs by setting the message prefetch to one.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and validates that the rolled-back message was      * not consumed. This test differs by setting the message prefetch to one.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testSendRollbackWithPrefetchOfOne
@@ -2262,7 +2262,7 @@ name|testSendRollback
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Sends a batch of messages and and validates that the rollbacked message      * was redelivered. This test differs by setting the message prefetch to      * one.      *      * @throws Exception      */
+comment|/**      * Sends a batch of messages and and validates that the rolled-back message      * was redelivered. This test differs by setting the message prefetch to      * one.      *      * @throws Exception      */
 specifier|public
 name|void
 name|testReceiveRollbackWithPrefetchOfOne

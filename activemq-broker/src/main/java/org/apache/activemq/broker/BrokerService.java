@@ -9969,7 +9969,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Schedules a periodic task based on schedulePeriodForDiskLimitCheck to      * update store and temporary store limits if the amount of available space      * plus current store size is less than the existin configured limit      */
+comment|/**      * Schedules a periodic task based on schedulePeriodForDiskLimitCheck to      * update store and temporary store limits if the amount of available space      * plus current store size is less than the existing configured limit      */
 end_comment
 
 begin_function

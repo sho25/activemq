@@ -3530,7 +3530,7 @@ argument_list|(
 name|getConsumerId
 argument_list|()
 operator|+
-literal|" failed to delivered acknowledgements"
+literal|" failed to deliver acknowledgements"
 argument_list|,
 name|e
 argument_list|)
