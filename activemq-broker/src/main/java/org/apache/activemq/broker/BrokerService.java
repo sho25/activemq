@@ -8228,6 +8228,22 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|ClassNotFoundException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Kahadb class PListStoreImpl not found. Add activemq-kahadb jar or set persistent to false on BrokerService."
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|Exception
 name|e
 parameter_list|)
