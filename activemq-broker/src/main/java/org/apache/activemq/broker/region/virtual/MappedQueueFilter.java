@@ -261,9 +261,10 @@ operator|.
 name|isEmpty
 argument_list|()
 decl_stmt|;
-comment|// for virtual consumer wildcard dests, only subscribe to exact match to ensure no duplicates
-if|if
-condition|(
+comment|// for virtual consumer wildcard dests, only subscribe to exact match or non wildcard dests to ensure no duplicates
+name|int
+name|match
+init|=
 name|sub
 operator|.
 name|getActiveMQDestination
@@ -276,8 +277,27 @@ operator|.
 name|getActiveMQDestination
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|match
 operator|==
 literal|0
+operator|||
+operator|(
+operator|!
+name|next
+operator|.
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|isPattern
+argument_list|()
+operator|&&
+name|match
+operator|==
+literal|1
+operator|)
 condition|)
 block|{
 name|super
