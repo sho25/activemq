@@ -316,7 +316,7 @@ literal|false
 argument_list|,
 literal|1
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
 name|sendReceive
@@ -361,7 +361,7 @@ literal|false
 argument_list|,
 literal|1
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 expr_stmt|;
 name|sendReceive
