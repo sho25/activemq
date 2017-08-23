@@ -704,6 +704,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|// For individual Ack we already sent an Ack that will be applied on commit
+comment|// we don't send a second standard Ack as that would produce an error.
 if|if
 condition|(
 operator|!
@@ -711,6 +713,10 @@ name|unconsumedMessage
 operator|.
 name|isEmpty
 argument_list|()
+operator|&&
+name|ackMode
+operator|==
+name|CLIENT_ACK
 condition|)
 block|{
 name|ack
@@ -731,6 +737,13 @@ name|unconsumedMessage
 operator|.
 name|size
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|ack
+operator|.
+name|setTransactionId
+argument_list|(
+name|transactionId
 argument_list|)
 expr_stmt|;
 name|unconsumedMessage
