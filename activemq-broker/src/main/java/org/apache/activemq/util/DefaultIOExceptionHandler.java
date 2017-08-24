@@ -285,6 +285,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
+name|broker
+operator|.
+name|isStarted
+argument_list|()
+operator|||
 name|ignoreAllErrors
 condition|)
 block|{
@@ -805,6 +811,16 @@ parameter_list|()
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|broker
+operator|.
+name|getPersistenceAdapter
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|broker
 operator|.
 name|getPersistenceAdapter
@@ -813,6 +829,7 @@ operator|.
 name|allowIOResumption
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
