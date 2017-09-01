@@ -690,11 +690,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|socketTransportStarted
-operator|.
-name|countDown
-argument_list|()
-expr_stmt|;
 name|transport
 operator|.
 name|setTransportListener
@@ -702,6 +697,11 @@ argument_list|(
 name|getTransportListener
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|socketTransportStarted
+operator|.
+name|countDown
+argument_list|()
 expr_stmt|;
 name|transport
 operator|.
