@@ -1704,6 +1704,8 @@ argument_list|(
 name|file
 argument_list|,
 literal|"rw"
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|readFile
