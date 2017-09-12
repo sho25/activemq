@@ -2526,6 +2526,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Preserve original destination
+name|msg
+operator|.
+name|setOriginalDestination
+argument_list|(
+name|msg
+operator|.
+name|getDestination
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|msg
 operator|.
 name|setDestination
