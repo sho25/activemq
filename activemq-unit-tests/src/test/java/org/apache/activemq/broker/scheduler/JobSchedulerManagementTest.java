@@ -189,6 +189,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|ActiveMQMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|util
 operator|.
 name|IdGenerator
@@ -2163,6 +2177,22 @@ name|ScheduledMessage
 operator|.
 name|AMQ_SCHEDULED_DELAY
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Verify that original destination was preserved
+name|assertEquals
+argument_list|(
+name|destination
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQMessage
+operator|)
+name|message
+operator|)
+operator|.
+name|getOriginalDestination
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Now check if there are anymore, there shouldn't be
