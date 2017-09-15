@@ -4248,6 +4248,19 @@ name|storeContent
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|boolean
+name|isContentMarshalled
+parameter_list|()
+block|{
+comment|//Always return true because ActiveMQMessage only has a content field
+comment|//which is already marshalled
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

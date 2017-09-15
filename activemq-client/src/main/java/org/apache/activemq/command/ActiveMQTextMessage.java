@@ -702,6 +702,23 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isContentMarshalled
+parameter_list|()
+block|{
+return|return
+name|content
+operator|!=
+literal|null
+operator|||
+name|text
+operator|==
+literal|null
+return|;
+block|}
 comment|/**      * Clears out the message body. Clearing a message's body does not clear its      * header values or property entries.<p/>      *<P>      * If this message body was read-only, calling this method leaves the      * message body in the same state as an empty body in a newly created      * message.      *      * @throws JMSException if the JMS provider fails to clear the message body      *                 due to some internal error.      */
 annotation|@
 name|Override
