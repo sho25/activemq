@@ -2662,7 +2662,7 @@ decl_stmt|;
 if|if
 condition|(
 name|initialKeepAliveDeadline
-operator|>
+operator|!=
 literal|0
 condition|)
 block|{
@@ -2721,7 +2721,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 name|long
-name|rescheduleAt
+name|deadline
 init|=
 name|protonTransport
 operator|.
@@ -2729,8 +2729,6 @@ name|tick
 argument_list|(
 name|now
 argument_list|)
-operator|-
-name|now
 decl_stmt|;
 name|pumpToProtonTransport
 argument_list|()
@@ -2754,14 +2752,16 @@ throw|throw
 operator|new
 name|InactivityIOException
 argument_list|(
-literal|"Channel was inactive for to long"
+literal|"Channel was inactive for too long"
 argument_list|)
 throw|;
 block|}
+else|else
+block|{
 if|if
 condition|(
-name|rescheduleAt
-operator|>
+name|deadline
+operator|!=
 literal|0
 condition|)
 block|{
@@ -2772,13 +2772,16 @@ name|schedule
 argument_list|(
 name|this
 argument_list|,
-name|rescheduleAt
+name|deadline
+operator|-
+name|now
 argument_list|,
 name|TimeUnit
 operator|.
 name|MILLISECONDS
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
