@@ -2759,6 +2759,13 @@ literal|0
 expr_stmt|;
 return|return
 name|rc
+operator|!=
+operator|-
+literal|1
+condition|?
+name|rc
+else|:
+literal|0
 return|;
 block|}
 block|}
