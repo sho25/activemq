@@ -210,10 +210,10 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|onError
+argument_list|(
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
