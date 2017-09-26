@@ -8876,6 +8876,12 @@ name|browserDispatch
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|wakeup
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
