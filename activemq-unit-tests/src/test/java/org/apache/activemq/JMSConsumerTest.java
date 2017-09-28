@@ -353,6 +353,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|util
+operator|.
+name|Wait
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|slf4j
 operator|.
 name|Logger
@@ -1505,7 +1519,7 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
-literal|"prefetch extension back to 0"
+literal|"prefetch extension.."
 argument_list|,
 name|subscriptions
 operator|.
@@ -1566,6 +1580,26 @@ name|assertTrue
 argument_list|(
 literal|"prefetch extension back to 0"
 argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
 name|subscriptions
 operator|.
 name|stream
@@ -1605,6 +1639,10 @@ lambda|->
 name|e
 operator|==
 literal|0
+argument_list|)
+return|;
+block|}
+block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1795,6 +1833,26 @@ name|assertTrue
 argument_list|(
 literal|"prefetch extension back to 0"
 argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
 name|subscriptions
 operator|.
 name|stream
@@ -1834,6 +1892,10 @@ lambda|->
 name|e
 operator|==
 literal|0
+argument_list|)
+return|;
+block|}
+block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
