@@ -529,13 +529,13 @@ specifier|final
 name|String
 name|header
 init|=
-literal|"%-50s  %10s  %10s  %10s  %10s  %10s  %10s  %10s"
+literal|"%-50s  %10s  %10s  %10s  %10s  %10s  %10s  %10s  %10s"
 decl_stmt|;
 specifier|final
 name|String
 name|tableRow
 init|=
-literal|"%-50s  %10d  %10d  %10d  %10d  %10d  %10d  %10d"
+literal|"%-50s  %10d  %10d  %10d  %10d  %10d  %10d  %10d  %10d"
 decl_stmt|;
 name|context
 operator|.
@@ -566,6 +566,8 @@ argument_list|,
 literal|"Forward #"
 argument_list|,
 literal|"Memory %"
+argument_list|,
+literal|"Inflight #"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -687,6 +689,11 @@ argument_list|,
 name|queueView
 operator|.
 name|getMemoryPercentUsage
+argument_list|()
+argument_list|,
+name|queueView
+operator|.
+name|getInFlightCount
 argument_list|()
 argument_list|)
 argument_list|)
