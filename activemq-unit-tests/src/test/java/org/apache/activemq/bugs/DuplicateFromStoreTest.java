@@ -441,7 +441,7 @@ specifier|static
 name|int
 name|NUM_MSGS
 init|=
-literal|40000
+literal|20000
 decl_stmt|;
 specifier|protected
 specifier|final
@@ -589,6 +589,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// allow any duplicates from the store to bubble up to the q impl
+name|policy
+operator|.
+name|setQueuePrefetch
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
 name|PolicyMap
 name|policies
 init|=
