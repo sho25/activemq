@@ -3563,6 +3563,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|private
+specifier|volatile
+name|ResourceAllocationException
+name|sendMemAllocationException
+init|=
+literal|null
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -3810,18 +3817,42 @@ name|isSendFailIfNoSpace
 argument_list|()
 condition|)
 block|{
-throw|throw
+name|ResourceAllocationException
+name|resourceAllocationException
+init|=
+name|sendMemAllocationException
+decl_stmt|;
+if|if
+condition|(
+name|resourceAllocationException
+operator|==
+literal|null
+condition|)
+block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
+name|resourceAllocationException
+operator|=
+name|sendMemAllocationException
+expr_stmt|;
+if|if
+condition|(
+name|resourceAllocationException
+operator|==
+literal|null
+condition|)
+block|{
+name|sendMemAllocationException
+operator|=
+name|resourceAllocationException
+operator|=
 operator|new
 name|ResourceAllocationException
 argument_list|(
-literal|"Usage Manager Memory Limit reached. Stopping producer ("
-operator|+
-name|message
-operator|.
-name|getProducerId
-argument_list|()
-operator|+
-literal|") to prevent flooding "
+literal|"Usage Manager Memory Limit reached on "
 operator|+
 name|getActiveMQDestination
 argument_list|()
@@ -3833,6 +3864,12 @@ literal|"."
 operator|+
 literal|" See http://activemq.apache.org/producer-flow-control.html for more info"
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+throw|throw
+name|resourceAllocationException
 throw|;
 block|}
 comment|// We can avoid blocking due to low usage if the producer is
