@@ -1834,7 +1834,8 @@ if|if
 condition|(
 name|sendFailIfNoSpaceAfterTimeout
 operator|!=
-literal|0
+operator|-
+literal|1
 condition|)
 block|{
 name|destination

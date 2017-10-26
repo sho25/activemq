@@ -493,6 +493,16 @@ argument_list|)
 decl_stmt|;
 specifier|public
 name|AtomicInteger
+name|totalMessagesSent
+init|=
+operator|new
+name|AtomicInteger
+argument_list|(
+name|NUM_MSGS
+argument_list|)
+decl_stmt|;
+specifier|public
+name|AtomicInteger
 name|totalReceived
 init|=
 operator|new
@@ -631,7 +641,7 @@ name|memoryUsage
 operator|.
 name|setPercentOfJvmHeap
 argument_list|(
-literal|70
+literal|50
 argument_list|)
 expr_stmt|;
 name|StoreUsage
@@ -823,7 +833,19 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"All producers have terminated."
+literal|"All producers have terminated. remaining to send: "
+operator|+
+name|totalMessagesToSend
+operator|.
+name|get
+argument_list|()
+operator|+
+literal|", sent:"
+operator|+
+name|totalMessagesSent
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|consumersFinished
@@ -1307,6 +1329,11 @@ argument_list|(
 name|message
 argument_list|)
 expr_stmt|;
+name|totalMessagesSent
+operator|.
+name|incrementAndGet
+argument_list|()
+expr_stmt|;
 name|log
 operator|.
 name|debug
@@ -1361,7 +1388,7 @@ name|error
 argument_list|(
 name|ex
 operator|.
-name|getMessage
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1670,8 +1697,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|totalReceived
@@ -1686,12 +1712,18 @@ name|log
 operator|.
 name|error
 argument_list|(
-literal|"Received message of unsupported type. Expecting TextMessage. "
+literal|"Received message of unsupported type. Expecting TextMessage. count: "
 operator|+
-name|message2
+name|totalReceived
+operator|.
+name|get
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// all done
 break|break;
 block|}
 if|if

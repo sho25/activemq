@@ -1643,7 +1643,7 @@ argument_list|(
 operator|new
 name|ResourceAllocationException
 argument_list|(
-literal|"Usage Manager Memory Limit reached. Stopping producer ("
+literal|"Usage Manager Memory Limit Wait Timeout. Stopping producer ("
 operator|+
 name|timeout
 operator|.
