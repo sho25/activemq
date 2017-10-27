@@ -914,7 +914,7 @@ name|latch
 operator|.
 name|await
 argument_list|(
-literal|5
+literal|10
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1328,7 +1328,7 @@ name|consumer
 operator|.
 name|receive
 argument_list|(
-literal|5000
+literal|10000
 argument_list|)
 decl_stmt|;
 name|assertNotNull
