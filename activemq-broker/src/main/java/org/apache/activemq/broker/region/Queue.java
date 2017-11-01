@@ -7873,12 +7873,12 @@ argument_list|()
 condition|)
 block|{
 name|DeadLetterStrategy
-name|stratagy
+name|strategy
 init|=
 name|getDeadLetterStrategy
 argument_list|()
 decl_stmt|;
-name|stratagy
+name|strategy
 operator|.
 name|rollback
 argument_list|(
@@ -8266,6 +8266,21 @@ name|restoredCounter
 init|=
 literal|0
 decl_stmt|;
+comment|// ensure we deal with a snapshot to avoid potential duplicates in the event of messages
+comment|// getting immediate dlq'ed
+name|long
+name|numberOfRetryAttemptsToCheckAllMessagesOnce
+init|=
+name|this
+operator|.
+name|destinationStatistics
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|getCount
+argument_list|()
+decl_stmt|;
 name|Set
 argument_list|<
 name|MessageReference
@@ -8341,6 +8356,9 @@ range|:
 name|list
 control|)
 block|{
+name|numberOfRetryAttemptsToCheckAllMessagesOnce
+operator|--
+expr_stmt|;
 if|if
 condition|(
 name|ref
@@ -8400,6 +8418,10 @@ block|}
 block|}
 do|while
 condition|(
+name|numberOfRetryAttemptsToCheckAllMessagesOnce
+operator|>
+literal|0
+operator|&&
 name|set
 operator|.
 name|size
@@ -8414,13 +8436,6 @@ argument_list|()
 operator|.
 name|getCount
 argument_list|()
-operator|&&
-name|set
-operator|.
-name|size
-argument_list|()
-operator|<
-name|maximumMessages
 condition|)
 do|;
 return|return
