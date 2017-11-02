@@ -10582,6 +10582,13 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|count
+operator|>
+literal|0
+condition|)
+block|{
 comment|// Only add new messages, not already pagedIn to avoid multiple
 comment|// dispatch attempts
 name|pagedInMessagesLock
@@ -10789,6 +10796,37 @@ argument_list|()
 operator|.
 name|unlock
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|messages
+operator|.
+name|hasSpace
+argument_list|()
+operator|&&
+name|isFlowControlLogRequired
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"{} cursor blocked, no space available to page in messages; usage: {}"
+argument_list|,
+name|this
+argument_list|,
+name|this
+operator|.
+name|systemUsage
+operator|.
+name|getMemoryUsage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
