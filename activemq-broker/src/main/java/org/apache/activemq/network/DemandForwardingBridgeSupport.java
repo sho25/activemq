@@ -4177,6 +4177,58 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Checks whether or not this consumer is a direct bridge network subscription      * @param info      * @return      */
+specifier|protected
+name|boolean
+name|isBridgeNS
+parameter_list|(
+name|ConsumerInfo
+name|info
+parameter_list|)
+block|{
+return|return
+operator|(
+name|info
+operator|.
+name|getSubscriptionName
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|info
+operator|.
+name|getSubscriptionName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|DURABLE_SUB_PREFIX
+argument_list|)
+operator|)
+operator|&&
+operator|(
+name|info
+operator|.
+name|getClientId
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|info
+operator|.
+name|getClientId
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|configuration
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|)
+return|;
+block|}
 specifier|protected
 name|void
 name|serviceRemoteCommand
@@ -4377,6 +4429,8 @@ control|)
 block|{
 comment|//re-add any process any non-NC consumers that match the
 comment|//dynamicallyIncludedDestinations list
+comment|//Also re-add network consumers that are not part of this direct
+comment|//bridge (proxy of proxy bridges)
 if|if
 condition|(
 operator|(
@@ -4388,14 +4442,9 @@ operator|==
 literal|null
 operator|||
 operator|!
-name|info
-operator|.
-name|getSubscriptionName
-argument_list|()
-operator|.
-name|startsWith
+name|isBridgeNS
 argument_list|(
-name|DURABLE_SUB_PREFIX
+name|info
 argument_list|)
 operator|)
 operator|&&
@@ -6081,11 +6130,19 @@ name|sending
 argument_list|)
 expr_stmt|;
 comment|//remove subscriber from map
+if|if
+condition|(
+name|i
+operator|!=
+literal|null
+condition|)
+block|{
 name|i
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
@@ -6588,7 +6645,7 @@ name|getConsumerId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// continue removal in separate thread to free up this thread for outstanding responses
+comment|// continue removal in separate thread to free up tshis thread for outstanding responses
 comment|// Serialize with removeDestination operations so that removeSubs are serialized with
 comment|// removeDestinations such that all removeSub advisories are generated
 name|serialExecutor
@@ -6613,6 +6670,68 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+comment|//If removing a network durable subscription that still has durable remote subs
+comment|//make sure we cleanup the durable subscription properly - necessary when using
+comment|//durable subscriptions and 3 or more brokers
+if|if
+condition|(
+name|configuration
+operator|.
+name|isConduitSubscriptions
+argument_list|()
+operator|&&
+name|sub
+operator|.
+name|getLocalInfo
+argument_list|()
+operator|.
+name|getSubscriptionName
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|sub
+operator|.
+name|getLocalInfo
+argument_list|()
+operator|.
+name|getSubscriptionName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|DURABLE_SUB_PREFIX
+argument_list|)
+operator|&&
+name|sub
+operator|.
+name|getDurableRemoteSubs
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|sub
+operator|.
+name|getDurableRemoteSubs
+argument_list|()
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|cleanupDurableSub
+argument_list|(
+name|sub
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|localBroker
 operator|.
 name|oneway
@@ -6626,6 +6745,7 @@ name|createRemoveCommand
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -7980,6 +8100,13 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|sub
+operator|!=
+literal|null
+condition|)
+block|{
 name|sub
 operator|.
 name|setStaticallyIncluded
@@ -8027,6 +8154,24 @@ argument_list|,
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"{}, static destination excluded: {}, demand already exists"
+argument_list|,
+name|configuration
+operator|.
+name|getBrokerName
+argument_list|()
+argument_list|,
+name|dest
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{

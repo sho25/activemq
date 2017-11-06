@@ -94,6 +94,11 @@ name|conduitSubscriptions
 init|=
 literal|true
 decl_stmt|;
+comment|/**      * Whether or not network subscriptions on queues are eligible to be conduit      * Default is false      */
+specifier|private
+name|boolean
+name|conduitNetworkQueueSubscriptions
+decl_stmt|;
 specifier|private
 name|boolean
 name|useVirtualDestSubs
@@ -333,6 +338,30 @@ operator|.
 name|conduitSubscriptions
 operator|=
 name|conduitSubscriptions
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isConduitNetworkQueueSubscriptions
+parameter_list|()
+block|{
+return|return
+name|conduitNetworkQueueSubscriptions
+return|;
+block|}
+specifier|public
+name|void
+name|setConduitNetworkQueueSubscriptions
+parameter_list|(
+name|boolean
+name|conduitNetworkQueueSubscriptions
+parameter_list|)
+block|{
+name|this
+operator|.
+name|conduitNetworkQueueSubscriptions
+operator|=
+name|conduitNetworkQueueSubscriptions
 expr_stmt|;
 block|}
 comment|/**      * @return the dynamicOnly      */

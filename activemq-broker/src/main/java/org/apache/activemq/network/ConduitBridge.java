@@ -248,12 +248,28 @@ name|boolean
 name|isForcedDurable
 parameter_list|)
 block|{
-comment|// search through existing subscriptions and see if we have a match
+comment|//If a network subscription and a queue check if isConduitNetworkQueueSubscriptions is true
+comment|//If true then we want to try and conduit
+comment|//For topics we always want to conduit regardless of network subscription or not
 if|if
 condition|(
 name|info
 operator|.
 name|isNetworkSubscription
+argument_list|()
+operator|&&
+name|info
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isQueue
+argument_list|()
+operator|&&
+operator|!
+name|configuration
+operator|.
+name|isConduitNetworkQueueSubscriptions
 argument_list|()
 condition|)
 block|{
@@ -266,6 +282,7 @@ name|matched
 init|=
 literal|false
 decl_stmt|;
+comment|// search through existing subscriptions and see if we have a match
 for|for
 control|(
 name|DemandSubscription
@@ -421,7 +438,9 @@ name|matched
 return|;
 block|}
 comment|// we want to conduit statically included consumers which are local networkSubs
-comment|// but we don't want to conduit remote network subs i.e. (proxy proxy) consumers
+comment|// but we don't want to conduit remote network queue subs i.e. (proxy proxy) consumers
+comment|// unless isConduitNetworkQueueSubscriptions is true
+comment|// We always want to conduit topic subscriptions
 specifier|private
 name|boolean
 name|canConduit
@@ -436,6 +455,17 @@ operator|.
 name|isStaticallyIncluded
 argument_list|()
 operator|||
+name|ds
+operator|.
+name|getRemoteInfo
+argument_list|()
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isTopic
+argument_list|()
+operator|||
 operator|!
 name|ds
 operator|.
@@ -444,6 +474,24 @@ argument_list|()
 operator|.
 name|isNetworkSubscription
 argument_list|()
+operator|||
+operator|(
+name|ds
+operator|.
+name|getRemoteInfo
+argument_list|()
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|isQueue
+argument_list|()
+operator|&&
+name|configuration
+operator|.
+name|isConduitNetworkQueueSubscriptions
+argument_list|()
+operator|)
 return|;
 block|}
 annotation|@
