@@ -797,44 +797,6 @@ argument_list|)
 expr_stmt|;
 comment|// and override the consumerId with something unique so that it won't
 comment|// be removed if the durable subscriber (at the other end) goes away
-comment|//Only do this for direct bridge consumers - proxy network consumers we don't
-comment|//want to replace the consumerId or cleanup won't happen properly
-if|if
-condition|(
-name|info
-operator|.
-name|getBrokerPath
-argument_list|()
-operator|.
-name|length
-operator|==
-literal|1
-operator|||
-operator|(
-name|info
-operator|.
-name|getBrokerPath
-argument_list|()
-operator|.
-name|length
-operator|>
-literal|1
-operator|&&
-name|info
-operator|.
-name|getBrokerPath
-argument_list|()
-index|[
-literal|0
-index|]
-operator|==
-name|remoteBrokerPath
-index|[
-literal|0
-index|]
-operator|)
-condition|)
-block|{
 name|info
 operator|.
 name|setConsumerId
@@ -854,7 +816,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|info
 operator|.
