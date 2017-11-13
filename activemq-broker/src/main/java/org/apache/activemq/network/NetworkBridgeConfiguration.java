@@ -318,6 +318,15 @@ name|checkDuplicateMessagesOnDuplex
 init|=
 literal|false
 decl_stmt|;
+comment|/**      * Bridge factory implementation - by default backed by static factory, which is default implementation and will rely change.      */
+specifier|private
+name|BridgeFactory
+name|bridgeFactory
+init|=
+name|NetworkBridgeFactory
+operator|.
+name|INSTANCE
+decl_stmt|;
 comment|/**      * @return the conduitSubscriptions      */
 specifier|public
 name|boolean
@@ -1520,6 +1529,30 @@ block|{
 return|return
 name|useVirtualDestSubs
 return|;
+block|}
+specifier|public
+name|BridgeFactory
+name|getBridgeFactory
+parameter_list|()
+block|{
+return|return
+name|bridgeFactory
+return|;
+block|}
+specifier|public
+name|void
+name|setBridgeFactory
+parameter_list|(
+name|BridgeFactory
+name|bridgeFactory
+parameter_list|)
+block|{
+name|this
+operator|.
+name|bridgeFactory
+operator|=
+name|bridgeFactory
+expr_stmt|;
 block|}
 comment|/**      * This was a typo, so this is deprecated as of 5.13.1      */
 annotation|@

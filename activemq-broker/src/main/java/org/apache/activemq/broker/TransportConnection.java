@@ -7940,9 +7940,12 @@ argument_list|)
 expr_stmt|;
 name|duplexBridge
 operator|=
-name|NetworkBridgeFactory
+name|config
 operator|.
-name|createBridge
+name|getBridgeFactory
+argument_list|()
+operator|.
+name|createNetworkBridge
 argument_list|(
 name|config
 argument_list|,

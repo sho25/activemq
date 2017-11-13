@@ -1329,9 +1329,10 @@ decl_stmt|;
 name|DemandForwardingBridge
 name|result
 init|=
-name|NetworkBridgeFactory
+name|getBridgeFactory
+argument_list|()
 operator|.
-name|createBridge
+name|createNetworkBridge
 argument_list|(
 name|this
 argument_list|,
