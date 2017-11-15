@@ -274,22 +274,6 @@ name|ConsumerId
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//Used for proxy network consumers
-specifier|private
-specifier|final
-name|Map
-argument_list|<
-name|SubscriptionInfo
-argument_list|,
-name|AtomicInteger
-argument_list|>
-name|networkDemandConsumerMap
-init|=
-operator|new
-name|ConcurrentHashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 specifier|private
 name|SubscriptionInfo
 name|localDurableSubscriber
@@ -405,20 +389,6 @@ parameter_list|()
 block|{
 return|return
 name|durableRemoteSubs
-return|;
-block|}
-specifier|public
-name|Map
-argument_list|<
-name|SubscriptionInfo
-argument_list|,
-name|AtomicInteger
-argument_list|>
-name|getNetworkDemandConsumerMap
-parameter_list|()
-block|{
-return|return
-name|networkDemandConsumerMap
 return|;
 block|}
 comment|/**      * @return true if there are no interested consumers      */
