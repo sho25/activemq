@@ -380,7 +380,7 @@ name|option
 init|=
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 operator|.
 name|toString
 argument_list|()
@@ -395,7 +395,7 @@ name|getProperty
 argument_list|(
 literal|"org.apache.activemq.broker.jmx.createConnector"
 argument_list|,
-literal|"true"
+literal|"false"
 argument_list|)
 expr_stmt|;
 block|}
