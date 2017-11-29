@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   */
+comment|/**  *  */
 end_comment
 
 begin_class
@@ -178,8 +178,16 @@ name|platformDetails
 init|=
 name|ActiveMQConnectionMetaData
 operator|.
-name|PLATFORM_DETAILS
+name|DEFAULT_PLATFORM_DETAILS
 decl_stmt|;
+specifier|private
+name|boolean
+name|includePlatformDetails
+init|=
+literal|false
+decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|WireFormat
 name|createWireFormat
@@ -293,6 +301,18 @@ argument_list|(
 name|providerVersion
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|includePlatformDetails
+condition|)
+block|{
+name|platformDetails
+operator|=
+name|ActiveMQConnectionMetaData
+operator|.
+name|PLATFORM_DETAILS
+expr_stmt|;
+block|}
 name|info
 operator|.
 name|setPlatformDetails
@@ -688,6 +708,30 @@ operator|.
 name|platformDetails
 operator|=
 name|platformDetails
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|isIncludePlatformDetails
+parameter_list|()
+block|{
+return|return
+name|includePlatformDetails
+return|;
+block|}
+specifier|public
+name|void
+name|setIncludePlatformDetails
+parameter_list|(
+name|boolean
+name|includePlatformDetails
+parameter_list|)
+block|{
+name|this
+operator|.
+name|includePlatformDetails
+operator|=
+name|includePlatformDetails
 expr_stmt|;
 block|}
 block|}

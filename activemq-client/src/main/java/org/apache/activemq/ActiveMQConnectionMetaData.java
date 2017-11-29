@@ -109,6 +109,14 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|DEFAULT_PLATFORM_DETAILS
+init|=
+literal|"Java"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|PLATFORM_DETAILS
 decl_stmt|;
 specifier|public
