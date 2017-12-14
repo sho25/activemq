@@ -309,6 +309,16 @@ argument_list|)
 expr_stmt|;
 name|brokerService
 operator|.
+name|getManagementContext
+argument_list|()
+operator|.
+name|setCreateConnector
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|brokerService
+operator|.
 name|start
 argument_list|()
 expr_stmt|;
