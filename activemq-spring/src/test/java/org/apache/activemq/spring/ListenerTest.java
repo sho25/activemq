@@ -319,7 +319,7 @@ literal|6
 operator|*
 name|msgNum
 operator|)
-operator|<=
+operator|==
 name|listener
 operator|.
 name|messages
