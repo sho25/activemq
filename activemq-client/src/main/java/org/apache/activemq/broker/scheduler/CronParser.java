@@ -757,17 +757,6 @@ argument_list|,
 name|working
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"nextWeekDay:"
-operator|+
-name|nextCalendarDay
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(
