@@ -2175,6 +2175,10 @@ operator|>
 literal|0
 condition|)
 block|{
+name|result
+operator|=
+literal|false
+expr_stmt|;
 name|StringTokenizer
 name|tokenizer
 init|=
@@ -2188,6 +2192,7 @@ argument_list|)
 decl_stmt|;
 while|while
 condition|(
+operator|!
 name|result
 operator|&&
 name|tokenizer
@@ -2234,7 +2239,7 @@ block|{
 name|boolean
 name|result
 init|=
-literal|true
+literal|false
 decl_stmt|;
 if|if
 condition|(
