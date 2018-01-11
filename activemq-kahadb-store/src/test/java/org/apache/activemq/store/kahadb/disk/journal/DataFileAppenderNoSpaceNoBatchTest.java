@@ -1053,10 +1053,11 @@ operator||=
 operator|(
 name|location
 operator|.
-name|getBatch
+name|getException
 argument_list|()
 operator|.
-name|exception
+name|get
+argument_list|()
 operator|!=
 literal|null
 operator|)

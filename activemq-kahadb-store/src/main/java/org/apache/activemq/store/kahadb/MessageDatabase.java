@@ -13017,10 +13017,8 @@ if|if
 condition|(
 name|location
 operator|.
-name|getBatch
+name|getException
 argument_list|()
-operator|.
-name|exception
 operator|.
 name|get
 argument_list|()
@@ -13031,10 +13029,8 @@ block|{
 throw|throw
 name|location
 operator|.
-name|getBatch
+name|getException
 argument_list|()
-operator|.
-name|exception
 operator|.
 name|get
 argument_list|()
