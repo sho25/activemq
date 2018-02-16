@@ -1051,6 +1051,21 @@ name|DestinationMapEntry
 name|entry
 parameter_list|)
 block|{
+comment|//If destination not set then do not filter out
+if|if
+condition|(
+name|entry
+operator|.
+name|getDestination
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 specifier|final
 name|DestinationFilter
 name|filter
