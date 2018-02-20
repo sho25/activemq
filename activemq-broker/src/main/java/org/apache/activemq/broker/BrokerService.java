@@ -1706,7 +1706,7 @@ name|producerSystemUsage
 decl_stmt|;
 specifier|private
 name|SystemUsage
-name|consumerSystemUsaage
+name|consumerSystemUsage
 decl_stmt|;
 specifier|private
 name|PersistenceAdapter
@@ -6003,7 +6003,7 @@ if|if
 condition|(
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 operator|==
 literal|null
 condition|)
@@ -6015,7 +6015,7 @@ condition|)
 block|{
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 operator|=
 operator|new
 name|SystemUsage
@@ -6035,7 +6035,7 @@ literal|100f
 decl_stmt|;
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 operator|.
 name|getMemoryUsage
 argument_list|()
@@ -6049,13 +6049,13 @@ name|addService
 argument_list|(
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|consumerSystemUsaage
+name|consumerSystemUsage
 operator|=
 name|getSystemUsage
 argument_list|()
@@ -6065,13 +6065,13 @@ block|}
 return|return
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 return|;
 block|}
 end_function
 
 begin_comment
-comment|/**      * @param consumerSystemUsaage      *            the storeSystemUsage to set      */
+comment|/**      * @param consumerSystemUsage      *            the storeSystemUsage to set      */
 end_comment
 
 begin_function
@@ -6080,14 +6080,14 @@ name|void
 name|setConsumerSystemUsage
 parameter_list|(
 name|SystemUsage
-name|consumerSystemUsaage
+name|consumerSystemUsage
 parameter_list|)
 block|{
 if|if
 condition|(
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 operator|!=
 literal|null
 condition|)
@@ -6096,21 +6096,21 @@ name|removeService
 argument_list|(
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 argument_list|)
 expr_stmt|;
 block|}
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 operator|=
-name|consumerSystemUsaage
+name|consumerSystemUsage
 expr_stmt|;
 name|addService
 argument_list|(
 name|this
 operator|.
-name|consumerSystemUsaage
+name|consumerSystemUsage
 argument_list|)
 expr_stmt|;
 block|}
