@@ -400,6 +400,17 @@ argument_list|()
 return|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|String
+name|getSystemPropertyPrefix
+parameter_list|()
+block|{
+return|return
+literal|"https."
+return|;
+block|}
 block|}
 end_class
 

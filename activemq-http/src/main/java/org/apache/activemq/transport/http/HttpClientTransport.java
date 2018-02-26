@@ -2189,6 +2189,17 @@ name|getTextWireFormat
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|protected
+name|String
+name|getSystemPropertyPrefix
+parameter_list|()
+block|{
+return|return
+literal|"http."
+return|;
+block|}
 block|}
 end_class
 
