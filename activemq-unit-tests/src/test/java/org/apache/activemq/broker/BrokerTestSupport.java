@@ -2091,6 +2091,24 @@ argument_list|()
 operator|.
 name|getMessageId
 argument_list|()
+operator|+
+literal|" for: "
+operator|+
+operator|(
+operator|(
+name|MessageDispatch
+operator|)
+name|o
+operator|)
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|getDestination
+argument_list|()
+operator|.
+name|getPhysicalName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

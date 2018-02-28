@@ -3418,6 +3418,13 @@ argument_list|,
 name|sequence
 argument_list|)
 expr_stmt|;
+name|messageId
+operator|.
+name|setEntryLocator
+argument_list|(
+name|preparedSequenceId
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
