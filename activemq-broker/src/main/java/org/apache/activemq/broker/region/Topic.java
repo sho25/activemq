@@ -2263,7 +2263,28 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|warn
+argument_list|(
+literal|"{}, Usage Manager memory limit reached {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
+argument_list|,
+name|getActiveMQDestination
+argument_list|()
+operator|.
+name|getQualifiedName
+argument_list|()
+argument_list|,
+name|memoryUsage
+operator|.
+name|getLimit
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"{}, Usage Manager memory limit reached {}. Producers will be throttled to the rate at which messages are removed from this destination to prevent flooding it. See http://activemq.apache.org/producer-flow-control.html for more info."
 argument_list|,

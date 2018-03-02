@@ -831,7 +831,7 @@ name|equals
 argument_list|(
 name|Level
 operator|.
-name|INFO
+name|WARN
 argument_list|)
 operator|&&
 name|event
