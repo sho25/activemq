@@ -910,9 +910,11 @@ condition|)
 block|{
 name|nonPersistent
 operator|.
-name|addMessageLast
+name|tryAddMessageLast
 argument_list|(
 name|node
+argument_list|,
+name|wait
 argument_list|)
 expr_stmt|;
 block|}
