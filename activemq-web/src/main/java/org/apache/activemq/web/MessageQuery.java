@@ -17,36 +17,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Enumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|jms
@@ -125,8 +95,38 @@ name|TextMessage
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
 begin_comment
-comment|/**  * Allow the user to browse a message on a queue by its ID  *   *   */
+comment|/**  * Allow the user to browse a message on a queue by its ID  *  *  */
 end_comment
 
 begin_class
@@ -149,9 +149,6 @@ name|MessageQuery
 parameter_list|(
 name|BrokerFacade
 name|brokerFacade
-parameter_list|,
-name|SessionPool
-name|sessionPool
 parameter_list|)
 throws|throws
 name|JMSException
@@ -159,8 +156,6 @@ block|{
 name|super
 argument_list|(
 name|brokerFacade
-argument_list|,
-name|sessionPool
 argument_list|)
 expr_stmt|;
 block|}
