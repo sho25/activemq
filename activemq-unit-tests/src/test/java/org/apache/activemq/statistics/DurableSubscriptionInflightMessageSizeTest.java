@@ -159,6 +159,9 @@ name|ackType
 parameter_list|,
 name|boolean
 name|optimizeAcknowledge
+parameter_list|,
+name|boolean
+name|useTopicSubscriptionInflightStats
 parameter_list|)
 block|{
 name|super
@@ -166,6 +169,8 @@ argument_list|(
 name|ackType
 argument_list|,
 name|optimizeAcknowledge
+argument_list|,
+name|useTopicSubscriptionInflightStats
 argument_list|)
 expr_stmt|;
 block|}
