@@ -564,7 +564,6 @@ name|TOPIC
 block|,
 name|DURABLE
 block|}
-empty_stmt|;
 annotation|@
 name|Parameters
 argument_list|(
@@ -600,14 +599,9 @@ block|,
 literal|false
 block|}
 block|,
-block|{
-name|SubType
-operator|.
-name|TOPIC
-block|,
-literal|false
-block|}
-block|,
+comment|//Can only test PrefetchSubscriptions for now as TopicSubscriptions don't track the message
+comment|//references anymore that are dispatched
+comment|// {SubType.TOPIC, false},
 block|{
 name|SubType
 operator|.
@@ -624,14 +618,7 @@ block|,
 literal|true
 block|}
 block|,
-block|{
-name|SubType
-operator|.
-name|TOPIC
-block|,
-literal|true
-block|}
-block|,
+comment|// {SubType.TOPIC, true},
 block|{
 name|SubType
 operator|.
@@ -1128,37 +1115,14 @@ name|dispatchLockField
 init|=
 literal|null
 decl_stmt|;
+comment|//Can only test PrefetchSubscriptions for now as TopicSubscriptions don't track the message
+comment|//references anymore that are dispatched
 if|if
 condition|(
 name|sub
 operator|instanceof
-name|TopicSubscription
+name|PrefetchSubscription
 condition|)
-block|{
-name|dispatchedField
-operator|=
-name|TopicSubscription
-operator|.
-name|class
-operator|.
-name|getDeclaredField
-argument_list|(
-literal|"dispatched"
-argument_list|)
-expr_stmt|;
-name|dispatchLockField
-operator|=
-name|TopicSubscription
-operator|.
-name|class
-operator|.
-name|getDeclaredField
-argument_list|(
-literal|"dispatchLock"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 block|{
 name|dispatchedField
 operator|=
