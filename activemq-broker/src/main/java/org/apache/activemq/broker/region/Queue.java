@@ -9813,29 +9813,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|updateMetricsOnMessageDrop
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-finally|finally
-block|{
-name|pagedInMessagesLock
-operator|.
-name|writeLock
-argument_list|()
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-specifier|private
-name|void
-name|updateMetricsOnMessageDrop
-parameter_list|()
-block|{
 name|getDestinationStatistics
 argument_list|()
 operator|.
@@ -9854,6 +9831,20 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+name|pagedInMessagesLock
+operator|.
+name|writeLock
+argument_list|()
+operator|.
+name|unlock
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 specifier|public
 name|void
@@ -10700,12 +10691,6 @@ argument_list|()
 argument_list|,
 name|ref
 argument_list|)
-expr_stmt|;
-comment|//We need to update the metrics here because the drop message
-comment|//method will only update if the message was removed from the
-comment|//pagedInMessages list which won't happen in this case
-name|updateMetricsOnMessageDrop
-argument_list|()
 expr_stmt|;
 block|}
 else|else
