@@ -871,6 +871,13 @@ operator|new
 name|BrokerService
 argument_list|()
 decl_stmt|;
+name|broker
+operator|.
+name|setAdvisorySupport
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|jdbc
 operator|=
 operator|new

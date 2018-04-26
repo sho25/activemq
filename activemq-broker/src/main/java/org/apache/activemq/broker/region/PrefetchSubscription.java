@@ -2284,13 +2284,18 @@ operator|.
 name|increment
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
 name|dispatched
 operator|.
 name|remove
 argument_list|(
 name|node
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+comment|// if consumer is removed, dispatched will be empty and inflight will
+comment|// already have been adjusted
 name|getSubscriptionStatistics
 argument_list|()
 operator|.
@@ -2317,6 +2322,7 @@ operator|.
 name|decrement
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|contractPrefetchExtension
 argument_list|(

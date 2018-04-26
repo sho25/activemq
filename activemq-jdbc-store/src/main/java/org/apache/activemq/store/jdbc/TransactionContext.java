@@ -1078,6 +1078,11 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+name|completions
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|connection
 operator|.
 name|rollback

@@ -653,7 +653,9 @@ block|{
 name|queue
 operator|.
 name|clearPendingMessages
-argument_list|()
+argument_list|(
+literal|0
+argument_list|)
 expr_stmt|;
 block|}
 block|}

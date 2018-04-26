@@ -238,6 +238,13 @@ argument_list|(
 name|broker
 argument_list|)
 expr_stmt|;
+name|broker
+operator|.
+name|setAdvisorySupport
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|JDBCPersistenceAdapter
 name|jdbc
 init|=

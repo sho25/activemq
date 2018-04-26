@@ -731,7 +731,10 @@ function_decl|;
 specifier|public
 name|void
 name|clearPendingMessages
-parameter_list|()
+parameter_list|(
+name|int
+name|pendingAdditionsCount
+parameter_list|)
 function_decl|;
 name|void
 name|duplicateFromStore

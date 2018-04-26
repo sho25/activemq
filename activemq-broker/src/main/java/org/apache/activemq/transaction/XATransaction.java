@@ -344,9 +344,6 @@ name|PREPARED_STATE
 case|:
 comment|// 2 phase commit, work done.
 comment|// We would record commit here.
-name|setStateFinished
-argument_list|()
-expr_stmt|;
 name|storeCommit
 argument_list|(
 name|getTransactionId
@@ -358,6 +355,9 @@ name|preCommitTask
 argument_list|,
 name|postCommitTask
 argument_list|)
+expr_stmt|;
+name|setStateFinished
+argument_list|()
 expr_stmt|;
 break|break;
 default|default:
@@ -432,25 +432,94 @@ operator|.
 name|warn
 argument_list|(
 literal|"Store COMMIT FAILED: "
+operator|+
+name|txid
 argument_list|,
 name|t
 argument_list|)
 expr_stmt|;
-name|rollback
-argument_list|()
-expr_stmt|;
 name|XAException
 name|xae
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|wasPrepared
+condition|)
+block|{
+comment|// report and await outcome
+name|xae
+operator|=
+name|newXAException
+argument_list|(
+literal|"STORE COMMIT FAILED: "
+operator|+
+name|t
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|XAException
+operator|.
+name|XA_RETRY
+argument_list|)
+expr_stmt|;
+comment|// fire rollback syncs to revert
+name|doPostRollback
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+try|try
+block|{
+name|rollback
+argument_list|()
+expr_stmt|;
+name|xae
+operator|=
 name|newXAException
 argument_list|(
 literal|"STORE COMMIT FAILED: Transaction rolled back"
 argument_list|,
 name|XAException
 operator|.
-name|XA_RBOTHER
+name|XA_RBCOMMFAIL
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|xae
+operator|=
+name|newXAException
+argument_list|(
+literal|"STORE COMMIT FAILED: "
+operator|+
+name|t
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|". Rolled failed:"
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|XAException
+operator|.
+name|XA_RBINTEGRITY
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|xae
 operator|.
 name|initCause

@@ -4386,13 +4386,16 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * force a reread of the store - after transaction recovery completion      */
+comment|/**      * force a reread of the store - after transaction recovery completion      * @param pendingAdditionsCount      */
 annotation|@
 name|Override
 specifier|public
 name|void
 name|clearPendingMessages
-parameter_list|()
+parameter_list|(
+name|int
+name|pendingAdditionsCount
+parameter_list|)
 block|{
 name|dispatchLock
 operator|.

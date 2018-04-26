@@ -3991,7 +3991,7 @@ name|assertEquals
 argument_list|(
 literal|"enqueue count does not see prepared acks"
 argument_list|,
-literal|4
+literal|0
 argument_list|,
 name|destinationView
 operator|.
@@ -4001,7 +4001,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"enqueue count does not see prepared acks"
+literal|"dequeue count does not see prepared acks"
 argument_list|,
 literal|0
 argument_list|,
@@ -4064,7 +4064,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"enqueue count does not see commited acks"
+literal|"dequeue count does not see commited acks"
 argument_list|,
 literal|4
 argument_list|,

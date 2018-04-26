@@ -426,9 +426,6 @@ name|void
 name|rebase
 parameter_list|()
 block|{
-name|resetSize
-argument_list|()
-expr_stmt|;
 name|MessageId
 name|lastAdded
 init|=
@@ -2073,11 +2070,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|setCacheEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|size
 operator|++
 expr_stmt|;
