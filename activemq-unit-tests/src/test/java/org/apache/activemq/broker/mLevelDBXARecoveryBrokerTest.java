@@ -321,6 +321,15 @@ name|Exception
 block|{
 comment|// super.testQueuePersistentUncommittedAcksLostOnRestart();
 block|}
+specifier|public
+name|void
+name|testQueuePersistentPreparedAcksNotLostOnRestart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// pending acks are not tracked in leveldb
+block|}
 block|}
 end_class
 
