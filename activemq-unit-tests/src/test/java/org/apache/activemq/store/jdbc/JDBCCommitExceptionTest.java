@@ -356,12 +356,17 @@ argument_list|()
 expr_stmt|;
 block|}
 specifier|protected
-name|void
+name|int
 name|dumpMessages
 parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 name|WireFormat
 name|wireFormat
 init|=
@@ -399,7 +404,7 @@ name|conn
 operator|.
 name|prepareStatement
 argument_list|(
-literal|"SELECT ID, MSG FROM ACTIVEMQ_MSGS"
+literal|"SELECT ID, XID, MSG FROM ACTIVEMQ_MSGS"
 argument_list|)
 decl_stmt|;
 name|ResultSet
@@ -435,6 +440,16 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
+name|String
+name|xid
+init|=
+name|result
+operator|.
+name|getString
+argument_list|(
+literal|2
+argument_list|)
+decl_stmt|;
 name|org
 operator|.
 name|apache
@@ -468,7 +483,7 @@ name|result
 operator|.
 name|getBytes
 argument_list|(
-literal|2
+literal|3
 argument_list|)
 argument_list|)
 argument_list|)
@@ -480,6 +495,10 @@ argument_list|(
 literal|"id: "
 operator|+
 name|id
+operator|+
+literal|", xid: "
+operator|+
+name|xid
 operator|+
 literal|", message SeqId: "
 operator|+
@@ -496,6 +515,9 @@ operator|+
 name|message
 argument_list|)
 expr_stmt|;
+name|count
+operator|++
+expr_stmt|;
 block|}
 name|statement
 operator|.
@@ -507,6 +529,9 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+return|return
+name|count
+return|;
 block|}
 specifier|protected
 name|int

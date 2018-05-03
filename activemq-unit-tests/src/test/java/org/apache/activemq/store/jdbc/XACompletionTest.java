@@ -1799,6 +1799,9 @@ operator|.
 name|TMNOFLAGS
 argument_list|)
 expr_stmt|;
+name|dumpMessages
+argument_list|()
+expr_stmt|;
 name|Xid
 name|tid
 init|=
@@ -1920,6 +1923,16 @@ expr_stmt|;
 name|consumer
 operator|.
 name|close
+argument_list|()
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"after close"
+argument_list|)
+expr_stmt|;
+name|dumpMessages
 argument_list|()
 expr_stmt|;
 name|assertEquals

@@ -359,7 +359,7 @@ specifier|public
 name|boolean
 name|prioritySupport
 init|=
-literal|false
+literal|true
 decl_stmt|;
 specifier|public
 name|void
@@ -4077,7 +4077,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|initCombosForTestTopicPersistentPreparedAcksNotLostOnRestart
+name|x_initCombosForTestTopicPersistentPreparedAcksNotLostOnRestart
 parameter_list|()
 block|{
 name|addCombinationValues
