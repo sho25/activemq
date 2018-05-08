@@ -41,13 +41,25 @@ name|proton
 operator|.
 name|codec
 operator|.
-name|WritableBuffer
+name|ReadableBuffer
 import|;
 end_import
 
-begin_comment
-comment|/**  *  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|qpid
+operator|.
+name|proton
+operator|.
+name|codec
+operator|.
+name|WritableBuffer
+import|;
+end_import
 
 begin_class
 specifier|public
@@ -645,6 +657,29 @@ name|Integer
 operator|.
 name|MAX_VALUE
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|put
+parameter_list|(
+name|ReadableBuffer
+name|src
+parameter_list|)
+block|{
+name|ensureCapacity
+argument_list|(
+name|position
+argument_list|)
+expr_stmt|;
+name|src
+operator|.
+name|get
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Ensures the the buffer has at least the minimumCapacity specified.      *      * @param minimumCapacity      *      the minimum capacity needed to meet the next write operation.      */
 specifier|private
