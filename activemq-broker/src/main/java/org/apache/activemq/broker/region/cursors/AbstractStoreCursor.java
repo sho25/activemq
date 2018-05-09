@@ -2015,6 +2015,7 @@ operator|=
 name|candidate
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|LOG
