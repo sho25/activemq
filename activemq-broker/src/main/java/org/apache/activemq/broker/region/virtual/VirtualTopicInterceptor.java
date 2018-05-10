@@ -306,6 +306,11 @@ name|dropMessageOnResourceLimit
 decl_stmt|;
 specifier|private
 specifier|final
+name|boolean
+name|setOriginalDestination
+decl_stmt|;
+specifier|private
+specifier|final
 name|LRUCache
 argument_list|<
 name|ActiveMQDestination
@@ -390,6 +395,15 @@ operator|=
 name|virtualTopic
 operator|.
 name|isDropOnResourceLimit
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|setOriginalDestination
+operator|=
+name|virtualTopic
+operator|.
+name|isSetOriginalDestination
 argument_list|()
 expr_stmt|;
 block|}
@@ -841,6 +855,11 @@ operator|.
 name|copy
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|setOriginalDestination
+condition|)
+block|{
 name|msg
 operator|.
 name|setDestination
@@ -858,6 +877,7 @@ name|getDestination
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|msg
 return|;
