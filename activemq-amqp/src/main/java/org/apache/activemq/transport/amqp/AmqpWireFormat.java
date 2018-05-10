@@ -296,7 +296,9 @@ specifier|final
 name|int
 name|DEFAULT_ANQP_FRAME_SIZE
 init|=
-name|NO_AMQP_MAX_FRAME_SIZE
+literal|128
+operator|*
+literal|1024
 decl_stmt|;
 specifier|private
 specifier|static
