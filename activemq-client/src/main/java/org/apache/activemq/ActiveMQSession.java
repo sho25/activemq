@@ -3137,6 +3137,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|LOG
+operator|.
+name|isTraceEnabled
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|trace
@@ -3152,6 +3160,7 @@ literal|"here"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// ensure we don't filter this as a duplicate
 name|connection
 operator|.
