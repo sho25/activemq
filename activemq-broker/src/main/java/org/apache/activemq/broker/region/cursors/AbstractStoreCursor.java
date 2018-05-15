@@ -2430,8 +2430,7 @@ name|size
 operator|+
 literal|",cacheEnabled="
 operator|+
-name|isCacheEnabled
-argument_list|()
+name|cacheEnabled
 operator|+
 literal|",maxBatchSize:"
 operator|+

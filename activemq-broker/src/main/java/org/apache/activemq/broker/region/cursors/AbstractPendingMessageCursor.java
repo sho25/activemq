@@ -253,7 +253,7 @@ name|useCache
 init|=
 literal|true
 decl_stmt|;
-specifier|private
+specifier|protected
 name|boolean
 name|cacheEnabled
 init|=
