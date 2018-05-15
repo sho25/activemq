@@ -259,7 +259,7 @@ name|cacheEnabled
 init|=
 literal|true
 decl_stmt|;
-specifier|private
+specifier|protected
 name|boolean
 name|started
 init|=

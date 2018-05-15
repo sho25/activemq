@@ -163,10 +163,6 @@ name|QueueStorePrefetch
 name|persistent
 decl_stmt|;
 specifier|private
-name|boolean
-name|started
-decl_stmt|;
-specifier|private
 name|PendingMessageCursor
 name|currentCursor
 decl_stmt|;
