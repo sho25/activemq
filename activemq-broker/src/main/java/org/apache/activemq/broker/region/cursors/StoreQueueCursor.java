@@ -87,6 +87,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|MessageId
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|usage
 operator|.
 name|SystemUsage
@@ -390,9 +404,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//            nonPersistent.clear();
-comment|//            nonPersistent.stop();
-comment|//            nonPersistent.gc();
 name|nonPersistent
 operator|.
 name|destroy
@@ -1075,6 +1086,31 @@ name|enableAudit
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|rollback
+parameter_list|(
+name|MessageId
+name|id
+parameter_list|)
+block|{
+name|nonPersistent
+operator|.
+name|rollback
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+name|persistent
+operator|.
+name|rollback
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
