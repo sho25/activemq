@@ -1485,7 +1485,7 @@ name|next
 operator|.
 name|clearPendingMessages
 argument_list|(
-literal|0
+name|pendingAdditionsCount
 argument_list|)
 expr_stmt|;
 block|}
