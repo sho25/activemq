@@ -3588,7 +3588,7 @@ operator|.
 name|getLastMessageId
 argument_list|()
 operator|.
-name|getFutureOrSequenceLong
+name|getEntryLocator
 argument_list|()
 argument_list|,
 literal|null
