@@ -1222,11 +1222,7 @@ name|activeTempDestinations
 init|=
 operator|new
 name|ConcurrentHashMap
-argument_list|<
-name|ActiveMQTempDestination
-argument_list|,
-name|ActiveMQTempDestination
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|protected
@@ -1481,9 +1477,7 @@ name|sessions
 init|=
 operator|new
 name|CopyOnWriteArrayList
-argument_list|<
-name|ActiveMQSession
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1496,9 +1490,7 @@ name|connectionConsumers
 init|=
 operator|new
 name|CopyOnWriteArrayList
-argument_list|<
-name|ActiveMQConnectionConsumer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1511,9 +1503,7 @@ name|transportListeners
 init|=
 operator|new
 name|CopyOnWriteArrayList
-argument_list|<
-name|TransportListener
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|// Maps ConsumerIds to ActiveMQConsumer objects
@@ -1529,11 +1519,7 @@ name|dispatchers
 init|=
 operator|new
 name|ConcurrentHashMap
-argument_list|<
-name|ConsumerId
-argument_list|,
-name|ActiveMQDispatcher
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1548,11 +1534,7 @@ name|producers
 init|=
 operator|new
 name|ConcurrentHashMap
-argument_list|<
-name|ProducerId
-argument_list|,
-name|ActiveMQMessageProducer
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -1736,9 +1718,7 @@ name|trustedPackages
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -3187,11 +3167,7 @@ name|options
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|info
 operator|.
@@ -4085,11 +4061,7 @@ name|options
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|consumerInfo
 operator|.
@@ -4481,11 +4453,22 @@ operator|instanceof
 name|ConnectionInfo
 condition|)
 block|{
+try|try
+block|{
 name|forceCloseOnSecurityException
 argument_list|(
 name|exception
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+comment|// We throw the original error from the ExceptionResponse instead.
+block|}
 block|}
 if|if
 condition|(
@@ -4742,6 +4725,8 @@ operator|instanceof
 name|ConnectionInfo
 condition|)
 block|{
+try|try
+block|{
 name|forceCloseOnSecurityException
 argument_list|(
 name|er
@@ -4750,6 +4735,15 @@ name|getException
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+comment|// We throw the original error from the ExceptionResponse instead.
+block|}
 block|}
 if|if
 condition|(
