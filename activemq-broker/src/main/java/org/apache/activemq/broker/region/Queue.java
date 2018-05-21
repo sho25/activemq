@@ -6751,6 +6751,11 @@ expr_stmt|;
 return|return
 operator|(
 name|alreadyPagedIn
+operator|==
+literal|0
+operator|||
+operator|(
+name|alreadyPagedIn
 operator|<
 name|max
 operator|)
@@ -6765,6 +6770,7 @@ name|messages
 operator|.
 name|hasSpace
 argument_list|()
+operator|)
 return|;
 block|}
 specifier|private
