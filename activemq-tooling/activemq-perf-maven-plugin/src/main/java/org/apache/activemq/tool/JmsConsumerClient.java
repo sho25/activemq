@@ -424,8 +424,10 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|<
+operator|-
 name|endTime
+operator|<
+literal|0
 condition|)
 block|{
 name|getJmsConsumer

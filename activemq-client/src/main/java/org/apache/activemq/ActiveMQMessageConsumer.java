@@ -5071,11 +5071,13 @@ operator|>
 literal|0
 operator|&&
 name|expiry
-operator|<
+operator|-
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+operator|<
+literal|0
 condition|)
 do|;
 block|}
