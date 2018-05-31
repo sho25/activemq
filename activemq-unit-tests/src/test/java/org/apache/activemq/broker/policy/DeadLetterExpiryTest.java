@@ -275,6 +275,18 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|TimeUnit
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -970,13 +982,14 @@ name|getQueueSize
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// expiry across queues is no longer seralised on a single timertask thread AMQ-6979
 return|return
 name|queueViewMBean
 operator|.
 name|getQueueSize
 argument_list|()
-operator|==
-literal|4
+operator|>=
+literal|2
 return|;
 block|}
 catch|catch
