@@ -1908,9 +1908,11 @@ argument_list|)
 expr_stmt|;
 name|destinationMap
 operator|.
-name|removeAll
+name|remove
 argument_list|(
 name|destination
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
@@ -1985,9 +1987,11 @@ argument_list|)
 expr_stmt|;
 name|destinationMap
 operator|.
-name|removeAll
+name|remove
 argument_list|(
 name|destination
+argument_list|,
+name|adapter
 argument_list|)
 expr_stmt|;
 block|}
