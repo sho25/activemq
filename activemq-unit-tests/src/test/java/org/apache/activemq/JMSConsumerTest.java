@@ -1774,6 +1774,26 @@ name|assertTrue
 argument_list|(
 literal|"prefetch extension.."
 argument_list|,
+name|Wait
+operator|.
+name|waitFor
+argument_list|(
+operator|new
+name|Wait
+operator|.
+name|Condition
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|isSatisified
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+return|return
 name|subscriptions
 operator|.
 name|stream
@@ -1813,6 +1833,10 @@ lambda|->
 name|e
 operator|==
 literal|4
+argument_list|)
+return|;
+block|}
+block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
