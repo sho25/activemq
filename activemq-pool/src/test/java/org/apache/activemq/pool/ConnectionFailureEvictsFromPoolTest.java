@@ -443,14 +443,14 @@ argument_list|(
 operator|new
 name|ActiveMQXAConnectionFactory
 argument_list|(
-literal|"mock:"
+literal|"mock:("
 operator|+
 name|connector
 operator|.
 name|getConnectUri
 argument_list|()
 operator|+
-literal|"?closeAsync=false"
+literal|"?closeAsync=false)?jms.xaAckMode=1"
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -25,6 +25,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|Session
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -68,12 +78,26 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-return|return
+name|ActiveMQXAConnectionFactory
+name|activeMQXAConnectionFactory
+init|=
 operator|new
 name|ActiveMQXAConnectionFactory
 argument_list|(
-literal|"vm://localhost"
+literal|"vm://localhost?jms.xaAckMode=1"
 argument_list|)
+decl_stmt|;
+name|activeMQXAConnectionFactory
+operator|.
+name|setXaAckMode
+argument_list|(
+name|Session
+operator|.
+name|AUTO_ACKNOWLEDGE
+argument_list|)
+expr_stmt|;
+return|return
+name|activeMQXAConnectionFactory
 return|;
 block|}
 comment|// some tests use transactions, these will not work unless an XA transaction is in place

@@ -159,24 +159,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
-name|boolean
-name|getTransacted
-parameter_list|()
-throws|throws
-name|JMSException
-block|{
-name|checkClosed
-argument_list|()
-expr_stmt|;
-return|return
-name|getTransactionContext
-argument_list|()
-operator|.
-name|isInXATransaction
-argument_list|()
-return|;
-block|}
-specifier|public
 name|void
 name|rollback
 parameter_list|()
@@ -263,16 +245,6 @@ name|this
 argument_list|)
 return|;
 block|}
-comment|/*      * when there is no XA transaction it is auto ack      */
-specifier|public
-name|boolean
-name|isAutoAcknowledge
-parameter_list|()
-block|{
-return|return
-literal|true
-return|;
-block|}
 specifier|protected
 name|void
 name|doStartTransaction
@@ -280,8 +252,34 @@ parameter_list|()
 throws|throws
 name|JMSException
 block|{
-comment|// allow non transactional auto ack work on an XASession
-comment|// Seems ok by the spec that an XAConnection can be used without an XA tx
+if|if
+condition|(
+name|acknowledgementMode
+operator|!=
+name|SESSION_TRANSACTED
+condition|)
+block|{
+comment|// ok once the factory XaAckMode has been explicitly set to allow use outside an XA tx
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|getTransactionContext
+argument_list|()
+operator|.
+name|isInXATransaction
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Session's XAResource has not been enlisted in a distributed transaction."
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class
