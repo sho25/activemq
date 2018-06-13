@@ -11184,18 +11184,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
-else|else
-block|{
 comment|// Avoid return null list, if condition is not validated
+return|return
 name|resultList
-operator|=
+operator|!=
+literal|null
+condition|?
+name|resultList
+else|:
 operator|new
 name|OrderedPendingList
 argument_list|()
-expr_stmt|;
-block|}
-return|return
-name|resultList
 return|;
 block|}
 specifier|private
