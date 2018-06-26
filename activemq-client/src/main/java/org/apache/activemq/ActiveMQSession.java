@@ -3575,17 +3575,37 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|isClosed
+argument_list|()
+condition|)
+block|{
 name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"error dispatching message: "
+literal|"{} error dispatching message: {} "
+argument_list|,
+name|this
+argument_list|,
+name|message
+operator|.
+name|getMessageId
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
+name|getTransactionContext
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|getTransactionContext
 argument_list|()
 operator|.
@@ -6186,6 +6206,10 @@ name|started
 operator|.
 name|get
 argument_list|()
+operator|+
+literal|",closed="
+operator|+
+name|closed
 operator|+
 literal|"} "
 operator|+

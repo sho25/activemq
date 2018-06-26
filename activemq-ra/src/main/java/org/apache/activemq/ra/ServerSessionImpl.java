@@ -498,6 +498,12 @@ name|session
 operator|.
 name|isRunning
 argument_list|()
+operator|||
+operator|!
+name|session
+operator|.
+name|isClosed
+argument_list|()
 return|;
 block|}
 specifier|public
@@ -699,7 +705,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Running"
+literal|"{} Running"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|currentBatchSize
@@ -715,7 +723,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"run loop start"
+literal|"{} run loop"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 try|try
@@ -727,6 +737,20 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|session
+operator|.
+name|isClosed
+argument_list|()
+condition|)
+block|{
+name|stale
+operator|=
+literal|true
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|session
@@ -790,7 +814,7 @@ name|debug
 argument_list|(
 literal|"Endpoint {} failed to process message."
 argument_list|,
-name|session
+name|this
 argument_list|,
 name|e
 argument_list|)
@@ -816,7 +840,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|session
+name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -848,6 +872,15 @@ condition|(
 name|stale
 condition|)
 block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Session {} stale, removing from pool"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
 name|runningFlag
 operator|=
 literal|false
@@ -878,7 +911,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Session has no unconsumed message, returning to pool"
+literal|"Session {} has no unconsumed message, returning to pool"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|pool
@@ -890,6 +925,18 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+else|else
+block|{
+name|log
+operator|.
+name|debug
+argument_list|(
+literal|"Session has session has more work to do b/c of unconsumed"
+argument_list|,
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -897,7 +944,9 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Run finished"
+literal|"{} Run finished"
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 block|}
