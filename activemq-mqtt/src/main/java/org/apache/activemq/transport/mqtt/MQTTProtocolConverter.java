@@ -3685,12 +3685,6 @@ operator|!=
 name|QoS
 operator|.
 name|AT_MOST_ONCE
-operator|&&
-operator|!
-name|command
-operator|.
-name|retain
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|msg
