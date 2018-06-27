@@ -2918,25 +2918,6 @@ literal|"["
 operator|+
 name|iteration
 operator|+
-literal|"] not all delivered"
-argument_list|,
-name|messageCountRef
-operator|.
-name|get
-argument_list|()
-operator|.
-name|getCount
-argument_list|()
-operator|>
-literal|0
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-literal|"["
-operator|+
-name|iteration
-operator|+
 literal|"] sender complete"
 argument_list|,
 name|senderDone
