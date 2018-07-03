@@ -903,6 +903,18 @@ operator|=
 name|nonPersistent
 expr_stmt|;
 block|}
+comment|/**      * @return the persistent Cursor      */
+specifier|public
+name|PendingMessageCursor
+name|getPersistent
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|persistent
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
