@@ -5367,6 +5367,11 @@ argument_list|,
 name|clientId
 argument_list|,
 name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 comment|//AMQ-6561 - stop for all exceptions on addConnection
