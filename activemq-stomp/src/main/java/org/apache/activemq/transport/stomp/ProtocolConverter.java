@@ -4093,6 +4093,13 @@ argument_list|(
 name|actualDest
 argument_list|)
 expr_stmt|;
+name|consumerInfo
+operator|.
+name|setDispatchAsync
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|StompSubscription
 name|stompSubscription
 decl_stmt|;
