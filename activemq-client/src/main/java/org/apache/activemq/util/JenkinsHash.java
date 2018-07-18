@@ -22,6 +22,7 @@ name|JenkinsHash
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|long
 name|INT_MASK
 init|=
@@ -29,6 +30,7 @@ literal|0x00000000ffffffffL
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|long
 name|BYTE_MASK
 init|=
@@ -36,6 +38,7 @@ literal|0x00000000000000ffL
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|JenkinsHash
 name|_instance
 init|=
