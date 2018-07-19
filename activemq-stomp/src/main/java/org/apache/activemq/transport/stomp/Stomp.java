@@ -182,10 +182,23 @@ decl_stmt|;
 name|String
 name|SUBSCRIBE
 init|=
-literal|"SUB"
+literal|"SUBSCRIBE"
 decl_stmt|;
 name|String
 name|UNSUBSCRIBE
+init|=
+literal|"UNSUBSCRIBE"
+decl_stmt|;
+comment|// Preserve legacy incorrect allow shortened names for
+comment|// subscribe and un-subscribe as it has been there for so
+comment|// long that someone has undoubtedly come to expect it.
+name|String
+name|SUBSCRIBE_PREFIX
+init|=
+literal|"SUB"
+decl_stmt|;
+name|String
+name|UNSUBSCRIBE_PREFIX
 init|=
 literal|"UNSUB"
 decl_stmt|;
