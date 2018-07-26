@@ -1119,7 +1119,7 @@ argument_list|)
 expr_stmt|;
 name|destinationMap
 operator|.
-name|put
+name|unsynchronizedPut
 argument_list|(
 name|destination
 argument_list|,
@@ -1318,7 +1318,7 @@ literal|null
 condition|?
 name|destinationMap
 operator|.
-name|get
+name|unsynchronizedGet
 argument_list|(
 name|entry
 operator|.
@@ -1763,7 +1763,7 @@ block|}
 block|}
 name|destinationMap
 operator|.
-name|remove
+name|unsynchronizedRemove
 argument_list|(
 name|destination
 argument_list|,
@@ -1858,7 +1858,7 @@ block|{
 return|return
 name|destinationMap
 operator|.
-name|get
+name|unsynchronizedGet
 argument_list|(
 name|destination
 argument_list|)
@@ -2138,7 +2138,7 @@ argument_list|>
 operator|)
 name|destinationMap
 operator|.
-name|get
+name|unsynchronizedGet
 argument_list|(
 name|info
 operator|.
@@ -2545,7 +2545,7 @@ argument_list|>
 operator|)
 name|destinationMap
 operator|.
-name|get
+name|unsynchronizedGet
 argument_list|(
 name|info
 operator|.
@@ -3011,6 +3011,8 @@ block|{
 comment|// Try to auto create the destination... re-invoke broker
 comment|// from the
 comment|// top so that the proper security checks are performed.
+name|dest
+operator|=
 name|context
 operator|.
 name|getBroker
@@ -3025,49 +3027,6 @@ argument_list|,
 name|createTemporary
 argument_list|)
 expr_stmt|;
-name|dest
-operator|=
-name|addDestination
-argument_list|(
-name|context
-argument_list|,
-name|destination
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-comment|// We should now have the dest created.
-name|destinationsLock
-operator|.
-name|readLock
-argument_list|()
-operator|.
-name|lock
-argument_list|()
-expr_stmt|;
-try|try
-block|{
-name|dest
-operator|=
-name|destinations
-operator|.
-name|get
-argument_list|(
-name|destination
-argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|destinationsLock
-operator|.
-name|readLock
-argument_list|()
-operator|.
-name|unlock
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -3429,7 +3388,7 @@ argument_list|>
 operator|)
 name|destinationMap
 operator|.
-name|get
+name|unsynchronizedGet
 argument_list|(
 name|info
 operator|.
@@ -3505,7 +3464,7 @@ argument_list|>
 operator|)
 name|destinationMap
 operator|.
-name|get
+name|unsynchronizedGet
 argument_list|(
 name|info
 operator|.
