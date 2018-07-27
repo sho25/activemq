@@ -10977,8 +10977,10 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|<
+operator|-
 name|deadline
+operator|<
+literal|0
 condition|)
 block|{
 if|if

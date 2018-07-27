@@ -1249,12 +1249,14 @@ name|isStarted
 argument_list|()
 operator|)
 operator|&&
-name|expiry
-operator|>
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+operator|-
+name|expiry
+operator|<
+literal|0
 condition|)
 block|{
 name|long
