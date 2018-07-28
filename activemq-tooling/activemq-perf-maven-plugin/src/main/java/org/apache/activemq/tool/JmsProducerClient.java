@@ -911,8 +911,10 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|<
+operator|-
 name|endTime
+operator|<
+literal|0
 condition|)
 block|{
 for|for
@@ -967,8 +969,10 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|<
+operator|-
 name|endTime
+operator|<
+literal|0
 condition|)
 block|{
 name|getJmsProducer
@@ -1018,8 +1022,10 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|<
+operator|-
 name|endTime
+operator|<
+literal|0
 condition|)
 block|{
 for|for
@@ -1081,8 +1087,10 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
-operator|<
+operator|-
 name|endTime
+operator|<
+literal|0
 condition|)
 block|{
 name|getJmsProducer
