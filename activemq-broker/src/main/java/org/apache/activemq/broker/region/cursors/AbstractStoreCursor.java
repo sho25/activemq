@@ -801,6 +801,8 @@ operator|instanceof
 name|Future
 condition|)
 block|{
+try|try
+block|{
 operator|(
 operator|(
 name|Future
@@ -811,6 +813,13 @@ operator|.
 name|get
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|okToErrorOrCancelStoreOp
+parameter_list|)
+block|{}
 block|}
 comment|// need to access again after wait on future
 name|Object
