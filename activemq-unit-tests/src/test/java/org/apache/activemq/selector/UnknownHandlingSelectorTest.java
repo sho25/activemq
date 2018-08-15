@@ -111,7 +111,7 @@ name|activemq
 operator|.
 name|filter
 operator|.
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 import|;
 end_import
 
@@ -692,11 +692,11 @@ operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 name|context
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 name|context
@@ -736,6 +736,23 @@ argument_list|,
 name|matches
 argument_list|,
 name|value
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"ref 0"
+argument_list|,
+literal|0
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQMessage
+operator|)
+name|message
+operator|)
+operator|.
+name|getReferenceCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

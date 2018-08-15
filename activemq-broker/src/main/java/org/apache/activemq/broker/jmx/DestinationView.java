@@ -431,7 +431,7 @@ name|activemq
 operator|.
 name|filter
 operator|.
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 import|;
 end_import
 
@@ -1090,11 +1090,11 @@ name|CompositeData
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 name|ctx
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 name|ctx
@@ -1304,11 +1304,11 @@ name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 name|ctx
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 name|ctx
@@ -1541,11 +1541,11 @@ argument_list|(
 name|tt
 argument_list|)
 decl_stmt|;
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 name|ctx
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 name|ctx

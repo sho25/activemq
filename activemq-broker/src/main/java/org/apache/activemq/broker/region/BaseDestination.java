@@ -3153,11 +3153,7 @@ name|answer
 init|=
 operator|new
 name|ConnectionContext
-argument_list|(
-operator|new
-name|NonCachedMessageEvaluationContext
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|answer
 operator|.

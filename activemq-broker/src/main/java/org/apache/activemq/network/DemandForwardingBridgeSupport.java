@@ -925,7 +925,7 @@ name|activemq
 operator|.
 name|filter
 operator|.
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 import|;
 end_import
 
@@ -7947,11 +7947,11 @@ name|isDurable
 argument_list|()
 condition|)
 block|{
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 name|messageEvalContext
 init|=
 operator|new
-name|MessageEvaluationContext
+name|NonCachedMessageEvaluationContext
 argument_list|()
 decl_stmt|;
 name|messageEvalContext
@@ -7986,16 +7986,6 @@ name|matches
 argument_list|(
 name|messageEvalContext
 argument_list|)
-expr_stmt|;
-comment|//AMQ-6465 - Need to decrement the reference count after checking matches() as
-comment|//the call above will increment the reference count by 1
-name|messageEvalContext
-operator|.
-name|getMessageReference
-argument_list|()
-operator|.
-name|decrementReferenceCount
-argument_list|()
 expr_stmt|;
 block|}
 return|return

@@ -2321,6 +2321,11 @@ argument_list|(
 name|context
 argument_list|)
 decl_stmt|;
+name|context
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Selector for: "
@@ -2330,6 +2335,23 @@ argument_list|,
 name|expected
 argument_list|,
 name|value
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"ref 0"
+argument_list|,
+literal|0
+argument_list|,
+operator|(
+operator|(
+name|ActiveMQMessage
+operator|)
+name|message
+operator|)
+operator|.
+name|getReferenceCount
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
