@@ -666,6 +666,25 @@ decl_stmt|;
 try|try
 block|{
 comment|// Allows the transport to access the broker's ssl configuration.
+if|if
+condition|(
+name|getSslContext
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|SslContext
+operator|.
+name|setCurrentSslContext
+argument_list|(
+name|getSslContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|SslContext
 operator|.
 name|setCurrentSslContext
@@ -677,6 +696,7 @@ name|getSslContext
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 name|remoteTransport
