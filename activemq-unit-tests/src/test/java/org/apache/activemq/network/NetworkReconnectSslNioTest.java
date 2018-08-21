@@ -281,7 +281,7 @@ name|remote
 operator|.
 name|addConnector
 argument_list|(
-literal|"nio+ssl://0.0.0.0:0"
+literal|"nio+ssl://0.0.0.0:0?transport.verifyHostName=false"
 argument_list|)
 decl_stmt|;
 name|remote
@@ -343,6 +343,8 @@ literal|"nio+ssl"
 argument_list|,
 literal|"ssl"
 argument_list|)
+operator|+
+literal|"?socket.verifyHostName=false"
 operator|+
 literal|")?useExponentialBackOff=false&initialReconnectDelay=10"
 argument_list|)

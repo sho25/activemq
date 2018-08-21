@@ -215,7 +215,7 @@ name|brokerService
 operator|.
 name|addConnector
 argument_list|(
-literal|"ssl://0.0.0.0:0?needClientAuth=true"
+literal|"ssl://0.0.0.0:0?transport.needClientAuth=true&transport.verifyHostName=false"
 argument_list|)
 decl_stmt|;
 name|cf
@@ -227,6 +227,8 @@ name|connector
 operator|.
 name|getPublishableConnectString
 argument_list|()
+operator|+
+literal|"?socket.verifyHostName=false"
 argument_list|)
 expr_stmt|;
 block|}
@@ -238,7 +240,7 @@ name|getAdditionalConfig
 parameter_list|()
 block|{
 return|return
-literal|"?needClientAuth=true"
+literal|"?needClientAuth=true&transport.verifyHostName=false"
 return|;
 block|}
 comment|// NOOP - These operations handled by jaas cert login module

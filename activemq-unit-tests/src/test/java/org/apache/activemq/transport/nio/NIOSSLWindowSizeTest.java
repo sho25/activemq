@@ -306,7 +306,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"nio+ssl://localhost:0?transport.needClientAuth=true"
+literal|"nio+ssl://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false"
 argument_list|)
 decl_stmt|;
 name|broker

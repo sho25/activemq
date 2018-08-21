@@ -131,6 +131,8 @@ specifier|private
 name|boolean
 name|verbose
 decl_stmt|;
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|setUp
@@ -145,6 +147,8 @@ name|SslTransportFactory
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|tearDown
@@ -459,6 +463,27 @@ argument_list|)
 operator|-
 literal|1
 expr_stmt|;
+comment|//We now always set options to a default we default verifyHostName to true
+comment|//so we setSSLParameters so make the not set value = 0
+if|if
+condition|(
+name|optionSettings
+index|[
+name|j
+index|]
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+name|optionSettings
+index|[
+name|j
+index|]
+operator|=
+literal|0
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|optionSettings

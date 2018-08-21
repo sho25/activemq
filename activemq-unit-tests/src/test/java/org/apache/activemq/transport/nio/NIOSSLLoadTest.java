@@ -473,7 +473,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"nio+ssl://localhost:0?transport.needClientAuth=true&transport.enabledCipherSuites=SSL_RSA_WITH_RC4_128_SHA,SSL_DH_anon_WITH_3DES_EDE_CBC_SHA"
+literal|"nio+ssl://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false&transport.enabledCipherSuites=TLS_RSA_WITH_AES_256_CBC_SHA256"
 argument_list|)
 expr_stmt|;
 name|broker
@@ -684,6 +684,8 @@ operator|.
 name|Condition
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isSatisified

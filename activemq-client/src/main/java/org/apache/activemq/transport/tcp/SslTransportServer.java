@@ -227,6 +227,8 @@ name|wantAuth
 expr_stmt|;
 block|}
 comment|/**      * Binds this socket to the previously specified URI.      *      * Overridden to allow for proper handling of needClientAuth.      *      * @throws IOException passed up from TcpTransportServer.      */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|bind
@@ -282,6 +284,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Used to create Transports for this server.      *      * Overridden to allow the use of SslTransports (instead of TcpTransports).      *      * @param socket The incoming socket that will be wrapped into the new Transport.      * @param format The WireFormat being used.      * @return The newly return (SSL) Transport.      * @throws IOException      */
+annotation|@
+name|Override
 specifier|protected
 name|Transport
 name|createTransport

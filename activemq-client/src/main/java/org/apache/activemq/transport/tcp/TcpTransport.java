@@ -569,7 +569,7 @@ specifier|volatile
 name|int
 name|receiveCounter
 decl_stmt|;
-specifier|private
+specifier|protected
 name|Map
 argument_list|<
 name|String
@@ -2942,6 +2942,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|WireFormat
 name|getWireFormat

@@ -469,7 +469,7 @@ name|addConnector
 argument_list|(
 name|protocol
 operator|+
-literal|"://localhost:0?transport.needClientAuth=true"
+literal|"://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false"
 argument_list|)
 decl_stmt|;
 name|connector
@@ -695,6 +695,8 @@ operator|.
 name|setBrokerURL
 argument_list|(
 name|uri
+operator|+
+literal|"?socket.verifyHostName=false"
 argument_list|)
 expr_stmt|;
 comment|//Create 5 connections to make sure all are properly set

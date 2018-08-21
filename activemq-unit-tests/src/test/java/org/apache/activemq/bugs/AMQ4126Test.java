@@ -707,6 +707,8 @@ name|brokerURI
 operator|.
 name|getPort
 argument_list|()
+operator|+
+literal|"?socket.verifyHostName=false"
 decl_stmt|;
 name|ActiveMQSslConnectionFactory
 name|cf
