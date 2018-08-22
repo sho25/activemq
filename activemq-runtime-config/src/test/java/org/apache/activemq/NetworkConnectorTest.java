@@ -528,6 +528,16 @@ name|getNetworkTTL
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"got ssl"
+argument_list|,
+name|modNetworkConnector
+operator|.
+name|getSslContext
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// apply again - ensure no change
 name|applyNewConfig
 argument_list|(
