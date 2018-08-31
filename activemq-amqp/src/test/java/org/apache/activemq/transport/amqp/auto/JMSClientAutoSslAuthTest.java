@@ -356,7 +356,7 @@ name|getAdditionalConfig
 parameter_list|()
 block|{
 return|return
-literal|"?transport.needClientAuth=true&transport.verifyHostName=false"
+literal|"?transport.needClientAuth=true"
 return|;
 block|}
 annotation|@

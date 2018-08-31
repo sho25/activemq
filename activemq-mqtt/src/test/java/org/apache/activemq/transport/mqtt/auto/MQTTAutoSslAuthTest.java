@@ -314,7 +314,7 @@ name|protocol
 expr_stmt|;
 name|protocolConfig
 operator|=
-literal|"transport.needClientAuth=true&transport.verifyHostName=false&"
+literal|"transport.needClientAuth=true"
 expr_stmt|;
 block|}
 annotation|@

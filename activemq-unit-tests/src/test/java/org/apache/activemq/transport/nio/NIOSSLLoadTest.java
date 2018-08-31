@@ -473,7 +473,7 @@ name|broker
 operator|.
 name|addConnector
 argument_list|(
-literal|"nio+ssl://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false&transport.enabledCipherSuites=TLS_RSA_WITH_AES_256_CBC_SHA256"
+literal|"nio+ssl://localhost:0?transport.needClientAuth=true&transport.enabledCipherSuites=TLS_RSA_WITH_AES_256_CBC_SHA256"
 argument_list|)
 expr_stmt|;
 name|broker

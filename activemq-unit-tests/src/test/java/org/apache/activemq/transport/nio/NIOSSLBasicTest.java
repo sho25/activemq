@@ -422,7 +422,7 @@ argument_list|,
 name|getTransportType
 argument_list|()
 operator|+
-literal|"://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false"
+literal|"://localhost:0?transport.needClientAuth=true"
 argument_list|)
 decl_stmt|;
 name|basicSendReceive
@@ -470,7 +470,7 @@ argument_list|,
 name|getTransportType
 argument_list|()
 operator|+
-literal|"://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false&transport.enabledCipherSuites=TLS_RSA_WITH_AES_256_CBC_SHA256&transport.verifyHostName=false"
+literal|"://localhost:0?transport.needClientAuth=true&transport.verifyHostName=false&transport.enabledCipherSuites=TLS_RSA_WITH_AES_256_CBC_SHA256"
 argument_list|)
 decl_stmt|;
 name|basicSendReceive
@@ -518,7 +518,7 @@ argument_list|,
 name|getTransportType
 argument_list|()
 operator|+
-literal|"://localhost:61616?transport.needClientAuth=true&transport.enabledProtocols=TLSv1,TLSv1.1,TLSv1.2&transport.verifyHostName=false"
+literal|"://localhost:61616?transport.needClientAuth=true&transport.enabledProtocols=TLSv1,TLSv1.1,TLSv1.2"
 argument_list|)
 decl_stmt|;
 name|basicSendReceive
@@ -547,7 +547,7 @@ name|broker
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Client/server is missing verifyHostName=false so it should fail as cert doesn't have right host name
+comment|//Client is missing verifyHostName=false so it should fail as cert doesn't have right host name
 annotation|@
 name|Test
 argument_list|(
@@ -559,7 +559,7 @@ name|class
 argument_list|)
 specifier|public
 name|void
-name|verifyHostNameError
+name|verifyHostNameErrorClient
 parameter_list|()
 throws|throws
 name|Exception

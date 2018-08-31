@@ -215,7 +215,7 @@ name|brokerService
 operator|.
 name|addConnector
 argument_list|(
-literal|"ssl://0.0.0.0:0?transport.needClientAuth=true&transport.verifyHostName=false"
+literal|"ssl://0.0.0.0:0?transport.needClientAuth=true"
 argument_list|)
 decl_stmt|;
 name|cf

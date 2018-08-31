@@ -399,7 +399,7 @@ specifier|protected
 name|boolean
 name|verifyHostName
 init|=
-literal|true
+literal|false
 decl_stmt|;
 specifier|protected
 name|SSLContext

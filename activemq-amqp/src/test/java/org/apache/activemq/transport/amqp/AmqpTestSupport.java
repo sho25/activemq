@@ -1164,7 +1164,7 @@ literal|"amqp+ssl://0.0.0.0:"
 operator|+
 name|amqpSslPort
 operator|+
-literal|"?transport.verifyHostName=false&transport.tcpNoDelay=true&transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()
@@ -1268,7 +1268,7 @@ literal|"amqp+nio+ssl://0.0.0.0:"
 operator|+
 name|amqpNioPlusSslPort
 operator|+
-literal|"?transport.verifyHostName=false&transport.tcpNoDelay=true&transport.transformer="
+literal|"?transport.tcpNoDelay=true&transport.transformer="
 operator|+
 name|getAmqpTransformer
 argument_list|()

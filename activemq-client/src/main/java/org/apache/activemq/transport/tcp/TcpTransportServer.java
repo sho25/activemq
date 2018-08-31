@@ -630,7 +630,7 @@ specifier|protected
 name|boolean
 name|verifyHostName
 init|=
-literal|true
+literal|false
 decl_stmt|;
 comment|/**      * trace=true -> the Transport stack where this TcpTransport object will be, will have a TransportLogger layer      * trace=false -> the Transport stack where this TcpTransport object will be, will NOT have a TransportLogger layer,      * and therefore will never be able to print logging messages. This parameter is most probably set in Connection or      * TransportConnector URIs.      */
 specifier|protected
@@ -1046,6 +1046,18 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|transportOptions
+operator|.
+name|put
+argument_list|(
+literal|"verifyHostName"
+argument_list|,
+name|verifyHostName
 argument_list|)
 expr_stmt|;
 block|}

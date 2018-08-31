@@ -380,6 +380,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|//If null and not set then this is a client so default to true
 name|verifyHostName
 operator|=
 literal|true

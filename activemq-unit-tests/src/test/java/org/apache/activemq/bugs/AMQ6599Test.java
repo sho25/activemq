@@ -407,7 +407,7 @@ name|addConnector
 argument_list|(
 name|protocol
 operator|+
-literal|"://localhost:0?transport.soTimeout=3500&transport.verifyHostName=false"
+literal|"://localhost:0?transport.soTimeout=3500"
 argument_list|)
 decl_stmt|;
 name|connector
