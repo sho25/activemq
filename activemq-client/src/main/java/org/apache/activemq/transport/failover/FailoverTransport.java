@@ -5062,20 +5062,6 @@ name|e
 expr_stmt|;
 name|LOG
 operator|.
-name|error
-argument_list|(
-literal|"Connect fail to: {}, error message: {}"
-argument_list|,
-name|uri
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
 name|debug
 argument_list|(
 literal|"Connect fail to: {}, reason: {}"
@@ -6151,15 +6137,6 @@ name|updated
 operator|.
 name|add
 argument_list|(
-name|uri
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Adding new URI to transport: {}"
-argument_list|,
 name|uri
 argument_list|)
 expr_stmt|;
