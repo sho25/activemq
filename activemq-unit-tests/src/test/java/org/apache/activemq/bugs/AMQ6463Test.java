@@ -469,11 +469,6 @@ name|numMessages
 init|=
 literal|20
 decl_stmt|;
-name|long
-name|time
-init|=
-literal|5
-decl_stmt|;
 name|message
 operator|.
 name|setStringProperty
@@ -493,7 +488,7 @@ name|ScheduledMessage
 operator|.
 name|AMQ_SCHEDULED_DELAY
 argument_list|,
-name|time
+literal|0
 argument_list|)
 expr_stmt|;
 name|message
@@ -504,7 +499,7 @@ name|ScheduledMessage
 operator|.
 name|AMQ_SCHEDULED_PERIOD
 argument_list|,
-literal|5
+literal|0
 argument_list|)
 expr_stmt|;
 name|message
@@ -564,6 +559,8 @@ argument_list|()
 return|;
 block|}
 block|}
+argument_list|,
+literal|60000
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -685,6 +682,19 @@ operator|.
 name|setDeleteAllMessagesOnStartup
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|service
+operator|.
+name|getSystemUsage
+argument_list|()
+operator|.
+name|getMemoryUsage
+argument_list|()
+operator|.
+name|setLimit
+argument_list|(
+literal|512
 argument_list|)
 expr_stmt|;
 comment|// Setup a destination policy where it takes only 1 message at a time.
