@@ -517,6 +517,31 @@ return|return
 literal|true
 return|;
 block|}
+comment|// check if the value is greater than the bigger sequence value and if it's not adjacent to it
+comment|// in this case, we are sure that the value should be add to the tail of the sequence.
+if|if
+condition|(
+name|sequence
+operator|.
+name|isBiggerButNotAdjacentToLast
+argument_list|(
+name|value
+argument_list|)
+condition|)
+block|{
+name|addLast
+argument_list|(
+operator|new
+name|Sequence
+argument_list|(
+name|value
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
 name|sequence
 operator|=
 name|getHead
