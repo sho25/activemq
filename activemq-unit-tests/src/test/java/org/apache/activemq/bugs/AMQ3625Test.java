@@ -503,7 +503,7 @@ name|replace
 argument_list|(
 literal|"?needClientAuth=true"
 argument_list|,
-literal|""
+literal|"?verifyHostName=false"
 argument_list|)
 expr_stmt|;
 name|broker2

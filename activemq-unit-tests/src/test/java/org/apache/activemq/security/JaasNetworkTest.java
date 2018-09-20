@@ -312,7 +312,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"ssl://localhost:61617"
+literal|"ssl://localhost:61617?verifyHostName=false"
 argument_list|)
 decl_stmt|;
 name|Connection
@@ -379,7 +379,7 @@ init|=
 operator|new
 name|ActiveMQConnectionFactory
 argument_list|(
-literal|"ssl://localhost:61618"
+literal|"ssl://localhost:61618?verifyHostName=false"
 argument_list|)
 decl_stmt|;
 name|Connection
