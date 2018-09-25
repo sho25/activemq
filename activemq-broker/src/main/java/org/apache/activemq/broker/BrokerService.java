@@ -8128,6 +8128,10 @@ condition|(
 name|tempDataStore
 operator|==
 literal|null
+operator|&&
+operator|!
+name|hasStartException
+argument_list|()
 condition|)
 block|{
 if|if
@@ -8781,6 +8785,10 @@ condition|(
 name|jobSchedulerStore
 operator|==
 literal|null
+operator|&&
+operator|!
+name|hasStartException
+argument_list|()
 condition|)
 block|{
 if|if
