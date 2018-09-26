@@ -440,6 +440,14 @@ name|MAX_AUDIT_DEPTH
 init|=
 literal|10000
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|DUPLICATE_FROM_STORE_MSG_PREFIX
+init|=
+literal|"duplicate from store for "
+decl_stmt|;
 specifier|protected
 specifier|final
 name|AtomicBoolean
@@ -3287,7 +3295,7 @@ name|Message
 name|message
 parameter_list|,
 name|Subscription
-name|durableSub
+name|subscription
 parameter_list|)
 block|{
 name|ConnectionContext
@@ -3301,7 +3309,11 @@ argument_list|()
 operator|.
 name|warn
 argument_list|(
-literal|"duplicate message from store {}, redirecting for dlq processing"
+literal|"{}{}, redirecting {} for dlq processing"
+argument_list|,
+name|DUPLICATE_FROM_STORE_MSG_PREFIX
+argument_list|,
+name|destination
 argument_list|,
 name|message
 operator|.
@@ -3315,7 +3327,7 @@ init|=
 operator|new
 name|Throwable
 argument_list|(
-literal|"duplicate from store for "
+name|DUPLICATE_FROM_STORE_MSG_PREFIX
 operator|+
 name|destination
 argument_list|)
@@ -3371,7 +3383,7 @@ name|acknowledge
 argument_list|(
 name|connectionContext
 argument_list|,
-name|durableSub
+name|subscription
 argument_list|,
 name|messageAck
 argument_list|,

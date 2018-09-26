@@ -291,6 +291,24 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
+name|BaseDestination
+operator|.
+name|DUPLICATE_FROM_STORE_MSG_PREFIX
+import|;
+end_import
+
 begin_comment
 comment|/**  * Replace regular DLQ handling with redelivery via a resend to the original destination  * after a delay  * A destination matching RedeliveryPolicy controls the quantity and delay for re-sends  * If there is no matching policy or an existing policy limit is exceeded by default  * regular DLQ processing resumes. This is controlled via sendToDlqIfMaxRetriesExceeded  * and fallbackToDeadLetter  *  * @org.apache.xbean.XBean element="redeliveryPlugin"  */
 end_comment
@@ -635,9 +653,32 @@ name|messageReference
 operator|.
 name|isExpired
 argument_list|()
+operator|||
+operator|(
+name|poisonCause
+operator|!=
+literal|null
+operator|&&
+name|poisonCause
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|poisonCause
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+name|DUPLICATE_FROM_STORE_MSG_PREFIX
+argument_list|)
+operator|)
 condition|)
 block|{
-comment|// there are two uses of  sendToDeadLetterQueue, we are only interested in valid messages
+comment|// there are three uses of  sendToDeadLetterQueue, we are only interested in valid messages
 return|return
 name|super
 operator|.
