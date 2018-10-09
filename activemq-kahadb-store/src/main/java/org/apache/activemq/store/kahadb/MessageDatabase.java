@@ -8790,6 +8790,11 @@ block|}
 block|}
 if|if
 condition|(
+name|key
+operator|.
+name|isXATransaction
+argument_list|()
+operator|&&
 name|updates
 operator|!=
 literal|null
