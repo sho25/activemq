@@ -321,6 +321,20 @@ name|apache
 operator|.
 name|activemq
 operator|.
+name|command
+operator|.
+name|RemoveInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
 name|store
 operator|.
 name|TopicMessageStore
@@ -1417,6 +1431,12 @@ block|{
 comment|// Mark the dispatched messages as redelivered for next time.
 if|if
 condition|(
+name|lastDeliveredSequenceId
+operator|==
+name|RemoveInfo
+operator|.
+name|LAST_DELIVERED_UNKNOWN
+operator|||
 name|lastDeliveredSequenceId
 operator|==
 literal|0
