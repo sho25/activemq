@@ -583,7 +583,7 @@ specifier|final
 name|String
 name|KARAF_MAJOR_VERSION
 init|=
-literal|"4.0.0"
+literal|"4.2.1"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -1062,7 +1062,7 @@ name|LogLevelOption
 operator|.
 name|LogLevel
 operator|.
-name|WARN
+name|INFO
 argument_list|)
 argument_list|,
 comment|//
