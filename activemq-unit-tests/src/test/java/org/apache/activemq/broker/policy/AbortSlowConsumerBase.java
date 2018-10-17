@@ -213,10 +213,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|topic
-operator|=
-literal|true
-expr_stmt|;
 name|underTest
 operator|=
 name|createSlowConsumerStrategy

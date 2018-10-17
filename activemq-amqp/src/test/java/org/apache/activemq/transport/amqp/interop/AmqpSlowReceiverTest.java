@@ -195,7 +195,7 @@ name|region
 operator|.
 name|policy
 operator|.
-name|AbortSlowConsumerStrategy
+name|AbortSlowAckConsumerStrategy
 import|;
 end_import
 
@@ -368,7 +368,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test the handling of consumer abort when the AbortSlowConsumerStrategy is used.  */
+comment|/**  * Test the handling of consumer abort when the AbortSlowAckConsumerStrategy is used.  */
 end_comment
 
 begin_class
@@ -393,7 +393,7 @@ init|=
 literal|3000
 decl_stmt|;
 specifier|private
-name|AbortSlowConsumerStrategy
+name|AbortSlowAckConsumerStrategy
 name|strategy
 decl_stmt|;
 annotation|@
@@ -706,7 +706,7 @@ name|SECONDS
 operator|.
 name|sleep
 argument_list|(
-literal|3
+literal|6
 argument_list|)
 expr_stmt|;
 name|TabularData
@@ -922,7 +922,7 @@ block|{
 name|strategy
 operator|=
 operator|new
-name|AbortSlowConsumerStrategy
+name|AbortSlowAckConsumerStrategy
 argument_list|()
 expr_stmt|;
 name|strategy
@@ -942,6 +942,13 @@ expr_stmt|;
 name|strategy
 operator|.
 name|setMaxSlowDuration
+argument_list|(
+name|DEFAULT_MAX_SLOW_DURATION
+argument_list|)
+expr_stmt|;
+name|strategy
+operator|.
+name|setMaxTimeSinceLastAck
 argument_list|(
 name|DEFAULT_MAX_SLOW_DURATION
 argument_list|)

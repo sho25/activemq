@@ -1603,6 +1603,18 @@ break|break;
 block|}
 block|}
 block|}
+specifier|public
+name|CopyOnWriteArrayList
+argument_list|<
+name|Destination
+argument_list|>
+name|getDestinations
+parameter_list|()
+block|{
+return|return
+name|destinations
+return|;
+block|}
 block|}
 end_class
 

@@ -167,12 +167,6 @@ name|Boolean
 operator|.
 name|TRUE
 block|}
-block|,
-block|{
-name|Boolean
-operator|.
-name|FALSE
-block|}
 block|}
 argument_list|)
 return|;

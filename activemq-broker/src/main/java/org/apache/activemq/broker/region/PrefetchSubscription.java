@@ -3419,6 +3419,12 @@ elseif|else
 if|if
 condition|(
 operator|!
+name|pending
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|!
 name|isSlowConsumer
 argument_list|()
 condition|)
