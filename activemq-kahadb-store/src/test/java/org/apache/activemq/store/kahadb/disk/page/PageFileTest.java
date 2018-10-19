@@ -1196,6 +1196,7 @@ argument_list|()
 expr_stmt|;
 comment|//Load a second instance on the same directory fo the page file which
 comment|//simulates an unclean shutdown from the previous run
+specifier|final
 name|PageFile
 name|pf2
 init|=
