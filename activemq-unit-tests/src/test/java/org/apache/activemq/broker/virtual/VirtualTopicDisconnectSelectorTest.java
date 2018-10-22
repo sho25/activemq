@@ -728,11 +728,28 @@ parameter_list|)
 block|{
 name|messageList
 operator|.
-name|assertMessagesArrived
+name|waitForMessagesToArrive
 argument_list|(
 name|expected
 argument_list|,
 name|timeout
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"got at least expected num messages, "
+operator|+
+literal|"may be the odd duplicate on clientAck and disconnect outside a tx on separate thread"
+argument_list|,
+name|messageList
+operator|.
+name|getMessages
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|>=
+name|expected
 argument_list|)
 expr_stmt|;
 name|messageList
