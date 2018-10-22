@@ -269,6 +269,20 @@ name|java
 operator|.
 name|util
 operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
+name|AtomicReference
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|zip
 operator|.
 name|Adler32
@@ -736,10 +750,18 @@ name|SequenceSet
 argument_list|()
 decl_stmt|;
 specifier|private
+name|AtomicReference
+argument_list|<
 name|SequenceSet
+argument_list|>
 name|recoveredFreeList
 init|=
-literal|null
+operator|new
+name|AtomicReference
+argument_list|<
+name|SequenceSet
+argument_list|>
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -2183,10 +2205,13 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// allow flush (with index lock held) to merge
+comment|// allow flush (with index lock held) to merge eventually
 name|recoveredFreeList
-operator|=
+operator|.
+name|lazySet
+argument_list|(
 name|newFreePages
+argument_list|)
 expr_stmt|;
 block|}
 comment|// all set for clean shutdown
@@ -2502,6 +2527,9 @@ name|SequenceSet
 name|toMerge
 init|=
 name|recoveredFreeList
+operator|.
+name|get
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2511,8 +2539,11 @@ literal|null
 condition|)
 block|{
 name|recoveredFreeList
-operator|=
+operator|.
+name|lazySet
+argument_list|(
 literal|null
+argument_list|)
 expr_stmt|;
 name|Sequence
 name|seq
