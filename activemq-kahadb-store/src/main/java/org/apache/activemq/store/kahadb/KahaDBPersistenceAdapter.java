@@ -584,7 +584,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @param sync      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
+comment|/**      * @param cleanup      * @throws IOException      * @see org.apache.activemq.store.PersistenceAdapter#checkpoint(boolean)      */
 annotation|@
 name|Override
 specifier|public
@@ -592,7 +592,7 @@ name|void
 name|checkpoint
 parameter_list|(
 name|boolean
-name|sync
+name|cleanup
 parameter_list|)
 throws|throws
 name|IOException
@@ -603,7 +603,7 @@ name|letter
 operator|.
 name|checkpoint
 argument_list|(
-name|sync
+name|cleanup
 argument_list|)
 expr_stmt|;
 block|}
@@ -2584,6 +2584,39 @@ operator|.
 name|letter
 operator|.
 name|isPersistNoLocal
+argument_list|()
+return|;
+block|}
+comment|/*      * When set, ensure that the cleanup/gc operation is executed during the stop procedure      */
+specifier|public
+name|void
+name|setCleanupOnStop
+parameter_list|(
+name|boolean
+name|cleanupOnStop
+parameter_list|)
+block|{
+name|this
+operator|.
+name|letter
+operator|.
+name|setCleanupOnStop
+argument_list|(
+name|cleanupOnStop
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getCleanupOnStop
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|letter
+operator|.
+name|getCleanupOnStop
 argument_list|()
 return|;
 block|}

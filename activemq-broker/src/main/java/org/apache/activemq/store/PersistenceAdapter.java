@@ -301,12 +301,12 @@ name|File
 name|getDirectory
 parameter_list|()
 function_decl|;
-comment|/**      * checkpoint any      *      * @param sync      * @throws IOException      *      */
+comment|/**      * checkpoint any      *      * @param cleanup      * @throws IOException      *      */
 name|void
 name|checkpoint
 parameter_list|(
 name|boolean
-name|sync
+name|cleanup
 parameter_list|)
 throws|throws
 name|IOException

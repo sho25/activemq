@@ -1138,7 +1138,7 @@ name|checkpoint
 parameter_list|(
 specifier|final
 name|boolean
-name|sync
+name|cleanup
 parameter_list|)
 throws|throws
 name|IOException
@@ -1155,7 +1155,7 @@ name|persistenceAdapter
 operator|.
 name|checkpoint
 argument_list|(
-name|sync
+name|cleanup
 argument_list|)
 expr_stmt|;
 block|}

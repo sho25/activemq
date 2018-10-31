@@ -607,6 +607,10 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_comment
+comment|/*  * @org.apache.xbean.XBean element="kahaDBJobScheduler"  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -1401,7 +1405,8 @@ condition|)
 block|{
 name|checkpointUpdate
 argument_list|(
-literal|true
+name|getCleanupOnStop
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
