@@ -1069,16 +1069,6 @@ argument_list|(
 name|tx
 argument_list|)
 expr_stmt|;
-name|entry
-operator|.
-name|getValue
-argument_list|()
-operator|.
-name|messageReferences
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

@@ -1170,9 +1170,15 @@ name|Message
 name|message
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|this
+init|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|id
