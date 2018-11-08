@@ -131,6 +131,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"org.apache.activemq.audit"
+argument_list|,
+literal|"all"
+argument_list|)
+expr_stmt|;
 name|BrokerService
 name|broker
 init|=

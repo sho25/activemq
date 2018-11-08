@@ -158,6 +158,9 @@ argument_list|<
 name|T
 argument_list|>
 name|mbeanInterface
+parameter_list|,
+name|ObjectName
+name|objectName
 parameter_list|)
 throws|throws
 name|NotCompliantMBeanException
@@ -167,6 +170,8 @@ argument_list|(
 name|impl
 argument_list|,
 name|mbeanInterface
+argument_list|,
+name|objectName
 argument_list|)
 expr_stmt|;
 name|this
@@ -190,6 +195,9 @@ argument_list|<
 name|?
 argument_list|>
 name|mbeanInterface
+parameter_list|,
+name|ObjectName
+name|objectName
 parameter_list|)
 throws|throws
 name|NotCompliantMBeanException
@@ -197,6 +205,8 @@ block|{
 name|super
 argument_list|(
 name|mbeanInterface
+argument_list|,
+name|objectName
 argument_list|)
 expr_stmt|;
 block|}
@@ -360,6 +370,8 @@ argument_list|(
 name|object
 argument_list|,
 name|c
+argument_list|,
+name|objectName
 argument_list|)
 argument_list|,
 name|objectName
@@ -382,6 +394,8 @@ argument_list|,
 name|object
 argument_list|,
 name|c
+argument_list|,
+name|objectName
 argument_list|)
 argument_list|,
 name|objectName
