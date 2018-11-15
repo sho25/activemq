@@ -2659,6 +2659,8 @@ block|}
 block|}
 try|try
 block|{
+if|if
+condition|(
 name|AsyncAnnotatedMBean
 operator|.
 name|registerMBean
@@ -2673,7 +2675,10 @@ name|view
 argument_list|,
 name|key
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|null
+condition|)
+block|{
 name|registeredMBeans
 operator|.
 name|add
@@ -2681,6 +2686,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2985,6 +2991,8 @@ expr_stmt|;
 block|}
 try|try
 block|{
+if|if
+condition|(
 name|AsyncAnnotatedMBean
 operator|.
 name|registerMBean
@@ -2999,7 +3007,10 @@ name|view
 argument_list|,
 name|key
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|null
+condition|)
+block|{
 name|registeredMBeans
 operator|.
 name|add
@@ -3007,6 +3018,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -3364,6 +3376,8 @@ block|}
 block|}
 try|try
 block|{
+if|if
+condition|(
 name|AsyncAnnotatedMBean
 operator|.
 name|registerMBean
@@ -3378,7 +3392,10 @@ name|view
 argument_list|,
 name|key
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|null
+condition|)
+block|{
 name|registeredMBeans
 operator|.
 name|add
@@ -3386,6 +3403,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -3927,6 +3945,8 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
 name|AsyncAnnotatedMBean
 operator|.
 name|registerMBean
@@ -3941,7 +3961,10 @@ name|view
 argument_list|,
 name|objectName
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|null
+condition|)
+block|{
 name|registeredMBeans
 operator|.
 name|add
@@ -3949,6 +3972,7 @@ argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -5395,6 +5419,8 @@ name|strategy
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|AsyncAnnotatedMBean
 operator|.
 name|registerMBean
@@ -5409,7 +5435,10 @@ name|view
 argument_list|,
 name|objectName
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|null
+condition|)
+block|{
 name|registeredMBeans
 operator|.
 name|add
@@ -5417,6 +5446,7 @@ argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -5492,6 +5522,8 @@ argument_list|,
 name|transaction
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
 name|AsyncAnnotatedMBean
 operator|.
 name|registerMBean
@@ -5506,7 +5538,10 @@ name|view
 argument_list|,
 name|objectName
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|null
+condition|)
+block|{
 name|registeredMBeans
 operator|.
 name|add
@@ -5514,6 +5549,7 @@ argument_list|(
 name|objectName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -5765,6 +5801,18 @@ name|get
 argument_list|(
 name|objName
 argument_list|)
+return|;
+block|}
+specifier|public
+name|Set
+argument_list|<
+name|ObjectName
+argument_list|>
+name|getRegisteredMbeans
+parameter_list|()
+block|{
+return|return
+name|registeredMBeans
 return|;
 block|}
 block|}
