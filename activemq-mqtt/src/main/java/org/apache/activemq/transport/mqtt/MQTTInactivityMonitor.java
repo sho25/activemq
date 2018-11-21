@@ -464,15 +464,11 @@ argument_list|(
 operator|new
 name|InactivityIOException
 argument_list|(
-literal|"Channel was inactive for too (>"
+literal|"CONNECT frame not received with in connectionTimeout (>"
 operator|+
-operator|(
-name|readKeepAliveTime
+name|connectionTimeout
 operator|+
-name|readGraceTime
-operator|)
-operator|+
-literal|") long: "
+literal|"): "
 operator|+
 name|next
 operator|.
