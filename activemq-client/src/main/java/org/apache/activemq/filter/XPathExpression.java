@@ -105,6 +105,16 @@ name|javax
 operator|.
 name|xml
 operator|.
+name|XMLConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
 name|parsers
 operator|.
 name|DocumentBuilder
@@ -309,6 +319,19 @@ expr_stmt|;
 try|try
 block|{
 comment|// set some reasonable defaults
+name|builderFactory
+operator|.
+name|setFeature
+argument_list|(
+name|XMLConstants
+operator|.
+name|FEATURE_SECURE_PROCESSING
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 name|builderFactory
 operator|.
 name|setFeature
