@@ -1533,7 +1533,7 @@ literal|"org.apache.activemq:type=Broker,brokerName="
 operator|+
 name|brokerName
 operator|+
-literal|",connector=networkConnectors,networkConnectorName=*,networkBridge=*"
+literal|",connector=*,networkConnectorName=*,networkBridge=*"
 argument_list|)
 decl_stmt|;
 name|Set
