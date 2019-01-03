@@ -978,7 +978,13 @@ argument_list|()
 operator|.
 name|setLimit
 argument_list|(
-literal|16
+operator|(
+name|maxPageSize
+operator|+
+literal|10
+operator|)
+operator|*
+literal|4
 operator|*
 literal|1024
 argument_list|)

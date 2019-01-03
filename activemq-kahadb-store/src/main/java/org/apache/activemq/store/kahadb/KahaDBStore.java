@@ -4407,6 +4407,12 @@ condition|(
 name|counter
 operator|>=
 name|maxReturned
+operator|||
+operator|!
+name|listener
+operator|.
+name|hasSpace
+argument_list|()
 condition|)
 block|{
 break|break;

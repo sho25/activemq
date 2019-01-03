@@ -866,57 +866,15 @@ operator|.
 name|acknowledge
 argument_list|()
 expr_stmt|;
-comment|// this should free some space and allow us to get new batch of messages in the memory
-comment|// exceeding the limit
 name|assertTrue
 argument_list|(
-literal|"Limit is exceeded"
-argument_list|,
-name|Wait
-operator|.
-name|waitFor
-argument_list|(
-operator|new
-name|Wait
-operator|.
-name|Condition
-argument_list|()
-block|{
-annotation|@
-name|Override
-specifier|public
-name|boolean
-name|isSatisified
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Destination usage: "
+literal|"Should be less than 70% of limit but was: "
 operator|+
-name|dest
-operator|.
-name|getMemoryUsage
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-name|dest
-operator|.
-name|getMemoryUsage
-argument_list|()
-operator|.
-name|getPercentUsage
-argument_list|()
-operator|>=
-literal|200
-return|;
-block|}
-block|}
-argument_list|)
+name|percentUsage
+argument_list|,
+name|percentUsage
+operator|<=
+literal|71
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -946,8 +904,8 @@ argument_list|()
 operator|.
 name|getPercentUsage
 argument_list|()
-operator|>=
-literal|200
+operator|<=
+literal|71
 argument_list|)
 expr_stmt|;
 comment|// let's make sure we can consume all messages
