@@ -1405,6 +1405,21 @@ name|isStarted
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|canRecoveryNextMessage
+parameter_list|()
+block|{
+comment|// Should be safe to recovery messages if the overall memory usage if< 90%
+return|return
+name|parentHasSpace
+argument_list|(
+literal|90
+argument_list|)
+return|;
+block|}
 specifier|private
 name|void
 name|syncWithStore

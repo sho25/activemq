@@ -4411,7 +4411,7 @@ operator|||
 operator|!
 name|listener
 operator|.
-name|hasSpace
+name|canRecoveryNextMessage
 argument_list|()
 condition|)
 block|{

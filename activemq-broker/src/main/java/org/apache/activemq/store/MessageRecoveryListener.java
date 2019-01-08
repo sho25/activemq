@@ -74,6 +74,15 @@ name|boolean
 name|hasSpace
 parameter_list|()
 function_decl|;
+specifier|default
+name|boolean
+name|canRecoveryNextMessage
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * check if ref is a duplicate but do not record the reference      * @param ref      * @return true if ref is a duplicate      */
 name|boolean
 name|isDuplicate

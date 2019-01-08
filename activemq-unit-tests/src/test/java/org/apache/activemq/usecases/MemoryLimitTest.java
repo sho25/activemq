@@ -905,7 +905,7 @@ operator|.
 name|getPercentUsage
 argument_list|()
 operator|<=
-literal|71
+literal|91
 argument_list|)
 expr_stmt|;
 comment|// let's make sure we can consume all messages
