@@ -1276,7 +1276,7 @@ name|storeUsage
 operator|.
 name|setLimit
 argument_list|(
-literal|40
+literal|44
 operator|*
 literal|1024
 argument_list|)
