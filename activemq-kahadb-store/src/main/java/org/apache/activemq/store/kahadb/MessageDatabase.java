@@ -18251,10 +18251,7 @@ condition|(
 name|messageSequences
 operator|!=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|messageSequences
 operator|.
@@ -18364,7 +18361,6 @@ operator|.
 name|getSize
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
