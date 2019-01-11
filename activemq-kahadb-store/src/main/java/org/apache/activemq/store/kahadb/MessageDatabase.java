@@ -18253,6 +18253,16 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|messageSequences
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+specifier|final
 name|Sequence
 name|head
 init|=
@@ -18261,13 +18271,6 @@ operator|.
 name|getHead
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|head
-operator|!=
-literal|null
-condition|)
-block|{
 comment|//get an iterator over the order index starting at the first unacked message
 comment|//and go over each message to add up the size
 name|Iterator
@@ -18299,6 +18302,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|final
+name|boolean
+name|contiguousRange
+init|=
+name|messageSequences
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+decl_stmt|;
 while|while
 condition|(
 name|iterator
@@ -18320,6 +18334,24 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+comment|//Verify sequence contains the key
+comment|//if contiguous we just add all starting with the first but if not
+comment|//we need to check if the id is part of the range - could happen if individual ack mode was used
+if|if
+condition|(
+name|contiguousRange
+operator|||
+name|messageSequences
+operator|.
+name|contains
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|)
+condition|)
+block|{
 name|locationSize
 operator|+=
 name|entry
@@ -18332,6 +18364,7 @@ operator|.
 name|getSize
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
