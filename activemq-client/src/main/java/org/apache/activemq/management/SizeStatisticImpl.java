@@ -281,6 +281,21 @@ return|return
 name|maxSize
 return|;
 block|}
+comment|/**      * @return the maximum size of any step      */
+specifier|public
+specifier|synchronized
+name|void
+name|setMaxSize
+parameter_list|(
+name|long
+name|size
+parameter_list|)
+block|{
+name|maxSize
+operator|=
+name|size
+expr_stmt|;
+block|}
 comment|/**      * @return the minimum size of any step      */
 specifier|public
 specifier|synchronized
@@ -292,6 +307,21 @@ return|return
 name|minSize
 return|;
 block|}
+comment|/**      * @return the maximum size of any step      */
+specifier|public
+specifier|synchronized
+name|void
+name|setMinSize
+parameter_list|(
+name|long
+name|size
+parameter_list|)
+block|{
+name|minSize
+operator|=
+name|size
+expr_stmt|;
+block|}
 comment|/**      * @return the total size of all the steps added together      */
 specifier|public
 specifier|synchronized
@@ -302,6 +332,22 @@ block|{
 return|return
 name|totalSize
 return|;
+block|}
+specifier|public
+specifier|synchronized
+name|void
+name|setCount
+parameter_list|(
+name|long
+name|count
+parameter_list|)
+block|{
+name|this
+operator|.
+name|count
+operator|=
+name|count
+expr_stmt|;
 block|}
 comment|/**      * @return the average size calculated by dividing the total size by the      *         number of counts      */
 specifier|public

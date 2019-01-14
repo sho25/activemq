@@ -1296,7 +1296,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-literal|11
+literal|12
 operator|==
 name|store
 operator|.
