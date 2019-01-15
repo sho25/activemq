@@ -416,7 +416,7 @@ name|Parameters
 argument_list|(
 name|name
 operator|=
-literal|"{0}"
+literal|"recoverIndex={0},enableSubscriptionStats={1}"
 argument_list|)
 specifier|public
 specifier|static
@@ -440,9 +440,25 @@ index|[]
 block|{
 block|{
 literal|false
+block|,
+literal|false
 block|}
 block|,
 block|{
+literal|false
+block|,
+literal|true
+block|}
+block|,
+block|{
+literal|true
+block|,
+literal|false
+block|}
+block|,
+block|{
+literal|true
+block|,
 literal|true
 block|}
 block|}
@@ -476,6 +492,10 @@ decl_stmt|;
 specifier|private
 name|boolean
 name|recoverIndex
+decl_stmt|;
+specifier|private
+name|boolean
+name|enableSubscriptionStats
 decl_stmt|;
 annotation|@
 name|Before
@@ -518,6 +538,9 @@ name|KahaDBDurableMessageRecoveryTest
 parameter_list|(
 name|boolean
 name|recoverIndex
+parameter_list|,
+name|boolean
+name|enableSubscriptionStats
 parameter_list|)
 block|{
 name|super
@@ -528,6 +551,12 @@ operator|.
 name|recoverIndex
 operator|=
 name|recoverIndex
+expr_stmt|;
+name|this
+operator|.
+name|enableSubscriptionStats
+operator|=
+name|enableSubscriptionStats
 expr_stmt|;
 block|}
 specifier|protected
@@ -652,6 +681,13 @@ operator|.
 name|setForceRecoverIndex
 argument_list|(
 name|forceRecoverIndex
+argument_list|)
+expr_stmt|;
+name|adapter
+operator|.
+name|setEnableSubscriptionStatistics
+argument_list|(
+name|enableSubscriptionStats
 argument_list|)
 expr_stmt|;
 comment|// set smaller size for test
@@ -1367,9 +1403,11 @@ literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Verify the pending size is less for sub1
-name|assertTrue
-argument_list|(
+comment|// Verify the pending size is less for sub1
+specifier|final
+name|long
+name|sub1PendingSizeBeforeRestart
+init|=
 name|getPendingMessageSize
 argument_list|(
 name|topic
@@ -1378,12 +1416,11 @@ literal|"clientId1"
 argument_list|,
 literal|"sub1"
 argument_list|)
-operator|>
-literal|0
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
+decl_stmt|;
+specifier|final
+name|long
+name|sub2PendingSizeBeforeRestart
+init|=
 name|getPendingMessageSize
 argument_list|(
 name|topic
@@ -1392,29 +1429,26 @@ literal|"clientId1"
 argument_list|,
 literal|"sub2"
 argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|sub1PendingSizeBeforeRestart
 operator|>
 literal|0
 argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|getPendingMessageSize
-argument_list|(
-name|topic
-argument_list|,
-literal|"clientId1"
-argument_list|,
-literal|"sub1"
+name|sub2PendingSizeBeforeRestart
+operator|>
+literal|0
 argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|sub1PendingSizeBeforeRestart
 operator|<
-name|getPendingMessageSize
-argument_list|(
-name|topic
-argument_list|,
-literal|"clientId1"
-argument_list|,
-literal|"sub2"
-argument_list|)
+name|sub2PendingSizeBeforeRestart
 argument_list|)
 expr_stmt|;
 name|subscriber1
@@ -1483,9 +1517,11 @@ literal|500
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Verify the pending size is less for sub1
-name|assertTrue
+comment|// Verify the pending size is less for sub1
+name|assertEquals
 argument_list|(
+name|sub1PendingSizeBeforeRestart
+argument_list|,
 name|getPendingMessageSize
 argument_list|(
 name|topic
@@ -1494,35 +1530,12 @@ literal|"clientId1"
 argument_list|,
 literal|"sub1"
 argument_list|)
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertEquals
 argument_list|(
-name|getPendingMessageSize
-argument_list|(
-name|topic
+name|sub2PendingSizeBeforeRestart
 argument_list|,
-literal|"clientId1"
-argument_list|,
-literal|"sub2"
-argument_list|)
-operator|>
-literal|0
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|getPendingMessageSize
-argument_list|(
-name|topic
-argument_list|,
-literal|"clientId1"
-argument_list|,
-literal|"sub1"
-argument_list|)
-operator|<
 name|getPendingMessageSize
 argument_list|(
 name|topic
@@ -2035,7 +2048,7 @@ argument_list|(
 name|recoverIndex
 argument_list|)
 expr_stmt|;
-comment|//Manually recover subscription and verify proper messages are loaded
+comment|// Manually recover subscription and verify proper messages are loaded
 specifier|final
 name|Topic
 name|brokerTopic
@@ -2280,7 +2293,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|//Verify proper number of messages are recovered
+comment|// Verify proper number of messages are recovered
 name|assertEquals
 argument_list|(
 literal|8
