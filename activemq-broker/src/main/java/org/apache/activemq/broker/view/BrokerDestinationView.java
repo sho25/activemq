@@ -294,6 +294,38 @@ name|getLimit
 argument_list|()
 return|;
 block|}
+comment|/**      * Gets the temp usage as a percentage for this Destination.      *      * @return Gets the temp usage as a percentage for this Destination.      */
+specifier|public
+name|int
+name|getTempPercentUsage
+parameter_list|()
+block|{
+return|return
+name|destination
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getPercentUsage
+argument_list|()
+return|;
+block|}
+comment|/**      * Gets the temp usage limit in bytes.      *      * @return the temp usage limit in bytes.      */
+specifier|public
+name|long
+name|getTempUsageLimit
+parameter_list|()
+block|{
+return|return
+name|destination
+operator|.
+name|getTempUsage
+argument_list|()
+operator|.
+name|getLimit
+argument_list|()
+return|;
+block|}
 comment|/**      * @return the average time it takes to store a message on this destination (ms)      */
 specifier|public
 name|double

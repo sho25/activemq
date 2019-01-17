@@ -500,6 +500,34 @@ name|long
 name|limit
 parameter_list|)
 function_decl|;
+comment|/**      * @return the percentage of amount of temp usage used      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"The percentage of the temp usage limit used"
+argument_list|)
+name|int
+name|getTempUsagePercentUsage
+parameter_list|()
+function_decl|;
+comment|/**      * @return the amount of temp usage allocated to this destination      */
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Temp usage limit, in bytes, assigned to this destination."
+argument_list|)
+name|long
+name|getTempUsageLimit
+parameter_list|()
+function_decl|;
+comment|/**      * set the amount of temp usage allocated to this destination      * @param limit the amount of temp usage allocated to this destination      */
+name|void
+name|setTempUsageLimit
+parameter_list|(
+name|long
+name|limit
+parameter_list|)
+function_decl|;
 comment|/**      * @return the portion of memory from the broker memory limit for this destination      */
 annotation|@
 name|MBeanInfo
