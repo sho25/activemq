@@ -1364,7 +1364,7 @@ return|return
 name|getNumberOfJournalFiles
 argument_list|()
 operator|<=
-literal|3
+literal|4
 return|;
 block|}
 block|}
