@@ -1056,21 +1056,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|", userName = '"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|userName
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"' "
-argument_list|)
-operator|.
-name|append
-argument_list|(
 literal|", useSessionArgs = '"
 argument_list|)
 operator|.

@@ -35,18 +35,6 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
 name|assertNotNull
 import|;
 end_import
@@ -579,6 +567,13 @@ argument_list|()
 decl_stmt|;
 name|ra
 operator|.
+name|start
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|ra
+operator|.
 name|setServerUrl
 argument_list|(
 name|url
@@ -680,9 +675,9 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertFalse
+name|assertTrue
 argument_list|(
-literal|"no tthe same instance"
+literal|"the same instance"
 argument_list|,
 name|resources
 index|[

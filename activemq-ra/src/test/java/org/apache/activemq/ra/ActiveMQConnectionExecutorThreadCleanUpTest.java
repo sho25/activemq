@@ -339,6 +339,13 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
+name|ra
+operator|.
+name|start
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|XAResource
@@ -380,6 +387,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|ra
+operator|.
+name|stop
+argument_list|()
+expr_stmt|;
 comment|// allow some small time for thread cleanup to happen
 name|Thread
 operator|.
@@ -404,11 +416,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|ra
-operator|.
-name|stop
-argument_list|()
-expr_stmt|;
 block|}
 comment|/**      * Retrieves all threads from JVM and checks if any thread names contain      * AMQ_CONN_EXECUTOR_THREAD_NAME.      *      * @return true if such thread exists, otherwise false      */
 specifier|public
