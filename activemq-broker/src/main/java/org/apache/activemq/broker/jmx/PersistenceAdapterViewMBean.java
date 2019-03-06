@@ -58,6 +58,24 @@ name|long
 name|getSize
 parameter_list|()
 function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Statistics related to the PersistentAdapter."
+argument_list|)
+name|String
+name|getStatistics
+parameter_list|()
+function_decl|;
+annotation|@
+name|MBeanInfo
+argument_list|(
+literal|"Resets statistics."
+argument_list|)
+name|String
+name|resetStatistics
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 
