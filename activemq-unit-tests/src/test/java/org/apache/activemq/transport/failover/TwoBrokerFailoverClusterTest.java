@@ -126,7 +126,7 @@ literal|","
 operator|+
 name|BROKER_B_CLIENT_TC_ADDRESS
 operator|+
-literal|")"
+literal|")?randomize=false&jms.watchTopicAdvisories=false"
 argument_list|)
 expr_stmt|;
 name|createClients
@@ -175,6 +175,11 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+name|assertAllConnected
+argument_list|(
+name|NUMBER_OF_CLIENTS
+argument_list|)
+expr_stmt|;
 name|assertAllConnectedTo
 argument_list|(
 name|BROKER_B_CLIENT_TC_ADDRESS
@@ -185,6 +190,13 @@ operator|.
 name|sleep
 argument_list|(
 literal|5000
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Restarting A"
 argument_list|)
 expr_stmt|;
 name|createBrokerA
@@ -211,6 +223,11 @@ operator|.
 name|sleep
 argument_list|(
 literal|5000
+argument_list|)
+expr_stmt|;
+name|assertAllConnected
+argument_list|(
+name|NUMBER_OF_CLIENTS
 argument_list|)
 expr_stmt|;
 name|assertClientsConnectedToTwoBrokers
