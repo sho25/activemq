@@ -4685,6 +4685,8 @@ operator|new
 name|RuntimeException
 argument_list|(
 literal|"The broker from the BrokerService should not throw an exception"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
