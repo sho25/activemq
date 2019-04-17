@@ -351,7 +351,8 @@ argument_list|()
 argument_list|,
 literal|true
 argument_list|,
-name|preCommitTask
+literal|null
+comment|/* done post prepare call */
 argument_list|,
 name|postCommitTask
 argument_list|)
@@ -897,6 +898,11 @@ argument_list|(
 name|getTransactionId
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|preCommitTask
+operator|.
+name|run
+argument_list|()
 expr_stmt|;
 return|return
 name|XAResource
