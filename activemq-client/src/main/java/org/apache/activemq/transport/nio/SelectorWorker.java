@@ -604,11 +604,6 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 comment|// Notify all the selections that the error occurred.
 name|Set
 argument_list|<
