@@ -727,6 +727,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|jms
+operator|.
+name|setPersistent
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|header
