@@ -5106,6 +5106,9 @@ condition|)
 block|{
 return|return;
 block|}
+name|safeWaitUntilStarted
+argument_list|()
+expr_stmt|;
 comment|// message being forwarded - we need to
 comment|// propagate the response to our local send
 if|if
