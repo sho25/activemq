@@ -95,6 +95,16 @@ name|TemporaryQueue
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Random
+import|;
+end_import
+
 begin_comment
 comment|/**  * The Retailer orders computers from the Vendor by sending a message via  * the VendorOrderQueue. It then syncronously receives the reponse message  * and reports if the order was successful or not.  */
 end_comment
@@ -268,6 +278,13 @@ argument_list|,
 literal|"Computer(s)"
 argument_list|)
 expr_stmt|;
+name|Random
+name|rand
+init|=
+operator|new
+name|Random
+argument_list|()
+decl_stmt|;
 name|int
 name|quantity
 init|=
@@ -275,9 +292,9 @@ call|(
 name|int
 call|)
 argument_list|(
-name|Math
+name|rand
 operator|.
-name|random
+name|nextDouble
 argument_list|()
 operator|*
 literal|4
