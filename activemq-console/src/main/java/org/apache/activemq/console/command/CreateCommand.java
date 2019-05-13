@@ -1529,7 +1529,7 @@ name|res
 operator|.
 name|append
 argument_list|(
-literal|"!/bin/sh\n\n"
+literal|"#!/bin/sh\n\n"
 argument_list|)
 expr_stmt|;
 name|res
