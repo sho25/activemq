@@ -1529,6 +1529,13 @@ name|res
 operator|.
 name|append
 argument_list|(
+literal|"!/bin/sh\n\n"
+argument_list|)
+expr_stmt|;
+name|res
+operator|.
+name|append
+argument_list|(
 literal|"## Figure out the ACTIVEMQ_BASE from the directory this script was run from\n"
 argument_list|)
 expr_stmt|;
