@@ -1095,6 +1095,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Consume one message to free memory and allow the cursor to pageIn messages
+name|MessageConsumer
+name|consumer
+init|=
+name|session
+operator|.
+name|createConsumer
+argument_list|(
+name|queue
+argument_list|)
+decl_stmt|;
+name|consumer
+operator|.
+name|receive
+argument_list|(
+literal|1000
+argument_list|)
+expr_stmt|;
 name|QueueBrowser
 name|browser
 init|=
