@@ -5706,6 +5706,20 @@ literal|"ERROR"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+literal|"no stack trace impl leak:"
+operator|+
+name|f
+argument_list|,
+name|f
+operator|.
+name|contains
+argument_list|(
+literal|"at "
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -5765,6 +5779,20 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"ERROR"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+literal|"no stack trace impl leak:"
+operator|+
+name|f
+argument_list|,
+name|f
+operator|.
+name|contains
+argument_list|(
+literal|"at "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5869,6 +5897,20 @@ literal|"ERROR"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertFalse
+argument_list|(
+literal|"no stack trace impl leak:"
+operator|+
+name|f
+argument_list|,
+name|f
+operator|.
+name|contains
+argument_list|(
+literal|"at "
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -5959,6 +6001,20 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"ERROR"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+literal|"no stack trace impl leak:"
+operator|+
+name|frame
+argument_list|,
+name|frame
+operator|.
+name|contains
+argument_list|(
+literal|"at "
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6077,6 +6133,20 @@ name|RECEIPT_ID
 argument_list|)
 operator|>=
 literal|0
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+literal|"no stack trace impl leak:"
+operator|+
+name|frame
+argument_list|,
+name|frame
+operator|.
+name|contains
+argument_list|(
+literal|"at "
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
