@@ -6220,22 +6220,6 @@ name|consumerInfo
 argument_list|)
 expr_stmt|;
 block|}
-for|for
-control|(
-name|ConsumerInfo
-name|info
-range|:
-name|consumerInfos
-control|)
-block|{
-name|connection
-operator|.
-name|send
-argument_list|(
-name|info
-argument_list|)
-expr_stmt|;
-block|}
 name|Message
 name|message
 init|=
@@ -6249,6 +6233,14 @@ range|:
 name|consumerInfos
 control|)
 block|{
+comment|// one by one registration to avoid ordering issue with concurrent dispatch from composite dests broker side
+name|connection
+operator|.
+name|request
+argument_list|(
+name|info
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -6274,6 +6266,18 @@ expr_stmt|;
 name|assertNotNull
 argument_list|(
 name|message
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"ORIG "
+operator|+
+name|message
+operator|.
+name|getMessageId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|connection
@@ -8932,6 +8936,10 @@ name|setKeepDurableSubsActive
 argument_list|(
 name|keepDurableSubsActive
 argument_list|)
+expr_stmt|;
+name|maxWait
+operator|=
+literal|2000
 expr_stmt|;
 block|}
 specifier|public
