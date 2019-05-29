@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|jms
@@ -114,6 +124,14 @@ name|consumerInfo
 parameter_list|,
 name|String
 name|transformation
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|StompAckEntry
+argument_list|>
+name|pendingAcks
 parameter_list|)
 block|{
 name|super
@@ -125,6 +143,8 @@ argument_list|,
 name|consumerInfo
 argument_list|,
 name|transformation
+argument_list|,
+name|pendingAcks
 argument_list|)
 expr_stmt|;
 block|}
@@ -135,9 +155,6 @@ name|onMessageDispatch
 parameter_list|(
 name|MessageDispatch
 name|md
-parameter_list|,
-name|String
-name|ackId
 parameter_list|)
 throws|throws
 name|IOException
@@ -159,8 +176,6 @@ operator|.
 name|onMessageDispatch
 argument_list|(
 name|md
-argument_list|,
-name|ackId
 argument_list|)
 expr_stmt|;
 block|}
