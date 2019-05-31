@@ -8574,6 +8574,12 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Moving the checkpoint pointer as there is no persistent operations in this transaction to be replayed
+name|processLocation
+argument_list|(
+name|location
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 specifier|final
