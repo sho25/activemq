@@ -1295,7 +1295,7 @@ name|multiKahaDBPersistenceAdapter
 operator|.
 name|setJournalCleanupInterval
 argument_list|(
-name|CLEANUP_INTERVAL_MILLIS
+literal|10
 argument_list|)
 expr_stmt|;
 name|broker
