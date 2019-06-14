@@ -451,6 +451,12 @@ argument_list|(
 literal|true
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|isPersistent
+argument_list|()
+condition|)
+block|{
 operator|(
 operator|(
 name|JobSchedulerStoreImpl
@@ -483,6 +489,7 @@ operator|*
 literal|1024
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|brokerService
 return|;
@@ -703,6 +710,12 @@ argument_list|,
 name|COUNT
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isPersistent
+argument_list|()
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|1
@@ -711,6 +724,7 @@ name|getNumberOfJournalFiles
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|connection
 operator|.
 name|close
