@@ -1869,6 +1869,13 @@ name|endsWith
 argument_list|(
 literal|".log"
 argument_list|)
+operator|||
+name|name
+operator|.
+name|endsWith
+argument_list|(
+literal|".free"
+argument_list|)
 condition|)
 block|{
 return|return
