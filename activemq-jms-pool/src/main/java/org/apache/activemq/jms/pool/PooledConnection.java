@@ -354,12 +354,12 @@ name|JMSException
 block|{
 name|this
 operator|.
-name|cleanupConnectionTemporaryDestinations
+name|cleanupAllLoanedSessions
 argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|cleanupAllLoanedSessions
+name|cleanupConnectionTemporaryDestinations
 argument_list|()
 expr_stmt|;
 if|if
