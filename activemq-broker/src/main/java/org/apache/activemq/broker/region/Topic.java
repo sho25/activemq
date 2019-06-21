@@ -631,6 +631,32 @@ name|LoggerFactory
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|transaction
+operator|.
+name|Transaction
+operator|.
+name|IN_USE_STATE
+import|;
+end_import
+
 begin_comment
 comment|/**  * The Topic is a destination that sends a copy of a message to every active  * Subscription registered.  */
 end_comment
@@ -2415,8 +2441,46 @@ parameter_list|()
 block|{
 try|try
 block|{
-comment|// While waiting for space to free up... the
-comment|// message may have expired.
+comment|// While waiting for space to free up...
+comment|// the transaction may be done
+if|if
+condition|(
+name|message
+operator|.
+name|isInTransaction
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|context
+operator|.
+name|getTransaction
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|context
+operator|.
+name|getTransaction
+argument_list|()
+operator|.
+name|getState
+argument_list|()
+operator|>
+name|IN_USE_STATE
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Send transaction completed while waiting for space"
+argument_list|)
+throw|;
+block|}
+block|}
+comment|// the message may have expired.
 if|if
 condition|(
 name|message

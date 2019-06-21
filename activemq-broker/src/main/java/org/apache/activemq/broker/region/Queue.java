@@ -4086,6 +4086,13 @@ name|context
 operator|.
 name|getTransaction
 argument_list|()
+operator|==
+literal|null
+operator|||
+name|context
+operator|.
+name|getTransaction
+argument_list|()
 operator|.
 name|getState
 argument_list|()
