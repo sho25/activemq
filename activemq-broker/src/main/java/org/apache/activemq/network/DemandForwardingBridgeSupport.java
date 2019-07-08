@@ -6624,11 +6624,25 @@ argument_list|(
 name|sending
 argument_list|)
 expr_stmt|;
-comment|//remove subscriber from map
+comment|//remove subscriber from local map
 name|i
 operator|.
 name|remove
 argument_list|()
+expr_stmt|;
+comment|//need to remove the mapping from the remote map as well
+name|subscriptionMapByRemoteId
+operator|.
+name|remove
+argument_list|(
+name|ds
+operator|.
+name|getRemoteInfo
+argument_list|()
+operator|.
+name|getConsumerId
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
