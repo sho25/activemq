@@ -253,6 +253,13 @@ name|getPort
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|map
+operator|.
+name|setConnectionPassword
+argument_list|(
+literal|"secret"
+argument_list|)
+expr_stmt|;
 return|return
 name|map
 return|;

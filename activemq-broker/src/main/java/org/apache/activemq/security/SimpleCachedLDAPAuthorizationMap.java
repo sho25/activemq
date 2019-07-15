@@ -494,8 +494,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|connectionPassword
-init|=
-literal|"secret"
 decl_stmt|;
 specifier|private
 name|String

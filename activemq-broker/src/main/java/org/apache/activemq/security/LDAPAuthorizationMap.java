@@ -552,10 +552,6 @@ name|connectionUsername
 operator|=
 literal|"uid=admin,ou=system"
 expr_stmt|;
-name|connectionPassword
-operator|=
-literal|"secret"
-expr_stmt|;
 name|connectionProtocol
 operator|=
 literal|"s"
