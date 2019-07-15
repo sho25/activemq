@@ -584,7 +584,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|public
+specifier|private
 specifier|static
 name|Class
 argument_list|<
