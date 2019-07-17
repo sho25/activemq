@@ -311,7 +311,7 @@ name|impl
 operator|.
 name|client
 operator|.
-name|DefaultHttpClient
+name|HttpClientBuilder
 import|;
 end_import
 
@@ -379,8 +379,12 @@ specifier|private
 name|HttpClient
 name|httpClient
 init|=
-operator|new
-name|DefaultHttpClient
+name|HttpClientBuilder
+operator|.
+name|create
+argument_list|()
+operator|.
+name|build
 argument_list|()
 decl_stmt|;
 specifier|private
