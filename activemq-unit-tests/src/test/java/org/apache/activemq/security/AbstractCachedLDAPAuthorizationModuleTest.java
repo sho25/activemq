@@ -51,7 +51,7 @@ name|apache
 operator|.
 name|directory
 operator|.
-name|shared
+name|api
 operator|.
 name|ldap
 operator|.
