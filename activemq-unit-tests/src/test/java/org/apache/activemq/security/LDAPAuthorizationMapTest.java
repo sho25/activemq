@@ -417,6 +417,13 @@ argument_list|(
 literal|"uid=ActiveMQ.Temp,ou=topics,ou=destinations,o=ActiveMQ,ou=system"
 argument_list|)
 expr_stmt|;
+name|authMap
+operator|.
+name|setConnectionPassword
+argument_list|(
+literal|"secret"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
