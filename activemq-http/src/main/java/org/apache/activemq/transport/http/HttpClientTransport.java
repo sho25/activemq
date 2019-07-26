@@ -630,7 +630,7 @@ specifier|final
 name|int
 name|MAX_CLIENT_TIMEOUT
 init|=
-literal|30000
+literal|90000
 decl_stmt|;
 specifier|private
 specifier|static
