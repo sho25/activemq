@@ -1147,10 +1147,11 @@ argument_list|>
 name|registeredMBeans
 init|=
 operator|new
-name|CopyOnWriteArraySet
-argument_list|<
-name|ObjectName
-argument_list|>
+name|ConcurrentHashMap
+argument_list|<>
+argument_list|()
+operator|.
+name|newKeySet
 argument_list|()
 decl_stmt|;
 comment|/* This is the first broker in the broker interceptor chain. */
