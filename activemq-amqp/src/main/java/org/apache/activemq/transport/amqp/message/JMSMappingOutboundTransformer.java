@@ -2606,7 +2606,12 @@ name|footerMap
 operator|.
 name|put
 argument_list|(
+name|Symbol
+operator|.
+name|valueOf
+argument_list|(
 name|name
+argument_list|)
 argument_list|,
 name|value
 argument_list|)
