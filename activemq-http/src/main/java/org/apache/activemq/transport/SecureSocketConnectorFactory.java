@@ -418,7 +418,7 @@ condition|)
 block|{
 name|factory
 operator|.
-name|setSslKeyManagerFactoryAlgorithm
+name|setKeyManagerFactoryAlgorithm
 argument_list|(
 name|keyCertificateAlgorithm
 argument_list|)
