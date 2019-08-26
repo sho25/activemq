@@ -462,6 +462,8 @@ name|factory
 init|=
 operator|new
 name|SslContextFactory
+operator|.
+name|Client
 argument_list|()
 decl_stmt|;
 name|factory
@@ -643,6 +645,8 @@ name|factory
 init|=
 operator|new
 name|SslContextFactory
+operator|.
+name|Client
 argument_list|()
 decl_stmt|;
 name|factory

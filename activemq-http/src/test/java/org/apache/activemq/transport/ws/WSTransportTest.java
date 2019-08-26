@@ -950,6 +950,8 @@ name|HttpClient
 argument_list|(
 operator|new
 name|SslContextFactory
+operator|.
+name|Client
 argument_list|()
 argument_list|)
 decl_stmt|;
