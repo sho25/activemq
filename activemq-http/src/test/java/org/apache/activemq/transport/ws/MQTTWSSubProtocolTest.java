@@ -171,6 +171,8 @@ name|WebSocketClient
 argument_list|(
 operator|new
 name|SslContextFactory
+operator|.
+name|Client
 argument_list|(
 literal|true
 argument_list|)
