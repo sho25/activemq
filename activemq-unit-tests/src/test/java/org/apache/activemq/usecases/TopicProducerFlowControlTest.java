@@ -211,6 +211,22 @@ name|broker
 operator|.
 name|region
 operator|.
+name|RegionBroker
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|activemq
+operator|.
+name|broker
+operator|.
+name|region
+operator|.
 name|Topic
 import|;
 end_import
@@ -1861,6 +1877,21 @@ name|close
 argument_list|()
 expr_stmt|;
 comment|// verify no pending sends completed in rolledback tx
+comment|// temp dest should not exist
+if|if
+condition|(
+operator|!
+name|ActiveMQDestination
+operator|.
+name|transform
+argument_list|(
+name|destination
+argument_list|)
+operator|.
+name|isTemporary
+argument_list|()
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"nothing sent during close"
@@ -1889,6 +1920,7 @@ name|getCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
