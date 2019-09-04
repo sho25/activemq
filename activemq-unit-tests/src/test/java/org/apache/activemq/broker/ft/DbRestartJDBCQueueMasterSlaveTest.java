@@ -303,6 +303,13 @@ argument_list|(
 literal|"shutdown"
 argument_list|)
 expr_stmt|;
+name|ds
+operator|.
+name|setCreateDatabase
+argument_list|(
+literal|"not_any_more"
+argument_list|)
+expr_stmt|;
 name|LOG
 operator|.
 name|info

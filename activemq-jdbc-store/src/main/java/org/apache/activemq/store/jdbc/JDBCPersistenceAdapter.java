@@ -3175,6 +3175,8 @@ argument_list|(
 literal|"Could not get JDBC connection for checkpoint: "
 operator|+
 name|e
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 throw|throw
