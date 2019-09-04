@@ -2043,6 +2043,7 @@ expr_stmt|;
 end_expr_stmt
 
 begin_decl_stmt
+specifier|final
 name|AtomicBoolean
 name|success
 init|=
@@ -2055,6 +2056,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+specifier|final
 name|HashSet
 argument_list|<
 name|Integer
