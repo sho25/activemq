@@ -72,12 +72,34 @@ annotation|@
 name|Override
 specifier|public
 name|void
+name|testScheduleFullRecoveryRestart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// No persistence so scheduled jobs don't survive restart.
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
 name|testJobSchedulerStoreUsage
 parameter_list|()
 throws|throws
 name|Exception
 block|{
 comment|// No store usage numbers for in-memory store.
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|testUpdatesAppliedToIndexBeforeJournalShouldBeDiscarded
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// not applicable when non persistent
 block|}
 block|}
 end_class
