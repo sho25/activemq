@@ -337,6 +337,7 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|removeMessage
 parameter_list|(
@@ -416,6 +417,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|copyMessageTo
 parameter_list|(
@@ -474,6 +476,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|copyMatchingMessagesTo
 parameter_list|(
@@ -532,6 +535,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|copyMatchingMessagesTo
 parameter_list|(
@@ -595,6 +599,7 @@ argument_list|)
 return|;
 block|}
 specifier|public
+specifier|synchronized
 name|boolean
 name|moveMessageTo
 parameter_list|(
@@ -843,6 +848,23 @@ argument_list|(
 name|messageId
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ref
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|JMSException
+argument_list|(
+literal|"Could not find message reference: "
+operator|+
+name|messageId
+argument_list|)
+throw|;
+block|}
 name|Message
 name|rc
 init|=

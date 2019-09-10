@@ -7624,6 +7624,9 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
 name|set
 operator|.
 name|addAll
@@ -7633,7 +7636,14 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+comment|// nothing new to check - mem constraint on page in
+return|return
+name|movedCounter
+return|;
+block|}
+empty_stmt|;
 block|}
 finally|finally
 block|{
@@ -7946,6 +7956,9 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
 name|set
 operator|.
 name|addAll
@@ -7955,7 +7968,13 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+comment|// nothing new to check - mem constraint on page in
+return|return
+name|movedCounter
+return|;
+block|}
 block|}
 finally|finally
 block|{
@@ -8464,6 +8483,9 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
 name|set
 operator|.
 name|addAll
@@ -8473,7 +8495,13 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+comment|// nothing new to check - mem constraint on page in
+return|return
+name|movedCounter
+return|;
+block|}
 block|}
 finally|finally
 block|{
@@ -8667,6 +8695,9 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+if|if
+condition|(
+operator|!
 name|set
 operator|.
 name|addAll
@@ -8676,7 +8707,13 @@ operator|.
 name|values
 argument_list|()
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
+comment|// nothing new to check - mem constraint on page in
+return|return
+name|restoredCounter
+return|;
+block|}
 block|}
 finally|finally
 block|{
