@@ -666,6 +666,11 @@ argument_list|)
 decl_stmt|;
 name|messageStore
 operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|messageStore
+operator|.
 name|addMessage
 argument_list|(
 name|broker
@@ -793,6 +798,11 @@ argument_list|(
 name|destination
 argument_list|)
 decl_stmt|;
+name|messageStore
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 name|messageStore
 operator|.
 name|addMessage
