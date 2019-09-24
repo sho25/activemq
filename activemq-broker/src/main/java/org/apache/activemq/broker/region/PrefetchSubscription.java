@@ -3300,6 +3300,21 @@ condition|)
 block|{
 break|break;
 block|}
+if|if
+condition|(
+name|trackedInPendingTransaction
+argument_list|(
+name|node
+argument_list|)
+condition|)
+block|{
+name|node
+operator|.
+name|decrementReferenceCount
+argument_list|()
+expr_stmt|;
+continue|continue;
+block|}
 comment|// Synchronize between dispatched list and remove of message from pending list
 comment|// related to remove subscription action
 synchronized|synchronized
@@ -3469,6 +3484,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|protected
+name|boolean
+name|trackedInPendingTransaction
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
 block|}
 specifier|protected
 name|void

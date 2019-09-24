@@ -1970,8 +1970,22 @@ name|MessageReference
 name|node
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
+literal|true
+return|;
+comment|// let them go, our dispatchPending gates the active / inactive state.
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|boolean
+name|trackedInPendingTransaction
+parameter_list|(
+name|MessageReference
+name|node
+parameter_list|)
+block|{
+return|return
 operator|!
 name|ackedAndPrepared
 operator|.
@@ -1987,17 +2001,7 @@ operator|.
 name|getMessageId
 argument_list|()
 argument_list|)
-condition|)
-block|{
-return|return
-literal|false
 return|;
-comment|// prepared ack
-block|}
-return|return
-literal|true
-return|;
-comment|// let them go, our dispatchPending gates the active / inactive state.
 block|}
 annotation|@
 name|Override
@@ -2138,6 +2142,14 @@ init|(
 name|pendingLock
 init|)
 block|{
+comment|// may be in the cursor post activate/load from the store
+name|pending
+operator|.
+name|remove
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
 name|ackedAndPrepared
 operator|.
 name|remove
@@ -2172,13 +2184,6 @@ name|node
 operator|.
 name|getMessageId
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|pending
-operator|.
-name|addMessageFirst
-argument_list|(
-name|node
 argument_list|)
 expr_stmt|;
 block|}
