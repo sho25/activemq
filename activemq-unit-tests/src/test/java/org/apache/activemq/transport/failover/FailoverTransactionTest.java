@@ -4450,7 +4450,7 @@ name|session
 operator|.
 name|createQueue
 argument_list|(
-name|QUEUE_NAME
+literal|"testFailoverWithConnectionConsumer"
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -5884,6 +5884,16 @@ name|connection
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+end_expr_stmt
+
+begin_expr_stmt
+name|connections
+operator|.
+name|add
+argument_list|(
+name|connection
+argument_list|)
 expr_stmt|;
 end_expr_stmt
 
