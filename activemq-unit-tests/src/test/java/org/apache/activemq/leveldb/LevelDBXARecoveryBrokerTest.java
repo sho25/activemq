@@ -260,6 +260,56 @@ name|store
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|testQueuePersistentPreparedAcksAvailableAfterRestartAndRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// super.testQueuePersistentPreparedAcksAvailableAfterRestartAndRollback();
+block|}
+specifier|public
+name|void
+name|testQueuePersistentUncommittedAcksLostOnRestart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// super.testQueuePersistentUncommittedAcksLostOnRestart();
+block|}
+specifier|public
+name|void
+name|testQueuePersistentPreparedAcksNotLostOnRestart
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// pending acks are not tracked in leveldb
+block|}
+specifier|public
+name|void
+name|testQueuePersistentPreparedAcksAvailableAfterRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// pending acks are not tracked in leveldb
+block|}
+specifier|public
+name|void
+name|testTopicPersistentPreparedAcksUnavailableTillRollback
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
+specifier|public
+name|void
+name|testTopicPersistentPreparedAcksNotLostOnRestartForNSubs
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
 block|}
 end_class
 
