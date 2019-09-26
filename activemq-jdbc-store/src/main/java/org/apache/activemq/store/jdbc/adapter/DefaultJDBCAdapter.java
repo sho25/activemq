@@ -6020,7 +6020,7 @@ literal|2
 argument_list|)
 decl_stmt|;
 name|String
-name|subName
+name|subId
 init|=
 name|rs
 operator|.
@@ -6030,7 +6030,7 @@ literal|3
 argument_list|)
 decl_stmt|;
 name|String
-name|subId
+name|subName
 init|=
 name|rs
 operator|.

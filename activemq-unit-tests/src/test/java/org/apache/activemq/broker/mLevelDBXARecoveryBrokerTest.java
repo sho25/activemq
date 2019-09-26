@@ -346,6 +346,13 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{     }
+specifier|public
+name|void
+name|testTopicPersistentPreparedAcksNotLostOnRestartForNSubs
+parameter_list|()
+throws|throws
+name|Exception
+block|{     }
 block|}
 end_class
 

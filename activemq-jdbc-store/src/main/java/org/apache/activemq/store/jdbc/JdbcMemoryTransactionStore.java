@@ -1649,7 +1649,14 @@ name|rollbackLastAck
 argument_list|(
 name|context
 argument_list|,
+name|jdbcTopicMessageStore
+operator|.
+name|isPrioritizedMessages
+argument_list|()
+condition|?
 name|priority
+else|:
+literal|0
 argument_list|,
 name|jdbcTopicMessageStore
 operator|.
