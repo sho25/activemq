@@ -703,7 +703,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// don't track selectors for advisory topics or temp destinations
+comment|// don't track selectors for advisory topics, temp destinations or console
+comment|// related consumers
 if|if
 condition|(
 operator|!
@@ -724,6 +725,12 @@ name|getDestination
 argument_list|()
 operator|.
 name|isTemporary
+argument_list|()
+operator|&&
+operator|!
+name|info
+operator|.
+name|isBrowser
 argument_list|()
 condition|)
 block|{
