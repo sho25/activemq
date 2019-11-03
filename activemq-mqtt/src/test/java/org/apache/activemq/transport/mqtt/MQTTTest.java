@@ -10908,7 +10908,7 @@ block|}
 name|int
 name|numberOfRuns
 init|=
-literal|100
+literal|50
 decl_stmt|;
 name|int
 name|messagesPerRun
