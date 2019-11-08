@@ -1154,11 +1154,7 @@ name|HttpServletResponse
 operator|.
 name|SC_BAD_REQUEST
 argument_list|,
-literal|"A session for clientID '"
-operator|+
-name|clientID
-operator|+
-literal|"' has already been established"
+literal|"A session for the given clientID has already been established"
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1331,11 +1327,7 @@ name|HttpServletResponse
 operator|.
 name|SC_BAD_REQUEST
 argument_list|,
-literal|"The session for clientID '"
-operator|+
-name|clientID
-operator|+
-literal|"' was prematurely disposed"
+literal|"The session for the given clientID was prematurely disposed"
 argument_list|)
 expr_stmt|;
 name|LOG
