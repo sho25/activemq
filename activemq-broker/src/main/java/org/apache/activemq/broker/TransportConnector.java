@@ -1232,7 +1232,7 @@ else|else
 block|{
 name|LOG
 operator|.
-name|error
+name|warn
 argument_list|(
 literal|"Could not accept connection {} : {}"
 argument_list|,
@@ -1261,6 +1261,9 @@ argument_list|(
 literal|"Reason: "
 operator|+
 name|error
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|error
 argument_list|)
