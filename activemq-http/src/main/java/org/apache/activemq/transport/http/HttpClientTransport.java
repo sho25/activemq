@@ -1366,10 +1366,11 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
+comment|// handle RuntimeException from unmarshal
 name|onException
 argument_list|(
 name|IOExceptionSupport
