@@ -4529,12 +4529,10 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"force close on security exception:"
-operator|+
+literal|"force close on security exception:{}, transport={}"
+argument_list|,
 name|this
-operator|+
-literal|", transport="
-operator|+
+argument_list|,
 name|transport
 argument_list|,
 name|exception
@@ -6392,8 +6390,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Async client internal exception occurred with no exception listener registered: "
-operator|+
+literal|"Async client internal exception occurred with no exception listener registered: {}"
+argument_list|,
 name|error
 argument_list|,
 name|error
@@ -6501,8 +6499,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Async exception with no exception listener: "
-operator|+
+literal|"Async exception with no exception listener: {}"
+argument_list|,
 name|error
 argument_list|,
 name|error
