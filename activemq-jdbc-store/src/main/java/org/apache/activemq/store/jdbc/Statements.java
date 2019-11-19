@@ -530,6 +530,18 @@ name|getFullAckTableName
 argument_list|()
 operator|+
 literal|" (XID)"
+block|,
+literal|"CREATE INDEX "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|"_IIDX ON "
+operator|+
+name|getFullMessageTableName
+argument_list|()
+operator|+
+literal|" (ID ASC, XID, CONTAINER)"
 block|}
 expr_stmt|;
 block|}
