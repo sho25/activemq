@@ -208,7 +208,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|JmxOpPageInOnMemoryLimit
+name|JmxOpPageInOnMemoryLimitTest
 block|{
 name|BrokerService
 name|broker
