@@ -1745,15 +1745,24 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
-comment|// Don't advise advisory topics.
+comment|//Verify destination is either non-null or that we want to advise anonymous producers on null destination
+comment|//Don't advise advisory topics.
 if|if
 condition|(
+operator|(
 name|info
 operator|.
 name|getDestination
 argument_list|()
 operator|!=
 literal|null
+operator|||
+name|getBrokerService
+argument_list|()
+operator|.
+name|isAnonymousProducerAdvisorySupport
+argument_list|()
+operator|)
 operator|&&
 operator|!
 name|AdvisorySupport
@@ -2832,7 +2841,8 @@ argument_list|,
 name|info
 argument_list|)
 expr_stmt|;
-comment|// Don't advise advisory topics.
+comment|//Verify destination is either non-null or that we want to advise anonymous producers on null destination
+comment|//Don't advise advisory topics.
 name|ActiveMQDestination
 name|dest
 init|=
@@ -2843,12 +2853,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|info
-operator|.
-name|getDestination
-argument_list|()
+operator|(
+name|dest
 operator|!=
 literal|null
+operator|||
+name|getBrokerService
+argument_list|()
+operator|.
+name|isAnonymousProducerAdvisorySupport
+argument_list|()
+operator|)
 operator|&&
 operator|!
 name|AdvisorySupport
@@ -2881,6 +2896,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|dest
+operator|==
+literal|null
+operator|||
 operator|!
 name|dest
 operator|.
