@@ -391,6 +391,7 @@ name|ByteSequence
 name|content
 decl_stmt|;
 specifier|protected
+specifier|volatile
 name|ByteSequence
 name|marshalledProperties
 decl_stmt|;
