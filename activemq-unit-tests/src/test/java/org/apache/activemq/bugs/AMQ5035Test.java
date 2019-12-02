@@ -28,12 +28,34 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
 name|jms
 operator|.
 name|Connection
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|jms
+operator|.
+name|JMSException
 import|;
 end_import
 
@@ -386,6 +408,8 @@ argument_list|(
 name|DURABLE_SUB_NAME
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|brokerView
 operator|.
 name|destroyDurableSubscriber
@@ -395,6 +419,29 @@ argument_list|,
 name|DURABLE_SUB_NAME
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|JMSException
+name|okAsCloseIsAsync
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"inactive reason"
+argument_list|,
+name|okAsCloseIsAsync
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"in use"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|private
 name|BrokerViewMBean
