@@ -629,6 +629,15 @@ operator|.
 name|getRemoteBrokerName
 argument_list|()
 argument_list|)
+operator|&&
+name|durableConduitBridge
+operator|.
+name|bridgeFailed
+operator|.
+name|get
+argument_list|()
+operator|==
+literal|false
 condition|)
 block|{
 name|bridge
