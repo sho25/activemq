@@ -1251,7 +1251,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
@@ -1608,7 +1608,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
@@ -1934,7 +1934,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
@@ -3339,7 +3339,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false?create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
@@ -3872,7 +3872,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
@@ -4421,7 +4421,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
@@ -4852,7 +4852,7 @@ name|adapter
 operator|.
 name|setServerUrl
 argument_list|(
-literal|"vm://localhost?broker.persistent=false"
+literal|"vm://localhost?broker.persistent=false&create=false"
 argument_list|)
 expr_stmt|;
 name|adapter
