@@ -2686,9 +2686,12 @@ name|storeCache
 operator|.
 name|get
 argument_list|(
+name|key
+argument_list|(
 name|convert
 argument_list|(
 name|activeMQDestination
+argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
