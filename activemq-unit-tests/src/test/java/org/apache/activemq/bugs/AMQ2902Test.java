@@ -334,14 +334,19 @@ block|}
 if|if
 condition|(
 operator|!
-literal|"Loaded the Bouncy Castle security provider."
-operator|.
-name|equals
-argument_list|(
+operator|(
+operator|(
+name|String
+operator|)
 name|event
 operator|.
 name|getMessage
 argument_list|()
+operator|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"Loaded the Bouncy Castle security provider at position"
 argument_list|)
 condition|)
 block|{
