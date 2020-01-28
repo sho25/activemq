@@ -505,7 +505,7 @@ name|void
 name|addExcludedDestination
 parameter_list|(
 name|ActiveMQDestination
-name|destiantion
+name|destination
 parameter_list|)
 block|{
 name|this
@@ -514,7 +514,7 @@ name|excludedDestinations
 operator|.
 name|add
 argument_list|(
-name|destiantion
+name|destination
 argument_list|)
 expr_stmt|;
 block|}
@@ -523,7 +523,7 @@ name|void
 name|addStaticallyIncludedDestination
 parameter_list|(
 name|ActiveMQDestination
-name|destiantion
+name|destination
 parameter_list|)
 block|{
 name|this
@@ -532,7 +532,7 @@ name|staticallyIncludedDestinations
 operator|.
 name|add
 argument_list|(
-name|destiantion
+name|destination
 argument_list|)
 expr_stmt|;
 block|}
@@ -541,7 +541,7 @@ name|void
 name|addDynamicallyIncludedDestination
 parameter_list|(
 name|ActiveMQDestination
-name|destiantion
+name|destination
 parameter_list|)
 block|{
 name|this
@@ -550,7 +550,7 @@ name|dynamicallyIncludedDestinations
 operator|.
 name|add
 argument_list|(
-name|destiantion
+name|destination
 argument_list|)
 expr_stmt|;
 block|}

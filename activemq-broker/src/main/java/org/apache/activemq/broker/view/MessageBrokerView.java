@@ -921,7 +921,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|/**                      * If auto destinatons are allowed (on by default) - this will create a Broker Destination                      * if it doesn't exist. We could query the regionBroker first to check - but this affords more                      * flexibility - e.g. you might want to set up a query on destination statistics before any                      * messaging clients have started (and hence created the destination themselves                      */
+comment|/**                      * If auto destinations are allowed (on by default) - this will create a Broker Destination                      * if it doesn't exist. We could query the regionBroker first to check - but this affords more                      * flexibility - e.g. you might want to set up a query on destination statistics before any                      * messaging clients have started (and hence created the destination themselves                      */
 name|Destination
 name|destination
 init|=
