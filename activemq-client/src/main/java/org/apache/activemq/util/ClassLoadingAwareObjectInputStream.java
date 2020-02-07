@@ -174,7 +174,7 @@ name|getProperty
 argument_list|(
 literal|"org.apache.activemq.SERIALIZABLE_PACKAGES"
 argument_list|,
-literal|"java.lang,javax.security,java.util,org.apache.activemq,org.fusesource.hawtbuf,com.thoughtworks.xstream.mapper"
+literal|"org.apache.activemq,org.fusesource.hawtbuf,com.thoughtworks.xstream.mapper"
 argument_list|)
 operator|.
 name|split

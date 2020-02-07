@@ -338,6 +338,15 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"org.apache.activemq.SERIALIZABLE_PACKAGES"
+argument_list|,
+literal|"java.util"
+argument_list|)
+expr_stmt|;
 name|super
 operator|.
 name|setUp

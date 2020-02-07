@@ -332,6 +332,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"org.apache.activemq.SERIALIZABLE_PACKAGES"
+argument_list|,
+literal|"org.apache.activemq.usecases,java.util,java.lang"
+argument_list|)
+expr_stmt|;
 name|exceptions
 operator|.
 name|clear
@@ -345,7 +354,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testSendNotSerializeableObjectMessage
+name|testSendNotSerializableObjectMessage
 parameter_list|()
 throws|throws
 name|Exception
@@ -771,7 +780,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testSendNotSerializeableObjectMessageOverTcp
+name|testSendNotSerializableObjectMessageOverTcp
 parameter_list|()
 throws|throws
 name|Exception
