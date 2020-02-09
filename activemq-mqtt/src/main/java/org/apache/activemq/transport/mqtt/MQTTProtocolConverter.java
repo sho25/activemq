@@ -105,16 +105,6 @@ name|javax
 operator|.
 name|jms
 operator|.
-name|Destination
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|jms
-operator|.
 name|InvalidClientIDException
 import|;
 end_import
@@ -3739,6 +3729,9 @@ argument_list|(
 name|command
 operator|.
 name|topicName
+argument_list|()
+operator|.
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
