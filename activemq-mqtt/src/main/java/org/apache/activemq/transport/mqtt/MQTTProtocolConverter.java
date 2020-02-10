@@ -4932,7 +4932,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to send MQTT Publish: "
+literal|"Failed to send MQTT Publish: {}: {}"
 argument_list|,
 name|command
 argument_list|,

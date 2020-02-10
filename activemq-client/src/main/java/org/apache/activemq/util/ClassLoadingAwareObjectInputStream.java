@@ -644,7 +644,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Loaded class: {} as simple type -> "
+literal|"Loaded class: {} as simple type -> {}"
 argument_list|,
 name|className
 argument_list|,
@@ -706,18 +706,13 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Loaded class: {} using classloader: {} -> "
+literal|"Loaded class: {} using classloader: {} -> {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|className
-block|,
+argument_list|,
 name|cl
-block|,
+argument_list|,
 name|answer
-block|}
 argument_list|)
 expr_stmt|;
 block|}

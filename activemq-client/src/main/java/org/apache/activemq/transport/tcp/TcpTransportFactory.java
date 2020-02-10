@@ -831,7 +831,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"path isn't a valid local location for TcpTransport to use"
+literal|"path isn't a valid local location for TcpTransport to use: {}"
 argument_list|,
 name|e
 operator|.

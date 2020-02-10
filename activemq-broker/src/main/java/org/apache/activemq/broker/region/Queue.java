@@ -11067,8 +11067,6 @@ name|debug
 argument_list|(
 literal|"Duplicate message {} from cursor, removing from store"
 argument_list|,
-name|this
-argument_list|,
 name|ref
 operator|.
 name|getMessage
