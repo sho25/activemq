@@ -890,6 +890,7 @@ comment|/**      * @return the maxProducersToAudit      */
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|int
 name|getMaxProducersToAudit
 parameter_list|()
@@ -936,6 +937,7 @@ comment|/**      * @return the maxAuditDepth      */
 annotation|@
 name|Override
 specifier|public
+specifier|synchronized
 name|int
 name|getMaxAuditDepth
 parameter_list|()

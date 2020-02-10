@@ -2498,6 +2498,7 @@ name|messageEvictionStrategy
 expr_stmt|;
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getMaxProducersToAudit
 parameter_list|()
@@ -2538,6 +2539,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+specifier|synchronized
 name|int
 name|getMaxAuditDepth
 parameter_list|()
