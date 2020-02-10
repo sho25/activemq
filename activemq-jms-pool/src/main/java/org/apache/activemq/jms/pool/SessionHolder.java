@@ -102,14 +102,17 @@ name|Session
 name|session
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|MessageProducer
 name|producer
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|TopicPublisher
 name|publisher
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|QueueSender
 name|sender
 decl_stmt|;

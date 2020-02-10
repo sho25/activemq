@@ -1670,6 +1670,7 @@ name|long
 name|consumerFailoverRedeliveryWaitPeriod
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|Scheduler
 name|scheduler
 decl_stmt|;
