@@ -650,6 +650,8 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
+try|try
+init|(
 name|PreparedStatement
 name|statement
 init|=
@@ -663,15 +665,16 @@ operator|.
 name|getCurrentDateTime
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|;
 name|ResultSet
 name|resultSet
-init|=
+operator|=
 name|statement
 operator|.
 name|executeQuery
 argument_list|()
-decl_stmt|;
+init|)
+block|{
 name|long
 name|result
 init|=
@@ -749,6 +752,7 @@ block|}
 return|return
 name|result
 return|;
+block|}
 block|}
 specifier|public
 name|void
