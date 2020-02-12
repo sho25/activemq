@@ -506,6 +506,15 @@ name|Exception
 throws|,
 name|URISyntaxException
 block|{
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"org.apache.activemq.SERIALIZABLE_PACKAGES"
+argument_list|,
+literal|"java.util"
+argument_list|)
+expr_stmt|;
 return|return
 name|BrokerFactory
 operator|.

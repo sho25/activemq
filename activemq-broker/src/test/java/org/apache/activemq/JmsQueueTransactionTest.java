@@ -468,7 +468,7 @@ block|}
 comment|/**      * Tests sending and receiving messages with two sessions(one for producing      * and another for consuming).      *       * @throws Exception      */
 specifier|public
 name|void
-name|testSendReceiveInSeperateSessionTest
+name|testSendReceiveInSeparatedSessionTest
 parameter_list|()
 throws|throws
 name|Exception
