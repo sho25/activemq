@@ -27,10 +27,12 @@ name|long
 name|count
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|long
 name|maxSize
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|long
 name|minSize
 decl_stmt|;
@@ -283,7 +285,6 @@ return|;
 block|}
 comment|/**      * @return the maximum size of any step      */
 specifier|public
-specifier|synchronized
 name|void
 name|setMaxSize
 parameter_list|(
@@ -298,7 +299,6 @@ expr_stmt|;
 block|}
 comment|/**      * @return the minimum size of any step      */
 specifier|public
-specifier|synchronized
 name|long
 name|getMinSize
 parameter_list|()
@@ -309,7 +309,6 @@ return|;
 block|}
 comment|/**      * @return the maximum size of any step      */
 specifier|public
-specifier|synchronized
 name|void
 name|setMinSize
 parameter_list|(

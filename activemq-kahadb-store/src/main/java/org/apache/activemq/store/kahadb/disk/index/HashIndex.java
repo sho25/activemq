@@ -638,6 +638,7 @@ name|this
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|volatile
 name|Marshaller
 argument_list|<
 name|Key
@@ -2073,7 +2074,6 @@ return|;
 block|}
 comment|/**      * Set the marshaller for key objects      *       * @param marshaller      */
 specifier|public
-specifier|synchronized
 name|void
 name|setKeyMarshaller
 parameter_list|(
