@@ -3749,7 +3749,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"no matching consumer, ignoring ack {}"
+literal|"no matching consumer {}, ignoring ack {}"
 argument_list|,
 name|consumerExchange
 argument_list|,

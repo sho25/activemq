@@ -931,7 +931,7 @@ name|log
 operator|.
 name|debug
 argument_list|(
-literal|"Session has session has more work to do b/c of unconsumed"
+literal|"Session {} has more work to do b/c of unconsumed"
 argument_list|,
 name|this
 argument_list|)

@@ -1656,11 +1656,6 @@ argument_list|(
 literal|"onDelivery: Rejected state = {}, message poisoned."
 argument_list|,
 name|state
-argument_list|,
-name|md
-operator|.
-name|getRedeliveryCounter
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|settle

@@ -574,7 +574,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Exception suspending discoverAgent: "
+literal|"Exception suspending discoverAgent: {}"
 argument_list|,
 name|discoveryAgent
 argument_list|)
@@ -624,7 +624,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Exception resuming discoverAgent: "
+literal|"Exception resuming discoverAgent: {}"
 argument_list|,
 name|discoveryAgent
 argument_list|)
