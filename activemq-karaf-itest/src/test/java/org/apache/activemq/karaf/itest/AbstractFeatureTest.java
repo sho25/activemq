@@ -483,7 +483,7 @@ specifier|final
 name|String
 name|KARAF_MAJOR_VERSION
 init|=
-literal|"4.2.1"
+literal|"4.2.8"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -978,6 +978,15 @@ name|INFO
 argument_list|)
 argument_list|,
 comment|//
+name|editConfigurationFilePut
+argument_list|(
+literal|"etc/org.ops4j.pax.url.mvn.cfg"
+argument_list|,
+literal|"org.ops4j.pax.url.mvn.repositories"
+argument_list|,
+literal|"https://repo1.maven.org/maven2@id=central"
+argument_list|)
+argument_list|,
 name|editConfigurationFilePut
 argument_list|(
 literal|"etc/config.properties"
