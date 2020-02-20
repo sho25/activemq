@@ -388,6 +388,16 @@ name|Principal
 argument_list|>
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|user
+operator|.
+name|getGroups
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|StringTokenizer
 name|iter
 init|=
@@ -432,6 +442,7 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|userGroups
 operator|.
