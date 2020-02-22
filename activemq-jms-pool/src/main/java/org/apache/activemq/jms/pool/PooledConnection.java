@@ -1088,7 +1088,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"failed to close laoned Session \""
+literal|"failed to close loaned Session \""
 operator|+
 name|session
 operator|+

@@ -4623,7 +4623,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"After clear of pending, failed to dispatch to: {}, for: {}, pending: {}"
+literal|"After clear of pending, failed to dispatch to: {}, for: {}, pending: {}, exception: {}"
 argument_list|,
 operator|new
 name|Object
@@ -4636,9 +4636,9 @@ block|,
 name|durableTopicSubscription
 operator|.
 name|pending
-block|}
-argument_list|,
+block|,
 name|exception
+block|}
 argument_list|)
 expr_stmt|;
 block|}

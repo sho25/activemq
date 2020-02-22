@@ -1004,7 +1004,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Could not decode incoming MQTT Frame: "
+literal|"Could not decode incoming MQTT Frame: {}"
 argument_list|,
 name|e
 operator|.
@@ -1336,7 +1336,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Could not decode incoming MQTT Frame: "
+literal|"Could not decode incoming MQTT Frame: {}"
 argument_list|,
 name|e
 operator|.

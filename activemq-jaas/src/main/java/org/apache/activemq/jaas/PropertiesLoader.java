@@ -86,6 +86,7 @@ name|class
 argument_list|)
 decl_stmt|;
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|FileNameKey

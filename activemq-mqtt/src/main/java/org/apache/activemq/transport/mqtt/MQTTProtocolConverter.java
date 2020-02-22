@@ -4948,6 +4948,9 @@ name|trace
 argument_list|(
 literal|"Error trace: {}"
 argument_list|,
+operator|(
+name|Object
+operator|)
 name|error
 argument_list|)
 expr_stmt|;

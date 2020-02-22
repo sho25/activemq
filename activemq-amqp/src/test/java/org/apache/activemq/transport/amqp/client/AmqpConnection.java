@@ -1487,7 +1487,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Error caught while closing Provider: "
+literal|"Error caught while closing Provider: {}"
 argument_list|,
 name|e
 operator|.

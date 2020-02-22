@@ -571,8 +571,6 @@ name|e
 block|,
 name|message
 block|}
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 block|}

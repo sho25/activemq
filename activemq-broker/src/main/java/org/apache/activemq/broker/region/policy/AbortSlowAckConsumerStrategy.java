@@ -854,7 +854,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Transferring consumer{} to the abort list: {} slow duration = {}, slow count = {}"
+literal|"Transferring consumer {} to the abort list: {} slow duration = {}, slow count = {}"
 argument_list|,
 operator|new
 name|Object

@@ -1286,7 +1286,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"created per destination adapter for: "
 operator|+
@@ -1318,20 +1318,15 @@ name|debug
 argument_list|(
 literal|"destination {} matched persistence adapter {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|destination
 operator|.
 name|getQualifiedName
 argument_list|()
-block|,
+argument_list|,
 name|filteredAdapter
 operator|.
 name|getPersistenceAdapter
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -2038,7 +2033,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"deleted per destination adapter directory for: "
 operator|+
@@ -2059,7 +2054,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|info
+name|trace
 argument_list|(
 literal|"failed to deleted per destination adapter directory for: "
 operator|+

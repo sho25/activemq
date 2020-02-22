@@ -151,7 +151,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * This will be called by a JNDIprovider when a Reference is retrieved from      * a JNDI store - and generates the orignal instance      *       * @param object the Reference object      * @param name the JNDI name      * @param nameCtx the context      * @param environment the environment settings used by JNDI      * @return the instance built from the Reference object      * @throws Exception if building the instance from Reference fails (usually      *                 class not found)      */
+comment|/**      * This will be called by a JNDIprovider when a Reference is retrieved from      * a JNDI store - and generates the original instance      *       * @param object the Reference object      * @param name the JNDI name      * @param nameCtx the context      * @param environment the environment settings used by JNDI      * @return the instance built from the Reference object      * @throws Exception if building the instance from Reference fails (usually      *                 class not found)      */
 specifier|public
 name|Object
 name|getObjectInstance

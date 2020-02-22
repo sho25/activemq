@@ -228,12 +228,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"========== start "
-operator|+
+literal|"========== start {} =========="
+argument_list|,
 name|getTestName
 argument_list|()
-operator|+
-literal|" =========="
 argument_list|)
 expr_stmt|;
 block|}
@@ -282,6 +280,9 @@ name|warn
 argument_list|(
 literal|"Suppress error on shutdown: {}"
 argument_list|,
+operator|(
+name|Object
+operator|)
 name|ex
 argument_list|)
 expr_stmt|;
@@ -291,12 +292,10 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"========== tearDown "
-operator|+
+literal|"========== tearDown {} =========="
+argument_list|,
 name|getTestName
 argument_list|()
-operator|+
-literal|" =========="
 argument_list|)
 expr_stmt|;
 block|}

@@ -7007,6 +7007,9 @@ name|warn
 argument_list|(
 literal|"failed to fire forward failure advisory, cause: {}"
 argument_list|,
+operator|(
+name|Object
+operator|)
 name|e
 argument_list|)
 expr_stmt|;

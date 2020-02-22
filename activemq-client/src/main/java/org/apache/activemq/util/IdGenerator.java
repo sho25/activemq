@@ -776,7 +776,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * From a generated id - return the seed (i.e. minus the count)      *      * @param id the generated identifer      * @return the seed      */
+comment|/**      * From a generated id - return the seed (i.e. minus the count)      *      * @param id the generated identifier      * @return the seed      */
 specifier|public
 specifier|static
 name|String

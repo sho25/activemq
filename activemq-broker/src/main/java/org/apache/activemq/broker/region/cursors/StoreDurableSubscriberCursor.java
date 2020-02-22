@@ -1003,7 +1003,7 @@ name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"cached high priority ({} message: {}, current paged batch priority: {}, cache size: {}"
+literal|"cached high priority ({}) message: {}, current paged batch priority: {}, cache size: {}"
 argument_list|,
 operator|new
 name|Object
