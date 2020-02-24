@@ -271,7 +271,7 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-literal|"500 Server Error"
+literal|"405 Method Not Allowed"
 argument_list|)
 argument_list|)
 expr_stmt|;
