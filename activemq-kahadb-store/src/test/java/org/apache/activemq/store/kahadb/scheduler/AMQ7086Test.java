@@ -201,19 +201,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
+name|*
 import|;
 end_import
 
@@ -323,7 +311,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Num files, job store: {}, messge store: {}"
+literal|"Num files, job store: {}, message store: {}"
 argument_list|,
 name|numKahadbFiles
 argument_list|,
@@ -361,16 +349,16 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"Expected job store data files"
-argument_list|,
-literal|1
+literal|"Expected job store data files at least 1"
 argument_list|,
 name|verifyFilesOnDisk
 argument_list|(
 name|jobDir
 argument_list|)
+operator|>=
+literal|1
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -463,7 +451,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Num files, job store: {}, messge store: {}"
+literal|"Num files, job store: {}, message store: {}"
 argument_list|,
 name|numKahadbFiles
 argument_list|,
