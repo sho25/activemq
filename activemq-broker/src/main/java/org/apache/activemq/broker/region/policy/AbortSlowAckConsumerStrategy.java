@@ -856,10 +856,6 @@ name|trace
 argument_list|(
 literal|"Transferring consumer {} to the abort list: {} slow duration = {}, slow count = {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|entry
 operator|.
 name|getKey
@@ -870,7 +866,9 @@ argument_list|()
 operator|.
 name|getConsumerId
 argument_list|()
-block|,
+argument_list|,
+name|toAbort
+argument_list|,
 name|entry
 operator|.
 name|getValue
@@ -880,7 +878,7 @@ name|markCount
 operator|*
 name|getCheckPeriod
 argument_list|()
-block|,
+argument_list|,
 name|entry
 operator|.
 name|getValue
@@ -888,7 +886,6 @@ argument_list|()
 operator|.
 name|getSlowCount
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 name|toAbort
