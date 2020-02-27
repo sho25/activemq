@@ -140,11 +140,6 @@ return|return
 name|groupClass
 return|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|private
 name|Set
 argument_list|<
@@ -156,7 +151,8 @@ block|{
 return|return
 name|Collections
 operator|.
-name|EMPTY_SET
+name|emptySet
+argument_list|()
 return|;
 block|}
 specifier|public
