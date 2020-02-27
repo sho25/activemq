@@ -71,6 +71,25 @@ name|statements
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|limitQuery
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+name|query
+operator|+
+literal|" LIMIT "
+operator|+
+name|getMaxRows
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
