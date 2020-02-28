@@ -1397,6 +1397,15 @@ operator|.
 name|getKey
 argument_list|()
 expr_stmt|;
+name|bestScore
+operator|=
+name|entry
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|value
+expr_stmt|;
 block|}
 block|}
 return|return
