@@ -101,34 +101,6 @@ name|DestinationMapEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|filter
-operator|.
-name|DestinationMapNode
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|activemq
-operator|.
-name|filter
-operator|.
-name|DestinationNode
-import|;
-end_import
-
 begin_comment
 comment|/**  * Represents a destination based configuration of policies so that individual  * destinations or wildcard hierarchies of destinations can be configured using  * different policies. Each entry in the map represents the authorization ACLs  * for each operation.  *  *  */
 end_comment
