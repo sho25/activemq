@@ -5351,7 +5351,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Failed to add Connection id={}, clientId={} due to {}"
+literal|"Failed to add Connection id={}, clientId={}, clientIP={} due to {}"
 argument_list|,
 name|info
 operator|.
@@ -5360,12 +5360,15 @@ argument_list|()
 argument_list|,
 name|clientId
 argument_list|,
+name|info
+operator|.
+name|getClientIp
+argument_list|()
+argument_list|,
 name|e
 operator|.
 name|getLocalizedMessage
 argument_list|()
-argument_list|,
-name|e
 argument_list|)
 expr_stmt|;
 comment|//AMQ-6561 - stop for all exceptions on addConnection
