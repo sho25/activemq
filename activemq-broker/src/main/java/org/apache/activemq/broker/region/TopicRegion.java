@@ -2349,7 +2349,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|error
+name|debug
 argument_list|(
 literal|"Failed to create TopicSubscription "
 argument_list|,
