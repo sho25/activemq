@@ -1862,9 +1862,21 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"error with pending local brokerInfo on: "
-operator|+
+literal|"Error with pending local brokerInfo on: {} ({})"
+argument_list|,
 name|localBroker
+argument_list|,
+name|error
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Peer error: "
 argument_list|,
 name|error
 argument_list|)
@@ -1942,9 +1954,21 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"error with pending remote brokerInfo on: "
-operator|+
+literal|"Error with pending remote brokerInfo on: {} ({})"
+argument_list|,
 name|remoteBroker
+argument_list|,
+name|error
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Peer error: "
 argument_list|,
 name|error
 argument_list|)
@@ -4132,16 +4156,14 @@ name|error
 argument_list|(
 literal|"Network connection between {} and {} shutdown due to a remote error: {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|localBroker
-block|,
+argument_list|,
 name|remoteBroker
-block|,
+argument_list|,
 name|error
-block|}
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4153,16 +4175,14 @@ name|warn
 argument_list|(
 literal|"Network connection between {} and {} shutdown due to a remote error: {}"
 argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
 name|localBroker
-block|,
+argument_list|,
 name|remoteBroker
-block|,
+argument_list|,
 name|error
-block|}
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
