@@ -113,6 +113,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|net
+operator|.
+name|ssl
+operator|.
+name|SSLHandshakeException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -336,7 +348,7 @@ name|LOGGER
 operator|.
 name|warn
 argument_list|(
-literal|"Could not initialize connection from {}"
+literal|"Could not initialize connection from {}: {} ({})"
 argument_list|,
 name|socket
 operator|.
@@ -347,6 +359,17 @@ name|getHostAddress
 argument_list|()
 argument_list|,
 name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
