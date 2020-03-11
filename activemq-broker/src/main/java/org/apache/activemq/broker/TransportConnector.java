@@ -1221,7 +1221,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Could not accept connection during shutdown {} : {}"
+literal|"Could not accept connection during shutdown {} : {} ({})"
 argument_list|,
 operator|(
 name|remoteHost
@@ -1239,6 +1239,16 @@ name|error
 operator|.
 name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|Throwables
+operator|.
+name|getRootCause
+argument_list|(
+name|error
+argument_list|)
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1248,7 +1258,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not accept connection from {}: {}"
+literal|"Could not accept connection from {}: {} ({})"
 argument_list|,
 operator|(
 name|remoteHost
@@ -1266,13 +1276,6 @@ name|error
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"Root cause of connection error: {}"
 argument_list|,
 name|Throwables
 operator|.
