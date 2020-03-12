@@ -1262,7 +1262,7 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Could not accept connection from {}: {} ({})"
+literal|"Could not accept connection {}: {} ({})"
 argument_list|,
 operator|(
 name|remoteHost
