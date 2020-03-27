@@ -772,6 +772,11 @@ argument_list|(
 name|this
 operator|.
 name|props
+argument_list|,
+name|key
+operator|.
+name|getAlgorithm
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

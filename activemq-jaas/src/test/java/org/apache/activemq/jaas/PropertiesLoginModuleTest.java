@@ -277,7 +277,8 @@ init|=
 operator|new
 name|LoginContext
 argument_list|(
-literal|"PropertiesLogin"
+name|getLoginModule
+argument_list|()
 argument_list|,
 operator|new
 name|UserPassHandler
@@ -726,7 +727,8 @@ init|=
 operator|new
 name|LoginContext
 argument_list|(
-literal|"PropertiesLogin"
+name|getLoginModule
+argument_list|()
 argument_list|,
 operator|new
 name|UserPassHandler
@@ -770,7 +772,8 @@ init|=
 operator|new
 name|LoginContext
 argument_list|(
-literal|"PropertiesLogin"
+name|getLoginModule
+argument_list|()
 argument_list|,
 operator|new
 name|UserPassHandler
@@ -946,6 +949,15 @@ throw|;
 block|}
 block|}
 block|}
+block|}
+specifier|protected
+name|String
+name|getLoginModule
+parameter_list|()
+block|{
+return|return
+literal|"PropertiesLogin"
+return|;
 block|}
 block|}
 end_class
