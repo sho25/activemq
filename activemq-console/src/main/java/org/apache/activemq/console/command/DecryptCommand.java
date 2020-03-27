@@ -39,6 +39,18 @@ name|EncryptionOperationNotPossibleException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jasypt
+operator|.
+name|iv
+operator|.
+name|RandomIvGenerator
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -68,6 +80,8 @@ block|,
 literal|"                               the value in the ACTIVEMQ_ENCRYPTION_PASSWORD env variable."
 block|,
 literal|"    --input<input>            Text to be encrypted."
+block|,
+literal|"    --algorithm<algorithm>    Algorithm to use."
 block|,
 literal|"    --version                  Display the version information."
 block|,
@@ -161,6 +175,49 @@ argument_list|(
 name|password
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|algorithm
+operator|!=
+literal|null
+condition|)
+block|{
+name|encryptor
+operator|.
+name|setAlgorithm
+argument_list|(
+name|algorithm
+argument_list|)
+expr_stmt|;
+comment|// From Jasypt: for PBE-AES-based algorithms, the IV generator is MANDATORY"
+if|if
+condition|(
+name|algorithm
+operator|.
+name|startsWith
+argument_list|(
+literal|"PBE"
+argument_list|)
+operator|&&
+name|algorithm
+operator|.
+name|contains
+argument_list|(
+literal|"AES"
+argument_list|)
+condition|)
+block|{
+name|encryptor
+operator|.
+name|setIvGenerator
+argument_list|(
+operator|new
+name|RandomIvGenerator
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 try|try
 block|{
 name|context
